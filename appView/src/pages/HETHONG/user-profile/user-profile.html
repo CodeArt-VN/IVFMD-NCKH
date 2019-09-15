@@ -1,0 +1,246 @@
+<ion-header>
+    <div *ngIf="showActionMore" class="popover">
+        <div class="background" (click)="showActionMore=false;"></div>
+        <div class="arrow"></div>
+        <div class="contain" *ngIf="item">
+            <ion-list>
+                <button ion-item (click)="saveChange()" [disabled]="!formGroup.dirty">
+                    <ion-icon name="fa-floppy-o" color="success" item-left></ion-icon>Lưu</button>
+
+                <!-- <button *ngIf="item.ID" (click)="delete()" ion-item>
+                    <ion-icon name="trash" color="danger" item-left></ion-icon>Xóa</button> -->
+            </ion-list>
+        </div>
+    </div>
+    <ion-navbar *ngIf="item">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title *ngIf="item && item.ID">{{item.FullName}}</ion-title>
+        <ion-title *ngIf="!item.ID">Thông tin tài khoản</ion-title>
+        <ion-buttons end show-sm>
+            <button ion-button icon-only (click)="showActionMore=!showActionMore">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <div class="float-toolbar">
+        <ion-toolbar hide-sm>
+            <!-- <ion-buttons end padding-right>
+                <button ion-button small icon-left (click)="saveChange()" [disabled]="!formGroup.dirty">
+                    <ion-icon name="fa-floppy-o" color="success"></ion-icon>
+                    Lưu
+                </button>
+                <button *ngIf="item.ID" ion-button small icon-left (click)="delete()">
+                    <ion-icon name="trash" color="danger"></ion-icon>
+                    Xóa
+                </button>
+            </ion-buttons> -->
+        </ion-toolbar>
+    </div>
+</ion-header>
+<ion-content [class]="showSearch? 'detail-page search':'detail-page' ">
+    <div>
+        <div class="col-avatar">
+            <div>
+                <img class="avatar" src="assets/imgs/avartar-empty.jpg">
+            </div>
+            <div class="btn">
+                <button ion-button round color="light" small>Đổi ảnh</button>
+            </div>
+            <div class="cmd">
+                <ion-item-group>
+                    <a [class.active]="activePage=='page-1'" no-lines ion-item detail-none (click)="activePage='page-1'">
+                        <ion-icon name="ios-contact" item-left></ion-icon>Thông tin chung
+                    </a>
+
+                    <a *ngIf="showLogout" [class.active]="activePage=='page-2'" no-lines ion-item detail-none (click)="activePage='page-2'">
+                        <ion-icon name="ios-lock-outline" item-left></ion-icon>Đổi mật khẩu
+                    </a>
+                    <a *ngIf="!showLogout" [class.active]="activePage=='page-3'" no-lines ion-item detail-none (click)="activePage='page-3'">
+                        <ion-icon name="ios-lock-outline" item-left></ion-icon>Đổi mật khẩu
+                    </a>
+                    <a *ngIf="showLogout" ion-item detail-none (click)="logout()">
+                        <ion-icon name="log-out" item-left></ion-icon>Đăng xuất
+                    </a>
+
+                </ion-item-group>
+            </div>
+        </div>
+        <div class="col-detail">
+            <form [formGroup]="formGroup">
+                <div *ngIf="activePage=='page-1'">
+                    <ion-item-group>
+                        <ion-item-divider no-lines>Thông tin tài khoản
+                            <span style="font-size:14px" *ngIf="item.LockoutEnabled" ion-text color="danger">
+                                <ion-icon name="ios-lock-outline"></ion-icon> Locked</span>
+                            <span style="font-size:14px" *ngIf="!item.LockoutEnabled" ion-text color="success">
+                                <ion-icon name="ios-unlock-outline"></ion-icon> Active</span>
+                        </ion-item-divider>
+                        <ion-item>
+                            <ion-label>Mã thành viên</ion-label>
+                            <ion-input readonly [value]="item.ID" type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Ngày tham gia</ion-label>
+                            <ion-input readonly [value]="item.CreatedDateText" type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Địa chỉ email</ion-label>
+                            <ion-input readonly [value]="item.Email" type="text"></ion-input>
+                        </ion-item>
+                        <!-- <ion-item-divider no-lines>Thông tin cá nhân</ion-item-divider> -->
+                        <ion-item>
+                            <ion-label>Họ tên
+                                <span *ngIf="!formGroup.controls.FullName.valid  && (formGroup.controls.FullName.dirty || submitAttempt)" ion-text color="danger">(*)</span>
+                            </ion-label>
+                            <ion-input formControlName="FullName" [(ngModel)]="item.FullName" type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Ngày sinh
+                                <span *ngIf="!formGroup.controls.DOB.valid  && (formGroup.controls.DOB.dirty || submitAttempt)" ion-text color="danger">(*)</span>
+                            </ion-label>
+                            <ion-input formControlName="DOB" placeholder="dd/MM/yyyy" [(ngModel)]="item.DOB" type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Điện thoại
+                                <span *ngIf="!formGroup.controls.PhoneNumber.valid  && (formGroup.controls.PhoneNumber.dirty || submitAttempt)" ion-text
+                                    color="danger">(*)</span>
+                            </ion-label>
+                            <ion-input formControlName="PhoneNumber" [(ngModel)]="item.PhoneNumber" type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <button color="primary" [clear]="!item.Gender" (click)="changeGender(true);" icon-left ion-button>
+                                <ion-icon name="man"></ion-icon> Nam
+                            </button>
+                            <button color="pink" [clear]="item.Gender" (click)="changeGender(false);" icon-left ion-button>
+                                <ion-icon name="woman"></ion-icon> Nữ
+                            </button>
+                        </ion-item>
+
+                        <ion-item no-lines no-padding *ngIf="showRolesEdit">
+                            <button margin-left color="info" hide-sm ion-button small [outline]="!checkRole('BenhNhan')" (click)="changeRole('BenhNhan')">Bệnh nhân</button>
+                            <button color="primary" hide-sm ion-button small [outline]="!checkRole('BacSi')" (click)="changeRole('BacSi')">Bác sĩ</button>
+                            <button color="warning" hide-sm ion-button small [outline]="!checkRole('CongTac')" (click)="changeRole('CongTac')">Bác sĩ cộng tác</button>
+                            <button color="danger" hide-sm ion-button small [outline]="!checkRole('ThuKy')" (click)="changeRole('ThuKy')">Thư ký</button>
+                        </ion-item>
+
+
+                        <!-- <ion-item>
+                            <ion-label>Tỉnh/TP</ion-label>
+                            <ion-input type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Quận huyện</ion-label>
+                            <ion-input type="text"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Địa chỉ</ion-label>
+                            <ion-input type="text"></ion-input>
+                        </ion-item> -->
+
+
+                        <ion-item>
+                        </ion-item>
+                    </ion-item-group>
+                    <div padding-horizontal>
+                        <button ion-button (click)="saveChange()" [disabled]="!formGroup.dirty">
+                            Lưu
+                        </button>
+                        <button color="warning" ion-button (click)="cancel()" [disabled]="!formGroup.dirty">
+                            Hủy thay đổi
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div *ngIf="activePage=='page-2'">
+                <ion-item-group>
+                    <ion-item-divider no-lines>
+                        Thay đổi mật khẩu
+                    </ion-item-divider>
+                    <ion-item text-wrap no-lines>
+                        Nhằm tăng tính bảo mật cho tài khoản, mật khẩu tối thiểu là 8 ký tự, bao gồm cả chữ, số và ký tự đặc biệt.
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Mật khẩu hiện tại</ion-label>
+                        <ion-input [(ngModel)]="oldPassword" [type]="passwordViewType"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Mật khẩu mới</ion-label>
+                        <ion-input [(ngModel)]="newPassword" [type]="passwordViewType"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Nhập lại mật khẩu mới</ion-label>
+                        <ion-input [(ngModel)]="confirmPassword" [type]="passwordViewType"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                    </ion-item>
+                </ion-item-group>
+                <div padding-horizontal>
+                    <button ion-button (click)="changePassword()">
+                        Đổi mật khẩu
+                    </button>
+                    <button color="warning" ion-button (click)="passwordViewType = passwordViewType=='password'?'text':'password'">
+                        <span *ngIf="passwordViewType=='password'">Hiển thị mật khẩu</span>
+                        <span *ngIf="passwordViewType!='password'">Ẩn mật khẩu</span>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="activePage=='page-3'">
+                <ion-item-group>
+                    <ion-item-divider no-lines>
+                        Thay đổi mật khẩu
+                    </ion-item-divider>
+                    <ion-item text-wrap no-lines>
+                        Nhằm tăng tính bảo mật cho tài khoản, mật khẩu tối thiểu là 8 ký tự, bao gồm cả chữ, số và ký tự đặc biệt.
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Mật khẩu mới</ion-label>
+                        <ion-input [(ngModel)]="newPassword" [type]="passwordViewType"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Nhập lại mật khẩu mới</ion-label>
+                        <ion-input [(ngModel)]="confirmPassword" [type]="passwordViewType"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                    </ion-item>
+                </ion-item-group>
+                <div padding-horizontal>
+                    <button ion-button (click)="resetPassword()">
+                        Đặt mật khẩu
+                    </button>
+                    <button color="warning" ion-button (click)="passwordViewType = passwordViewType=='password'?'text':'password'">
+                        <span *ngIf="passwordViewType=='password'">Hiển thị mật khẩu</span>
+                        <span *ngIf="passwordViewType!='password'">Ẩn mật khẩu</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <table class="content-holder">
+        <tr>
+            <td>
+                <div class="responsive">
+                    <ion-list style="margin-left: 0;">
+
+                        <div padding>
+                            <button ion-button icon-left pull-right block (click)="saveChange()" [disabled]="!formGroup.dirty">
+                                Lưu
+                            </button>
+                            <button color="warning" ion-button icon-left pull-right block (click)="cancel()" [disabled]="!formGroup.dirty">
+                                Hủy thay đổi
+                            </button>
+                        </div>
+                    </ion-list>
+                </div>
+            </td>
+        </tr>
+    </table> -->
+</ion-content>

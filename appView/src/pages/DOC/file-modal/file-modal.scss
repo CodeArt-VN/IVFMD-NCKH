@@ -1,0 +1,54 @@
+file-modal{
+    
+}
+
+
+.uploader{
+    padding: 0!important;
+    > div{
+        padding: 10px;
+        margin: 5px;
+    }
+    text-align: center;
+    color: map-get($map: $colors, $key: ivfdark2);
+    .big-icon{
+        font-size: 80px;
+        color: map-get($map: $colors, $key: ivfdark2);
+        opacity: .3;
+    }
+    .btn-file-choose{
+        min-width: 125px;
+    }
+    .my-drop-zone { border: dotted 3px transparent; }
+    .nv-file-over { 
+        border: dotted 3px map-get($map: $colors, $key: ivf2); 
+        border-radius: 10px;
+    }
+}
+
+.progress {
+    height: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+.progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: map-get($map: $colors, $key: ivf2);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    transition: width .6s ease;
+}
+.btn-remove-file{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    padding: 0 7px;
+}

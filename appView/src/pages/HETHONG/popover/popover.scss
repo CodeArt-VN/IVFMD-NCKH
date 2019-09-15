@@ -1,0 +1,44 @@
+.popover-content{
+    min-width: 250px !important;
+    width: 250px !important;
+    
+}
+
+page-popover {
+    .item-block{
+        color: map-get($map: $colors, $key: ivfdark1) !important;
+        border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4) !important;
+        cursor: pointer;
+    }
+
+    .getLink{
+        ion-input{
+            color: map-get($map: $colors, $key: ivf1);
+            font-size: 1.3rem;
+            font-style: italic;
+            input{
+                overflow: hidden;
+	            text-overflow: ellipsis;
+            }
+        }
+        button{
+            align-self: flex-end;
+        }
+        
+    }
+
+    .version{
+        color: map-get($map: $colors, $key: ivfdark2);
+        background-color: map-get($map: $colors, $key: ivfdark4);
+        height: 32px;
+        line-height: 32px;
+        font-size: 1.1rem;
+        font-style: italic;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    
+    }
+
+}

@@ -1,0 +1,110 @@
+page-team {
+    .doc-main{
+        .items{
+            padding: 40px 0 0 40px;
+            text-align: center;
+            
+            .item{
+                
+                height: 440px;
+                padding: 0;
+                padding-right: 40px;
+                padding-bottom: 40px;
+
+                // flex: 0 0 100%;
+                // width: 100%;
+                // max-width: 100%;
+
+                // @media(min-width: map-get($grid-breakpoints, md)) {
+                //     flex: 0 0 33.33333%;
+                //     width: 33.33333%;
+                //     max-width: 33.33333%;
+                // }
+
+                .contain-holder{
+                    height: 100%;
+                    background-color: map-get($map: $colors, $key: ivf4);
+                    color: map-get($map: $colors, $key: ivf1);
+                    text-align: center;
+                    padding: 20px;
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    .title{
+                        font-size: 4rem;
+                        padding: 45px 0 20px 0;
+                    }
+                    .sub-title{
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                    
+                    .submary{
+                        font-size: 1.4rem;
+                        line-height: 24px;
+
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-height: 100px;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+
+                    }
+
+                    .avatar{
+                        margin-top: 50px;
+                        height: 150px;
+                        width: 150px;
+                        display: inline-block;
+                        overflow: hidden;
+                        border-radius: 50%;
+        
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .name{
+                        font-size: 2rem;
+                        font-weight: bold;
+                        margin: 20px 0 15px 0;
+                    }
+                    .group{
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        margin-bottom: 15px;
+                    }
+
+                    .tel, .email{
+                        font-size: 1.4rem;
+                        line-height: 20px;
+                    }
+
+                }
+            }
+
+            .item-partner{
+
+                height: auto;
+                padding-bottom: 40px;
+
+                .logo{
+                    height: 80px;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                }
+                .contain-holder{
+                    background-color: #fff;
+
+                    .submary{
+                        line-height: unset;
+                        max-height: initial;
+                        -webkit-line-clamp: unset;
+                        -webkit-box-orient: unset;
+                    }
+                }
+            }
+        }
+    }
+}

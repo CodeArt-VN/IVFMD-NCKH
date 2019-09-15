@@ -1,0 +1,202 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup" autocomplete="off" spellcheck="false">
+        <div padding></div>
+        <ion-row>
+            <ion-col col-12 col-md-8>
+                <div class="c-control">
+                    <label class="c-label" for="Name">Tiêu đề bài viết
+                        <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                            ion-text color="danger">(*)</span>
+                    </label>
+                    <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label" for="IDDanhMuc">Danh mục
+                        <span *ngIf="!formGroup.controls.IDDanhMuc.valid && !formGroup.controls.IDDanhMuc.pending && (formGroup.controls.IDDanhMuc.dirty || submitAttempt)"
+                            ion-text color="danger">(*)</span>
+                    </label>
+
+                    <select class="c-input c-dropdown" [(ngModel)]="item.IDDanhMuc" formControlName="IDDanhMuc">
+                        <option *ngFor="let t of danhMucList" [value]="t.ID"> {{t.Code}}{{t.Name? ' '+t.Name : ''}}</option>
+                    </select>
+                </div>
+            </ion-col>
+            <ion-col col-12 col-md-4>
+                <div class="c-control">
+                    <label class="c-label" for="Sort">Hình thumbnail</label>
+                    <div class="c-input uploader" *ngIf="!item.ThumbnailImage">
+                        <div ng2FileDrop class="well my-drop-zone" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                            (onFileDrop)="onFileSelected()" [uploader]="uploader">
+                            <ion-icon class="big-icon" name="cloud-upload"></ion-icon>
+                            <br> Kéo thả hình vào đây
+                            <br>
+                            <button class="btn-file-choose" ion-button small (click)="selectFile()">
+                                Chọn hình
+                            </button>
+                            <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept="image/*" [uploader]="uploader"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="thumb" *ngIf="item.ThumbnailImage" [ngStyle]="{'background-image': 'url(' + (item.ThumbnailImage.indexOf('http')==0? item.ThumbnailImage : imageServer + item.ThumbnailImage)  + ')'}">
+                        <button *ngIf="item.ThumbnailImage" class="btn-remove-file" ion-button icon-only small clear color="danger" (click)="item.ThumbnailImage=''">
+                            <ion-icon name="close"></ion-icon>
+                        </button>
+                        <img [src]="item.ThumbnailImage.indexOf('http')==0? item.ThumbnailImage : imageServer + item.ThumbnailImage" alt="">
+                        <!-- <input class="c-input" autocomplete="off" [(ngModel)]="item.ThumbnailImage" readonly formControlName="ThumbnailImage" type="text"> -->
+                    </div>
+
+                    <div *ngIf="uploader.progress>0 && uploader.progress<100" padding-top text-right>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                        <button ion-button icon-start small color="danger" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                            <ion-icon name="ios-trash"></ion-icon> Bỏ upload
+                        </button>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <div class="c-control">
+            <label class="c-label" for="Remark">Tóm tắt nội dung
+                <span *ngIf="!formGroup.controls.Remark.valid && !formGroup.controls.Remark.pending && (formGroup.controls.Remark.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <textarea rows="3" class="c-input" id="Remark" [(ngModel)]="item.Remark" formControlName="Remark" type="textarea"></textarea>
+        </div>
+
+        <ion-row>
+            <ion-col col-12 [attr.col-md-8]=" item.HasAlternateImage ? '': null">
+                <div class="c-control">
+                    <label class="c-label" for="Name" (click)="showAdvance=!showAdvance">
+                        <ion-icon [name]="!showAdvance?'ios-add':'ios-remove'" color="ivf1"></ion-icon> Chức năng khác</label>
+                    <div *ngIf="showAdvance">
+                        <button ion-button small [outline]="!item.Home" color="danger" (click)="item.Home = ! item.Home; formGroup.controls.Home.markAsDirty();">
+                            Hiển thị trên trang chủ
+                        </button>
+                        <button ion-button small [outline]="!item.Pin" color="warning" (click)="item.Pin = ! item.Pin; formGroup.controls.Pin.markAsDirty();">
+                            Bài viết quan trọng
+                        </button>
+                        <button ion-button small [outline]="!item.HasAlternateImage" (click)="item.HasAlternateImage = ! item.HasAlternateImage;">
+                            Hình banner
+                        </button>
+                    </div>
+                </div>
+
+                <ion-row *ngIf="showAdvance">
+                    <ion-col col-12 col-md-4 *ngIf="item.IDDanhMuc">
+                        <div class="c-control">
+                            <label class="c-label" for="Sort">Thứ tự trong danh mục
+                                <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
+                                    ion-text color="danger">(*)</span>
+                            </label>
+                            <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
+                        </div>
+                    </ion-col>
+
+                    <ion-col col-12 col-md-4 *ngIf="item.Home">
+                        <div class="c-control">
+                            <label class="c-label" for="HomePos">Thứ tự trên
+                                <span ion-text color="danger">Home</span>
+                                <span *ngIf="!formGroup.controls.HomePos.valid && !formGroup.controls.HomePos.pending && (formGroup.controls.HomePos.dirty || submitAttempt)"
+                                    ion-text color="danger">(*)</span>
+                            </label>
+                            <input class="c-input" id="HomePos" [(ngModel)]="item.HomePos" formControlName="HomePos" type="number">
+                        </div>
+                    </ion-col>
+                    <ion-col col-12 col-md-4 *ngIf="item.Pin">
+                        <div class="c-control">
+                            <label class="c-label" for="PinPos">Thứ tự trong mục
+                                <span ion-text color="warning">Pin</span>
+                                <span *ngIf="!formGroup.controls.PinPos.valid && !formGroup.controls.PinPos.pending && (formGroup.controls.PinPos.dirty || submitAttempt)"
+                                    ion-text color="danger">(*)</span>
+                            </label>
+                            <input class="c-input" id="PinPos" [(ngModel)]="item.PinPos" formControlName="PinPos" type="number">
+                        </div>
+                    </ion-col>
+
+
+
+
+                </ion-row>
+            </ion-col>
+            <ion-col col-12 col-md-4 *ngIf="item.HasAlternateImage && showAdvance">
+                
+                <div class="c-control">
+                    <label class="c-label" for="AlternateImage">Hình banner</label>
+                    <div class="c-input uploader" *ngIf="!item.AlternateImage">
+                        <div ng2FileDrop class="well my-drop-zone" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                            (onFileDrop)="onFileSelected2()" [uploader]="uploader2">
+                            <ion-icon class="big-icon" name="cloud-upload"></ion-icon>
+                            <br> Kéo thả hình vào đây
+                            <br>
+                            <button class="btn-file-choose" ion-button small (click)="selectFile()">
+                                Chọn hình
+                            </button>
+                            <input class="ng-hide" #importfile type="file" (change)="onFileSelected2()" ng2FileSelect accept="image/*" [uploader]="uploader2"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="thumb" *ngIf="item.AlternateImage" [ngStyle]="{'background-image': 'url(' + (item.AlternateImage.indexOf('http')==0? item.AlternateImage : imageServer + item.AlternateImage)  + ')'}">
+                        <button *ngIf="item.AlternateImage" class="btn-remove-file" ion-button icon-only small clear color="danger" (click)="item.AlternateImage=''">
+                            <ion-icon name="close"></ion-icon>
+                        </button>
+                        <img [src]="item.AlternateImage.indexOf('http')==0? item.AlternateImage : imageServer + item.AlternateImage" alt="">
+                    </div>
+
+                    <div *ngIf="uploader2.progress>0 && uploader2.progress<100" padding-top text-right>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader2.progress + '%' }"></div>
+                        </div>
+                        <button ion-button icon-start small color="danger" (click)="uploader2.clearQueue()" [disabled]="!uploader2.queue.length">
+                            <ion-icon name="ios-trash"></ion-icon> Bỏ upload
+                        </button>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+
+
+
+
+
+        <div class="c-control">
+            <label class="c-label" for="NoiDung">Nội dung đầy đủ</label>
+            <input name="about" type="hidden" [(ngModel)]="item.NoiDung" formControlName="NoiDung">
+            <div id="editor"></div>
+        </div>
+
+
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Thêm bài viết
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+
+
+
+
+
+
+    </form>
+</ion-content>

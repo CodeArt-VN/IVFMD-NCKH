@@ -1,0 +1,68 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
+
+import { MyApp } from './app.component';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { Facebook } from '@ionic-native/facebook';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+
+
+import { PipesModule } from '../pipes/pipes.module';
+import { AccountServiceProvider } from '../providers/CORE/account-service';
+import { CommonServiceProvider } from '../providers/CORE/common-service';
+
+import { DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, } from '../providers/Services/Services';
+
+import { ACCOUNT_ApplicationUserProvider, ManualProvider, ReportProvider } from '../providers/Services/CustomService';
+import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
+
+@NgModule({
+    declarations: [
+        MyApp, ViewerModalPage
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        IonicStorageModule.forRoot(),
+        IonicModule.forRoot(MyApp, {
+            mode: 'ios',
+            preloadModules: true,
+            backButtonText: 'Trở lại',
+            modalEnter: 'modal-slide-in',
+            modalLeave: 'modal-slide-out',
+            tabsPlacement: 'bottom',
+            pageTransition: 'ios-transition',
+            locationStrategy: 'local',//'local'; Set to 'path' to remove hashbangs when using Deeplinking.
+        }),
+        PipesModule,
+    ],
+  
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp, ViewerModalPage
+    ],
+    providers: [
+        StatusBar, SplashScreen, File, FileTransfer, Facebook, GoogleAnalytics,
+
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        
+        AccountServiceProvider,
+        CommonServiceProvider,
+
+        ACCOUNT_ApplicationUserProvider,
+        ManualProvider, ReportProvider,
+
+        DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider,
+        
+        
+
+    ]
+})
+export class AppModule { }

@@ -1,0 +1,60 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="Code">Mã nhóm
+                <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Name">Tên nhóm
+                <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Sort">Thứ tự hiển thị
+                <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Remark">Mô tả
+                <span *ngIf="!formGroup.controls.Remark.valid && !formGroup.controls.Remark.pending && (formGroup.controls.Remark.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <textarea rows="3" class="c-input" id="Remark" [(ngModel)]="item.Remark" formControlName="Remark" type="textarea"></textarea>
+
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Thêm nhóm người dùng
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

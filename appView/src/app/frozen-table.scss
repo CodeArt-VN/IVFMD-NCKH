@@ -1,0 +1,159 @@
+$cellPadding: 5px;
+$cellsWide: 5; 
+$cellsHigh: 15;
+
+$row-1-Height: 40px;
+$row-x-Height: 30px;
+
+$col-1-Width: 150px;
+$col-2-Width: 100px;
+$col-3-Width: 100px;
+
+$col-x-Width: 100px;
+
+
+.frozenTable {
+    font-size: 12px;
+    background-color: #f2f2f2;
+    position: relative;
+
+    .table {
+        border-spacing: 0;
+        background-color: transparent;
+        border: none;
+        
+        width: auto;
+        margin-bottom: 0;
+
+        
+        transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+
+        tr {
+            td, th {
+                font-weight: normal;
+                padding: 0;
+                border: 1px solid #FFF;
+                /*height: $row-x-Height;*/
+                width: $col-x-Width;
+                min-width: $col-x-Width;
+                max-width: $col-x-Width;
+
+                min-height: $row-x-Height;
+                height: $row-x-Height;
+                padding: $cellPadding;
+                background-color: #f2f2f2;
+                background-clip: padding-box; /*fix firefox error https://bugzilla.mozilla.org/show_bug.cgi?id=688556 */
+
+                > div {
+                    padding: 9px 7px;
+                    line-height: normal;
+                    width: 100%;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .scrolling-x {
+        box-shadow: 1px 0px 0px rgba(119,119,119,0.48);
+    }
+
+    .scrolling-y {
+        box-shadow: 0px 1px 0px rgba(119,119,119,0.48);
+    }
+
+    &-header-fix {
+        position: absolute;
+        z-index: 2;
+        height: $row-1-Height+1;
+        width: ( $col-1-Width + $col-2-Width + $col-3-Width + 1px);
+        overflow: hidden;
+        color: #FFF;
+        border: solid 1px #FFF;
+        border-style: none solid solid none;
+
+        th {
+            height: $row-1-Height !important;
+        }
+
+        .col1, .col2, .col3 {
+            background-color: #666666 !important;
+        }
+
+    }
+
+    &-header {
+        position: absolute;
+        z-index: 1;
+        width: ($col-x-Width * $cellsWide) + ($cellPadding * 2);
+        height: $row-1-Height+1px;
+        margin-left: $col-x-Width + ($cellPadding * 2);
+        color: #FFF;
+        overflow: hidden;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        padding-left: ( $col-1-Width + $col-2-Width + $col-3-Width + 1px);
+        border: none;
+        border-bottom: solid 1px #FFF;
+
+        th {
+            height: $row-1-Height !important;
+        }
+        .row1 {
+            background-color: #47cdff !important;
+        }
+
+    }
+
+    &-sidebar {
+        position: relative;
+        z-index: 1;
+    
+        height: $row-x-Height * $cellsHigh + ($cellPadding * 2);
+        margin-top: $row-x-Height + ($cellPadding * 2);
+        border: 1px solid red;
+        overflow: hidden;
+
+        width: ( $col-1-Width + $col-2-Width + $col-3-Width + 1px);
+        box-sizing: border-box;
+        margin-top: 0;
+        padding-top: $row-1-Height;
+        border: none;
+        border-right: solid 1px #fff;
+        height: auto;
+
+        .row2 {
+            background-color: #949494 !important;
+            text-align: right;
+            font-weight: bold;
+            color: #FFF;
+        }
+        
+
+    }
+
+    &-body {
+        position: absolute;
+        z-index: 0;
+        overflow: auto;
+        width: ($col-x-Width * $cellsWide) + ($cellPadding * 2);
+        height: ($row-x-Height * $cellsHigh) + ($cellPadding * 2);
+        float: left;
+
+        box-sizing: border-box;
+        top: $row-1-Height;
+        left: ( $col-1-Width + $col-2-Width + $col-3-Width + 1px);
+        bottom: auto;
+        right: 0;
+        width: auto;
+        height: auto;
+
+        .row2 {
+            background-color: #47cdff !important;
+            color: #FFF;
+        }
+    }
+}

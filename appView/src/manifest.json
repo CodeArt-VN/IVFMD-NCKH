@@ -1,0 +1,12 @@
+{
+  "name": "Thư viện điện tử",
+  "short_name": "IVFMD",
+  "start_url": "index.html",
+  "display": "standalone",
+
+  "icons": [
+ ],
+
+  "background_color": "#2f404f",
+  "theme_color": "#2f404f"
+}

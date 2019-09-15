@@ -1,0 +1,321 @@
+﻿@using Syncfusion.EJ2
+
+@{
+    ViewBag.Title = "Document Editor";
+}
+
+@if (string.IsNullOrEmpty(ViewBag.Token) || string.IsNullOrEmpty(ViewBag.FileID))
+{
+    <page-login class="ion-page show-page" style="z-index: 92;">
+        <ion-content class="content content-ios" style="">
+            <div class="fixed-content"></div><div class="scroll-content">
+                <div id="login-page">
+                    <div class="col-left">
+                        <div class="header">
+                            <h1>DOCUMENT EDITOR</h1>
+                        </div>
+                        <div class="form">
+                            <p>
+                                <a> Thông báo </a>
+                                <br>
+                                Có vẻ như đường link không hợp  lệ,<br />
+                                vui lòng kiểm tra lại.
+                            </p>
+
+                            <div padding="" style="padding-top:0">
+                                <a href="/" block="" color="warning" ion-button="" class="button button-ios button-default button-default-ios button-block button-block-ios button-ios-warning"><span class="button-inner">Về trang chủ</span><div class="button-effect"></div></a>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="footer">
+
+                        </div>
+                    </div>
+                    <div class="col-right">
+                        <div class="logos">
+                            <img src="http://ivfmd.demo.codeart.vn/assets/imgs/BVMD.png">
+                            <img src="http://ivfmd.demo.codeart.vn/assets/imgs/IVFMD.png">
+                        </div>
+
+                        <h1>THƯ VIỆN ĐIỆN TỬ</h1>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </ion-content>
+    </page-login>
+}
+else
+{
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DocumentEditor</title>
+        <link href="~/Content/styles/roboto.css" rel="stylesheet">
+        <link href="~/Content/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/styles/highlight.css" rel="stylesheet" />
+        <link href="~/Content/Style/fabric.css" rel="stylesheet" />
+        <script id='sample-datasource' type='text/javascript'></script>
+        <script src="~/Scripts/js-signals.min.js"></script>
+        <script src="~/Scripts/elasticlunr.min.js"></script>
+        <script src="~/Scripts/highlight.min.js"></script>
+        <script src="~/Scripts/samplelist.js"></script>
+        <script src="~/Scripts/search-index.js"></script>
+        <script src="~/Scripts/crossroads.js"></script>
+        <script src="~/Scripts/hasher.min.js"></script>
+
+        <script src="~/Scripts/samplelist.js"></script>
+        <script src="~/Scripts/search-index.js"></script>
+        <script src="~/Scripts//ej2.min.js"></script>
+        <script src="~/Scripts/documenteditor/default-properties.js"></script>
+
+        <style>
+            #documenteditor_titlebar {
+                background-color: #007dc5 !important;
+                border-bottom: 1px solid #007dc5 !important;
+            }
+            .e-pane-enabled {
+                color: #007dc5 !important;
+            }
+            .e-de-property-pane {
+                border-style: none solid !important;
+            }
+            button#documenteditor-zoom {
+                background-color: transparent;
+            }
+            div#documenteditor_title_contentEditor {
+                border: none !important;
+            }
+            #panel .e-btn-toggle {
+                color: #fff !important;
+                background-color: #007dc5 !important;
+                border-color: #007dc5 !important;
+                box-shadow: none !important;
+            }
+                #panel .e-btn-toggle > span, #panel .e-btn-toggle .e-tbar-btn-text {
+                    color: #fff !important;
+                }
+        </style>
+
+    </head>
+    <body>
+        <div class="control-section" style="padding-top:0px">
+            <div id="wrapper">
+                <div id="panel">
+                    <div id='documenteditor_titlebar'>
+                    </div>
+                    <div id='documenteditor_toolbar'>
+                    </div>
+                    <div id="documenteditor_container_body" style="display: flex;position:relative">
+                        @Html.EJS().DocumentEditor("container").IsReadOnly(false).EnableOptionsPane(true).EnableSelection(true).Render()
+                    </div>
+                    <div id="documenteditor_statusbar"></div>
+                </div>
+                <div class="overlay" id="popup-overlay" style="display: block;"></div>
+                <div id='waiting-popup' style="display: block;">
+                    <svg class="circular" height="40" width="40">
+                        <circle class="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var docID = '@ViewBag.FileID';
+            var docPartner = '@ViewBag.Partner';
+            var docToken = '@ViewBag.Token';
+            var docinfo = null;
+        </script>
+        <script src="~/Scripts/documenteditor/default.js"></script>
+        <script type="text/javascript">
+
+
+
+            //var isReadOnly = true;
+            //var documentLoader;
+            //var documenteditor;
+
+            //var previousContext;
+            //var tocProperties, headerfooter, fontproperties, imageproperties, tableproperties, propertiesPane, toolbar, titleBar, statusBar;
+            //var containerPanel;
+            //document.addEventListener('DOMContentLoaded', function () {
+            //    containerPanel = document.getElementById('documenteditor_container_body');
+            //    documenteditor = document.getElementById('container').ej2_instances[0];
+            //    documenteditor.acceptTab = true;
+            //    documenteditor.enableAllModules();
+
+            //    tocProperties = new TocProperties(documenteditor);
+            //    headerFooter = new HeaderFooterProperties(documenteditor);
+            //    fontProperties = new TextProperties(documenteditor, 'textProperty');
+            //    imageProperties = new ImageProperties(documenteditor);
+            //    tableProperties = new TableProperties(documenteditor, imageProperties, fontProperties);
+            //    propertiesPane = new PropertiesPane(documenteditor, fontProperties, tableProperties, headerFooter, imageProperties, tocProperties);
+            //    toolbar = new ToolBar(documenteditor, document.getElementById('documenteditor_toolbar'), propertiesPane);
+            //    toolbar.documentLoader = new DocumentLoader(documenteditor);
+            //    toolbar.templateLoader = new TemplateLoader();
+            //    if (!toolbar.isReadOnly) {
+            //        toolbar.updateUndoRedoBtn();
+            //    }
+            //    var toolbarElement = document.getElementById("documenteditor_toolbar");
+            //    titleBar = new TitleBar(document.getElementById('documenteditor_titlebar'), documenteditor, true);
+            //    statusBar = new StatusBar(document.getElementById('documenteditor_statusbar'), documenteditor);
+            //    var documenteditorElement = document.getElementById("container");
+            //    documenteditorElement.style.height = "100%";
+            //    documenteditorElement.style.width = "100%";
+            //    documenteditor.pageOutline = '#E0E0E0';
+            //    updateContainerSize();
+            //    documenteditor.resize();
+            //    onLoadDefault();
+            //    applyPageCountAndDocumentTitle();
+            //    toolbar.showPropertiesPaneOnSelection();
+            //    documenteditor.focusIn();
+            //    documenteditor.documentChange = function (args) {
+            //        toolbar.updateUndoRedoBtn();
+            //        toolbar.isContentChange = false;
+            //        applyPageCountAndDocumentTitle();
+            //    };
+            //    documenteditor.contentChange = function (args) {
+            //        toolbar.isContentChange = true;
+            //        if (!toolbar.isReadOnly) {
+            //            toolbar.updateUndoRedoBtn();
+            //        }
+            //        statusBar.updatePageCount();
+            //    };
+            //    documenteditor.selectionChange = function (args) {
+            //        setTimeout(function () { onSelectionChange(); }, 20)
+            //    };
+            //    documenteditor.requestNavigate = function (args) {
+            //        if (args.linkType !== 'Bookmark') {
+            //            var link = args.navigationLink;
+            //            if (args.localReference.length > 0) {
+            //                link += '#' + args.localReference;
+            //            }
+            //            window.open(link);
+            //            args.isHandled = true;
+            //        }
+            //    };
+            //    documenteditor.zoomFactorChange = function () {
+            //        statusBar.updateZoomContent();
+            //    };
+            //    documenteditor.viewChange = function (e) {
+            //        statusBar.updatePageNumberOnViewChange(e);
+            //    };
+            //});
+            //function applyPageCountAndDocumentTitle() {
+            //    titleBar.updateDocumentTitle();
+            //    statusBar.updatePageCount();
+            //}
+            //function updateContainerSize() {
+            //    if (containerPanel) {
+            //        containerPanel.style.height = window.innerHeight - (document.getElementById('documenteditor_titlebar').offsetHeight
+            //            + document.getElementById('documenteditor_toolbar').offsetHeight +
+            //            document.getElementById('documenteditor_statusbar').offsetHeight)
+            //            + 'px';
+            //    }
+            //}
+            //function onSelectionChange() {
+            //    if (documenteditor.selection) {
+            //        statusBar.startPage = documenteditor.selection.startPage;
+            //        statusBar.updatePageNumber();
+            //        toolbar.showPropertiesPaneOnSelection();
+            //    }
+            //}
+
+            //function updateDocumentTitle() {
+            //    if (documenteditor.documentName == '') {
+            //        documenteditor.documentName = 'Untitled';
+            //    }
+            //    document.getElementById('documenteditor_title_name').textContent =  documenteditor.documentName;
+            //}
+
+            //function updatePageCount() {
+            //    document.getElementById('documenteditor_pagecount').textContent = documenteditor.pageCount;
+            //}
+            //function showHidePropertyOptions(args) {
+            //    var highlightColor = document.getElementById('highlight_color_ppty');
+            //    var element = (navigator.userAgent.indexOf('Chrome') !== -1 || navigator.userAgent.indexOf('Firefox') !== -1) ? args.target.parentElement : args.target;
+            //    var highlightSpinButton = document.getElementById('font_properties_highlightColor_dropdownbtn');
+            //    if ((element.id === 'font_properties_highlightColor_dropdownbtn' || element.contains(highlightSpinButton)) && highlightColor.style.display === 'none') {
+            //        highlightColor.style.display = 'block';
+            //    } else {
+            //        highlightColor.style.display = 'none';
+            //    }
+            //}
+
+
+            function onLoadDefault() {
+                var waitingPopUp = document.getElementById('waiting-popup');
+                var popupOverlay = document.getElementById('popup-overlay');
+                waitingPopUp.style.display = 'block';
+
+                var baseUrl = '/api/CUS/DOC/File/DocumentEditor/Import/' + docID + '?IDPartner=' + docPartner;
+                var httpRequest = new XMLHttpRequest();
+                httpRequest.open('POST', baseUrl, true);
+                httpRequest.setRequestHeader('Authorization', 'Bearer ' + docToken);
+
+                var waitingPopUp = document.getElementById('waiting-popup');
+                waitingPopUp.style.display = 'block';
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState === 4) {
+                        if (httpRequest.status === 200 || httpRequest.status === 304) {
+                            documenteditor.open(httpRequest.responseText);
+
+                        } else {
+                            console.error(httpRequest.response);
+                        }
+                        documenteditor.focusIn();
+                    }
+
+                    waitingPopUp.style.display = 'none';
+                    popupOverlay.style.display = 'none';
+
+                };
+
+                httpRequest.send();
+                getDocInfo();
+
+
+            }
+            function getDocInfo() {
+                // =>          /api/CUS/DOC/File/137?IDPartner=1
+                //get file info
+                var DocUrl = '/api/CUS/DOC/File/' + docID + '?IDPartner=' + docPartner;
+                var docRequest = new XMLHttpRequest();
+                docRequest.open('GET', DocUrl, true);
+                docRequest.setRequestHeader('Authorization', 'Bearer ' + docToken);
+
+
+                docRequest.onreadystatechange = function () {
+                    if (docRequest.readyState === 4) {
+                        if (docRequest.status === 200 || docRequest.status === 304) {
+                            var rep = JSON.parse(docRequest.response);
+                            docinfo = rep;
+                            document.title = documenteditor.documentName = rep.Name;
+
+                        }
+                        else {
+                            console.error(docRequest.response);
+                        }
+                    }
+                };
+                docRequest.send();
+            }
+        </script>
+        @Html.EJS().ScriptManager()
+        <link href="~/Content/styles/DocumentEditor/default.css" rel="stylesheet" />
+        <script>
+                                                                                //window.onbeforeunload = () => {
+                                                                                //    return 'Want to save your changes?';
+                                                                                //};
+        </script>
+    </body>
+</html>
+}

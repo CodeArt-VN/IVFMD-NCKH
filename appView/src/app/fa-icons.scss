@@ -1,0 +1,2836 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('#{$fa-font-path}/fontawesome-webfont.eot?v=#{$fa-version}');
+    src: url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
+    url('#{$fa-font-path}/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
+    url('#{$fa-font-path}/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
+    //  src: url('#{$fa-font-path}/FontAwesome.otf') format('opentype'); // used when developing fonts
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    &[name^="fa-"],
+    &[ng-reflect-name^="fa-"],
+    &[aria-label^="fa"],
+    .fa {
+        font-family: "fontawesome"!important;
+    }
+}
+
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+[ng-reflect-name=fa-glass]:before, .ion-md-fa-glass:before, .ion-ios-fa-glass:before {
+    content: $fa-var-glass;
+}
+
+[ng-reflect-name=fa-music]:before, .ion-md-fa-music:before, .ion-ios-fa-music:before {
+    content: $fa-var-music;
+}
+
+[ng-reflect-name=fa-search]:before, .ion-md-fa-search:before, .ion-ios-fa-search:before {
+    content: $fa-var-search;
+}
+
+[ng-reflect-name=fa-envelope-o]:before, .ion-md-fa-envelope-o:before, .ion-ios-fa-envelope-o:before {
+    content: $fa-var-envelope-o;
+}
+
+[ng-reflect-name=fa-heart]:before, .ion-md-fa-heart:before, .ion-ios-fa-heart:before {
+    content: $fa-var-heart;
+}
+
+[ng-reflect-name=fa-star]:before, .ion-md-fa-star:before, .ion-ios-fa-star:before {
+    content: $fa-var-star;
+}
+
+[ng-reflect-name=fa-star-o]:before, .ion-md-fa-star-o:before, .ion-ios-fa-star-o:before {
+    content: $fa-var-star-o;
+}
+
+[ng-reflect-name=fa-user]:before, .ion-md-fa-user:before, .ion-ios-fa-user:before {
+    content: $fa-var-user;
+}
+
+[ng-reflect-name=fa-film]:before, .ion-md-fa-film:before, .ion-ios-fa-film:before {
+    content: $fa-var-film;
+}
+
+[ng-reflect-name=fa-th-large]:before, .ion-md-fa-th-large:before, .ion-ios-fa-th-large:before {
+    content: $fa-var-th-large;
+}
+
+[ng-reflect-name=fa-th]:before, .ion-md-fa-th:before, .ion-ios-fa-th:before {
+    content: $fa-var-th;
+}
+
+[ng-reflect-name=fa-th-list]:before, .ion-md-fa-th-list:before, .ion-ios-fa-th-list:before {
+    content: $fa-var-th-list;
+}
+
+[ng-reflect-name=fa-check]:before, .ion-md-fa-check:before, .ion-ios-fa-check:before {
+    content: $fa-var-check;
+}
+
+[ng-reflect-name=fa-remove]:before, .ion-md-fa-remove:before, .ion-ios-fa-remove:before,
+[ng-reflect-name=fa-close]:before, .ion-md-fa-close:before, .ion-ios-fa-close:before,
+[ng-reflect-name=fa-times]:before, .ion-md-fa-times:before, .ion-ios-fa-times:before {
+    content: $fa-var-times;
+}
+
+[ng-reflect-name=fa-search-plus]:before, .ion-md-fa-search-plus:before, .ion-ios-fa-search-plus:before {
+    content: $fa-var-search-plus;
+}
+
+[ng-reflect-name=fa-search-minus]:before, .ion-md-fa-search-minus:before, .ion-ios-fa-search-minus:before {
+    content: $fa-var-search-minus;
+}
+
+[ng-reflect-name=fa-power-off]:before, .ion-md-fa-power-off:before, .ion-ios-fa-power-off:before {
+    content: $fa-var-power-off;
+}
+
+[ng-reflect-name=fa-signal]:before, .ion-md-fa-signal:before, .ion-ios-fa-signal:before {
+    content: $fa-var-signal;
+}
+
+[ng-reflect-name=fa-gear]:before, .ion-md-fa-gear:before, .ion-ios-fa-gear:before,
+[ng-reflect-name=fa-cog]:before, .ion-md-fa-cog:before, .ion-ios-fa-cog:before {
+    content: $fa-var-cog;
+}
+
+[ng-reflect-name=fa-trash-o]:before, .ion-md-fa-trash-o:before, .ion-ios-fa-trash-o:before {
+    content: $fa-var-trash-o;
+}
+
+[ng-reflect-name=fa-home]:before, .ion-md-fa-home:before, .ion-ios-fa-home:before {
+    content: $fa-var-home;
+}
+
+[ng-reflect-name=fa-file-o]:before, .ion-md-fa-file-o:before, .ion-ios-fa-file-o:before {
+    content: $fa-var-file-o;
+}
+
+[ng-reflect-name=fa-clock-o]:before, .ion-md-fa-clock-o:before, .ion-ios-fa-clock-o:before {
+    content: $fa-var-clock-o;
+}
+
+[ng-reflect-name=fa-road]:before, .ion-md-fa-road:before, .ion-ios-fa-road:before {
+    content: $fa-var-road;
+}
+
+[ng-reflect-name=fa-download]:before, .ion-md-fa-download:before, .ion-ios-fa-download:before {
+    content: $fa-var-download;
+}
+
+[ng-reflect-name=fa-arrow-circle-o-down]:before, .ion-md-fa-arrow-circle-o-down:before, .ion-ios-fa-arrow-circle-o-down:before {
+    content: $fa-var-arrow-circle-o-down;
+}
+
+[ng-reflect-name=fa-arrow-circle-o-up]:before, .ion-md-fa-arrow-circle-o-up:before, .ion-ios-fa-arrow-circle-o-up:before {
+    content: $fa-var-arrow-circle-o-up;
+}
+
+[ng-reflect-name=fa-inbox]:before, .ion-md-fa-inbox:before, .ion-ios-fa-inbox:before {
+    content: $fa-var-inbox;
+}
+
+[ng-reflect-name=fa-play-circle-o]:before, .ion-md-fa-play-circle-o:before, .ion-ios-fa-play-circle-o:before {
+    content: $fa-var-play-circle-o;
+}
+
+[ng-reflect-name=fa-rotate-right]:before, .ion-md-fa-rotate-right:before, .ion-ios-fa-rotate-right:before,
+[ng-reflect-name=fa-repeat]:before, .ion-md-fa-repeat:before, .ion-ios-fa-repeat:before {
+    content: $fa-var-repeat;
+}
+
+[ng-reflect-name=fa-refresh]:before, .ion-md-fa-refresh:before, .ion-ios-fa-refresh:before {
+    content: $fa-var-refresh;
+}
+
+[ng-reflect-name=fa-list-alt]:before, .ion-md-fa-list-alt:before, .ion-ios-fa-list-alt:before {
+    content: $fa-var-list-alt;
+}
+
+[ng-reflect-name=fa-lock]:before, .ion-md-fa-lock:before, .ion-ios-fa-lock:before {
+    content: $fa-var-lock;
+}
+
+[ng-reflect-name=fa-flag]:before, .ion-md-fa-flag:before, .ion-ios-fa-flag:before {
+    content: $fa-var-flag;
+}
+
+[ng-reflect-name=fa-headphones]:before, .ion-md-fa-headphones:before, .ion-ios-fa-headphones:before {
+    content: $fa-var-headphones;
+}
+
+[ng-reflect-name=fa-volume-off]:before, .ion-md-fa-volume-off:before, .ion-ios-fa-volume-off:before {
+    content: $fa-var-volume-off;
+}
+
+[ng-reflect-name=fa-volume-down]:before, .ion-md-fa-volume-down:before, .ion-ios-fa-volume-down:before {
+    content: $fa-var-volume-down;
+}
+
+[ng-reflect-name=fa-volume-up]:before, .ion-md-fa-volume-up:before, .ion-ios-fa-volume-up:before {
+    content: $fa-var-volume-up;
+}
+
+[ng-reflect-name=fa-qrcode]:before, .ion-md-fa-qrcode:before, .ion-ios-fa-qrcode:before {
+    content: $fa-var-qrcode;
+}
+
+[ng-reflect-name=fa-barcode]:before, .ion-md-fa-barcode:before, .ion-ios-fa-barcode:before {
+    content: $fa-var-barcode;
+}
+
+[ng-reflect-name=fa-tag]:before, .ion-md-fa-tag:before, .ion-ios-fa-tag:before {
+    content: $fa-var-tag;
+}
+
+[ng-reflect-name=fa-tags]:before, .ion-md-fa-tags:before, .ion-ios-fa-tags:before {
+    content: $fa-var-tags;
+}
+
+[ng-reflect-name=fa-book]:before, .ion-md-fa-book:before, .ion-ios-fa-book:before {
+    content: $fa-var-book;
+}
+
+[ng-reflect-name=fa-bookmark]:before, .ion-md-fa-bookmark:before, .ion-ios-fa-bookmark:before {
+    content: $fa-var-bookmark;
+}
+
+[ng-reflect-name=fa-print]:before, .ion-md-fa-print:before, .ion-ios-fa-print:before {
+    content: $fa-var-print;
+}
+
+[ng-reflect-name=fa-camera]:before, .ion-md-fa-camera:before, .ion-ios-fa-camera:before {
+    content: $fa-var-camera;
+}
+
+[ng-reflect-name=fa-font]:before, .ion-md-fa-font:before, .ion-ios-fa-font:before {
+    content: $fa-var-font;
+}
+
+[ng-reflect-name=fa-bold]:before, .ion-md-fa-bold:before, .ion-ios-fa-bold:before {
+    content: $fa-var-bold;
+}
+
+[ng-reflect-name=fa-italic]:before, .ion-md-fa-italic:before, .ion-ios-fa-italic:before {
+    content: $fa-var-italic;
+}
+
+[ng-reflect-name=fa-text-height]:before, .ion-md-fa-text-height:before, .ion-ios-fa-text-height:before {
+    content: $fa-var-text-height;
+}
+
+[ng-reflect-name=fa-text-width]:before, .ion-md-fa-text-width:before, .ion-ios-fa-text-width:before {
+    content: $fa-var-text-width;
+}
+
+[ng-reflect-name=fa-align-left]:before, .ion-md-fa-align-left:before, .ion-ios-fa-align-left:before {
+    content: $fa-var-align-left;
+}
+
+[ng-reflect-name=fa-align-center]:before, .ion-md-fa-align-center:before, .ion-ios-fa-align-center:before {
+    content: $fa-var-align-center;
+}
+
+[ng-reflect-name=fa-align-right]:before, .ion-md-fa-align-right:before, .ion-ios-fa-align-right:before {
+    content: $fa-var-align-right;
+}
+
+[ng-reflect-name=fa-align-justify]:before, .ion-md-fa-align-justify:before, .ion-ios-fa-align-justify:before {
+    content: $fa-var-align-justify;
+}
+
+[ng-reflect-name=fa-list]:before, .ion-md-fa-list:before, .ion-ios-fa-list:before {
+    content: $fa-var-list;
+}
+
+[ng-reflect-name=fa-dedent]:before, .ion-md-fa-dedent:before, .ion-ios-fa-dedent:before,
+[ng-reflect-name=fa-outdent]:before, .ion-md-fa-outdent:before, .ion-ios-fa-outdent:before {
+    content: $fa-var-outdent;
+}
+
+[ng-reflect-name=fa-indent]:before, .ion-md-fa-indent:before, .ion-ios-fa-indent:before {
+    content: $fa-var-indent;
+}
+
+[ng-reflect-name=fa-video-camera]:before, .ion-md-fa-video-camera:before, .ion-ios-fa-video-camera:before {
+    content: $fa-var-video-camera;
+}
+
+[ng-reflect-name=fa-photo]:before, .ion-md-fa-photo:before, .ion-ios-fa-photo:before,
+[ng-reflect-name=fa-image]:before, .ion-md-fa-image:before, .ion-ios-fa-image:before,
+[ng-reflect-name=fa-picture-o]:before, .ion-md-fa-picture-o:before, .ion-ios-fa-picture-o:before {
+    content: $fa-var-picture-o;
+}
+
+[ng-reflect-name=fa-pencil]:before, .ion-md-fa-pencil:before, .ion-ios-fa-pencil:before {
+    content: $fa-var-pencil;
+}
+
+[ng-reflect-name=fa-map-marker]:before, .ion-md-fa-map-marker:before, .ion-ios-fa-map-marker:before {
+    content: $fa-var-map-marker;
+}
+
+[ng-reflect-name=fa-adjust]:before, .ion-md-fa-adjust:before, .ion-ios-fa-adjust:before {
+    content: $fa-var-adjust;
+}
+
+[ng-reflect-name=fa-tint]:before, .ion-md-fa-tint:before, .ion-ios-fa-tint:before {
+    content: $fa-var-tint;
+}
+
+[ng-reflect-name=fa-edit]:before, .ion-md-fa-edit:before, .ion-ios-fa-edit:before,
+[ng-reflect-name=fa-pencil-square-o]:before, .ion-md-fa-pencil-square-o:before, .ion-ios-fa-pencil-square-o:before {
+    content: $fa-var-pencil-square-o;
+}
+
+[ng-reflect-name=fa-share-square-o]:before, .ion-md-fa-share-square-o:before, .ion-ios-fa-share-square-o:before {
+    content: $fa-var-share-square-o;
+}
+
+[ng-reflect-name=fa-check-square-o]:before, .ion-md-fa-check-square-o:before, .ion-ios-fa-check-square-o:before {
+    content: $fa-var-check-square-o;
+}
+
+[ng-reflect-name=fa-arrows]:before, .ion-md-fa-arrows:before, .ion-ios-fa-arrows:before {
+    content: $fa-var-arrows;
+}
+
+[ng-reflect-name=fa-step-backward]:before, .ion-md-fa-step-backward:before, .ion-ios-fa-step-backward:before {
+    content: $fa-var-step-backward;
+}
+
+[ng-reflect-name=fa-fast-backward]:before, .ion-md-fa-fast-backward:before, .ion-ios-fa-fast-backward:before {
+    content: $fa-var-fast-backward;
+}
+
+[ng-reflect-name=fa-backward]:before, .ion-md-fa-backward:before, .ion-ios-fa-backward:before {
+    content: $fa-var-backward;
+}
+
+[ng-reflect-name=fa-play]:before, .ion-md-fa-play:before, .ion-ios-fa-play:before {
+    content: $fa-var-play;
+}
+
+[ng-reflect-name=fa-pause]:before, .ion-md-fa-pause:before, .ion-ios-fa-pause:before {
+    content: $fa-var-pause;
+}
+
+[ng-reflect-name=fa-stop]:before, .ion-md-fa-stop:before, .ion-ios-fa-stop:before {
+    content: $fa-var-stop;
+}
+
+[ng-reflect-name=fa-forward]:before, .ion-md-fa-forward:before, .ion-ios-fa-forward:before {
+    content: $fa-var-forward;
+}
+
+[ng-reflect-name=fa-fast-forward]:before, .ion-md-fa-fast-forward:before, .ion-ios-fa-fast-forward:before {
+    content: $fa-var-fast-forward;
+}
+
+[ng-reflect-name=fa-step-forward]:before, .ion-md-fa-step-forward:before, .ion-ios-fa-step-forward:before {
+    content: $fa-var-step-forward;
+}
+
+[ng-reflect-name=fa-eject]:before, .ion-md-fa-eject:before, .ion-ios-fa-eject:before {
+    content: $fa-var-eject;
+}
+
+[ng-reflect-name=fa-chevron-left]:before, .ion-md-fa-chevron-left:before, .ion-ios-fa-chevron-left:before {
+    content: $fa-var-chevron-left;
+}
+
+[ng-reflect-name=fa-chevron-right]:before, .ion-md-fa-chevron-right:before, .ion-ios-fa-chevron-right:before {
+    content: $fa-var-chevron-right;
+}
+
+[ng-reflect-name=fa-plus-circle]:before, .ion-md-fa-plus-circle:before, .ion-ios-fa-plus-circle:before {
+    content: $fa-var-plus-circle;
+}
+
+[ng-reflect-name=fa-minus-circle]:before, .ion-md-fa-minus-circle:before, .ion-ios-fa-minus-circle:before {
+    content: $fa-var-minus-circle;
+}
+
+[ng-reflect-name=fa-times-circle]:before, .ion-md-fa-times-circle:before, .ion-ios-fa-times-circle:before {
+    content: $fa-var-times-circle;
+}
+
+[ng-reflect-name=fa-check-circle]:before, .ion-md-fa-check-circle:before, .ion-ios-fa-check-circle:before {
+    content: $fa-var-check-circle;
+}
+
+[ng-reflect-name=fa-question-circle]:before, .ion-md-fa-question-circle:before, .ion-ios-fa-question-circle:before {
+    content: $fa-var-question-circle;
+}
+
+[ng-reflect-name=fa-info-circle]:before, .ion-md-fa-info-circle:before, .ion-ios-fa-info-circle:before {
+    content: $fa-var-info-circle;
+}
+
+[ng-reflect-name=fa-crosshairs]:before, .ion-md-fa-crosshairs:before, .ion-ios-fa-crosshairs:before {
+    content: $fa-var-crosshairs;
+}
+
+[ng-reflect-name=fa-times-circle-o]:before, .ion-md-fa-times-circle-o:before, .ion-ios-fa-times-circle-o:before {
+    content: $fa-var-times-circle-o;
+}
+
+[ng-reflect-name=fa-check-circle-o]:before, .ion-md-fa-check-circle-o:before, .ion-ios-fa-check-circle-o:before {
+    content: $fa-var-check-circle-o;
+}
+
+[ng-reflect-name=fa-ban]:before, .ion-md-fa-ban:before, .ion-ios-fa-ban:before {
+    content: $fa-var-ban;
+}
+
+[ng-reflect-name=fa-arrow-left]:before, .ion-md-fa-arrow-left:before, .ion-ios-fa-arrow-left:before {
+    content: $fa-var-arrow-left;
+}
+
+[ng-reflect-name=fa-arrow-right]:before, .ion-md-fa-arrow-right:before, .ion-ios-fa-arrow-right:before {
+    content: $fa-var-arrow-right;
+}
+
+[ng-reflect-name=fa-arrow-up]:before, .ion-md-fa-arrow-up:before, .ion-ios-fa-arrow-up:before {
+    content: $fa-var-arrow-up;
+}
+
+[ng-reflect-name=fa-arrow-down]:before, .ion-md-fa-arrow-down:before, .ion-ios-fa-arrow-down:before {
+    content: $fa-var-arrow-down;
+}
+
+[ng-reflect-name=fa-mail-forward]:before, .ion-md-fa-mail-forward:before, .ion-ios-fa-mail-forward:before,
+[ng-reflect-name=fa-share]:before, .ion-md-fa-share:before, .ion-ios-fa-share:before {
+    content: $fa-var-share;
+}
+
+[ng-reflect-name=fa-expand]:before, .ion-md-fa-expand:before, .ion-ios-fa-expand:before {
+    content: $fa-var-expand;
+}
+
+[ng-reflect-name=fa-compress]:before, .ion-md-fa-compress:before, .ion-ios-fa-compress:before {
+    content: $fa-var-compress;
+}
+
+[ng-reflect-name=fa-plus]:before, .ion-md-fa-plus:before, .ion-ios-fa-plus:before {
+    content: $fa-var-plus;
+}
+
+[ng-reflect-name=fa-minus]:before, .ion-md-fa-minus:before, .ion-ios-fa-minus:before {
+    content: $fa-var-minus;
+}
+
+[ng-reflect-name=fa-asterisk]:before, .ion-md-fa-asterisk:before, .ion-ios-fa-asterisk:before {
+    content: $fa-var-asterisk;
+}
+
+[ng-reflect-name=fa-exclamation-circle]:before, .ion-md-fa-exclamation-circle:before, .ion-ios-fa-exclamation-circle:before {
+    content: $fa-var-exclamation-circle;
+}
+
+[ng-reflect-name=fa-gift]:before, .ion-md-fa-gift:before, .ion-ios-fa-gift:before {
+    content: $fa-var-gift;
+}
+
+[ng-reflect-name=fa-leaf]:before, .ion-md-fa-leaf:before, .ion-ios-fa-leaf:before {
+    content: $fa-var-leaf;
+}
+
+[ng-reflect-name=fa-fire]:before, .ion-md-fa-fire:before, .ion-ios-fa-fire:before {
+    content: $fa-var-fire;
+}
+
+[ng-reflect-name=fa-eye]:before, .ion-md-fa-eye:before, .ion-ios-fa-eye:before {
+    content: $fa-var-eye;
+}
+
+[ng-reflect-name=fa-eye-slash]:before, .ion-md-fa-eye-slash:before, .ion-ios-fa-eye-slash:before {
+    content: $fa-var-eye-slash;
+}
+
+[ng-reflect-name=fa-warning]:before, .ion-md-fa-warning:before, .ion-ios-fa-warning:before,
+[ng-reflect-name=fa-exclamation-triangle]:before, .ion-md-fa-exclamation-triangle:before, .ion-ios-fa-exclamation-triangle:before {
+    content: $fa-var-exclamation-triangle;
+}
+
+[ng-reflect-name=fa-plane]:before, .ion-md-fa-plane:before, .ion-ios-fa-plane:before {
+    content: $fa-var-plane;
+}
+
+[ng-reflect-name=fa-calendar]:before, .ion-md-fa-calendar:before, .ion-ios-fa-calendar:before {
+    content: $fa-var-calendar;
+}
+
+[ng-reflect-name=fa-random]:before, .ion-md-fa-random:before, .ion-ios-fa-random:before {
+    content: $fa-var-random;
+}
+
+[ng-reflect-name=fa-comment]:before, .ion-md-fa-comment:before, .ion-ios-fa-comment:before {
+    content: $fa-var-comment;
+}
+
+[ng-reflect-name=fa-magnet]:before, .ion-md-fa-magnet:before, .ion-ios-fa-magnet:before {
+    content: $fa-var-magnet;
+}
+
+[ng-reflect-name=fa-chevron-up]:before, .ion-md-fa-chevron-up:before, .ion-ios-fa-chevron-up:before {
+    content: $fa-var-chevron-up;
+}
+
+[ng-reflect-name=fa-chevron-down]:before, .ion-md-fa-chevron-down:before, .ion-ios-fa-chevron-down:before {
+    content: $fa-var-chevron-down;
+}
+
+[ng-reflect-name=fa-retweet]:before, .ion-md-fa-retweet:before, .ion-ios-fa-retweet:before {
+    content: $fa-var-retweet;
+}
+
+[ng-reflect-name=fa-shopping-cart]:before, .ion-md-fa-shopping-cart:before, .ion-ios-fa-shopping-cart:before {
+    content: $fa-var-shopping-cart;
+}
+
+[ng-reflect-name=fa-folder]:before, .ion-md-fa-folder:before, .ion-ios-fa-folder:before {
+    content: $fa-var-folder;
+}
+
+[ng-reflect-name=fa-folder-open]:before, .ion-md-fa-folder-open:before, .ion-ios-fa-folder-open:before {
+    content: $fa-var-folder-open;
+}
+
+[ng-reflect-name=fa-arrows-v]:before, .ion-md-fa-arrows-v:before, .ion-ios-fa-arrows-v:before {
+    content: $fa-var-arrows-v;
+}
+
+[ng-reflect-name=fa-arrows-h]:before, .ion-md-fa-arrows-h:before, .ion-ios-fa-arrows-h:before {
+    content: $fa-var-arrows-h;
+}
+
+[ng-reflect-name=fa-bar-chart-o]:before, .ion-md-fa-bar-chart-o:before, .ion-ios-fa-bar-chart-o:before,
+[ng-reflect-name=fa-bar-chart]:before, .ion-md-fa-bar-chart:before, .ion-ios-fa-bar-chart:before {
+    content: $fa-var-bar-chart;
+}
+
+[ng-reflect-name=fa-twitter-square]:before, .ion-md-fa-twitter-square:before, .ion-ios-fa-twitter-square:before {
+    content: $fa-var-twitter-square;
+}
+
+[ng-reflect-name=fa-facebook-square]:before, .ion-md-fa-facebook-square:before, .ion-ios-fa-facebook-square:before {
+    content: $fa-var-facebook-square;
+}
+
+[ng-reflect-name=fa-camera-retro]:before, .ion-md-fa-camera-retro:before, .ion-ios-fa-camera-retro:before {
+    content: $fa-var-camera-retro;
+}
+
+[ng-reflect-name=fa-key]:before, .ion-md-fa-key:before, .ion-ios-fa-key:before {
+    content: $fa-var-key;
+}
+
+[ng-reflect-name=fa-gears]:before, .ion-md-fa-gears:before, .ion-ios-fa-gears:before,
+[ng-reflect-name=fa-cogs]:before, .ion-md-fa-cogs:before, .ion-ios-fa-cogs:before {
+    content: $fa-var-cogs;
+}
+
+[ng-reflect-name=fa-comments]:before, .ion-md-fa-comments:before, .ion-ios-fa-comments:before {
+    content: $fa-var-comments;
+}
+
+[ng-reflect-name=fa-thumbs-o-up]:before, .ion-md-fa-thumbs-o-up:before, .ion-ios-fa-thumbs-o-up:before {
+    content: $fa-var-thumbs-o-up;
+}
+
+[ng-reflect-name=fa-thumbs-o-down]:before, .ion-md-fa-thumbs-o-down:before, .ion-ios-fa-thumbs-o-down:before {
+    content: $fa-var-thumbs-o-down;
+}
+
+[ng-reflect-name=fa-star-half]:before, .ion-md-fa-star-half:before, .ion-ios-fa-star-half:before {
+    content: $fa-var-star-half;
+}
+
+[ng-reflect-name=fa-heart-o]:before, .ion-md-fa-heart-o:before, .ion-ios-fa-heart-o:before {
+    content: $fa-var-heart-o;
+}
+
+[ng-reflect-name=fa-sign-out]:before, .ion-md-fa-sign-out:before, .ion-ios-fa-sign-out:before {
+    content: $fa-var-sign-out;
+}
+
+[ng-reflect-name=fa-linkedin-square]:before, .ion-md-fa-linkedin-square:before, .ion-ios-fa-linkedin-square:before {
+    content: $fa-var-linkedin-square;
+}
+
+[ng-reflect-name=fa-thumb-tack]:before, .ion-md-fa-thumb-tack:before, .ion-ios-fa-thumb-tack:before {
+    content: $fa-var-thumb-tack;
+}
+
+[ng-reflect-name=fa-external-link]:before, .ion-md-fa-external-link:before, .ion-ios-fa-external-link:before {
+    content: $fa-var-external-link;
+}
+
+[ng-reflect-name=fa-sign-in]:before, .ion-md-fa-sign-in:before, .ion-ios-fa-sign-in:before {
+    content: $fa-var-sign-in;
+}
+
+[ng-reflect-name=fa-trophy]:before, .ion-md-fa-trophy:before, .ion-ios-fa-trophy:before {
+    content: $fa-var-trophy;
+}
+
+[ng-reflect-name=fa-github-square]:before, .ion-md-fa-github-square:before, .ion-ios-fa-github-square:before {
+    content: $fa-var-github-square;
+}
+
+[ng-reflect-name=fa-upload]:before, .ion-md-fa-upload:before, .ion-ios-fa-upload:before {
+    content: $fa-var-upload;
+}
+
+[ng-reflect-name=fa-lemon-o]:before, .ion-md-fa-lemon-o:before, .ion-ios-fa-lemon-o:before {
+    content: $fa-var-lemon-o;
+}
+
+[ng-reflect-name=fa-phone]:before, .ion-md-fa-phone:before, .ion-ios-fa-phone:before {
+    content: $fa-var-phone;
+}
+
+[ng-reflect-name=fa-square-o]:before, .ion-md-fa-square-o:before, .ion-ios-fa-square-o:before {
+    content: $fa-var-square-o;
+}
+
+[ng-reflect-name=fa-bookmark-o]:before, .ion-md-fa-bookmark-o:before, .ion-ios-fa-bookmark-o:before {
+    content: $fa-var-bookmark-o;
+}
+
+[ng-reflect-name=fa-phone-square]:before, .ion-md-fa-phone-square:before, .ion-ios-fa-phone-square:before {
+    content: $fa-var-phone-square;
+}
+
+[ng-reflect-name=fa-twitter]:before, .ion-md-fa-twitter:before, .ion-ios-fa-twitter:before {
+    content: $fa-var-twitter;
+}
+
+[ng-reflect-name=fa-facebook-f]:before, .ion-md-fa-facebook-f:before, .ion-ios-fa-facebook-f:before,
+[ng-reflect-name=fa-facebook]:before, .ion-md-fa-facebook:before, .ion-ios-fa-facebook:before {
+    content: $fa-var-facebook;
+}
+
+[ng-reflect-name=fa-github]:before, .ion-md-fa-github:before, .ion-ios-fa-github:before {
+    content: $fa-var-github;
+}
+
+[ng-reflect-name=fa-unlock]:before, .ion-md-fa-unlock:before, .ion-ios-fa-unlock:before {
+    content: $fa-var-unlock;
+}
+
+[ng-reflect-name=fa-credit-card]:before, .ion-md-fa-credit-card:before, .ion-ios-fa-credit-card:before {
+    content: $fa-var-credit-card;
+}
+
+[ng-reflect-name=fa-feed]:before, .ion-md-fa-feed:before, .ion-ios-fa-feed:before,
+[ng-reflect-name=fa-rss]:before, .ion-md-fa-rss:before, .ion-ios-fa-rss:before {
+    content: $fa-var-rss;
+}
+
+[ng-reflect-name=fa-hdd-o]:before, .ion-md-fa-hdd-o:before, .ion-ios-fa-hdd-o:before {
+    content: $fa-var-hdd-o;
+}
+
+[ng-reflect-name=fa-bullhorn]:before, .ion-md-fa-bullhorn:before, .ion-ios-fa-bullhorn:before {
+    content: $fa-var-bullhorn;
+}
+
+[ng-reflect-name=fa-bell]:before, .ion-md-fa-bell:before, .ion-ios-fa-bell:before {
+    content: $fa-var-bell;
+}
+
+[ng-reflect-name=fa-certificate]:before, .ion-md-fa-certificate:before, .ion-ios-fa-certificate:before {
+    content: $fa-var-certificate;
+}
+
+[ng-reflect-name=fa-hand-o-right]:before, .ion-md-fa-hand-o-right:before, .ion-ios-fa-hand-o-right:before {
+    content: $fa-var-hand-o-right;
+}
+
+[ng-reflect-name=fa-hand-o-left]:before, .ion-md-fa-hand-o-left:before, .ion-ios-fa-hand-o-left:before {
+    content: $fa-var-hand-o-left;
+}
+
+[ng-reflect-name=fa-hand-o-up]:before, .ion-md-fa-hand-o-up:before, .ion-ios-fa-hand-o-up:before {
+    content: $fa-var-hand-o-up;
+}
+
+[ng-reflect-name=fa-hand-o-down]:before, .ion-md-fa-hand-o-down:before, .ion-ios-fa-hand-o-down:before {
+    content: $fa-var-hand-o-down;
+}
+
+[ng-reflect-name=fa-arrow-circle-left]:before, .ion-md-fa-arrow-circle-left:before, .ion-ios-fa-arrow-circle-left:before {
+    content: $fa-var-arrow-circle-left;
+}
+
+[ng-reflect-name=fa-arrow-circle-right]:before, .ion-md-fa-arrow-circle-right:before, .ion-ios-fa-arrow-circle-right:before {
+    content: $fa-var-arrow-circle-right;
+}
+
+[ng-reflect-name=fa-arrow-circle-up]:before, .ion-md-fa-arrow-circle-up:before, .ion-ios-fa-arrow-circle-up:before {
+    content: $fa-var-arrow-circle-up;
+}
+
+[ng-reflect-name=fa-arrow-circle-down]:before, .ion-md-fa-arrow-circle-down:before, .ion-ios-fa-arrow-circle-down:before {
+    content: $fa-var-arrow-circle-down;
+}
+
+[ng-reflect-name=fa-globe]:before, .ion-md-fa-globe:before, .ion-ios-fa-globe:before {
+    content: $fa-var-globe;
+}
+
+[ng-reflect-name=fa-wrench]:before, .ion-md-fa-wrench:before, .ion-ios-fa-wrench:before {
+    content: $fa-var-wrench;
+}
+
+[ng-reflect-name=fa-tasks]:before, .ion-md-fa-tasks:before, .ion-ios-fa-tasks:before {
+    content: $fa-var-tasks;
+}
+
+[ng-reflect-name=fa-filter]:before, .ion-md-fa-filter:before, .ion-ios-fa-filter:before {
+    content: $fa-var-filter;
+}
+
+[ng-reflect-name=fa-briefcase]:before, .ion-md-fa-briefcase:before, .ion-ios-fa-briefcase:before {
+    content: $fa-var-briefcase;
+}
+
+[ng-reflect-name=fa-arrows-alt]:before, .ion-md-fa-arrows-alt:before, .ion-ios-fa-arrows-alt:before {
+    content: $fa-var-arrows-alt;
+}
+
+[ng-reflect-name=fa-group]:before, .ion-md-fa-group:before, .ion-ios-fa-group:before,
+[ng-reflect-name=fa-users]:before, .ion-md-fa-users:before, .ion-ios-fa-users:before {
+    content: $fa-var-users;
+}
+
+[ng-reflect-name=fa-chain]:before, .ion-md-fa-chain:before, .ion-ios-fa-chain:before,
+[ng-reflect-name=fa-link]:before, .ion-md-fa-link:before, .ion-ios-fa-link:before {
+    content: $fa-var-link;
+}
+
+[ng-reflect-name=fa-cloud]:before, .ion-md-fa-cloud:before, .ion-ios-fa-cloud:before {
+    content: $fa-var-cloud;
+}
+
+[ng-reflect-name=fa-flask]:before, .ion-md-fa-flask:before, .ion-ios-fa-flask:before {
+    content: $fa-var-flask;
+}
+
+[ng-reflect-name=fa-cut]:before, .ion-md-fa-cut:before, .ion-ios-fa-cut:before,
+[ng-reflect-name=fa-scissors]:before, .ion-md-fa-scissors:before, .ion-ios-fa-scissors:before {
+    content: $fa-var-scissors;
+}
+
+[ng-reflect-name=fa-copy]:before, .ion-md-fa-copy:before, .ion-ios-fa-copy:before,
+[ng-reflect-name=fa-files-o]:before, .ion-md-fa-files-o:before, .ion-ios-fa-files-o:before {
+    content: $fa-var-files-o;
+}
+
+[ng-reflect-name=fa-paperclip]:before, .ion-md-fa-paperclip:before, .ion-ios-fa-paperclip:before {
+    content: $fa-var-paperclip;
+}
+
+[ng-reflect-name=fa-save]:before, .ion-md-fa-save:before, .ion-ios-fa-save:before,
+[ng-reflect-name=fa-floppy-o]:before, .ion-md-fa-floppy-o:before, .ion-ios-fa-floppy-o:before {
+    content: $fa-var-floppy-o;
+}
+
+[ng-reflect-name=fa-square]:before, .ion-md-fa-square:before, .ion-ios-fa-square:before {
+    content: $fa-var-square;
+}
+
+[ng-reflect-name=fa-navicon]:before, .ion-md-fa-navicon:before, .ion-ios-fa-navicon:before,
+[ng-reflect-name=fa-reorder]:before, .ion-md-fa-reorder:before, .ion-ios-fa-reorder:before,
+[ng-reflect-name=fa-bars]:before, .ion-md-fa-bars:before, .ion-ios-fa-bars:before {
+    content: $fa-var-bars;
+}
+
+[ng-reflect-name=fa-list-ul]:before, .ion-md-fa-list-ul:before, .ion-ios-fa-list-ul:before {
+    content: $fa-var-list-ul;
+}
+
+[ng-reflect-name=fa-list-ol]:before, .ion-md-fa-list-ol:before, .ion-ios-fa-list-ol:before {
+    content: $fa-var-list-ol;
+}
+
+[ng-reflect-name=fa-strikethrough]:before, .ion-md-fa-strikethrough:before, .ion-ios-fa-strikethrough:before {
+    content: $fa-var-strikethrough;
+}
+
+[ng-reflect-name=fa-underline]:before, .ion-md-fa-underline:before, .ion-ios-fa-underline:before {
+    content: $fa-var-underline;
+}
+
+[ng-reflect-name=fa-table]:before, .ion-md-fa-table:before, .ion-ios-fa-table:before {
+    content: $fa-var-table;
+}
+
+[ng-reflect-name=fa-magic]:before, .ion-md-fa-magic:before, .ion-ios-fa-magic:before {
+    content: $fa-var-magic;
+}
+
+[ng-reflect-name=fa-truck]:before, .ion-md-fa-truck:before, .ion-ios-fa-truck:before {
+    content: $fa-var-truck;
+}
+
+[ng-reflect-name=fa-pinterest]:before, .ion-md-fa-pinterest:before, .ion-ios-fa-pinterest:before {
+    content: $fa-var-pinterest;
+}
+
+[ng-reflect-name=fa-pinterest-square]:before, .ion-md-fa-pinterest-square:before, .ion-ios-fa-pinterest-square:before {
+    content: $fa-var-pinterest-square;
+}
+
+[ng-reflect-name=fa-google-plus-square]:before, .ion-md-fa-google-plus-square:before, .ion-ios-fa-google-plus-square:before {
+    content: $fa-var-google-plus-square;
+}
+
+[ng-reflect-name=fa-google-plus]:before, .ion-md-fa-google-plus:before, .ion-ios-fa-google-plus:before {
+    content: $fa-var-google-plus;
+}
+
+[ng-reflect-name=fa-money]:before, .ion-md-fa-money:before, .ion-ios-fa-money:before {
+    content: $fa-var-money;
+}
+
+[ng-reflect-name=fa-caret-down]:before, .ion-md-fa-caret-down:before, .ion-ios-fa-caret-down:before {
+    content: $fa-var-caret-down;
+}
+
+[ng-reflect-name=fa-caret-up]:before, .ion-md-fa-caret-up:before, .ion-ios-fa-caret-up:before {
+    content: $fa-var-caret-up;
+}
+
+[ng-reflect-name=fa-caret-left]:before, .ion-md-fa-caret-left:before, .ion-ios-fa-caret-left:before {
+    content: $fa-var-caret-left;
+}
+
+[ng-reflect-name=fa-caret-right]:before, .ion-md-fa-caret-right:before, .ion-ios-fa-caret-right:before {
+    content: $fa-var-caret-right;
+}
+
+[ng-reflect-name=fa-columns]:before, .ion-md-fa-columns:before, .ion-ios-fa-columns:before {
+    content: $fa-var-columns;
+}
+
+[ng-reflect-name=fa-unsorted]:before, .ion-md-fa-unsorted:before, .ion-ios-fa-unsorted:before,
+[ng-reflect-name=fa-sort]:before, .ion-md-fa-sort:before, .ion-ios-fa-sort:before {
+    content: $fa-var-sort;
+}
+
+[ng-reflect-name=fa-sort-down]:before, .ion-md-fa-sort-down:before, .ion-ios-fa-sort-down:before,
+[ng-reflect-name=fa-sort-desc]:before, .ion-md-fa-sort-desc:before, .ion-ios-fa-sort-desc:before {
+    content: $fa-var-sort-desc;
+}
+
+[ng-reflect-name=fa-sort-up]:before, .ion-md-fa-sort-up:before, .ion-ios-fa-sort-up:before,
+[ng-reflect-name=fa-sort-asc]:before, .ion-md-fa-sort-asc:before, .ion-ios-fa-sort-asc:before {
+    content: $fa-var-sort-asc;
+}
+
+[ng-reflect-name=fa-envelope]:before, .ion-md-fa-envelope:before, .ion-ios-fa-envelope:before {
+    content: $fa-var-envelope;
+}
+
+[ng-reflect-name=fa-linkedin]:before, .ion-md-fa-linkedin:before, .ion-ios-fa-linkedin:before {
+    content: $fa-var-linkedin;
+}
+
+[ng-reflect-name=fa-rotate-left]:before, .ion-md-fa-rotate-left:before, .ion-ios-fa-rotate-left:before,
+[ng-reflect-name=fa-undo]:before, .ion-md-fa-undo:before, .ion-ios-fa-undo:before {
+    content: $fa-var-undo;
+}
+
+[ng-reflect-name=fa-legal]:before, .ion-md-fa-legal:before, .ion-ios-fa-legal:before,
+[ng-reflect-name=fa-gavel]:before, .ion-md-fa-gavel:before, .ion-ios-fa-gavel:before {
+    content: $fa-var-gavel;
+}
+
+[ng-reflect-name=fa-dashboard]:before, .ion-md-fa-dashboard:before, .ion-ios-fa-dashboard:before,
+[ng-reflect-name=fa-tachometer]:before, .ion-md-fa-tachometer:before, .ion-ios-fa-tachometer:before {
+    content: $fa-var-tachometer;
+}
+
+[ng-reflect-name=fa-comment-o]:before, .ion-md-fa-comment-o:before, .ion-ios-fa-comment-o:before {
+    content: $fa-var-comment-o;
+}
+
+[ng-reflect-name=fa-comments-o]:before, .ion-md-fa-comments-o:before, .ion-ios-fa-comments-o:before {
+    content: $fa-var-comments-o;
+}
+
+[ng-reflect-name=fa-flash]:before, .ion-md-fa-flash:before, .ion-ios-fa-flash:before,
+[ng-reflect-name=fa-bolt]:before, .ion-md-fa-bolt:before, .ion-ios-fa-bolt:before {
+    content: $fa-var-bolt;
+}
+
+[ng-reflect-name=fa-sitemap]:before, .ion-md-fa-sitemap:before, .ion-ios-fa-sitemap:before {
+    content: $fa-var-sitemap;
+}
+
+[ng-reflect-name=fa-umbrella]:before, .ion-md-fa-umbrella:before, .ion-ios-fa-umbrella:before {
+    content: $fa-var-umbrella;
+}
+
+[ng-reflect-name=fa-paste]:before, .ion-md-fa-paste:before, .ion-ios-fa-paste:before,
+[ng-reflect-name=fa-clipboard]:before, .ion-md-fa-clipboard:before, .ion-ios-fa-clipboard:before {
+    content: $fa-var-clipboard;
+}
+
+[ng-reflect-name=fa-lightbulb-o]:before, .ion-md-fa-lightbulb-o:before, .ion-ios-fa-lightbulb-o:before {
+    content: $fa-var-lightbulb-o;
+}
+
+[ng-reflect-name=fa-exchange]:before, .ion-md-fa-exchange:before, .ion-ios-fa-exchange:before {
+    content: $fa-var-exchange;
+}
+
+[ng-reflect-name=fa-cloud-download]:before, .ion-md-fa-cloud-download:before, .ion-ios-fa-cloud-download:before {
+    content: $fa-var-cloud-download;
+}
+
+[ng-reflect-name=fa-cloud-upload]:before, .ion-md-fa-cloud-upload:before, .ion-ios-fa-cloud-upload:before {
+    content: $fa-var-cloud-upload;
+}
+
+[ng-reflect-name=fa-user-md]:before, .ion-md-fa-user-md:before, .ion-ios-fa-user-md:before {
+    content: $fa-var-user-md;
+}
+
+[ng-reflect-name=fa-stethoscope]:before, .ion-md-fa-stethoscope:before, .ion-ios-fa-stethoscope:before {
+    content: $fa-var-stethoscope;
+}
+
+[ng-reflect-name=fa-suitcase]:before, .ion-md-fa-suitcase:before, .ion-ios-fa-suitcase:before {
+    content: $fa-var-suitcase;
+}
+
+[ng-reflect-name=fa-bell-o]:before, .ion-md-fa-bell-o:before, .ion-ios-fa-bell-o:before {
+    content: $fa-var-bell-o;
+}
+
+[ng-reflect-name=fa-coffee]:before, .ion-md-fa-coffee:before, .ion-ios-fa-coffee:before {
+    content: $fa-var-coffee;
+}
+
+[ng-reflect-name=fa-cutlery]:before, .ion-md-fa-cutlery:before, .ion-ios-fa-cutlery:before {
+    content: $fa-var-cutlery;
+}
+
+[ng-reflect-name=fa-file-text-o]:before, .ion-md-fa-file-text-o:before, .ion-ios-fa-file-text-o:before {
+    content: $fa-var-file-text-o;
+}
+
+[ng-reflect-name=fa-building-o]:before, .ion-md-fa-building-o:before, .ion-ios-fa-building-o:before {
+    content: $fa-var-building-o;
+}
+
+[ng-reflect-name=fa-hospital-o]:before, .ion-md-fa-hospital-o:before, .ion-ios-fa-hospital-o:before {
+    content: $fa-var-hospital-o;
+}
+
+[ng-reflect-name=fa-ambulance]:before, .ion-md-fa-ambulance:before, .ion-ios-fa-ambulance:before {
+    content: $fa-var-ambulance;
+}
+
+[ng-reflect-name=fa-medkit]:before, .ion-md-fa-medkit:before, .ion-ios-fa-medkit:before {
+    content: $fa-var-medkit;
+}
+
+[ng-reflect-name=fa-fighter-jet]:before, .ion-md-fa-fighter-jet:before, .ion-ios-fa-fighter-jet:before {
+    content: $fa-var-fighter-jet;
+}
+
+[ng-reflect-name=fa-beer]:before, .ion-md-fa-beer:before, .ion-ios-fa-beer:before {
+    content: $fa-var-beer;
+}
+
+[ng-reflect-name=fa-h-square]:before, .ion-md-fa-h-square:before, .ion-ios-fa-h-square:before {
+    content: $fa-var-h-square;
+}
+
+[ng-reflect-name=fa-plus-square]:before, .ion-md-fa-plus-square:before, .ion-ios-fa-plus-square:before {
+    content: $fa-var-plus-square;
+}
+
+[ng-reflect-name=fa-angle-double-left]:before, .ion-md-fa-angle-double-left:before, .ion-ios-fa-angle-double-left:before {
+    content: $fa-var-angle-double-left;
+}
+
+[ng-reflect-name=fa-angle-double-right]:before, .ion-md-fa-angle-double-right:before, .ion-ios-fa-angle-double-right:before {
+    content: $fa-var-angle-double-right;
+}
+
+[ng-reflect-name=fa-angle-double-up]:before, .ion-md-fa-angle-double-up:before, .ion-ios-fa-angle-double-up:before {
+    content: $fa-var-angle-double-up;
+}
+
+[ng-reflect-name=fa-angle-double-down]:before, .ion-md-fa-angle-double-down:before, .ion-ios-fa-angle-double-down:before {
+    content: $fa-var-angle-double-down;
+}
+
+[ng-reflect-name=fa-angle-left]:before, .ion-md-fa-angle-left:before, .ion-ios-fa-angle-left:before {
+    content: $fa-var-angle-left;
+}
+
+[ng-reflect-name=fa-angle-right]:before, .ion-md-fa-angle-right:before, .ion-ios-fa-angle-right:before {
+    content: $fa-var-angle-right;
+}
+
+[ng-reflect-name=fa-angle-up]:before, .ion-md-fa-angle-up:before, .ion-ios-fa-angle-up:before {
+    content: $fa-var-angle-up;
+}
+
+[ng-reflect-name=fa-angle-down]:before, .ion-md-fa-angle-down:before, .ion-ios-fa-angle-down:before {
+    content: $fa-var-angle-down;
+}
+
+[ng-reflect-name=fa-desktop]:before, .ion-md-fa-desktop:before, .ion-ios-fa-desktop:before {
+    content: $fa-var-desktop;
+}
+
+[ng-reflect-name=fa-laptop]:before, .ion-md-fa-laptop:before, .ion-ios-fa-laptop:before {
+    content: $fa-var-laptop;
+}
+
+[ng-reflect-name=fa-tablet]:before, .ion-md-fa-tablet:before, .ion-ios-fa-tablet:before {
+    content: $fa-var-tablet;
+}
+
+[ng-reflect-name=fa-mobile-phone]:before, .ion-md-fa-mobile-phone:before, .ion-ios-fa-mobile-phone:before,
+[ng-reflect-name=fa-mobile]:before, .ion-md-fa-mobile:before, .ion-ios-fa-mobile:before {
+    content: $fa-var-mobile;
+}
+
+[ng-reflect-name=fa-circle-o]:before, .ion-md-fa-circle-o:before, .ion-ios-fa-circle-o:before {
+    content: $fa-var-circle-o;
+}
+
+[ng-reflect-name=fa-quote-left]:before, .ion-md-fa-quote-left:before, .ion-ios-fa-quote-left:before {
+    content: $fa-var-quote-left;
+}
+
+[ng-reflect-name=fa-quote-right]:before, .ion-md-fa-quote-right:before, .ion-ios-fa-quote-right:before {
+    content: $fa-var-quote-right;
+}
+
+[ng-reflect-name=fa-spinner]:before, .ion-md-fa-spinner:before, .ion-ios-fa-spinner:before {
+    content: $fa-var-spinner;
+}
+
+[ng-reflect-name=fa-circle]:before, .ion-md-fa-circle:before, .ion-ios-fa-circle:before {
+    content: $fa-var-circle;
+}
+
+[ng-reflect-name=fa-mail-reply]:before, .ion-md-fa-mail-reply:before, .ion-ios-fa-mail-reply:before,
+[ng-reflect-name=fa-reply]:before, .ion-md-fa-reply:before, .ion-ios-fa-reply:before {
+    content: $fa-var-reply;
+}
+
+[ng-reflect-name=fa-github-alt]:before, .ion-md-fa-github-alt:before, .ion-ios-fa-github-alt:before {
+    content: $fa-var-github-alt;
+}
+
+[ng-reflect-name=fa-folder-o]:before, .ion-md-fa-folder-o:before, .ion-ios-fa-folder-o:before {
+    content: $fa-var-folder-o;
+}
+
+[ng-reflect-name=fa-folder-open-o]:before, .ion-md-fa-folder-open-o:before, .ion-ios-fa-folder-open-o:before {
+    content: $fa-var-folder-open-o;
+}
+
+[ng-reflect-name=fa-smile-o]:before, .ion-md-fa-smile-o:before, .ion-ios-fa-smile-o:before {
+    content: $fa-var-smile-o;
+}
+
+[ng-reflect-name=fa-frown-o]:before, .ion-md-fa-frown-o:before, .ion-ios-fa-frown-o:before {
+    content: $fa-var-frown-o;
+}
+
+[ng-reflect-name=fa-meh-o]:before, .ion-md-fa-meh-o:before, .ion-ios-fa-meh-o:before {
+    content: $fa-var-meh-o;
+}
+
+[ng-reflect-name=fa-gamepad]:before, .ion-md-fa-gamepad:before, .ion-ios-fa-gamepad:before {
+    content: $fa-var-gamepad;
+}
+
+[ng-reflect-name=fa-keyboard-o]:before, .ion-md-fa-keyboard-o:before, .ion-ios-fa-keyboard-o:before {
+    content: $fa-var-keyboard-o;
+}
+
+[ng-reflect-name=fa-flag-o]:before, .ion-md-fa-flag-o:before, .ion-ios-fa-flag-o:before {
+    content: $fa-var-flag-o;
+}
+
+[ng-reflect-name=fa-flag-checkered]:before, .ion-md-fa-flag-checkered:before, .ion-ios-fa-flag-checkered:before {
+    content: $fa-var-flag-checkered;
+}
+
+[ng-reflect-name=fa-terminal]:before, .ion-md-fa-terminal:before, .ion-ios-fa-terminal:before {
+    content: $fa-var-terminal;
+}
+
+[ng-reflect-name=fa-code]:before, .ion-md-fa-code:before, .ion-ios-fa-code:before {
+    content: $fa-var-code;
+}
+
+[ng-reflect-name=fa-mail-reply-all]:before, .ion-md-fa-mail-reply-all:before, .ion-ios-fa-mail-reply-all:before,
+[ng-reflect-name=fa-reply-all]:before, .ion-md-fa-reply-all:before, .ion-ios-fa-reply-all:before {
+    content: $fa-var-reply-all;
+}
+
+[ng-reflect-name=fa-star-half-empty]:before, .ion-md-fa-star-half-empty:before, .ion-ios-fa-star-half-empty:before,
+[ng-reflect-name=fa-star-half-full]:before, .ion-md-fa-star-half-full:before, .ion-ios-fa-star-half-full:before,
+[ng-reflect-name=fa-star-half-o]:before, .ion-md-fa-star-half-o:before, .ion-ios-fa-star-half-o:before {
+    content: $fa-var-star-half-o;
+}
+
+[ng-reflect-name=fa-location-arrow]:before, .ion-md-fa-location-arrow:before, .ion-ios-fa-location-arrow:before {
+    content: $fa-var-location-arrow;
+}
+
+[ng-reflect-name=fa-crop]:before, .ion-md-fa-crop:before, .ion-ios-fa-crop:before {
+    content: $fa-var-crop;
+}
+
+[ng-reflect-name=fa-code-fork]:before, .ion-md-fa-code-fork:before, .ion-ios-fa-code-fork:before {
+    content: $fa-var-code-fork;
+}
+
+[ng-reflect-name=fa-unlink]:before, .ion-md-fa-unlink:before, .ion-ios-fa-unlink:before,
+[ng-reflect-name=fa-chain-broken]:before, .ion-md-fa-chain-broken:before, .ion-ios-fa-chain-broken:before {
+    content: $fa-var-chain-broken;
+}
+
+[ng-reflect-name=fa-question]:before, .ion-md-fa-question:before, .ion-ios-fa-question:before {
+    content: $fa-var-question;
+}
+
+[ng-reflect-name=fa-info]:before, .ion-md-fa-info:before, .ion-ios-fa-info:before {
+    content: $fa-var-info;
+}
+
+[ng-reflect-name=fa-exclamation]:before, .ion-md-fa-exclamation:before, .ion-ios-fa-exclamation:before {
+    content: $fa-var-exclamation;
+}
+
+[ng-reflect-name=fa-superscript]:before, .ion-md-fa-superscript:before, .ion-ios-fa-superscript:before {
+    content: $fa-var-superscript;
+}
+
+[ng-reflect-name=fa-subscript]:before, .ion-md-fa-subscript:before, .ion-ios-fa-subscript:before {
+    content: $fa-var-subscript;
+}
+
+[ng-reflect-name=fa-eraser]:before, .ion-md-fa-eraser:before, .ion-ios-fa-eraser:before {
+    content: $fa-var-eraser;
+}
+
+[ng-reflect-name=fa-puzzle-piece]:before, .ion-md-fa-puzzle-piece:before, .ion-ios-fa-puzzle-piece:before {
+    content: $fa-var-puzzle-piece;
+}
+
+[ng-reflect-name=fa-microphone]:before, .ion-md-fa-microphone:before, .ion-ios-fa-microphone:before {
+    content: $fa-var-microphone;
+}
+
+[ng-reflect-name=fa-microphone-slash]:before, .ion-md-fa-microphone-slash:before, .ion-ios-fa-microphone-slash:before {
+    content: $fa-var-microphone-slash;
+}
+
+[ng-reflect-name=fa-shield]:before, .ion-md-fa-shield:before, .ion-ios-fa-shield:before {
+    content: $fa-var-shield;
+}
+
+[ng-reflect-name=fa-calendar-o]:before, .ion-md-fa-calendar-o:before, .ion-ios-fa-calendar-o:before {
+    content: $fa-var-calendar-o;
+}
+
+[ng-reflect-name=fa-fire-extinguisher]:before, .ion-md-fa-fire-extinguisher:before, .ion-ios-fa-fire-extinguisher:before {
+    content: $fa-var-fire-extinguisher;
+}
+
+[ng-reflect-name=fa-rocket]:before, .ion-md-fa-rocket:before, .ion-ios-fa-rocket:before {
+    content: $fa-var-rocket;
+}
+
+[ng-reflect-name=fa-maxcdn]:before, .ion-md-fa-maxcdn:before, .ion-ios-fa-maxcdn:before {
+    content: $fa-var-maxcdn;
+}
+
+[ng-reflect-name=fa-chevron-circle-left]:before, .ion-md-fa-chevron-circle-left:before, .ion-ios-fa-chevron-circle-left:before {
+    content: $fa-var-chevron-circle-left;
+}
+
+[ng-reflect-name=fa-chevron-circle-right]:before, .ion-md-fa-chevron-circle-right:before, .ion-ios-fa-chevron-circle-right:before {
+    content: $fa-var-chevron-circle-right;
+}
+
+[ng-reflect-name=fa-chevron-circle-up]:before, .ion-md-fa-chevron-circle-up:before, .ion-ios-fa-chevron-circle-up:before {
+    content: $fa-var-chevron-circle-up;
+}
+
+[ng-reflect-name=fa-chevron-circle-down]:before, .ion-md-fa-chevron-circle-down:before, .ion-ios-fa-chevron-circle-down:before {
+    content: $fa-var-chevron-circle-down;
+}
+
+[ng-reflect-name=fa-html5]:before, .ion-md-fa-html5:before, .ion-ios-fa-html5:before {
+    content: $fa-var-html5;
+}
+
+[ng-reflect-name=fa-css3]:before, .ion-md-fa-css3:before, .ion-ios-fa-css3:before {
+    content: $fa-var-css3;
+}
+
+[ng-reflect-name=fa-anchor]:before, .ion-md-fa-anchor:before, .ion-ios-fa-anchor:before {
+    content: $fa-var-anchor;
+}
+
+[ng-reflect-name=fa-unlock-alt]:before, .ion-md-fa-unlock-alt:before, .ion-ios-fa-unlock-alt:before {
+    content: $fa-var-unlock-alt;
+}
+
+[ng-reflect-name=fa-bullseye]:before, .ion-md-fa-bullseye:before, .ion-ios-fa-bullseye:before {
+    content: $fa-var-bullseye;
+}
+
+[ng-reflect-name=fa-ellipsis-h]:before, .ion-md-fa-ellipsis-h:before, .ion-ios-fa-ellipsis-h:before {
+    content: $fa-var-ellipsis-h;
+}
+
+[ng-reflect-name=fa-ellipsis-v]:before, .ion-md-fa-ellipsis-v:before, .ion-ios-fa-ellipsis-v:before {
+    content: $fa-var-ellipsis-v;
+}
+
+[ng-reflect-name=fa-rss-square]:before, .ion-md-fa-rss-square:before, .ion-ios-fa-rss-square:before {
+    content: $fa-var-rss-square;
+}
+
+[ng-reflect-name=fa-play-circle]:before, .ion-md-fa-play-circle:before, .ion-ios-fa-play-circle:before {
+    content: $fa-var-play-circle;
+}
+
+[ng-reflect-name=fa-ticket]:before, .ion-md-fa-ticket:before, .ion-ios-fa-ticket:before {
+    content: $fa-var-ticket;
+}
+
+[ng-reflect-name=fa-minus-square]:before, .ion-md-fa-minus-square:before, .ion-ios-fa-minus-square:before {
+    content: $fa-var-minus-square;
+}
+
+[ng-reflect-name=fa-minus-square-o]:before, .ion-md-fa-minus-square-o:before, .ion-ios-fa-minus-square-o:before {
+    content: $fa-var-minus-square-o;
+}
+
+[ng-reflect-name=fa-level-up]:before, .ion-md-fa-level-up:before, .ion-ios-fa-level-up:before {
+    content: $fa-var-level-up;
+}
+
+[ng-reflect-name=fa-level-down]:before, .ion-md-fa-level-down:before, .ion-ios-fa-level-down:before {
+    content: $fa-var-level-down;
+}
+
+[ng-reflect-name=fa-check-square]:before, .ion-md-fa-check-square:before, .ion-ios-fa-check-square:before {
+    content: $fa-var-check-square;
+}
+
+[ng-reflect-name=fa-pencil-square]:before, .ion-md-fa-pencil-square:before, .ion-ios-fa-pencil-square:before {
+    content: $fa-var-pencil-square;
+}
+
+[ng-reflect-name=fa-external-link-square]:before, .ion-md-fa-external-link-square:before, .ion-ios-fa-external-link-square:before {
+    content: $fa-var-external-link-square;
+}
+
+[ng-reflect-name=fa-share-square]:before, .ion-md-fa-share-square:before, .ion-ios-fa-share-square:before {
+    content: $fa-var-share-square;
+}
+
+[ng-reflect-name=fa-compass]:before, .ion-md-fa-compass:before, .ion-ios-fa-compass:before {
+    content: $fa-var-compass;
+}
+
+[ng-reflect-name=fa-toggle-down]:before, .ion-md-fa-toggle-down:before, .ion-ios-fa-toggle-down:before,
+[ng-reflect-name=fa-caret-square-o-down]:before, .ion-md-fa-caret-square-o-down:before, .ion-ios-fa-caret-square-o-down:before {
+    content: $fa-var-caret-square-o-down;
+}
+
+[ng-reflect-name=fa-toggle-up]:before, .ion-md-fa-toggle-up:before, .ion-ios-fa-toggle-up:before,
+[ng-reflect-name=fa-caret-square-o-up]:before, .ion-md-fa-caret-square-o-up:before, .ion-ios-fa-caret-square-o-up:before {
+    content: $fa-var-caret-square-o-up;
+}
+
+[ng-reflect-name=fa-toggle-right]:before, .ion-md-fa-toggle-right:before, .ion-ios-fa-toggle-right:before,
+[ng-reflect-name=fa-caret-square-o-right]:before, .ion-md-fa-caret-square-o-right:before, .ion-ios-fa-caret-square-o-right:before {
+    content: $fa-var-caret-square-o-right;
+}
+
+[ng-reflect-name=fa-euro]:before, .ion-md-fa-euro:before, .ion-ios-fa-euro:before,
+[ng-reflect-name=fa-eur]:before, .ion-md-fa-eur:before, .ion-ios-fa-eur:before {
+    content: $fa-var-eur;
+}
+
+[ng-reflect-name=fa-gbp]:before, .ion-md-fa-gbp:before, .ion-ios-fa-gbp:before {
+    content: $fa-var-gbp;
+}
+
+[ng-reflect-name=fa-dollar]:before, .ion-md-fa-dollar:before, .ion-ios-fa-dollar:before,
+[ng-reflect-name=fa-usd]:before, .ion-md-fa-usd:before, .ion-ios-fa-usd:before {
+    content: $fa-var-usd;
+}
+
+[ng-reflect-name=fa-rupee]:before, .ion-md-fa-rupee:before, .ion-ios-fa-rupee:before,
+[ng-reflect-name=fa-inr]:before, .ion-md-fa-inr:before, .ion-ios-fa-inr:before {
+    content: $fa-var-inr;
+}
+
+[ng-reflect-name=fa-cny]:before, .ion-md-fa-cny:before, .ion-ios-fa-cny:before,
+[ng-reflect-name=fa-rmb]:before, .ion-md-fa-rmb:before, .ion-ios-fa-rmb:before,
+[ng-reflect-name=fa-yen]:before, .ion-md-fa-yen:before, .ion-ios-fa-yen:before,
+[ng-reflect-name=fa-jpy]:before, .ion-md-fa-jpy:before, .ion-ios-fa-jpy:before {
+    content: $fa-var-jpy;
+}
+
+[ng-reflect-name=fa-ruble]:before, .ion-md-fa-ruble:before, .ion-ios-fa-ruble:before,
+[ng-reflect-name=fa-rouble]:before, .ion-md-fa-rouble:before, .ion-ios-fa-rouble:before,
+[ng-reflect-name=fa-rub]:before, .ion-md-fa-rub:before, .ion-ios-fa-rub:before {
+    content: $fa-var-rub;
+}
+
+[ng-reflect-name=fa-won]:before, .ion-md-fa-won:before, .ion-ios-fa-won:before,
+[ng-reflect-name=fa-krw]:before, .ion-md-fa-krw:before, .ion-ios-fa-krw:before {
+    content: $fa-var-krw;
+}
+
+[ng-reflect-name=fa-bitcoin]:before, .ion-md-fa-bitcoin:before, .ion-ios-fa-bitcoin:before,
+[ng-reflect-name=fa-btc]:before, .ion-md-fa-btc:before, .ion-ios-fa-btc:before {
+    content: $fa-var-btc;
+}
+
+[ng-reflect-name=fa-file]:before, .ion-md-fa-file:before, .ion-ios-fa-file:before {
+    content: $fa-var-file;
+}
+
+[ng-reflect-name=fa-file-text]:before, .ion-md-fa-file-text:before, .ion-ios-fa-file-text:before {
+    content: $fa-var-file-text;
+}
+
+[ng-reflect-name=fa-sort-alpha-asc]:before, .ion-md-fa-sort-alpha-asc:before, .ion-ios-fa-sort-alpha-asc:before {
+    content: $fa-var-sort-alpha-asc;
+}
+
+[ng-reflect-name=fa-sort-alpha-desc]:before, .ion-md-fa-sort-alpha-desc:before, .ion-ios-fa-sort-alpha-desc:before {
+    content: $fa-var-sort-alpha-desc;
+}
+
+[ng-reflect-name=fa-sort-amount-asc]:before, .ion-md-fa-sort-amount-asc:before, .ion-ios-fa-sort-amount-asc:before {
+    content: $fa-var-sort-amount-asc;
+}
+
+[ng-reflect-name=fa-sort-amount-desc]:before, .ion-md-fa-sort-amount-desc:before, .ion-ios-fa-sort-amount-desc:before {
+    content: $fa-var-sort-amount-desc;
+}
+
+[ng-reflect-name=fa-sort-numeric-asc]:before, .ion-md-fa-sort-numeric-asc:before, .ion-ios-fa-sort-numeric-asc:before {
+    content: $fa-var-sort-numeric-asc;
+}
+
+[ng-reflect-name=fa-sort-numeric-desc]:before, .ion-md-fa-sort-numeric-desc:before, .ion-ios-fa-sort-numeric-desc:before {
+    content: $fa-var-sort-numeric-desc;
+}
+
+[ng-reflect-name=fa-thumbs-up]:before, .ion-md-fa-thumbs-up:before, .ion-ios-fa-thumbs-up:before {
+    content: $fa-var-thumbs-up;
+}
+
+[ng-reflect-name=fa-thumbs-down]:before, .ion-md-fa-thumbs-down:before, .ion-ios-fa-thumbs-down:before {
+    content: $fa-var-thumbs-down;
+}
+
+[ng-reflect-name=fa-youtube-square]:before, .ion-md-fa-youtube-square:before, .ion-ios-fa-youtube-square:before {
+    content: $fa-var-youtube-square;
+}
+
+[ng-reflect-name=fa-youtube]:before, .ion-md-fa-youtube:before, .ion-ios-fa-youtube:before {
+    content: $fa-var-youtube;
+}
+
+[ng-reflect-name=fa-xing]:before, .ion-md-fa-xing:before, .ion-ios-fa-xing:before {
+    content: $fa-var-xing;
+}
+
+[ng-reflect-name=fa-xing-square]:before, .ion-md-fa-xing-square:before, .ion-ios-fa-xing-square:before {
+    content: $fa-var-xing-square;
+}
+
+[ng-reflect-name=fa-youtube-play]:before, .ion-md-fa-youtube-play:before, .ion-ios-fa-youtube-play:before {
+    content: $fa-var-youtube-play;
+}
+
+[ng-reflect-name=fa-dropbox]:before, .ion-md-fa-dropbox:before, .ion-ios-fa-dropbox:before {
+    content: $fa-var-dropbox;
+}
+
+[ng-reflect-name=fa-stack-overflow]:before, .ion-md-fa-stack-overflow:before, .ion-ios-fa-stack-overflow:before {
+    content: $fa-var-stack-overflow;
+}
+
+[ng-reflect-name=fa-instagram]:before, .ion-md-fa-instagram:before, .ion-ios-fa-instagram:before {
+    content: $fa-var-instagram;
+}
+
+[ng-reflect-name=fa-flickr]:before, .ion-md-fa-flickr:before, .ion-ios-fa-flickr:before {
+    content: $fa-var-flickr;
+}
+
+[ng-reflect-name=fa-adn]:before, .ion-md-fa-adn:before, .ion-ios-fa-adn:before {
+    content: $fa-var-adn;
+}
+
+[ng-reflect-name=fa-bitbucket]:before, .ion-md-fa-bitbucket:before, .ion-ios-fa-bitbucket:before {
+    content: $fa-var-bitbucket;
+}
+
+[ng-reflect-name=fa-bitbucket-square]:before, .ion-md-fa-bitbucket-square:before, .ion-ios-fa-bitbucket-square:before {
+    content: $fa-var-bitbucket-square;
+}
+
+[ng-reflect-name=fa-tumblr]:before, .ion-md-fa-tumblr:before, .ion-ios-fa-tumblr:before {
+    content: $fa-var-tumblr;
+}
+
+[ng-reflect-name=fa-tumblr-square]:before, .ion-md-fa-tumblr-square:before, .ion-ios-fa-tumblr-square:before {
+    content: $fa-var-tumblr-square;
+}
+
+[ng-reflect-name=fa-long-arrow-down]:before, .ion-md-fa-long-arrow-down:before, .ion-ios-fa-long-arrow-down:before {
+    content: $fa-var-long-arrow-down;
+}
+
+[ng-reflect-name=fa-long-arrow-up]:before, .ion-md-fa-long-arrow-up:before, .ion-ios-fa-long-arrow-up:before {
+    content: $fa-var-long-arrow-up;
+}
+
+[ng-reflect-name=fa-long-arrow-left]:before, .ion-md-fa-long-arrow-left:before, .ion-ios-fa-long-arrow-left:before {
+    content: $fa-var-long-arrow-left;
+}
+
+[ng-reflect-name=fa-long-arrow-right]:before, .ion-md-fa-long-arrow-right:before, .ion-ios-fa-long-arrow-right:before {
+    content: $fa-var-long-arrow-right;
+}
+
+[ng-reflect-name=fa-apple]:before, .ion-md-fa-apple:before, .ion-ios-fa-apple:before {
+    content: $fa-var-apple;
+}
+
+[ng-reflect-name=fa-windows]:before, .ion-md-fa-windows:before, .ion-ios-fa-windows:before {
+    content: $fa-var-windows;
+}
+
+[ng-reflect-name=fa-android]:before, .ion-md-fa-android:before, .ion-ios-fa-android:before {
+    content: $fa-var-android;
+}
+
+[ng-reflect-name=fa-linux]:before, .ion-md-fa-linux:before, .ion-ios-fa-linux:before {
+    content: $fa-var-linux;
+}
+
+[ng-reflect-name=fa-dribbble]:before, .ion-md-fa-dribbble:before, .ion-ios-fa-dribbble:before {
+    content: $fa-var-dribbble;
+}
+
+[ng-reflect-name=fa-skype]:before, .ion-md-fa-skype:before, .ion-ios-fa-skype:before {
+    content: $fa-var-skype;
+}
+
+[ng-reflect-name=fa-foursquare]:before, .ion-md-fa-foursquare:before, .ion-ios-fa-foursquare:before {
+    content: $fa-var-foursquare;
+}
+
+[ng-reflect-name=fa-trello]:before, .ion-md-fa-trello:before, .ion-ios-fa-trello:before {
+    content: $fa-var-trello;
+}
+
+[ng-reflect-name=fa-female]:before, .ion-md-fa-female:before, .ion-ios-fa-female:before {
+    content: $fa-var-female;
+}
+
+[ng-reflect-name=fa-male]:before, .ion-md-fa-male:before, .ion-ios-fa-male:before {
+    content: $fa-var-male;
+}
+
+[ng-reflect-name=fa-gittip]:before, .ion-md-fa-gittip:before, .ion-ios-fa-gittip:before,
+[ng-reflect-name=fa-gratipay]:before, .ion-md-fa-gratipay:before, .ion-ios-fa-gratipay:before {
+    content: $fa-var-gratipay;
+}
+
+[ng-reflect-name=fa-sun-o]:before, .ion-md-fa-sun-o:before, .ion-ios-fa-sun-o:before {
+    content: $fa-var-sun-o;
+}
+
+[ng-reflect-name=fa-moon-o]:before, .ion-md-fa-moon-o:before, .ion-ios-fa-moon-o:before {
+    content: $fa-var-moon-o;
+}
+
+[ng-reflect-name=fa-archive]:before, .ion-md-fa-archive:before, .ion-ios-fa-archive:before {
+    content: $fa-var-archive;
+}
+
+[ng-reflect-name=fa-bug]:before, .ion-md-fa-bug:before, .ion-ios-fa-bug:before {
+    content: $fa-var-bug;
+}
+
+[ng-reflect-name=fa-vk]:before, .ion-md-fa-vk:before, .ion-ios-fa-vk:before {
+    content: $fa-var-vk;
+}
+
+[ng-reflect-name=fa-weibo]:before, .ion-md-fa-weibo:before, .ion-ios-fa-weibo:before {
+    content: $fa-var-weibo;
+}
+
+[ng-reflect-name=fa-renren]:before, .ion-md-fa-renren:before, .ion-ios-fa-renren:before {
+    content: $fa-var-renren;
+}
+
+[ng-reflect-name=fa-pagelines]:before, .ion-md-fa-pagelines:before, .ion-ios-fa-pagelines:before {
+    content: $fa-var-pagelines;
+}
+
+[ng-reflect-name=fa-stack-exchange]:before, .ion-md-fa-stack-exchange:before, .ion-ios-fa-stack-exchange:before {
+    content: $fa-var-stack-exchange;
+}
+
+[ng-reflect-name=fa-arrow-circle-o-right]:before, .ion-md-fa-arrow-circle-o-right:before, .ion-ios-fa-arrow-circle-o-right:before {
+    content: $fa-var-arrow-circle-o-right;
+}
+
+[ng-reflect-name=fa-arrow-circle-o-left]:before, .ion-md-fa-arrow-circle-o-left:before, .ion-ios-fa-arrow-circle-o-left:before {
+    content: $fa-var-arrow-circle-o-left;
+}
+
+[ng-reflect-name=fa-toggle-left]:before, .ion-md-fa-toggle-left:before, .ion-ios-fa-toggle-left:before,
+[ng-reflect-name=fa-caret-square-o-left]:before, .ion-md-fa-caret-square-o-left:before, .ion-ios-fa-caret-square-o-left:before {
+    content: $fa-var-caret-square-o-left;
+}
+
+[ng-reflect-name=fa-dot-circle-o]:before, .ion-md-fa-dot-circle-o:before, .ion-ios-fa-dot-circle-o:before {
+    content: $fa-var-dot-circle-o;
+}
+
+[ng-reflect-name=fa-wheelchair]:before, .ion-md-fa-wheelchair:before, .ion-ios-fa-wheelchair:before {
+    content: $fa-var-wheelchair;
+}
+
+[ng-reflect-name=fa-vimeo-square]:before, .ion-md-fa-vimeo-square:before, .ion-ios-fa-vimeo-square:before {
+    content: $fa-var-vimeo-square;
+}
+
+[ng-reflect-name=fa-turkish-lira]:before, .ion-md-fa-turkish-lira:before, .ion-ios-fa-turkish-lira:before,
+[ng-reflect-name=fa-try]:before, .ion-md-fa-try:before, .ion-ios-fa-try:before {
+    content: $fa-var-try;
+}
+
+[ng-reflect-name=fa-plus-square-o]:before, .ion-md-fa-plus-square-o:before, .ion-ios-fa-plus-square-o:before {
+    content: $fa-var-plus-square-o;
+}
+
+[ng-reflect-name=fa-space-shuttle]:before, .ion-md-fa-space-shuttle:before, .ion-ios-fa-space-shuttle:before {
+    content: $fa-var-space-shuttle;
+}
+
+[ng-reflect-name=fa-slack]:before, .ion-md-fa-slack:before, .ion-ios-fa-slack:before {
+    content: $fa-var-slack;
+}
+
+[ng-reflect-name=fa-envelope-square]:before, .ion-md-fa-envelope-square:before, .ion-ios-fa-envelope-square:before {
+    content: $fa-var-envelope-square;
+}
+
+[ng-reflect-name=fa-wordpress]:before, .ion-md-fa-wordpress:before, .ion-ios-fa-wordpress:before {
+    content: $fa-var-wordpress;
+}
+
+[ng-reflect-name=fa-openid]:before, .ion-md-fa-openid:before, .ion-ios-fa-openid:before {
+    content: $fa-var-openid;
+}
+
+[ng-reflect-name=fa-institution]:before, .ion-md-fa-institution:before, .ion-ios-fa-institution:before,
+[ng-reflect-name=fa-bank]:before, .ion-md-fa-bank:before, .ion-ios-fa-bank:before,
+[ng-reflect-name=fa-university]:before, .ion-md-fa-university:before, .ion-ios-fa-university:before {
+    content: $fa-var-university;
+}
+
+[ng-reflect-name=fa-mortar-board]:before, .ion-md-fa-mortar-board:before, .ion-ios-fa-mortar-board:before,
+[ng-reflect-name=fa-graduation-cap]:before, .ion-md-fa-graduation-cap:before, .ion-ios-fa-graduation-cap:before {
+    content: $fa-var-graduation-cap;
+}
+
+[ng-reflect-name=fa-yahoo]:before, .ion-md-fa-yahoo:before, .ion-ios-fa-yahoo:before {
+    content: $fa-var-yahoo;
+}
+
+[ng-reflect-name=fa-google]:before, .ion-md-fa-google:before, .ion-ios-fa-google:before {
+    content: $fa-var-google;
+}
+
+[ng-reflect-name=fa-reddit]:before, .ion-md-fa-reddit:before, .ion-ios-fa-reddit:before {
+    content: $fa-var-reddit;
+}
+
+[ng-reflect-name=fa-reddit-square]:before, .ion-md-fa-reddit-square:before, .ion-ios-fa-reddit-square:before {
+    content: $fa-var-reddit-square;
+}
+
+[ng-reflect-name=fa-stumbleupon-circle]:before, .ion-md-fa-stumbleupon-circle:before, .ion-ios-fa-stumbleupon-circle:before {
+    content: $fa-var-stumbleupon-circle;
+}
+
+[ng-reflect-name=fa-stumbleupon]:before, .ion-md-fa-stumbleupon:before, .ion-ios-fa-stumbleupon:before {
+    content: $fa-var-stumbleupon;
+}
+
+[ng-reflect-name=fa-delicious]:before, .ion-md-fa-delicious:before, .ion-ios-fa-delicious:before {
+    content: $fa-var-delicious;
+}
+
+[ng-reflect-name=fa-digg]:before, .ion-md-fa-digg:before, .ion-ios-fa-digg:before {
+    content: $fa-var-digg;
+}
+
+[ng-reflect-name=fa-pied-piper-pp]:before, .ion-md-fa-pied-piper-pp:before, .ion-ios-fa-pied-piper-pp:before {
+    content: $fa-var-pied-piper-pp;
+}
+
+[ng-reflect-name=fa-pied-piper-alt]:before, .ion-md-fa-pied-piper-alt:before, .ion-ios-fa-pied-piper-alt:before {
+    content: $fa-var-pied-piper-alt;
+}
+
+[ng-reflect-name=fa-drupal]:before, .ion-md-fa-drupal:before, .ion-ios-fa-drupal:before {
+    content: $fa-var-drupal;
+}
+
+[ng-reflect-name=fa-joomla]:before, .ion-md-fa-joomla:before, .ion-ios-fa-joomla:before {
+    content: $fa-var-joomla;
+}
+
+[ng-reflect-name=fa-language]:before, .ion-md-fa-language:before, .ion-ios-fa-language:before {
+    content: $fa-var-language;
+}
+
+[ng-reflect-name=fa-fax]:before, .ion-md-fa-fax:before, .ion-ios-fa-fax:before {
+    content: $fa-var-fax;
+}
+
+[ng-reflect-name=fa-building]:before, .ion-md-fa-building:before, .ion-ios-fa-building:before {
+    content: $fa-var-building;
+}
+
+[ng-reflect-name=fa-child]:before, .ion-md-fa-child:before, .ion-ios-fa-child:before {
+    content: $fa-var-child;
+}
+
+[ng-reflect-name=fa-paw]:before, .ion-md-fa-paw:before, .ion-ios-fa-paw:before {
+    content: $fa-var-paw;
+}
+
+[ng-reflect-name=fa-spoon]:before, .ion-md-fa-spoon:before, .ion-ios-fa-spoon:before {
+    content: $fa-var-spoon;
+}
+
+[ng-reflect-name=fa-cube]:before, .ion-md-fa-cube:before, .ion-ios-fa-cube:before {
+    content: $fa-var-cube;
+}
+
+[ng-reflect-name=fa-cubes]:before, .ion-md-fa-cubes:before, .ion-ios-fa-cubes:before {
+    content: $fa-var-cubes;
+}
+
+[ng-reflect-name=fa-behance]:before, .ion-md-fa-behance:before, .ion-ios-fa-behance:before {
+    content: $fa-var-behance;
+}
+
+[ng-reflect-name=fa-behance-square]:before, .ion-md-fa-behance-square:before, .ion-ios-fa-behance-square:before {
+    content: $fa-var-behance-square;
+}
+
+[ng-reflect-name=fa-steam]:before, .ion-md-fa-steam:before, .ion-ios-fa-steam:before {
+    content: $fa-var-steam;
+}
+
+[ng-reflect-name=fa-steam-square]:before, .ion-md-fa-steam-square:before, .ion-ios-fa-steam-square:before {
+    content: $fa-var-steam-square;
+}
+
+[ng-reflect-name=fa-recycle]:before, .ion-md-fa-recycle:before, .ion-ios-fa-recycle:before {
+    content: $fa-var-recycle;
+}
+
+[ng-reflect-name=fa-automobile]:before, .ion-md-fa-automobile:before, .ion-ios-fa-automobile:before,
+[ng-reflect-name=fa-car]:before, .ion-md-fa-car:before, .ion-ios-fa-car:before {
+    content: $fa-var-car;
+}
+
+[ng-reflect-name=fa-cab]:before, .ion-md-fa-cab:before, .ion-ios-fa-cab:before,
+[ng-reflect-name=fa-taxi]:before, .ion-md-fa-taxi:before, .ion-ios-fa-taxi:before {
+    content: $fa-var-taxi;
+}
+
+[ng-reflect-name=fa-tree]:before, .ion-md-fa-tree:before, .ion-ios-fa-tree:before {
+    content: $fa-var-tree;
+}
+
+[ng-reflect-name=fa-spotify]:before, .ion-md-fa-spotify:before, .ion-ios-fa-spotify:before {
+    content: $fa-var-spotify;
+}
+
+[ng-reflect-name=fa-deviantart]:before, .ion-md-fa-deviantart:before, .ion-ios-fa-deviantart:before {
+    content: $fa-var-deviantart;
+}
+
+[ng-reflect-name=fa-soundcloud]:before, .ion-md-fa-soundcloud:before, .ion-ios-fa-soundcloud:before {
+    content: $fa-var-soundcloud;
+}
+
+[ng-reflect-name=fa-database]:before, .ion-md-fa-database:before, .ion-ios-fa-database:before {
+    content: $fa-var-database;
+}
+
+[ng-reflect-name=fa-file-pdf-o]:before, .ion-md-fa-file-pdf-o:before, .ion-ios-fa-file-pdf-o:before {
+    content: $fa-var-file-pdf-o;
+}
+
+[ng-reflect-name=fa-file-word-o]:before, .ion-md-fa-file-word-o:before, .ion-ios-fa-file-word-o:before {
+    content: $fa-var-file-word-o;
+}
+
+[ng-reflect-name=fa-file-excel-o]:before, .ion-md-fa-file-excel-o:before, .ion-ios-fa-file-excel-o:before {
+    content: $fa-var-file-excel-o;
+}
+
+[ng-reflect-name=fa-file-powerpoint-o]:before, .ion-md-fa-file-powerpoint-o:before, .ion-ios-fa-file-powerpoint-o:before {
+    content: $fa-var-file-powerpoint-o;
+}
+
+[ng-reflect-name=fa-file-photo-o]:before, .ion-md-fa-file-photo-o:before, .ion-ios-fa-file-photo-o:before,
+[ng-reflect-name=fa-file-picture-o]:before, .ion-md-fa-file-picture-o:before, .ion-ios-fa-file-picture-o:before,
+[ng-reflect-name=fa-file-image-o]:before, .ion-md-fa-file-image-o:before, .ion-ios-fa-file-image-o:before {
+    content: $fa-var-file-image-o;
+}
+
+[ng-reflect-name=fa-file-zip-o]:before, .ion-md-fa-file-zip-o:before, .ion-ios-fa-file-zip-o:before,
+[ng-reflect-name=fa-file-archive-o]:before, .ion-md-fa-file-archive-o:before, .ion-ios-fa-file-archive-o:before {
+    content: $fa-var-file-archive-o;
+}
+
+[ng-reflect-name=fa-file-sound-o]:before, .ion-md-fa-file-sound-o:before, .ion-ios-fa-file-sound-o:before,
+[ng-reflect-name=fa-file-audio-o]:before, .ion-md-fa-file-audio-o:before, .ion-ios-fa-file-audio-o:before {
+    content: $fa-var-file-audio-o;
+}
+
+[ng-reflect-name=fa-file-movie-o]:before, .ion-md-fa-file-movie-o:before, .ion-ios-fa-file-movie-o:before,
+[ng-reflect-name=fa-file-video-o]:before, .ion-md-fa-file-video-o:before, .ion-ios-fa-file-video-o:before {
+    content: $fa-var-file-video-o;
+}
+
+[ng-reflect-name=fa-file-code-o]:before, .ion-md-fa-file-code-o:before, .ion-ios-fa-file-code-o:before {
+    content: $fa-var-file-code-o;
+}
+
+[ng-reflect-name=fa-vine]:before, .ion-md-fa-vine:before, .ion-ios-fa-vine:before {
+    content: $fa-var-vine;
+}
+
+[ng-reflect-name=fa-codepen]:before, .ion-md-fa-codepen:before, .ion-ios-fa-codepen:before {
+    content: $fa-var-codepen;
+}
+
+[ng-reflect-name=fa-jsfiddle]:before, .ion-md-fa-jsfiddle:before, .ion-ios-fa-jsfiddle:before {
+    content: $fa-var-jsfiddle;
+}
+
+[ng-reflect-name=fa-life-bouy]:before, .ion-md-fa-life-bouy:before, .ion-ios-fa-life-bouy:before,
+[ng-reflect-name=fa-life-buoy]:before, .ion-md-fa-life-buoy:before, .ion-ios-fa-life-buoy:before,
+[ng-reflect-name=fa-life-saver]:before, .ion-md-fa-life-saver:before, .ion-ios-fa-life-saver:before,
+[ng-reflect-name=fa-support]:before, .ion-md-fa-support:before, .ion-ios-fa-support:before,
+[ng-reflect-name=fa-life-ring]:before, .ion-md-fa-life-ring:before, .ion-ios-fa-life-ring:before {
+    content: $fa-var-life-ring;
+}
+
+[ng-reflect-name=fa-circle-o-notch]:before, .ion-md-fa-circle-o-notch:before, .ion-ios-fa-circle-o-notch:before {
+    content: $fa-var-circle-o-notch;
+}
+
+[ng-reflect-name=fa-ra]:before, .ion-md-fa-ra:before, .ion-ios-fa-ra:before,
+[ng-reflect-name=fa-resistance]:before, .ion-md-fa-resistance:before, .ion-ios-fa-resistance:before,
+[ng-reflect-name=fa-rebel]:before, .ion-md-fa-rebel:before, .ion-ios-fa-rebel:before {
+    content: $fa-var-rebel;
+}
+
+[ng-reflect-name=fa-ge]:before, .ion-md-fa-ge:before, .ion-ios-fa-ge:before,
+[ng-reflect-name=fa-empire]:before, .ion-md-fa-empire:before, .ion-ios-fa-empire:before {
+    content: $fa-var-empire;
+}
+
+[ng-reflect-name=fa-git-square]:before, .ion-md-fa-git-square:before, .ion-ios-fa-git-square:before {
+    content: $fa-var-git-square;
+}
+
+[ng-reflect-name=fa-git]:before, .ion-md-fa-git:before, .ion-ios-fa-git:before {
+    content: $fa-var-git;
+}
+
+[ng-reflect-name=fa-y-combinator-square]:before, .ion-md-fa-y-combinator-square:before, .ion-ios-fa-y-combinator-square:before,
+[ng-reflect-name=fa-yc-square]:before, .ion-md-fa-yc-square:before, .ion-ios-fa-yc-square:before,
+[ng-reflect-name=fa-hacker-news]:before, .ion-md-fa-hacker-news:before, .ion-ios-fa-hacker-news:before {
+    content: $fa-var-hacker-news;
+}
+
+[ng-reflect-name=fa-tencent-weibo]:before, .ion-md-fa-tencent-weibo:before, .ion-ios-fa-tencent-weibo:before {
+    content: $fa-var-tencent-weibo;
+}
+
+[ng-reflect-name=fa-qq]:before, .ion-md-fa-qq:before, .ion-ios-fa-qq:before {
+    content: $fa-var-qq;
+}
+
+[ng-reflect-name=fa-wechat]:before, .ion-md-fa-wechat:before, .ion-ios-fa-wechat:before,
+[ng-reflect-name=fa-weixin]:before, .ion-md-fa-weixin:before, .ion-ios-fa-weixin:before {
+    content: $fa-var-weixin;
+}
+
+[ng-reflect-name=fa-send]:before, .ion-md-fa-send:before, .ion-ios-fa-send:before,
+[ng-reflect-name=fa-paper-plane]:before, .ion-md-fa-paper-plane:before, .ion-ios-fa-paper-plane:before {
+    content: $fa-var-paper-plane;
+}
+
+[ng-reflect-name=fa-send-o]:before, .ion-md-fa-send-o:before, .ion-ios-fa-send-o:before,
+[ng-reflect-name=fa-paper-plane-o]:before, .ion-md-fa-paper-plane-o:before, .ion-ios-fa-paper-plane-o:before {
+    content: $fa-var-paper-plane-o;
+}
+
+[ng-reflect-name=fa-history]:before, .ion-md-fa-history:before, .ion-ios-fa-history:before {
+    content: $fa-var-history;
+}
+
+[ng-reflect-name=fa-circle-thin]:before, .ion-md-fa-circle-thin:before, .ion-ios-fa-circle-thin:before {
+    content: $fa-var-circle-thin;
+}
+
+[ng-reflect-name=fa-header]:before, .ion-md-fa-header:before, .ion-ios-fa-header:before {
+    content: $fa-var-header;
+}
+
+[ng-reflect-name=fa-paragraph]:before, .ion-md-fa-paragraph:before, .ion-ios-fa-paragraph:before {
+    content: $fa-var-paragraph;
+}
+
+[ng-reflect-name=fa-sliders]:before, .ion-md-fa-sliders:before, .ion-ios-fa-sliders:before {
+    content: $fa-var-sliders;
+}
+
+[ng-reflect-name=fa-share-alt]:before, .ion-md-fa-share-alt:before, .ion-ios-fa-share-alt:before {
+    content: $fa-var-share-alt;
+}
+
+[ng-reflect-name=fa-share-alt-square]:before, .ion-md-fa-share-alt-square:before, .ion-ios-fa-share-alt-square:before {
+    content: $fa-var-share-alt-square;
+}
+
+[ng-reflect-name=fa-bomb]:before, .ion-md-fa-bomb:before, .ion-ios-fa-bomb:before {
+    content: $fa-var-bomb;
+}
+
+[ng-reflect-name=fa-soccer-ball-o]:before, .ion-md-fa-soccer-ball-o:before, .ion-ios-fa-soccer-ball-o:before,
+[ng-reflect-name=fa-futbol-o]:before, .ion-md-fa-futbol-o:before, .ion-ios-fa-futbol-o:before {
+    content: $fa-var-futbol-o;
+}
+
+[ng-reflect-name=fa-tty]:before, .ion-md-fa-tty:before, .ion-ios-fa-tty:before {
+    content: $fa-var-tty;
+}
+
+[ng-reflect-name=fa-binoculars]:before, .ion-md-fa-binoculars:before, .ion-ios-fa-binoculars:before {
+    content: $fa-var-binoculars;
+}
+
+[ng-reflect-name=fa-plug]:before, .ion-md-fa-plug:before, .ion-ios-fa-plug:before {
+    content: $fa-var-plug;
+}
+
+[ng-reflect-name=fa-slideshare]:before, .ion-md-fa-slideshare:before, .ion-ios-fa-slideshare:before {
+    content: $fa-var-slideshare;
+}
+
+[ng-reflect-name=fa-twitch]:before, .ion-md-fa-twitch:before, .ion-ios-fa-twitch:before {
+    content: $fa-var-twitch;
+}
+
+[ng-reflect-name=fa-yelp]:before, .ion-md-fa-yelp:before, .ion-ios-fa-yelp:before {
+    content: $fa-var-yelp;
+}
+
+[ng-reflect-name=fa-newspaper-o]:before, .ion-md-fa-newspaper-o:before, .ion-ios-fa-newspaper-o:before {
+    content: $fa-var-newspaper-o;
+}
+
+[ng-reflect-name=fa-wifi]:before, .ion-md-fa-wifi:before, .ion-ios-fa-wifi:before {
+    content: $fa-var-wifi;
+}
+
+[ng-reflect-name=fa-calculator]:before, .ion-md-fa-calculator:before, .ion-ios-fa-calculator:before {
+    content: $fa-var-calculator;
+}
+
+[ng-reflect-name=fa-paypal]:before, .ion-md-fa-paypal:before, .ion-ios-fa-paypal:before {
+    content: $fa-var-paypal;
+}
+
+[ng-reflect-name=fa-google-wallet]:before, .ion-md-fa-google-wallet:before, .ion-ios-fa-google-wallet:before {
+    content: $fa-var-google-wallet;
+}
+
+[ng-reflect-name=fa-cc-visa]:before, .ion-md-fa-cc-visa:before, .ion-ios-fa-cc-visa:before {
+    content: $fa-var-cc-visa;
+}
+
+[ng-reflect-name=fa-cc-mastercard]:before, .ion-md-fa-cc-mastercard:before, .ion-ios-fa-cc-mastercard:before {
+    content: $fa-var-cc-mastercard;
+}
+
+[ng-reflect-name=fa-cc-discover]:before, .ion-md-fa-cc-discover:before, .ion-ios-fa-cc-discover:before {
+    content: $fa-var-cc-discover;
+}
+
+[ng-reflect-name=fa-cc-amex]:before, .ion-md-fa-cc-amex:before, .ion-ios-fa-cc-amex:before {
+    content: $fa-var-cc-amex;
+}
+
+[ng-reflect-name=fa-cc-paypal]:before, .ion-md-fa-cc-paypal:before, .ion-ios-fa-cc-paypal:before {
+    content: $fa-var-cc-paypal;
+}
+
+[ng-reflect-name=fa-cc-stripe]:before, .ion-md-fa-cc-stripe:before, .ion-ios-fa-cc-stripe:before {
+    content: $fa-var-cc-stripe;
+}
+
+[ng-reflect-name=fa-bell-slash]:before, .ion-md-fa-bell-slash:before, .ion-ios-fa-bell-slash:before {
+    content: $fa-var-bell-slash;
+}
+
+[ng-reflect-name=fa-bell-slash-o]:before, .ion-md-fa-bell-slash-o:before, .ion-ios-fa-bell-slash-o:before {
+    content: $fa-var-bell-slash-o;
+}
+
+[ng-reflect-name=fa-trash]:before, .ion-md-fa-trash:before, .ion-ios-fa-trash:before {
+    content: $fa-var-trash;
+}
+
+[ng-reflect-name=fa-copyright]:before, .ion-md-fa-copyright:before, .ion-ios-fa-copyright:before {
+    content: $fa-var-copyright;
+}
+
+[ng-reflect-name=fa-at]:before, .ion-md-fa-at:before, .ion-ios-fa-at:before {
+    content: $fa-var-at;
+}
+
+[ng-reflect-name=fa-eyedropper]:before, .ion-md-fa-eyedropper:before, .ion-ios-fa-eyedropper:before {
+    content: $fa-var-eyedropper;
+}
+
+[ng-reflect-name=fa-paint-brush]:before, .ion-md-fa-paint-brush:before, .ion-ios-fa-paint-brush:before {
+    content: $fa-var-paint-brush;
+}
+
+[ng-reflect-name=fa-birthday-cake]:before, .ion-md-fa-birthday-cake:before, .ion-ios-fa-birthday-cake:before {
+    content: $fa-var-birthday-cake;
+}
+
+[ng-reflect-name=fa-area-chart]:before, .ion-md-fa-area-chart:before, .ion-ios-fa-area-chart:before {
+    content: $fa-var-area-chart;
+}
+
+[ng-reflect-name=fa-pie-chart]:before, .ion-md-fa-pie-chart:before, .ion-ios-fa-pie-chart:before {
+    content: $fa-var-pie-chart;
+}
+
+[ng-reflect-name=fa-line-chart]:before, .ion-md-fa-line-chart:before, .ion-ios-fa-line-chart:before {
+    content: $fa-var-line-chart;
+}
+
+[ng-reflect-name=fa-lastfm]:before, .ion-md-fa-lastfm:before, .ion-ios-fa-lastfm:before {
+    content: $fa-var-lastfm;
+}
+
+[ng-reflect-name=fa-lastfm-square]:before, .ion-md-fa-lastfm-square:before, .ion-ios-fa-lastfm-square:before {
+    content: $fa-var-lastfm-square;
+}
+
+[ng-reflect-name=fa-toggle-off]:before, .ion-md-fa-toggle-off:before, .ion-ios-fa-toggle-off:before {
+    content: $fa-var-toggle-off;
+}
+
+[ng-reflect-name=fa-toggle-on]:before, .ion-md-fa-toggle-on:before, .ion-ios-fa-toggle-on:before {
+    content: $fa-var-toggle-on;
+}
+
+[ng-reflect-name=fa-bicycle]:before, .ion-md-fa-bicycle:before, .ion-ios-fa-bicycle:before {
+    content: $fa-var-bicycle;
+}
+
+[ng-reflect-name=fa-bus]:before, .ion-md-fa-bus:before, .ion-ios-fa-bus:before {
+    content: $fa-var-bus;
+}
+
+[ng-reflect-name=fa-ioxhost]:before, .ion-md-fa-ioxhost:before, .ion-ios-fa-ioxhost:before {
+    content: $fa-var-ioxhost;
+}
+
+[ng-reflect-name=fa-angellist]:before, .ion-md-fa-angellist:before, .ion-ios-fa-angellist:before {
+    content: $fa-var-angellist;
+}
+
+[ng-reflect-name=fa-cc]:before, .ion-md-fa-cc:before, .ion-ios-fa-cc:before {
+    content: $fa-var-cc;
+}
+
+[ng-reflect-name=fa-shekel]:before, .ion-md-fa-shekel:before, .ion-ios-fa-shekel:before,
+[ng-reflect-name=fa-sheqel]:before, .ion-md-fa-sheqel:before, .ion-ios-fa-sheqel:before,
+[ng-reflect-name=fa-ils]:before, .ion-md-fa-ils:before, .ion-ios-fa-ils:before {
+    content: $fa-var-ils;
+}
+
+[ng-reflect-name=fa-meanpath]:before, .ion-md-fa-meanpath:before, .ion-ios-fa-meanpath:before {
+    content: $fa-var-meanpath;
+}
+
+[ng-reflect-name=fa-buysellads]:before, .ion-md-fa-buysellads:before, .ion-ios-fa-buysellads:before {
+    content: $fa-var-buysellads;
+}
+
+[ng-reflect-name=fa-connectdevelop]:before, .ion-md-fa-connectdevelop:before, .ion-ios-fa-connectdevelop:before {
+    content: $fa-var-connectdevelop;
+}
+
+[ng-reflect-name=fa-dashcube]:before, .ion-md-fa-dashcube:before, .ion-ios-fa-dashcube:before {
+    content: $fa-var-dashcube;
+}
+
+[ng-reflect-name=fa-forumbee]:before, .ion-md-fa-forumbee:before, .ion-ios-fa-forumbee:before {
+    content: $fa-var-forumbee;
+}
+
+[ng-reflect-name=fa-leanpub]:before, .ion-md-fa-leanpub:before, .ion-ios-fa-leanpub:before {
+    content: $fa-var-leanpub;
+}
+
+[ng-reflect-name=fa-sellsy]:before, .ion-md-fa-sellsy:before, .ion-ios-fa-sellsy:before {
+    content: $fa-var-sellsy;
+}
+
+[ng-reflect-name=fa-shirtsinbulk]:before, .ion-md-fa-shirtsinbulk:before, .ion-ios-fa-shirtsinbulk:before {
+    content: $fa-var-shirtsinbulk;
+}
+
+[ng-reflect-name=fa-simplybuilt]:before, .ion-md-fa-simplybuilt:before, .ion-ios-fa-simplybuilt:before {
+    content: $fa-var-simplybuilt;
+}
+
+[ng-reflect-name=fa-skyatlas]:before, .ion-md-fa-skyatlas:before, .ion-ios-fa-skyatlas:before {
+    content: $fa-var-skyatlas;
+}
+
+[ng-reflect-name=fa-cart-plus]:before, .ion-md-fa-cart-plus:before, .ion-ios-fa-cart-plus:before {
+    content: $fa-var-cart-plus;
+}
+
+[ng-reflect-name=fa-cart-arrow-down]:before, .ion-md-fa-cart-arrow-down:before, .ion-ios-fa-cart-arrow-down:before {
+    content: $fa-var-cart-arrow-down;
+}
+
+[ng-reflect-name=fa-diamond]:before, .ion-md-fa-diamond:before, .ion-ios-fa-diamond:before {
+    content: $fa-var-diamond;
+}
+
+[ng-reflect-name=fa-ship]:before, .ion-md-fa-ship:before, .ion-ios-fa-ship:before {
+    content: $fa-var-ship;
+}
+
+[ng-reflect-name=fa-user-secret]:before, .ion-md-fa-user-secret:before, .ion-ios-fa-user-secret:before {
+    content: $fa-var-user-secret;
+}
+
+[ng-reflect-name=fa-motorcycle]:before, .ion-md-fa-motorcycle:before, .ion-ios-fa-motorcycle:before {
+    content: $fa-var-motorcycle;
+}
+
+[ng-reflect-name=fa-street-view]:before, .ion-md-fa-street-view:before, .ion-ios-fa-street-view:before {
+    content: $fa-var-street-view;
+}
+
+[ng-reflect-name=fa-heartbeat]:before, .ion-md-fa-heartbeat:before, .ion-ios-fa-heartbeat:before {
+    content: $fa-var-heartbeat;
+}
+
+[ng-reflect-name=fa-venus]:before, .ion-md-fa-venus:before, .ion-ios-fa-venus:before {
+    content: $fa-var-venus;
+}
+
+[ng-reflect-name=fa-mars]:before, .ion-md-fa-mars:before, .ion-ios-fa-mars:before {
+    content: $fa-var-mars;
+}
+
+[ng-reflect-name=fa-mercury]:before, .ion-md-fa-mercury:before, .ion-ios-fa-mercury:before {
+    content: $fa-var-mercury;
+}
+
+[ng-reflect-name=fa-intersex]:before, .ion-md-fa-intersex:before, .ion-ios-fa-intersex:before,
+[ng-reflect-name=fa-transgender]:before, .ion-md-fa-transgender:before, .ion-ios-fa-transgender:before {
+    content: $fa-var-transgender;
+}
+
+[ng-reflect-name=fa-transgender-alt]:before, .ion-md-fa-transgender-alt:before, .ion-ios-fa-transgender-alt:before {
+    content: $fa-var-transgender-alt;
+}
+
+[ng-reflect-name=fa-venus-double]:before, .ion-md-fa-venus-double:before, .ion-ios-fa-venus-double:before {
+    content: $fa-var-venus-double;
+}
+
+[ng-reflect-name=fa-mars-double]:before, .ion-md-fa-mars-double:before, .ion-ios-fa-mars-double:before {
+    content: $fa-var-mars-double;
+}
+
+[ng-reflect-name=fa-venus-mars]:before, .ion-md-fa-venus-mars:before, .ion-ios-fa-venus-mars:before {
+    content: $fa-var-venus-mars;
+}
+
+[ng-reflect-name=fa-mars-stroke]:before, .ion-md-fa-mars-stroke:before, .ion-ios-fa-mars-stroke:before {
+    content: $fa-var-mars-stroke;
+}
+
+[ng-reflect-name=fa-mars-stroke-v]:before, .ion-md-fa-mars-stroke-v:before, .ion-ios-fa-mars-stroke-v:before {
+    content: $fa-var-mars-stroke-v;
+}
+
+[ng-reflect-name=fa-mars-stroke-h]:before, .ion-md-fa-mars-stroke-h:before, .ion-ios-fa-mars-stroke-h:before {
+    content: $fa-var-mars-stroke-h;
+}
+
+[ng-reflect-name=fa-neuter]:before, .ion-md-fa-neuter:before, .ion-ios-fa-neuter:before {
+    content: $fa-var-neuter;
+}
+
+[ng-reflect-name=fa-genderless]:before, .ion-md-fa-genderless:before, .ion-ios-fa-genderless:before {
+    content: $fa-var-genderless;
+}
+
+[ng-reflect-name=fa-facebook-official]:before, .ion-md-fa-facebook-official:before, .ion-ios-fa-facebook-official:before {
+    content: $fa-var-facebook-official;
+}
+
+[ng-reflect-name=fa-pinterest-p]:before, .ion-md-fa-pinterest-p:before, .ion-ios-fa-pinterest-p:before {
+    content: $fa-var-pinterest-p;
+}
+
+[ng-reflect-name=fa-whatsapp]:before, .ion-md-fa-whatsapp:before, .ion-ios-fa-whatsapp:before {
+    content: $fa-var-whatsapp;
+}
+
+[ng-reflect-name=fa-server]:before, .ion-md-fa-server:before, .ion-ios-fa-server:before {
+    content: $fa-var-server;
+}
+
+[ng-reflect-name=fa-user-plus]:before, .ion-md-fa-user-plus:before, .ion-ios-fa-user-plus:before {
+    content: $fa-var-user-plus;
+}
+
+[ng-reflect-name=fa-user-times]:before, .ion-md-fa-user-times:before, .ion-ios-fa-user-times:before {
+    content: $fa-var-user-times;
+}
+
+[ng-reflect-name=fa-hotel]:before, .ion-md-fa-hotel:before, .ion-ios-fa-hotel:before,
+[ng-reflect-name=fa-bed]:before, .ion-md-fa-bed:before, .ion-ios-fa-bed:before {
+    content: $fa-var-bed;
+}
+
+[ng-reflect-name=fa-viacoin]:before, .ion-md-fa-viacoin:before, .ion-ios-fa-viacoin:before {
+    content: $fa-var-viacoin;
+}
+
+[ng-reflect-name=fa-train]:before, .ion-md-fa-train:before, .ion-ios-fa-train:before {
+    content: $fa-var-train;
+}
+
+[ng-reflect-name=fa-subway]:before, .ion-md-fa-subway:before, .ion-ios-fa-subway:before {
+    content: $fa-var-subway;
+}
+
+[ng-reflect-name=fa-medium]:before, .ion-md-fa-medium:before, .ion-ios-fa-medium:before {
+    content: $fa-var-medium;
+}
+
+[ng-reflect-name=fa-yc]:before, .ion-md-fa-yc:before, .ion-ios-fa-yc:before,
+[ng-reflect-name=fa-y-combinator]:before, .ion-md-fa-y-combinator:before, .ion-ios-fa-y-combinator:before {
+    content: $fa-var-y-combinator;
+}
+
+[ng-reflect-name=fa-optin-monster]:before, .ion-md-fa-optin-monster:before, .ion-ios-fa-optin-monster:before {
+    content: $fa-var-optin-monster;
+}
+
+[ng-reflect-name=fa-opencart]:before, .ion-md-fa-opencart:before, .ion-ios-fa-opencart:before {
+    content: $fa-var-opencart;
+}
+
+[ng-reflect-name=fa-expeditedssl]:before, .ion-md-fa-expeditedssl:before, .ion-ios-fa-expeditedssl:before {
+    content: $fa-var-expeditedssl;
+}
+
+[ng-reflect-name=fa-battery-4]:before, .ion-md-fa-battery-4:before, .ion-ios-fa-battery-4:before,
+[ng-reflect-name=fa-battery]:before, .ion-md-fa-battery:before, .ion-ios-fa-battery:before,
+[ng-reflect-name=fa-battery-full]:before, .ion-md-fa-battery-full:before, .ion-ios-fa-battery-full:before {
+    content: $fa-var-battery-full;
+}
+
+[ng-reflect-name=fa-battery-3]:before, .ion-md-fa-battery-3:before, .ion-ios-fa-battery-3:before,
+[ng-reflect-name=fa-battery-three-quarters]:before, .ion-md-fa-battery-three-quarters:before, .ion-ios-fa-battery-three-quarters:before {
+    content: $fa-var-battery-three-quarters;
+}
+
+[ng-reflect-name=fa-battery-2]:before, .ion-md-fa-battery-2:before, .ion-ios-fa-battery-2:before,
+[ng-reflect-name=fa-battery-half]:before, .ion-md-fa-battery-half:before, .ion-ios-fa-battery-half:before {
+    content: $fa-var-battery-half;
+}
+
+[ng-reflect-name=fa-battery-1]:before, .ion-md-fa-battery-1:before, .ion-ios-fa-battery-1:before,
+[ng-reflect-name=fa-battery-quarter]:before, .ion-md-fa-battery-quarter:before, .ion-ios-fa-battery-quarter:before {
+    content: $fa-var-battery-quarter;
+}
+
+[ng-reflect-name=fa-battery-0]:before, .ion-md-fa-battery-0:before, .ion-ios-fa-battery-0:before,
+[ng-reflect-name=fa-battery-empty]:before, .ion-md-fa-battery-empty:before, .ion-ios-fa-battery-empty:before {
+    content: $fa-var-battery-empty;
+}
+
+[ng-reflect-name=fa-mouse-pointer]:before, .ion-md-fa-mouse-pointer:before, .ion-ios-fa-mouse-pointer:before {
+    content: $fa-var-mouse-pointer;
+}
+
+[ng-reflect-name=fa-i-cursor]:before, .ion-md-fa-i-cursor:before, .ion-ios-fa-i-cursor:before {
+    content: $fa-var-i-cursor;
+}
+
+[ng-reflect-name=fa-object-group]:before, .ion-md-fa-object-group:before, .ion-ios-fa-object-group:before {
+    content: $fa-var-object-group;
+}
+
+[ng-reflect-name=fa-object-ungroup]:before, .ion-md-fa-object-ungroup:before, .ion-ios-fa-object-ungroup:before {
+    content: $fa-var-object-ungroup;
+}
+
+[ng-reflect-name=fa-sticky-note]:before, .ion-md-fa-sticky-note:before, .ion-ios-fa-sticky-note:before {
+    content: $fa-var-sticky-note;
+}
+
+[ng-reflect-name=fa-sticky-note-o]:before, .ion-md-fa-sticky-note-o:before, .ion-ios-fa-sticky-note-o:before {
+    content: $fa-var-sticky-note-o;
+}
+
+[ng-reflect-name=fa-cc-jcb]:before, .ion-md-fa-cc-jcb:before, .ion-ios-fa-cc-jcb:before {
+    content: $fa-var-cc-jcb;
+}
+
+[ng-reflect-name=fa-cc-diners-club]:before, .ion-md-fa-cc-diners-club:before, .ion-ios-fa-cc-diners-club:before {
+    content: $fa-var-cc-diners-club;
+}
+
+[ng-reflect-name=fa-clone]:before, .ion-md-fa-clone:before, .ion-ios-fa-clone:before {
+    content: $fa-var-clone;
+}
+
+[ng-reflect-name=fa-balance-scale]:before, .ion-md-fa-balance-scale:before, .ion-ios-fa-balance-scale:before {
+    content: $fa-var-balance-scale;
+}
+
+[ng-reflect-name=fa-hourglass-o]:before, .ion-md-fa-hourglass-o:before, .ion-ios-fa-hourglass-o:before {
+    content: $fa-var-hourglass-o;
+}
+
+[ng-reflect-name=fa-hourglass-1]:before, .ion-md-fa-hourglass-1:before, .ion-ios-fa-hourglass-1:before,
+[ng-reflect-name=fa-hourglass-start]:before, .ion-md-fa-hourglass-start:before, .ion-ios-fa-hourglass-start:before {
+    content: $fa-var-hourglass-start;
+}
+
+[ng-reflect-name=fa-hourglass-2]:before, .ion-md-fa-hourglass-2:before, .ion-ios-fa-hourglass-2:before,
+[ng-reflect-name=fa-hourglass-half]:before, .ion-md-fa-hourglass-half:before, .ion-ios-fa-hourglass-half:before {
+    content: $fa-var-hourglass-half;
+}
+
+[ng-reflect-name=fa-hourglass-3]:before, .ion-md-fa-hourglass-3:before, .ion-ios-fa-hourglass-3:before,
+[ng-reflect-name=fa-hourglass-end]:before, .ion-md-fa-hourglass-end:before, .ion-ios-fa-hourglass-end:before {
+    content: $fa-var-hourglass-end;
+}
+
+[ng-reflect-name=fa-hourglass]:before, .ion-md-fa-hourglass:before, .ion-ios-fa-hourglass:before {
+    content: $fa-var-hourglass;
+}
+
+[ng-reflect-name=fa-hand-grab-o]:before, .ion-md-fa-hand-grab-o:before, .ion-ios-fa-hand-grab-o:before,
+[ng-reflect-name=fa-hand-rock-o]:before, .ion-md-fa-hand-rock-o:before, .ion-ios-fa-hand-rock-o:before {
+    content: $fa-var-hand-rock-o;
+}
+
+[ng-reflect-name=fa-hand-stop-o]:before, .ion-md-fa-hand-stop-o:before, .ion-ios-fa-hand-stop-o:before,
+[ng-reflect-name=fa-hand-paper-o]:before, .ion-md-fa-hand-paper-o:before, .ion-ios-fa-hand-paper-o:before {
+    content: $fa-var-hand-paper-o;
+}
+
+[ng-reflect-name=fa-hand-scissors-o]:before, .ion-md-fa-hand-scissors-o:before, .ion-ios-fa-hand-scissors-o:before {
+    content: $fa-var-hand-scissors-o;
+}
+
+[ng-reflect-name=fa-hand-lizard-o]:before, .ion-md-fa-hand-lizard-o:before, .ion-ios-fa-hand-lizard-o:before {
+    content: $fa-var-hand-lizard-o;
+}
+
+[ng-reflect-name=fa-hand-spock-o]:before, .ion-md-fa-hand-spock-o:before, .ion-ios-fa-hand-spock-o:before {
+    content: $fa-var-hand-spock-o;
+}
+
+[ng-reflect-name=fa-hand-pointer-o]:before, .ion-md-fa-hand-pointer-o:before, .ion-ios-fa-hand-pointer-o:before {
+    content: $fa-var-hand-pointer-o;
+}
+
+[ng-reflect-name=fa-hand-peace-o]:before, .ion-md-fa-hand-peace-o:before, .ion-ios-fa-hand-peace-o:before {
+    content: $fa-var-hand-peace-o;
+}
+
+[ng-reflect-name=fa-trademark]:before, .ion-md-fa-trademark:before, .ion-ios-fa-trademark:before {
+    content: $fa-var-trademark;
+}
+
+[ng-reflect-name=fa-registered]:before, .ion-md-fa-registered:before, .ion-ios-fa-registered:before {
+    content: $fa-var-registered;
+}
+
+[ng-reflect-name=fa-creative-commons]:before, .ion-md-fa-creative-commons:before, .ion-ios-fa-creative-commons:before {
+    content: $fa-var-creative-commons;
+}
+
+[ng-reflect-name=fa-gg]:before, .ion-md-fa-gg:before, .ion-ios-fa-gg:before {
+    content: $fa-var-gg;
+}
+
+[ng-reflect-name=fa-gg-circle]:before, .ion-md-fa-gg-circle:before, .ion-ios-fa-gg-circle:before {
+    content: $fa-var-gg-circle;
+}
+
+[ng-reflect-name=fa-tripadvisor]:before, .ion-md-fa-tripadvisor:before, .ion-ios-fa-tripadvisor:before {
+    content: $fa-var-tripadvisor;
+}
+
+[ng-reflect-name=fa-odnoklassniki]:before, .ion-md-fa-odnoklassniki:before, .ion-ios-fa-odnoklassniki:before {
+    content: $fa-var-odnoklassniki;
+}
+
+[ng-reflect-name=fa-odnoklassniki-square]:before, .ion-md-fa-odnoklassniki-square:before, .ion-ios-fa-odnoklassniki-square:before {
+    content: $fa-var-odnoklassniki-square;
+}
+
+[ng-reflect-name=fa-get-pocket]:before, .ion-md-fa-get-pocket:before, .ion-ios-fa-get-pocket:before {
+    content: $fa-var-get-pocket;
+}
+
+[ng-reflect-name=fa-wikipedia-w]:before, .ion-md-fa-wikipedia-w:before, .ion-ios-fa-wikipedia-w:before {
+    content: $fa-var-wikipedia-w;
+}
+
+[ng-reflect-name=fa-safari]:before, .ion-md-fa-safari:before, .ion-ios-fa-safari:before {
+    content: $fa-var-safari;
+}
+
+[ng-reflect-name=fa-chrome]:before, .ion-md-fa-chrome:before, .ion-ios-fa-chrome:before {
+    content: $fa-var-chrome;
+}
+
+[ng-reflect-name=fa-firefox]:before, .ion-md-fa-firefox:before, .ion-ios-fa-firefox:before {
+    content: $fa-var-firefox;
+}
+
+[ng-reflect-name=fa-opera]:before, .ion-md-fa-opera:before, .ion-ios-fa-opera:before {
+    content: $fa-var-opera;
+}
+
+[ng-reflect-name=fa-internet-explorer]:before, .ion-md-fa-internet-explorer:before, .ion-ios-fa-internet-explorer:before {
+    content: $fa-var-internet-explorer;
+}
+
+[ng-reflect-name=fa-tv]:before, .ion-md-fa-tv:before, .ion-ios-fa-tv:before,
+[ng-reflect-name=fa-television]:before, .ion-md-fa-television:before, .ion-ios-fa-television:before {
+    content: $fa-var-television;
+}
+
+[ng-reflect-name=fa-contao]:before, .ion-md-fa-contao:before, .ion-ios-fa-contao:before {
+    content: $fa-var-contao;
+}
+
+[ng-reflect-name=fa-500px]:before, .ion-md-fa-500px:before, .ion-ios-fa-500px:before {
+    content: $fa-var-500px;
+}
+
+[ng-reflect-name=fa-amazon]:before, .ion-md-fa-amazon:before, .ion-ios-fa-amazon:before {
+    content: $fa-var-amazon;
+}
+
+[ng-reflect-name=fa-calendar-plus-o]:before, .ion-md-fa-calendar-plus-o:before, .ion-ios-fa-calendar-plus-o:before {
+    content: $fa-var-calendar-plus-o;
+}
+
+[ng-reflect-name=fa-calendar-minus-o]:before, .ion-md-fa-calendar-minus-o:before, .ion-ios-fa-calendar-minus-o:before {
+    content: $fa-var-calendar-minus-o;
+}
+
+[ng-reflect-name=fa-calendar-times-o]:before, .ion-md-fa-calendar-times-o:before, .ion-ios-fa-calendar-times-o:before {
+    content: $fa-var-calendar-times-o;
+}
+
+[ng-reflect-name=fa-calendar-check-o]:before, .ion-md-fa-calendar-check-o:before, .ion-ios-fa-calendar-check-o:before {
+    content: $fa-var-calendar-check-o;
+}
+
+[ng-reflect-name=fa-industry]:before, .ion-md-fa-industry:before, .ion-ios-fa-industry:before {
+    content: $fa-var-industry;
+}
+
+[ng-reflect-name=fa-map-pin]:before, .ion-md-fa-map-pin:before, .ion-ios-fa-map-pin:before {
+    content: $fa-var-map-pin;
+}
+
+[ng-reflect-name=fa-map-signs]:before, .ion-md-fa-map-signs:before, .ion-ios-fa-map-signs:before {
+    content: $fa-var-map-signs;
+}
+
+[ng-reflect-name=fa-map-o]:before, .ion-md-fa-map-o:before, .ion-ios-fa-map-o:before {
+    content: $fa-var-map-o;
+}
+
+[ng-reflect-name=fa-map]:before, .ion-md-fa-map:before, .ion-ios-fa-map:before {
+    content: $fa-var-map;
+}
+
+[ng-reflect-name=fa-commenting]:before, .ion-md-fa-commenting:before, .ion-ios-fa-commenting:before {
+    content: $fa-var-commenting;
+}
+
+[ng-reflect-name=fa-commenting-o]:before, .ion-md-fa-commenting-o:before, .ion-ios-fa-commenting-o:before {
+    content: $fa-var-commenting-o;
+}
+
+[ng-reflect-name=fa-houzz]:before, .ion-md-fa-houzz:before, .ion-ios-fa-houzz:before {
+    content: $fa-var-houzz;
+}
+
+[ng-reflect-name=fa-vimeo]:before, .ion-md-fa-vimeo:before, .ion-ios-fa-vimeo:before {
+    content: $fa-var-vimeo;
+}
+
+[ng-reflect-name=fa-black-tie]:before, .ion-md-fa-black-tie:before, .ion-ios-fa-black-tie:before {
+    content: $fa-var-black-tie;
+}
+
+[ng-reflect-name=fa-fonticons]:before, .ion-md-fa-fonticons:before, .ion-ios-fa-fonticons:before {
+    content: $fa-var-fonticons;
+}
+
+[ng-reflect-name=fa-reddit-alien]:before, .ion-md-fa-reddit-alien:before, .ion-ios-fa-reddit-alien:before {
+    content: $fa-var-reddit-alien;
+}
+
+[ng-reflect-name=fa-edge]:before, .ion-md-fa-edge:before, .ion-ios-fa-edge:before {
+    content: $fa-var-edge;
+}
+
+[ng-reflect-name=fa-credit-card-alt]:before, .ion-md-fa-credit-card-alt:before, .ion-ios-fa-credit-card-alt:before {
+    content: $fa-var-credit-card-alt;
+}
+
+[ng-reflect-name=fa-codiepie]:before, .ion-md-fa-codiepie:before, .ion-ios-fa-codiepie:before {
+    content: $fa-var-codiepie;
+}
+
+[ng-reflect-name=fa-modx]:before, .ion-md-fa-modx:before, .ion-ios-fa-modx:before {
+    content: $fa-var-modx;
+}
+
+[ng-reflect-name=fa-fort-awesome]:before, .ion-md-fa-fort-awesome:before, .ion-ios-fa-fort-awesome:before {
+    content: $fa-var-fort-awesome;
+}
+
+[ng-reflect-name=fa-usb]:before, .ion-md-fa-usb:before, .ion-ios-fa-usb:before {
+    content: $fa-var-usb;
+}
+
+[ng-reflect-name=fa-product-hunt]:before, .ion-md-fa-product-hunt:before, .ion-ios-fa-product-hunt:before {
+    content: $fa-var-product-hunt;
+}
+
+[ng-reflect-name=fa-mixcloud]:before, .ion-md-fa-mixcloud:before, .ion-ios-fa-mixcloud:before {
+    content: $fa-var-mixcloud;
+}
+
+[ng-reflect-name=fa-scribd]:before, .ion-md-fa-scribd:before, .ion-ios-fa-scribd:before {
+    content: $fa-var-scribd;
+}
+
+[ng-reflect-name=fa-pause-circle]:before, .ion-md-fa-pause-circle:before, .ion-ios-fa-pause-circle:before {
+    content: $fa-var-pause-circle;
+}
+
+[ng-reflect-name=fa-pause-circle-o]:before, .ion-md-fa-pause-circle-o:before, .ion-ios-fa-pause-circle-o:before {
+    content: $fa-var-pause-circle-o;
+}
+
+[ng-reflect-name=fa-stop-circle]:before, .ion-md-fa-stop-circle:before, .ion-ios-fa-stop-circle:before {
+    content: $fa-var-stop-circle;
+}
+
+[ng-reflect-name=fa-stop-circle-o]:before, .ion-md-fa-stop-circle-o:before, .ion-ios-fa-stop-circle-o:before {
+    content: $fa-var-stop-circle-o;
+}
+
+[ng-reflect-name=fa-shopping-bag]:before, .ion-md-fa-shopping-bag:before, .ion-ios-fa-shopping-bag:before {
+    content: $fa-var-shopping-bag;
+}
+
+[ng-reflect-name=fa-shopping-basket]:before, .ion-md-fa-shopping-basket:before, .ion-ios-fa-shopping-basket:before {
+    content: $fa-var-shopping-basket;
+}
+
+[ng-reflect-name=fa-hashtag]:before, .ion-md-fa-hashtag:before, .ion-ios-fa-hashtag:before {
+    content: $fa-var-hashtag;
+}
+
+[ng-reflect-name=fa-bluetooth]:before, .ion-md-fa-bluetooth:before, .ion-ios-fa-bluetooth:before {
+    content: $fa-var-bluetooth;
+}
+
+[ng-reflect-name=fa-bluetooth-b]:before, .ion-md-fa-bluetooth-b:before, .ion-ios-fa-bluetooth-b:before {
+    content: $fa-var-bluetooth-b;
+}
+
+[ng-reflect-name=fa-percent]:before, .ion-md-fa-percent:before, .ion-ios-fa-percent:before {
+    content: $fa-var-percent;
+}
+
+[ng-reflect-name=fa-gitlab]:before, .ion-md-fa-gitlab:before, .ion-ios-fa-gitlab:before {
+    content: $fa-var-gitlab;
+}
+
+[ng-reflect-name=fa-wpbeginner]:before, .ion-md-fa-wpbeginner:before, .ion-ios-fa-wpbeginner:before {
+    content: $fa-var-wpbeginner;
+}
+
+[ng-reflect-name=fa-wpforms]:before, .ion-md-fa-wpforms:before, .ion-ios-fa-wpforms:before {
+    content: $fa-var-wpforms;
+}
+
+[ng-reflect-name=fa-envira]:before, .ion-md-fa-envira:before, .ion-ios-fa-envira:before {
+    content: $fa-var-envira;
+}
+
+[ng-reflect-name=fa-universal-access]:before, .ion-md-fa-universal-access:before, .ion-ios-fa-universal-access:before {
+    content: $fa-var-universal-access;
+}
+
+[ng-reflect-name=fa-wheelchair-alt]:before, .ion-md-fa-wheelchair-alt:before, .ion-ios-fa-wheelchair-alt:before {
+    content: $fa-var-wheelchair-alt;
+}
+
+[ng-reflect-name=fa-question-circle-o]:before, .ion-md-fa-question-circle-o:before, .ion-ios-fa-question-circle-o:before {
+    content: $fa-var-question-circle-o;
+}
+
+[ng-reflect-name=fa-blind]:before, .ion-md-fa-blind:before, .ion-ios-fa-blind:before {
+    content: $fa-var-blind;
+}
+
+[ng-reflect-name=fa-audio-description]:before, .ion-md-fa-audio-description:before, .ion-ios-fa-audio-description:before {
+    content: $fa-var-audio-description;
+}
+
+[ng-reflect-name=fa-volume-control-phone]:before, .ion-md-fa-volume-control-phone:before, .ion-ios-fa-volume-control-phone:before {
+    content: $fa-var-volume-control-phone;
+}
+
+[ng-reflect-name=fa-braille]:before, .ion-md-fa-braille:before, .ion-ios-fa-braille:before {
+    content: $fa-var-braille;
+}
+
+[ng-reflect-name=fa-assistive-listening-systems]:before, .ion-md-fa-assistive-listening-systems:before, .ion-ios-fa-assistive-listening-systems:before {
+    content: $fa-var-assistive-listening-systems;
+}
+
+[ng-reflect-name=fa-asl-interpreting]:before, .ion-md-fa-asl-interpreting:before, .ion-ios-fa-asl-interpreting:before,
+[ng-reflect-name=fa-american-sign-language-interpreting]:before, .ion-md-fa-american-sign-language-interpreting:before, .ion-ios-fa-american-sign-language-interpreting:before {
+    content: $fa-var-american-sign-language-interpreting;
+}
+
+[ng-reflect-name=fa-deafness]:before, .ion-md-fa-deafness:before, .ion-ios-fa-deafness:before,
+[ng-reflect-name=fa-hard-of-hearing]:before, .ion-md-fa-hard-of-hearing:before, .ion-ios-fa-hard-of-hearing:before,
+[ng-reflect-name=fa-deaf]:before, .ion-md-fa-deaf:before, .ion-ios-fa-deaf:before {
+    content: $fa-var-deaf;
+}
+
+[ng-reflect-name=fa-glide]:before, .ion-md-fa-glide:before, .ion-ios-fa-glide:before {
+    content: $fa-var-glide;
+}
+
+[ng-reflect-name=fa-glide-g]:before, .ion-md-fa-glide-g:before, .ion-ios-fa-glide-g:before {
+    content: $fa-var-glide-g;
+}
+
+[ng-reflect-name=fa-signing]:before, .ion-md-fa-signing:before, .ion-ios-fa-signing:before,
+[ng-reflect-name=fa-sign-language]:before, .ion-md-fa-sign-language:before, .ion-ios-fa-sign-language:before {
+    content: $fa-var-sign-language;
+}
+
+[ng-reflect-name=fa-low-vision]:before, .ion-md-fa-low-vision:before, .ion-ios-fa-low-vision:before {
+    content: $fa-var-low-vision;
+}
+
+[ng-reflect-name=fa-viadeo]:before, .ion-md-fa-viadeo:before, .ion-ios-fa-viadeo:before {
+    content: $fa-var-viadeo;
+}
+
+[ng-reflect-name=fa-viadeo-square]:before, .ion-md-fa-viadeo-square:before, .ion-ios-fa-viadeo-square:before {
+    content: $fa-var-viadeo-square;
+}
+
+[ng-reflect-name=fa-snapchat]:before, .ion-md-fa-snapchat:before, .ion-ios-fa-snapchat:before {
+    content: $fa-var-snapchat;
+}
+
+[ng-reflect-name=fa-snapchat-ghost]:before, .ion-md-fa-snapchat-ghost:before, .ion-ios-fa-snapchat-ghost:before {
+    content: $fa-var-snapchat-ghost;
+}
+
+[ng-reflect-name=fa-snapchat-square]:before, .ion-md-fa-snapchat-square:before, .ion-ios-fa-snapchat-square:before {
+    content: $fa-var-snapchat-square;
+}
+
+[ng-reflect-name=fa-pied-piper]:before, .ion-md-fa-pied-piper:before, .ion-ios-fa-pied-piper:before {
+    content: $fa-var-pied-piper;
+}
+
+[ng-reflect-name=fa-first-order]:before, .ion-md-fa-first-order:before, .ion-ios-fa-first-order:before {
+    content: $fa-var-first-order;
+}
+
+[ng-reflect-name=fa-yoast]:before, .ion-md-fa-yoast:before, .ion-ios-fa-yoast:before {
+    content: $fa-var-yoast;
+}
+
+[ng-reflect-name=fa-themeisle]:before, .ion-md-fa-themeisle:before, .ion-ios-fa-themeisle:before {
+    content: $fa-var-themeisle;
+}
+
+[ng-reflect-name=fa-google-plus-circle]:before, .ion-md-fa-google-plus-circle:before, .ion-ios-fa-google-plus-circle:before,
+[ng-reflect-name=fa-google-plus-official]:before, .ion-md-fa-google-plus-official:before, .ion-ios-fa-google-plus-official:before {
+    content: $fa-var-google-plus-official;
+}
+
+[ng-reflect-name=fa-fa]:before, .ion-md-fa-fa:before, .ion-ios-fa-fa:before,
+[ng-reflect-name=fa-font-awesome]:before, .ion-md-fa-font-awesome:before, .ion-ios-fa-font-awesome:before {
+    content: $fa-var-font-awesome;
+}
+
+[ng-reflect-name=fa-handshake-o]:before, .ion-md-fa-handshake-o:before, .ion-ios-fa-handshake-o:before {
+    content: $fa-var-handshake-o;
+}
+
+[ng-reflect-name=fa-envelope-open]:before, .ion-md-fa-envelope-open:before, .ion-ios-fa-envelope-open:before {
+    content: $fa-var-envelope-open;
+}
+
+[ng-reflect-name=fa-envelope-open-o]:before, .ion-md-fa-envelope-open-o:before, .ion-ios-fa-envelope-open-o:before {
+    content: $fa-var-envelope-open-o;
+}
+
+[ng-reflect-name=fa-linode]:before, .ion-md-fa-linode:before, .ion-ios-fa-linode:before {
+    content: $fa-var-linode;
+}
+
+[ng-reflect-name=fa-address-book]:before, .ion-md-fa-address-book:before, .ion-ios-fa-address-book:before {
+    content: $fa-var-address-book;
+}
+
+[ng-reflect-name=fa-address-book-o]:before, .ion-md-fa-address-book-o:before, .ion-ios-fa-address-book-o:before {
+    content: $fa-var-address-book-o;
+}
+
+[ng-reflect-name=fa-vcard]:before, .ion-md-fa-vcard:before, .ion-ios-fa-vcard:before,
+[ng-reflect-name=fa-address-card]:before, .ion-md-fa-address-card:before, .ion-ios-fa-address-card:before {
+    content: $fa-var-address-card;
+}
+
+[ng-reflect-name=fa-vcard-o]:before, .ion-md-fa-vcard-o:before, .ion-ios-fa-vcard-o:before,
+[ng-reflect-name=fa-address-card-o]:before, .ion-md-fa-address-card-o:before, .ion-ios-fa-address-card-o:before {
+    content: $fa-var-address-card-o;
+}
+
+[ng-reflect-name=fa-user-circle]:before, .ion-md-fa-user-circle:before, .ion-ios-fa-user-circle:before {
+    content: $fa-var-user-circle;
+}
+
+[ng-reflect-name=fa-user-circle-o]:before, .ion-md-fa-user-circle-o:before, .ion-ios-fa-user-circle-o:before {
+    content: $fa-var-user-circle-o;
+}
+
+[ng-reflect-name=fa-user-o]:before, .ion-md-fa-user-o:before, .ion-ios-fa-user-o:before {
+    content: $fa-var-user-o;
+}
+
+[ng-reflect-name=fa-id-badge]:before, .ion-md-fa-id-badge:before, .ion-ios-fa-id-badge:before {
+    content: $fa-var-id-badge;
+}
+
+[ng-reflect-name=fa-drivers-license]:before, .ion-md-fa-drivers-license:before, .ion-ios-fa-drivers-license:before,
+[ng-reflect-name=fa-id-card]:before, .ion-md-fa-id-card:before, .ion-ios-fa-id-card:before {
+    content: $fa-var-id-card;
+}
+
+[ng-reflect-name=fa-drivers-license-o]:before, .ion-md-fa-drivers-license-o:before, .ion-ios-fa-drivers-license-o:before,
+[ng-reflect-name=fa-id-card-o]:before, .ion-md-fa-id-card-o:before, .ion-ios-fa-id-card-o:before {
+    content: $fa-var-id-card-o;
+}
+
+[ng-reflect-name=fa-quora]:before, .ion-md-fa-quora:before, .ion-ios-fa-quora:before {
+    content: $fa-var-quora;
+}
+
+[ng-reflect-name=fa-free-code-camp]:before, .ion-md-fa-free-code-camp:before, .ion-ios-fa-free-code-camp:before {
+    content: $fa-var-free-code-camp;
+}
+
+[ng-reflect-name=fa-telegram]:before, .ion-md-fa-telegram:before, .ion-ios-fa-telegram:before {
+    content: $fa-var-telegram;
+}
+
+[ng-reflect-name=fa-thermometer-4]:before, .ion-md-fa-thermometer-4:before, .ion-ios-fa-thermometer-4:before,
+[ng-reflect-name=fa-thermometer]:before, .ion-md-fa-thermometer:before, .ion-ios-fa-thermometer:before,
+[ng-reflect-name=fa-thermometer-full]:before, .ion-md-fa-thermometer-full:before, .ion-ios-fa-thermometer-full:before {
+    content: $fa-var-thermometer-full;
+}
+
+[ng-reflect-name=fa-thermometer-3]:before, .ion-md-fa-thermometer-3:before, .ion-ios-fa-thermometer-3:before,
+[ng-reflect-name=fa-thermometer-three-quarters]:before, .ion-md-fa-thermometer-three-quarters:before, .ion-ios-fa-thermometer-three-quarters:before {
+    content: $fa-var-thermometer-three-quarters;
+}
+
+[ng-reflect-name=fa-thermometer-2]:before, .ion-md-fa-thermometer-2:before, .ion-ios-fa-thermometer-2:before,
+[ng-reflect-name=fa-thermometer-half]:before, .ion-md-fa-thermometer-half:before, .ion-ios-fa-thermometer-half:before {
+    content: $fa-var-thermometer-half;
+}
+
+[ng-reflect-name=fa-thermometer-1]:before, .ion-md-fa-thermometer-1:before, .ion-ios-fa-thermometer-1:before,
+[ng-reflect-name=fa-thermometer-quarter]:before, .ion-md-fa-thermometer-quarter:before, .ion-ios-fa-thermometer-quarter:before {
+    content: $fa-var-thermometer-quarter;
+}
+
+[ng-reflect-name=fa-thermometer-0]:before, .ion-md-fa-thermometer-0:before, .ion-ios-fa-thermometer-0:before,
+[ng-reflect-name=fa-thermometer-empty]:before, .ion-md-fa-thermometer-empty:before, .ion-ios-fa-thermometer-empty:before {
+    content: $fa-var-thermometer-empty;
+}
+
+[ng-reflect-name=fa-shower]:before, .ion-md-fa-shower:before, .ion-ios-fa-shower:before {
+    content: $fa-var-shower;
+}
+
+[ng-reflect-name=fa-bathtub]:before, .ion-md-fa-bathtub:before, .ion-ios-fa-bathtub:before,
+[ng-reflect-name=fa-s15]:before, .ion-md-fa-s15:before, .ion-ios-fa-s15:before,
+[ng-reflect-name=fa-bath]:before, .ion-md-fa-bath:before, .ion-ios-fa-bath:before {
+    content: $fa-var-bath;
+}
+
+[ng-reflect-name=fa-podcast]:before, .ion-md-fa-podcast:before, .ion-ios-fa-podcast:before {
+    content: $fa-var-podcast;
+}
+
+[ng-reflect-name=fa-window-maximize]:before, .ion-md-fa-window-maximize:before, .ion-ios-fa-window-maximize:before {
+    content: $fa-var-window-maximize;
+}
+
+[ng-reflect-name=fa-window-minimize]:before, .ion-md-fa-window-minimize:before, .ion-ios-fa-window-minimize:before {
+    content: $fa-var-window-minimize;
+}
+
+[ng-reflect-name=fa-window-restore]:before, .ion-md-fa-window-restore:before, .ion-ios-fa-window-restore:before {
+    content: $fa-var-window-restore;
+}
+
+[ng-reflect-name=fa-times-rectangle]:before, .ion-md-fa-times-rectangle:before, .ion-ios-fa-times-rectangle:before,
+[ng-reflect-name=fa-window-close]:before, .ion-md-fa-window-close:before, .ion-ios-fa-window-close:before {
+    content: $fa-var-window-close;
+}
+
+[ng-reflect-name=fa-times-rectangle-o]:before, .ion-md-fa-times-rectangle-o:before, .ion-ios-fa-times-rectangle-o:before,
+[ng-reflect-name=fa-window-close-o]:before, .ion-md-fa-window-close-o:before, .ion-ios-fa-window-close-o:before {
+    content: $fa-var-window-close-o;
+}
+
+[ng-reflect-name=fa-bandcamp]:before, .ion-md-fa-bandcamp:before, .ion-ios-fa-bandcamp:before {
+    content: $fa-var-bandcamp;
+}
+
+[ng-reflect-name=fa-grav]:before, .ion-md-fa-grav:before, .ion-ios-fa-grav:before {
+    content: $fa-var-grav;
+}
+
+[ng-reflect-name=fa-etsy]:before, .ion-md-fa-etsy:before, .ion-ios-fa-etsy:before {
+    content: $fa-var-etsy;
+}
+
+[ng-reflect-name=fa-imdb]:before, .ion-md-fa-imdb:before, .ion-ios-fa-imdb:before {
+    content: $fa-var-imdb;
+}
+
+[ng-reflect-name=fa-ravelry]:before, .ion-md-fa-ravelry:before, .ion-ios-fa-ravelry:before {
+    content: $fa-var-ravelry;
+}
+
+[ng-reflect-name=fa-eercast]:before, .ion-md-fa-eercast:before, .ion-ios-fa-eercast:before {
+    content: $fa-var-eercast;
+}
+
+[ng-reflect-name=fa-microchip]:before, .ion-md-fa-microchip:before, .ion-ios-fa-microchip:before {
+    content: $fa-var-microchip;
+}
+
+[ng-reflect-name=fa-snowflake-o]:before, .ion-md-fa-snowflake-o:before, .ion-ios-fa-snowflake-o:before {
+    content: $fa-var-snowflake-o;
+}
+
+[ng-reflect-name=fa-superpowers]:before, .ion-md-fa-superpowers:before, .ion-ios-fa-superpowers:before {
+    content: $fa-var-superpowers;
+}
+
+[ng-reflect-name=fa-wpexplorer]:before, .ion-md-fa-wpexplorer:before, .ion-ios-fa-wpexplorer:before {
+    content: $fa-var-wpexplorer;
+}
+
+[ng-reflect-name=fa-meetup]:before, .ion-md-fa-meetup:before, .ion-ios-fa-meetup:before {
+    content: $fa-var-meetup;
+}

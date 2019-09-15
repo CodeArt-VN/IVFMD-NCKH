@@ -1,0 +1,24 @@
+page-cate{
+    .doc-main{
+        span.logo {
+            width: 40px;
+            height: 40px;
+            display: block;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 5px;
+            float: left;
+        }
+        .datatable-body-cell{
+            a{
+                color: map-get($map: $colors, $key: ivf1)!important;
+            }
+            ion-icon{
+                font-size: 25px;
+	            line-height: 50px;
+            }
+        }
+    }
+    
+}

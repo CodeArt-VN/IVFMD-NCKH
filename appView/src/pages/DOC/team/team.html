@@ -1,0 +1,101 @@
+<ion-header *ngIf="userprofile">
+
+    <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+    <div class="search">
+        <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+    </div>
+    <div class="partner">
+        <select [attr.disabled]="userprofile.Partners.length >1 ? null : ''" [(ngModel)]="query.IDPartner" (change)="changePartner()">
+            <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
+        </select>
+    </div>
+    <div class="path">
+        <a (click)="openDefaultPage()">Home</a>
+        <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+        <a class="active">Thông tin trung tâm</a>
+    </div>
+    <div class="tools">
+        <button color="primary" ion-button icon-only clear (click)="refresh()">
+            <ion-icon name="refresh"></ion-icon>
+        </button>
+    </div>
+
+    <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+</ion-header>
+
+<ion-content>
+
+    <ion-row>
+        <ion-col class="doc-menu">
+            <div class="root-items">
+                <a class="active" *ngIf="canViewTeam">
+                    <ion-icon name="fa-users"></ion-icon>
+                    <span>
+                        Thông tin trung tâm
+                    </span>
+                </a>
+                <!-- <a>
+                    <ion-icon name="fa-clock-o"></ion-icon>
+                    <span>
+                        Team IFVMD Phú Nhuận
+                    </span>
+                </a> -->
+                <a *ngIf="canApproveDoc" href="#/approve">
+                    <ion-icon name="fa-gavel"></ion-icon>
+                    <span>
+                        Duyệt tài liệu
+                    </span>
+                </a>
+                <a *ngIf="canViewReport" href="#/report">
+                    <ion-icon name="fa-pie-chart"></ion-icon>
+                    <span>
+                        Báo cáo
+                    </span>
+                </a>
+            </div>
+
+            <div class="group" *ngIf="canViewSops">
+                <a href="#/sops">
+                    <ion-icon name="fa-database"></ion-icon>
+                    <span>
+                        Team Resources
+                    </span>
+                </a>
+            </div>
+        </ion-col>
+        <ion-col class="doc-main">
+            <div class="items row">
+                <ion-col col-12 class="item item-partner">
+                    <div class="contain-holder">
+                        <div class="title">
+                            {{userprofile.Partner.Code}}
+                        </div>
+                        <div class="sub-title">
+                                {{userprofile.Partner.Name}}
+                        </div>
+                        <img [src]="userprofile.Partner.LogoURL" class="logo">
+                        <div class="submary " >
+                            <div class="" [innerHtml]="userprofile.Partner.Remark | safeHtml">
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-ll-3 class="item" *ngFor="let i of items">
+                    <div class="contain-holder">
+                        <div class="avatar">
+                            <img [src]="i.Avatar " (error)="avatarLoadError(i)">
+                        </div>
+                        <div class="name">{{i.Name}}</div>
+                        <div class="group">{{i.RoleName}}</div>
+                        <div class="tel">
+                            {{i.SoDienThoai}}
+                        </div>
+                        <div class="email">
+                            {{i.Email}}
+                        </div>
+                    </div>
+                </ion-col>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>

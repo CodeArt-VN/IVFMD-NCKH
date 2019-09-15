@@ -1,0 +1,45 @@
+page-report {
+    .empty-row {
+        /* background-color: red; */
+        height: 100%;
+        color: #fff;
+        white-space:pre;
+
+        &::before{
+            position: absolute;
+            content: "\f435";
+            font-family: "Ionicons";
+            color: #BCBCCB;
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 230px;
+            padding-bottom: 20px;
+            bottom: 40%;
+            color: map-get($map: $colors, $key: ivfdark4);
+        }
+        
+        &::after{
+            width: 100%;
+            bottom: 40%;
+            position: absolute;
+            display: block;
+            text-align: center;
+            content: 'Có vẻ như thư mục này không có dữ liệu, \Avui lòng xem thư mục khác.';
+            color: map-get($map: $colors, $key: ivfdark2);
+        }
+    }
+
+
+    .ngx-datatable .datatable-body-row .datatable-body-cell{
+        line-height: 30px !important;
+        a .icon {
+            width: 17px !important;
+            padding-right: 0px !important;
+
+            &:last-child{
+                margin-right: 10px !important;
+            }
+        }
+    }
+}

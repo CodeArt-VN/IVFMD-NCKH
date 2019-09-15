@@ -1,0 +1,1202 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
+ output extension=".cs"#><#
+
+const string inputFile = @"Model.edmx";
+var textTransform = DynamicTextTransformation.Create(this);
+var code = new CodeGenerationTools(this);
+var ef = new MetadataTools(this);
+var typeMapper = new TypeMapper(code, ef, textTransform.Errors);
+var	fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var itemCollection = new EdmMetadataLoader(textTransform.Host, textTransform.Errors).CreateEdmItemCollection(inputFile);
+var codeStringGenerator = new CodeStringGenerator(code, typeMapper, ef);
+
+if (!typeMapper.VerifyCaseInsensitiveTypeUniqueness(typeMapper.GetAllGlobalItems(itemCollection), inputFile))
+{
+    return string.Empty;
+}
+
+WriteHeader(codeStringGenerator, fileManager);
+
+foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
+{
+    fileManager.StartNewFile(entity.Name + ".cs");
+    BeginNamespace(code);
+#>
+
+<#=codeStringGenerator.UsingDirectives(inHeader: false)#>
+
+<#=codeStringGenerator.EntityClassOpening(entity)#>
+{
+<#
+    var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(entity);
+    var collectionNavigationProperties = typeMapper.GetCollectionNavigationProperties(entity);
+    var complexProperties = typeMapper.GetComplexProperties(entity);
+
+    if (propertiesWithDefaultValues.Any() || collectionNavigationProperties.Any() || complexProperties.Any())
+    {
+#>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public <#=code.Escape(entity)#>()
+    {
+<#
+        foreach (var edmProperty in propertiesWithDefaultValues)
+        {
+#>
+        this.<#=code.Escape(edmProperty)#> = <#=typeMapper.CreateLiteral(edmProperty.DefaultValue)#>;
+<#
+        }
+
+        foreach (var navigationProperty in collectionNavigationProperties)
+        {
+#>
+        this.<#=code.Escape(navigationProperty)#> = new HashSet<<#=typeMapper.GetTypeName(navigationProperty.ToEndMember.GetEntityType())#>>();
+<#
+        }
+
+        foreach (var complexProperty in complexProperties)
+        {
+#>
+        this.<#=code.Escape(complexProperty)#> = new <#=typeMapper.GetTypeName(complexProperty.TypeUsage)#>();
+<#
+        }
+#>
+    }
+
+<#
+    }
+
+    var simpleProperties = typeMapper.GetSimpleProperties(entity);
+    if (simpleProperties.Any())
+    {
+        foreach (var edmProperty in simpleProperties)
+        {
+#>
+    <#=codeStringGenerator.Property(edmProperty)#>
+<#
+        }
+    }
+
+    if (complexProperties.Any())
+    {
+#>
+
+<#
+        foreach(var complexProperty in complexProperties)
+        {
+#>
+    <#=codeStringGenerator.Property(complexProperty)#>
+<#
+        }
+    }
+
+    var navigationProperties = typeMapper.GetNavigationProperties(entity);
+    if (navigationProperties.Any())
+    {
+#>
+<#
+        foreach (var navigationProperty in navigationProperties)
+        {
+            if (navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many)
+            {
+#>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<#
+            }
+#>
+    <#=codeStringGenerator.NavigationProperty(navigationProperty)#>
+<#
+        }
+    }
+#>
+}
+<#EndNamespace(code);#>
+namespace DTOModel
+{
+	using System;
+	<#=codeStringGenerator.EntityDTOClassOpening(entity)#>
+	{
+<#
+	if (simpleProperties.Any())
+    {
+        foreach (var edmProperty in simpleProperties)
+        {
+#>
+		<#=codeStringGenerator.Property(edmProperty)#>
+<#
+        }
+    }
+#>
+	}
+}
+
+<#
+	bool isExistIDPartnerProperty = simpleProperties.Any(d=>d.Name=="IDPartner");
+	bool isExistIDProperty = simpleProperties.Any(d=>d.Name=="ID");
+	bool isExistCodeProperty = simpleProperties.Any(d=>d.Name=="Code");
+	bool isExistNameProperty = simpleProperties.Any(d=>d.Name=="Name");
+	bool isExistRemarkProperty = simpleProperties.Any(d=>d.Name=="Remark");
+
+	bool isExistSortProperty = simpleProperties.Any(d=>d.Name=="Sort");
+	bool isExistIsDeletedProperty = simpleProperties.Any(d=>d.Name=="IsDeleted");
+	bool isExistIsDisabledProperty = simpleProperties.Any(d=>d.Name=="IsDisabled");
+	
+	bool isExistModifiedByProperty = simpleProperties.Any(d=>d.Name=="ModifiedBy");
+#>
+
+namespace BaseBusiness
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using DTOModel;
+    using ClassLibrary;
+	using System.Data.Entity.Validation;
+
+    public static partial class <#="BS_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> 
+    {
+		public static IQueryable<<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>> toDTO(IQueryable<<#=""+codeStringGenerator.EntityCodeName(entity)#>> query)
+        {
+			return query
+			.Select(s => new <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(){<#
+					if (simpleProperties.Any())
+					{
+						foreach (var edmProperty in simpleProperties)
+						{#>
+							
+				<#=codeStringGenerator.PropertyName(edmProperty)#> = s.<#=codeStringGenerator.PropertyName(edmProperty)#>,<#
+						}
+					}
+				#>
+					
+			})<#if (isExistSortProperty){#>.OrderBy(o => o.Sort == null).ThenBy(u => u.Sort)<#}#>;
+                              
+        }
+
+		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> toDTO(<#=""+codeStringGenerator.EntityCodeName(entity)#> dbResult)
+        {
+			<#if(isExistIDPartnerProperty){#>if (dbResult != null)
+			<#}else{#>if (dbResult != null)
+			<#}#>{
+				return new <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>()
+				{<#
+					if (simpleProperties.Any())
+					{
+						foreach (var edmProperty in simpleProperties)
+						{#>
+							
+					<#=codeStringGenerator.PropertyName(edmProperty)#> = dbResult.<#=codeStringGenerator.PropertyName(edmProperty)#>,<#
+						}
+					}
+				#>
+
+				};
+			}
+			else
+				return null; 
+        }
+
+        public static IQueryable<<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        {
+			var query = db.<#=codeStringGenerator.EntityCodeName(entity)#>
+<#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>
+			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
+<#}else if(isExistIsDeletedProperty){#>
+			.Where(d => d.IsDeleted == false );
+<#}else if(isExistIDPartnerProperty){#>
+			.Where(d => d.IDPartner == PartnerID);
+<#}#>
+			
+
+			//Query keyword
+<#if (isExistCodeProperty && isExistNameProperty){#>
+			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value;
+                query = query.Where(d=>d.Name.Contains(keyword) || d.Code.Contains(keyword));
+            }
+<#}else if(isExistCodeProperty){#>
+			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value;
+                query = query.Where(d=>d.Code.Contains(keyword));
+            }
+<#}else if(isExistNameProperty){#>
+			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value;
+                query = query.Where(d=>d.Name.Contains(keyword));
+            }
+<#}#>
+
+
+<#
+if (simpleProperties.Any())
+{
+	foreach (var edmProperty in simpleProperties)
+{#>
+
+			//Query <#=codeStringGenerator.PropertyName(edmProperty)#> (<#=codeStringGenerator.PropertyType(edmProperty)#>)
+<#if(codeStringGenerator.PropertyType(edmProperty) == "bool"){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.<#=codeStringGenerator.PropertyName(edmProperty)#>);
+            }
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "int" && codeStringGenerator.PropertyName(edmProperty).Contains("ID")){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.<#=codeStringGenerator.PropertyName(edmProperty)#>));
+            }
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "System.DateTime" || codeStringGenerator.PropertyType(edmProperty) == "Nullable<System.DateTime>"){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From") && QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.<#=codeStringGenerator.PropertyName(edmProperty)#> && d.<#=codeStringGenerator.PropertyName(edmProperty)#> <= toDate);
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "string"){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>").Value;
+                query = query.Where(d=>d.<#=codeStringGenerator.PropertyName(edmProperty)#> == keyword);
+            }
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "Nullable<int>" && codeStringGenerator.PropertyName(edmProperty).Contains("ID")){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.<#=codeStringGenerator.PropertyName(edmProperty)#>));
+            }
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "decimal" || codeStringGenerator.PropertyType(edmProperty) == "float" || codeStringGenerator.PropertyType(edmProperty) == "int"){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From") && QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To"))
+                if (<#=codeStringGenerator.PropertyType(edmProperty)#>.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From").Value, out <#=codeStringGenerator.PropertyType(edmProperty)#> fromVal) && <#=codeStringGenerator.PropertyType(edmProperty)#>.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To").Value, out <#=codeStringGenerator.PropertyType(edmProperty)#> toVal))
+                    query = query.Where(d => fromVal <= d.<#=codeStringGenerator.PropertyName(edmProperty)#> && d.<#=codeStringGenerator.PropertyName(edmProperty)#> <= toVal);
+<#}else if(codeStringGenerator.PropertyType(edmProperty) == "Nullable<decimal>" || codeStringGenerator.PropertyType(edmProperty) == "Nullable<float>" || codeStringGenerator.PropertyType(edmProperty) == "Nullable<int>"){#>
+			if (QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From") && QueryStrings.Any(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To"))
+                if (<#=codeStringGenerator.PropertyType(edmProperty).Replace("Nullable<","").Replace(">","")#>.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>From").Value, out <#=codeStringGenerator.PropertyType(edmProperty).Replace("Nullable<","").Replace(">","")#> fromVal) && <#=codeStringGenerator.PropertyType(edmProperty).Replace("Nullable<","").Replace(">","")#>.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "<#=codeStringGenerator.PropertyName(edmProperty)#>To").Value, out <#=codeStringGenerator.PropertyType(edmProperty).Replace("Nullable<","").Replace(">","")#> toVal))
+                    query = query.Where(d => fromVal <= d.<#=codeStringGenerator.PropertyName(edmProperty)#> && d.<#=codeStringGenerator.PropertyName(edmProperty)#> <= toVal);
+<#}#><#
+		}
+	}
+#>
+
+
+			return toDTO(query);
+
+        }
+
+		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, int id)
+        {
+            var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#>.Find(id);
+
+			<#if(isExistIDPartnerProperty){#>if (dbResult == null || dbResult.IDPartner != PartnerID)
+				return null; 
+			else 
+				return toDTO(dbResult);
+			<#}else{#>return toDTO(dbResult);
+			<#}#>
+
+        }
+		<#if(isExistCodeProperty){#>
+
+		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, string code)
+        {
+            var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#>
+<#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>
+			.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
+<#}else if(isExistIsDeletedProperty){#>
+			.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
+<#}else if(isExistIDPartnerProperty){#>
+			.FirstOrDefault(d => d.IDPartner == PartnerID && d.Code == code);
+<#}#>
+
+			<#if(isExistIDPartnerProperty){#>if (dbResult == null || dbResult.IDPartner != PartnerID)
+				return null; 
+			else 
+				return toDTO(dbResult);
+			<#}else{#>return toDTO(dbResult);
+			<#}#>
+
+        }<#}#>
+
+
+		public static bool put_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, int ID, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
+        {
+            bool result = false;
+            var dbitem = db.<#=codeStringGenerator.EntityCodeName(entity)#>.Find(ID);
+            if (dbitem != null)
+            {<#
+				if (simpleProperties.Any())
+				{
+					foreach (var edmProperty in simpleProperties)
+					{
+						if( codeStringGenerator.PropertyName(edmProperty)!="ID" 
+							&& codeStringGenerator.PropertyName(edmProperty)!="IDPartner"
+							&& codeStringGenerator.PropertyName(edmProperty)!="CreatedBy"
+							&& codeStringGenerator.PropertyName(edmProperty)!="CreatedDate"
+							&& codeStringGenerator.PropertyName(edmProperty)!="ModifiedBy"
+							&& codeStringGenerator.PropertyName(edmProperty)!="ModifiedDate"){
+					#>
+							
+				dbitem.<#=codeStringGenerator.PropertyName(edmProperty)#> = item.<#=codeStringGenerator.PropertyName(edmProperty)#>;<#
+						}
+					}
+				}
+				#>
+                
+				<#if (isExistModifiedByProperty){#>
+
+				dbitem.ModifiedBy = Username;
+				dbitem.ModifiedDate = DateTime.Now;
+				<#}#>
+
+                try
+                {
+                    db.SaveChanges();
+				<#if (isExistIDPartnerProperty){#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+					
+				<#}else{#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+				<#}#>
+
+					result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+					errorLog.logMessage("put_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>",e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+		public static DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> post_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
+        {
+            <#=codeStringGenerator.EntityCodeName(entity)#> dbitem = new <#=codeStringGenerator.EntityCodeName(entity)#>();
+            if (item != null)
+            {<#
+				if (simpleProperties.Any())
+				{
+					foreach (var edmProperty in simpleProperties)
+					{
+						if( codeStringGenerator.PropertyName(edmProperty)!="ID" 
+							&& codeStringGenerator.PropertyName(edmProperty)!="IDPartner"
+							&& codeStringGenerator.PropertyName(edmProperty)!="CreatedBy"
+							&& codeStringGenerator.PropertyName(edmProperty)!="CreatedDate"
+							&& codeStringGenerator.PropertyName(edmProperty)!="ModifiedBy"
+							&& codeStringGenerator.PropertyName(edmProperty)!="ModifiedDate"){
+					#>
+							
+				dbitem.<#=codeStringGenerator.PropertyName(edmProperty)#> = item.<#=codeStringGenerator.PropertyName(edmProperty)#>;<#
+						}
+					}
+				}
+				#>
+                
+				<#if (isExistModifiedByProperty){#>
+
+				dbitem.CreatedBy = Username;
+				dbitem.CreatedDate = DateTime.Now;
+
+				dbitem.ModifiedBy = Username;
+				dbitem.ModifiedDate = DateTime.Now;
+				<#}#>
+				<#if (isExistIDPartnerProperty){#>
+
+				dbitem.IDPartner = PartnerID;
+				<#}#>
+
+
+                try
+                {
+					db.<#=codeStringGenerator.EntityCodeName(entity)#>.Add(dbitem);
+                    db.SaveChanges();
+				<#if (isExistIDPartnerProperty){#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+					
+				<#}else{#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+				<#}#>
+					
+					<#if (isExistIDProperty){#>
+
+                    item.ID =  dbitem.ID;
+					<#}#>
+					<#if (isExistModifiedByProperty){#>
+
+					item.CreatedBy = dbitem.CreatedBy;
+					item.CreatedDate = dbitem.CreatedDate;
+
+					item.ModifiedBy = dbitem.ModifiedBy;
+					item.ModifiedDate = dbitem.ModifiedDate;
+					<#}#>
+					<#if (isExistIDPartnerProperty){#>
+
+					item.IDPartner = dbitem.IDPartner;
+					<#}#>
+
+                }
+                catch (DbEntityValidationException e)
+                {
+					errorLog.logMessage("post_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>",e);
+                    item = null;
+                }
+            }
+            return item;
+        }
+
+		public static bool <#="delete_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int ID, string Username)
+        {
+			bool result = false;
+            var dbitem = db.<#=codeStringGenerator.EntityCodeName(entity)#>.Find(ID);
+            if (dbitem != null)
+            {
+			<#if (isExistIsDeletedProperty){#>
+				<#if (isExistModifiedByProperty){#>
+
+				dbitem.ModifiedBy = Username;
+				dbitem.ModifiedDate = DateTime.Now;
+				dbitem.IsDeleted = true;
+				<#}#>
+			<#}else{#>
+
+				db.<#=codeStringGenerator.EntityCodeName(entity)#>.Remove(dbitem);
+			<#}
+			#>
+                
+
+                try
+                {
+                    db.SaveChanges();
+				<#if (isExistIDPartnerProperty){#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+					
+				<#}else{#>
+
+					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
+					<#}#>
+				<#}#>
+
+					<#if (isExistModifiedByProperty){#>
+					
+					<#}else{#>
+
+					<#}#>
+
+					result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+					errorLog.logMessage("delete_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>",e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+		<#if (isExistIDProperty){#>
+
+		public static bool <#="check_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>_Exists(AppEntities db, int id)
+		{
+			return db.<#=codeStringGenerator.EntityCodeName(entity)#>.Any(e => e.ID == id);
+		}
+		<#} 
+		if (isExistCodeProperty){#>
+
+		public static bool <#="check_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>_Exists(AppEntities db, string Code)
+		{
+			return db.<#=codeStringGenerator.EntityCodeName(entity)#>.Any(e => e.Code == Code);
+		}
+		<#}#>
+
+    }
+
+}
+
+
+
+
+
+
+<#
+}
+
+foreach (var complex in typeMapper.GetItemsToGenerate<ComplexType>(itemCollection))
+{
+    fileManager.StartNewFile(complex.Name + ".cs");
+    BeginNamespace(code);
+#>
+<#=codeStringGenerator.UsingDirectives(inHeader: false, includeCollections: false)#>
+<#=Accessibility.ForType(complex)#> partial class <#=code.Escape(complex)#>
+{
+<#
+    var complexProperties = typeMapper.GetComplexProperties(complex);
+    var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(complex);
+
+    if (propertiesWithDefaultValues.Any() || complexProperties.Any())
+    {
+#>
+    public <#=code.Escape(complex)#>()
+    {
+<#
+        foreach (var edmProperty in propertiesWithDefaultValues)
+        {
+#>
+        this.<#=code.Escape(edmProperty)#> = <#=typeMapper.CreateLiteral(edmProperty.DefaultValue)#>;
+<#
+        }
+
+        foreach (var complexProperty in complexProperties)
+        {
+#>
+        this.<#=code.Escape(complexProperty)#> = new <#=typeMapper.GetTypeName(complexProperty.TypeUsage)#>();
+<#
+        }
+#>
+    }
+
+<#
+    }
+
+    var simpleProperties = typeMapper.GetSimpleProperties(complex);
+    if (simpleProperties.Any())
+    {
+        foreach(var edmProperty in simpleProperties)
+        {
+#>
+    <#=codeStringGenerator.Property(edmProperty)#>
+<#
+        }
+    }
+
+    if (complexProperties.Any())
+    {
+#>
+
+<#
+        foreach(var edmProperty in complexProperties)
+        {
+#>
+    <#=codeStringGenerator.Property(edmProperty)#>
+<#
+        }
+    }
+#>
+}
+<#
+    EndNamespace(code);
+}
+
+foreach (var enumType in typeMapper.GetEnumItemsToGenerate(itemCollection))
+{
+    fileManager.StartNewFile(enumType.Name + ".cs");
+    BeginNamespace(code);
+#>
+<#=codeStringGenerator.UsingDirectives(inHeader: false, includeCollections: false)#>
+<#
+    if (typeMapper.EnumIsFlags(enumType))
+    {
+#>
+[Flags]
+<#
+    }
+#>
+<#=codeStringGenerator.EnumOpening(enumType)#>
+{
+<#
+    var foundOne = false;
+    
+    foreach (MetadataItem member in typeMapper.GetEnumMembers(enumType))
+    {
+        foundOne = true;
+#>
+    <#=code.Escape(typeMapper.GetEnumMemberName(member))#> = <#=typeMapper.GetEnumMemberValue(member)#>,
+<#
+    }
+
+    if (foundOne)
+    {
+        this.GenerationEnvironment.Remove(this.GenerationEnvironment.Length - 3, 1);
+    }
+#>
+}
+<#
+    EndNamespace(code);
+}
+
+fileManager.Process();
+
+#>
+<#+
+
+public void WriteHeader(CodeStringGenerator codeStringGenerator, EntityFrameworkTemplateFileManager fileManager)
+{
+    fileManager.StartHeader();
+#>
+//------------------------------------------------------------------------------
+// 
+//    www.codeart.vn
+//    hungvq@live.com
+//    (+84)908.061.119
+// 
+//------------------------------------------------------------------------------
+<#=codeStringGenerator.UsingDirectives(inHeader: true)#>
+<#+
+    fileManager.EndBlock();
+}
+
+public void BeginNamespace(CodeGenerationTools code)
+{
+    var codeNamespace = code.VsNamespaceSuggestion();
+    if (!String.IsNullOrEmpty(codeNamespace))
+    {
+#>
+namespace <#=code.EscapeNamespace(codeNamespace)#>
+{
+<#+
+        PushIndent("    ");
+    }
+}
+
+public void EndNamespace(CodeGenerationTools code)
+{
+    if (!String.IsNullOrEmpty(code.VsNamespaceSuggestion()))
+    {
+        PopIndent();
+#>
+}
+<#+
+    }
+}
+
+public const string TemplateId = "CSharp_DbContext_Types_EF6";
+
+public class CodeStringGenerator
+{
+    private readonly CodeGenerationTools _code;
+    private readonly TypeMapper _typeMapper;
+    private readonly MetadataTools _ef;
+
+    public CodeStringGenerator(CodeGenerationTools code, TypeMapper typeMapper, MetadataTools ef)
+    {
+        ArgumentNotNull(code, "code");
+        ArgumentNotNull(typeMapper, "typeMapper");
+        ArgumentNotNull(ef, "ef");
+
+        _code = code;
+        _typeMapper = typeMapper;
+        _ef = ef;
+    }
+
+    public string Property(EdmProperty edmProperty)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {1} {2} {{ {3}get; {4}set; }}",
+            Accessibility.ForProperty(edmProperty),
+            _typeMapper.GetTypeName(edmProperty.TypeUsage),
+            _code.Escape(edmProperty),
+            _code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
+            _code.SpaceAfter(Accessibility.ForSetter(edmProperty)));
+    }
+	//hungvq functions
+	public string PropertyName(EdmProperty edmProperty)
+    {
+        return _code.Escape(edmProperty);
+            
+    }
+
+	//hungvq functions
+	public string PropertyType(EdmProperty edmProperty)
+    {
+        return _typeMapper.GetTypeName(edmProperty.TypeUsage);
+            
+    }
+
+
+	
+    public string NavigationProperty(NavigationProperty navProp)
+    {
+        var endType = _typeMapper.GetTypeName(navProp.ToEndMember.GetEntityType());
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {1} {2} {{ {3}get; {4}set; }}",
+            AccessibilityAndVirtual(Accessibility.ForNavigationProperty(navProp)),
+            navProp.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("ICollection<" + endType + ">") : endType,
+            _code.Escape(navProp),
+            _code.SpaceAfter(Accessibility.ForGetter(navProp)),
+            _code.SpaceAfter(Accessibility.ForSetter(navProp)));
+    }
+    
+    public string AccessibilityAndVirtual(string accessibility)
+    {
+        return accessibility + (accessibility != "private" ? " virtual" : "");
+    }
+    
+    public string EntityClassOpening(EntityType entity)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {1}partial class {2}{3}",
+            Accessibility.ForType(entity),
+            _code.SpaceAfter(_code.AbstractOption(entity)),
+            _code.Escape(entity),
+            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+    }
+	//hungvq functions
+	public string EntityDTOClassOpening(EntityType entity)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {1}partial class {2}{3}",
+            Accessibility.ForType(entity),
+            _code.SpaceAfter(_code.AbstractOption(entity)),
+            "DTO_"+_code.Escape(entity).Replace("tbl_",""),
+            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+    }
+	//hungvq functions
+	public string EntityCodeName(EntityType entity)
+    {
+        return _code.Escape(entity);
+    }
+    
+    public string EnumOpening(SimpleType enumType)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} enum {1} : {2}",
+            Accessibility.ForType(enumType),
+            _code.Escape(enumType),
+            _code.Escape(_typeMapper.UnderlyingClrType(enumType)));
+        }
+    
+    public void WriteFunctionParameters(EdmFunction edmFunction, Action<string, string, string, string> writeParameter)
+    {
+        var parameters = FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
+        foreach (var parameter in parameters.Where(p => p.NeedsLocalVariable))
+        {
+            var isNotNull = parameter.IsNullableOfT ? parameter.FunctionParameterName + ".HasValue" : parameter.FunctionParameterName + " != null";
+            var notNullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", " + parameter.FunctionParameterName + ")";
+            var nullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", typeof(" + TypeMapper.FixNamespaces(parameter.RawClrTypeName) + "))";
+            writeParameter(parameter.LocalVariableName, isNotNull, notNullInit, nullInit);
+        }
+    }
+    
+    public string ComposableFunctionMethod(EdmFunction edmFunction, string modelNamespace)
+    {
+        var parameters = _typeMapper.GetParameters(edmFunction);
+        
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} IQueryable<{1}> {2}({3})",
+            AccessibilityAndVirtual(Accessibility.ForMethod(edmFunction)),
+            _typeMapper.GetTypeName(_typeMapper.GetReturnType(edmFunction), modelNamespace),
+            _code.Escape(edmFunction),
+            string.Join(", ", parameters.Select(p => TypeMapper.FixNamespaces(p.FunctionParameterType) + " " + p.FunctionParameterName).ToArray()));
+    }
+    
+    public string ComposableCreateQuery(EdmFunction edmFunction, string modelNamespace)
+    {
+        var parameters = _typeMapper.GetParameters(edmFunction);
+        
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<{0}>(\"[{1}].[{2}]({3})\"{4});",
+            _typeMapper.GetTypeName(_typeMapper.GetReturnType(edmFunction), modelNamespace),
+            edmFunction.NamespaceName,
+            edmFunction.Name,
+            string.Join(", ", parameters.Select(p => "@" + p.EsqlParameterName).ToArray()),
+            _code.StringBefore(", ", string.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray())));
+    }
+    
+    public string FunctionMethod(EdmFunction edmFunction, string modelNamespace, bool includeMergeOption)
+    {
+        var parameters = _typeMapper.GetParameters(edmFunction);
+        var returnType = _typeMapper.GetReturnType(edmFunction);
+
+        var paramList = String.Join(", ", parameters.Select(p => TypeMapper.FixNamespaces(p.FunctionParameterType) + " " + p.FunctionParameterName).ToArray());
+        if (includeMergeOption)
+        {
+            paramList = _code.StringAfter(paramList, ", ") + "MergeOption mergeOption";
+        }
+
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {1} {2}({3})",
+            AccessibilityAndVirtual(Accessibility.ForMethod(edmFunction)),
+            returnType == null ? "int" : "ObjectResult<" + _typeMapper.GetTypeName(returnType, modelNamespace) + ">",
+            _code.Escape(edmFunction),
+            paramList);
+    }
+    
+    public string ExecuteFunction(EdmFunction edmFunction, string modelNamespace, bool includeMergeOption)
+    {
+        var parameters = _typeMapper.GetParameters(edmFunction);
+        var returnType = _typeMapper.GetReturnType(edmFunction);
+
+        var callParams = _code.StringBefore(", ", String.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray()));
+        if (includeMergeOption)
+        {
+            callParams = ", mergeOption" + callParams;
+        }
+        
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction{0}(\"{1}\"{2});",
+            returnType == null ? "" : "<" + _typeMapper.GetTypeName(returnType, modelNamespace) + ">",
+            edmFunction.Name,
+            callParams);
+    }
+    
+    public string DbSet(EntitySet entitySet)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} virtual DbSet<{1}> {2} {{ get; set; }}",
+            Accessibility.ForReadOnlyProperty(entitySet),
+            _typeMapper.GetTypeName(entitySet.ElementType),
+            _code.Escape(entitySet));
+    }
+
+    public string UsingDirectives(bool inHeader, bool includeCollections = true)
+    {
+        return inHeader == string.IsNullOrEmpty(_code.VsNamespaceSuggestion())
+            ? string.Format(
+                CultureInfo.InvariantCulture,
+                "{0}using System;{1}" +
+                "{2}",
+                inHeader ? Environment.NewLine : "",
+                includeCollections ? (Environment.NewLine + "using System.Collections.Generic;") : "",
+                inHeader ? "" : Environment.NewLine)
+            : "";
+    }
+}
+
+public class TypeMapper
+{
+    private const string ExternalTypeNameAttributeName = @"http://schemas.microsoft.com/ado/2006/04/codegeneration:ExternalTypeName";
+
+    private readonly System.Collections.IList _errors;
+    private readonly CodeGenerationTools _code;
+    private readonly MetadataTools _ef;
+
+    public TypeMapper(CodeGenerationTools code, MetadataTools ef, System.Collections.IList errors)
+    {
+        ArgumentNotNull(code, "code");
+        ArgumentNotNull(ef, "ef");
+        ArgumentNotNull(errors, "errors");
+
+        _code = code;
+        _ef = ef;
+        _errors = errors;
+    }
+
+    public static string FixNamespaces(string typeName)
+    {
+        return typeName.Replace("System.Data.Spatial.", "System.Data.Entity.Spatial.");
+    }
+
+    public string GetTypeName(TypeUsage typeUsage)
+    {
+        return typeUsage == null ? null : GetTypeName(typeUsage.EdmType, _ef.IsNullable(typeUsage), modelNamespace: null);
+    }
+
+    public string GetTypeName(EdmType edmType)
+    {
+        return GetTypeName(edmType, isNullable: null, modelNamespace: null);
+    }
+
+    public string GetTypeName(TypeUsage typeUsage, string modelNamespace)
+    {
+        return typeUsage == null ? null : GetTypeName(typeUsage.EdmType, _ef.IsNullable(typeUsage), modelNamespace);
+    }
+
+    public string GetTypeName(EdmType edmType, string modelNamespace)
+    {
+        return GetTypeName(edmType, isNullable: null, modelNamespace: modelNamespace);
+    }
+
+    public string GetTypeName(EdmType edmType, bool? isNullable, string modelNamespace)
+    {
+        if (edmType == null)
+        {
+            return null;
+        }
+
+        var collectionType = edmType as CollectionType;
+        if (collectionType != null)
+        {
+            return String.Format(CultureInfo.InvariantCulture, "ICollection<{0}>", GetTypeName(collectionType.TypeUsage, modelNamespace));
+        }
+
+        var typeName = _code.Escape(edmType.MetadataProperties
+                                .Where(p => p.Name == ExternalTypeNameAttributeName)
+                                .Select(p => (string)p.Value)
+                                .FirstOrDefault())
+            ?? (modelNamespace != null && edmType.NamespaceName != modelNamespace ?
+                _code.CreateFullName(_code.EscapeNamespace(edmType.NamespaceName), _code.Escape(edmType)) :
+                _code.Escape(edmType));
+
+        if (edmType is StructuralType)
+        {
+            return typeName;
+        }
+
+        if (edmType is SimpleType)
+        {
+            var clrType = UnderlyingClrType(edmType);
+            if (!IsEnumType(edmType))
+            {
+                typeName = _code.Escape(clrType);
+            }
+
+            typeName = FixNamespaces(typeName);
+
+            return clrType.IsValueType && isNullable == true ?
+                String.Format(CultureInfo.InvariantCulture, "Nullable<{0}>", typeName) :
+                typeName;
+        }
+
+        throw new ArgumentException("edmType");
+    }
+    
+    public Type UnderlyingClrType(EdmType edmType)
+    {
+        ArgumentNotNull(edmType, "edmType");
+
+        var primitiveType = edmType as PrimitiveType;
+        if (primitiveType != null)
+        {
+            return primitiveType.ClrEquivalentType;
+        }
+
+        if (IsEnumType(edmType))
+        {
+            return GetEnumUnderlyingType(edmType).ClrEquivalentType;
+        }
+
+        return typeof(object);
+    }
+    
+    public object GetEnumMemberValue(MetadataItem enumMember)
+    {
+        ArgumentNotNull(enumMember, "enumMember");
+        
+        var valueProperty = enumMember.GetType().GetProperty("Value");
+        return valueProperty == null ? null : valueProperty.GetValue(enumMember, null);
+    }
+    
+    public string GetEnumMemberName(MetadataItem enumMember)
+    {
+        ArgumentNotNull(enumMember, "enumMember");
+        
+        var nameProperty = enumMember.GetType().GetProperty("Name");
+        return nameProperty == null ? null : (string)nameProperty.GetValue(enumMember, null);
+    }
+
+    public System.Collections.IEnumerable GetEnumMembers(EdmType enumType)
+    {
+        ArgumentNotNull(enumType, "enumType");
+
+        var membersProperty = enumType.GetType().GetProperty("Members");
+        return membersProperty != null 
+            ? (System.Collections.IEnumerable)membersProperty.GetValue(enumType, null)
+            : Enumerable.Empty<MetadataItem>();
+    }
+    
+    public bool EnumIsFlags(EdmType enumType)
+    {
+        ArgumentNotNull(enumType, "enumType");
+        
+        var isFlagsProperty = enumType.GetType().GetProperty("IsFlags");
+        return isFlagsProperty != null && (bool)isFlagsProperty.GetValue(enumType, null);
+    }
+
+    public bool IsEnumType(GlobalItem edmType)
+    {
+        ArgumentNotNull(edmType, "edmType");
+
+        return edmType.GetType().Name == "EnumType";
+    }
+
+    public PrimitiveType GetEnumUnderlyingType(EdmType enumType)
+    {
+        ArgumentNotNull(enumType, "enumType");
+
+        return (PrimitiveType)enumType.GetType().GetProperty("UnderlyingType").GetValue(enumType, null);
+    }
+
+    public string CreateLiteral(object value)
+    {
+        if (value == null || value.GetType() != typeof(TimeSpan))
+        {
+            return _code.CreateLiteral(value);
+        }
+
+        return string.Format(CultureInfo.InvariantCulture, "new TimeSpan({0})", ((TimeSpan)value).Ticks);
+    }
+    
+    public bool VerifyCaseInsensitiveTypeUniqueness(IEnumerable<string> types, string sourceFile)
+    {
+        ArgumentNotNull(types, "types");
+        ArgumentNotNull(sourceFile, "sourceFile");
+        
+        var hash = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+        if (types.Any(item => !hash.Add(item)))
+        {
+            _errors.Add(
+                new CompilerError(sourceFile, -1, -1, "6023",
+                    String.Format(CultureInfo.CurrentCulture, CodeGenerationTools.GetResourceString("Template_CaseInsensitiveTypeConflict"))));
+            return false;
+        }
+        return true;
+    }
+    
+    public IEnumerable<SimpleType> GetEnumItemsToGenerate(IEnumerable<GlobalItem> itemCollection)
+    {
+        return GetItemsToGenerate<SimpleType>(itemCollection)
+            .Where(e => IsEnumType(e));
+    }
+    
+    public IEnumerable<T> GetItemsToGenerate<T>(IEnumerable<GlobalItem> itemCollection) where T: EdmType
+    {
+        return itemCollection
+            .OfType<T>()
+            .Where(i => !i.MetadataProperties.Any(p => p.Name == ExternalTypeNameAttributeName))
+            .OrderBy(i => i.Name);
+    }
+
+    public IEnumerable<string> GetAllGlobalItems(IEnumerable<GlobalItem> itemCollection)
+    {
+        return itemCollection
+            .Where(i => i is EntityType || i is ComplexType || i is EntityContainer || IsEnumType(i))
+            .Select(g => GetGlobalItemName(g));
+    }
+
+    public string GetGlobalItemName(GlobalItem item)
+    {
+        if (item is EdmType)
+        {
+            return ((EdmType)item).Name;
+        }
+        else
+        {
+            return ((EntityContainer)item).Name;
+        }
+    }
+
+    public IEnumerable<EdmProperty> GetSimpleProperties(EntityType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type);
+    }
+    
+    public IEnumerable<EdmProperty> GetSimpleProperties(ComplexType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type);
+    }
+    
+    public IEnumerable<EdmProperty> GetComplexProperties(EntityType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is ComplexType && p.DeclaringType == type);
+    }
+    
+    public IEnumerable<EdmProperty> GetComplexProperties(ComplexType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is ComplexType && p.DeclaringType == type);
+    }
+
+    public IEnumerable<EdmProperty> GetPropertiesWithDefaultValues(EntityType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && p.DefaultValue != null);
+    }
+    
+    public IEnumerable<EdmProperty> GetPropertiesWithDefaultValues(ComplexType type)
+    {
+        return type.Properties.Where(p => p.TypeUsage.EdmType is SimpleType && p.DeclaringType == type && p.DefaultValue != null);
+    }
+
+    public IEnumerable<NavigationProperty> GetNavigationProperties(EntityType type)
+    {
+        return type.NavigationProperties.Where(np => np.DeclaringType == type);
+    }
+    
+    public IEnumerable<NavigationProperty> GetCollectionNavigationProperties(EntityType type)
+    {
+        return type.NavigationProperties.Where(np => np.DeclaringType == type && np.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many);
+    }
+    
+    public FunctionParameter GetReturnParameter(EdmFunction edmFunction)
+    {
+        ArgumentNotNull(edmFunction, "edmFunction");
+
+        var returnParamsProperty = edmFunction.GetType().GetProperty("ReturnParameters");
+        return returnParamsProperty == null
+            ? edmFunction.ReturnParameter
+            : ((IEnumerable<FunctionParameter>)returnParamsProperty.GetValue(edmFunction, null)).FirstOrDefault();
+    }
+
+    public bool IsComposable(EdmFunction edmFunction)
+    {
+        ArgumentNotNull(edmFunction, "edmFunction");
+
+        var isComposableProperty = edmFunction.GetType().GetProperty("IsComposableAttribute");
+        return isComposableProperty != null && (bool)isComposableProperty.GetValue(edmFunction, null);
+    }
+
+    public IEnumerable<FunctionImportParameter> GetParameters(EdmFunction edmFunction)
+    {
+        return FunctionImportParameter.Create(edmFunction.Parameters, _code, _ef);
+    }
+
+    public TypeUsage GetReturnType(EdmFunction edmFunction)
+    {
+        var returnParam = GetReturnParameter(edmFunction);
+        return returnParam == null ? null : _ef.GetElementType(returnParam.TypeUsage);
+    }
+    
+    public bool GenerateMergeOptionFunction(EdmFunction edmFunction, bool includeMergeOption)
+    {
+        var returnType = GetReturnType(edmFunction);
+        return !includeMergeOption && returnType != null && returnType.EdmType.BuiltInTypeKind == BuiltInTypeKind.EntityType;
+    }
+}
+
+public static void ArgumentNotNull<T>(T arg, string name) where T : class
+{
+    if (arg == null)
+    {
+        throw new ArgumentNullException(name);
+    }
+}
+#>

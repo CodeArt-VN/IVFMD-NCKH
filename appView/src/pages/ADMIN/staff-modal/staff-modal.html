@@ -1,0 +1,226 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+
+    <div padding></div>
+    <ion-grid>
+        <ion-row responsive-sm>
+            <ion-col col-12 col-sm-5 class="col-avatar">
+
+
+
+                <!-- <div ng2FileDrop class="well my-drop-zone" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                    (onFileDrop)="onFileSelected()" [uploader]="uploader">
+                    <ion-icon class="big-icon" name="cloud-upload"></ion-icon>
+                    <br> Kéo thả hình vào đây
+                    <br>
+                    <button class="btn-file-choose" ion-button small (click)="selectFile()">
+                        Chọn hình
+                    </button>
+                    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept="image/*" [uploader]="uploader" />
+                </div> -->
+
+
+                <div class="avatar" ng2FileDrop class="well my-drop-zone" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                (onFileDrop)="onFileSelected()" [uploader]="uploader">
+                    <img [src]="avatarURL" (error)="img.src = 'assets/imgs/avartar-empty.jpg'" #img>
+                    <div class="btn">
+                        <button ion-button round color="light" small (click)="selectFile()">Đổi ảnh</button>
+                    </div>
+                    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept="image/*" [uploader]="uploader" />
+                </div>
+
+                <div class="cmd">
+                    <ion-item-group>
+                        <a [class.active]="activePage=='page-1'" no-lines ion-item detail-none (click)="activePage='page-1'">
+                            <ion-icon name="ios-contact" item-left></ion-icon>Thông tin chung
+                        </a>
+
+                        <a *ngIf="showLogout" [class.active]="activePage=='page-2'" no-lines ion-item detail-none (click)="activePage='page-2'">
+                            <ion-icon name="ios-lock-outline" item-left></ion-icon>Đổi mật khẩu
+                        </a>
+                        <a *ngIf="!showLogout" [class.active]="activePage=='page-3'" no-lines ion-item detail-none (click)="activePage='page-3'">
+                            <ion-icon name="ios-lock-outline" item-left></ion-icon> 
+                            <span *ngIf="userAccount.ID">Đổi mật khẩu</span> 
+                            <span *ngIf="!userAccount.ID">Tạo tài khoản</span> 
+                        </a>
+                        <a *ngIf="isViewProfile" ion-item detail-none (click)="logout()">
+                            <ion-icon name="log-out" item-left></ion-icon>Đăng xuất
+                        </a>
+
+                    </ion-item-group>
+                </div>
+            </ion-col>
+            <ion-col col-12 col-sm-7 *ngIf="activePage=='page-1'">
+                <form [formGroup]="formGroup">
+                    <div class="c-control">
+                        <label class="c-label" for="Code">
+                            <div class="top-btns">
+                                <button [color]="userAccount.LockoutEnabled ? 'danger': 'success'" [disabled]="showLogout" *ngIf="userAccount.ID"
+                                    (click)="changeLock()" small ion-button icon-only>
+                                    <ion-icon [name]="userAccount.LockoutEnabled ? 'ios-lock-outline' : 'ios-unlock-outline'"></ion-icon>
+                                </button>
+                                <button color="danger" [disabled]="showLogout" *ngIf="showRolesEdit && userAccount.ID" [outline]="!checkRole('HOST')" (click)="changeRole('HOST')"
+                                    small ion-button>
+                                    HOST
+                                </button>
+                            </div>
+                            Mã nhân sự
+                            <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text" [attr.disabled]="isViewProfile ? '' : null">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="Name">Tên nhân sự
+                            <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+                    </div>
+                    <div class="c-control">
+                        <label class="c-label" for="SoDienThoai">Số điện thoại
+                            <span *ngIf="!formGroup.controls.SoDienThoai.valid && !formGroup.controls.SoDienThoai.pending && (formGroup.controls.SoDienThoai.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="SoDienThoai" [(ngModel)]="item.SoDienThoai" formControlName="SoDienThoai" type="text">
+                    </div>
+                    <div class="c-control">
+                        <label class="c-label" for="Email">Email
+                            <span *ngIf="!formGroup.controls.Email.valid && !formGroup.controls.Email.pending && (formGroup.controls.Email.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="Email" [(ngModel)]="item.Email" formControlName="Email" type="text" [attr.disabled]="isViewProfile ? '' : null">
+                    </div>
+                    <div class="c-control">
+                        <label class="c-label" for="IDRole">Thuộc nhóm người dùng
+                            <span *ngIf="!formGroup.controls.IDRole.valid && !formGroup.controls.IDRole.pending && (formGroup.controls.IDRole.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+
+                        <select class="c-input c-dropdown" [(ngModel)]="item.IDRole" formControlName="IDRole" [attr.disabled]="isViewProfile ? '' : null">
+                            <option *ngFor="let t of roles" [value]="t.ID">{{t.Name}}</option>
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+
+                    <!-- <div class="c-control">
+                        <label class="c-label" for="DiaChi">Địa chỉ
+                            <span *ngIf="!formGroup.controls.DiaChi.valid && !formGroup.controls.DiaChi.pending && (formGroup.controls.DiaChi.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="DiaChi" [(ngModel)]="item.DiaChi" formControlName="DiaChi" type="text">
+                    </div> -->
+
+                    <div class="c-control" *ngIf="item.ID==0">
+                        <label class="c-label" for=""></label>
+                        <button ion-button float-right (click)="saveChange()">
+                            Thêm nhân sự
+                        </button>
+                    </div>
+                    <div class="c-control" *ngIf="item.ID!=0">
+                        <label class="c-label" for=""></label>
+
+                        <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                            Lưu
+                        </button>
+                        <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                            Hủy thay đổi
+                        </button>
+                    </div>
+                </form>
+            </ion-col>
+            <ion-col col-12 col-sm-7 *ngIf="activePage=='page-2'">
+                <div style="padding:50px;">
+                    <div class="c-control">
+                        <label class="c-label" for="oldPassword">Mật khẩu hiện tại
+                        </label>
+                        <input class="c-input" id="oldPassword" [(ngModel)]="oldPassword" [type]="passwordViewType">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="newPassword">Mật khẩu mới
+                        </label>
+                        <input class="c-input" id="newPassword" [(ngModel)]="newPassword" [type]="passwordViewType">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="confirmPassword">Nhập lại mật khẩu mới
+                        </label>
+                        <input class="c-input" id="confirmPassword" [(ngModel)]="confirmPassword" [type]="passwordViewType">
+                    </div>
+
+                    <div class="c-control" *ngIf="item.ID!=0">
+                        <label class="c-label" for=""></label>
+
+                        <button ion-button float-right (click)="changePassword()">
+                            Đổi mật khẩu
+                        </button>
+                        <button color="warning" ion-button float-right (click)="passwordViewType = passwordViewType=='password'?'text':'password'">
+                            <span *ngIf="passwordViewType=='password'">Hiển thị mật khẩu</span>
+                            <span *ngIf="passwordViewType!='password'">Ẩn mật khẩu</span>
+                        </button>
+                    </div>
+
+                </div>
+            </ion-col>
+            <ion-col col-12 col-sm-7 *ngIf="activePage=='page-3'">
+                <form [formGroup]="changePasswordForm">
+                    <div class="c-control">
+                        <label class="c-label" for="newPassword">Mật khẩu mới
+                            <span *ngIf="!changePasswordForm.controls.newPassword.valid && !changePasswordForm.controls.newPassword.pending && (changePasswordForm.controls.newPassword.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="newPassword" [(ngModel)]="newPassword" formControlName="newPassword" [type]="passwordViewType">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="confirmPassword">Nhập lại mật khẩu mới
+                            <span *ngIf="!changePasswordForm.controls.confirmPassword.valid && !changePasswordForm.controls.confirmPassword.pending && (changePasswordForm.controls.confirmPassword.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="confirmPassword" [(ngModel)]="confirmPassword" formControlName="confirmPassword" [type]="passwordViewType">
+                    </div>
+
+                    <div class="c-control" *ngIf="item.ID!=0">
+                        <label class="c-label" for=""></label>
+
+                        <button *ngIf="userAccount.ID" ion-button float-right (click)="resetPassword()">
+                            Đổi mật khẩu
+                        </button>
+
+                        <button *ngIf="!userAccount.ID" (click)="createAccount()" ion-button float-right icon-start>
+                            <ion-icon name="ios-contact"></ion-icon> Tạo tài khoản
+                        </button>
+
+                        <button color="warning" ion-button float-right (click)="passwordViewType = passwordViewType=='password'?'text':'password'">
+                            <span *ngIf="passwordViewType=='password'">Hiển thị mật khẩu</span>
+                            <span *ngIf="passwordViewType!='password'">Ẩn mật khẩu</span>
+                        </button>
+
+
+
+                    </div>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
+
+
+
+</ion-content>

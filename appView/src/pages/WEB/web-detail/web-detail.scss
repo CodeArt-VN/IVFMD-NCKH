@@ -1,0 +1,60 @@
+page-web-detail{
+    .web-content{
+        .path{
+            height: 40px;
+            line-height: 40px;
+            margin-top: -30px;
+            margin-bottom: 15px;
+    
+            a{
+                color: map-get($map: $colors, $key: ivfdark1);
+                font-size: 1.6rem;
+                
+                &.active{
+                    font-weight: bold;
+                    color: map-get($map: $colors, $key: ivfdark1);
+                }
+            }
+            .split{
+                color: map-get($map: $colors, $key: ivf1);
+                font-size: 1.6rem;
+                padding: 0 7px;
+            }
+        }
+
+    }
+
+    .ql-container.ql-snow {
+        border: none; 
+        .ql-editor {
+            box-sizing: border-box;
+          
+            height: auto;
+            outline: none;
+            overflow-y: auto;
+            padding: 0;
+            tab-size: 4;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+    }
+
+    .news-detail{
+        font-size: 1.4rem;
+        color: map-get($map: $colors, $key: ivfdark1);
+        line-height: 24px;
+        text-align: justify;
+
+        img{
+            max-width: 100%;
+            height: auto !important;
+        }
+        .aligncenter{
+            clear: both;
+            display: block;
+            margin: 7px auto;
+        }
+    }
+}

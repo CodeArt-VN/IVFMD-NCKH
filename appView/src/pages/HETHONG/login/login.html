@@ -1,0 +1,73 @@
+<ion-content>
+    <div id="login-page">
+        <div class="col-left">
+            <div class="header">
+                <h1>ĐĂNG NHẬP</h1>
+            </div>
+            <div class="form">
+                <form [formGroup]="formGroup" (ngSubmit)="login()">
+
+                    <div class="c-control">
+
+                        <label class="c-label" for="">Tài khoản (email)
+                            <span *ngIf="!formGroup.controls.UserName.valid && !formGroup.controls.UserName.pending && (formGroup.controls.UserName.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input placeholder="Tài khoản - email" class="c-input" [(ngModel)]="email" formControlName="UserName">
+                        <p class="message-right" *ngIf="!formGroup.controls.UserName.valid  && (formGroup.controls.UserName.dirty || submitAttempt)"
+                            ion-text color="danger">
+                            Vui lòng nhập email</p>
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="">Mật khẩu
+                            <span *ngIf="!formGroup.controls.Password.valid && !formGroup.controls.Password.pending && (formGroup.controls.Password.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" placeholder="Mật khẩu" [(ngModel)]="password" formControlName="Password" type="password">
+                        <p class="message-right" *ngIf="!formGroup.controls.Password.valid  && (formGroup.controls.Password.dirty || submitAttempt)"
+                            ion-text color="danger">
+                            Vui lòng nhập mật khẩu</p>
+                    </div>
+
+                    <button style="display: none;" ion-button block></button>
+                </form>
+                <!-- <div padding-bottom style="float: right;">
+                    <button ion-button color="success" small (click)="email='nv@codeart.vn'">
+                        NV
+                    </button>
+                    <button ion-button color="info" small (click)="email='tbp@codeart.vn'">
+                        TBP
+                    </button>
+                    <button ion-button color="primary" small (click)="email='bdh@codeart.vn'">
+                        BDH
+                    </button>
+                    <button ion-button color="warning" small (click)="email='ad@codeart.vn'">
+                        AD
+                    </button>
+                    <button ion-button color="danger" small (click)="email='host@codeart.vn'">
+                        HOST
+                    </button>
+                </div> -->
+
+                <button ion-button block (click)="login()">Đăng nhập</button>
+                <button ion-button clear small float-right (click)="openForgotPassword()">
+                    Quên mật khẩu?
+                </button>
+            </div>
+            <div class="footer">
+
+            </div>
+        </div>
+        <div class="col-right">
+            <div class="logos">
+                <img src="../../../assets/imgs/BVMD.png">
+                <img src="../../../assets/imgs/IVFMD.png">
+            </div>
+
+            <h1>THƯ VIỆN ĐIỆN TỬ</h1>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</ion-content>

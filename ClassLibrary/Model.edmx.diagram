@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe521cf2abf8474b9564c8b08d2c8d43" Name="Diagram1">
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File" Width="1.5" PointX="3" PointY="43.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Actitity" Width="1.5" PointX="5.25" PointY="48.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Permission" Width="1.5" PointX="5.25" PointY="43.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_FileInFolder" Width="1.5" PointX="8.25" PointY="49.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder" Width="1.5" PointX="3" PointY="53.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Activity" Width="1.5" PointX="5.25" PointY="59" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Permission" Width="1.5" PointX="11.25" PointY="46.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_BoPhan" Width="1.5" PointX="3" PointY="49.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_ChucDanh" Width="1.5" PointX="11.25" PointY="40.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_CauHinhHeThong" Width="1.5" PointX="3" PointY="28.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionList" Width="1.5" PointX="5.25" PointY="38.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionListDetailData" Width="1.5" PointX="7.5" PointY="28.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_Role" Width="1.5" PointX="3" PointY="38.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_Version" Width="1.5" PointX="3" PointY="23.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang" Width="1.5" PointX="3" PointY="17.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang_ChiTiet" Width="1.5" PointX="5.25" PointY="17.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_Partner" Width="1.5" PointX="0.75" PointY="31.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_ThongTinSanPham" Width="1.5" PointX="6" PointY="33.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham_ChiTiet" Width="1.5" PointX="8.25" PointY="34.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Apps" Width="1.5" PointX="1.5" PointY="66" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Config" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_ControllerActions" Width="1.5" PointX="6" PointY="54.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Form" Width="1.5" PointX="3" PointY="60" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormDetail" Width="1.5" PointX="8.25" PointY="60" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormGroup" Width="1.5" PointX="0.75" PointY="60.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet_Tag" Width="1.5" PointX="11" PointY="5.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_Tag" Width="1.5" PointX="8.75" PointY="0.75" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_File_Actitity_tbl_CUS_DOC_File" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_File_Permission_tbl_CUS_DOC_File" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_File_tbl_PAR_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_File_Permission_tbl_CUS_SYS_Role" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_Folder" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_Folder_Activity_tbl_CUS_DOC_Folder" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_Folder_Permission_tbl_CUS_DOC_Folder" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_Folder_tbl_CUS_DOC_Folder" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_Folder_tbl_PAR_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_DOC_Folder_Permission_tbl_PAR_Role" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_HRM_LIST_BoPhan_dbo_tbl_CUS_KhachHang_IDPartner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_HRM_LIST_ChucDanh_tbl_CUS_HRM_LIST_BoPhan" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_HRM_LIST_ChucDanh_dbo_tbl_CUS_KhachHang_IDPartner" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_SYS_CauHinhHeThong_dbo_tbl_CUS_KhachHang_IDPartner" />
+        <AssociationConnector Association="AppModel.FK_dbo_sys_PermissionListDetailData_dbo_sys_PermissionList_PermissionID" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_SYS_PermissionList_tbl_CUS_SYS_Role" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_SYS_PermissionList_tbl_SYS_Form" />
+        <AssociationConnector Association="AppModel.FK_tbl_PAR_Role_tbl_PAR_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_DonHang_ChiTiet_dbo_tbl_CUS_DonHang_IDDonHang" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_DonHang_dbo_tbl_CUS_KhachHang_IDKhachHang" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_DonHang_ChiTiet_dbo_tbl_PROD_SanPham_IDSanPham" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_ThongTinSanPham_dbo_tbl_CUS_KhachHang_IDKhachHang" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_ThongTinSanPham_dbo_tbl_PROD_SanPham_IDSanPham" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_PROD_SanPham_ChiTiet_dbo_tbl_PROD_SanPham_IDSanPham" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_SanPham_ChiTiet_tbl_SYS_Apps" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_FormGroup_tbl_SYS_Apps" />
+        <AssociationConnector Association="AppModel.FK_dbo_sys_FormDetail_dbo_sys_ControllerActions_Controller" />
+        <AssociationConnector Association="AppModel.FK_dbo_sys_Form_dbo_sys_FormGroup_FormGroup" />
+        <AssociationConnector Association="AppModel.FK_dbo_sys_FormDetail_dbo_sys_Form_Form" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_Tag_IDTag" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Width="1.5" PointX="13.5" PointY="39.375" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_HRM_LIST_BoPhan_IDBoPhan" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_HRM_LIST_ChucDanh_IDChucDanh" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_KhachHang_IDPartner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_tbl_CUS_SYS_Role" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet" Width="1.5" PointX="8" PointY="65.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet_DanhMuc" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_dbo_tbl_WEB_BaiViet_IDCha" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_BaiViet_IDBaiViet" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_DanhMuc" Width="1.5" PointX="5.75" PointY="67" />
+        <AssociationConnector Association="AppModel.FK_tbl_WEB_BaiViet_tbl_WEB_DanhMuc" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

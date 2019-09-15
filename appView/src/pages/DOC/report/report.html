@@ -1,0 +1,139 @@
+<ion-header *ngIf="userprofile?.Partner">
+
+    <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+    <div class="search">
+        <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+    </div>
+    <div class="partner">
+        <select [attr.disabled]="userprofile.Partners.length >1 ? null : ''" [(ngModel)]="query.IDPartner" (change)="changePartner()">
+            <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
+        </select>
+    </div>
+    <div class="path">
+        <a (click)="openDefaultPage()">Home</a>
+        <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+        <a class="active">Thống kê số lượng tài liệu</a>
+    </div>
+    <div class="tools">
+        <button color="primary" ion-button icon-only clear (click)="refresh()">
+            <ion-icon name="refresh"></ion-icon>
+        </button>
+        <!-- <span class="split"></span> -->
+
+        <button color="info" ion-button icon-only clear (click)="showHideInfo()">
+            <ion-icon name="ios-information-circle"></ion-icon>
+        </button>
+    </div>
+
+    <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+</ion-header>
+
+<ion-content>
+
+    <ion-row>
+        <ion-col class="doc-menu">
+            <div class="root-items">
+                <a *ngIf="canViewTeam" href="#/team">
+                    <ion-icon name="fa-users"></ion-icon>
+                    <span>
+                        Thông tin trung tâm
+                    </span>
+                </a>
+
+                <a *ngIf="canApproveDoc" href="#/approve">
+                    <ion-icon name="fa-gavel"></ion-icon>
+                    <span>
+                        Duyệt tài liệu
+                    </span>
+                </a>
+                <a class="active" *ngIf="canViewReport" href="#/report">
+                    <ion-icon name="fa-pie-chart"></ion-icon>
+                    <span>
+                        Báo cáo
+                    </span>
+                </a>
+            </div>
+
+            <div class="group" *ngIf="canViewSops">
+                <a href="#/sops">
+                    <ion-icon name="fa-database"></ion-icon>
+                    <span>
+                        Team Resources
+                    </span>
+                </a>
+            </div>
+
+
+
+        </ion-col>
+        <ion-col class="doc-main">
+            
+            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'"
+                [headerHeight]="55" [footerHeight]="0" [rowHeight]="30" [scrollbarV]="true" [scrollbarH]="true" [rows]="items">
+                <ngx-datatable-column name="Tên" prop="Name" [width]="200" headerClass="name" cellClass="name" [sortable]="false">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (dblclick)="previewItem(i)">
+                            <ion-icon *ngFor="let l of i.levels" name=""></ion-icon>
+                            <ion-icon class="ios-folder" name="ios-folder"></ion-icon>
+                            {{i.Name}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Chờ duyệt" prop="SoFileChoDuyet" [width]="120" [maxWidth]="120" headerClass="text-right" cellClass="text-right"
+                    [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Đã duyệt" prop="SoFileDaDuyet" [width]="120" [maxWidth]="120" headerClass="text-right" cellClass="text-right"
+                    [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Nháp" prop="SoFileNhap" [width]="120" [maxWidth]="120" headerClass="text-right" cellClass="text-right"
+                    [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Tổng file" prop="TongSoFile" [width]="100" [maxWidth]="100" headerClass="text-right" cellClass="text-right"
+                    [sortable]="false"></ngx-datatable-column>
+            </ngx-datatable>
+
+        </ion-col>
+        <ion-col class="doc-info" *ngIf="showInfo">
+            <button class="close-box" color="ivf1" ion-button icon-only clear (click)="showHideInfo()">
+                <ion-icon name="ios-close"></ion-icon>
+            </button>
+            <div class="file-name">
+                <ion-icon color="danger" name="fa-pie-chart"></ion-icon>
+                <span>
+                    Thống kê theo loại file
+                </span>
+            </div>
+
+            <div class="tab">
+                <!-- <div class="btn">
+                    <a [class]="tabIndex==0?'active':''" (click)="tabIndex=0; buildChart()">
+                        Biểu đồ
+                    </a>
+                    <a [class]="tabIndex==1?'active':''" (click)="tabIndex=1; doughnutChart = null;">
+                        Chi tiết
+                    </a>
+                </div> -->
+
+
+                <div class="tab-contain" *ngIf="tabIndex==0">
+                    <div class="block">
+                        <div id="wrapper" style="position: relative; height: 300px">
+                            <canvas id="doughnutCanvas"></canvas>
+                        </div>
+                    </div>
+                    <!-- <div class="hr"></div> -->
+                    <div style="padding: 20px 0" class="block">
+                        <ion-list>
+                            <ion-list-header>
+                                Chi tiết
+                            </ion-list-header>
+                            <ion-item *ngFor="let i of doughnutData">
+                                <ion-icon item-start ngClass="{{i.FileTypeIcon}}" [name]="i.FileTypeIcon"></ion-icon>
+                                <ion-label>{{i.Extension}}</ion-label>
+                                <button ion-button outline item-end text-right>{{i.CountFile}}</button>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+            </div>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

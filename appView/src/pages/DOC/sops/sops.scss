@@ -1,0 +1,42 @@
+page-sops {
+    .empty-row {
+        &::before{
+            content: "\f435";
+            font-family: "Ionicons";
+        }
+        &::after{
+            content: 'Có vẻ như thư mục này không có dữ liệu, \Avui lòng xem thư mục khác.';
+        }
+    }
+
+    .datatable-body-cell-label{
+        a{
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+        }
+
+        *[tooltip]{
+           
+            &:after{
+               
+                bottom: unset;
+                margin-left: 5px;
+            }
+        }
+
+    }
+}
+
+.search-item{
+    .button{
+        margin-top: -7px;
+    }
+    .date-filter{
+        border: solid 1px #dedede;
+        border-radius: 4px;
+        padding: 5px 9px;
+        margin-top: 8px;
+        width: 155px;
+    }
+}

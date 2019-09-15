@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB5E58CE-9887-49C7-A39A-ADB9F893F7D3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>API</RootNamespace>
+    <AssemblyName>API</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <ApplicationInsightsResourceId>/subscriptions/c322c2e2-7cba-4ee7-a853-c20704b18826/resourcegroups/VanTaiResource/providers/microsoft.insights/components/VanTai</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/c322c2e2-7cba-4ee7-a853-c20704b18826/resourcegroups/VanTaiResource/providers/microsoft.insights/components/VanTai</ApplicationInsightsAnnotationResourceId>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MariGold.HtmlParser, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MariGold.HtmlParser.1.0.1\lib\net35\MariGold.HtmlParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.3.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.3.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.16.3.0.29\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core, Version=13.1450.0.30, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocIO.Base.16.3.0.29\lib\net46\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocToPdfConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocToPdfConverter.Base.16.3.0.29\lib\net46\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2, Version=16.3500.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.16.3.0.29\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2.DocumentEditor, Version=16.3.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.DocumentEditor.16.3.0.29\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.ExcelChartToImageConverter.WPF.16.3.0.29\lib\net46\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ExcelToPDFConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.ExcelToPDFConverter.Base.16.3.0.29\lib\net46\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HtmlConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.HtmlConverter.Base.16.3.0.29\lib\net46\Syncfusion.HtmlConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.16.3.0.29\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChart.Base.16.3.0.29\lib\net46\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChartToImageConverter.WPF.16.3.0.29\lib\net46\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.Base.16.3.0.29\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Helper.MVC, Version=13.1500.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.Pdf.Helper.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Presentation.Base.16.3.0.29\lib\net46\Syncfusion.Presentation.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PresentationToPdfConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.PresentationToPdfConverter.Base.16.3.0.29\lib\net46\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.WPF, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SfChart.WPF.16.3.0.29\lib\net46\Syncfusion.SfChart.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=13.1450.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.Base.16.3.0.29\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Helper.MVC, Version=13.1500.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.XlsIO.Helper.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net46\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net46\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.6\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.6\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.1\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Common.cs" />
+    <Compile Include="App_Start\EmailService.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SMSService.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\APP\FormController.cs" />
+    <Compile Include="Controllers\Custom.cs" />
+    <Compile Include="Controllers\CustomAuthorize.cs" />
+    <Compile Include="Controllers\DOC\FileController.cs" />
+    <Compile Include="Controllers\DOC\FileInFolderController.cs" />
+    <Compile Include="Controllers\DOC\File_ActitityController.cs" />
+    <Compile Include="Controllers\DOC\FolderController.cs" />
+    <Compile Include="Controllers\DOC\Folder_PermissionController.cs" />
+    <Compile Include="Controllers\FILE\FileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HRM\LIST_BoPhanController.cs" />
+    <Compile Include="Controllers\HRM\LIST_ChucDanhController.cs" />
+    <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
+    <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\SYS\PermissionListController.cs" />
+    <Compile Include="Controllers\SYS\RoleController.cs" />
+    <Compile Include="Controllers\WEB\BaiVietController.cs" />
+    <Compile Include="Controllers\WEB\DanhMucController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hubs\EventHub.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ChannelEvent.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ej2\bootstrap.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap.css" />
+    <Content Include="Content\ej2\compatibility\fabric.css" />
+    <Content Include="Content\ej2\compatibility\highcontrast.css" />
+    <Content Include="Content\ej2\compatibility\material.css" />
+    <Content Include="Content\ej2\fabric.css" />
+    <Content Include="Content\ej2\highcontrast.css" />
+    <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\styles\bootstrap.css" />
+    <Content Include="Content\styles\bootstrap.min.css" />
+    <Content Include="Content\styles\compatibility\bootstrap.css" />
+    <Content Include="Content\styles\compatibility\fabric.css" />
+    <Content Include="Content\styles\compatibility\highcontrast.css" />
+    <Content Include="Content\styles\compatibility\material.css" />
+    <Content Include="Content\styles\DocumentEditor\default.css" />
+    <Content Include="Content\styles\fabric.css" />
+    <Content Include="Content\styles\Grid\demo.html" />
+    <Content Include="Content\styles\Grid\Fonts\Grid control Font.svg" />
+    <Content Include="Content\styles\Grid\style.css" />
+    <Content Include="Content\styles\highcontrast.css" />
+    <Content Include="Content\styles\highlight.css" />
+    <Content Include="Content\styles\images\New.png" />
+    <Content Include="Content\styles\images\Preview.png" />
+    <Content Include="Content\styles\images\Updated.png" />
+    <Content Include="Content\styles\material.css" />
+    <Content Include="Content\styles\roboto.css" />
+    <Content Include="Content\Style\bootstrap.css" />
+    <Content Include="Content\Style\fabric.css" />
+    <Content Include="Content\Style\highcontrast.css" />
+    <Content Include="Content\Style\material.css" />
+    <Content Include="Global.asax" />
+    <Content Include="pdf\build\pdf.js" />
+    <Content Include="pdf\build\pdf.worker.js" />
+    <Content Include="pdf\web\debugger.js" />
+    <Content Include="pdf\web\images\annotation-check.svg" />
+    <Content Include="pdf\web\images\annotation-comment.svg" />
+    <Content Include="pdf\web\images\annotation-help.svg" />
+    <Content Include="pdf\web\images\annotation-insert.svg" />
+    <Content Include="pdf\web\images\annotation-key.svg" />
+    <Content Include="pdf\web\images\annotation-newparagraph.svg" />
+    <Content Include="pdf\web\images\annotation-noicon.svg" />
+    <Content Include="pdf\web\images\annotation-note.svg" />
+    <Content Include="pdf\web\images\annotation-paragraph.svg" />
+    <Content Include="pdf\web\images\findbarButton-next%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-next-rtl%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-next-rtl.png" />
+    <Content Include="pdf\web\images\findbarButton-next.png" />
+    <Content Include="pdf\web\images\findbarButton-previous%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-previous-rtl%402x.png" />
+    <Content Include="pdf\web\images\findbarButton-previous-rtl.png" />
+    <Content Include="pdf\web\images\findbarButton-previous.png" />
+    <Content Include="pdf\web\images\grab.cur" />
+    <Content Include="pdf\web\images\grabbing.cur" />
+    <Content Include="pdf\web\images\loading-icon.gif" />
+    <Content Include="pdf\web\images\loading-small%402x.png" />
+    <Content Include="pdf\web\images\loading-small.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-documentProperties%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-documentProperties.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-firstPage%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-firstPage.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-handTool%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-handTool.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-lastPage%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-lastPage.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCcw%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCcw.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCw%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-rotateCw.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-selectTool%402x.png" />
+    <Content Include="pdf\web\images\secondaryToolbarButton-selectTool.png" />
+    <Content Include="pdf\web\images\shadow.png" />
+    <Content Include="pdf\web\images\texture.png" />
+    <Content Include="pdf\web\images\toolbarButton-bookmark%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-bookmark.png" />
+    <Content Include="pdf\web\images\toolbarButton-download%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-download.png" />
+    <Content Include="pdf\web\images\toolbarButton-menuArrows%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-menuArrows.png" />
+    <Content Include="pdf\web\images\toolbarButton-openFile%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-openFile.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageDown.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-pageUp.png" />
+    <Content Include="pdf\web\images\toolbarButton-presentationMode%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-presentationMode.png" />
+    <Content Include="pdf\web\images\toolbarButton-print%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-print.png" />
+    <Content Include="pdf\web\images\toolbarButton-search%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-search.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-secondaryToolbarToggle.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-sidebarToggle.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewAttachments%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewAttachments.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline-rtl%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline-rtl.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewOutline.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewThumbnail%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-viewThumbnail.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomIn%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomIn.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomOut%402x.png" />
+    <Content Include="pdf\web\images\toolbarButton-zoomOut.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed%402x.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed-rtl%402x.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed-rtl.png" />
+    <Content Include="pdf\web\images\treeitem-collapsed.png" />
+    <Content Include="pdf\web\images\treeitem-expanded%402x.png" />
+    <Content Include="pdf\web\images\treeitem-expanded.png" />
+    <Content Include="pdf\web\viewer.css" />
+    <Content Include="pdf\web\viewer.html" />
+    <Content Include="pdf\web\viewer.js" />
+    <Content Include="Scripts\bluebird.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr-data\index.js" />
+    <Content Include="Scripts\cldr-data\install.js" />
+    <Content Include="Scripts\crossroads.js" />
+    <Content Include="Scripts\data-service.js" />
+    <Content Include="Scripts\datasource.js" />
+    <Content Include="Scripts\documenteditor\default-properties.b.js" />
+    <Content Include="Scripts\documenteditor\default-properties.js" />
+    <Content Include="Scripts\documenteditor\default.js" />
+    <Content Include="Scripts\ej2.min.js" />
+    <Content Include="Scripts\ej2\ej2.min.js" />
+    <Content Include="Scripts\elasticlunr.min.js" />
+    <Content Include="Scripts\financial-data.js" />
+    <Content Include="Scripts\fuse.min.js" />
+    <Content Include="Scripts\hasher.min.js" />
+    <Content Include="Scripts\highlight.min.js" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Content\styles\bootstrap.scss" />
+    <Content Include="Content\styles\fabric.scss" />
+    <Content Include="Content\styles\Grid\Fonts\Grid control Font.eot" />
+    <Content Include="Content\styles\Grid\Fonts\Grid control Font.ttf" />
+    <Content Include="Content\styles\Grid\Fonts\Grid control Font.woff" />
+    <Content Include="Content\styles\material.scss" />
+    <Content Include="Scripts\ej2\ej2.min.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
+    <Content Include="Scripts\js-signals.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\nugetexample.js" />
+    <Content Include="Scripts\PenisularLocation.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\samplelist.js" />
+    <Content Include="Scripts\schedule\applyCategoryColor.js" />
+    <Content Include="Scripts\search-index.js" />
+    <Content Include="Scripts\stock-chart-data.js" />
+    <Content Include="Scripts\Texas.js" />
+    <Content Include="Scripts\theme-color.js" />
+    <Content Include="Scripts\trackball-data.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0001.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0002.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0003.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0004.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0005.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0006.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0007.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV0008.jpg" />
+    <Content Include="Uploads\HRM\Staffs\Avatars\NV999.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\WordDocument.cshtml" />
+    <Content Include="Views\Home\DocumentEditor.cshtml" />
+    <Content Include="Views\Home\DocEditor.cshtml" />
+    <Content Include="Uploads\FileTemplate\DS-NhanSu.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Controllers\RPT\" />
+    <Folder Include="EmailTemplates\" />
+    <Folder Include="Views\Default\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{eba154d6-da98-4d5c-a585-491735a84a18}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pdf\web\locale\en-US\viewer.properties" />
+    <None Include="pdf\web\locale\locale.properties" />
+    <Content Include="pdf\web\locale\vi\viewer.properties" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Home\ConfirmEmail.cshtml" />
+    <Content Include="Scripts\cldr-data\.gitattributes" />
+    <Content Include="Scripts\cldr-data\.ignored-bower.json" />
+    <Content Include="Scripts\cldr-data\.ignored-package.json" />
+    <Content Include="Scripts\cldr-data\availableLocales.json" />
+    <Content Include="Scripts\cldr-data\DCO.md" />
+    <Content Include="Scripts\cldr-data\defaultContent.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-buddhist.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-chinese.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-coptic.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-dangi.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-ethiopic-amete-alem.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-ethiopic.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-generic.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-gregorian.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-hebrew.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-indian.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-islamic-civil.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-islamic-rgsa.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-islamic-tbla.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-islamic-umalqura.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-islamic.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-japanese.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-persian.json" />
+    <Content Include="Scripts\cldr-data\main\ar\ca-roc.json" />
+    <Content Include="Scripts\cldr-data\main\ar\characters.json" />
+    <Content Include="Scripts\cldr-data\main\ar\currencies.json" />
+    <Content Include="Scripts\cldr-data\main\ar\dateFields.json" />
+    <Content Include="Scripts\cldr-data\main\ar\delimiters.json" />
+    <Content Include="Scripts\cldr-data\main\ar\languages.json" />
+    <Content Include="Scripts\cldr-data\main\ar\layout.json" />
+    <Content Include="Scripts\cldr-data\main\ar\listPatterns.json" />
+    <Content Include="Scripts\cldr-data\main\ar\localeDisplayNames.json" />
+    <Content Include="Scripts\cldr-data\main\ar\measurementSystemNames.json" />
+    <Content Include="Scripts\cldr-data\main\ar\numbers.json" />
+    <Content Include="Scripts\cldr-data\main\ar\posix.json" />
+    <Content Include="Scripts\cldr-data\main\ar\scripts.json" />
+    <Content Include="Scripts\cldr-data\main\ar\territories.json" />
+    <Content Include="Scripts\cldr-data\main\ar\timeZoneNames.json" />
+    <Content Include="Scripts\cldr-data\main\ar\units.json" />
+    <Content Include="Scripts\cldr-data\main\ar\variants.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-buddhist.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-chinese.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-coptic.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-dangi.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-ethiopic-amete-alem.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-ethiopic.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-generic.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-gregorian.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-hebrew.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-indian.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-islamic-civil.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-islamic-rgsa.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-islamic-tbla.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-islamic-umalqura.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-islamic.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-japanese.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-persian.json" />
+    <Content Include="Scripts\cldr-data\main\de\ca-roc.json" />
+    <Content Include="Scripts\cldr-data\main\de\characters.json" />
+    <Content Include="Scripts\cldr-data\main\de\currencies.json" />
+    <Content Include="Scripts\cldr-data\main\de\dateFields.json" />
+    <Content Include="Scripts\cldr-data\main\de\delimiters.json" />
+    <Content Include="Scripts\cldr-data\main\de\languages.json" />
+    <Content Include="Scripts\cldr-data\main\de\layout.json" />
+    <Content Include="Scripts\cldr-data\main\de\listPatterns.json" />
+    <Content Include="Scripts\cldr-data\main\de\localeDisplayNames.json" />
+    <Content Include="Scripts\cldr-data\main\de\measurementSystemNames.json" />
+    <Content Include="Scripts\cldr-data\main\de\numbers.json" />
+    <Content Include="Scripts\cldr-data\main\de\posix.json" />
+    <Content Include="Scripts\cldr-data\main\de\scripts.json" />
+    <Content Include="Scripts\cldr-data\main\de\territories.json" />
+    <Content Include="Scripts\cldr-data\main\de\timeZoneNames.json" />
+    <Content Include="Scripts\cldr-data\main\de\units.json" />
+    <Content Include="Scripts\cldr-data\main\de\variants.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-buddhist.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-chinese.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-coptic.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-dangi.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-ethiopic-amete-alem.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-ethiopic.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-generic.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-gregorian.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-hebrew.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-indian.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-islamic-civil.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-islamic-rgsa.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-islamic-tbla.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-islamic-umalqura.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-islamic.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-japanese.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-persian.json" />
+    <Content Include="Scripts\cldr-data\main\en\ca-roc.json" />
+    <Content Include="Scripts\cldr-data\main\en\characters.json" />
+    <Content Include="Scripts\cldr-data\main\en\contextTransforms.json" />
+    <Content Include="Scripts\cldr-data\main\en\currencies.json" />
+    <Content Include="Scripts\cldr-data\main\en\dateFields.json" />
+    <Content Include="Scripts\cldr-data\main\en\delimiters.json" />
+    <Content Include="Scripts\cldr-data\main\en\languages.json" />
+    <Content Include="Scripts\cldr-data\main\en\layout.json" />
+    <Content Include="Scripts\cldr-data\main\en\listPatterns.json" />
+    <Content Include="Scripts\cldr-data\main\en\localeDisplayNames.json" />
+    <Content Include="Scripts\cldr-data\main\en\measurementSystemNames.json" />
+    <Content Include="Scripts\cldr-data\main\en\numbers.json" />
+    <Content Include="Scripts\cldr-data\main\en\posix.json" />
+    <Content Include="Scripts\cldr-data\main\en\scripts.json" />
+    <Content Include="Scripts\cldr-data\main\en\territories.json" />
+    <Content Include="Scripts\cldr-data\main\en\timeZoneNames.json" />
+    <Content Include="Scripts\cldr-data\main\en\units.json" />
+    <Content Include="Scripts\cldr-data\main\en\variants.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-buddhist.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-chinese.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-coptic.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-dangi.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-ethiopic-amete-alem.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-ethiopic.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-generic.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-gregorian.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-hebrew.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-indian.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-islamic-civil.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-islamic-rgsa.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-islamic-tbla.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-islamic-umalqura.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-islamic.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-japanese.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-persian.json" />
+    <Content Include="Scripts\cldr-data\main\vi\ca-roc.json" />
+    <Content Include="Scripts\cldr-data\main\vi\characters.json" />
+    <Content Include="Scripts\cldr-data\main\vi\currencies.json" />
+    <Content Include="Scripts\cldr-data\main\vi\dateFields.json" />
+    <Content Include="Scripts\cldr-data\main\vi\delimiters.json" />
+    <Content Include="Scripts\cldr-data\main\vi\languages.json" />
+    <Content Include="Scripts\cldr-data\main\vi\layout.json" />
+    <Content Include="Scripts\cldr-data\main\vi\listPatterns.json" />
+    <Content Include="Scripts\cldr-data\main\vi\localeDisplayNames.json" />
+    <Content Include="Scripts\cldr-data\main\vi\measurementSystemNames.json" />
+    <Content Include="Scripts\cldr-data\main\vi\numbers.json" />
+    <Content Include="Scripts\cldr-data\main\vi\posix.json" />
+    <Content Include="Scripts\cldr-data\main\vi\scripts.json" />
+    <Content Include="Scripts\cldr-data\main\vi\territories.json" />
+    <Content Include="Scripts\cldr-data\main\vi\timeZoneNames.json" />
+    <Content Include="Scripts\cldr-data\main\vi\units.json" />
+    <Content Include="Scripts\cldr-data\main\vi\variants.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-buddhist.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-chinese.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-coptic.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-dangi.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-ethiopic-amete-alem.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-ethiopic.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-generic.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-gregorian.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-hebrew.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-indian.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-islamic-civil.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-islamic-rgsa.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-islamic-tbla.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-islamic-umalqura.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-islamic.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-japanese.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-persian.json" />
+    <Content Include="Scripts\cldr-data\main\zh\ca-roc.json" />
+    <Content Include="Scripts\cldr-data\main\zh\characters.json" />
+    <Content Include="Scripts\cldr-data\main\zh\currencies.json" />
+    <Content Include="Scripts\cldr-data\main\zh\dateFields.json" />
+    <Content Include="Scripts\cldr-data\main\zh\delimiters.json" />
+    <Content Include="Scripts\cldr-data\main\zh\languages.json" />
+    <Content Include="Scripts\cldr-data\main\zh\layout.json" />
+    <Content Include="Scripts\cldr-data\main\zh\listPatterns.json" />
+    <Content Include="Scripts\cldr-data\main\zh\localeDisplayNames.json" />
+    <Content Include="Scripts\cldr-data\main\zh\measurementSystemNames.json" />
+    <Content Include="Scripts\cldr-data\main\zh\numbers.json" />
+    <Content Include="Scripts\cldr-data\main\zh\posix.json" />
+    <Content Include="Scripts\cldr-data\main\zh\scripts.json" />
+    <Content Include="Scripts\cldr-data\main\zh\territories.json" />
+    <Content Include="Scripts\cldr-data\main\zh\timeZoneNames.json" />
+    <Content Include="Scripts\cldr-data\main\zh\units.json" />
+    <Content Include="Scripts\cldr-data\main\zh\variants.json" />
+    <Content Include="Scripts\cldr-data\scriptMetadata.json" />
+    <Content Include="Scripts\cldr-data\segments\de\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\el\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\en-US-POSIX\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\en\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\es\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\fi\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\fr\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\it\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\ja\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\pt\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\root\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\ru\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\zh-Hant\suppressions.json" />
+    <Content Include="Scripts\cldr-data\segments\zh\suppressions.json" />
+    <Content Include="Scripts\cldr-data\state.json" />
+    <Content Include="Scripts\cldr-data\supplemental\aliases.json" />
+    <Content Include="Scripts\cldr-data\supplemental\calendarData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\calendarPreferenceData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\characterFallbacks.json" />
+    <Content Include="Scripts\cldr-data\supplemental\codeMappings.json" />
+    <Content Include="Scripts\cldr-data\supplemental\currencyData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\dayPeriods.json" />
+    <Content Include="Scripts\cldr-data\supplemental\gender.json" />
+    <Content Include="Scripts\cldr-data\supplemental\languageData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\languageGroups.json" />
+    <Content Include="Scripts\cldr-data\supplemental\languageMatching.json" />
+    <Content Include="Scripts\cldr-data\supplemental\likelySubtags.json" />
+    <Content Include="Scripts\cldr-data\supplemental\measurementData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\metaZones.json" />
+    <Content Include="Scripts\cldr-data\supplemental\numberingSystems.json" />
+    <Content Include="Scripts\cldr-data\supplemental\ordinals.json" />
+    <Content Include="Scripts\cldr-data\supplemental\parentLocales.json" />
+    <Content Include="Scripts\cldr-data\supplemental\plurals.json" />
+    <Content Include="Scripts\cldr-data\supplemental\primaryZones.json" />
+    <Content Include="Scripts\cldr-data\supplemental\references.json" />
+    <Content Include="Scripts\cldr-data\supplemental\telephoneCodeData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\territoryContainment.json" />
+    <Content Include="Scripts\cldr-data\supplemental\territoryInfo.json" />
+    <Content Include="Scripts\cldr-data\supplemental\timeData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\unitPreferenceData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\weekData.json" />
+    <Content Include="Scripts\cldr-data\supplemental\windowsZones.json" />
+    <Content Include="Scripts\cldr-data\urls.json" />
+    <Content Include="Scripts\ej2.min.js.map" />
+    <Content Include="Scripts\sampleOrder.json" />
+    <Content Include="Scripts\tooltip\tooltipdata.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54009</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54009/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

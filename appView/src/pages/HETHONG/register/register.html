@@ -1,0 +1,35 @@
+<div id="login-page">
+  <div class="container">
+      <div class="row">
+          <h3>
+              You're almost there! Create an account
+          </h3>
+          <div class="box">
+              <ion-list>
+                  <span></span>
+                  <ion-item>
+                      <ion-label floating>Email</ion-label>
+                      <ion-input [(ngModel)]="email" type="email" value=""></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label floating>Mật khẩu</ion-label>
+                      <ion-input [(ngModel)]="password" type="password" value=""></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label floating>Nhập lại mật khẩu</ion-label>
+                      <ion-input [(ngModel)]="retypePassword" type="password" value=""></ion-input>
+                  </ion-item>
+
+                  <div padding>
+                      <button ion-button block color="warning" (click)="register()">Đăng ký</button>
+                      <p class="divider">hoặc</p>
+                      <button ion-button block color="facebook" (click)="doFbLogin()">Đăng ký bằng Facebook</button>
+                  </div>
+              </ion-list>
+          </div>
+          <div class="out-box">
+              <button ion-button clear small (click)="goBack()">Đã có tài khoản? Đăng nhập ngay</button>
+          </div>
+      </div>
+  </div>
+</div>

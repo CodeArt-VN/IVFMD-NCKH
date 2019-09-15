@@ -1,0 +1,140 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="File">Chọn file
+                <span *ngIf="!formGroup.controls.File.valid && !formGroup.controls.File.pending && (formGroup.controls.File.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <div class="c-input uploader" *ngIf="(!uploader.queue.length && item.ID==0) || !item.File">
+                <div ng2FileDrop class="well my-drop-zone" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                    (onFileDrop)="onFileSelected()" [uploader]="uploader">
+                    <ion-icon class="big-icon" name="cloud-upload"></ion-icon>
+                    <br> Kéo thả file vào đây
+                    <br> hoặc
+                    <br>
+                    <button class="btn-file-choose" ion-button small (click)="selectFile()">
+                        Chọn file
+                    </button>
+                    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+                        [uploader]="uploader" />
+                </div>
+            </div>
+            <div *ngIf="uploader.queue.length || (item.ID && item.File)">
+                <button *ngIf="uploader.queue.length" class="btn-remove-file" ion-button icon-only small clear color="danger" (click)="uploader.clearQueue()"
+                    [disabled]="!uploader.queue.length">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+                <button *ngIf="item.ID && item.File" class="btn-remove-file" ion-button icon-only small clear color="danger" (click)="item.File=''">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+                <input class="c-input" autocomplete="off" [(ngModel)]="item.File" readonly formControlName="File" type="text">
+            </div>
+            <div *ngIf="uploader.progress>0 && uploader.progress<100" padding-top text-right>
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+                <button ion-button icon-start small color="danger" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <ion-icon name="ios-trash"></ion-icon> Bỏ upload
+                </button>
+            </div>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="IDFolder">Thuộc thư mục
+                <span *ngIf="!formGroup.controls.IDFolder.valid && !formGroup.controls.IDFolder.pending && (formGroup.controls.IDFolder.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDFolder" formControlName="IDFolder" [attr.disabled]="isViewProfile ? '' : null">
+                <option [ngValue]="null">
+                    Root
+                </option>
+                <option *ngFor="let t of folderTree" [value]="t.ID">
+                    {{'&nbsp;&nbsp;&nbsp;' + t.levels.join('&nbsp;&nbsp;&nbsp;')}} {{t.Name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Name">Tiêu đề văn bản
+                <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Name" autocomplete="off" [(ngModel)]="item.Name" formControlName="Name" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="FileVersion">File version
+                <span *ngIf="!formGroup.controls.FileVersion.valid && !formGroup.controls.FileVersion.pending && (formGroup.controls.FileVersion.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="FileVersion" autocomplete="off" [(ngModel)]="item.FileVersion" formControlName="FileVersion" type="text">
+        </div>
+
+        
+
+        <div class="c-control">
+            <label class="c-label" for="Remark">Mô tả ngắn
+                <span *ngIf="!formGroup.controls.Remark.valid && !formGroup.controls.Remark.pending && (formGroup.controls.Remark.dirty || submitAttempt)"
+                    ion-text color="danger">(*)</span>
+            </label>
+            <textarea [rows]="uploader.queue.length? 9: 2" class="c-input" id="Remark" [(ngModel)]="item.Remark" formControlName="Remark"
+                type="textarea"></textarea>
+
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button color="warning" *ngIf="!canApproveDoc" ion-button float-right (click)="item.ApprovedBy = 'Chờ duyệt'; upLoadThenSave()">
+                <span *ngIf="!canApproveDoc"> Gửi duyệt</span>
+            </button>
+            <button *ngIf="canApproveDoc" color="warning" ion-button float-right (click)="item.IsApproved = true; upLoadThenSave()">
+                <span>Thêm và Duyệt</span>
+            </button>
+
+            <button ion-button float-right (click)="upLoadThenSave()">
+                Thêm tài liệu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0 && item.ApprovedBy != 'Chờ duyệt' ">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="upLoadThenSave()" [disabled]="!formGroup.dirty">
+                <span>Lưu</span>
+            </button>
+
+            <button color="warning" *ngIf="!canApproveDoc && !item.IsApproved" ion-button float-right (click)="item.ApprovedBy = 'Chờ duyệt'; upLoadThenSave()">
+                <span *ngIf="!canApproveDoc">Gửi duyệt</span>
+            </button>
+            <button *ngIf="canApproveDoc && !item.IsApproved" color="warning" ion-button float-right (click)="item.IsApproved = true; upLoadThenSave()">
+                <span>Duyệt</span>
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0 && item.ApprovedBy == 'Chờ duyệt' ">
+            <label class="c-label" for=""></label>
+            <button *ngIf="!canApproveDoc" color="warning" ion-button float-right>
+                <span>Đang chờ duyệt</span>
+            </button>
+            
+            <button *ngIf="canApproveDoc" color="danger" ion-button icon-start float-right (click)="item.ApprovedBy = 'Không được duyệt'; upLoadThenSave()">
+                <ion-icon name="fa-ban"></ion-icon>
+                <span>Trả lại</span>
+            </button>
+            <button  *ngIf="canApproveDoc" color="success" ion-button icon-start float-right (click)="item.IsApproved = true; upLoadThenSave()">
+                <ion-icon name="fa-gavel"></ion-icon>
+                <span>Duyệt</span>
+            </button>
+        </div>
+    </form>
+
+</ion-content>

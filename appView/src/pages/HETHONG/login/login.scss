@@ -1,0 +1,164 @@
+page-login, page-forgot-password {
+    background-color: #fff;
+    background-image: url('./../assets/imgs/login-bg.png');
+	background-position: bottom right;
+	background-repeat: repeat-y;
+	background-size: calc(100% - 500px);
+    .content{
+        background-color: transparent;
+    }
+}
+
+#login-page {
+    
+    min-height: 100%;
+
+	background-image: url('./../assets/imgs/baby-foot.png');
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: 300px;
+
+    @media (min-width: 1024px){
+        //width: calc(100vw - 279px);
+    }
+    
+    .col-left{
+        float: left;
+        max-width: 500px;
+        min-height: 100vh;
+        width: 100%;
+        text-align: center;
+        background-color: map-get($map: $colors, $key: ivf4);
+
+        .header{
+            height: 240px;
+            
+            background-color: map-get($map: $colors, $key: ivf1);
+            color: map-get($map: $colors, $key: white);
+
+            h1{
+                display: block;
+                margin: 0;
+                padding-top: 100px;
+                font-size: 36px;
+                white-space: nowrap;
+            }
+        }
+        .form{
+            padding: 0 15px;
+            padding-top: 60px;
+            max-width: 325px;
+            width: 100%;
+            margin-bottom: 50px;
+            
+            display: inline-block;
+            .c-label{
+                display: none;
+            }
+            .c-input{
+                border: 1px solid map-get($map: $colors, $key: ivf1);
+                background-color: map-get($map: $colors, $key: white);
+            }
+        }
+
+        .footer{
+            clear: both;
+        }
+    }
+    .col-right{
+        float: left;
+        width: calc(100% - 500px);
+        min-width: 524px;
+        display: none;
+
+        @media (min-width: map-get($grid-breakpoints, lg )) {
+            display: block;
+        }
+
+        .logos{
+            margin: 60px 0 0 60px;
+            img{
+                height: 90px;
+                display: inline-block;
+                white-space: nowrap;
+                margin-right: 30px;
+            }
+        }
+
+        h1{
+            margin-left: 60px; 
+            margin-top: 38px;
+            font-size: 50px;
+            color: map-get($map: $colors, $key: ivf1);
+        }
+        
+    }
+
+    .clear{
+        clear: both;
+    }
+
+
+
+
+    // a {
+    //     color: #FFF;
+    //     font-weight: bold;
+    // }
+    // h3 {
+    //     padding: 30px 0 15px 0;
+    //     width: 100%;
+    // }
+    // div {
+    //     @media (min-width: 768px) {
+    //         width: 100%;
+    //         margin: 0;
+    //     }
+    // }
+    // .box {
+    //     width: 100%;
+    //     padding: 20px;
+    //     background-color: #FFF;
+    //     margin: 0;
+    //     color: #333;
+    //     .divider {
+    //         font-size: 16px;
+    //         margin: 15px 0;
+    //         text-align: center;
+    //         position: relative;
+    //         &:after,
+    //         &:before {
+    //             content: " ";
+    //             display: block;
+    //             position: absolute;
+    //             height: 1px;
+    //             margin: 0;
+    //             width: calc(50% - 26px);
+    //             top: 50%;
+    //             left: 0;
+    //             background: linear-gradient(90deg, #fff, #ddd);
+    //         }
+    //         &:after {
+    //             left: auto;
+    //             right: 0;
+    //             background: linear-gradient(90deg, #ddd, #fff);
+    //         }
+    //     }
+    //     .forgot-pass {
+    //         color: #333;
+    //         padding: 20px 0 0 0;
+    //         display: inline-block;
+    //     }
+    //     @media (min-width: 768px) {
+    //         width: 420px;
+    //         padding: 40px;
+    //         margin: auto;
+    //         border-radius: 10px;
+    //     }
+    // }
+    // .out-box {
+    //     padding-bottom: 50px;
+    //     padding-top: 15px;
+    //     width: 100%;
+    // }
+}

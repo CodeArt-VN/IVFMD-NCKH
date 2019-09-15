@@ -1,0 +1,52 @@
+partner-modal{
+    ion-header{
+	
+	}
+
+	form{
+		.logo-BVMD{background-image:url('./../assets/imgs/BVMD.png');}
+		.logo-IVFMD{background-image:url('./../assets/imgs/IVFMD.png');}
+		.logo-IVFMD-AS{background-image:url('./../assets/imgs/IVFMD-AS.png');}
+		.logo-IVFMD-VH{background-image:url('./../assets/imgs/IVFMD-VH.png');}
+		.logo-PK-NgocLan{background-image:url('./../assets/imgs/PhongKhamNgocLan.png');}
+		
+		.cc-selector-2{
+			input{
+				position:absolute;
+				z-index:999;
+			}
+			input:active +.drinkcard-cc{
+				opacity: .9;
+			}
+			input:checked +.drinkcard-cc{
+				-webkit-filter: none;
+				   -moz-filter: none;
+						filter: none;
+			}
+
+			.drinkcard-cc{
+				margin-left: 20px;
+				cursor:pointer;
+				background-size:contain;
+				background-repeat:no-repeat;
+				display:inline-block;
+				width:90px;
+				height:70px;
+
+				-webkit-transition: all 100ms ease-in;
+				   -moz-transition: all 100ms ease-in;
+						transition: all 100ms ease-in;
+				-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+				   -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+						filter: brightness(1.8) grayscale(1) opacity(.7);
+			}
+			.drinkcard-cc:hover{
+				-webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+				   -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+						filter: brightness(1.2) grayscale(.5) opacity(.9);
+			}
+
+		} 
+
+	}
+}

@@ -1,0 +1,4472 @@
+{
+	"info": {
+		"_postman_id": "3409a6a5-38ed-4087-80d2-0ccc2ad46f0b",
+		"name": "IVFMD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FILE",
+			"description": null,
+			"item": []
+		},
+		{
+			"name": "Base",
+			"description": null,
+			"item": [
+				{
+					"name": "Test",
+					"description": "Test api/Values",
+					"item": [
+						{
+							"name": "api/Values",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 401\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 40SMgKXClyLgTP8lKm8KazocWNjcxKtquGCOS2609MqGe5vzMQaRqddtwHFVbwYgEjelwk7fPKBKog5QQUCjC-p162aAKCusuzvtMfRWOjfXsMOx-Y672go9XJvNNiLJ_NpPdoLVpr7EIB4pbZ3C7wUgd98zeuhn92fsWwpB8nQ3gcAyELM3iA7k-WJLQYR6uK4AyRgkL9FzPpGD8rv9byEnuA5CLEambwamjD2nrtKdDA1aa7aHIMy1wxb2Kgq1tnWkW9A1jp_OYQ6GqwITAPnxXc2SCgC3Ip_8jbZ7BQXKXaUrNn-gsiDCTtWrogi7PakRLo_iI40h4Ph4V5Ri2TeC86zjtKzTCk_cyo1PHSgNYI-luyfeD8UVuIVjjGP-hGO9EORRKI7yobDhd01xO26pEk5p_TgoPj9lhZDq83bBTuF4EBLhIoamNJvld2qo5u-2f2Ekg8tla9diTbNCF0VIB0Rqe6NyakTyJt-USnY"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"string 1\""
+								},
+								"url": {
+									"raw": "{{apidomain}}Values",
+									"host": [
+										"{{apidomain}}Values"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "api/Values/4",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "Update string"
+								},
+								"url": {
+									"raw": "{{apidomain}}Values/4",
+									"host": [
+										"{{apidomain}}Values"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "api/Values",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 401\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Values",
+									"host": [
+										"{{apidomain}}Values"
+									]
+								},
+								"description": "With author header"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Values/3",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}Values/3",
+									"host": [
+										"{{apidomain}}Values"
+									],
+									"path": [
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account",
+					"description": null,
+					"item": [
+						{
+							"name": "api/Account/RegisterExternal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Register success\"] = responseCode.code === 200;",
+											"tests[\"Username already taken\"] = responseBody.has(\"is already taken\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"h5@test.com\",\r\n  \"password\": \"Test123!\",\r\n  \"confirmPassword\": \"Test123!\"\r\n}"
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/RegisterExternal",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"RegisterExternal"
+									]
+								},
+								"description": "Tạo mới account"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/ExternalLogins",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/ExternalLogins",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"ExternalLogins"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/UserInfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/UserInfo?GetMenu=true",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"UserInfo"
+									],
+									"query": [
+										{
+											"key": "GetMenu",
+											"value": "true"
+										}
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/ChangePassword",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/ChangePassword",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"ChangePassword"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/Register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Register success\"] = responseCode.code === 200;",
+											"tests[\"Username already taken\"] = responseBody.has(\"is already taken\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"h5@test.com\",\r\n  \"password\": \"123123\",\r\n  \"confirmPassword\": \"123123\"\r\n}"
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/Register",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"Register"
+									]
+								},
+								"description": "Tạo mới account"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/SetPassword",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/SetPassword",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"SetPassword"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"access token ok\"] = responseBody.has(\"access_token\");",
+											"tests[\"username ok\"] = responseBody.has(\"userName\");",
+											"tests[\"the user name or password is incorrect\"] = responseBody.has(\"The user name or password is incorrect\");",
+											"tests[\"unsupported grant type\"] = responseBody.has(\"unsupported_grant_type\");",
+											"",
+											"if(responseBody.has(\"access_token\")){",
+											"    var responeseData = JSON.parse(responseBody);",
+											"    postman.setEnvironmentVariable(\"token\", responeseData.access_token);",
+											"    postman.setNextRequest(\"api/Account/UserInfo\");",
+											"}",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "{{username}}",
+											"description": "Email",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"description": "Password",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"description": "Grant type bắt buộc",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}token",
+									"host": [
+										"{{domain}}token"
+									]
+								},
+								"description": "Đăng nhập để lấy access token, username"
+							},
+							"response": [
+								{
+									"id": "b8688097-3f24-4745-a8f4-fdc0b5e27ca4",
+									"name": "Đăng nhập thành công",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "username",
+													"value": "{{username}}",
+													"description": "Email",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "{{password}}",
+													"description": "Password",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "password",
+													"description": "Grant type bắt buộc",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{domain}}token",
+											"host": [
+												"{{domain}}token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"name": "cache-control",
+											"key": "cache-control",
+											"value": "no-cache",
+											"description": ""
+										},
+										{
+											"name": "content-length",
+											"key": "content-length",
+											"value": "663",
+											"description": ""
+										},
+										{
+											"name": "content-type",
+											"key": "content-type",
+											"value": "application/json;charset=UTF-8",
+											"description": ""
+										},
+										{
+											"name": "date",
+											"key": "date",
+											"value": "Thu, 26 Oct 2017 12:52:36 GMT",
+											"description": ""
+										},
+										{
+											"name": "expires",
+											"key": "expires",
+											"value": "-1",
+											"description": ""
+										},
+										{
+											"name": "pragma",
+											"key": "pragma",
+											"value": "no-cache",
+											"description": ""
+										},
+										{
+											"name": "server",
+											"key": "server",
+											"value": "Microsoft-IIS/10.0",
+											"description": ""
+										},
+										{
+											"name": "x-powered-by",
+											"key": "x-powered-by",
+											"value": "ASP.NET",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"access_token\":\"4-1E11jo3obuNWO1q4-3phyXv5s_YKtsCeioa19nkLwNFVS092icWPBPBpvcg-eT8I3LALRow_62QahqcRBJVdPtx5ZoFNMcleFWt1pbKTv1Ih9kd_VY9p6g-AeSFcAM5GZGrXmCa4b7LubgMYZUrNQFarc9ljdJHtmrDZcrwsYanKZZMPI4IUAKUnOhvwe-IZMWRscZbUsTAukHIGb9XkPOLOc_jAj6JlBGLDgGFkZ02pf-YtXJYrmC90H4RTClN_MXUwhtN50jdm5Yt6UAKsLXXHUCNVfNiVY6qiKsXUk4duMj56y_xHPz21fKcIfuvhF_ZGLbWVSU3w6idJgqxm1Pzi_cEmuDaAFKSWNtqNVvlsfZDb_BoLtysd3KsR1_tqbSg7mYxvXAbTRPmbiuodRkTkdS55EyOfKxdiPXfc_AFQtyTMk9cwu7CU3QjHXxzDyPR6e8tAxSpAaR3fPea0NhcNATJ6gkxZeGhY9zfSA\",\"token_type\":\"bearer\",\"expires_in\":1209599,\"userName\":\"h3@test.com\",\".issued\":\"Thu, 26 Oct 2017 06:00:42 GMT\",\".expires\":\"Thu, 09 Nov 2017 06:00:42 GMT\"}"
+								},
+								{
+									"id": "01d6c802-8895-4583-9f5b-5d91200b113c",
+									"name": "Đăng nhập thành công",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "username",
+													"value": "h3@test.com",
+													"description": "Email",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Test123!",
+													"description": "Password",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "password",
+													"description": "Grant type bắt buộc",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://hungvq-w10.local:54009/token",
+											"protocol": "http",
+											"host": [
+												"hungvq-w10",
+												"local"
+											],
+											"port": "54009",
+											"path": [
+												"token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"name": "cache-control",
+											"key": "cache-control",
+											"value": "no-cache",
+											"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+										},
+										{
+											"name": "content-length",
+											"key": "content-length",
+											"value": "663",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"name": "content-type",
+											"key": "content-type",
+											"value": "application/json;charset=UTF-8",
+											"description": "The mime type of this content"
+										},
+										{
+											"name": "date",
+											"key": "date",
+											"value": "Sat, 07 Oct 2017 11:46:42 GMT",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"name": "expires",
+											"key": "expires",
+											"value": "-1",
+											"description": "Gives the date/time after which the response is considered stale"
+										},
+										{
+											"name": "pragma",
+											"key": "pragma",
+											"value": "no-cache",
+											"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+										},
+										{
+											"name": "server",
+											"key": "server",
+											"value": "Microsoft-IIS/10.0",
+											"description": "A name for the server"
+										},
+										{
+											"name": "x-powered-by",
+											"key": "x-powered-by",
+											"value": "ASP.NET",
+											"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+										}
+									],
+									"cookie": [],
+									"body": "{\"access_token\":\"16y_tTwBeMYx8YLMBJ5ktmybB6DFVL8SKIZGR2O7gtyrMbFfFyX6R9EWg5Q8K0c6vfYZ4dxE8cQTpZvGB2WHpc-OkWtJ3FXtpFrGGtdIr3UOcAnc2kGVwLGGhSAbcPL_1wH6ZekhooxoU2XAxTsuxx6zB6tsF52tudyfN2CpYHFFmIPSfSuwlUdFM92axkRBWYdQaio4cS_TKi6sAC4y5BtArKciXFU4sPiwMjBj9M6H-lDYtzKXwdQOKir09SJCDZwBnbGLVK3Bbcwl88JLaMNcZ07bP0RIoJB9XUS4-Qq0YXFflzNdO7bb25F07JVLgG30_IYqWI58Ck29wJFBbf3MMlzLF7MmJqBhor4WZGYH0GMKjaU3FS1TQQcZ15RnNUTlxC6a7R8DxjGpe9z97klGl5ExZq7JWScoWtl5pyuM0ng8hP1gtbzjxjBbXDHrqehwXcIl0-YwplvnuIKYbPG0pR3AiQufDAplpGhV_dI\",\"token_type\":\"bearer\",\"expires_in\":1209599,\"userName\":\"h3@test.com\",\".issued\":\"Sat, 07 Oct 2017 05:36:45 GMT\",\".expires\":\"Sat, 21 Oct 2017 05:36:45 GMT\"}"
+								},
+								{
+									"id": "890da3c2-6880-4b0c-8c1e-5fe41f14a15d",
+									"name": "password is incorrect",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "username",
+													"value": "h3@test.com",
+													"description": "Email",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Test123! ê",
+													"description": "Password",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "password",
+													"description": "Grant type bắt buộc",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://hungvq-w10.local:54009/token",
+											"protocol": "http",
+											"host": [
+												"hungvq-w10",
+												"local"
+											],
+											"port": "54009",
+											"path": [
+												"token"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"name": "cache-control",
+											"key": "cache-control",
+											"value": "no-cache",
+											"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+										},
+										{
+											"name": "content-length",
+											"key": "content-length",
+											"value": "87",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"name": "content-type",
+											"key": "content-type",
+											"value": "application/json;charset=UTF-8",
+											"description": "The mime type of this content"
+										},
+										{
+											"name": "date",
+											"key": "date",
+											"value": "Sat, 07 Oct 2017 11:46:42 GMT",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"name": "expires",
+											"key": "expires",
+											"value": "-1",
+											"description": "Gives the date/time after which the response is considered stale"
+										},
+										{
+											"name": "pragma",
+											"key": "pragma",
+											"value": "no-cache",
+											"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+										},
+										{
+											"name": "server",
+											"key": "server",
+											"value": "Microsoft-IIS/10.0",
+											"description": "A name for the server"
+										},
+										{
+											"name": "x-powered-by",
+											"key": "x-powered-by",
+											"value": "ASP.NET",
+											"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+										}
+									],
+									"cookie": [],
+									"body": "{\"error\":\"invalid_grant\",\"error_description\":\"The user name or password is incorrect.\"}"
+								}
+							]
+						},
+						{
+							"name": "api/Account/AddExternalLogin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/AddExternalLogin",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"AddExternalLogin"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/RemoveLogin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/RemoveLogin",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"RemoveLogin"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/ExternalLogin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/ExternalLogin",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"ExternalLogin"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						},
+						{
+							"name": "api/Account/Logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Email\"] = responseBody.has(\"Email\");",
+											"",
+											"tests[\"Has Registered\"] = responseBody.has('\"HasRegistered\":true');",
+											"",
+											"",
+											"tests[\"Status code is 401 Unauthorized\"] = responseCode.code === 401;",
+											"tests[\"Authorization has been denied for this request\"] = responseBody.has(\"Authorization has been denied for this request\");",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "h3@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Test123!",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apidomain}}Account/Logout",
+									"host": [
+										"{{apidomain}}Account"
+									],
+									"path": [
+										"Logout"
+									]
+								},
+								"description": "Lấy thông tin user hiện tại"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "APP",
+			"description": null,
+			"item": [
+				{
+					"name": "Form",
+					"description": null,
+					"item": [
+						{
+							"name": "SYS/Form",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}SYS/Form",
+									"host": [
+										"{{apidomain}}SYS"
+									],
+									"path": [
+										"Form"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SYS/Form/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}SYS/Form/1",
+									"host": [
+										"{{apidomain}}SYS"
+									],
+									"path": [
+										"Form",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SYS/Form/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}SYS/Form/1",
+									"host": [
+										"{{apidomain}}SYS"
+									],
+									"path": [
+										"Form",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SYS/Form",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}SYS/Form",
+									"host": [
+										"{{apidomain}}SYS"
+									],
+									"path": [
+										"Form"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SYS/Form/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}SYS/Form/25",
+									"host": [
+										"{{apidomain}}SYS"
+									],
+									"path": [
+										"Form",
+										"25"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "SYS",
+			"description": null,
+			"item": [
+				{
+					"name": "Role",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/SYS/Role/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/Role/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"Role",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/Role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/Role",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"Role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/Role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/Role",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"Role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/Role/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/Role/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"Role",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/Role/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/Role/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"Role",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PermissionList",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/SYS/PermissionList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/PermissionList",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"PermissionList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/PermissionList/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/PermissionList/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"PermissionList",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/PermissionList/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/PermissionList/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"PermissionList",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/PermissionList/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/PermissionList/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"PermissionList",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/PermissionList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/PermissionList",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"PermissionList"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "StaffInRole",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/SYS/StaffInRole",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/StaffInRole",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"StaffInRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/StaffInRole",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/StaffInRole",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"StaffInRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/StaffInRole/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/StaffInRole/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"StaffInRole",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/StaffInRole/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/StaffInRole/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"StaffInRole",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/SYS/StaffInRole/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/SYS/StaffInRole/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"SYS",
+										"StaffInRole",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "DOC",
+			"description": null,
+			"item": [
+				{
+					"name": "Folder_Permission",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/DOC/Folder/Permission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/Permission",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"Permission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/Permission/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/Permission/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"Permission",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/Permission/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/Permission/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"Permission",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/Permission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/Permission",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"Permission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/Permission/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/Permission/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"Permission",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "FileInFolder",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/DOC/FileInFolder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/FileInFolder",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"FileInFolder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/FileInFolder/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/FileInFolder/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"FileInFolder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/FileInFolder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/FileInFolder",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"FileInFolder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/FileInFolder/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/FileInFolder/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"FileInFolder",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/FileInFolder/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/FileInFolder/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"FileInFolder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Folder",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/DOC/Folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/Folder/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/Folder/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"Folder",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "File",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/DOC/File",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/File",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"File"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/File/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/File/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"File",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/File",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/File",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"File"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/File/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/File/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"File",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/DOC/File/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/DOC/File/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"DOC",
+										"File",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "HRM",
+			"description": null,
+			"item": [
+				{
+					"name": "LIST_ChucDanh",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/HRM/LIST/ChucDanh/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/ChucDanh/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"ChucDanh",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/ChucDanh/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/ChucDanh/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"ChucDanh",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/ChucDanh",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/ChucDanh",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"ChucDanh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/ChucDanh/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/ChucDanh/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"ChucDanh",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/ChucDanh",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/ChucDanh",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"ChucDanh"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "LIST_BoPhan",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/HRM/LIST/BoPhan/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/BoPhan/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"BoPhan",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/BoPhan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/BoPhan",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"BoPhan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/BoPhan/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/BoPhan/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"BoPhan",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/BoPhan/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/BoPhan/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"BoPhan",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/LIST/BoPhan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/LIST/BoPhan",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"LIST",
+										"BoPhan"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "STAFF_NhanSu",
+					"description": null,
+					"item": [
+						{
+							"name": "CUS/HRM/STAFF/NhanSu",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/STAFF/NhanSu",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"STAFF",
+										"NhanSu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/STAFF/NhanSu/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/STAFF/NhanSu/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"STAFF",
+										"NhanSu",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/STAFF/NhanSu",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/STAFF/NhanSu",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"STAFF",
+										"NhanSu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/STAFF/NhanSu/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/STAFF/NhanSu/25",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"STAFF",
+										"NhanSu",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CUS/HRM/STAFF/NhanSu/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}CUS/HRM/STAFF/NhanSu/1",
+									"host": [
+										"{{apidomain}}CUS"
+									],
+									"path": [
+										"HRM",
+										"STAFF",
+										"NhanSu",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "PAR",
+			"description": null,
+			"item": [
+				{
+					"name": "Partner",
+					"description": null,
+					"item": [
+						{
+							"name": "PAR/Partner/25",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}PAR/Partner/25",
+									"host": [
+										"{{apidomain}}PAR"
+									],
+									"path": [
+										"Partner",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PAR/Partner/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}PAR/Partner/1",
+									"host": [
+										"{{apidomain}}PAR"
+									],
+									"path": [
+										"Partner",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PAR/Partner/1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"if(responseCode.code === 200){",
+											"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}PAR/Partner/1",
+									"host": [
+										"{{apidomain}}PAR"
+									],
+									"path": [
+										"Partner",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PAR/Partner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apidomain}}PAR/Partner",
+									"host": [
+										"{{apidomain}}PAR"
+									],
+									"path": [
+										"Partner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PAR/Partner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "PartnerID",
+										"value": "{{partnerid}}",
+										"description": "Gửi theo ID của Partner"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token_type}} {{token}}",
+										"description": "Gửi kèm token"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{citem}}"
+								},
+								"url": {
+									"raw": "{{apidomain}}PAR/Partner",
+									"host": [
+										"{{apidomain}}PAR"
+									],
+									"path": [
+										"Partner"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "WEB",
+			"description": "",
+			"item": [
+				
+{
+	"name": "BaiViet",
+	"description": "",
+	"item": [
+		{
+			"name": "WEB/BaiViet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/BaiViet",
+				"method": "GET",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/BaiViet/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"if(responseCode.code === 200){",
+							"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/BaiViet/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/BaiViet/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/BaiViet/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{citem}}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/BaiViet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/BaiViet",
+				"method": "POST",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{citem}}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/BaiViet/25",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/BaiViet/25",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"_postman_isSubFolder": true
+}
+,
+
+
+{
+	"name": "DanhMuc",
+	"description": "",
+	"item": [
+		{
+			"name": "WEB/DanhMuc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/DanhMuc",
+				"method": "GET",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/DanhMuc/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"if(responseCode.code === 200){",
+							"    postman.setEnvironmentVariable(\"citem\", responseBody);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/DanhMuc/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/DanhMuc/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/DanhMuc/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{citem}}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/DanhMuc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201 - Created\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/DanhMuc",
+				"method": "POST",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{citem}}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "WEB/DanhMuc/25",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{apidomain}}WEB/DanhMuc/25",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "PartnerID",
+						"value": "{{partnerid}}",
+						"description": "Gửi theo ID của Partner"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token_type}} {{token}}",
+						"description": "Gửi kèm token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"_postman_isSubFolder": true
+}
+
+
+			]
+		}
+	]
+}

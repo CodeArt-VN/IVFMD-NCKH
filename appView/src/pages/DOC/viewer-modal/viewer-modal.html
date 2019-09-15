@@ -1,0 +1,4 @@
+<button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+    <ion-icon name="close" color="white"></ion-icon>
+</button>
+<iframe *ngIf="showIframe" [src]="item.url | safeFrame"></iframe>

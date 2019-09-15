@@ -1,0 +1,1245 @@
+﻿@{
+    ViewBag.Title = "Document Editor";
+}
+
+@if (string.IsNullOrEmpty(ViewBag.Token) || string.IsNullOrEmpty(ViewBag.FileID))
+{
+    <page-login class="ion-page show-page" style="z-index: 92;">
+        <ion-content class="content content-ios" style="">
+            <div class="fixed-content"></div><div class="scroll-content">
+                <div id="login-page">
+                    <div class="col-left">
+                        <div class="header">
+                            <h1>DOCUMENT EDITOR</h1>
+                        </div>
+                        <div class="form">
+                            <p>
+                                <a> Thông báo </a>
+                                <br>
+                                Có vẻ như đường link không hợp  lệ,<br />
+                                vui lòng kiểm tra lại.
+                            </p>
+
+                            <div padding="" style="padding-top:0">
+                                <a href="/" block="" color="warning" ion-button="" class="button button-ios button-default button-default-ios button-block button-block-ios button-ios-warning"><span class="button-inner">Về trang chủ</span><div class="button-effect"></div></a>
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="footer">
+
+                        </div>
+                    </div>
+                    <div class="col-right">
+                        <div class="logos">
+                            <img src="http://ivfmd.demo.codeart.vn/assets/imgs/BVMD.png">
+                            <img src="http://ivfmd.demo.codeart.vn/assets/imgs/IVFMD.png">
+                        </div>
+
+                        <h1>THƯ VIỆN ĐIỆN TỬ</h1>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </ion-content>
+    </page-login>
+}
+else
+{
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title</title>
+        <link href="~/Content/ej2/material.css" rel="stylesheet" />
+        <style>
+            body {
+                margin: 0;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            #waiting-popup {
+                display: none;
+                height: inherit;
+                width: inherit;
+                position: absolute;
+                top: 0px;
+                background-color: #000000;
+                opacity: 0.5;
+                /*background-image: url(waitingpopup.gif);*/
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 10;
+            }
+
+            #panel {
+                height: 100%;
+                width: 100%;
+                user-select: none;
+                -moz-user-select: none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -o-user-select: none;
+            }
+
+            #containerpanel {
+                width: 100%;
+                height: calc(100vh - 72px) !important;
+            }
+
+            #titlebar {
+                display: none;
+                height: 36px;
+                line-height: 26px;
+                width: 100%;
+                font-size: 12px;
+                padding-left: 15px;
+                padding-right: 10px;
+                font-family: inherit;
+            }
+
+            @@font-face {
+                font-family: 'Sample brower icons';
+                src: url(data:application/x-font-ttf;charset=utf-8;base64,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YQBsACAAUwBhAG0AcABsAGUAIABiAHIAbwB3AGUAcgAgAGkAYwBvAG4AcwBSAGUAZwB1AGwAYQByAEYAaQBuAGEAbAAgAFMAYQBtAHAAbABlACAAYgByAG8AdwBlAHIAIABpAGMAbwBuAHMARgBpAG4AYQBsACAAUwBhAG0AcABsAGUAIABiAHIAbwB3AGUAcgAgAGkAYwBvAG4AcwBWAGUAcgBzAGkAbwBuACAAMQAuADAARgBpAG4AYQBsACAAUwBhAG0AcABsAGUAIABiAHIAbwB3AGUAcgAgAGkAYwBvAG4AcwBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIAB1AHMAaQBuAGcAIABTAHkAbgBjAGYAdQBzAGkAbwBuACAATQBlAHQAcgBvACAAUwB0AHUAZABpAG8AdwB3AHcALgBzAHkAbgBjAGYAdQBzAGkAbwBuAC4AYwBvAG0AAAAAAgAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/AQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENAQ4BDwEQAREBEgETARQBFQEWARcBGAEZARoBGwEcAR0BHgEfASABIQEiASMBJAElASYBJwEoASkBKgErASwBLQEuAS8BMAExATIBMwE0ATUBNgE3ATgBOQE6ATsBPAE9AT4BPwFAAAtTdHJva2VTdHlsZQhCb29rbWFyawdQaWN0dXJlBEZpbmQNT3V0c2lkZUJvcmRlcgdKdXN0aWZ5BUNsb3NlDkRlY3JlYXNlSW5kZW50FVBpeGVsQWxpZ25DZW50ZXJUYWJsZQ9CYWNrZ3JvdW5kQ29sb3ILQWxpZ25Cb3R0b20JUGFnZVNldHVwDkhpZ2hsaWdodENvbG9yC1N1cGVyc2NyaXB0BVRhYmxlBFVuZG8LSW5zZXJ0QmVsb3cJVG9wQm9yZGVyClBhZ2VOdW1iZXIQQWxpZ25DZW50ZXJUYWJsZQ5JbmNyZWFzZUluZGVudARCb2xkCUFsaWduTGVmdAZGb290ZXILSW5zZXJ0UmlnaHQJVW5kZXJsaW5lCkluc2VydExlZnQETG9jawZIZWFkZXINU3RyaWtldGhyb3VnaAhDbGVhckFsbAtSaWdodEJvcmRlcgpBbGlnblJpZ2h0BE9wZW4KU3Ryb2tlU2l6ZQVQcmludAtEZWxldGVUYWJsZQlGb250Q29sb3INSW5zaWRlQm9yZGVycwpEZWxldGVSb3dzCERvd25sb2FkC0xpbmVTcGFjaW5nFEluc2lkZVZlcnRpY2FsQm9yZGVyCEFsaWduVE9wBFJlZG8MQm90dG9tQm9yZGVyA05ldwVQYXN0ZQdCdWxsZXRzBENlbGwNRGVsZXRlQ29sdW1ucwpBbGxCb3JkZXJzCVN1YnNjcmlwdBBTaG93SGlkZVByb3BlcnR5DlRhYmxlT2ZDb250ZW50Bkl0YWxpYxZJbnNpZGVIb3Jpem9uZGFsYm9yZGVyC0xlZnRCb3JkZXJzCU51bWJlcmluZwRMaW5rC0FsaWduQ2VudGVyC0luc2VydEFib3ZlAAAAAAA=) format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            [class^="e-de-icon-"],
+            [class*=" e-de-icon-"] {
+                font-family: 'Sample brower icons' !important;
+            }
+
+            .e-de-icon-StrokeStyle:before {
+                content: "\e700";
+            }
+
+            .e-de-icon-Bookmark:before {
+                content: "\e701";
+            }
+
+            .e-de-icon-Picture:before {
+                content: "\e702";
+            }
+
+            .e-de-icon-Find:before {
+                content: "\e703";
+            }
+
+            .e-de-icon-OutsideBorder:before {
+                content: "\e704";
+            }
+
+            .e-de-icon-Justify:before {
+                content: "\e705";
+            }
+
+            .e-de-icon-Close:before {
+                content: "\e706";
+            }
+
+            .e-de-icon-DecreaseIndent:before {
+                content: "\e707";
+            }
+
+            .e-de-icon-PixelAlignCenterTable:before {
+                content: "\e708";
+            }
+
+            .e-de-icon-BackgroundColor:before {
+                content: "\e709" !important;
+            }
+
+            .e-de-icon-AlignBottom:before {
+                content: "\e70a";
+            }
+
+            .e-de-icon-PageSetup:before {
+                content: "\e70b";
+            }
+
+            .e-de-icon-HighlightColor:before {
+                content: "\e70c" !important;
+            }
+
+            .e-de-icon-Superscript:before {
+                content: "\e70d";
+            }
+
+            .e-de-icon-Table:before {
+                content: "\e70e";
+            }
+
+            .e-de-icon-Undo:before {
+                content: "\e70f";
+            }
+
+            .e-de-icon-InsertBelow:before {
+                content: "\e710";
+            }
+
+            .e-de-icon-TopBorder:before {
+                content: "\e711";
+            }
+
+            .e-de-icon-PageNumber:before {
+                content: "\e712";
+            }
+
+            .e-de-icon-AlignCenterTable:before {
+                content: "\e713";
+            }
+
+            .e-de-icon-IncreaseIndent:before {
+                content: "\e714";
+            }
+
+            .e-de-icon-Bold:before {
+                content: "\e715";
+            }
+
+            .e-de-icon-AlignLeft:before {
+                content: "\e716";
+            }
+
+            .e-de-icon-Footer:before {
+                content: "\e717";
+            }
+
+            .e-de-icon-InsertRight:before {
+                content: "\e718";
+            }
+
+            .e-de-icon-Underline:before {
+                content: "\e719";
+            }
+
+            .e-de-icon-InsertLeft:before {
+                content: "\e71a";
+            }
+
+            .e-de-icon-Lock:before {
+                content: "\e71b";
+            }
+
+            .e-de-icon-Header:before {
+                content: "\e71c";
+            }
+
+            .e-de-icon-Strikethrough:before {
+                content: "\e71d";
+            }
+
+            .e-de-icon-ClearAll:before {
+                content: "\e71e";
+            }
+
+            .e-de-icon-RightBorder:before {
+                content: "\e71f";
+            }
+
+            .e-de-icon-AlignRight:before {
+                content: "\e720";
+            }
+
+            .e-de-icon-Open:before {
+                content: "\e721";
+            }
+
+            .e-de-icon-StrokeSize:before {
+                content: "\e722";
+            }
+
+            .e-de-icon-Print:before {
+                content: "\e723";
+            }
+
+            .e-de-icon-DeleteTable:before {
+                content: "\e724";
+            }
+
+            .e-de-icon-FontColor:before {
+                content: "\e725" !important;
+            }
+
+            .e-de-icon-InsideBorders:before {
+                content: "\e726";
+            }
+
+            .e-de-icon-DeleteRows:before {
+                content: "\e727";
+            }
+
+            .e-de-icon-Download:before {
+                content: "\e728";
+            }
+
+            .e-de-icon-LineSpacing:before {
+                content: "\e729";
+            }
+
+            .e-de-icon-InsideVerticalBorder:before {
+                content: "\e72a";
+            }
+
+            .e-de-icon-AlignTop:before {
+                content: "\e72b";
+            }
+
+            .e-de-icon-Redo:before {
+                content: "\e72c";
+            }
+
+            .e-de-icon-BottomBorder:before {
+                content: "\e72d";
+            }
+
+            .e-de-icon-New:before {
+                content: "\e72e";
+            }
+
+            .e-de-icon-Paste:before {
+                content: "\e72f";
+            }
+
+            .e-de-icon-Bullets:before {
+                content: "\e730";
+            }
+
+            .e-de-icon-Cell:before {
+                content: "\e731";
+            }
+
+            .e-de-icon-DeleteColumns:before {
+                content: "\e732";
+            }
+
+            .e-de-icon-AllBorders:before {
+                content: "\e733";
+            }
+
+            .e-de-icon-Subscript:before {
+                content: "\e734";
+            }
+
+            .e-de-icon-ShowHidePane:before {
+                content: "\e735";
+            }
+
+            .e-de-icon-TableOfContent:before {
+                content: "\e736";
+            }
+
+            .e-de-icon-Italic:before {
+                content: "\e737";
+            }
+
+            .e-de-icon-InsideHorizondalBorder:before {
+                content: "\e738";
+            }
+
+            .e-de-icon-LeftBorders:before {
+                content: "\e739";
+            }
+
+            .e-de-icon-Numbering:before {
+                content: "\e73a";
+            }
+
+            .e-de-icon-Link:before {
+                content: "\e73b";
+            }
+
+            .e-de-icon-AlignCenter:before {
+                content: "\e73c";
+            }
+
+            .e-de-icon-InsertAbove:before {
+                content: "\e73d";
+            }
+
+            .e-btn-toggle {
+                background-color: #007DC5 !important;
+                border-color: #4CACDC !important;
+                box-shadow: none !important;
+            }
+
+                .e-btn-toggle .e-tbar-btn-text {
+                    color: #FFF !important;
+                }
+
+                .e-btn-toggle > span {
+                    color: #fff !important;
+                }
+
+            .e-de-togglebutton > span {
+                font-size: 20px !important;
+            }
+
+            #statusbar {
+                height: 28px;
+                min-height: 28px;
+                width: 100%;
+                background: #F1F1F1;
+                font-size: 12px;
+                color: #515151;
+                border: 0.5px solid #D4D4D4;
+                padding-right: 15px;
+                padding-left: 15px;
+                position: relative;
+            }
+
+            #status-saving {
+                width: 100px;
+                float: left;
+                height: 100%;
+                line-height: 28px;
+                color: #007dc5;
+                display: none;
+            }
+
+            .e-de-statusbar-zoom {
+                float: right;
+                text-align: center;
+                padding: 2px;
+                line-height: 19px;
+                margin-top: 1px;
+            }
+        </style>
+        <script src="~/Scripts/ej2/ej2.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container body-content">
+            <div id="panel" style="height:100%;width:100%;">
+                <div id="titlebar">Document</div>
+                <div id="toolbar" style="display:block;">
+                    <input type="file" id="insertImageButton" style="position:fixed; left:-110em" accept=".jpg,.jpeg,.png,.bmp" />
+                </div>
+                <div id="containerpanel" style="position:relative;">
+                    <div id="container" style="height:100%;width:100%;"></div>
+                    <div id="waiting-popup"></div>
+                </div>
+                <div id="statusbar">
+                    <div id="status-saving">Saving document...</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+    var docinfo = {};
+    var contentChanges = false;
+
+    var documenteditor = new ej.documenteditor.DocumentEditor({
+        isReadOnly: false,
+    });
+
+    documenteditor.acceptTab = true;
+    documenteditor.enableAllModules();
+
+    var documenteditorElement = document.getElementById("container");
+    documenteditor.pageOutline = '#E0E0E0'; //007DC5
+
+
+
+    var toolBar = new ej.navigations.Toolbar({
+        clicked: toolbar_action_handler,
+        items: [
+            //{
+            //    prefixIcon: 'e-de-icon-New tb-icons e-de-icons',
+            //    tooltipText: 'Create a new document.',
+            //    id: 'new',
+            //},
+            //{
+            //    prefixIcon: 'e-de-icon-Open tb-icons',
+            //    tooltipText: 'Open a document',
+            //    id: 'open',
+            //},
+
+
+            {
+                prefixIcon: 'e-de-icon-Undo tb-icons',
+                tooltipText: 'Undo the last operation (Ctrl+Z).',
+                id: 'undo',
+            },
+            {
+                prefixIcon: 'e-de-icon-Redo tb-icons',
+                tooltipText: 'Redo the last operation (Ctrl+Y).',
+                id: 'redo',
+            },
+            {
+                type: 'Separator',
+            },
+            {
+                prefixIcon: 'e-de-icon-Bold tb-icons',
+                tooltipText: 'Bold',
+                id: 'bold',
+            },
+            {
+                prefixIcon: 'e-de-icon-Italic tb-icons',
+                tooltipText: 'Italic',
+                id: 'italic',
+            },
+            {
+                prefixIcon: 'e-de-icon-Underline tb-icons',
+                tooltipText: 'Underline',
+                id: 'underline',
+            },
+            {
+                prefixIcon: 'e-de-icon-Strikethrough tb-icons',
+                tooltipText: 'Strikethrough',
+                id: 'strikethrough',
+            },
+            {
+                type: 'Separator',
+            },
+            {
+                prefixIcon: 'e-de-icon-Subscript tb-icons',
+                tooltipText: 'Subscript',
+                id: 'subscript',
+            },
+            {
+                prefixIcon: 'e-de-icon-Superscript tb-icons',
+                tooltipText: 'Superscript',
+                id: 'superscript',
+            },
+            {
+                type: 'Separator',
+            },
+
+            {
+                prefixIcon: 'e-de-icon-AlignLeft tb-icons',
+                tooltipText: 'Align-Left',
+                id: 'align-left',
+            },
+            {
+                prefixIcon: 'e-de-icon-AlignCenter tb-icons',
+                tooltipText: 'Align-Center',
+                id: 'align-center',
+            },
+            {
+                prefixIcon: 'e-de-icon-AlignRight tb-icons',
+                tooltipText: 'Align-Right',
+                id: 'align-right',
+            },
+            {
+                prefixIcon: 'e-de-icon-Justify tb-icons',
+                tooltipText: 'Align-Justify',
+                id: 'align-justify',
+            },
+            {
+                prefixIcon: 'e-de-icon-IncreaseIndent tb-icons',
+                tooltipText: 'Increase Indent',
+                id: 'left-indent',
+            },
+            {
+                prefixIcon: 'e-de-icon-DecreaseIndent tb-icons',
+                tooltipText: 'Decrease Indent',
+                id: 'right-indent',
+            },
+            {
+                type: 'Separator',
+            },
+            {
+                prefixIcon: 'e-de-icon-Picture tb-icons',
+                tooltipText: 'Insert inline picture from a file.',
+                id: 'insert_image',
+            },
+            {
+                prefixIcon: 'e-de-icon-Link tb-icons',
+                tooltipText:
+                    'Create a link in your document for quick access to webpages and files (Ctrl+K).',
+                id: 'insert_hyperlink',
+            },
+            {
+                prefixIcon: 'e-de-icon-Table tb-icons',
+                tooltipText: 'Insert a table into the document',
+                id: 'insert_table',
+            },
+            {
+                type: 'Separator',
+            },
+            {
+                prefixIcon: 'e-de-icon-Find tb-icons',
+                tooltipText: 'Find text in the document (Ctrl+F).',
+                id: 'find',
+            },
+
+            {
+                type: 'Separator',
+            },
+            {
+                prefixIcon: '',
+                text: '𝓕ont',
+                tooltipText: 'Font',
+                id: 'font',
+            },
+            {
+                prefixIcon: '',
+                text: 'ℙaragraph',
+                tooltipText: 'Paragraph',
+                id: 'paragraph',
+            },
+            {
+                type: 'Separator',
+            },
+
+            {
+                prefixIcon: 'e-de-icon-Print tb-icons',
+                tooltipText: 'Print',
+                id: 'print',
+            },
+            {
+                prefixIcon: 'e-de-icon-Download tb-icons',
+                tooltipText: 'Download document',
+                id: 'download',
+            },
+            {
+                prefixIcon: '',
+                tooltipText: 'Save a document',
+                text: 'Save',
+                id: 'save',
+            },
+        ],
+    });
+    toolBar.appendTo('#toolbar');
+
+    var containerPanel = document.getElementById('containerpanel');
+
+    updateContainerSize();
+    window.addEventListener("resize", updateContainerSize());
+
+    function updateContainerSize() {
+        containerPanel.style.height =
+            window.innerHeight -
+            (document.getElementById('titlebar').offsetHeight +
+                document.getElementById('toolbar').offsetHeight +
+                document.getElementById('statusbar').offsetHeight) +
+            'px';
+    }
+
+    function toolbar_action_handler(arg) {
+        var value;
+        switch (arg.item.id) {
+            case 'bold':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleBold();
+                }
+                break;
+            case 'italic':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleItalic();
+                }
+                break;
+            case 'underline':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleUnderline('Single');
+                }
+                break;
+            case 'strikethrough':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleStrikethrough('SingleStrike');
+                }
+                break;
+            case 'subscript':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleSubscript();
+                }
+                break;
+            case 'superscript':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleSuperscript();
+                }
+                break;
+            case 'align-justify':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleTextAlignment('Justify');
+                }
+                break;
+            case 'align-center':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleTextAlignment('Center');
+                }
+                break;
+            case 'align-right':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleTextAlignment('Right');
+                }
+                break;
+            case 'align-left':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.toggleTextAlignment('Left');
+                }
+                break;
+            case 'new':
+                documenteditor.openBlank();
+                break;
+            case 'open':
+                //var fileUpload = document.getElementById('uploadfileButton');
+                //fileUpload.value = '';
+                //fileUpload.click();
+                break;
+            case 'left-indent':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.increaseIndent();
+                }
+                break;
+            case 'right-indent':
+                if (!documenteditor.isReadOnly && documenteditor.editor) {
+                    documenteditor.editor.decreaseIndent();
+                }
+                break;
+            case 'print':
+                documenteditor.print();
+                break;
+            case 'undo':
+                if (documenteditor.editorHistory) {
+                    documenteditor.editorHistory.undo();
+                }
+                break;
+            case 'redo':
+                if (documenteditor.editorHistory) {
+                    documenteditor.editorHistory.redo();
+                }
+                break;
+            case 'insert_image':
+                var pictureUpload = document.getElementById('insertImageButton');
+                pictureUpload.value = '';
+                pictureUpload.click();
+                break;
+            case 'insert_hyperlink':
+                documenteditor.showDialog('Hyperlink');
+                break;
+            case 'insert_table':
+                documenteditor.showDialog('Table');
+                break;
+            case 'find':
+                documenteditor.showOptionsPane();
+                break;
+            case 'save':
+                onExportClick();
+                break;
+            case 'download':
+                if (docinfo) {
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    a.href = docinfo.Path;
+                    a.download = docinfo.Name+'.docx';
+                    a.click();
+                    document.body.removeChild(a);
+                }
+
+                break;
+            case 'font':
+                documenteditor.showDialog('Font');
+                break;
+            case 'paragraph':
+                documenteditor.showDialog('Paragraph');
+                break;
+
+
+        }
+    }
+
+    this.onInsertImage = function (args) {
+        if (
+            navigator.userAgent.match('Chrome') ||
+            navigator.userAgent.match('Firefox') ||
+            navigator.userAgent.match('Edge') ||
+            navigator.userAgent.match('MSIE') ||
+            navigator.userAgent.match('.NET')
+        ) {
+            if (args.target.files[0]) {
+                var path = args.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function (frEvent) {
+                    var base64String = frEvent.target.result;
+                    var image = document.createElement('img');
+                    image.addEventListener('load', function () {
+                        documenteditor.editor.insertImage(
+                            base64String,
+                            image.width,
+                            image.height
+                        );
+                    });
+                    image.src = base64String;
+                };
+                reader.readAsDataURL(path);
+            }
+        } else {
+            var image = document.createElement('img');
+            image.addEventListener('load', function () {
+                documenteditor.editor.insertImage(args.target.value);
+            });
+            image.src = args.target.value;
+        }
+    };
+
+    this.onFileChange = function (args) {
+        if (args.target.files[0]) {
+            var path = args.target.files[0];
+            if (path.name.substr(path.name.lastIndexOf('.')) === '.sfdt') {
+                var fileReader = new FileReader();
+                fileReader.onload = function (e) {
+                    var contents = e.target.result;
+                    documenteditor.open(contents);
+                };
+                fileReader.readAsText(path);
+                documenteditor.documentName = path.name.substr(
+                    0,
+                    path.name.lastIndexOf('.')
+                );
+            } else {
+                loadFile(path);
+            }
+        }
+        event.preventDefault();
+    };
+
+    //document.getElementById('uploadfileButton').addEventListener('change', onFileChange);
+
+    document.getElementById('insertImageButton').addEventListener('change', onInsertImage);
+
+    documenteditor.requestNavigate = function (args) {
+        if (args.linkType !== 'Bookmark') {
+            var link = args.navigationLink;
+            if (args.localReference.length > 0) {
+                link += '#' + args.localReference;
+            }
+            window.open(link);
+            args.isHandled = true;
+        }
+    };
+
+    documenteditor.selectionChange = function () {
+        setTimeout(function () {
+            onSelectionChange();
+        }, 30);
+    };
+
+    documenteditor.documentChange = function () {
+        contentChanges = false;
+        var save=document.getElementById('save');
+        toolBar.enableItems(save.parentElement, false);
+        var documentName;
+        if (documenteditor.documentName === '') {
+            documentName = 'Untitled';
+        } else {
+            documentName = documenteditor.documentName;
+        }
+        document.getElementById('titlebar').innerHTML = documentName;
+    };
+
+    documenteditor.contentChange = function () {
+        setTimeout(function () {
+            contentChanges = true;
+            var save=document.getElementById('save');
+            toolBar.enableItems(save.parentElement, true);
+            onContentChange();
+        }, 20);
+    };
+
+    var statusBarDiv = document.getElementById('statusbar');
+
+    var undo = document.getElementById('undo');
+
+    var redo = document.getElementById('redo');
+
+    function onSelectionChange() {
+        var boldButton = document.getElementById('bold');
+        var italicButton = document.getElementById('italic');
+        var underlineButton = document.getElementById('underline');
+        var strikethrough = document.getElementById('strikethrough');
+        var subScript = document.getElementById('subscript');
+        var superScript = document.getElementById('superscript');
+        var leftAlignButton = document.getElementById('align-left');
+        var rightAlignButton = document.getElementById('align-right');
+        var centerAlignButton = document.getElementById('align-center');
+        var justifyButton = document.getElementById('align-justify');
+        var save=document.getElementById('save');
+        if(contentChanges){
+            toolBar.enableItems(save.parentElement, true);
+        }else{
+            toolBar.enableItems(save.parentElement, false);
+        }
+        if (documenteditor.selection.characterFormat.bold) {
+            if (!boldButton.classList.contains('e-btn-toggle')) {
+                boldButton.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (boldButton.classList.contains('e-btn-toggle')) {
+                boldButton.classList.remove('e-btn-toggle');
+            }
+        }
+        if (documenteditor.selection.characterFormat.italic) {
+            if (!italicButton.classList.contains('e-btn-toggle')) {
+                italicButton.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (italicButton.classList.contains('e-btn-toggle')) {
+                italicButton.classList.remove('e-btn-toggle');
+            }
+        }
+        if (
+            documenteditor.selection.characterFormat.underline !== undefined &&
+            documenteditor.selection.characterFormat.underline !== 'None'
+        ) {
+            if (!underlineButton.classList.contains('e-btn-toggle')) {
+                underlineButton.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (underlineButton.classList.contains('e-btn-toggle')) {
+                underlineButton.classList.remove('e-btn-toggle');
+            }
+        }
+        if (
+            documenteditor.selection.characterFormat.strikeThrough !== undefined &&
+            documenteditor.selection.characterFormat.strikeThrough !== 'None'
+        ) {
+            if (!strikethrough.classList.contains('e-btn-toggle')) {
+                strikethrough.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (strikethrough.classList.contains('e-btn-toggle')) {
+                strikethrough.classList.remove('e-btn-toggle');
+            }
+        }
+        if (
+            documenteditor.selection.characterFormat.baselineAlignment !==
+                undefined &&
+            documenteditor.selection.characterFormat.baselineAlignment ===
+                'Subscript'
+        ) {
+            if (!subScript.classList.contains('e-btn-toggle')) {
+                subScript.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (subScript.classList.contains('e-btn-toggle')) {
+                subScript.classList.remove('e-btn-toggle');
+            }
+        }
+        if (
+            documenteditor.selection.characterFormat.baselineAlignment !==
+                undefined &&
+            documenteditor.selection.characterFormat.baselineAlignment ===
+                'Superscript'
+        ) {
+            if (!superScript.classList.contains('e-btn-toggle')) {
+                superScript.classList.add('e-btn-toggle');
+            }
+        } else {
+            if (superScript.classList.contains('e-btn-toggle')) {
+                superScript.classList.remove('e-btn-toggle');
+            }
+        }
+        if (documenteditor.selection.paragraphFormat.textAlignment === 'Left') {
+            if (!leftAlignButton.classList.contains('e-btn-toggle')) {
+                leftAlignButton.classList.add('e-btn-toggle');
+            }
+            if (rightAlignButton.classList.contains('e-btn-toggle')) {
+                rightAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (centerAlignButton.classList.contains('e-btn-toggle')) {
+                centerAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (justifyButton.classList.contains('e-btn-toggle')) {
+                justifyButton.classList.remove('e-btn-toggle');
+            }
+        } else if (
+            documenteditor.selection.paragraphFormat.textAlignment === 'Right'
+        ) {
+            if (leftAlignButton.classList.contains('e-btn-toggle')) {
+                leftAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (!rightAlignButton.classList.contains('e-btn-toggle')) {
+                rightAlignButton.classList.add('e-btn-toggle');
+            }
+            if (centerAlignButton.classList.contains('e-btn-toggle')) {
+                centerAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (justifyButton.classList.contains('e-btn-toggle')) {
+                justifyButton.classList.remove('e-btn-toggle');
+            }
+        } else if (
+            documenteditor.selection.paragraphFormat.textAlignment === 'Center'
+        ) {
+            if (leftAlignButton.classList.contains('e-btn-toggle')) {
+                leftAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (rightAlignButton.classList.contains('e-btn-toggle')) {
+                rightAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (!centerAlignButton.classList.contains('e-btn-toggle')) {
+                centerAlignButton.classList.add('e-btn-toggle');
+            }
+            if (justifyButton.classList.contains('e-btn-toggle')) {
+                justifyButton.classList.remove('e-btn-toggle');
+            }
+        } else if (
+            documenteditor.selection.paragraphFormat.textAlignment === 'Justify'
+        ) {
+            if (leftAlignButton.classList.contains('e-btn-toggle')) {
+                leftAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (rightAlignButton.classList.contains('e-btn-toggle')) {
+                rightAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (centerAlignButton.classList.contains('e-btn-toggle')) {
+                centerAlignButton.classList.remove('e-btn-toggle');
+            }
+            if (!justifyButton.classList.contains('e-btn-toggle')) {
+                justifyButton.classList.add('e-btn-toggle');
+            }
+        }
+        if (
+            documenteditor.editorHistory &&
+            !documenteditor.editorHistory.canUndo()
+        ) {
+            toolBar.enableItems(undo.parentElement, false);
+        }
+        if (
+            documenteditor.editorHistory &&
+            !documenteditor.editorHistory.canRedo()
+        ) {
+            toolBar.enableItems(redo.parentElement, false);
+        }
+    }
+
+    function onContentChange() {
+        contentChanges=true;
+        if (
+            documenteditor.editorHistory &&
+            !documenteditor.editorHistory.canUndo()
+        ) {
+            toolBar.enableItems(undo.parentElement, false);
+        } else {
+            toolBar.enableItems(undo.parentElement, true);
+        }
+        if (
+            documenteditor.editorHistory &&
+            !documenteditor.editorHistory.canRedo()
+        ) {
+            toolBar.enableItems(redo.parentElement, false);
+        } else {
+            toolBar.enableItems(redo.parentElement, true);
+        }
+    }
+
+    function loadFile() {
+        var baseUrl = '/api/CUS/DOC/File/DocumentEditor/Import/' + @ViewBag.FileID+'?IDPartner=' + @ViewBag.Partner;
+        var httpRequest = new XMLHttpRequest();
+
+        httpRequest.open('POST', baseUrl, true);
+        httpRequest.setRequestHeader('Authorization', 'Bearer ' + '@ViewBag.Token');
+
+        var waitingPopUp = document.getElementById('waiting-popup');
+        waitingPopUp.style.display = 'block';
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState === 4) {
+                if (httpRequest.status === 200 || httpRequest.status === 304) {
+                    var docJson = JSON.parse(httpRequest.responseText);
+                    docJson.sections["0"].sectionFormat.pageWidth = 595.3;
+                    docJson.sections["0"].sectionFormat.pageHeight = 841.9;
+
+                    docJson.sections["0"].sectionFormat.leftMargin = 15;
+                    docJson.sections["0"].sectionFormat.rightMargin = 15;
+                    
+                    documenteditor.open(JSON.stringify(docJson));
+
+                    waitingPopUp.style.display = 'none';
+                } else {
+                    console.error(httpRequest.response);
+                    waitingPopUp.style.display = 'none';
+                }
+            }
+
+            waitingPopUp.style.display = 'none';
+        };
+        httpRequest.send();
+
+        getDocInfo();
+    }
+
+
+    function getDocInfo(){
+        // =>          /api/CUS/DOC/File/137?IDPartner=1
+        //get file info
+        var DocUrl = '/api/CUS/DOC/File/' + @ViewBag.FileID+'?IDPartner=' + @ViewBag.Partner;
+        var docRequest = new XMLHttpRequest();
+        docRequest.open('GET', DocUrl, true);
+        docRequest.setRequestHeader('Authorization', 'Bearer ' + '@ViewBag.Token');
+
+
+        docRequest.onreadystatechange = function () {
+            if (docRequest.readyState === 4) {
+                if (docRequest.status === 200 || docRequest.status === 304) {
+                    var rep = JSON.parse(docRequest.response);
+                    docinfo = rep;
+                    document.title = documenteditor.documentName = rep.Name;
+
+                }
+                else {
+                    console.error(docRequest.response);
+                }
+            }
+        };
+        docRequest.send();
+    }
+
+
+    //var openButton = new ej.splitbuttons.DropDownButton({
+    //    items: [],
+    //    select: onFileOpen,
+    //});
+
+    //openButton.appendTo('#open');
+
+    function onExportClick() {
+        contentChanges=false;
+        var save = document.getElementById('save');
+        save.innerText = 'Saving...'
+        var savingmessage = document.getElementById('status-saving');
+        savingmessage.style.display = "block";
+
+        toolBar.enableItems(save.parentElement, false);
+        documenteditor.saveAsBlob('Docx').then(function(exportedDocument) {
+            // The blob can be processed further
+            var fileName=documenteditor.documentName+".docx";
+            var formData = new FormData();
+            formData.append('fileName', fileName);
+            formData.append('data', exportedDocument);
+            var httpRequest = new XMLHttpRequest();
+
+            httpRequest.open('POST', '/api/CUS/DOC/File/DocumentEditor/Save/' + @ViewBag.FileID+'?IDPartner=' + @ViewBag.Partner, true);
+            httpRequest.setRequestHeader('Authorization', 'Bearer ' + '@ViewBag.Token');
+
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === 4) {
+                    save.innerText = 'Save';
+
+                    if (httpRequest.status === 200 || httpRequest.status === 204) {
+                        savingmessage.style.display = "none";
+                    } else {
+                        //alert('Fail to save the document');
+                    }
+                    getDocInfo();
+                }
+            }
+            httpRequest.send(formData);
+        });
+    }
+
+    //function onFileOpen(args){
+    //    loadFile(args.item.text);
+    //    console.log(args);
+    //}
+
+    function save(format) {
+        documenteditor.save(
+            documenteditor.documentName === ''
+                ? 'sample'
+                : documenteditor.documentName,
+            format
+        );
+    }
+
+
+    var zoom;
+
+    this.initializeStatusBar = function () {
+        var zoomBtn = ej.base.createElement('button', {
+            id: 'documenteditor-zoom',
+            className: 'e-de-statusbar-zoom',
+        });
+        statusBarDiv.appendChild(zoomBtn);
+        zoomBtn.setAttribute(
+            'title',
+            'Zoom level. Click or tap to open the Zoom options.'
+        );
+        var items = [
+            {
+                text: '200%',
+            },
+            {
+                text: '175%',
+            },
+            {
+                text: '150%',
+            },
+            {
+                text: '125%',
+            },
+            {
+                text: '100%',
+            },
+            {
+                text: '75%',
+            },
+            {
+                text: '50%',
+            },
+            {
+                text: '25%',
+            },
+            {
+                separator: true,
+            },
+            {
+                text: 'Fit one page',
+            },
+            {
+                text: 'Fit page width',
+            },
+        ];
+        zoom = new ej.splitbuttons.DropDownButton(
+            { content: '100%', items: items, select: onZoom },
+            zoomBtn
+        );
+    };
+
+    this.onZoom = function (args) {
+        setZoomValue(args.item.text);
+        updateZoomContent();
+    };
+
+    function updateZoomContent() {
+        zoom.content = Math.round(documenteditor.zoomFactor * 100) + '%';
+    }
+
+    this.setZoomValue = function (text) {
+        if (text.match('Fit one page')) {
+            documenteditor.fitPage('FitOnePage');
+        } else if (text.match('Fit page width')) {
+            documenteditor.fitPage('FitPageWidth');
+        } else {
+            documenteditor.zoomFactor = parseInt(text, 0) / 100;
+        }
+    };
+
+    this.initializeStatusBar();
+
+    documenteditor.appendTo('#container');
+
+    loadFile();
+
+        </script>
+
+
+
+
+    </body>
+</html>
+}

@@ -1,0 +1,83 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+
+    <form [formGroup]="formGroup">
+
+
+        <div padding></div>
+
+                    <div class="c-control">
+                        <label class="c-label">Logo trung tâm
+                            <span *ngIf="!formGroup.controls.LogoURL.valid && !formGroup.controls.LogoURL.pending && (formGroup.controls.LogoURL.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <div class="c-input">
+                            <div class="cc-selector-2">
+                                <input id="logo1" type="radio" formControlName="LogoURL" [(ngModel)]="item.LogoURL" value="./assets/imgs/BVMD.png" />
+                                <label class="drinkcard-cc logo-BVMD" for="logo1"></label>
+                                <input id="logo2" type="radio" formControlName="LogoURL" [(ngModel)]="item.LogoURL" value="./assets/imgs/IVFMD.png" />
+                                <label class="drinkcard-cc logo-IVFMD" for="logo2"></label>
+                                <input id="logo3" type="radio" formControlName="LogoURL" [(ngModel)]="item.LogoURL" value="./assets/imgs/IVFMD-AS.png" />
+                                <label class="drinkcard-cc logo-IVFMD-AS" for="logo3"></label>
+                                <input id="logo4" type="radio" formControlName="LogoURL" [(ngModel)]="item.LogoURL" value="./assets/imgs/IVFMD-VH.png" />
+                                <label class="drinkcard-cc logo-IVFMD-VH" for="logo4"></label>
+                                <input id="logo5" type="radio" formControlName="LogoURL" [(ngModel)]="item.LogoURL" value="./assets/imgs/PhongKhamNgocLan.png" />
+                                <label class="drinkcard-cc logo-PK-NgocLan" for="logo4"></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="c-control">
+                        <label class="c-label" for="Code">Mã trung tâm
+                            <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="Name">Tên trung tâm
+                            <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+                    </div>
+
+                    <div class="c-control">
+                        <label class="c-label" for="Remark">Giới thiệu
+                            <span *ngIf="!formGroup.controls.Remark.valid && !formGroup.controls.Remark.pending && (formGroup.controls.Remark.dirty || submitAttempt)"
+                                ion-text color="danger">(*)</span>
+                        </label>
+                        <input name="Remark" type="hidden" [(ngModel)]="item.Remark" formControlName="Remark">
+                        <div id="editor"></div>
+                    </div>
+               
+                    <div class="c-control" *ngIf="item.ID==0">
+                        <label class="c-label" for=""></label>
+                        <button ion-button float-right (click)="saveChange()">
+                            Thêm trung tâm
+                        </button>
+                    </div>
+                    <div class="c-control" *ngIf="item.ID!=0">
+                        <label class="c-label" for=""></label>
+
+                        <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                            Lưu
+                        </button>
+                        <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                            Hủy thay đổi
+                        </button>
+
+                    </div>
+              
+
+
+
+    </form>
+</ion-content>

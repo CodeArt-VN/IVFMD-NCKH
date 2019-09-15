@@ -1,0 +1,352 @@
+.web-layout{
+    ion-header{
+        //transition: all 0.15s linear;
+        //overflow: hidden;
+        
+        &.shadow{
+            box-shadow: 0 1px 16px rgba(3, 124, 197, 0.25882352941176473);
+        }
+        .web-pin{
+            padding: 0px;
+            height: 100%;
+            display: none;
+            @media(min-width: map-get($grid-breakpoints, xl)) {
+                display: block;
+            }
+        }
+        .row{
+            height: 100%;
+        }
+        .web-content {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-right: 0;
+            height: 100%;
+
+            .logo{
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position-y: center;
+
+                box-sizing: border-box;
+                border-top: solid 10px transparent;
+                border-bottom: solid 10px transparent;
+                display: block;
+                height: 100%;
+                width: 70px;
+                position: absolute;
+            }
+            .menu-logo{
+                display: block;
+                position: absolute;
+                right: 0;
+                font-size: 25px;
+                padding: 0 60px 0 44px;
+                height: 100%;
+                
+                z-index: 1;
+                @media(min-width: map-get($grid-breakpoints, md)) {
+                    padding-right: 60px;
+                }
+                @media(min-width: map-get($grid-breakpoints, lg)) {
+                    display: none;
+                }
+
+                ion-icon{
+                    position: absolute;
+                    height: 30px;
+                    margin: auto;
+                    top: 0;
+                    bottom: 0;
+                }
+
+            }
+
+            img.hide-logo{
+                height: 100%;
+                max-width: 100px;
+                visibility: hidden;
+            }
+            .web-menu-container{
+                height: 100%;
+                display: inline-block;
+                .web-menu{
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    
+                    height: 40px;
+                    display: none; 
+                    
+
+                    @media(min-width: map-get($grid-breakpoints, lg)) {
+                        display: block;
+                    }
+                    a.menu-item{
+                        display: inline-block;
+                        white-space: nowrap;
+                        border-radius: 4px;
+                        min-width: 90px;
+                        height: 40px;
+                        text-align: center;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        vertical-align: text-bottom;
+                        padding-top: 8px;
+                        margin-right: 12px;
+                        padding-left: 7px;
+                        padding-right: 7px;
+                        transition: all .2s ease-in;
+                        background-color: transparent;
+
+                        @media(min-width: 1260px) {
+                            margin-right: 20px;
+                        }
+
+                        small{
+                            display: block;
+                            font-size: 9px;
+                        }
+
+                        &:hover{
+                            background-color: map-get($map: $colors, $key: ivf4);
+                        }
+                        &.sops{
+                            border: solid 1px map-get($map: $colors, $key: ivf4);
+                            background-color: map-get($map: $colors, $key: ivf4);
+                            line-height: 40px;
+                            padding-top: 0px !important;
+                        }
+                        &.active{
+                            color: map-get($map: $colors, $key: white);
+                            background-color: map-get($map: $colors, $key: ivf1);
+                        }
+                    }
+                }
+            }
+            
+        }
+
+
+        
+    }
+    #cp{
+        display: none;
+    }
+    #cp.web {
+        display: block;
+        right: 100px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 40px;
+
+
+        @media(min-width: map-get($grid-breakpoints, md)) {
+            right: 90px;
+        }
+        @media(min-width: map-get($grid-breakpoints, lg)) {
+            right: 40px;
+        }
+
+        .avatar{}
+        .username{
+            margin-bottom: 12px;
+            display: none;
+            @media(min-width: map-get($grid-breakpoints, sm)) {
+                display: inline-block;
+            }
+            @media(min-width: map-get($grid-breakpoints, xl)) {
+                
+            }
+        }
+        // .splitor{
+        //     display: none;
+        // }
+        // button {
+        //     display: none;
+        // }
+
+
+
+        @media(min-width: map-get($grid-breakpoints, xl)) {
+            .splitor, button{
+                //display: inline-block !important;
+            }
+        }
+
+    }
+
+
+    .web-pin{
+        display: block;
+        background-color: map-get($map: $colors, $key: ivf4);
+        min-height: 100%;
+        min-width: 100%;
+        width: 100%;
+        max-width: 500px;
+        padding: 100px 30px 140px 30px;
+
+        @media(min-width: map-get($grid-breakpoints, md)) {
+            max-width: 100%;
+            min-width: 100%;
+            padding: 100px 60px 140px 60px;
+        }
+        @media(min-width: map-get($grid-breakpoints, lg)) {
+            max-width: 350px;
+            min-width: unset;
+            padding: 40px 40px 140px 40px;
+        }
+        @media(min-width: map-get($grid-breakpoints, xl)) {
+            max-width: 500px;
+            padding: 20px 80px 140px 80px;
+        }
+
+        
+    }
+    .web-content {
+        padding: 35px 30px;
+        @media(min-width: map-get($grid-breakpoints, md)) {
+            padding: 35px 60px;
+        }
+        .cate-title{
+            border-bottom: solid 1px map-get($map: $colors, $key: ivf3);
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: map-get($map: $colors, $key: ivf1);
+        }
+
+        ion-row{
+            margin-top: 40px;
+        }
+    }
+
+    .web-pin, .web-content{
+        ion-row{
+            margin-right: -40px;
+            
+            ion-col{
+                padding: 0;
+                padding-right: 40px;
+            }
+        }
+    }
+
+    ion-content {
+        .web-content{
+            min-height: 500px;
+        }
+    }
+
+
+    .web-footer{
+        clear: both;
+        background-color: map-get($map: $colors, $key: ivf1);
+        color: map-get($map: $colors, $key: white);
+
+        padding: 60px 30px;
+        @media(min-width: map-get($grid-breakpoints, md)) {
+            padding: 60px 60px 120px 60px;
+        }
+
+        h2{
+            font-size: 1rem;
+            margin-top: 3rem;
+            text-transform: uppercase;
+        }
+        span{
+            font-size: 1.3rem;
+            line-height: 2.4rem;
+            margin-top: 25px;
+            a{
+                color: map-get($map: $colors, $key: white); 
+            }
+            .icon {
+                display: inline-block;
+                width: 26px;
+                text-align: center;
+                opacity: .6;
+            }
+        }
+        .links{
+            text-align: left;
+            @media(min-width: map-get($grid-breakpoints, md)) {
+                text-align: right;
+            }
+
+            a{
+                color: map-get($map: $colors, $key: white);
+                display: inline-block;
+                padding: 5px 10px;
+            }
+        }
+    }
+}
+
+.news-item{
+    margin-bottom: 40px;
+    .thumb{
+        background-color: map-get($map: $colors, $key: ivf2);
+        display: block;
+        height: 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+    .title{
+        color: map-get($map: $colors, $key: ivf1);
+        font-size: 1.6rem;
+        font-weight: bold;
+        display: block;
+        line-height: 2.3rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .summary{
+        font-size: 1.34rem;
+        line-height: 2.4rem;
+        color: map-get($map: $colors, $key: ivf1);
+    }
+    .news-info{
+        margin-top: 20px;
+        .author, .date-time{
+            display: inline-block;
+            color: map-get($map: $colors, $key: ivf1);
+            ion-icon{
+                margin-right: 7px;
+            }
+        }
+        .author{
+            padding-right: 30px;
+        }
+    }
+
+}
+
+.banner{
+    height: 240px;
+    width: 100%;
+    display: block;
+    background-color: map-get($map: $colors, $key: ivf2);
+    background-position: center;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 30%;
+}
+
+.banner, .thumb{
+    position: relative;
+    &:before {
+        content: " ";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, rgba(76, 172, 220, 0.05) 0%, rgba(76, 172, 220, 0.0) 20%, rgba(76, 172, 220, 0.1) 70%,  rgba(76, 172, 220, 0.65) 100%);
+        
+    }
+}

@@ -1,0 +1,33 @@
+.preview-modal{
+    
+    ion-backdrop{
+        // background-color: rgba(0,0,0,0.85);
+        // opacity: 1 !important;
+    }
+    .modal-wrapper{
+        border-radius: 0;
+        background-color: map-get($map: $colors, $key: white );
+
+        box-shadow: none;
+
+        .close-btn{
+            position: absolute;
+            right: 0;
+            top: -2px;
+            height: 30px;
+            width: 60px;
+            color: #fff;
+        }
+        iframe{
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: map-get($map: $grid-breakpoints, $key: md)){
+            width: calc(100vw - 10%);
+            height: calc(100vh - 0px);
+            left: 5%;
+            top: 0px;
+        }
+    }
+}

@@ -1,0 +1,456 @@
+html{
+    @media(max-width: 850px) {
+        overflow: auto;
+    }
+    
+}
+.doc-layout{
+    @media(max-width: 850px) {
+        min-width: 850px;
+        position: absolute;
+    }
+    
+    a:hover{
+        opacity: 0.9;
+    }
+
+    #cp {
+        right: 25px;
+        top: 25px;
+    }
+
+    ion-header{
+        transition: all 0.15s linear;
+        .background{
+            
+            width: 100%;
+            height: 140px;
+            background-color: map-get($map: $colors, $key: ivf4);
+            background-image: url('../assets/imgs/login-bg.png');
+            background-size: cover;
+            background-position: bottom right;
+            //filter: blur(5px);
+        }
+        
+        
+
+        .logo{
+            margin-top: 12px;
+            margin-left: 10px;
+            display: block;
+            height: 70px;
+            width: 70px;
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+        }
+        .search{
+            margin-top: 18px;
+            margin-left: 250px;
+            position: absolute;
+            height: 48px;
+            width: 560px;
+            width: calc(100% - 640px);
+            max-width: 500px;
+            .txt-search{
+                
+                height: 48px;
+                width: 100%;
+                background-color: #fff;
+                border: none;
+                border-radius: 4px;
+                color: map-get($map: $colors, $key: ivfdark1);
+            }
+        
+        }
+        .partner{
+            margin-top: 94px;
+            margin-left: 10px;
+            width: 215px;
+            height: 36px;
+            position: absolute;
+            select{
+                border: 1px solid map-get($map: $colors, $key: ivf2);
+                color: map-get($map: $colors, $key: ivf1);
+                border-radius: 4px;
+                padding: 7px 10px 7px 7px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 100%;
+                background-image: url(../assets/imgs/ddown.svg), none;
+                background-repeat: no-repeat;
+                background-size: 26px;
+                background-position: right center;
+                padding-right: 32px;
+                height: 100%;
+                background-color: map-get($map: $colors, $key: white);
+            }
+        }
+        .path{
+            margin-top: 100px;
+            margin-left: 250px;
+            position: absolute;
+            min-width: 100px;
+            height: 40px;
+            line-height: 40px;
+            a{
+                color: map-get($map: $colors, $key: ivf1);
+                font-size: 1.6rem;
+                
+                &.active{
+                    font-weight: bold;
+                    color: map-get($map: $colors, $key: ivfdark1);
+                }
+            }
+            .split{
+                color: map-get($map: $colors, $key: ivf1);
+                font-size: 1.6rem;
+                padding: 0 7px;
+            }
+        }
+        .tools{
+            margin-top: 90px;
+            min-width: 200px;
+            height: 50px;
+            position: absolute;
+            right: 25px;
+            text-align: right;
+
+            
+            .split{
+                color: map-get($map: $colors, $key: ivf1);
+                font-size: 1.6rem;
+                padding: 0 7px;
+            }
+        }
+
+    }
+
+    ion-content{
+        ion-row{
+            height: 100%;
+            .col {
+                height: 100%;
+                overflow: auto;
+            }
+
+            .doc-menu{
+                background-color: map-get($map: $colors, $key: ivf1);
+                width: 250px;
+                min-width: 250px;
+                max-width: 250px;
+                height: 100%;
+                padding: 30px 0;
+
+                a{
+                    color: map-get($map: $colors, $key: white);
+                    display: block;
+                    font-size: 1.3rem;
+                    padding-left: 16px;
+                    border-left: solid 4px transparent;
+                    height: 30px;
+                    line-height: 30px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    .icon{
+                        width: 18px;
+                        height: 30px;
+                        line-height: 30px;
+                        vertical-align: bottom;
+                        text-align: center;
+                        display: inline-block;
+                    }
+                    span{
+                        padding-left: 7px;
+                    }
+
+                    &.active{
+                        border-left: solid 4px map-get($map: $colors, $key: white);
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                    &:hover{
+                        background-color: rgba(255, 255, 255, 0.05);
+                    }
+                }
+                .group{
+                    padding-top: 0px;
+                }
+                .root-items{
+                    padding-bottom: 20px;
+                }
+            }
+            .doc-main{
+                width: 10%;
+                padding:0;
+
+                .ngx-datatable{
+                    top:0; left:0; right:0; bottom:0; position:relative;
+                    border-radius: 4px;
+                    border: none;
+                    overflow: hidden;
+                    height: 100%;
+
+                    .datatable-header{
+                        border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4);
+                        .datatable-header-cell{
+                            line-height: 55px;
+                            color: map-get($map: $colors, $key: ivfdark1);
+                            font-size: 1.4rem;
+                            font-weight: bold;
+                        }
+                        .sort-btn{
+                            font-family: "Ionicons";
+                            &.datatable-icon-up{
+                                &:before {
+                                    content: "\f3d8";
+                                }
+                            }
+                            &.datatable-icon-down{
+                                &:before {
+                                    content: "\f3d0";
+                                }
+                            }
+                        }
+                        
+                    }
+                    .datatable-body-row{
+                        background-color: transparent;
+                        border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4);
+                        cursor: pointer;
+
+                        .datatable-body-cell{
+                            line-height: 50px;
+                            color: map-get($map: $colors, $key: ivfdark1);
+                            
+                            a{
+                                .icon{
+                                    width: 40px;
+                                    text-align: center;
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    padding-right: 10px;
+                                    font-size: 2rem;
+                                }
+                            }
+
+                            .datatable-icon-down, .datatable-icon-right{
+                                display: inline-block;
+                                font-family: "Ionicons";
+                                padding: 0 20px;
+                            }
+                            .datatable-icon-down{
+                                &:before {
+                                    content: "\f3d0";
+                                }
+                            }
+                            .datatable-icon-right{
+                                &:before {
+                                    content: "\f3d1";
+                                }
+                            }
+                        }
+                        &.active{
+                            background-color: map-get($map: $colors, $key: ivf4);
+                        }
+                    } 
+
+                }   
+                .text-right{
+                    text-align: right;
+                    padding-right: 20px;
+                }
+                .name{
+                    padding-left: 20px;
+                }
+
+
+            }
+            .doc-info{
+                width: 320px;
+                padding: 0;
+                min-width: 320px;
+                max-width: 320px;
+                border-left: solid 1px map-get($map: $colors, $key: ivfdark4);
+
+                .close-box{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+                .file-name{
+                    color: map-get($map: $colors, $key: ivfdark1);
+                    font-weight: bold;
+                    height: 62px;
+                    line-height: 62px;
+                    width: 100%;
+                    padding-right: 60px;
+                    padding-left: 25px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .tab{
+                    .btn{
+                        border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4);
+                        height: 50px;
+                        white-space: nowrap;
+                        a{
+                            display: block;
+                            float: left;
+                            width: 50%;
+                            line-height: 47px;
+                            text-align: center;
+
+                            color: map-get($map: $colors, $key: ivfdark2);
+                            border-bottom: solid 3px transparent;
+
+                            &.active{
+                                border-bottom: solid 3px map-get($map: $colors, $key: ivf1);
+
+                            }
+                        }
+                    }
+
+                    .tab-contain{
+                        padding: 30px 25px 0 25px;
+                        
+                        .block{
+                            margin-bottom: 40px;
+                            h2{
+                                font-size: 1.4rem;
+                                font-weight: bold;
+                                margin: 0 0 10px 0;
+                                padding: 0;
+                            }
+                            span{
+                                line-height: 2.5rem;
+                            }
+                            .status{
+                                font-weight: bold;
+                                text-transform: uppercase;
+                            }
+
+                        }
+                        .hr{
+                            height: 0;
+                            border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4);
+                            margin: 20px -25px;
+                            padding: 0;
+                        }
+
+                        .item-detail{
+                            line-height: 25px;
+                            padding-top: 15px;
+                            padding-bottom: 30px;
+                            .title{
+                                display: inline-block;
+                                width: 120px;
+                                vertical-align: bottom;
+                            }
+                            .value{
+                                display: inline-block;
+                                width: calc(100% - 130px);
+                                font-weight: bold;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                vertical-align: bottom;
+                            }
+                        }
+
+                        &.activities{
+                            .item-block{
+                                color: map-get($map: $colors, $key: ivfdark1);
+                                border-bottom: solid 1px map-get($map: $colors, $key: ivfdark4);
+
+                                ion-avatar{
+                                    align-self: baseline;
+                                }
+                                h2{
+                                    color: map-get($map: $colors, $key: ivf1);
+                                }
+                            }
+                            
+                            .added{
+                                display: inline-block;
+                                color: map-get($map: $colors, $key: success);
+                                padding: 0px 3px;
+                                border-radius: 4px;
+                                background-color: lighten($color: map-get($map: $colors, $key: success), $amount: 40%);
+                            }
+                            .removed{
+                                display: inline-block;
+                                color: map-get($map: $colors, $key: danger);
+                                text-decoration: line-through;
+
+                                
+                                //border: solid 1px map-get($map: $colors, $key: danger);
+                                padding: 0px 3px;
+                                border-radius: 4px;
+                                background-color: lighten($color: map-get($map: $colors, $key: danger), $amount: 40%);
+
+
+                            }
+                            .title{
+                                color: map-get($map: $colors, $key: ivfdark1);
+                                font-weight: bold;
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                }
+
+
+
+
+            }
+
+            .fa-folder{
+                color: map-get($map: $colors, $key: folder)!important;
+            }
+            .fa-file-pdf-o{
+                color: map-get($map: $colors, $key: filepdf)!important;
+            }
+            .fa-file-word-o{
+                color: map-get($map: $colors, $key: fileword)!important;
+            }
+            .fa-file-excel-o{
+                color: map-get($map: $colors, $key: fileexcel)!important;
+            }
+            .fa-file-powerpoint-o{
+                color: map-get($map: $colors, $key: fileppt)!important;
+            }
+
+            .fa-image{
+                color: map-get($map: $colors, $key: fileimage)!important;
+            }
+            .fa-file-video-o{
+                color: map-get($map: $colors, $key: filevideo)!important;
+            }
+
+            .fa-file{
+                color: map-get($map: $colors, $key: fileelse)!important;
+                
+            }
+
+        }
+    }
+
+
+    
+
+    
+
+
+
+}
