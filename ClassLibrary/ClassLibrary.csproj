@@ -84,6 +84,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tbl_CAT_Tags.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_CUS_DOC_File.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -105,6 +108,9 @@
     <Compile Include="tbl_CUS_DOC_Folder_Permission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_CUS_HRM_BenhNhan.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_CUS_HRM_LIST_BoPhan.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -112,6 +118,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CUS_HRM_STAFF_NhanSu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CUS_HRM_STAFF_NhanSu_LLKH.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CUS_HRM_STAFF_NhanSu_SYLL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CUS_SYS_CauHinhHeThong.cs">
@@ -147,6 +159,42 @@
     <Compile Include="tbl_PROD_SanPham_ChiTiet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_PRO_BenhNhan.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_DeTai.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_DonXinDanhGiaDaoDuc.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_DonXinNghiemThu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_DonXinXetDuyet.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_LLKH.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_MauPhanTichDuLieu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_NCVKhac.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_SYLL.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_Sysnopsis.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_Tags.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_TrangThai_Log.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_SYS_Apps.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -163,6 +211,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_SYS_FormGroup.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SYS_Var.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_WEB_BaiViet.cs">

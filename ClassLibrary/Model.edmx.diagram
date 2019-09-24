@@ -77,6 +77,51 @@
         <EntityTypeShape EntityType="AppModel.tbl_WEB_DanhMuc" Width="1.5" PointX="5.75" PointY="67" />
         <AssociationConnector Association="AppModel.FK_tbl_WEB_BaiViet_tbl_WEB_DanhMuc" />
         <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_Tags" Width="1.5" PointX="18.75" PointY="22.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_BenhNhan" Width="1.5" PointX="15.75" PointY="33.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH" Width="1.5" PointX="15.75" PointY="74.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_SYLL" Width="1.5" PointX="15.75" PointY="67.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BenhNhan" Width="1.5" PointX="18" PointY="41.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DeTai" Width="1.5" PointX="15.75" PointY="38.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinDanhGiaDaoDuc" Width="1.5" PointX="18" PointY="88" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinNghiemThu" Width="1.5" PointX="18" PointY="80.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinXetDuyet" Width="1.5" PointX="18" PointY="26.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_LLKH" Width="1.5" PointX="24" PointY="37.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_MauPhanTichDuLieu" Width="1.5" PointX="18" PointY="75.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_NCVKhac" Width="1.5" PointX="18" PointY="45.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_SYLL" Width="1.5" PointX="18" PointY="33.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_Sysnopsis" Width="1.5" PointX="18" PointY="69.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_Tags" Width="1.5" PointX="21" PointY="36.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_TrangThai_Log" Width="1.5" PointX="21" PointY="40.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Var" Width="1.5" PointX="13.5" PointY="33.875" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_Tags_tbl_CAT_Tags" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_BenhNhan_tbl_CUS_HRM_BenhNhan" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_SYLL_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_NCVKhac_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiDeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HDDD" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HDKH" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HRCO" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_NghiemThu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_MauPhanTichDuLieu_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_NCVKhac_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_SYLL_tbl_PRO_Detai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_Sysnopsis_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_Tags_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiTrangThai" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThaiCu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThaiMoi" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

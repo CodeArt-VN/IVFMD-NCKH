@@ -15,6 +15,18 @@ namespace ClassLibrary
     
     public partial class tbl_CUS_HRM_STAFF_NhanSu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_CUS_HRM_STAFF_NhanSu()
+        {
+            this.tbl_CUS_HRM_STAFF_NhanSu_LLKH = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH>();
+            this.tbl_CUS_HRM_STAFF_NhanSu_SYLL = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL>();
+            this.tbl_PRO_DeTai = new HashSet<tbl_PRO_DeTai>();
+            this.tbl_PRO_DeTai1 = new HashSet<tbl_PRO_DeTai>();
+            this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
+            this.tbl_PRO_NCVKhac = new HashSet<tbl_PRO_NCVKhac>();
+            this.tbl_PRO_SYLL = new HashSet<tbl_PRO_SYLL>();
+        }
+    
         public int IDPartner { get; set; }
         public Nullable<int> IDChucDanh { get; set; }
         public Nullable<int> IDBoPhan { get; set; }
@@ -39,6 +51,20 @@ namespace ClassLibrary
         public virtual tbl_CUS_HRM_LIST_ChucDanh tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
         public virtual tbl_CUS_SYS_Role tbl_CUS_SYS_Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
     }
 }
 namespace DTOModel

@@ -57,5 +57,22 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet> tbl_WEB_BaiViet { get; set; }
         public virtual DbSet<tbl_WEB_BaiViet_DanhMuc> tbl_WEB_BaiViet_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
+        public virtual DbSet<tbl_CAT_Tags> tbl_CAT_Tags { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_BenhNhan> tbl_CUS_HRM_BenhNhan { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
+        public virtual DbSet<tbl_PRO_BenhNhan> tbl_PRO_BenhNhan { get; set; }
+        public virtual DbSet<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
+        public virtual DbSet<tbl_PRO_DonXinDanhGiaDaoDuc> tbl_PRO_DonXinDanhGiaDaoDuc { get; set; }
+        public virtual DbSet<tbl_PRO_DonXinNghiemThu> tbl_PRO_DonXinNghiemThu { get; set; }
+        public virtual DbSet<tbl_PRO_DonXinXetDuyet> tbl_PRO_DonXinXetDuyet { get; set; }
+        public virtual DbSet<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
+        public virtual DbSet<tbl_PRO_MauPhanTichDuLieu> tbl_PRO_MauPhanTichDuLieu { get; set; }
+        public virtual DbSet<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
+        public virtual DbSet<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
+        public virtual DbSet<tbl_PRO_Sysnopsis> tbl_PRO_Sysnopsis { get; set; }
+        public virtual DbSet<tbl_PRO_Tags> tbl_PRO_Tags { get; set; }
+        public virtual DbSet<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
+        public virtual DbSet<tbl_SYS_Var> tbl_SYS_Var { get; set; }
     }
 }
