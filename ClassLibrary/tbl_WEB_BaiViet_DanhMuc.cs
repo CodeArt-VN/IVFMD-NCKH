@@ -106,9 +106,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_WEB_BaiViet_DanhMuc> get_WEB_BaiViet_DanhMuc(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_WEB_BaiViet_DanhMuc
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_WEB_BaiViet_DanhMuc.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 

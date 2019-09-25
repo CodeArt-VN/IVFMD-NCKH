@@ -259,9 +259,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_HRM_STAFF_NhanSu_LLKH> get_CUS_HRM_STAFF_NhanSu_LLKH(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 
@@ -690,7 +688,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", DateTime.Now, Username);
 									
 					result = true;
                 }
@@ -765,7 +763,7 @@ namespace BaseBusiness
 					db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", DateTime.Now, Username);
 														
 					
                     item.ID =  dbitem.ID;
@@ -802,7 +800,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", DateTime.Now, Username);
 									
 										
 					

@@ -183,9 +183,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_PRO_DonXinDanhGiaDaoDuc> get_PRO_DonXinDanhGiaDaoDuc(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_PRO_DonXinDanhGiaDaoDuc
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_PRO_DonXinDanhGiaDaoDuc.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 
@@ -470,7 +468,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", DateTime.Now, Username);
 									
 					result = true;
                 }
@@ -526,7 +524,7 @@ namespace BaseBusiness
 					db.tbl_PRO_DonXinDanhGiaDaoDuc.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", DateTime.Now, Username);
 														
 					
                     item.ID =  dbitem.ID;
@@ -563,7 +561,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", DateTime.Now, Username);
 									
 										
 					

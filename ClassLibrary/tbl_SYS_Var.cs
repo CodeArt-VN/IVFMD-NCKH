@@ -123,8 +123,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_SYS_Var> get_SYS_Var(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_SYS_Var
-			
+			var query = db.tbl_SYS_Var.AsQueryable();
 
 			//Query keyword
 			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
@@ -207,8 +206,7 @@ namespace BaseBusiness
 		
 		public static DTO_SYS_Var get_SYS_Var(AppEntities db, int PartnerID, string code)
         {
-            var dbResult = db.tbl_SYS_Var
-
+            var dbResult = db.tbl_SYS_Var.FirstOrDefault(d => d.Code == code);
 			return toDTO(dbResult);
 			
         }
@@ -230,7 +228,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
 									
 					result = true;
                 }
@@ -264,7 +262,7 @@ namespace BaseBusiness
 					db.tbl_SYS_Var.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
 														
 					
                     item.ID =  dbitem.ID;
@@ -299,7 +297,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
 									
 										
 					

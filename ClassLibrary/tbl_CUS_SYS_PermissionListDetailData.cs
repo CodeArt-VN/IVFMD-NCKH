@@ -111,9 +111,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_SYS_PermissionListDetailData> get_CUS_SYS_PermissionListDetailData(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_SYS_PermissionListDetailData
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-			
+			var query = db.tbl_CUS_SYS_PermissionListDetailData.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 
 			//Query keyword
 

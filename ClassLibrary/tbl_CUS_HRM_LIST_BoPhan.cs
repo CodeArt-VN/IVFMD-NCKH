@@ -122,9 +122,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_HRM_LIST_BoPhan> get_CUS_HRM_LIST_BoPhan(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_HRM_LIST_BoPhan
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-			
+			var query = db.tbl_CUS_HRM_LIST_BoPhan.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 
 			//Query keyword
 			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
@@ -243,9 +241,7 @@ namespace BaseBusiness
 		
 		public static DTO_CUS_HRM_LIST_BoPhan get_CUS_HRM_LIST_BoPhan(AppEntities db, int PartnerID, string code)
         {
-            var dbResult = db.tbl_CUS_HRM_LIST_BoPhan
-			.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
-
+            var dbResult = db.tbl_CUS_HRM_LIST_BoPhan.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
 			if (dbResult == null || dbResult.IDPartner != PartnerID)
 				return null; 
 			else 

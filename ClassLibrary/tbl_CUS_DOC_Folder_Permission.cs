@@ -116,9 +116,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_DOC_Folder_Permission> get_CUS_DOC_Folder_Permission(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_DOC_Folder_Permission
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-			
+			var query = db.tbl_CUS_DOC_Folder_Permission.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 
 			//Query keyword
 

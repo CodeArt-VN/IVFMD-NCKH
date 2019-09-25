@@ -183,9 +183,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_PRO_DeTai> get_PRO_DeTai(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_PRO_DeTai
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-			
+			var query = db.tbl_PRO_DeTai.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 
 			//Query keyword
 
@@ -420,7 +418,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", DateTime.Now, Username);
 										
 				
 					result = true;
@@ -467,7 +465,7 @@ namespace BaseBusiness
 					db.tbl_PRO_DeTai.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", DateTime.Now, Username);
 										
 									
 					
@@ -507,7 +505,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", DateTime.Now, Username);
 										
 				
 										

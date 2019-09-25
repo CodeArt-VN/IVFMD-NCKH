@@ -142,6 +142,7 @@ namespace DTOModel
 	bool isExistIsDisabledProperty = simpleProperties.Any(d=>d.Name=="IsDisabled");
 	
 	bool isExistModifiedByProperty = simpleProperties.Any(d=>d.Name=="ModifiedBy");
+	bool isExistModifiedNotNullableByProperty = simpleProperties.Any(d=>d.Name=="ModifiedBy" && d.Nullable == false);
 #>
 
 namespace BaseBusiness
@@ -201,15 +202,11 @@ namespace BaseBusiness
 
         public static IQueryable<<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.<#=codeStringGenerator.EntityCodeName(entity)#>
-<#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-<#}else if(isExistIsDeletedProperty){#>
-			.Where(d => d.IsDeleted == false );
-<#}else if(isExistIDPartnerProperty){#>
-			.Where(d => d.IDPartner == PartnerID);
+			var query = db.<#=codeStringGenerator.EntityCodeName(entity)#><#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
+<#}else if(isExistIsDeletedProperty){#>.Where(d => d.IsDeleted == false );
+<#}else if(isExistIDPartnerProperty){#>.Where(d => d.IDPartner == PartnerID);
+<#}else {#>.AsQueryable();
 <#}#>
-			
 
 			//Query keyword
 <#if (isExistCodeProperty && isExistNameProperty){#>
@@ -315,15 +312,11 @@ if (simpleProperties.Any())
 
 		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, string code)
         {
-            var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#>
-<#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>
-			.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
-<#}else if(isExistIsDeletedProperty){#>
-			.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
-<#}else if(isExistIDPartnerProperty){#>
-			.FirstOrDefault(d => d.IDPartner == PartnerID && d.Code == code);
+            var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#><#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
+<#}else if(isExistIsDeletedProperty){#>.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
+<#}else if(isExistIDPartnerProperty){#>.FirstOrDefault(d => d.IDPartner == PartnerID && d.Code == code);
+<#}else {#>.FirstOrDefault(d => d.Code == code);
 <#}#>
-
 			<#if(isExistIDPartnerProperty){#>if (dbResult == null || dbResult.IDPartner != PartnerID)
 				return null; 
 			else 
@@ -369,13 +362,13 @@ if (simpleProperties.Any())
                     db.SaveChanges();
 				<#if (isExistIDPartnerProperty){#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 					
 				<#}else{#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 				<#}#>
@@ -434,13 +427,13 @@ if (simpleProperties.Any())
                     db.SaveChanges();
 				<#if (isExistIDPartnerProperty){#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 					
 				<#}else{#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 				<#}#>
@@ -497,13 +490,13 @@ if (simpleProperties.Any())
                     db.SaveChanges();
 				<#if (isExistIDPartnerProperty){#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 					
 				<#}else{#>
 
-					<#if (isExistModifiedByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
+					<#if (isExistModifiedNotNullableByProperty){#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", dbitem.ModifiedDate, Username);
 					<#}else{#>BS_CUS_Version.update_CUS_Version(db, null, "<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>", DateTime.Now, Username);
 					<#}#>
 				<#}#>

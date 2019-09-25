@@ -264,9 +264,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_PRO_LLKH> get_PRO_LLKH(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_PRO_LLKH
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_PRO_LLKH.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 
@@ -708,7 +706,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", DateTime.Now, Username);
 									
 					result = true;
                 }
@@ -784,7 +782,7 @@ namespace BaseBusiness
 					db.tbl_PRO_LLKH.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", DateTime.Now, Username);
 														
 					
                     item.ID =  dbitem.ID;
@@ -821,7 +819,7 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", dbitem.ModifiedDate, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_LLKH", DateTime.Now, Username);
 									
 										
 					

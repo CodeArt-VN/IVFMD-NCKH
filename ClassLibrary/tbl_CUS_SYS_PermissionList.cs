@@ -96,9 +96,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_SYS_PermissionList> get_CUS_SYS_PermissionList(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_SYS_PermissionList
-			.Where(d => d.IDPartner == PartnerID);
-			
+			var query = db.tbl_CUS_SYS_PermissionList.Where(d => d.IDPartner == PartnerID);
 
 			//Query keyword
 

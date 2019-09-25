@@ -134,9 +134,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_SYS_Form> get_SYS_Form(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_SYS_Form
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_SYS_Form.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
@@ -271,9 +269,7 @@ namespace BaseBusiness
 		
 		public static DTO_SYS_Form get_SYS_Form(AppEntities db, int PartnerID, string code)
         {
-            var dbResult = db.tbl_SYS_Form
-			.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
-
+            var dbResult = db.tbl_SYS_Form.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }

@@ -114,9 +114,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_WEB_Tag> get_WEB_Tag(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_WEB_Tag
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_WEB_Tag.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
@@ -220,9 +218,7 @@ namespace BaseBusiness
 		
 		public static DTO_WEB_Tag get_WEB_Tag(AppEntities db, int PartnerID, string code)
         {
-            var dbResult = db.tbl_WEB_Tag
-			.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
-
+            var dbResult = db.tbl_WEB_Tag.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }

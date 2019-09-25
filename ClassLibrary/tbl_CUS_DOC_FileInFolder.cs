@@ -108,9 +108,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_CUS_DOC_FileInFolder> get_CUS_DOC_FileInFolder(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_CUS_DOC_FileInFolder
-			.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
-			
+			var query = db.tbl_CUS_DOC_FileInFolder.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 
 			//Query keyword
 

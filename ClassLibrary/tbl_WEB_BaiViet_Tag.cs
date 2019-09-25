@@ -104,9 +104,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_WEB_BaiViet_Tag> get_WEB_BaiViet_Tag(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_WEB_BaiViet_Tag
-			.Where(d => d.IsDeleted == false );
-			
+			var query = db.tbl_WEB_BaiViet_Tag.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 
