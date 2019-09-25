@@ -36,7 +36,7 @@ namespace API.Controllers.APP
         [ResponseType(typeof(DTO_SYS_Form))]
         public IHttpActionResult Get(int id)
         {
-            DTO_SYS_Form tbl_SYS_Form = BS_SYS_Form.get_SYS_Form(db, PartnerID, id);
+            DTO_SYS_Form tbl_SYS_Form = BS_SYS_Form.get_SYS_Form(db, id);
             if (tbl_SYS_Form == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace API.Controllers.APP
                 return BadRequest();
             
 
-            bool resul = BS_SYS_Form.put_SYS_Form(db, PartnerID, id, tbl_SYS_Form, Username);
+            bool resul = BS_SYS_Form.put_SYS_Form(db, id, tbl_SYS_Form, Username);
 
 			if (resul)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -73,7 +73,7 @@ namespace API.Controllers.APP
             {
                 return BadRequest(ModelState);
             }
-            DTO_SYS_Form result = BS_SYS_Form.post_SYS_Form(db, PartnerID, tbl_SYS_Form, Username);
+            DTO_SYS_Form result = BS_SYS_Form.post_SYS_Form(db, tbl_SYS_Form, Username);
 			
 
 			if (result!=null)

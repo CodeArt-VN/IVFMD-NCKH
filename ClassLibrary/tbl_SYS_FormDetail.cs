@@ -126,7 +126,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_SYS_FormDetail> get_SYS_FormDetail(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_SYS_FormDetail> get_SYS_FormDetail(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_SYS_FormDetail.Where(d => d.IsDeleted == false );
 
@@ -269,7 +269,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_SYS_FormDetail get_SYS_FormDetail(AppEntities db, int PartnerID, int id)
+		public static DTO_SYS_FormDetail get_SYS_FormDetail(AppEntities db, int id)
         {
             var dbResult = db.tbl_SYS_FormDetail.Find(id);
 
@@ -277,14 +277,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_SYS_FormDetail get_SYS_FormDetail(AppEntities db, int PartnerID, string code)
+		public static DTO_SYS_FormDetail get_SYS_FormDetail(AppEntities db, string code)
         {
             var dbResult = db.tbl_SYS_FormDetail.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_SYS_FormDetail(AppEntities db, int PartnerID, int ID, DTO_SYS_FormDetail item, string Username)
+		public static bool put_SYS_FormDetail(AppEntities db, int ID, DTO_SYS_FormDetail item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_SYS_FormDetail.Find(ID);
@@ -322,7 +322,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_SYS_FormDetail post_SYS_FormDetail(AppEntities db, int PartnerID, DTO_SYS_FormDetail item, string Username)
+		public static DTO_SYS_FormDetail post_SYS_FormDetail(AppEntities db, DTO_SYS_FormDetail item, string Username)
         {
             tbl_SYS_FormDetail dbitem = new tbl_SYS_FormDetail();
             if (item != null)

@@ -152,7 +152,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_WEB_DanhMuc> get_WEB_DanhMuc(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_WEB_DanhMuc> get_WEB_DanhMuc(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_WEB_DanhMuc.Where(d => d.IsDeleted == false );
 
@@ -320,7 +320,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_WEB_DanhMuc get_WEB_DanhMuc(AppEntities db, int PartnerID, int id)
+		public static DTO_WEB_DanhMuc get_WEB_DanhMuc(AppEntities db, int id)
         {
             var dbResult = db.tbl_WEB_DanhMuc.Find(id);
 
@@ -328,14 +328,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_WEB_DanhMuc get_WEB_DanhMuc(AppEntities db, int PartnerID, string code)
+		public static DTO_WEB_DanhMuc get_WEB_DanhMuc(AppEntities db, string code)
         {
             var dbResult = db.tbl_WEB_DanhMuc.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_WEB_DanhMuc(AppEntities db, int PartnerID, int ID, DTO_WEB_DanhMuc item, string Username)
+		public static bool put_WEB_DanhMuc(AppEntities db, int ID, DTO_WEB_DanhMuc item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_WEB_DanhMuc.Find(ID);
@@ -377,7 +377,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_WEB_DanhMuc post_WEB_DanhMuc(AppEntities db, int PartnerID, DTO_WEB_DanhMuc item, string Username)
+		public static DTO_WEB_DanhMuc post_WEB_DanhMuc(AppEntities db, DTO_WEB_DanhMuc item, string Username)
         {
             tbl_WEB_DanhMuc dbitem = new tbl_WEB_DanhMuc();
             if (item != null)

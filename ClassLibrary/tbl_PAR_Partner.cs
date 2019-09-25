@@ -207,7 +207,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_PAR_Partner> get_PAR_Partner(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_PAR_Partner> get_PAR_Partner(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_PAR_Partner.Where(d => d.IsDeleted == false );
 
@@ -450,7 +450,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_PAR_Partner get_PAR_Partner(AppEntities db, int PartnerID, int id)
+		public static DTO_PAR_Partner get_PAR_Partner(AppEntities db, int id)
         {
             var dbResult = db.tbl_PAR_Partner.Find(id);
 
@@ -458,14 +458,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_PAR_Partner get_PAR_Partner(AppEntities db, int PartnerID, string code)
+		public static DTO_PAR_Partner get_PAR_Partner(AppEntities db, string code)
         {
             var dbResult = db.tbl_PAR_Partner.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_PAR_Partner(AppEntities db, int PartnerID, int ID, DTO_PAR_Partner item, string Username)
+		public static bool put_PAR_Partner(AppEntities db, int ID, DTO_PAR_Partner item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_PAR_Partner.Find(ID);
@@ -515,7 +515,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_PAR_Partner post_PAR_Partner(AppEntities db, int PartnerID, DTO_PAR_Partner item, string Username)
+		public static DTO_PAR_Partner post_PAR_Partner(AppEntities db, DTO_PAR_Partner item, string Username)
         {
             tbl_PAR_Partner dbitem = new tbl_PAR_Partner();
             if (item != null)

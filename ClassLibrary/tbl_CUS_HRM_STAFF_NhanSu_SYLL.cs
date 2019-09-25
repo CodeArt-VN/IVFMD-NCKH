@@ -153,7 +153,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_CUS_HRM_STAFF_NhanSu_SYLL> get_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_CUS_HRM_STAFF_NhanSu_SYLL> get_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.Where(d => d.IsDeleted == false );
 
@@ -335,7 +335,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_CUS_HRM_STAFF_NhanSu_SYLL get_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int PartnerID, int id)
+		public static DTO_CUS_HRM_STAFF_NhanSu_SYLL get_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int id)
         {
             var dbResult = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.Find(id);
 
@@ -344,7 +344,7 @@ namespace BaseBusiness
         }
 		
 
-		public static bool put_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int PartnerID, int ID, DTO_CUS_HRM_STAFF_NhanSu_SYLL item, string Username)
+		public static bool put_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int ID, DTO_CUS_HRM_STAFF_NhanSu_SYLL item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.Find(ID);
@@ -389,7 +389,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_CUS_HRM_STAFF_NhanSu_SYLL post_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, int PartnerID, DTO_CUS_HRM_STAFF_NhanSu_SYLL item, string Username)
+		public static DTO_CUS_HRM_STAFF_NhanSu_SYLL post_CUS_HRM_STAFF_NhanSu_SYLL(AppEntities db, DTO_CUS_HRM_STAFF_NhanSu_SYLL item, string Username)
         {
             tbl_CUS_HRM_STAFF_NhanSu_SYLL dbitem = new tbl_CUS_HRM_STAFF_NhanSu_SYLL();
             if (item != null)

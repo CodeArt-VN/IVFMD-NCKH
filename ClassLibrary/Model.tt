@@ -200,7 +200,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<<#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db<#if(isExistIDPartnerProperty){#>, int PartnerID<#}#>, Dictionary<string, string> QueryStrings)
         {
 			var query = db.<#=codeStringGenerator.EntityCodeName(entity)#><#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
 <#}else if(isExistIsDeletedProperty){#>.Where(d => d.IsDeleted == false );
@@ -296,7 +296,7 @@ if (simpleProperties.Any())
 
         }
 
-		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, int id)
+		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db<#if(isExistIDPartnerProperty){#>, int PartnerID<#}#>, int id)
         {
             var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#>.Find(id);
 
@@ -310,7 +310,7 @@ if (simpleProperties.Any())
         }
 		<#if(isExistCodeProperty){#>
 
-		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, string code)
+		public static <#="DTO_"+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> get_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db<#if(isExistIDPartnerProperty){#>, int PartnerID<#}#>, string code)
         {
             var dbResult = db.<#=codeStringGenerator.EntityCodeName(entity)#><#if (isExistIsDeletedProperty && isExistIDPartnerProperty){#>.FirstOrDefault(d => d.IsDeleted == false && d.IDPartner == PartnerID && d.Code == code);
 <#}else if(isExistIsDeletedProperty){#>.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
@@ -327,7 +327,7 @@ if (simpleProperties.Any())
         }<#}#>
 
 
-		public static bool put_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, int ID, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
+		public static bool put_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db<#if(isExistIDPartnerProperty){#>, int PartnerID<#}#>, int ID, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
         {
             bool result = false;
             var dbitem = db.<#=codeStringGenerator.EntityCodeName(entity)#>.Find(ID);
@@ -384,7 +384,7 @@ if (simpleProperties.Any())
             return result;
         }
 
-		public static DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> post_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db, int PartnerID, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
+		public static DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> post_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#>(AppEntities db<#if(isExistIDPartnerProperty){#>, int PartnerID<#}#>, DTO_<#=""+codeStringGenerator.EntityCodeName(entity).Replace("tbl_","")#> item, string Username)
         {
             <#=codeStringGenerator.EntityCodeName(entity)#> dbitem = new <#=codeStringGenerator.EntityCodeName(entity)#>();
             if (item != null)

@@ -112,7 +112,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_WEB_Tag> get_WEB_Tag(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_WEB_Tag> get_WEB_Tag(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_WEB_Tag.Where(d => d.IsDeleted == false );
 
@@ -208,7 +208,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_WEB_Tag get_WEB_Tag(AppEntities db, int PartnerID, int id)
+		public static DTO_WEB_Tag get_WEB_Tag(AppEntities db, int id)
         {
             var dbResult = db.tbl_WEB_Tag.Find(id);
 
@@ -216,14 +216,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_WEB_Tag get_WEB_Tag(AppEntities db, int PartnerID, string code)
+		public static DTO_WEB_Tag get_WEB_Tag(AppEntities db, string code)
         {
             var dbResult = db.tbl_WEB_Tag.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_WEB_Tag(AppEntities db, int PartnerID, int ID, DTO_WEB_Tag item, string Username)
+		public static bool put_WEB_Tag(AppEntities db, int ID, DTO_WEB_Tag item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_WEB_Tag.Find(ID);
@@ -256,7 +256,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_WEB_Tag post_WEB_Tag(AppEntities db, int PartnerID, DTO_WEB_Tag item, string Username)
+		public static DTO_WEB_Tag post_WEB_Tag(AppEntities db, DTO_WEB_Tag item, string Username)
         {
             tbl_WEB_Tag dbitem = new tbl_WEB_Tag();
             if (item != null)

@@ -135,7 +135,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_SYS_Apps> get_SYS_Apps(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_SYS_Apps> get_SYS_Apps(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_SYS_Apps.Where(d => d.IsDeleted == false );
 
@@ -263,7 +263,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_SYS_Apps get_SYS_Apps(AppEntities db, int PartnerID, int id)
+		public static DTO_SYS_Apps get_SYS_Apps(AppEntities db, int id)
         {
             var dbResult = db.tbl_SYS_Apps.Find(id);
 
@@ -271,14 +271,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_SYS_Apps get_SYS_Apps(AppEntities db, int PartnerID, string code)
+		public static DTO_SYS_Apps get_SYS_Apps(AppEntities db, string code)
         {
             var dbResult = db.tbl_SYS_Apps.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_SYS_Apps(AppEntities db, int PartnerID, int ID, DTO_SYS_Apps item, string Username)
+		public static bool put_SYS_Apps(AppEntities db, int ID, DTO_SYS_Apps item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_SYS_Apps.Find(ID);
@@ -316,7 +316,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_SYS_Apps post_SYS_Apps(AppEntities db, int PartnerID, DTO_SYS_Apps item, string Username)
+		public static DTO_SYS_Apps post_SYS_Apps(AppEntities db, DTO_SYS_Apps item, string Username)
         {
             tbl_SYS_Apps dbitem = new tbl_SYS_Apps();
             if (item != null)

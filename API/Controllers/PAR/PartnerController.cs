@@ -29,14 +29,14 @@ namespace API.Controllers.PAR
 		[Route("")]
         public IQueryable<DTO_PAR_Partner> Get()
         {
-			return BS_PAR_Partner.get_PAR_Partner(db, PartnerID, QueryStrings);
+			return BS_PAR_Partner.get_PAR_Partner(db, QueryStrings);
         }
 
         [Route("{id:int}", Name = "get_PAR_Partner")]
         [ResponseType(typeof(DTO_PAR_Partner))]
         public IHttpActionResult Get(int id)
         {
-            DTO_PAR_Partner tbl_PAR_Partner = BS_PAR_Partner.get_PAR_Partner(db, PartnerID, id);
+            DTO_PAR_Partner tbl_PAR_Partner = BS_PAR_Partner.get_PAR_Partner(db, id);
             if (tbl_PAR_Partner == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace API.Controllers.PAR
                 return BadRequest();
             
 
-            bool resul = BS_PAR_Partner.put_PAR_Partner(db, PartnerID, id, tbl_PAR_Partner, Username);
+            bool resul = BS_PAR_Partner.put_PAR_Partner(db, id, tbl_PAR_Partner, Username);
 
 			if (resul)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -73,7 +73,7 @@ namespace API.Controllers.PAR
             {
                 return BadRequest(ModelState);
             }
-            DTO_PAR_Partner result = BS_PAR_Partner.post_PAR_Partner(db, PartnerID, tbl_PAR_Partner, Username);
+            DTO_PAR_Partner result = BS_PAR_Partner.post_PAR_Partner(db, tbl_PAR_Partner, Username);
 			
 
 			if (result!=null)

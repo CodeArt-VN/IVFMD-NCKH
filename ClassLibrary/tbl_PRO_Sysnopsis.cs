@@ -153,7 +153,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_PRO_Sysnopsis> get_PRO_Sysnopsis(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_PRO_Sysnopsis> get_PRO_Sysnopsis(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_PRO_Sysnopsis.Where(d => d.IsDeleted == false );
 
@@ -335,7 +335,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_PRO_Sysnopsis get_PRO_Sysnopsis(AppEntities db, int PartnerID, int id)
+		public static DTO_PRO_Sysnopsis get_PRO_Sysnopsis(AppEntities db, int id)
         {
             var dbResult = db.tbl_PRO_Sysnopsis.Find(id);
 
@@ -344,7 +344,7 @@ namespace BaseBusiness
         }
 		
 
-		public static bool put_PRO_Sysnopsis(AppEntities db, int PartnerID, int ID, DTO_PRO_Sysnopsis item, string Username)
+		public static bool put_PRO_Sysnopsis(AppEntities db, int ID, DTO_PRO_Sysnopsis item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_PRO_Sysnopsis.Find(ID);
@@ -389,7 +389,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_PRO_Sysnopsis post_PRO_Sysnopsis(AppEntities db, int PartnerID, DTO_PRO_Sysnopsis item, string Username)
+		public static DTO_PRO_Sysnopsis post_PRO_Sysnopsis(AppEntities db, DTO_PRO_Sysnopsis item, string Username)
         {
             tbl_PRO_Sysnopsis dbitem = new tbl_PRO_Sysnopsis();
             if (item != null)

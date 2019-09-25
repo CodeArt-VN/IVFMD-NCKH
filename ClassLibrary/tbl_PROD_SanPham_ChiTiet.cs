@@ -118,7 +118,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_PROD_SanPham_ChiTiet> get_PROD_SanPham_ChiTiet(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_PROD_SanPham_ChiTiet> get_PROD_SanPham_ChiTiet(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_PROD_SanPham_ChiTiet.Where(d => d.IsDeleted == false );
 
@@ -254,7 +254,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_PROD_SanPham_ChiTiet get_PROD_SanPham_ChiTiet(AppEntities db, int PartnerID, int id)
+		public static DTO_PROD_SanPham_ChiTiet get_PROD_SanPham_ChiTiet(AppEntities db, int id)
         {
             var dbResult = db.tbl_PROD_SanPham_ChiTiet.Find(id);
 
@@ -262,14 +262,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_PROD_SanPham_ChiTiet get_PROD_SanPham_ChiTiet(AppEntities db, int PartnerID, string code)
+		public static DTO_PROD_SanPham_ChiTiet get_PROD_SanPham_ChiTiet(AppEntities db, string code)
         {
             var dbResult = db.tbl_PROD_SanPham_ChiTiet.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_PROD_SanPham_ChiTiet(AppEntities db, int PartnerID, int ID, DTO_PROD_SanPham_ChiTiet item, string Username)
+		public static bool put_PROD_SanPham_ChiTiet(AppEntities db, int ID, DTO_PROD_SanPham_ChiTiet item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_PROD_SanPham_ChiTiet.Find(ID);
@@ -305,7 +305,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_PROD_SanPham_ChiTiet post_PROD_SanPham_ChiTiet(AppEntities db, int PartnerID, DTO_PROD_SanPham_ChiTiet item, string Username)
+		public static DTO_PROD_SanPham_ChiTiet post_PROD_SanPham_ChiTiet(AppEntities db, DTO_PROD_SanPham_ChiTiet item, string Username)
         {
             tbl_PROD_SanPham_ChiTiet dbitem = new tbl_PROD_SanPham_ChiTiet();
             if (item != null)

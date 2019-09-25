@@ -35,19 +35,19 @@ namespace API.Controllers.WEB
         [Route("home-page")]
         public IQueryable<DTO_WEB_BaiViet> GetHomePage()
         {
-            return BS_WEB_BaiViet.get_WEB_BaiViet(db, PartnerID, QueryStrings);
+            return BS_WEB_BaiViet.get_WEB_BaiViet(db, QueryStrings);
         }
         [Route("list-page/{id:int}")]
         public IQueryable<DTO_WEB_BaiViet> GetListPage()
         {
-            return BS_WEB_BaiViet.get_WEB_BaiViet(db, PartnerID, QueryStrings);
+            return BS_WEB_BaiViet.get_WEB_BaiViet(db, QueryStrings);
         }
 
         [Route("{id:int}", Name = "get_WEB_BaiViet")]
         [ResponseType(typeof(DTO_WEB_BaiViet))]
         public IHttpActionResult Get(int id)
         {
-            DTO_WEB_BaiViet tbl_WEB_BaiViet = BS_WEB_BaiViet.get_WEB_BaiViet(db, PartnerID, id);
+            DTO_WEB_BaiViet tbl_WEB_BaiViet = BS_WEB_BaiViet.get_WEB_BaiViet(db, id);
             if (tbl_WEB_BaiViet == null)
             {
                 return NotFound();
@@ -70,7 +70,7 @@ namespace API.Controllers.WEB
             tbl_WEB_BaiViet.URL = "#/bai-viet/" + tbl_WEB_BaiViet.ID.ToString() + "/" +
             iData.Common.StringUtil.RemoveVietSignSpecialCharAndSpaceChar(tbl_WEB_BaiViet.Name);
 
-            bool resul = BS_WEB_BaiViet.put_WEB_BaiViet(db, PartnerID, id, tbl_WEB_BaiViet, Username);
+            bool resul = BS_WEB_BaiViet.put_WEB_BaiViet(db, id, tbl_WEB_BaiViet, Username);
 
 			if (resul)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -87,7 +87,7 @@ namespace API.Controllers.WEB
             {
                 return BadRequest(ModelState);
             }
-            DTO_WEB_BaiViet result = BS_WEB_BaiViet.post_WEB_BaiViet(db, PartnerID, tbl_WEB_BaiViet, Username);
+            DTO_WEB_BaiViet result = BS_WEB_BaiViet.post_WEB_BaiViet(db, tbl_WEB_BaiViet, Username);
             Put(result.ID, result);
 
 

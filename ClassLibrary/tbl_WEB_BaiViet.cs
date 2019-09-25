@@ -213,7 +213,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_WEB_BaiViet> get_WEB_BaiViet(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_WEB_BaiViet> get_WEB_BaiViet(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_WEB_BaiViet.Where(d => d.IsDeleted == false );
 
@@ -483,7 +483,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_WEB_BaiViet get_WEB_BaiViet(AppEntities db, int PartnerID, int id)
+		public static DTO_WEB_BaiViet get_WEB_BaiViet(AppEntities db, int id)
         {
             var dbResult = db.tbl_WEB_BaiViet.Find(id);
 
@@ -491,14 +491,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_WEB_BaiViet get_WEB_BaiViet(AppEntities db, int PartnerID, string code)
+		public static DTO_WEB_BaiViet get_WEB_BaiViet(AppEntities db, string code)
         {
             var dbResult = db.tbl_WEB_BaiViet.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_WEB_BaiViet(AppEntities db, int PartnerID, int ID, DTO_WEB_BaiViet item, string Username)
+		public static bool put_WEB_BaiViet(AppEntities db, int ID, DTO_WEB_BaiViet item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_WEB_BaiViet.Find(ID);
@@ -555,7 +555,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_WEB_BaiViet post_WEB_BaiViet(AppEntities db, int PartnerID, DTO_WEB_BaiViet item, string Username)
+		public static DTO_WEB_BaiViet post_WEB_BaiViet(AppEntities db, DTO_WEB_BaiViet item, string Username)
         {
             tbl_WEB_BaiViet dbitem = new tbl_WEB_BaiViet();
             if (item != null)

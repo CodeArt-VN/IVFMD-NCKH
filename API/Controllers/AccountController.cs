@@ -104,13 +104,13 @@ namespace API.Controllers
 
                     if (result.Roles.SYSRoles.Contains("HOST"))
                     {
-                        var partners = BS_PAR_Partner.get_PAR_Partner(db, PartnerID, QueryStrings).Select(partner => new DTO_Partner() { ID = partner.ID, Code = partner.Code, Name = partner.Name, LogoURL = partner.LogoURL, Remark=partner.Remark, BannerURL = partner.BannerURL, TemplateHeader = partner.TemplateHeader, TemplateFooter = partner.TemplateFooter });
+                        var partners = BS_PAR_Partner.get_PAR_Partner(db, QueryStrings).Select(partner => new DTO_Partner() { ID = partner.ID, Code = partner.Code, Name = partner.Name, LogoURL = partner.LogoURL, Remark=partner.Remark, BannerURL = partner.BannerURL, TemplateHeader = partner.TemplateHeader, TemplateFooter = partner.TemplateFooter });
                         result.Partners = partners.ToList();
                         
                     }
                     else
                     {
-                        var partner = BS_PAR_Partner.get_PAR_Partner(db, result.PartnerID, result.PartnerID);
+                        var partner = BS_PAR_Partner.get_PAR_Partner(db, result.PartnerID);
                         if (partner != null)
                         {
 

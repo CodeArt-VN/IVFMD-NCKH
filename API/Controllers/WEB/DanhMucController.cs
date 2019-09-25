@@ -29,14 +29,14 @@ namespace API.Controllers.WEB
 		[Route("")]
         public IQueryable<DTO_WEB_DanhMuc> Get()
         {
-			return BS_WEB_DanhMuc.get_WEB_DanhMuc(db, PartnerID, QueryStrings);
+			return BS_WEB_DanhMuc.get_WEB_DanhMuc(db, QueryStrings);
         }
 
         [Route("{id:int}", Name = "get_WEB_DanhMuc")]
         [ResponseType(typeof(DTO_WEB_DanhMuc))]
         public IHttpActionResult Get(int id)
         {
-            DTO_WEB_DanhMuc tbl_WEB_DanhMuc = BS_WEB_DanhMuc.get_WEB_DanhMuc(db, PartnerID, id);
+            DTO_WEB_DanhMuc tbl_WEB_DanhMuc = BS_WEB_DanhMuc.get_WEB_DanhMuc(db, id);
             if (tbl_WEB_DanhMuc == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace API.Controllers.WEB
                 return BadRequest();
             
 
-            bool resul = BS_WEB_DanhMuc.put_WEB_DanhMuc(db, PartnerID, id, tbl_WEB_DanhMuc, Username);
+            bool resul = BS_WEB_DanhMuc.put_WEB_DanhMuc(db, id, tbl_WEB_DanhMuc, Username);
 
 			if (resul)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -73,7 +73,7 @@ namespace API.Controllers.WEB
             {
                 return BadRequest(ModelState);
             }
-            DTO_WEB_DanhMuc result = BS_WEB_DanhMuc.post_WEB_DanhMuc(db, PartnerID, tbl_WEB_DanhMuc, Username);
+            DTO_WEB_DanhMuc result = BS_WEB_DanhMuc.post_WEB_DanhMuc(db, tbl_WEB_DanhMuc, Username);
 			
 
 			if (result!=null)

@@ -166,7 +166,7 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_PROD_SanPham> get_PROD_SanPham(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_PROD_SanPham> get_PROD_SanPham(AppEntities db, Dictionary<string, string> QueryStrings)
         {
 			var query = db.tbl_PROD_SanPham.Where(d => d.IsDeleted == false );
 
@@ -345,7 +345,7 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_PROD_SanPham get_PROD_SanPham(AppEntities db, int PartnerID, int id)
+		public static DTO_PROD_SanPham get_PROD_SanPham(AppEntities db, int id)
         {
             var dbResult = db.tbl_PROD_SanPham.Find(id);
 
@@ -353,14 +353,14 @@ namespace BaseBusiness
 			
         }
 		
-		public static DTO_PROD_SanPham get_PROD_SanPham(AppEntities db, int PartnerID, string code)
+		public static DTO_PROD_SanPham get_PROD_SanPham(AppEntities db, string code)
         {
             var dbResult = db.tbl_PROD_SanPham.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_PROD_SanPham(AppEntities db, int PartnerID, int ID, DTO_PROD_SanPham item, string Username)
+		public static bool put_PROD_SanPham(AppEntities db, int ID, DTO_PROD_SanPham item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_PROD_SanPham.Find(ID);
@@ -405,7 +405,7 @@ namespace BaseBusiness
             return result;
         }
 
-		public static DTO_PROD_SanPham post_PROD_SanPham(AppEntities db, int PartnerID, DTO_PROD_SanPham item, string Username)
+		public static DTO_PROD_SanPham post_PROD_SanPham(AppEntities db, DTO_PROD_SanPham item, string Username)
         {
             tbl_PROD_SanPham dbitem = new tbl_PROD_SanPham();
             if (item != null)
