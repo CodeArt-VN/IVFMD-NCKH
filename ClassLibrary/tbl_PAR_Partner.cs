@@ -22,12 +22,12 @@ namespace ClassLibrary
             this.tbl_CUS_DOC_Folder = new HashSet<tbl_CUS_DOC_Folder>();
             this.tbl_CUS_HRM_LIST_BoPhan = new HashSet<tbl_CUS_HRM_LIST_BoPhan>();
             this.tbl_CUS_HRM_LIST_ChucDanh = new HashSet<tbl_CUS_HRM_LIST_ChucDanh>();
+            this.tbl_CUS_HRM_STAFF_NhanSu = new HashSet<tbl_CUS_HRM_STAFF_NhanSu>();
             this.tbl_CUS_SYS_CauHinhHeThong = new HashSet<tbl_CUS_SYS_CauHinhHeThong>();
             this.tbl_CUS_SYS_Role = new HashSet<tbl_CUS_SYS_Role>();
             this.tbl_CUS_Version = new HashSet<tbl_CUS_Version>();
             this.tbl_PAR_DonHang = new HashSet<tbl_PAR_DonHang>();
             this.tbl_PAR_ThongTinSanPham = new HashSet<tbl_PAR_ThongTinSanPham>();
-            this.tbl_CUS_HRM_STAFF_NhanSu = new HashSet<tbl_CUS_HRM_STAFF_NhanSu>();
         }
     
         public Nullable<int> IDTinhThanh { get; set; }
@@ -67,6 +67,8 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_LIST_ChucDanh> tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_SYS_CauHinhHeThong> tbl_CUS_SYS_CauHinhHeThong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_SYS_Role> tbl_CUS_SYS_Role { get; set; }
@@ -76,8 +78,6 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PAR_DonHang> tbl_PAR_DonHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PAR_ThongTinSanPham> tbl_PAR_ThongTinSanPham { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
 namespace DTOModel

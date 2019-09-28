@@ -20,8 +20,8 @@ namespace ClassLibrary
         {
             this.tbl_CUS_DOC_File_Permission = new HashSet<tbl_CUS_DOC_File_Permission>();
             this.tbl_CUS_DOC_Folder_Permission = new HashSet<tbl_CUS_DOC_Folder_Permission>();
-            this.tbl_CUS_SYS_PermissionList = new HashSet<tbl_CUS_SYS_PermissionList>();
             this.tbl_CUS_HRM_STAFF_NhanSu = new HashSet<tbl_CUS_HRM_STAFF_NhanSu>();
+            this.tbl_CUS_SYS_PermissionList = new HashSet<tbl_CUS_SYS_PermissionList>();
         }
     
         public int IDPartner { get; set; }
@@ -41,10 +41,10 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_Folder_Permission> tbl_CUS_DOC_Folder_Permission { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_SYS_PermissionList> tbl_CUS_SYS_PermissionList { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
 namespace DTOModel

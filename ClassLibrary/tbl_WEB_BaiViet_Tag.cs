@@ -25,8 +25,8 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ModifiedDate { get; set; }
-        public virtual tbl_WEB_Tag tbl_WEB_Tag { get; set; }
         public virtual tbl_WEB_BaiViet tbl_WEB_BaiViet { get; set; }
+        public virtual tbl_WEB_Tag tbl_WEB_Tag { get; set; }
     }
 }
 namespace DTOModel

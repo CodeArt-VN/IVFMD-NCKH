@@ -18,8 +18,8 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_CUS_HRM_LIST_BoPhan()
         {
-            this.tbl_CUS_HRM_LIST_ChucDanh = new HashSet<tbl_CUS_HRM_LIST_ChucDanh>();
             this.tbl_CUS_HRM_STAFF_NhanSu = new HashSet<tbl_CUS_HRM_STAFF_NhanSu>();
+            this.tbl_CUS_HRM_LIST_ChucDanh = new HashSet<tbl_CUS_HRM_LIST_ChucDanh>();
         }
     
         public int IDPartner { get; set; }
@@ -36,9 +36,9 @@ namespace ClassLibrary
         public System.DateTime ModifiedDate { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_CUS_HRM_LIST_ChucDanh> tbl_CUS_HRM_LIST_ChucDanh { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_HRM_LIST_ChucDanh> tbl_CUS_HRM_LIST_ChucDanh { get; set; }
     }
 }
 namespace DTOModel

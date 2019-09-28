@@ -13,56 +13,33 @@ namespace ClassLibrary
     using System.Collections.Generic;
     
     
-    public partial class tbl_SYS_Var
+    public partial class tbl_SYS_Template
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_SYS_Var()
-        {
-            this.tbl_PRO_DeTai = new HashSet<tbl_PRO_DeTai>();
-            this.tbl_PRO_DeTai1 = new HashSet<tbl_PRO_DeTai>();
-            this.tbl_PRO_DeTai2 = new HashSet<tbl_PRO_DeTai>();
-            this.tbl_PRO_DeTai3 = new HashSet<tbl_PRO_DeTai>();
-            this.tbl_PRO_DeTai4 = new HashSet<tbl_PRO_DeTai>();
-            this.tbl_PRO_TrangThai_Log = new HashSet<tbl_PRO_TrangThai_Log>();
-            this.tbl_PRO_TrangThai_Log1 = new HashSet<tbl_PRO_TrangThai_Log>();
-            this.tbl_PRO_TrangThai_Log2 = new HashSet<tbl_PRO_TrangThai_Log>();
-        }
-    
         public int ID { get; set; }
         public string Code { get; set; }
-        public string ValueOfVar { get; set; }
-        public Nullable<int> TypeOfVar { get; set; }
+        public string Name { get; set; }
+        public string GhiChu { get; set; }
+        public string HTML { get; set; }
+        public bool IsDisabled { get; set; }
+        public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log2 { get; set; }
     }
 }
 namespace DTOModel
 {
 	using System;
-	public partial class DTO_SYS_Var
+	public partial class DTO_SYS_Template
 	{
 		public int ID { get; set; }
 		public string Code { get; set; }
-		public string ValueOfVar { get; set; }
-		public Nullable<int> TypeOfVar { get; set; }
+		public string Name { get; set; }
+		public string GhiChu { get; set; }
+		public string HTML { get; set; }
+		public bool IsDisabled { get; set; }
+		public bool IsDeleted { get; set; }
 		public System.DateTime CreatedDate { get; set; }
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
@@ -83,16 +60,19 @@ namespace BaseBusiness
     using ClassLibrary;
 	using System.Data.Entity.Validation;
 
-    public static partial class BS_SYS_Var 
+    public static partial class BS_SYS_Template 
     {
-		public static IQueryable<DTO_SYS_Var> toDTO(IQueryable<tbl_SYS_Var> query)
+		public static IQueryable<DTO_SYS_Template> toDTO(IQueryable<tbl_SYS_Template> query)
         {
 			return query
-			.Select(s => new DTO_SYS_Var(){							
+			.Select(s => new DTO_SYS_Template(){							
 				ID = s.ID,							
 				Code = s.Code,							
-				ValueOfVar = s.ValueOfVar,							
-				TypeOfVar = s.TypeOfVar,							
+				Name = s.Name,							
+				GhiChu = s.GhiChu,							
+				HTML = s.HTML,							
+				IsDisabled = s.IsDisabled,							
+				IsDeleted = s.IsDeleted,							
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
@@ -101,16 +81,19 @@ namespace BaseBusiness
                               
         }
 
-		public static DTO_SYS_Var toDTO(tbl_SYS_Var dbResult)
+		public static DTO_SYS_Template toDTO(tbl_SYS_Template dbResult)
         {
 			if (dbResult != null)
 			{
-				return new DTO_SYS_Var()
+				return new DTO_SYS_Template()
 				{							
 					ID = dbResult.ID,							
 					Code = dbResult.Code,							
-					ValueOfVar = dbResult.ValueOfVar,							
-					TypeOfVar = dbResult.TypeOfVar,							
+					Name = dbResult.Name,							
+					GhiChu = dbResult.GhiChu,							
+					HTML = dbResult.HTML,							
+					IsDisabled = dbResult.IsDisabled,							
+					IsDeleted = dbResult.IsDeleted,							
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
@@ -121,15 +104,15 @@ namespace BaseBusiness
 				return null; 
         }
 
-        public static IQueryable<DTO_SYS_Var> get_SYS_Var(AppEntities db, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_SYS_Template> get_SYS_Template(AppEntities db, Dictionary<string, string> QueryStrings)
         {
-			var query = db.tbl_SYS_Var.AsQueryable();
+			var query = db.tbl_SYS_Template.Where(d => d.IsDeleted == false );
 
 			//Query keyword
 			if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))
             {
                 var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value;
-                query = query.Where(d=>d.Code.Contains(keyword));
+                query = query.Where(d=>d.Name.Contains(keyword) || d.Code.Contains(keyword));
             }
 
 
@@ -153,17 +136,42 @@ namespace BaseBusiness
                 query = query.Where(d=>d.Code == keyword);
             }
 
-			//Query ValueOfVar (string)
-			if (QueryStrings.Any(d => d.Key == "ValueOfVar") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ValueOfVar").Value))
+			//Query Name (string)
+			if (QueryStrings.Any(d => d.Key == "Name") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Name").Value))
             {
-                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ValueOfVar").Value;
-                query = query.Where(d=>d.ValueOfVar == keyword);
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Name").Value;
+                query = query.Where(d=>d.Name == keyword);
             }
 
-			//Query TypeOfVar (Nullable<int>)
-			if (QueryStrings.Any(d => d.Key == "TypeOfVarFrom") && QueryStrings.Any(d => d.Key == "TypeOfVarTo"))
-                if (int.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "TypeOfVarFrom").Value, out int fromVal) && int.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "TypeOfVarTo").Value, out int toVal))
-                    query = query.Where(d => fromVal <= d.TypeOfVar && d.TypeOfVar <= toVal);
+			//Query GhiChu (string)
+			if (QueryStrings.Any(d => d.Key == "GhiChu") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "GhiChu").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "GhiChu").Value;
+                query = query.Where(d=>d.GhiChu == keyword);
+            }
+
+			//Query HTML (string)
+			if (QueryStrings.Any(d => d.Key == "HTML") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "HTML").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "HTML").Value;
+                query = query.Where(d=>d.HTML == keyword);
+            }
+
+			//Query IsDisabled (bool)
+			if (QueryStrings.Any(d => d.Key == "IsDisabled"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "IsDisabled").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.IsDisabled);
+            }
+
+			//Query IsDeleted (bool)
+			if (QueryStrings.Any(d => d.Key == "IsDeleted"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "IsDeleted").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.IsDeleted);
+            }
 
 			//Query CreatedDate (System.DateTime)
 			if (QueryStrings.Any(d => d.Key == "CreatedDateFrom") && QueryStrings.Any(d => d.Key == "CreatedDateTo"))
@@ -194,30 +202,33 @@ namespace BaseBusiness
 
         }
 
-		public static DTO_SYS_Var get_SYS_Var(AppEntities db, int id)
+		public static DTO_SYS_Template get_SYS_Template(AppEntities db, int id)
         {
-            var dbResult = db.tbl_SYS_Var.Find(id);
+            var dbResult = db.tbl_SYS_Template.Find(id);
 
 			return toDTO(dbResult);
 			
         }
 		
-		public static DTO_SYS_Var get_SYS_Var(AppEntities db, string code)
+		public static DTO_SYS_Template get_SYS_Template(AppEntities db, string code)
         {
-            var dbResult = db.tbl_SYS_Var.FirstOrDefault(d => d.Code == code);
+            var dbResult = db.tbl_SYS_Template.FirstOrDefault(d => d.IsDeleted == false && d.Code == code );
 			return toDTO(dbResult);
 			
         }
 
-		public static bool put_SYS_Var(AppEntities db, int ID, DTO_SYS_Var item, string Username)
+		public static bool put_SYS_Template(AppEntities db, int ID, DTO_SYS_Template item, string Username)
         {
             bool result = false;
-            var dbitem = db.tbl_SYS_Var.Find(ID);
+            var dbitem = db.tbl_SYS_Template.Find(ID);
             if (dbitem != null)
             {							
 				dbitem.Code = item.Code;							
-				dbitem.ValueOfVar = item.ValueOfVar;							
-				dbitem.TypeOfVar = item.TypeOfVar;                
+				dbitem.Name = item.Name;							
+				dbitem.GhiChu = item.GhiChu;							
+				dbitem.HTML = item.HTML;							
+				dbitem.IsDisabled = item.IsDisabled;							
+				dbitem.IsDeleted = item.IsDeleted;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -226,27 +237,30 @@ namespace BaseBusiness
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Template", DateTime.Now, Username);
 									
 					result = true;
                 }
                 catch (DbEntityValidationException e)
                 {
-					errorLog.logMessage("put_SYS_Var",e);
+					errorLog.logMessage("put_SYS_Template",e);
                     result = false;
                 }
             }
             return result;
         }
 
-		public static DTO_SYS_Var post_SYS_Var(AppEntities db, DTO_SYS_Var item, string Username)
+		public static DTO_SYS_Template post_SYS_Template(AppEntities db, DTO_SYS_Template item, string Username)
         {
-            tbl_SYS_Var dbitem = new tbl_SYS_Var();
+            tbl_SYS_Template dbitem = new tbl_SYS_Template();
             if (item != null)
             {							
 				dbitem.Code = item.Code;							
-				dbitem.ValueOfVar = item.ValueOfVar;							
-				dbitem.TypeOfVar = item.TypeOfVar;                
+				dbitem.Name = item.Name;							
+				dbitem.GhiChu = item.GhiChu;							
+				dbitem.HTML = item.HTML;							
+				dbitem.IsDisabled = item.IsDisabled;							
+				dbitem.IsDeleted = item.IsDeleted;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
@@ -257,10 +271,10 @@ namespace BaseBusiness
 
                 try
                 {
-					db.tbl_SYS_Var.Add(dbitem);
+					db.tbl_SYS_Template.Add(dbitem);
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Template", DateTime.Now, Username);
 														
 					
                     item.ID =  dbitem.ID;
@@ -274,28 +288,30 @@ namespace BaseBusiness
                 }
                 catch (DbEntityValidationException e)
                 {
-					errorLog.logMessage("post_SYS_Var",e);
+					errorLog.logMessage("post_SYS_Template",e);
                     item = null;
                 }
             }
             return item;
         }
 
-		public static bool delete_SYS_Var(AppEntities db, int ID, string Username)
+		public static bool delete_SYS_Template(AppEntities db, int ID, string Username)
         {
 			bool result = false;
-            var dbitem = db.tbl_SYS_Var.Find(ID);
+            var dbitem = db.tbl_SYS_Template.Find(ID);
             if (dbitem != null)
             {
-			
-				db.tbl_SYS_Var.Remove(dbitem);
-			                
+							
+				dbitem.ModifiedBy = Username;
+				dbitem.ModifiedDate = DateTime.Now;
+				dbitem.IsDeleted = true;
+							                
 
                 try
                 {
                     db.SaveChanges();
 				
-					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Var", DateTime.Now, Username);
+					BS_CUS_Version.update_CUS_Version(db, null, "DTO_SYS_Template", DateTime.Now, Username);
 									
 										
 					
@@ -303,7 +319,7 @@ namespace BaseBusiness
                 }
                 catch (DbEntityValidationException e)
                 {
-					errorLog.logMessage("delete_SYS_Var",e);
+					errorLog.logMessage("delete_SYS_Template",e);
                     result = false;
                 }
             }
@@ -311,14 +327,14 @@ namespace BaseBusiness
         }
 
 		
-		public static bool check_SYS_Var_Exists(AppEntities db, int id)
+		public static bool check_SYS_Template_Exists(AppEntities db, int id)
 		{
-			return db.tbl_SYS_Var.Any(e => e.ID == id);
+			return db.tbl_SYS_Template.Any(e => e.ID == id);
 		}
 		
-		public static bool check_SYS_Var_Exists(AppEntities db, string Code)
+		public static bool check_SYS_Template_Exists(AppEntities db, string Code)
 		{
-			return db.tbl_SYS_Var.Any(e => e.Code == Code);
+			return db.tbl_SYS_Template.Any(e => e.Code == Code);
 		}
 		
     }

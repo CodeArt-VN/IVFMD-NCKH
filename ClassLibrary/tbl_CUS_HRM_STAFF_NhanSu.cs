@@ -50,11 +50,11 @@ namespace ClassLibrary
         public virtual tbl_CUS_HRM_LIST_BoPhan tbl_CUS_HRM_LIST_BoPhan { get; set; }
         public virtual tbl_CUS_HRM_LIST_ChucDanh tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
-        public virtual tbl_CUS_SYS_Role tbl_CUS_SYS_Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
+        public virtual tbl_CUS_SYS_Role tbl_CUS_SYS_Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

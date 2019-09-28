@@ -25,6 +25,9 @@ namespace ClassLibrary
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_CAT_Nhom> tbl_CAT_Nhom { get; set; }
+        public virtual DbSet<tbl_CAT_Site> tbl_CAT_Site { get; set; }
+        public virtual DbSet<tbl_CAT_Tags> tbl_CAT_Tags { get; set; }
         public virtual DbSet<tbl_CUS_DOC_File> tbl_CUS_DOC_File { get; set; }
         public virtual DbSet<tbl_CUS_DOC_File_Actitity> tbl_CUS_DOC_File_Actitity { get; set; }
         public virtual DbSet<tbl_CUS_DOC_File_Permission> tbl_CUS_DOC_File_Permission { get; set; }
@@ -32,8 +35,12 @@ namespace ClassLibrary
         public virtual DbSet<tbl_CUS_DOC_Folder> tbl_CUS_DOC_Folder { get; set; }
         public virtual DbSet<tbl_CUS_DOC_Folder_Activity> tbl_CUS_DOC_Folder_Activity { get; set; }
         public virtual DbSet<tbl_CUS_DOC_Folder_Permission> tbl_CUS_DOC_Folder_Permission { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_BenhNhan> tbl_CUS_HRM_BenhNhan { get; set; }
         public virtual DbSet<tbl_CUS_HRM_LIST_BoPhan> tbl_CUS_HRM_LIST_BoPhan { get; set; }
         public virtual DbSet<tbl_CUS_HRM_LIST_ChucDanh> tbl_CUS_HRM_LIST_ChucDanh { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
         public virtual DbSet<tbl_CUS_SYS_CauHinhHeThong> tbl_CUS_SYS_CauHinhHeThong { get; set; }
         public virtual DbSet<tbl_CUS_SYS_PermissionList> tbl_CUS_SYS_PermissionList { get; set; }
         public virtual DbSet<tbl_CUS_SYS_PermissionListDetailData> tbl_CUS_SYS_PermissionListDetailData { get; set; }
@@ -43,24 +50,9 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PAR_DonHang_ChiTiet> tbl_PAR_DonHang_ChiTiet { get; set; }
         public virtual DbSet<tbl_PAR_Partner> tbl_PAR_Partner { get; set; }
         public virtual DbSet<tbl_PAR_ThongTinSanPham> tbl_PAR_ThongTinSanPham { get; set; }
-        public virtual DbSet<tbl_PROD_SanPham> tbl_PROD_SanPham { get; set; }
-        public virtual DbSet<tbl_PROD_SanPham_ChiTiet> tbl_PROD_SanPham_ChiTiet { get; set; }
-        public virtual DbSet<tbl_SYS_Apps> tbl_SYS_Apps { get; set; }
-        public virtual DbSet<tbl_SYS_Config> tbl_SYS_Config { get; set; }
-        public virtual DbSet<tbl_SYS_ControllerActions> tbl_SYS_ControllerActions { get; set; }
-        public virtual DbSet<tbl_SYS_Form> tbl_SYS_Form { get; set; }
-        public virtual DbSet<tbl_SYS_FormDetail> tbl_SYS_FormDetail { get; set; }
-        public virtual DbSet<tbl_SYS_FormGroup> tbl_SYS_FormGroup { get; set; }
-        public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
-        public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
-        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
-        public virtual DbSet<tbl_WEB_BaiViet> tbl_WEB_BaiViet { get; set; }
-        public virtual DbSet<tbl_WEB_BaiViet_DanhMuc> tbl_WEB_BaiViet_DanhMuc { get; set; }
-        public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
-        public virtual DbSet<tbl_CAT_Tags> tbl_CAT_Tags { get; set; }
-        public virtual DbSet<tbl_CUS_HRM_BenhNhan> tbl_CUS_HRM_BenhNhan { get; set; }
-        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
-        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
+        public virtual DbSet<tbl_PRO_AE> tbl_PRO_AE { get; set; }
+        public virtual DbSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
+        public virtual DbSet<tbl_PRO_BaoCaoNangSuatKhoaHoc> tbl_PRO_BaoCaoNangSuatKhoaHoc { get; set; }
         public virtual DbSet<tbl_PRO_BenhNhan> tbl_PRO_BenhNhan { get; set; }
         public virtual DbSet<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
         public virtual DbSet<tbl_PRO_DonXinDanhGiaDaoDuc> tbl_PRO_DonXinDanhGiaDaoDuc { get; set; }
@@ -69,10 +61,27 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
         public virtual DbSet<tbl_PRO_MauPhanTichDuLieu> tbl_PRO_MauPhanTichDuLieu { get; set; }
         public virtual DbSet<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
+        public virtual DbSet<tbl_PRO_PhieuXemXetDaoDuc> tbl_PRO_PhieuXemXetDaoDuc { get; set; }
+        public virtual DbSet<tbl_PRO_SAE> tbl_PRO_SAE { get; set; }
         public virtual DbSet<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
         public virtual DbSet<tbl_PRO_Sysnopsis> tbl_PRO_Sysnopsis { get; set; }
         public virtual DbSet<tbl_PRO_Tags> tbl_PRO_Tags { get; set; }
+        public virtual DbSet<tbl_PRO_ThuyetMinhDeTai> tbl_PRO_ThuyetMinhDeTai { get; set; }
         public virtual DbSet<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
+        public virtual DbSet<tbl_PROD_SanPham> tbl_PROD_SanPham { get; set; }
+        public virtual DbSet<tbl_PROD_SanPham_ChiTiet> tbl_PROD_SanPham_ChiTiet { get; set; }
+        public virtual DbSet<tbl_SYS_Apps> tbl_SYS_Apps { get; set; }
+        public virtual DbSet<tbl_SYS_Config> tbl_SYS_Config { get; set; }
+        public virtual DbSet<tbl_SYS_ControllerActions> tbl_SYS_ControllerActions { get; set; }
+        public virtual DbSet<tbl_SYS_Form> tbl_SYS_Form { get; set; }
+        public virtual DbSet<tbl_SYS_FormDetail> tbl_SYS_FormDetail { get; set; }
+        public virtual DbSet<tbl_SYS_FormGroup> tbl_SYS_FormGroup { get; set; }
+        public virtual DbSet<tbl_SYS_Template> tbl_SYS_Template { get; set; }
         public virtual DbSet<tbl_SYS_Var> tbl_SYS_Var { get; set; }
+        public virtual DbSet<tbl_WEB_BaiViet> tbl_WEB_BaiViet { get; set; }
+        public virtual DbSet<tbl_WEB_BaiViet_DanhMuc> tbl_WEB_BaiViet_DanhMuc { get; set; }
+        public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
+        public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
+        public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
     }
 }

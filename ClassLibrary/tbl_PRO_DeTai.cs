@@ -18,6 +18,8 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_PRO_DeTai()
         {
+            this.tbl_PRO_AE = new HashSet<tbl_PRO_AE>();
+            this.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD = new HashSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD>();
             this.tbl_PRO_BenhNhan = new HashSet<tbl_PRO_BenhNhan>();
             this.tbl_PRO_DonXinDanhGiaDaoDuc = new HashSet<tbl_PRO_DonXinDanhGiaDaoDuc>();
             this.tbl_PRO_DonXinNghiemThu = new HashSet<tbl_PRO_DonXinNghiemThu>();
@@ -25,9 +27,12 @@ namespace ClassLibrary
             this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
             this.tbl_PRO_MauPhanTichDuLieu = new HashSet<tbl_PRO_MauPhanTichDuLieu>();
             this.tbl_PRO_NCVKhac = new HashSet<tbl_PRO_NCVKhac>();
+            this.tbl_PRO_PhieuXemXetDaoDuc = new HashSet<tbl_PRO_PhieuXemXetDaoDuc>();
+            this.tbl_PRO_SAE = new HashSet<tbl_PRO_SAE>();
             this.tbl_PRO_SYLL = new HashSet<tbl_PRO_SYLL>();
             this.tbl_PRO_Sysnopsis = new HashSet<tbl_PRO_Sysnopsis>();
             this.tbl_PRO_Tags = new HashSet<tbl_PRO_Tags>();
+            this.tbl_PRO_ThuyetMinhDeTai = new HashSet<tbl_PRO_ThuyetMinhDeTai>();
             this.tbl_PRO_TrangThai_Log = new HashSet<tbl_PRO_TrangThai_Log>();
         }
     
@@ -50,8 +55,15 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string MaSo { get; set; }
+        public string TenTiengViet { get; set; }
+        public string TenTiengAnh { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_AE> tbl_PRO_AE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_BenhNhan> tbl_PRO_BenhNhan { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var { get; set; }
@@ -72,11 +84,17 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_PhieuXemXetDaoDuc> tbl_PRO_PhieuXemXetDaoDuc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_SAE> tbl_PRO_SAE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_Sysnopsis> tbl_PRO_Sysnopsis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_Tags> tbl_PRO_Tags { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_ThuyetMinhDeTai> tbl_PRO_ThuyetMinhDeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
     }
@@ -105,6 +123,9 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string MaSo { get; set; }
+		public string TenTiengViet { get; set; }
+		public string TenTiengAnh { get; set; }
 	}
 }
 
@@ -145,7 +166,10 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				MaSo = s.MaSo,							
+				TenTiengViet = s.TenTiengViet,							
+				TenTiengAnh = s.TenTiengAnh,					
 			});
                               
         }
@@ -174,7 +198,10 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					MaSo = dbResult.MaSo,							
+					TenTiengViet = dbResult.TenTiengViet,							
+					TenTiengAnh = dbResult.TenTiengAnh,
 				};
 			}
 			else
@@ -374,6 +401,27 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query MaSo (string)
+			if (QueryStrings.Any(d => d.Key == "MaSo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "MaSo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "MaSo").Value;
+                query = query.Where(d=>d.MaSo == keyword);
+            }
+
+			//Query TenTiengViet (string)
+			if (QueryStrings.Any(d => d.Key == "TenTiengViet") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "TenTiengViet").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "TenTiengViet").Value;
+                query = query.Where(d=>d.TenTiengViet == keyword);
+            }
+
+			//Query TenTiengAnh (string)
+			if (QueryStrings.Any(d => d.Key == "TenTiengAnh") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "TenTiengAnh").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "TenTiengAnh").Value;
+                query = query.Where(d=>d.TenTiengAnh == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -409,7 +457,10 @@ namespace BaseBusiness
 				dbitem.GhiChu = item.GhiChu;							
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.MaSo = item.MaSo;							
+				dbitem.TenTiengViet = item.TenTiengViet;							
+				dbitem.TenTiengAnh = item.TenTiengAnh;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -449,7 +500,10 @@ namespace BaseBusiness
 				dbitem.GhiChu = item.GhiChu;							
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.MaSo = item.MaSo;							
+				dbitem.TenTiengViet = item.TenTiengViet;							
+				dbitem.TenTiengAnh = item.TenTiengAnh;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
