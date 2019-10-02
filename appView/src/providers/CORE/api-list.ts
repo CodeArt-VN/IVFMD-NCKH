@@ -815,7 +815,29 @@ export var APIListBase = {
 		
 	},
 
-
+    CAT_Tags:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("CAT/Tags")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("CAT/Tags/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("CAT/Tags/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("CAT/Tags")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("CAT/Tags/") + id} 
+        }
+		
+	},
 };
 
 

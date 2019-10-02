@@ -41,17 +41,17 @@ export class ListPage extends BasePage {
     }
 
     preLoadData(){
-        if (GlobalData.Filter.IDPartner) {
-            this.query.IDPartner = GlobalData.Filter.IDPartner;
-        } else {
+        // if (GlobalData.Filter.IDPartner) {
+        //     this.query.IDPartner = GlobalData.Filter.IDPartner;
+        // } else {
             
-            GlobalData.Filter.IDPartner = this.query.IDPartner = this.userprofile.Partners[0].ID;
-        }
+        //     GlobalData.Filter.IDPartner = this.query.IDPartner = this.userprofile.Partners[0].ID;
+        // }
 
-        let partner = this.userprofile.Partners.find(d => d.ID == this.query.IDPartner)
-        if (partner) {
-            this.userprofile.Partner = partner;
-        }
+        // let partner = this.userprofile.Partners.find(d => d.ID == this.query.IDPartner)
+        // if (partner) {
+        //     this.userprofile.Partner = partner;
+        // }
 
         super.preLoadData();
     }

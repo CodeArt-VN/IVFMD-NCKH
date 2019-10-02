@@ -294,6 +294,13 @@ export class WEB_TagProvider extends exService {
 	}
 }
 
+@Injectable()
+export class CAT_TagsProvider extends exService {
+	constructor(public commonService: CommonServiceProvider) {
+		super(APIList.CAT_Tags, SearchConfig.getSearchFields('CAT_Tags'), commonService);
+	}
+}
+
 //import { DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, } from '../providers/Services/Services';
 
 
