@@ -8,11 +8,19 @@
   <form [formGroup]="formGroup">
       <div padding></div>
       <div class="c-control">
-          <label class="c-label" for="TenTag">Tên tag
-              <span *ngIf="!formGroup.controls.TenTag.valid && !formGroup.controls.TenTag.pending && (formGroup.controls.TenTag.dirty || submitAttempt)"
+          <label class="c-label" for="Code">Mã
+              <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
                   ion-text color="danger">(*)</span>
           </label>
-          <input class="c-input" id="TenTag" [(ngModel)]="item.TenTag" formControlName="TenTag" type="text">
+          <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text">
+      </div>
+
+      <div class="c-control">
+          <label class="c-label" for="Name">Tên
+              <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                  ion-text color="danger">(*)</span>
+          </label>
+          <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
       </div>
 
       <div class="c-control">
@@ -24,10 +32,18 @@
 
       </div>
 
+      <div class="c-control">
+          <label class="c-label" for="Sort">Thứ tự
+              <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
+                  ion-text color="danger">(*)</span>
+          </label>
+          <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
+      </div>
+
       <div class="c-control" *ngIf="item.ID==0">
           <label class="c-label" for=""></label>
           <button ion-button float-right (click)="saveChange()">
-              Thêm tag
+              Thêm site
           </button>
       </div>
       <div class="c-control" *ngIf="item.ID!=0">

@@ -4,11 +4,6 @@
     <div class="search">
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
-    <div class="partner">
-        <select [attr.disabled]="userprofile.Partners.length >1 ? null : ''" [(ngModel)]="query.IDPartner" (change)="changePartner()">
-            <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
-        </select>
-    </div>
     <div class="path">
         <a (click)="openDefaultPage()">Home</a>
         <ion-icon class="split" name="ios-arrow-forward"></ion-icon>

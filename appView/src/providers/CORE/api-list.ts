@@ -837,6 +837,54 @@ export var APIListBase = {
             url: function(id){return appSetting.apiDomain("CAT/Tags/") + id} 
         }
 		
+    },
+    
+    CAT_Nhom:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("CAT/Nhom")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("CAT/Nhom/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("CAT/Nhom/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("CAT/Nhom")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("CAT/Nhom/") + id} 
+        }
+		
+    },
+    
+    CAT_Site:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("CAT/Site")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("CAT/Site/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("CAT/Site/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("CAT/Site")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("CAT/Site/") + id} 
+        }
+		
 	},
 };
 

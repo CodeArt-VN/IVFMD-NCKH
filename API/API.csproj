@@ -323,6 +323,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APP\FormController.cs" />
+    <Compile Include="Controllers\CAT\NhomController.cs" />
+    <Compile Include="Controllers\CAT\SiteController.cs" />
     <Compile Include="Controllers\CAT\TagsController.cs" />
     <Compile Include="Controllers\Custom.cs" />
     <Compile Include="Controllers\CustomAuthorize.cs" />
