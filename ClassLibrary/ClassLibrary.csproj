@@ -69,6 +69,7 @@
     <Compile Include="CustomDTO\DTO_CUS_RPT.cs" />
     <Compile Include="CustomDTO\DTO_Common.cs" />
     <Compile Include="CustomDTO\DTO_CUS_Version.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_MauPhanTichDuLieu.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

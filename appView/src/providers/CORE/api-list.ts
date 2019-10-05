@@ -9,7 +9,7 @@
 export var appSetting = {
 	mainService: {
         //base: "http://ivfmd.demo.codeart.vn/",
-        base: "http://hungvq-w10.local:54009/",
+        base: "http://localhost:54009/",
 		api: "api/",
 	},
 	apiDomain:function(api){
