@@ -25,6 +25,8 @@ namespace ClassLibrary
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_CAT_BangGiaKinhPhi> tbl_CAT_BangGiaKinhPhi { get; set; }
+        public virtual DbSet<tbl_CAT_KinhPhi> tbl_CAT_KinhPhi { get; set; }
         public virtual DbSet<tbl_CAT_Nhom> tbl_CAT_Nhom { get; set; }
         public virtual DbSet<tbl_CAT_Site> tbl_CAT_Site { get; set; }
         public virtual DbSet<tbl_CAT_Tags> tbl_CAT_Tags { get; set; }
@@ -83,9 +85,5 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_CAT_Nhom> DTO_CAT_Nhom { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_CAT_Site> DTO_CAT_Site { get; set; }
     }
 }

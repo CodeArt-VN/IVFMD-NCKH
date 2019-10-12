@@ -5,6 +5,37 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_CAT_BangGiaKinhPhi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKinhPhi" Type="int" Nullable="false" />
+          <Property Name="NgayHieuLuc" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Gia" Type="money" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_CAT_KinhPhi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="200" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2000" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_CAT_Nhom">
           <Key>
             <PropertyRef Name="ID" />
@@ -712,6 +743,8 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDKinhPhi" Type="int" />
+          <Property Name="KinhPhi" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_PRO_BenhNhan">
           <Key>
@@ -1239,6 +1272,8 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhuLuc_JSON_ThietBi" Type="nvarchar(max)" />
+          <Property Name="PhuLuc_JSON_ChiKhac" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">
           <Key>
@@ -1800,6 +1835,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
+          <End Role="tbl_CAT_KinhPhi" Type="Self.tbl_CAT_KinhPhi" Multiplicity="1" />
+          <End Role="tbl_CAT_BangGiaKinhPhi" Type="Self.tbl_CAT_BangGiaKinhPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_KinhPhi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_BangGiaKinhPhi">
+              <PropertyRef Name="IDKinhPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
           <End Role="tbl_PAR_Partner" Type="Self.tbl_PAR_Partner" Multiplicity="0..1" />
           <End Role="tbl_CUS_Version" Type="Self.tbl_CUS_Version" Multiplicity="*" />
@@ -2061,6 +2108,18 @@
             </Principal>
             <Dependent Role="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
               <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi">
+          <End Role="tbl_CAT_KinhPhi" Type="Self.tbl_CAT_KinhPhi" Multiplicity="0..1" />
+          <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Type="Self.tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_KinhPhi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+              <PropertyRef Name="IDKinhPhi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2485,6 +2544,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AppModelStoreContainer">
+          <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="Self.tbl_CAT_BangGiaKinhPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CAT_KinhPhi" EntityType="Self.tbl_CAT_KinhPhi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="Self.tbl_CAT_Nhom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Site" EntityType="Self.tbl_CAT_Site" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Tags" EntityType="Self.tbl_CAT_Tags" Schema="dbo" store:Type="Tables" />
@@ -2623,6 +2684,10 @@
             <End Role="tbl_WEB_DanhMuc" EntitySet="tbl_WEB_DanhMuc" />
             <End Role="tbl_WEB_DanhMuc1" EntitySet="tbl_WEB_DanhMuc" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" Association="Self.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
+            <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
+            <End Role="tbl_CAT_BangGiaKinhPhi" EntitySet="tbl_CAT_BangGiaKinhPhi" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang" Association="Self.FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
             <End Role="tbl_CUS_Version" EntitySet="tbl_CUS_Version" />
@@ -2710,6 +2775,10 @@
           <AssociationSet Name="FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" EntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" Association="Self.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi">
+            <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
+            <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" Association="Self.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom">
             <End Role="tbl_CAT_Nhom" EntitySet="tbl_CAT_Nhom" />
@@ -2857,6 +2926,8 @@
     <edmx:ConceptualModels>
       <Schema Namespace="AppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" />
+          <EntitySet Name="tbl_CAT_KinhPhi" EntityType="AppModel.tbl_CAT_KinhPhi" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="AppModel.tbl_CAT_Nhom" />
           <EntitySet Name="tbl_CAT_Site" EntityType="AppModel.tbl_CAT_Site" />
           <EntitySet Name="tbl_CAT_Tags" EntityType="AppModel.tbl_CAT_Tags" />
@@ -2915,6 +2986,14 @@
           <EntitySet Name="tbl_WEB_BaiViet_Tag" EntityType="AppModel.tbl_WEB_BaiViet_Tag" />
           <EntitySet Name="tbl_WEB_DanhMuc" EntityType="AppModel.tbl_WEB_DanhMuc" />
           <EntitySet Name="tbl_WEB_Tag" EntityType="AppModel.tbl_WEB_Tag" />
+          <AssociationSet Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" Association="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
+            <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
+            <End Role="tbl_CAT_BangGiaKinhPhi" EntitySet="tbl_CAT_BangGiaKinhPhi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi">
+            <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
+            <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom">
             <End Role="tbl_CAT_Nhom" EntitySet="tbl_CAT_Nhom" />
             <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
@@ -3224,6 +3303,40 @@
             <End Role="tbl_WEB_DanhMuc1" EntitySet="tbl_WEB_DanhMuc" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbl_CAT_BangGiaKinhPhi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKinhPhi" Type="Int32" Nullable="false" />
+          <Property Name="NgayHieuLuc" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Gia" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CAT_KinhPhi" Relationship="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" FromRole="tbl_CAT_BangGiaKinhPhi" ToRole="tbl_CAT_KinhPhi" />
+        </EntityType>
+        <EntityType Name="tbl_CAT_KinhPhi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CAT_BangGiaKinhPhi" Relationship="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_CAT_BangGiaKinhPhi" />
+          <NavigationProperty Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+        </EntityType>
         <EntityType Name="tbl_CAT_Nhom">
           <Key>
             <PropertyRef Name="ID" />
@@ -4004,6 +4117,9 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDKinhPhi" Type="Int32" />
+          <Property Name="KinhPhi" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="tbl_CAT_KinhPhi" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_KinhPhi" />
           <NavigationProperty Name="tbl_CAT_Nhom" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Nhom" />
           <NavigationProperty Name="tbl_CAT_Site" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Site" />
         </EntityType>
@@ -4574,6 +4690,8 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhuLuc_JSON_ThietBi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhuLuc_JSON_ChiKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_ThuyetMinhDeTai" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">
@@ -4933,6 +5051,30 @@
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="tbl_WEB_BaiViet_Tag" Relationship="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_Tag_IDTag" FromRole="tbl_WEB_Tag" ToRole="tbl_WEB_BaiViet_Tag" />
         </EntityType>
+        <Association Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
+          <End Type="AppModel.tbl_CAT_KinhPhi" Role="tbl_CAT_KinhPhi" Multiplicity="1" />
+          <End Type="AppModel.tbl_CAT_BangGiaKinhPhi" Role="tbl_CAT_BangGiaKinhPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_KinhPhi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_BangGiaKinhPhi">
+              <PropertyRef Name="IDKinhPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi">
+          <End Type="AppModel.tbl_CAT_KinhPhi" Role="tbl_CAT_KinhPhi" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_KinhPhi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+              <PropertyRef Name="IDKinhPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom">
           <End Type="AppModel.tbl_CAT_Nhom" Role="tbl_CAT_Nhom" Multiplicity="0..1" />
           <End Type="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
@@ -5863,6 +6005,39 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AppModelStoreContainer" CdmEntityContainer="AppEntities">
+          <EntitySetMapping Name="tbl_CAT_BangGiaKinhPhi">
+            <EntityTypeMapping TypeName="AppModel.tbl_CAT_BangGiaKinhPhi">
+              <MappingFragment StoreEntitySet="tbl_CAT_BangGiaKinhPhi">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="NgayHieuLuc" ColumnName="NgayHieuLuc" />
+                <ScalarProperty Name="IDKinhPhi" ColumnName="IDKinhPhi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CAT_KinhPhi">
+            <EntityTypeMapping TypeName="AppModel.tbl_CAT_KinhPhi">
+              <MappingFragment StoreEntitySet="tbl_CAT_KinhPhi">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_CAT_Nhom">
             <EntityTypeMapping TypeName="AppModel.tbl_CAT_Nhom">
               <MappingFragment StoreEntitySet="tbl_CAT_Nhom">
@@ -6583,6 +6758,8 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+                <ScalarProperty Name="KinhPhi" ColumnName="KinhPhi" />
+                <ScalarProperty Name="IDKinhPhi" ColumnName="IDKinhPhi" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -7062,6 +7239,8 @@
           <EntitySetMapping Name="tbl_PRO_ThuyetMinhDeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_ThuyetMinhDeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_ThuyetMinhDeTai">
+                <ScalarProperty Name="PhuLuc_JSON_ChiKhac" ColumnName="PhuLuc_JSON_ChiKhac" />
+                <ScalarProperty Name="PhuLuc_JSON_ThietBi" ColumnName="PhuLuc_JSON_ThietBi" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
