@@ -885,6 +885,30 @@ export var APIListBase = {
             url: function(id){return appSetting.apiDomain("CAT/Site/") + id} 
         }
 		
+    },
+    
+    PRO_DeTai:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/DeTai")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/DeTai")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
+        }
+		
 	},
 };
 

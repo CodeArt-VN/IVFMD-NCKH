@@ -87,5 +87,7 @@ namespace ClassLibrary
         public System.Data.Entity.DbSet<DTOModel.DTO_CAT_Nhom> DTO_CAT_Nhom { get; set; }
 
         public System.Data.Entity.DbSet<DTOModel.DTO_CAT_Site> DTO_CAT_Site { get; set; }
+
+        public System.Data.Entity.DbSet<DTOModel.DTO_PRO_DeTai> DTO_PRO_DeTai { get; set; }
     }
 }

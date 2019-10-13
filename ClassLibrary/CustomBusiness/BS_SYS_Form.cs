@@ -24,12 +24,13 @@
                 query = query.Where(d => d.Type == 1);
             }
 
-            if (!roles.SYSRoles.Contains("HOST") && !roles.SYSRoles.Contains("GUEST"))
-            {
-                query = query.Where(d => d.tbl_CUS_SYS_PermissionList.Any(c => roles.CUSRoles.Contains(c.IDRole) && c.Visible == true));
-            }
+            //
+            //if (!roles.SYSRoles.Contains("HOST") && !roles.SYSRoles.Contains("GUEST"))
+            //{
+            //    query = query.Where(d => d.tbl_CUS_SYS_PermissionList.Any(c => roles.CUSRoles.Contains(c.IDRole) && c.Visible == true));
+            //}
+            query = query.Where(d => d.tbl_CUS_SYS_PermissionList.Any(c => roles.CUSRoles.Contains(c.IDRole) && c.Visible == true));
 
-            
 
             var tempData = query.Select(s => new
             {

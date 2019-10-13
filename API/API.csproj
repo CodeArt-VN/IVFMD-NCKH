@@ -339,6 +339,7 @@
     <Compile Include="Controllers\HRM\LIST_ChucDanhController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\DeTaiController.cs" />
     <Compile Include="Controllers\SYS\PermissionListController.cs" />
     <Compile Include="Controllers\SYS\RoleController.cs" />
     <Compile Include="Controllers\WEB\BaiVietController.cs" />
@@ -492,7 +493,6 @@
     <Content Include="Scripts\documenteditor\default-properties.js" />
     <Content Include="Scripts\documenteditor\default.js" />
     <Content Include="Scripts\ej2.min.js" />
-    <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\elasticlunr.min.js" />
     <Content Include="Scripts\financial-data.js" />
     <Content Include="Scripts\fuse.min.js" />
@@ -506,7 +506,6 @@
     <Content Include="Content\styles\Grid\Fonts\Grid control Font.ttf" />
     <Content Include="Content\styles\Grid\Fonts\Grid control Font.woff" />
     <Content Include="Content\styles\material.scss" />
-    <Content Include="Scripts\ej2\ej2.min.js.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -805,9 +804,6 @@
     <Content Include="Scripts\ej2.min.js.map" />
     <Content Include="Scripts\sampleOrder.json" />
     <Content Include="Scripts\tooltip\tooltipdata.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
