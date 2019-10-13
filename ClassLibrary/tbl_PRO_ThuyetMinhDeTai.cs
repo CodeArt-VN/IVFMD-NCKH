@@ -90,6 +90,8 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string PhuLuc_JSON_ThietBi { get; set; }
+        public string PhuLuc_JSON_ChiKhac { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -173,6 +175,8 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string PhuLuc_JSON_ThietBi { get; set; }
+		public string PhuLuc_JSON_ChiKhac { get; set; }
 	}
 }
 
@@ -269,7 +273,9 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				PhuLuc_JSON_ThietBi = s.PhuLuc_JSON_ThietBi,							
+				PhuLuc_JSON_ChiKhac = s.PhuLuc_JSON_ChiKhac,					
 			});
                               
         }
@@ -354,7 +360,9 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					PhuLuc_JSON_ThietBi = dbResult.PhuLuc_JSON_ThietBi,							
+					PhuLuc_JSON_ChiKhac = dbResult.PhuLuc_JSON_ChiKhac,
 				};
 			}
 			else
@@ -909,6 +917,20 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query PhuLuc_JSON_ThietBi (string)
+			if (QueryStrings.Any(d => d.Key == "PhuLuc_JSON_ThietBi") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "PhuLuc_JSON_ThietBi").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "PhuLuc_JSON_ThietBi").Value;
+                query = query.Where(d=>d.PhuLuc_JSON_ThietBi == keyword);
+            }
+
+			//Query PhuLuc_JSON_ChiKhac (string)
+			if (QueryStrings.Any(d => d.Key == "PhuLuc_JSON_ChiKhac") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "PhuLuc_JSON_ChiKhac").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "PhuLuc_JSON_ChiKhac").Value;
+                query = query.Where(d=>d.PhuLuc_JSON_ChiKhac == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -998,7 +1020,9 @@ namespace BaseBusiness
 				dbitem.PhuLuc_JSON_NguyenVatLieu = item.PhuLuc_JSON_NguyenVatLieu;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.PhuLuc_JSON_ThietBi = item.PhuLuc_JSON_ThietBi;							
+				dbitem.PhuLuc_JSON_ChiKhac = item.PhuLuc_JSON_ChiKhac;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1094,7 +1118,9 @@ namespace BaseBusiness
 				dbitem.PhuLuc_JSON_NguyenVatLieu = item.PhuLuc_JSON_NguyenVatLieu;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.PhuLuc_JSON_ThietBi = item.PhuLuc_JSON_ThietBi;							
+				dbitem.PhuLuc_JSON_ChiKhac = item.PhuLuc_JSON_ChiKhac;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

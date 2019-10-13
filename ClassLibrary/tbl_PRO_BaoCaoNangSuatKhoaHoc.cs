@@ -28,6 +28,9 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public Nullable<int> IDKinhPhi { get; set; }
+        public decimal KinhPhi { get; set; }
+        public virtual tbl_CAT_KinhPhi tbl_CAT_KinhPhi { get; set; }
         public virtual tbl_CAT_Nhom tbl_CAT_Nhom { get; set; }
         public virtual tbl_CAT_Site tbl_CAT_Site { get; set; }
     }
@@ -50,6 +53,8 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public Nullable<int> IDKinhPhi { get; set; }
+		public decimal KinhPhi { get; set; }
 	}
 }
 
@@ -84,7 +89,9 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				IDKinhPhi = s.IDKinhPhi,							
+				KinhPhi = s.KinhPhi,					
 			});
                               
         }
@@ -107,7 +114,9 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					IDKinhPhi = dbResult.IDKinhPhi,							
+					KinhPhi = dbResult.KinhPhi,
 				};
 			}
 			else
@@ -233,6 +242,25 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query IDKinhPhi (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDKinhPhi"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDKinhPhi").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDKinhPhi));
+            }
+
+			//Query KinhPhi (decimal)
+			if (QueryStrings.Any(d => d.Key == "KinhPhiFrom") && QueryStrings.Any(d => d.Key == "KinhPhiTo"))
+                if (decimal.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "KinhPhiFrom").Value, out decimal fromVal) && decimal.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "KinhPhiTo").Value, out decimal toVal))
+                    query = query.Where(d => fromVal <= d.KinhPhi && d.KinhPhi <= toVal);
+
 
 			return toDTO(query);
 
@@ -260,7 +288,9 @@ namespace BaseBusiness
 				dbitem.NgayBaoCao = item.NgayBaoCao;							
 				dbitem.TapChiHoiNghi = item.TapChiHoiNghi;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.IDKinhPhi = item.IDKinhPhi;							
+				dbitem.KinhPhi = item.KinhPhi;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -294,7 +324,9 @@ namespace BaseBusiness
 				dbitem.NgayBaoCao = item.NgayBaoCao;							
 				dbitem.TapChiHoiNghi = item.TapChiHoiNghi;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.IDKinhPhi = item.IDKinhPhi;							
+				dbitem.KinhPhi = item.KinhPhi;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
