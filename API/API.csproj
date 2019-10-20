@@ -343,6 +343,7 @@
     <Compile Include="Controllers\PRO\DeTaiController.cs" />
     <Compile Include="Controllers\SYS\PermissionListController.cs" />
     <Compile Include="Controllers\SYS\RoleController.cs" />
+    <Compile Include="Controllers\SYS\VarController.cs" />
     <Compile Include="Controllers\WEB\BaiVietController.cs" />
     <Compile Include="Controllers\WEB\DanhMucController.cs" />
     <Compile Include="Global.asax.cs">

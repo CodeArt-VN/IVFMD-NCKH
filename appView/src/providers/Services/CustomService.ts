@@ -228,6 +228,26 @@ export class ReportProvider {
 
 }
 
+@Injectable()
+export class Sys_VarProvider extends exService{
+	constructor(public commonService: CommonServiceProvider) {
+		super(APIList.SYS_Var, SearchConfig.getSearchFields('SYS_Var'), commonService);
+	}
+	getByTypeOfVar(typeOfVar) {
+		let that = this.commonService;
+		let apiPath = APIList.SYS_Var.getListByTypeOfVar;
+		return new Promise(function (resolve, reject) {
+			that.connect(apiPath.method, apiPath.url(typeOfVar), null).toPromise()
+				.then(data => {
+					var result = { count: data.length, data: data };
+					resolve(result);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

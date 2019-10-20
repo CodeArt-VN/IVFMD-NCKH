@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { PRO_DeTaiProvider, } from '../../../providers/Services/Services';
+import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider} from '../../../providers/Services/Services';
+import { Sys_VarProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -13,8 +14,12 @@ import 'jqueryui';
     templateUrl: 'de-tai-modal.html',
 })
 export class DeTaiModalPage extends DetailPage {
+    staffs = [];
+    typeOfTopics = [];
     constructor(
         public currentProvider: PRO_DeTaiProvider,
+        public staffProvider: HRM_STAFF_NhanSuProvider,
+        public sysVarProvider: Sys_VarProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -32,8 +37,21 @@ export class DeTaiModalPage extends DetailPage {
           TenTiengAnh: ['', Validators.compose([Validators.required])],
           SoNCT: [''],
           GhiChu: [''],
-          Sort: ['']
+          IDChuNhiem: ['', Validators.compose([Validators.required])],
+          IDPhanLoaiDeTai: ['', Validators.compose([Validators.required])]
         });
+    }
+
+    preLoadData() {
+        Promise.all([
+            this.staffProvider.read(),
+            this.sysVarProvider.getByTypeOfVar(1)
+        ])
+            .then(values => {
+                this.staffs = values[0]['data'];
+                this.typeOfTopics = values[1]['data'];
+                super.preLoadData();
+            })
     }
 
     loadedData(){
