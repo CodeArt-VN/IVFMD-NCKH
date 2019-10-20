@@ -339,6 +339,7 @@
     <Compile Include="Controllers\HRM\LIST_ChucDanhController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\SysnopsisController.cs" />
     <Compile Include="Controllers\PRO\DeTaiController.cs" />
     <Compile Include="Controllers\SYS\PermissionListController.cs" />
     <Compile Include="Controllers\SYS\RoleController.cs" />
