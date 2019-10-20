@@ -248,6 +248,27 @@ export class Sys_VarProvider extends exService{
 		});
 	}
 }
+
+@Injectable()
+export class PRO_SysnopsisCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_Sysnopsis, SearchConfig.getSearchFields('PRO_Sysnopsis'), commonService);
+    }
+    getItemCustom(id, idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_Sysnopsis.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(id, idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

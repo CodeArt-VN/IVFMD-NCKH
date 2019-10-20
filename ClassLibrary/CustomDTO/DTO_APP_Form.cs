@@ -14,6 +14,7 @@
         public int Type { get; set; }
         public string Icon { get; set; }
         public string BadgeColor { get; set; }
+        public bool IsHiddenMenu { get; set; }
     }
 
     public partial class DTO_APP_FormGroup
@@ -25,6 +26,7 @@
         public string Code { get; set; }
         public string Name { get; set; }
         public List<DTO_APP_Form> Forms { get; set; }
+        public List<DTO_APP_Form> FormMenu { get; set; }
     }
 
     public partial class DTO_APP_UserInfo

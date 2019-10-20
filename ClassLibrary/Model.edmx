@@ -1412,6 +1412,7 @@
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Icon" Type="nvarchar" MaxLength="50" />
           <Property Name="BadgeColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsHiddenMenu" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_SYS_FormDetail">
           <Key>
@@ -4843,6 +4844,7 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BadgeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsHiddenMenu" Type="Boolean" />
           <NavigationProperty Name="tbl_CUS_SYS_PermissionList" Relationship="AppModel.FK_tbl_CUS_SYS_PermissionList_tbl_SYS_Form" FromRole="tbl_SYS_Form" ToRole="tbl_CUS_SYS_PermissionList" />
           <NavigationProperty Name="tbl_SYS_FormGroup" Relationship="AppModel.FK_dbo_sys_Form_dbo_sys_FormGroup_FormGroup" FromRole="tbl_SYS_Form" ToRole="tbl_SYS_FormGroup" />
           <NavigationProperty Name="tbl_SYS_FormDetail" Relationship="AppModel.FK_dbo_sys_FormDetail_dbo_sys_Form_Form" FromRole="tbl_SYS_Form" ToRole="tbl_SYS_FormDetail" />
@@ -7446,6 +7448,7 @@
           <EntitySetMapping Name="tbl_SYS_Form">
             <EntityTypeMapping TypeName="AppModel.tbl_SYS_Form">
               <MappingFragment StoreEntitySet="tbl_SYS_Form">
+                <ScalarProperty Name="IsHiddenMenu" ColumnName="IsHiddenMenu" />
                 <ScalarProperty Name="BadgeColor" ColumnName="BadgeColor" />
                 <ScalarProperty Name="Icon" ColumnName="Icon" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

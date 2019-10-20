@@ -14,6 +14,7 @@ using BaseBusiness;
 
 namespace API.Controllers.PRO
 {
+    [AuthorizeAttribute]
     [RoutePrefix("api/PRO/Sysnopsis")]
     public class SysnopsisController : CustomApiController
     {

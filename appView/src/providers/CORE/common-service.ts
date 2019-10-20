@@ -98,7 +98,15 @@ export class CommonServiceProvider {
 
 	cacheLocal(URL, Data) {
 		return this.storage.set(URL, Data);
-	}
+    }
+
+    setLocal(key, data) {
+        return this.storage.set(key, data);
+    }
+
+    getLocal(key) {
+        return this.storage.get(key);
+    }
 
 	private handleError(error: any): Promise<any> {
 		//console.log('An error occurred', error); // for demo purposes only

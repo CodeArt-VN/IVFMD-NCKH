@@ -145,45 +145,46 @@ APIList.ReportAPI={
 
 
 
-export var GlobalData :any = {
-	Filter:{
-		FromDate: (new Date()).setDate(1),
-		ToDate: new Date(),
-		IDPartner: null,
-	},
-	IntroApp : introAppData,
-	IsCordova: true,
-	Token: {
-		access_token: "",
-		expires_in: 0,
-		token_type: "",
-		refresh_token: ""
-	},
-	Profile: {
-		Id: '',
-		UserName: "",
-		Avatar: "",
-		FirstName: "",
-		LastName: "",
-		Wallet: "",
-		PhoneNumber: "",
-		IsAgency: false,
-		VipUser: false,
-		Roles:[{RoleId:'GUEST'}],
-		PatientID : 0,
-		PartnerID: 0,
-		StaffID:0
-	},
-	WebData: {
-		menu: [],
-		pinPost: []
-	},
-	UserData: {
-		MenuItem: [],
-		Setting: {
-			tablePageSize : 30,
-			ToastMessageDelay : 5000,
-		},
-	},
-	Version: ''
+export var GlobalData: any = {
+    Filter: {
+        FromDate: (new Date()).setDate(1),
+        ToDate: new Date(),
+        IDPartner: null,
+    },
+    IntroApp: introAppData,
+    IsCordova: true,
+    Token: {
+        access_token: "",
+        expires_in: 0,
+        token_type: "",
+        refresh_token: ""
+    },
+    Profile: {
+        Id: '',
+        UserName: "",
+        Avatar: "",
+        FirstName: "",
+        LastName: "",
+        Wallet: "",
+        PhoneNumber: "",
+        IsAgency: false,
+        VipUser: false,
+        Roles: [{ RoleId: 'GUEST' }],
+        PatientID: 0,
+        PartnerID: 0,
+        StaffID: 0
+    },
+    WebData: {
+        menu: [],
+        pinPost: []
+    },
+    UserData: {
+        MenuItem: [],
+        Setting: {
+            tablePageSize: 30,
+            ToastMessageDelay: 5000,
+        },
+    },
+    Params: {},
+    Version: ''
 };

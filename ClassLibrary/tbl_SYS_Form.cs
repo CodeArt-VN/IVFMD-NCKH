@@ -37,6 +37,7 @@ namespace ClassLibrary
         public int Type { get; set; }
         public string Icon { get; set; }
         public string BadgeColor { get; set; }
+        public Nullable<bool> IsHiddenMenu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_SYS_PermissionList> tbl_CUS_SYS_PermissionList { get; set; }
         public virtual tbl_SYS_FormGroup tbl_SYS_FormGroup { get; set; }
@@ -64,6 +65,7 @@ namespace DTOModel
 		public int Type { get; set; }
 		public string Icon { get; set; }
 		public string BadgeColor { get; set; }
+		public Nullable<bool> IsHiddenMenu { get; set; }
 	}
 }
 
@@ -100,7 +102,8 @@ namespace BaseBusiness
 				ModifiedDate = s.ModifiedDate,							
 				Type = s.Type,							
 				Icon = s.Icon,							
-				BadgeColor = s.BadgeColor,					
+				BadgeColor = s.BadgeColor,							
+				IsHiddenMenu = s.IsHiddenMenu,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -125,7 +128,8 @@ namespace BaseBusiness
 					ModifiedDate = dbResult.ModifiedDate,							
 					Type = dbResult.Type,							
 					Icon = dbResult.Icon,							
-					BadgeColor = dbResult.BadgeColor,
+					BadgeColor = dbResult.BadgeColor,							
+					IsHiddenMenu = dbResult.IsHiddenMenu,
 				};
 			}
 			else
@@ -254,6 +258,8 @@ namespace BaseBusiness
                 query = query.Where(d=>d.BadgeColor == keyword);
             }
 
+			//Query IsHiddenMenu (Nullable<bool>)
+
 
 			return toDTO(query);
 
@@ -289,7 +295,8 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.Type = item.Type;							
 				dbitem.Icon = item.Icon;							
-				dbitem.BadgeColor = item.BadgeColor;                
+				dbitem.BadgeColor = item.BadgeColor;							
+				dbitem.IsHiddenMenu = item.IsHiddenMenu;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -325,7 +332,8 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.Type = item.Type;							
 				dbitem.Icon = item.Icon;							
-				dbitem.BadgeColor = item.BadgeColor;                
+				dbitem.BadgeColor = item.BadgeColor;							
+				dbitem.IsHiddenMenu = item.IsHiddenMenu;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

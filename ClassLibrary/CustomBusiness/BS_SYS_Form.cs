@@ -43,7 +43,7 @@
                 s.Type,
                 s.Icon,
                 s.BadgeColor,
-                
+                s.IsHiddenMenu,
 
                 AppID = s.tbl_SYS_FormGroup.IDApp,
                 AppName = s.tbl_SYS_FormGroup.tbl_SYS_Apps.Name,
@@ -87,7 +87,21 @@
                     Icon = s.Icon,
                     BadgeColor = s.BadgeColor,
                     Remark = s.Remark,
-                    Type = s.Type
+                    Type = s.Type,
+                    IsHiddenMenu = s.IsHiddenMenu ?? false
+                }).ToList();
+
+                group.FormMenu = tempData.Where(d => d.GroupID == g.ID && d.IsHiddenMenu != true).Select(s => new DTO_APP_Form()
+                {
+                    ID = s.ID,
+                    Code = s.Code,
+                    Name = s.Name,
+                    Sort = s.Sort,
+                    Icon = s.Icon,
+                    BadgeColor = s.BadgeColor,
+                    Remark = s.Remark,
+                    Type = s.Type,
+                    IsHiddenMenu = s.IsHiddenMenu ?? false
                 }).ToList();
 
                 result.Add(group);

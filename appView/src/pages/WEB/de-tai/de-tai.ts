@@ -34,7 +34,7 @@ export class DeTaiPage extends ListPage {
     
     preLoadData(){
         
-        this.FormGroups = this.userprofile.MenuItems.filter(d=>d.AppID==5);
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
         super.preLoadData();
     }
 
@@ -42,6 +42,13 @@ export class DeTaiPage extends ListPage {
         let myModal = this.modalCtrl.create(DeTaiModalPage, { 'id': item.ID });
         myModal.present();
     }
+
+    openSysnopsis(item) {
+        this.commonService.setLocal("page-sysnopsis", { 'id': 0, 'idDetai': 2 });
+        this.navCtrl.setRoot("page-sysnopsis", { 'id': 0, 'idDetai': 2 });
+        return false;
+    }
+
     add() {
         let item = {
             ID: 0,

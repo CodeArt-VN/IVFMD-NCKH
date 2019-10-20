@@ -936,7 +936,34 @@ export var APIListBase = {
             method: "GET",
             url: function(typeOfVar){return appSetting.apiDomain("SYS/Var/get_SYS_VarByTypeOfVar/") + typeOfVar}  
         }
-	},
+    },
+
+    PRO_Sysnopsis: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/Sysnopsis") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/Sysnopsis/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/Sysnopsis/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/Sysnopsis") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/Sysnopsis/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (id, idDeTai) { return appSetting.apiDomain("PRO/Sysnopsis/") + id + "/" + idDeTai }
+        }
+    },
 };
 
 

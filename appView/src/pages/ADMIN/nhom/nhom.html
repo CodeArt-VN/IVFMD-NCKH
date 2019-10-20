@@ -41,7 +41,7 @@
 
       <ion-col class="doc-menu">
           <div class="root-items" *ngFor="let i of FormGroups">
-              <a *ngFor="let t of i.Forms" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
+              <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
                   <ion-icon [name]="t.Icon"></ion-icon>
                   <span>
                       {{t.Name}}
