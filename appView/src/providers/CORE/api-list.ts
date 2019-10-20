@@ -909,6 +909,33 @@ export var APIListBase = {
             url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
         }
 		
+    },
+    
+    SYS_Var:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("SYS/Var")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("SYS/Var/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("SYS/Var/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("SYS/Var")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("SYS/Var/") + id} 
+        },
+		getListByTypeOfVar:{
+            method: "GET",
+            url: function(typeOfVar){return appSetting.apiDomain("SYS/Var/get_SYS_VarByTypeOfVar/") + typeOfVar}  
+        }
 	},
 };
 

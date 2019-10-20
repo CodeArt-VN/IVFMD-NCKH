@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using ClassLibrary;
 using DTOModel;
 using BaseBusiness;
+using API.Models;
+using Microsoft.AspNet.Identity;
 
 namespace API.Controllers.PRO
 {
@@ -49,10 +51,10 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            DTO_PRO_DeTai result = BS_PRO_DeTai.save_PRO_DeTai(db, PartnerID, id, user.StaffID, tbl_PRO_DeTai, Username);
 
-            bool result = BS_PRO_DeTai.put_PRO_DeTai(db, PartnerID, id, tbl_PRO_DeTai, Username);
-            
-            if (result)
+            if (result != null)
                 return StatusCode(HttpStatusCode.NoContent);
             else
                 return NotFound();
@@ -66,8 +68,8 @@ namespace API.Controllers.PRO
             {
                 return BadRequest(ModelState);
             }
-
-            DTO_PRO_DeTai result = BS_PRO_DeTai.post_PRO_DeTai(db, PartnerID, tbl_PRO_DeTai, Username);
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            DTO_PRO_DeTai result = BS_PRO_DeTai.save_PRO_DeTai(db, PartnerID, -1, user.StaffID, tbl_PRO_DeTai, Username);
 			
 
 			if (result != null)

@@ -59,7 +59,7 @@
               <ngx-datatable-column name="Tên đề tài" prop="DeTai" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
                   <ng-template let-i="row" ngx-datatable-cell-template>
                       <a (click)="openDetail(i)">
-                          {{i.TenTag}}
+                          {{i.DeTai}}
                       </a>
                   </ng-template>
               </ngx-datatable-column>
