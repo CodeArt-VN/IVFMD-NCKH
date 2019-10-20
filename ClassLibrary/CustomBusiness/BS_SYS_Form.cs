@@ -30,7 +30,8 @@
             //    query = query.Where(d => d.tbl_CUS_SYS_PermissionList.Any(c => roles.CUSRoles.Contains(c.IDRole) && c.Visible == true));
             //}
             query = query.Where(d => d.tbl_CUS_SYS_PermissionList.Any(c => roles.CUSRoles.Contains(c.IDRole) && c.Visible == true));
-
+            if (query.Count() == 0)
+                query = db.tbl_SYS_Form.Where(d => d.IsDeleted == false && d.ID == 17);
 
             var tempData = query.Select(s => new
             {
