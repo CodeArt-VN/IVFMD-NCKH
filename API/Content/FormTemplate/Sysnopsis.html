@@ -1,0 +1,109 @@
+﻿<div id="frmSynopsis" class="">
+    <div class="text-center text-bold" style="padding-top:2em;display: inline-block;width: 100%;">
+        <p style="margin: 16pt;">
+            SYNOPSIS
+        </p>
+    </div>
+    <div>
+        <table border="1" bordercolor="#607D8B" class="synopsis-table" style="width:100%;border-collapse: collapse;">
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 84px;">Study Title: </span>
+                            <span contenteditable="true" style="text-indent: 86px;" data-bind="editableHTML: study_title, valueUpdate: 'afterkeydown'"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 95px;">Investigators: </span>
+                            <span contenteditable="true" style="text-indent: 97px;" data-bind="editableHTML: investigators"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 158px;">Background and aims: </span>
+                            <span contenteditable="true" style="text-indent: 160px;" data-bind="editableHTML: backgroud_and_aims"></span>
+                        </p>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 78px;">Objectives: </span>
+                            <span contenteditable="true" style="text-indent: 80px;" data-bind="editableHTML: objectives"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 193px;">Study Design and oversight: </span>
+                            <span contenteditable="true" style="text-indent: 195px;" data-bind="editableHTML: study_design_and_oversight"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 127px;">Study Population: </span>
+                            <span contenteditable="true" style="text-indent: 129px;" data-bind="contentEditable: editable, value: study_population"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 77px;">Endpoints: </span>
+                            <span contenteditable="true" style="text-indent: 79px;" data-bind="editableHTML: endpoints"></span>
+                        </p>
+                        <p class="box">
+                            <span class="box-title" style="width: 146px;">The primary endpoint: </span>
+                            <span contenteditable="true" style="text-indent: 148px;" data-bind="editableHTML: primary_endpoints"></span>
+                        </p>
+                        <p class="box">
+                            <span class="box-title" style="width: 168px;">The secondary endpoints: </span>
+                            <span contenteditable="true" style="text-indent: 170px;" data-bind="editableHTML: secondary_endpoints"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 174px;">Main Eligibility Criteria: </span>
+                            <span contenteditable="true" style="text-indent: 176px;" data-bind="editableHTML: main_eligibility_criteria"></span>
+                        </p>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 128px;"><u><i>Inclusion Criteria:</i></u></span>
+                            <span contenteditable="true" style="text-indent: 130px;" data-bind="editableHTML: inclusion_criteria"></span>
+                        </p>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 130px;"><u><i>Exclusion Criteria:</i></u></span>
+                            <span contenteditable="true" style="text-indent: 132px;" data-bind="editableHTML: exclusion_criteria"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 198px;">Data Analysis and Statistics: </span>
+                            <span contenteditable="true" style="text-indent: 200px;" data-bind="editableHTML: data_analysis_and_statistics"></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="box">
+                            <span class="box-title text-bold" style="width: 82px;">References: </span>
+                            <span contenteditable="true" style="text-indent: 84px;" data-bind="contentEditable: editable, value: references"></span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="print-hidden">
+        <button data-bind='click: save'>Save to JSON</button>
+    </p>
+    <textarea class="print-hidden" data-bind='value: savedJson' rows='5' cols='60' disabled='disabled' style="width:100%;"></textarea>
+</div>

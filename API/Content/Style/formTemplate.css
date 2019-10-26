@@ -1,0 +1,92 @@
+﻿.inline {
+    display: inline-block;
+    width: 100%;
+}
+
+.border-full {
+    border: 1px solid #000
+}
+
+.border-mix {
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+}
+
+.border-mix1 {
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.table {
+    display: table;
+    width: 100%;
+    margin: 2px;
+}
+
+    .table > * {
+        display: table-cell;
+        vertical-align: top;
+        padding: 3px;
+    }
+
+    .table > .label {
+        font-size: 12pt;
+    }
+
+    .table > .label-bold {
+        font-weight: bold;
+        font-size: 12pt;
+    }
+
+    .table > .label.sub {
+        margin-left: 21px;
+        padding-left: 21px;
+    }
+
+
+html {
+    size: a4;
+    max-width: 7in;
+    font-size: 13pt;
+    margin: 16mm 16mm 16mm 27mm;
+    font-family: 'Times New Roman'
+}
+
+.fs-12 {
+    font-size: 12pt;
+}
+
+.fs-13 {
+    font-size: 13pt;
+}
+
+.fs-14 {
+    font-size: 14pt;
+}
+
+td, th {
+    border: 1px solid #000;
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    border-spacing: 0
+}

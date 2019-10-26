@@ -368,6 +368,7 @@
     <Content Include="Content\ej2\fabric.css" />
     <Content Include="Content\ej2\highcontrast.css" />
     <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\FormTemplate\Sysnopsis.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
     <Content Include="Content\styles\compatibility\bootstrap.css" />
@@ -388,6 +389,7 @@
     <Content Include="Content\styles\roboto.css" />
     <Content Include="Content\Style\bootstrap.css" />
     <Content Include="Content\Style\fabric.css" />
+    <Content Include="Content\Style\formTemplate.css" />
     <Content Include="Content\Style\highcontrast.css" />
     <Content Include="Content\Style\material.css" />
     <Content Include="Global.asax" />

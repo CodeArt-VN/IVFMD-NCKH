@@ -44,9 +44,16 @@ namespace API.Controllers.PRO
             DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_Sysnopsis(db, id);
             if (tbl_PRO_Sysnopsis == null)
             {
+                string html = "";
+                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+
                 tbl_PRO_Sysnopsis = new DTO_PRO_Sysnopsis
                 {
-                    IDDeTai = idDeTai
+                    IDDeTai = idDeTai,
+                    HTML = html
                 };
             }
 
