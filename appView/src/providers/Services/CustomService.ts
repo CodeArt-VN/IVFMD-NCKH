@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { exService } from '../Services/Services';
+import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider } from '../Services/Services';
 import { CommonServiceProvider } from '../CORE/common-service';
 import { APIList } from '../CORE/global-variable';
 import { SearchConfig } from './SearchConfig';
@@ -269,6 +269,47 @@ export class PRO_SysnopsisCustomProvider extends exService {
     }
 }
 
+@Injectable()
+export class PRO_NCVKhacCustomProvider extends PRO_NCVKhacProvider{
+	constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+	getByDeTai(deTaiId) {
+		let that = this.commonService;
+		let apiPath = APIList.PRO_NCVKhac.getListByDeTai;
+		return new Promise(function (resolve, reject) {
+			that.connect(apiPath.method, apiPath.url(deTaiId), null).toPromise()
+				.then(data => {
+					var result = { count: data.length, data: data };
+					resolve(result);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
+}
+
+@Injectable()
+export class PRO_BenhNhanCustomProvider extends PRO_BenhNhanProvider{
+	constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+	getByDeTai(deTaiId) {
+		let that = this.commonService;
+		let apiPath = APIList.PRO_BenhNhan.getListByDeTai;
+		return new Promise(function (resolve, reject) {
+			that.connect(apiPath.method, apiPath.url(deTaiId), null).toPromise()
+				.then(data => {
+					var result = { count: data.length, data: data };
+					resolve(result);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

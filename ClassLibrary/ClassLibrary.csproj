@@ -58,6 +58,8 @@
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_SYS_PermissionList.cs" />
     <Compile Include="CustomBusiness\BS_CUS_Version.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_BenhNhan.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_NCVKhac.cs" />
     <Compile Include="CustomBusiness\BS_PRO_DeTai.cs" />
     <Compile Include="CustomBusiness\BS_SYS_Form.cs" />
     <Compile Include="CustomBusiness\BS_SYS_Var.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="CustomDTO\DTO_APP_Form.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_BenhNhan.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomDTO\DTO_CUS_RPT.cs" />
     <Compile Include="CustomDTO\DTO_Common.cs" />

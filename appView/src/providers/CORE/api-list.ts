@@ -964,6 +964,60 @@ export var APIListBase = {
             url: function (id, idDeTai) { return appSetting.apiDomain("PRO/Sysnopsis/") + id + "/" + idDeTai }
         }
     },
+
+    PRO_NCVKhac:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/NCVKhac")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/NCVKhac/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/NCVKhac/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/NCVKhac")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/NCVKhac/") + id} 
+        },
+		getListByDeTai:{
+            method: "GET",
+            url: function(deTaiId){return appSetting.apiDomain("PRO/NCVKhac/get_PRO_NCVKhacByDeTai/") + deTaiId}  
+        }
+    },
+
+    PRO_BenhNhan:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/BenhNhan")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/BenhNhan/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/BenhNhan/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BenhNhan")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/BenhNhan/") + id} 
+        },
+		getListByDeTai:{
+            method: "GET",
+            url: function(deTaiId){return appSetting.apiDomain("PRO/BenhNhan/get_PRO_BenhNhanByDeTai/") + deTaiId}  
+        }
+    },
 };
 
 

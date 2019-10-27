@@ -8,14 +8,10 @@
       "dom",
       "es2015"
     ],
-    "types": [ "knockout" ],
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es6",
-    "typeRoots": [
-      "../node_modules/@types"
-    ]
+    "target": "es6"
   },
   "include": [
     "src/**/*.ts"

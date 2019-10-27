@@ -1,80 +1,51 @@
 import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { CommonServiceProvider } from '../../../providers/CORE/common-service';
-import { BasePage } from '../../base-page';
 import { PRO_SysnopsisCustomProvider } from '../../../providers/Services/CustomService';
+import { CommonServiceProvider } from '../../../providers/CORE/common-service';
+import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
-import { observable } from 'knockout';
-
-@IonicPage({ name: 'page-sysnopsis-modal', priority: 'high', defaultHistory: ['page-de-tai'] })
+@IonicPage({ name: 'page-sysnopsis-modal', priority: 'high', defaultHistory: ['page-sysnopsis-modal'] })
 @Component({
     selector: 'sysnopsis-modal',
     templateUrl: 'sysnopsis-modal.html',
 })
-export class SysnopsisModalPage extends BasePage {
-    id: any;
-    idDetai: any;
-    item: any;
+export class SysnopsisModalPage extends DetailPage {
+    idDeTai: any;
     constructor(
         public currentProvider: PRO_SysnopsisCustomProvider,
-        public navCtrl: NavController,
         public viewCtrl: ViewController,
-        public navParams: NavParams,
-        public events: Events,
-        public toastCtrl: ToastController,
-        public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController,
-        public commonService: CommonServiceProvider,
-        public accountService: AccountServiceProvider,
+        public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
-        super('', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
-        this.pageName = "page-de-tai";
+        super('page-sysnopsis-modal', null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
+        this.pageName = "page-sysnopsis-modal";
         this.events.unsubscribe('app:Close-page-sysnopsis-modal');
         this.events.subscribe('app:Close-page-sysnopsis-modal', () => {
             this.dismiss();
         });
-        
-        this.id = navParams.get('id');
-        if (this.id && commonService.isNumeric(this.id)) {
-            this.id = parseInt(this.id, 10);
-        }
-        this.idDetai = navParams.get('idDetai');
-        if (this.idDetai && commonService.isNumeric(this.idDetai)) {
-            this.idDetai = parseInt(this.idDetai, 10);
-        }
-        if (this.idDetai == undefined || this.id == undefined) {
-            commonService.getLocal('page-sysnopsis-modal').then(item => {
-                if (commonService.isNumeric(item.id)) {
-                    this.id = parseInt(item.id, 10);
-                }
-                if (commonService.isNumeric(item.idDetai)) {
-                    this.idDetai = parseInt(item.idDetai, 10);
-                }
-            });
-        }
-        if (!this.item) {
-            this.item = {}
+        this.idDeTai = navParams.get('idDeTai');
+        if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
+            this.idDeTai = parseInt(this.idDeTai, 10);
         }
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.id, this.idDetai).then((ite) => {
+        this.currentProvider.getItemCustom(this.id, this.idDeTai).then((ite) => {
             this.commonService.copyPropertiesValue(ite, this.item);
-            this.bindData();
-
-
+            super.loadData();
         }).catch((data) => {
             this.item.ID = 0;
+            super.loadData();
         });
     }
 
     loadedData() {
-
+        ko.cleanNode($('#frm111')[0]);
+        this.bindData();
     }
-
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
@@ -89,7 +60,7 @@ export class SysnopsisModalPage extends BasePage {
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
                 $element.html(initialValue);
                 $element.on('keyup', function () {
-                    //observable = valueAccessor();
+                    var observable = valueAccessor();
                     observable($element.html());
                 });
             }
@@ -119,5 +90,5 @@ export class SysnopsisModalPage extends BasePage {
         }
         var model = new SynopsisModel();
         ko.applyBindings(model, document.getElementById("frmSynopsis"));
-    }
+    };
 }

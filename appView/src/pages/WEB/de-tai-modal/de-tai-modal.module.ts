@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DeTaiModalPage } from './de-tai-modal';
 
@@ -11,6 +11,7 @@ import { DeTaiModalPage } from './de-tai-modal';
   ],
   exports: [
     DeTaiModalPage
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class DeTaiModalPageModule { }

@@ -18,9 +18,9 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AccountServiceProvider } from '../providers/CORE/account-service';
 import { CommonServiceProvider } from '../providers/CORE/common-service';
 
-import { DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, CAT_TagsProvider, CAT_NhomProvider, CAT_SiteProvider, PRO_DeTaiProvider } from '../providers/Services/Services';
+import { DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, CAT_TagsProvider, CAT_NhomProvider, CAT_SiteProvider, PRO_DeTaiProvider, PRO_BenhNhanProvider, PRO_NCVKhacProvider } from '../providers/Services/Services';
 
-import { ACCOUNT_ApplicationUserProvider, ManualProvider, ReportProvider, Sys_VarProvider, PRO_SysnopsisCustomProvider } from '../providers/Services/CustomService';
+import { ACCOUNT_ApplicationUserProvider, ManualProvider, ReportProvider, Sys_VarProvider, PRO_SysnopsisCustomProvider, PRO_BenhNhanCustomProvider, PRO_NCVKhacCustomProvider } from '../providers/Services/CustomService';
 import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
 
 @NgModule({
@@ -57,9 +57,9 @@ import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
         CommonServiceProvider,
 
         ACCOUNT_ApplicationUserProvider,
-        ManualProvider, ReportProvider, Sys_VarProvider, PRO_SysnopsisCustomProvider,
+        ManualProvider, ReportProvider, Sys_VarProvider, PRO_SysnopsisCustomProvider, PRO_BenhNhanCustomProvider, PRO_NCVKhacCustomProvider,
 
-        DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, CAT_TagsProvider, CAT_NhomProvider, CAT_SiteProvider, PRO_DeTaiProvider,
+        DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, CAT_TagsProvider, CAT_NhomProvider, CAT_SiteProvider, PRO_DeTaiProvider, PRO_BenhNhanProvider, PRO_NCVKhacProvider,
         
         
 
