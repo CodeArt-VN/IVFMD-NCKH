@@ -37,11 +37,11 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_Sysnopsis);
         }
 
-        [Route("{id}/{idDeTai}")]
+        [Route("get_PRO_SysnopsisByDeTai/{idDeTai:int}")]
         [ResponseType(typeof(DTO_PRO_Sysnopsis))]
-        public IHttpActionResult GetCustom(int id, int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai)
         {
-            DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_Sysnopsis(db, id);
+            DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_SysnopsisByDeTai(db, idDeTai);
             if (tbl_PRO_Sysnopsis == null)
             {
                 string html = "";
