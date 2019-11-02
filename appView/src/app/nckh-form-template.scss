@@ -1,0 +1,93 @@
+.nckh-form-template {
+    font-family: 'Times New Roman', Times, serif;
+
+    .inline {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .tab-1 {
+        margin-left: 1em;
+    }
+
+    .box {
+        display: table;
+        width: 100%;
+        margin: 0;
+
+        .box-title {
+            position: absolute;
+        }
+
+        > * {
+            display: table-cell;
+            vertical-align: top;
+            padding: 3px;
+        }
+
+        [contenteditable="true"] {
+            &:hover, &:focus {
+                outline: 1px dashed #44a9eb;
+            }
+        }
+    }
+
+    table.nckh-table {
+        border-collapse: collapse;
+
+        tr {
+            page-break-inside: avoid;
+            page-break-before: auto;
+
+            &.table-header {
+                text-align: center;
+                vertical-align: middle;
+                font-weight: 600;
+
+                i {
+                    font-weight: normal;
+                }
+            }
+
+            td {
+                padding: 5px;
+                page-break-inside: avoid;
+                page-break-before: auto;
+            }
+        }
+    }
+}
+
+@media print {
+    .nckh-form-template {
+        font-family: 'Times New Roman', Times, serif;
+
+        .print-hidden {
+            display: none;
+        }
+
+        .box {
+            [contenteditable="true"] {
+                &:hover, &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
