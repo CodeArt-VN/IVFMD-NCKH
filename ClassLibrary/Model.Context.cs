@@ -89,5 +89,7 @@ namespace ClassLibrary
         public System.Data.Entity.DbSet<DTOModel.DTO_PRO_BenhNhan> DTO_PRO_BenhNhan { get; set; }
 
         public System.Data.Entity.DbSet<DTOModel.DTO_PRO_NCVKhac> DTO_PRO_NCVKhac { get; set; }
+
+        public System.Data.Entity.DbSet<DTOModel.DTO_CUS_HRM_BenhNhan> DTO_CUS_HRM_BenhNhan { get; set; }
     }
 }

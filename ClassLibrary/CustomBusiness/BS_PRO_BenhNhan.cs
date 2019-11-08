@@ -15,7 +15,7 @@ namespace BaseBusiness
         {
             var query = db.tbl_PRO_BenhNhan.AsQueryable();
 
-            query = query.Where(d => d.IDDeTai == deTaiId);
+            query = query.Where(d => d.IDDeTai == deTaiId && d.IsDeleted == false);
 
             return toDTOCustom(query);
         }

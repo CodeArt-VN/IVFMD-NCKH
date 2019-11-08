@@ -118,30 +118,76 @@
             </form>
         </div>
         <div *ngSwitchCase="'2'">
-            <ngx-datatable class="material" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="selected" [selectionType]="'single'">
+            <div class="tools">
+                <button color="primary" ion-button icon-only clear (click)="refreshNCV()">
+                          <ion-icon name="refresh"></ion-icon>
+                      </button>
 
-                <ngx-datatable-column name="Tên bệnh nhân" prop="TenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a>
-                              {{i.TenBenhNhan}}
-                          </a>
-                    </ng-template>
-                </ngx-datatable-column>
-            </ngx-datatable>
+                <button color="success" ion-button icon-only clear (click)="addNCV()">
+                          <ion-icon name="ios-add-circle"></ion-icon>
+                      </button>
+
+                <span class="split" *ngIf="lstNCVSelected.length"></span>
+
+                <button ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="openDetailNCV(lstNCVSelected[0])">
+                    <ion-icon name="ios-create"></ion-icon>
+                </button>
+                <button color="danger" ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="deleteNCV()">
+                    <ion-icon name="ios-trash"></ion-icon>
+                </button>
+            </div>
+            <ion-row>
+                <ion-col class="doc-main">
+                    <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected"
+                        [selectionType]="'single'" (select)='onSelectNCV($event)'>
+
+                        <ngx-datatable-column name="Họ tên" prop="TenNCV" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                            <ng-template let-i="row" ngx-datatable-cell-template>
+                                <a (click)="openDetailNCV(i)">
+                                    {{i.TenNCV}}
+                                </a>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Chức danh" prop="ChucDanh"></ngx-datatable-column>
+                        <ngx-datatable-column name="Chức vụ" prop="ChucVu"></ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
         </div>
         <div *ngSwitchCase="'3'">
-            <ngx-datatable class="material" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="selected" [selectionType]="'single'">
+            <div class="tools">
+                <button color="primary" ion-button icon-only clear (click)="refreshBN()">
+                          <ion-icon name="refresh"></ion-icon>
+                      </button>
 
-                <ngx-datatable-column name="Chức danh" prop="ChucDanh" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a>
-                              {{i.ChucDanh}}
-                          </a>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Chức danh" prop="ChucVu"></ngx-datatable-column>
-            </ngx-datatable>
+                <button color="success" ion-button icon-only clear (click)="addBN()">
+                          <ion-icon name="ios-add-circle"></ion-icon>
+                      </button>
 
+                <span class="split" *ngIf="lstBNSelected.length"></span>
+
+                <button ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="openDetailBN(lstBNSelected[0])">
+                    <ion-icon name="ios-create"></ion-icon>
+                </button>
+                <button color="danger" ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="deleteBN()">
+                    <ion-icon name="ios-trash"></ion-icon>
+                </button>
+            </div>
+            <ion-row>
+                <ion-col class="doc-main">
+                    <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected"
+                        [selectionType]="'single'" (select)='onSelectBN($event)'>
+
+                        <ngx-datatable-column name="Họ tên" prop="TenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                            <ng-template let-i="row" ngx-datatable-cell-template>
+                                <a (click)="openDetailBN(i)">
+                                    {{i.TenBenhNhan}}
+                                </a>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
         </div>
     </div>
 </ion-content>

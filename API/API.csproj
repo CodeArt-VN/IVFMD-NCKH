@@ -335,10 +335,13 @@
     <Compile Include="Controllers\DOC\Folder_PermissionController.cs" />
     <Compile Include="Controllers\FILE\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HRM\HRMBenhNhanController.cs" />
     <Compile Include="Controllers\HRM\LIST_BoPhanController.cs" />
     <Compile Include="Controllers\HRM\LIST_ChucDanhController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\BenhNhanController.cs" />
+    <Compile Include="Controllers\PRO\NCVKhacController.cs" />
     <Compile Include="Controllers\PRO\SysnopsisController.cs" />
     <Compile Include="Controllers\PRO\DeTaiController.cs" />
     <Compile Include="Controllers\SYS\PermissionListController.cs" />

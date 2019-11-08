@@ -1018,6 +1018,30 @@ export var APIListBase = {
             url: function(deTaiId){return appSetting.apiDomain("PRO/BenhNhan/get_PRO_BenhNhanByDeTai/") + deTaiId}  
         }
     },
+
+    HRM_BenhNhan:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("HRM/HRMBenhNhan")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("HRM/HRMBenhNhan/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("HRM/HRMBenhNhan/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/HRMBenhNhan")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("HRM/HRMBenhNhan/") + id} 
+        }
+		
+    },
 };
 
 

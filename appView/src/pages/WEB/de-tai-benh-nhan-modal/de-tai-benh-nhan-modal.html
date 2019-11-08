@@ -1,0 +1,38 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+    <ion-icon name="close" color="ivf1"></ion-icon>
+</button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="IDBenhNhan">Bệnh nhân
+        <span
+            *ngIf="!formGroup.controls.IDBenhNhan.valid && !formGroup.controls.IDBenhNhan.pending && (formGroup.controls.IDBenhNhan.dirty || submitAttempt)"
+            ion-text color="danger">(*)</span>
+    </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDBenhNhan" formControlName="IDBenhNhan">
+        <option *ngFor="let t of benhNhans" [value]="t.ID">{{t.HoTen}}</option>
+    </select>
+        </div>
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+        Thêm bệnh nhân
+      </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+        Lưu
+    </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+        Hủy thay đổi
+    </button>
+        </div>
+    </form>
+</ion-content>
