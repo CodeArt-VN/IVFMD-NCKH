@@ -46,7 +46,7 @@ export class DeTaiPage extends ListPage {
     }
 
     openSysnopsis(item) {
-        let myModal = this.modalCtrl.create(SysnopsisModalPage, { 'id': 0, 'idDeTai': item.ID }, { cssClass: 'preview-modal' });
+        let myModal = this.modalCtrl.create(SysnopsisModalPage, { 'idDeTai': item.ID }, { cssClass: 'preview-modal' });
         myModal.present();
     }
 

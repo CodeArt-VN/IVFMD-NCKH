@@ -961,7 +961,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (id, idDeTai) { return appSetting.apiDomain("PRO/Sysnopsis/") + id + "/" + idDeTai }
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/Sysnopsis/get_PRO_SysnopsisByDeTai/") + idDeTai }
         }
     },
 

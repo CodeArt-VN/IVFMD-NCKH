@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
@@ -15,6 +15,7 @@ import * as ko from 'knockout';
 })
 export class SysnopsisModalPage extends DetailPage {
     idDeTai: any;
+    model: any;
     constructor(
         public currentProvider: PRO_SysnopsisCustomProvider,
         public viewCtrl: ViewController,
@@ -33,17 +34,18 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.id, this.idDeTai).then((ite) => {
-            this.commonService.copyPropertiesValue(ite, this.item);
-            super.loadData();
+        this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
+            //this.commonService.copyPropertiesValue(ite, this.item);
+            this.item = ite;
+            this.loadedData();
         }).catch((data) => {
             this.item.ID = 0;
-            super.loadData();
+            this.loadedData();
         });
     }
 
     loadedData() {
-        ko.cleanNode($('#frm111')[0]);
+        ko.cleanNode($('#frmSynopsis')[0]);
         this.bindData();
     }
     dismiss() {
@@ -52,13 +54,16 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     bindData() {
-        $(this.item.HTML).appendTo("#frm111");
-        debugger
+        $("#frmSynopsis").empty();
+        $(this.item.HTML).appendTo("#frmSynopsis");
+        let id = this.item.ID;
+        var that = this;
         ko.bindingHandlers.editableHTML = {
             init: function (element, valueAccessor) {
                 var $element = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                $element.html(initialValue);
+                if (id <= 0)
+                    $element.html(initialValue);
                 $element.on('keyup', function () {
                     var observable = valueAccessor();
                     observable($element.html());
@@ -66,29 +71,50 @@ export class SysnopsisModalPage extends DetailPage {
             }
         };
 
-        var SynopsisModel = function () {
+        let SynopsisModel = function (item) {
             var self = this;
-            self.study_title = ko.observable("");
-            self.investigators = ko.observable("");
-            self.backgroud_and_aims = ko.observable("<br><br><br><br>");
-            self.objectives = ko.observable("<br><br><br><br>");
-            self.study_design_and_oversight = ko.observable("");
-            self.study_population = ko.observable("");
-            self.endpoints = ko.observable("");
-            self.primary_endpoints = ko.observable("");
-            self.secondary_endpoints = ko.observable("");
-            self.main_eligibility_criteria = ko.observable("");
-            self.inclusion_criteria = ko.observable("");
-            self.exclusion_criteria = ko.observable("");
-            self.data_analysis_and_statistics = ko.observable("");
-            self.references = ko.observable("");
+            that.commonService.copyPropertiesValue(item, self);
+            self.StudyTitle = ko.observable(item.StudyTitle);
+            self.Investigators = ko.observable(item.Investigators);
+            self.BackgroundAims = ko.observable(item.BackgroundAims);
+            self.Objectives = ko.observable(item.Objectives);
+            self.StudyDesign = ko.observable(item.StudyDesign);
+            self.StudyPopulation = ko.observable(item.StudyPopulation);
+            self.Endpoint = ko.observable(item.Endpoint);
+            self.PrimaryEndpoint = ko.observable(item.PrimaryEndpoint);
+            self.SecondaryEndpoint = ko.observable(item.SecondaryEndpoint);
+            self.MainEligibilityCriteria = ko.observable(item.MainEligibilityCriteria);
+            self.InclusionCriteria = ko.observable(item.InclusionCriteria);
+            self.ExclusionCriteria = ko.observable(item.ExclusionCriteria);
+            self.DataAnalysis = ko.observable(item.DataAnalysis);
+            self.References = ko.observable(item.References);
 
-            self.savedJson = ko.observable("");
-            self.save = function () {
-                self.savedJson(JSON.stringify(ko.toJS(self), null, 2));
+            self.getItem = function () {
+                return ko.toJS(self);
             };
         }
-        var model = new SynopsisModel();
-        ko.applyBindings(model, document.getElementById("frmSynopsis"));
+        this.model = new SynopsisModel(this.item);
+        ko.applyBindings(this.model, document.getElementById("frmSynopsis"));
+    };
+
+    saveChange() {
+        let item = this.model.getItem();
+        item.HTML = $("#frmSynopsis").html();
+        console.log(item);
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.save(item).then((savedItem: any) => {
+                this.item.ID = savedItem.ID;
+                this.model.ID = savedItem.ID;
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                //this.goBack();
+                this.toastMessage('Đã lưu xong!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+            });
+        })
     };
 }

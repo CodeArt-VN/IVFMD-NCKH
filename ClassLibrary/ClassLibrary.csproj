@@ -58,6 +58,7 @@
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_SYS_PermissionList.cs" />
     <Compile Include="CustomBusiness\BS_CUS_Version.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_Sysnopsis.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BenhNhan.cs" />
     <Compile Include="CustomBusiness\BS_PRO_NCVKhac.cs" />
     <Compile Include="CustomBusiness\BS_PRO_DeTai.cs" />
