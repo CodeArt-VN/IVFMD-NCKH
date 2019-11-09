@@ -20,6 +20,19 @@
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_CAT_HRCOConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNhanSu" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_CAT_KinhPhi">
           <Key>
             <PropertyRef Name="ID" />
@@ -880,6 +893,20 @@
           <Property Name="GiayToKhac" Type="bit" Nullable="false" />
           <Property Name="GhiChuGiayToKha" Type="nvarchar(max)" />
           <Property Name="HTML" Type="nvarchar(max)" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_HRCO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDeTai" Type="int" Nullable="false" />
+          <Property Name="IDNhanSu" Type="int" Nullable="false" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -1848,6 +1875,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Role="tbl_CAT_HRCOConfig" Type="Self.tbl_CAT_HRCOConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_HRCOConfig">
+              <PropertyRef Name="IDNhanSu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
           <End Role="tbl_PAR_Partner" Type="Self.tbl_PAR_Partner" Multiplicity="0..1" />
           <End Role="tbl_CUS_Version" Type="Self.tbl_CUS_Version" Multiplicity="*" />
@@ -2328,6 +2367,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Role="tbl_PRO_HRCO" Type="Self.tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
+              <PropertyRef Name="IDNhanSu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="1" />
+          <End Role="tbl_PRO_HRCO" Type="Self.tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu">
           <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
           <End Role="tbl_PRO_LLKH" Type="Self.tbl_PRO_LLKH" Multiplicity="*" />
@@ -2546,6 +2609,7 @@
         </Association>
         <EntityContainer Name="AppModelStoreContainer">
           <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="Self.tbl_CAT_BangGiaKinhPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="Self.tbl_CAT_HRCOConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_KinhPhi" EntityType="Self.tbl_CAT_KinhPhi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="Self.tbl_CAT_Nhom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Site" EntityType="Self.tbl_CAT_Site" Schema="dbo" store:Type="Tables" />
@@ -2580,6 +2644,7 @@
           <EntitySet Name="tbl_PRO_DonXinDanhGiaDaoDuc" EntityType="Self.tbl_PRO_DonXinDanhGiaDaoDuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_DonXinNghiemThu" EntityType="Self.tbl_PRO_DonXinNghiemThu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_DonXinXetDuyet" EntityType="Self.tbl_PRO_DonXinXetDuyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRO_HRCO" EntityType="Self.tbl_PRO_HRCO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_LLKH" EntityType="Self.tbl_PRO_LLKH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_MauPhanTichDuLieu" EntityType="Self.tbl_PRO_MauPhanTichDuLieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_NCVKhac" EntityType="Self.tbl_PRO_NCVKhac" Schema="dbo" store:Type="Tables" />
@@ -2688,6 +2753,10 @@
           <AssociationSet Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" Association="Self.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
             <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
             <End Role="tbl_CAT_BangGiaKinhPhi" EntitySet="tbl_CAT_BangGiaKinhPhi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_CAT_HRCOConfig" EntitySet="tbl_CAT_HRCOConfig" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang" Association="Self.FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
@@ -2848,6 +2917,14 @@
           <AssociationSet Name="FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_DonXinXetDuyet" EntitySet="tbl_PRO_DonXinXetDuyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
@@ -3303,6 +3380,20 @@
             <End Role="tbl_WEB_DanhMuc" EntitySet="tbl_WEB_DanhMuc" />
             <End Role="tbl_WEB_DanhMuc1" EntitySet="tbl_WEB_DanhMuc" />
           </AssociationSet>
+          <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="AppModel.tbl_CAT_HRCOConfig" />
+          <EntitySet Name="tbl_PRO_HRCO" EntityType="AppModel.tbl_PRO_HRCO" />
+          <AssociationSet Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_CAT_HRCOConfig" EntitySet="tbl_CAT_HRCOConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_CAT_BangGiaKinhPhi">
           <Key>
@@ -3635,6 +3726,8 @@
           <NavigationProperty Name="tbl_PRO_LLKH" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_LLKH" />
           <NavigationProperty Name="tbl_PRO_NCVKhac" Relationship="AppModel.FK_tbl_PRO_NCVKhac_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_NCVKhac" />
           <NavigationProperty Name="tbl_PRO_SYLL" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_SYLL" />
+          <NavigationProperty Name="tbl_CAT_HRCOConfig" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CAT_HRCOConfig" />
+          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HRCO" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
           <Key>
@@ -4189,6 +4282,7 @@
           <NavigationProperty Name="tbl_PRO_Tags" Relationship="AppModel.FK_tbl_PRO_Tags_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_Tags" />
           <NavigationProperty Name="tbl_PRO_ThuyetMinhDeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_ThuyetMinhDeTai" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log" Relationship="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_TrangThai_Log" />
+          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_HRCO" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -6001,6 +6095,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_CAT_HRCOConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CAT_HRCOConfig" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_HRCO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
+          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HRCO" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_HRCO" ToRole="tbl_PRO_DeTai" />
+        </EntityType>
+        <Association Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_CAT_HRCOConfig" Role="tbl_CAT_HRCOConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_HRCOConfig">
+              <PropertyRef Name="IDNhanSu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
+              <PropertyRef Name="IDNhanSu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7654,6 +7814,35 @@
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CAT_HRCOConfig">
+            <EntityTypeMapping TypeName="AppModel.tbl_CAT_HRCOConfig">
+              <MappingFragment StoreEntitySet="tbl_CAT_HRCOConfig">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_HRCO">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HRCO">
+              <MappingFragment StoreEntitySet="tbl_PRO_HRCO">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

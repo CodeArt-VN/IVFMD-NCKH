@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe521cf2abf8474b9564c8b08d2c8d43" Name="Diagram1" ZoomLevel="83">
+      <Diagram DiagramId="fe521cf2abf8474b9564c8b08d2c8d43" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" Width="1.5" PointX="10" PointY="4.875" />
         <EntityTypeShape EntityType="AppModel.tbl_CAT_KinhPhi" Width="1.5" PointX="7.75" PointY="4.75" />
         <EntityTypeShape EntityType="AppModel.tbl_CAT_Nhom" Width="1.5" PointX="10.75" PointY="0.75" />
@@ -144,6 +144,11 @@
         <AssociationConnector Association="AppModel.FK_tbl_WEB_BaiViet_tbl_WEB_DanhMuc" />
         <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_Tag_IDTag" />
         <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_HRCOConfig" Width="1.5" PointX="12.5" PointY="125.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HRCO" Width="1.5" PointX="14.75" PointY="110.25" />
+        <AssociationConnector Association="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

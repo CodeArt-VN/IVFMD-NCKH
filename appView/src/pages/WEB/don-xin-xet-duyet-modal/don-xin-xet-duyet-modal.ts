@@ -2,29 +2,29 @@
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { PRO_SysnopsisCustomProvider } from '../../../providers/Services/CustomService';
+import { PRO_DonXinXetDuyetCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
-@IonicPage({ name: 'page-sysnopsis-modal', priority: 'high', defaultHistory: ['page-sysnopsis-modal'] })
+@IonicPage({ name: 'page-don-xin-xet-duyet-modal', priority: 'high', defaultHistory: ['page-don-xin-xet-duyet-modal'] })
 @Component({
-    selector: 'sysnopsis-modal',
-    templateUrl: 'sysnopsis-modal.html',
+    selector: 'don-xin-xet-duyet-modal',
+    templateUrl: 'don-xin-xet-duyet-modal.html',
 })
-export class SysnopsisModalPage extends DetailPage {
+export class DonXinXetDuyetModalPage extends DetailPage {
     idDeTai: any;
     model: any;
     constructor(
-        public currentProvider: PRO_SysnopsisCustomProvider,
+        public currentProvider: PRO_DonXinXetDuyetCustomProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
-        super('page-sysnopsis-modal', null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
-        this.pageName = "page-sysnopsis-modal";
-        this.events.unsubscribe('app:Close-page-sysnopsis-modal');
-        this.events.subscribe('app:Close-page-sysnopsis-modal', () => {
+        super('page-don-xin-xet-duyet-modal', null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
+        this.pageName = "page-don-xin-xet-duyet-modal";
+        this.events.unsubscribe('app:Close-page-don-xin-xet-duyet-modal');
+        this.events.subscribe('app:Close-page-don-xin-xet-duyet-modal', () => {
             this.dismiss();
         });
         this.idDeTai = navParams.get('idDeTai');
@@ -35,7 +35,6 @@ export class SysnopsisModalPage extends DetailPage {
 
     loadData() {
         this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
-            //this.commonService.copyPropertiesValue(ite, this.item);
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -45,7 +44,7 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmSynopsis')[0]);
+        ko.cleanNode($('#frmDonXinXetDuyet')[0]);
         this.bindData();
     }
     dismiss() {
@@ -54,8 +53,8 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     bindData() {
-        $("#frmSynopsis").empty();
-        $(this.item.HTML).appendTo("#frmSynopsis");
+        $("#frmDonXinXetDuyet").empty();
+        $(this.item.HTML).appendTo("#frmDonXinXetDuyet");
         let id = this.item.ID;
         var that = this;
         ko.bindingHandlers.editableHTML = {
@@ -74,32 +73,35 @@ export class SysnopsisModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
-            self.StudyTitle = ko.observable(item.StudyTitle);
-            self.Investigators = ko.observable(item.Investigators);
-            self.BackgroundAims = ko.observable(item.BackgroundAims);
-            self.Objectives = ko.observable(item.Objectives);
-            self.StudyDesign = ko.observable(item.StudyDesign);
-            self.StudyPopulation = ko.observable(item.StudyPopulation);
-            self.Endpoint = ko.observable(item.Endpoint);
-            self.PrimaryEndpoint = ko.observable(item.PrimaryEndpoint);
-            self.SecondaryEndpoint = ko.observable(item.SecondaryEndpoint);
-            self.MainEligibilityCriteria = ko.observable(item.MainEligibilityCriteria);
-            self.InclusionCriteria = ko.observable(item.InclusionCriteria);
-            self.ExclusionCriteria = ko.observable(item.ExclusionCriteria);
-            self.DataAnalysis = ko.observable(item.DataAnalysis);
-            self.References = ko.observable(item.References);
+            self.HoTenChuNhiem = ko.observable(item.HoTenChuNhiem);
+            self.DonVi = ko.observable(item.DonVi);
+            self.DiaChi = ko.observable(item.DiaChi);
+            self.DienThoai = ko.observable(item.DienThoai);
+            self.TenDeTai = ko.observable(item.TenDeTai);
+            self.TenDonViChuTri = ko.observable(item.TenDonViChuTri);
+            self.DiaChiDonVi = ko.observable(item.DiaChiDonVi);
+            self.DienThoaiDonVi = ko.observable(item.DienThoaiDonVi);
+            self.DiaDiemNghienCuu = ko.observable(item.DiaDiemNghienCuu);
+            self.ThoiGianNghienCuu = ko.observable(item.ThoiGianNghienCuu);
+            self.TuNgay = ko.observable(item.TuNgay);
+            self.DenNgay = ko.observable(item.DenNgay);
+            self.ThuyetMinhDeCuong = ko.observable(item.ThuyetMinhDeCuong);
+            self.LLKHChuNhiem = ko.observable(item.LLKHChuNhiem);
+            self.LLKHNCV = ko.observable(item.LLKHNCV);
+            self.GiayToKhac = ko.observable(item.GiayToKhac);
+            self.GhiChuGiayToKha = ko.observable(item.GhiChuGiayToKha);
 
             self.getItem = function () {
                 return ko.toJS(self);
             };
         }
         this.model = new ObjModel(this.item);
-        ko.applyBindings(this.model, document.getElementById("frmSynopsis"));
+        ko.applyBindings(this.model, document.getElementById("frmDonXinXetDuyet"));
     };
 
     saveChange() {
         let item = this.model.getItem();
-        item.HTML = $("#frmSynopsis").html();
+        item.HTML = $("#frmDonXinXetDuyet").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {
@@ -108,7 +110,6 @@ export class SysnopsisModalPage extends DetailPage {
                 if (this.loading) this.loading.dismiss();
                 this.events.publish('app:Update' + this.pageName);
                 console.log('publish => app:Update ' + this.pageName);
-                //this.goBack();
                 this.toastMessage('Đã lưu xong!');
             }).catch(err => {
                 console.log(err);

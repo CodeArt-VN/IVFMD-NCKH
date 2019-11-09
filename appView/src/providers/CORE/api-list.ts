@@ -965,6 +965,114 @@ export var APIListBase = {
         }
     },
 
+    PRO_MauPhanTichDuLieu: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/MauPhanTichDuLieu") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/MauPhanTichDuLieu") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/get_PRO_MauPhanTichDuLieuByDeTai/") + idDeTai }
+        }
+    },
+
+    PRO_DonXinXetDuyet: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/DonXinXetDuyet") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinXetDuyet/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinXetDuyet/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DonXinXetDuyet") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinXetDuyet/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinXetDuyet/get_PRO_DonXinXetDuyetByDeTai/") + idDeTai }
+        }
+    },
+
+    PRO_DonXinDanhGiaDaoDuc: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/get_PRO_DonXinDanhGiaDaoDucByDeTai/") + idDeTai }
+        }
+    },
+
+    PRO_DonXinNghiemThu: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/DonXinNghiemThu") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinNghiemThu/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinNghiemThu/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DonXinNghiemThu") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/DonXinNghiemThu/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinNghiemThu/get_PRO_DonXinNghiemThuByDeTai/") + idDeTai }
+        }
+    },
+
     PRO_NCVKhac:{
         getList:{
             method: "GET",

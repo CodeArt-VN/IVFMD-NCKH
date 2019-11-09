@@ -85,11 +85,7 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_PRO_BenhNhan> DTO_PRO_BenhNhan { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_PRO_NCVKhac> DTO_PRO_NCVKhac { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_CUS_HRM_BenhNhan> DTO_CUS_HRM_BenhNhan { get; set; }
+        public virtual DbSet<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
+        public virtual DbSet<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
     }
 }

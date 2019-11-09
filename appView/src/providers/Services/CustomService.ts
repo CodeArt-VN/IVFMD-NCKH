@@ -270,6 +270,86 @@ export class PRO_SysnopsisCustomProvider extends exService {
 }
 
 @Injectable()
+export class PRO_MauPhanTichDuLieuCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_MauPhanTichDuLieu, SearchConfig.getSearchFields('PRO_MauPhanTichDuLieu'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_MauPhanTichDuLieu.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_DonXinXetDuyetCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_DonXinXetDuyet, SearchConfig.getSearchFields('PRO_DonXinXetDuyet'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DonXinXetDuyet.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_DonXinDanhGiaDaoDucCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_DonXinDanhGiaDaoDuc, SearchConfig.getSearchFields('PRO_DonXinDanhGiaDaoDuc'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DonXinDanhGiaDaoDuc.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_DonXinNghiemThuCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_DonXinNghiemThu, SearchConfig.getSearchFields('PRO_DonXinNghiemThu'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DonXinNghiemThu.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
 export class PRO_NCVKhacCustomProvider extends PRO_NCVKhacProvider{
 	constructor(public commonService: CommonServiceProvider) {
         super(commonService);

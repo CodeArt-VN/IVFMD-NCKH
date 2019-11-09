@@ -341,7 +341,11 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
     <Compile Include="Controllers\PRO\BenhNhanController.cs" />
+    <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />
+    <Compile Include="Controllers\PRO\DonXinDanhGiaDaoDucController.cs" />
     <Compile Include="Controllers\PRO\NCVKhacController.cs" />
+    <Compile Include="Controllers\PRO\MauPhanTichDuLieuController.cs" />
+    <Compile Include="Controllers\PRO\DonXinXetDuyetController.cs" />
     <Compile Include="Controllers\PRO\SysnopsisController.cs" />
     <Compile Include="Controllers\PRO\DeTaiController.cs" />
     <Compile Include="Controllers\SYS\PermissionListController.cs" />
@@ -371,6 +375,10 @@
     <Content Include="Content\ej2\fabric.css" />
     <Content Include="Content\ej2\highcontrast.css" />
     <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\FormTemplate\DonXinNghiemThu.html" />
+    <Content Include="Content\FormTemplate\DonXinDanhGiaDaoDuc.html" />
+    <Content Include="Content\FormTemplate\DonXinXetDuyet.html" />
+    <Content Include="Content\FormTemplate\MauPhanTichDuLieu.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />

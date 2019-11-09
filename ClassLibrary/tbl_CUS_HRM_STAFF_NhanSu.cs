@@ -25,6 +25,8 @@ namespace ClassLibrary
             this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
             this.tbl_PRO_NCVKhac = new HashSet<tbl_PRO_NCVKhac>();
             this.tbl_PRO_SYLL = new HashSet<tbl_PRO_SYLL>();
+            this.tbl_CAT_HRCOConfig = new HashSet<tbl_CAT_HRCOConfig>();
+            this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
         }
     
         public int IDPartner { get; set; }
@@ -65,6 +67,10 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
     }
 }
 namespace DTOModel

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.CustomDTO
+namespace DTOModel
 {
     public partial class DTO_PRO_PhieuXemXetDaoDuc
     {
