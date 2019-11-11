@@ -64,6 +64,13 @@
                 </ngx-datatable-column>
                 <ngx-datatable-column name="" prop="" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="openDetailPage(i)">
+                          Chi tiết
+                      </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="" prop="" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openSysnopsis(i)">
                           Sysnopsis
                       </a>

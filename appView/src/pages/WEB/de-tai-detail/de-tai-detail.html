@@ -1,18 +1,86 @@
-<!--
-  Generated template for the DeTaiDetailPage page.
+<ion-header no-border class="head-bg">
+    <div class="emptyzone">
+        <div class="swiper-pagination">
+            <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}" (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index}} <span
+                        class="title">{{i.title}}</span></span>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header class='head-bg'>
-    <ion-navbar *navbar>
-        <ion-title>Tab 1</ion-title>
-        <ion-buttons>
-            <button (click)="next(slides, 2)">next</button>
+        </div>
+    </div>
+    <ion-toolbar no-border class="transparent back-holder">
+        <ion-buttons slot="start" *ngIf="pageIndex != 5">
+            <ion-button class="back-btn" color="light" (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
-    </ion-navbar>
+        <ion-title class="head-title" color="light">{{pageTitle}}</ion-title>
+    </ion-toolbar>
+
+    <div class="emptyzone"></div>
 </ion-header>
+<ion-content>
+    <ion-fab *ngIf="pageIndex == 0" vertical="top" horizontal="left" slot="fixed">
+        <ion-button class="back-btn" (click)="goBack()">
+            <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+        </ion-button>
+    </ion-fab>
 
-<ion-content padding>
+    <ion-fab class="fake-header-bg" *ngIf="pageIndex != 0" vertical="top" horizontal="left" slot="fixed">
+    </ion-fab>
 
+    <ion-slides [ngClass]="{'marginLeft': pageIndex != 0}" pager="false" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>
+        <ion-slide class="page-1">
+
+            <!-- Chọn trung tâm -->
+            <ion-grid>
+                <ion-row class="center-row">
+                    <ion-col align-self-center size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
+                        <ion-card color="white" no-margin class="news">
+                            <a class="thumb" target="_blank" [title]="Synopsis"></a>
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Synopsis</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From Synopsis
+                                </p>
+                                <div padding></div>
+                                <ion-button expand="block" (click)="goToStep(2, 0)">
+                                    CHỌN
+                                </ion-button>
+
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+
+        <!-- Chọn dịch vụ -->
+        <ion-slide class="page-2">
+            <ion-grid>
+                <ion-row class="center-row">
+                    <ion-col size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
+                        <ion-card color="white" no-margin class="news">
+                            <a class="thumb" target="_blank" [title]="Xét duyệt HDDD"></a>
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Xét duyệt HDDD</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From xét duyệt HDDD
+                                </p>
+                                <div padding></div>
+                                <ion-button expand="block" (click)="goToStep(3, 0)">
+                                    CHỌN
+                                </ion-button>
+
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+    </ion-slides>
 </ion-content>

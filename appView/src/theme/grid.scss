@@ -1,0 +1,18 @@
+$grid: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  ll: 1440px,
+  4k: 2560px
+);
+
+
+// @each $size, $size-value in $grid {
+//   .hide-#{$size} {
+//     @media (min-width: $size-value) {
+//       display: none;
+//     }
+//   }
+// }

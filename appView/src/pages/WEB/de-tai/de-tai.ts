@@ -5,6 +5,7 @@ import { AccountServiceProvider } from '../../../providers/CORE/account-service'
 import { ListPage } from '../../list-page';
 import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 import { DeTaiModalPage } from '../de-tai-modal/de-tai-modal';
+import { DeTaiDetailPage } from '../de-tai-detail/de-tai-detail';
 import { SysnopsisPage } from '../sysnopsis/sysnopsis';
 import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
 
@@ -43,6 +44,12 @@ export class DeTaiPage extends ListPage {
     openDetail(item) {
         let myModal = this.modalCtrl.create(DeTaiModalPage, { 'id': item.ID });
         myModal.present();
+    }
+
+    openDetailPage(item) {
+        this.navCtrl.setRoot(DeTaiDetailPage, { 'id': item.ID });
+        //this.navCtrl.push(DeTaiDetailPage, { 'id': item.ID });
+        return false;
     }
 
     openSysnopsis(item) {
