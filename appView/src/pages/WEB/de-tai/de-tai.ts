@@ -8,6 +8,10 @@ import { DeTaiModalPage } from '../de-tai-modal/de-tai-modal';
 import { DeTaiDetailPage } from '../de-tai-detail/de-tai-detail';
 import { SysnopsisPage } from '../sysnopsis/sysnopsis';
 import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
+import { MauPhanTichDuLieuModalPage } from '../mau-phan-tich-du-lieu-modal/mau-phan-tich-du-lieu-modal';
+import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
+import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/don-xin-danh-gia-dao-duc-modal';
+import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
 
 
 
@@ -53,7 +57,7 @@ export class DeTaiPage extends ListPage {
     }
 
     openSysnopsis(item) {
-        let myModal = this.modalCtrl.create(SysnopsisModalPage, { 'idDeTai': item.ID }, { cssClass: 'preview-modal' });
+        let myModal = this.modalCtrl.create(DonXinNghiemThuModalPage, { 'idDeTai': item.ID }, { cssClass: 'preview-modal' });
         myModal.present();
     }
 

@@ -1,7 +1,7 @@
 .nckh-form-template {
     size: a4;
     max-width: 7in;
-    font-size: 1.1em;
+    font-size: 13pt;
     margin: 1in 1in 1in 1in;
     font-family: 'Times New Roman', Times, serif;
 
@@ -43,6 +43,10 @@
             display: table-cell;
             vertical-align: top;
             padding: 3px;
+        }
+
+        &.tab-1 {
+            margin-left: 1em;
         }
 
         [contenteditable="true"] {

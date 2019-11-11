@@ -53,7 +53,7 @@ export class SysnopsisPage extends BasePage {
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.id, this.idDetai).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDetai).then((ite) => {
             this.commonService.copyPropertiesValue(ite, this.item);
         }).catch((data) => {
             this.item.ID = 0;
