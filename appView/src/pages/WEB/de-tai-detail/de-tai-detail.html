@@ -18,16 +18,7 @@
     <div class="emptyzone"></div>
 </ion-header>
 <ion-content>
-    <ion-fab *ngIf="pageIndex == 0" vertical="top" horizontal="left" slot="fixed">
-        <ion-button class="back-btn" (click)="goBack()">
-            <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
-        </ion-button>
-    </ion-fab>
-
-    <ion-fab class="fake-header-bg" *ngIf="pageIndex != 0" vertical="top" horizontal="left" slot="fixed">
-    </ion-fab>
-
-    <ion-slides [ngClass]="{'marginLeft': pageIndex != 0}" pager="false" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>
+    <ion-slides pager="false" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>
         <ion-slide class="page-1">
 
             <!-- Chọn trung tâm -->
@@ -35,7 +26,7 @@
                 <ion-row class="center-row">
                     <ion-col align-self-center size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
                         <ion-card color="white" no-margin class="news">
-                            <a class="thumb" target="_blank" [title]="Synopsis"></a>
+                            <a class="thumb" target="_blank"></a>
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Synopsis</a>
@@ -44,7 +35,7 @@
                                     From Synopsis
                                 </p>
                                 <div padding></div>
-                                <ion-button expand="block" (click)="goToStep(2, 0)">
+                                <ion-button expand="block" (click)="goToStep(0, 0)">
                                     CHỌN
                                 </ion-button>
 
@@ -62,7 +53,7 @@
                 <ion-row class="center-row">
                     <ion-col size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
                         <ion-card color="white" no-margin class="news">
-                            <a class="thumb" target="_blank" [title]="Xét duyệt HDDD"></a>
+                            <a class="thumb" target="_blank"></a>
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Xét duyệt HDDD</a>
@@ -71,7 +62,7 @@
                                     From xét duyệt HDDD
                                 </p>
                                 <div padding></div>
-                                <ion-button expand="block" (click)="goToStep(3, 0)">
+                                <ion-button expand="block" (click)="goToStep(1, 0)">
                                     CHỌN
                                 </ion-button>
 

@@ -17,7 +17,8 @@ import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 })
 export class DeTaiDetailPage extends BasePage {
   id: any;
-  @ViewChild(Slides) slides: Slides;
+  //@ViewChild(Slides) slides: Slides;
+  @ViewChild('pages') slides: Slides;
   slideListByType = [];
   pageIndex: number = 0;
   pageTitle = '';
@@ -41,13 +42,15 @@ export class DeTaiDetailPage extends BasePage {
     }
     this.pageIndex = 0;
     this.mockupData();
-    this.changeType(null);
+    setTimeout(() => {
+      this.goToStep(0, null);
+    }, 300);
   }
 
   mockupData() {
     this.slideListByType = [
-      { type: 0, index: 1, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
-      { type: 0, index: 2, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng Đạo đức, Khoa học' }
+      { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
+      { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng Đạo đức, Khoa học' }
     ];
 
     this.slideOpts = {
@@ -108,14 +111,6 @@ export class DeTaiDetailPage extends BasePage {
       this.events.publish('app:ShowMenu', true);
       //this.navCtrl.navigateBack('/home/booking-list');
 
-
-    }
-
-    changeType(type) {
-      let goto = type != null;
-      if (goto) {
-        this.goToStep(1, null);
-      }
 
     }
 
