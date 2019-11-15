@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Events, LoadingController, ToastController, AlertController, IonicPage, Slides } from 'ionic-angular';
+import { NavController, ModalController, NavParams, Events, LoadingController, ToastController, AlertController, IonicPage, Slides } from 'ionic-angular';
 import { BasePage } from '../../base-page';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
+import { DeTaiPage } from '../de-tai/de-tai';
+import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
 /**
  * Generated class for the DeTaiDetailPage page.
  *
@@ -17,14 +19,15 @@ import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 })
 export class DeTaiDetailPage extends BasePage {
   id: any;
-  //@ViewChild(Slides) slides: Slides;
-  @ViewChild('pages') slides: Slides;
+  @ViewChild(Slides) slides: Slides;
+  //@ViewChild('pages') slides: Slides;
   slideListByType = [];
   pageIndex: number = 0;
   pageTitle = '';
   slideOpts: any;
   constructor(
     public currentProvider: PRO_DeTaiProvider,
+    public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public events: Events,
@@ -35,7 +38,6 @@ export class DeTaiDetailPage extends BasePage {
     public accountService: AccountServiceProvider,
   ) {
     super('page-de-tai-detail', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
-
     this.id = navParams.get('id');
     if (this.id && commonService.isNumeric(this.id)) {
       this.id = parseInt(this.id, 10);
@@ -45,12 +47,16 @@ export class DeTaiDetailPage extends BasePage {
     setTimeout(() => {
       this.goToStep(0, null);
     }, 300);
+   
   }
 
   mockupData() {
     this.slideListByType = [
       { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
-      { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng Đạo đức, Khoa học' }
+      { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng DD,KH' },
+      { type: 0, index: 2, title: 'Đăng ký Clinical Trial', shortTitle: 'Đăng ký Clinical Trial' },
+      { type: 0, index: 3, title: 'Thu nhận bệnh nhân', shortTitle: 'Thu nhận bệnh nhân' },
+      { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
     ];
 
     this.slideOpts = {
@@ -80,6 +86,7 @@ export class DeTaiDetailPage extends BasePage {
     }
 
     loadData() {
+      this.loadedData();
       // if (this.id) {
       //   this.pageService.getAnItem(this.id, null).then((i: any) => {
       //     this.bindItemViewData(i);
@@ -99,11 +106,7 @@ export class DeTaiDetailPage extends BasePage {
 
     // Main
     goBack() {
-      if (this.pageIndex > 0) {
-        this.goToStep(this.pageIndex - 1, null);
-      } else {
-        //this.navCtrl.navigateBack('/home/booking-list');
-      }
+        this.navCtrl.push(DeTaiPage);
     }
 
     bookFinished() {
@@ -214,5 +217,10 @@ export class DeTaiDetailPage extends BasePage {
           this.updateSlides();
         }, 0);
       };
+    }
+
+    openSysnopsis() {
+      let myModal = this.modalCtrl.create(SysnopsisModalPage, { 'idDeTai': this.id }, { cssClass: 'preview-modal' });
+      myModal.present();
     }
   }

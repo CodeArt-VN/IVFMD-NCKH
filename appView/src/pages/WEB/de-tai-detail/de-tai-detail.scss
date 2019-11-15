@@ -19,14 +19,18 @@ page-de-tai-detail {
                 display: block !important;
             }
             .back-holder {
-                margin-top: -49px;
+                //margin-top: -49px;
             }
             .head-title {
                 display: none;
             }
         }
     }
-    ion-content {}
+    ion-content {
+        .scroll-content {
+            margin-top: 0px !important;
+        }
+    }
     .fake-header-bg {
         height: 145px;
         background-position: 0px -173px;
@@ -38,6 +42,13 @@ page-de-tai-detail {
         @media(min-width: map-get($grid, md)) {
             margin-left: 270px;
         }
+    }
+    ion-slide {
+        width: 100% !important;
+    }
+    .swiper-container {
+        width: calc(100% - 270px)!important;
+        margin: 0;
     }
     .swiper-slide {
         text-align: left;
@@ -335,5 +346,18 @@ page-de-tai-detail {
                 }
             }
         }
+    }
+    .back-btn {
+        --background: #0097B5;
+        background-color: #0097B5;
+        border-radius: 0 100px 100px 0;
+        min-width: 75px !important;
+        height: 43px;
+        //height: 32px;
+        --padding-start: 0px !important;
+        margin-left: -4px !important;
+        --border-radius: 0 100px 100px 0;
+        color: white !important;
+        font-size: 31px;
     }
 }

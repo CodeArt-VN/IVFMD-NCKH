@@ -1,32 +1,26 @@
 <ion-header no-border class="head-bg">
     <div class="emptyzone">
         <div class="swiper-pagination">
-            <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}" (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index}} <span
-                        class="title">{{i.title}}</span></span>
+            <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}" (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index + 1}} <span
+                        class="title">{{i.shortTitle}}</span></span>
 
         </div>
     </div>
-    <ion-toolbar no-border class="transparent back-holder">
-        <ion-buttons slot="start" *ngIf="pageIndex != 5">
-            <ion-button class="back-btn" color="light" (click)="goBack()">
-                <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title class="head-title" color="light">{{pageTitle}}</ion-title>
-    </ion-toolbar>
+    <ion-buttons start>
+        <button ion-button icon-only class="back-btn" (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
+    </ion-buttons>
 
     <div class="emptyzone"></div>
 </ion-header>
 <ion-content>
-    <ion-slides pager="false" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>
+    <ion-slides class="marginLeft" pager="false" slidesPerView="1" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>
         <ion-slide class="page-1">
 
-            <!-- Chọn trung tâm -->
+            <!-- Hội đồng nội bộ -->
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col align-self-center size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
+                    <ion-col col-md-4>
                         <ion-card color="white" no-margin class="news">
-                            <a class="thumb" target="_blank"></a>
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Synopsis</a>
@@ -35,10 +29,23 @@
                                     From Synopsis
                                 </p>
                                 <div padding></div>
-                                <ion-button expand="block" (click)="goToStep(0, 0)">
-                                    CHỌN
-                                </ion-button>
+                                <button ion-button block (click)="openSysnopsis()">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
 
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Đăng kí phân tích</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From đăng kí phân tích dữ liệu sơ bộ
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
 
@@ -46,26 +53,184 @@
                 </ion-row>
             </ion-grid>
         </ion-slide>
-
-        <!-- Chọn dịch vụ -->
+        <!-- Hội đồng Đạo đức, Hội đồng Khoa học -->
         <ion-slide class="page-2">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col size="12" size-sm="10" push-sm="1" size-md="8" push-md="2" size-lg="6" push-lg="0" size-xl="4">
+                    <ion-col col-md-4>
                         <ion-card color="white" no-margin class="news">
-                            <a class="thumb" target="_blank"></a>
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Xét duyệt HDDD</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    From xét duyệt HDDD
+                                    Đơn đăng kí xét duyệt HDDD
                                 </p>
                                 <div padding></div>
-                                <ion-button expand="block" (click)="goToStep(1, 0)">
-                                    CHỌN
-                                </ion-button>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Xét duyệt HDKH</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Đơn đăng kí xét duyệt HDKH
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Lý lịch khoa học CNĐT</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Lý lịch khoa học CNĐT
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Sơ yếu lý lịch CNĐT</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Sơ yếu lý lịch CNĐT
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Lý lịch khoa học NCV chính</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Lý lịch khoa học NCV chính
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Sơ yếu lý lịch NCV chính</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Sơ yếu lý lịch NCV chính
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Thuyết minh đề tài</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Thuyết minh đề tài
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Xác nhận phối hợp</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Xác nhận phối hợp
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+        <!-- Đăng ký Clinical Trial -->
+        <ion-slide class="page-1">
+            <ion-grid>
+                <ion-row class="center-row">
+                    <ion-col col-md-3>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Synopsis</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From Synopsis
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
 
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+        <!-- Thu nhận bệnh nhân -->
+        <ion-slide class="page-1">
+            <ion-grid>
+                <ion-row class="center-row">
+                    <ion-col col-md-3>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Synopsis</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From Synopsis
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+        <!-- Nghiệm thu -->
+        <ion-slide class="page-1">
+            <ion-grid>
+                <ion-row class="center-row">
+                    <ion-col col-md-3>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Synopsis</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    From Synopsis
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
 
