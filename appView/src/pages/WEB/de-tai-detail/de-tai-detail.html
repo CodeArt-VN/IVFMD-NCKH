@@ -29,7 +29,7 @@
                                     From Synopsis
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="openSysnopsis()">CHỌN</button>
+                                <button ion-button block (click)="openDetailModal(0)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
 
@@ -45,7 +45,7 @@
                                     From đăng kí phân tích dữ liệu sơ bộ
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                                <button ion-button block (click)="openDetailModal(1)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
 
@@ -67,7 +67,7 @@
                                     Đơn đăng kí xét duyệt HDDD
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                                <button ion-button block (click)="openDetailModal(2)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -81,7 +81,7 @@
                                     Đơn đăng kí xét duyệt HDKH
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                                <button ion-button block (click)="openDetailModal(3)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

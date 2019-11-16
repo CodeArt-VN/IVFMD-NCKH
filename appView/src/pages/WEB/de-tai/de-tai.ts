@@ -51,8 +51,8 @@ export class DeTaiPage extends ListPage {
     }
 
     openDetailPage(item) {
-        //this.navCtrl.setRoot(DeTaiDetailPage, { 'id': item.ID });
-        this.navCtrl.push(DeTaiDetailPage, { 'id': item.ID });
+        this.navCtrl.setRoot('page-de-tai-detail', { 'id': item.ID });
+        //this.navCtrl.push(DeTaiDetailPage, { 'id': item.ID });
         return false;
     }
 
