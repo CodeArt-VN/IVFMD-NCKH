@@ -6,13 +6,19 @@ import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 import { DeTaiPage } from '../de-tai/de-tai';
 import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
+import { MauPhanTichDuLieuModalPage } from '../mau-phan-tich-du-lieu-modal/mau-phan-tich-du-lieu-modal';
+import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/don-xin-danh-gia-dao-duc-modal';
+import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
+import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
+
+
 /**
  * Generated class for the DeTaiDetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@IonicPage({ name: 'page-de-tai-detail', segment: 'de-tai-detail', priority: 'high' })
+@IonicPage({ name: 'page-de-tai-detail', segment: 'de-tai-detail/:id', priority: 'high' })
 @Component({
   selector: 'page-de-tai-detail',
   templateUrl: 'de-tai-detail.html',
@@ -219,8 +225,25 @@ export class DeTaiDetailPage extends BasePage {
       };
     }
 
-    openSysnopsis() {
-      let myModal = this.modalCtrl.create(SysnopsisModalPage, { 'idDeTai': this.id }, { cssClass: 'preview-modal' });
-      myModal.present();
+    /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH
+    openDetailModal(type){
+        var page = null; 
+        switch(type){
+            case 0:
+              page = SysnopsisModalPage;
+              break;
+            case 1:
+              page = MauPhanTichDuLieuModalPage;
+              break;
+            case 2:
+              page = DonXinDanhGiaDaoDucModalPage;
+              break;
+            case 3: 
+              page = DonXinXetDuyetModalPage;
+              break;
+        }
+
+        let myModal = this.modalCtrl.create(page, { 'idDeTai': this.id }, { cssClass: 'preview-modal' });
+        myModal.present();
     }
   }
