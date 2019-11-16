@@ -10,9 +10,35 @@ namespace DTOModel
     {
         public List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu> ListNhanLucNghienCuu { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia> ListGioiThieuChuyenGia { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThapJson CacBienSoCanThuThap { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien KeHoachThucHien { get; set; }
+    }
+
+    public class DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThapJson
+    {
         public List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap> ListBienSoNen { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap> ListBienSoDocLap { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap> ListBienSoPhuThuoc { get; set; }
+    }
+
+    public class DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien
+    {
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet VietDeCuong { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet ThongQuaHDKH { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet ThuThapSoLieu { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet PhanTichSoLieuGiuaKy { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet PhanTichSoLieuCuoiCung { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet VietBaiDangBaoTrongNuoc { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet NghiemThuDeTai { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet VietBaiDangBaoQuocTe { get; set; }
+    }
+
+    public class DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien_ChiTiet
+    {
+        public string NoiDung { get; set; }
+        public string ThoiGianThucHien { get; set; }
+        public string DuKienKetQua { get; set; }
+        public string NguoiThucHien { get; set; }
     }
 
     public class DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu

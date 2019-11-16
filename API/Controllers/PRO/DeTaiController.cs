@@ -38,6 +38,29 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_DeTai);
         }
 
+        [Route("get_PRO_DeTaiCustom/{id:int}")]
+        [ResponseType(typeof(DTO_PRO_DeTai))]
+        public IHttpActionResult GetCustom(int id)
+        {
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            if (tbl_PRO_DeTai == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(tbl_PRO_DeTai);
+        }
+
+        [Route("updateStatus_PRO_DeTai/{id:int}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult UpdateStatus(int id, string actionCode)
+        {
+            var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, Username);
+            if (!string.IsNullOrEmpty(result))
+                return BadRequest(result);
+            else return Ok();
+        }
+
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, DTO_PRO_DeTai tbl_PRO_DeTai)
