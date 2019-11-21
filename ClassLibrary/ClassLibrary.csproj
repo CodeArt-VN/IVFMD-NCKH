@@ -79,6 +79,7 @@
     <Compile Include="CustomDTO\DTO_CUS_DOC_File.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_LLKH.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_DeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_NCVKhac.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BenhNhan.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu.cs" />

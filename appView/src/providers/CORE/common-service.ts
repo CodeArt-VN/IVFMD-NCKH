@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http } from '@angular/http';
+import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
@@ -8,7 +9,7 @@ import { GlobalData } from '../CORE/global-variable'
 
 @Injectable()
 export class CommonServiceProvider {
-	constructor(private http: Http, public storage: Storage) {
+    constructor(private http: Http, public storage: Storage, public toastCtrl: ToastController,) {
 	}
 
 	connect(pmethod, URL, data) {
@@ -26,20 +27,84 @@ export class CommonServiceProvider {
 			&& GlobalData.Profile.Roles.SYSRoles.indexOf('HOST') > -1
 			&& GlobalData.Filter.IDPartner) {
 			URL =  URL + (URL.indexOf('?')>-1? '&' : '?')+ 'IDPartner=' + GlobalData.Filter.IDPartner;
-		}
+        }
 
-		if (pmethod == "GET") {
-			options.search = data;
-			return this.http.get(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
-		}
-		else if (pmethod == "POST") {
-			return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
-		}
-		else if (pmethod == "PUT") {
-			return this.http.put(URL, data, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
-		}
-		else if (pmethod == "DELETE") {
-			return this.http.delete(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
+        if (pmethod == "GET") {
+            options.search = data;
+            //return this.http.get(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
+            return this.http.get(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+                if (error.status == 0) {
+                    return Promise.reject('Can not connect to API server!');
+                } else {
+                    var msg = JSON.parse(error._body);
+                    if (msg && msg.Message) {
+                        let toast = this.toastCtrl.create({
+                            message: msg.Message,
+                            duration: 3000
+                        });
+                        toast.present();
+                        return Promise.reject(msg.Message);
+                    }
+                    return Promise.reject(error.message || error);
+                }
+            });
+        }
+        else if (pmethod == "POST") {
+            //return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
+            return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+                if (error.status == 0) {
+                    return Promise.reject('Can not connect to API server!');
+                } else {
+                    var msg = JSON.parse(error._body);
+                    if (msg && msg.Message) {
+                        let toast = this.toastCtrl.create({
+                            message: msg.Message,
+                            duration: 3000
+                        });
+                        toast.present();
+                        return Promise.reject(msg.Message);
+                    }
+                    return Promise.reject(error.message || error);
+                }
+            });
+        }
+        else if (pmethod == "PUT") {
+            //return this.http.put(URL, data, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
+            return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+                if (error.status == 0) {
+                    return Promise.reject('Can not connect to API server!');
+                } else {
+                    var msg = JSON.parse(error._body);
+                    if (msg && msg.Message) {
+                        let toast = this.toastCtrl.create({
+                            message: msg.Message,
+                            duration: 3000
+                        });
+                        toast.present();
+                        return Promise.reject(msg.Message);
+                    }
+                    return Promise.reject(error.message || error);
+                }
+            });
+        }
+        else if (pmethod == "DELETE") {
+            //return this.http.delete(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
+            return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+                if (error.status == 0) {
+                    return Promise.reject('Can not connect to API server!');
+                } else {
+                    var msg = JSON.parse(error._body);
+                    if (msg && msg.Message) {
+                        let toast = this.toastCtrl.create({
+                            message: msg.Message,
+                            duration: 3000
+                        });
+                        toast.present();
+                        return Promise.reject(msg.Message);
+                    }
+                    return Promise.reject(error.message || error);
+                }
+            });
 		}
 		else if (pmethod == "UPLOAD") {
 			headers = new Headers({
@@ -110,11 +175,21 @@ export class CommonServiceProvider {
 
 	private handleError(error: any): Promise<any> {
 		//console.log('An error occurred', error); // for demo purposes only
-		//return Promise.reject(error.message || error);
-
+        //return Promise.reject(error.message || error);
+        debugger
+        var that = this;
 		if (error.status == 0) {
 			return Promise.reject('Can not connect to API server!');
-		} else {
+        } else {
+            var msg = JSON.parse(error._body);
+            if (msg && msg.Message) {
+                let toast = that.toastCtrl.create({
+                    message: msg.Message,
+                    duration: 3
+                });
+                toast.present();
+                return Promise.reject(msg.Message);
+            }
 			return Promise.reject(error.message || error);
 		}
 	}
