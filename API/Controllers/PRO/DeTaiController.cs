@@ -25,6 +25,13 @@ namespace API.Controllers.PRO
             return BS_PRO_DeTai.get_PRO_DeTai(db, PartnerID, QueryStrings);
         }
 
+        [Route("get_PRO_DeTaiByRefer")]
+        public IQueryable<DTO_PRO_DeTai> GetByRefer()
+        {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            return BS_PRO_DeTai.get_PRO_DeTaiByRefer(db, PartnerID, user.StaffID, QueryStrings);
+        }
+
         [Route("{id:int}", Name = "get_PRO_DeTai")]
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult Get(int id)
