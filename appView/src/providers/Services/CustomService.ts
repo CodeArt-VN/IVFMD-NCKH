@@ -390,6 +390,26 @@ export class PRO_BenhNhanCustomProvider extends PRO_BenhNhanProvider{
 		});
 	}
 }
+
+@Injectable()
+export class STAFF_NhanSu_LLKHProviderCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.STAFF_NhanSu_LLKH, SearchConfig.getSearchFields('STAFF_NhanSu_LLKH'), commonService);
+    }
+    getItemCustom(idNhanSu) {
+        let that = this.commonService;
+        let apiPath = APIList.STAFF_NhanSu_LLKH.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idNhanSu), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

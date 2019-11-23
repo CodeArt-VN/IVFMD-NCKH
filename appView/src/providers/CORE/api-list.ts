@@ -1150,6 +1150,33 @@ export var APIListBase = {
         }
 		
     },
+
+    STAFF_NhanSu_LLKH:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/get_CUS_HRM_STAFF_NhanSu_LLKH/") + idNhanSu }
+        }
+    },
 };
 
 

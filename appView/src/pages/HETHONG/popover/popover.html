@@ -12,16 +12,19 @@
 <ion-list class="getLink" no-lines *ngIf="popid === 'sops-link'">
     <ion-item>
         <ion-label stacked>Lấy link</ion-label>
-        <ion-input readonly type="text" #sharableLink [(ngModel)]="link" ></ion-input>
+        <ion-input readonly type="text" #sharableLink [(ngModel)]="link"></ion-input>
         <button ion-button color="warning" item-end (click)="copyToClipboard(sharableLink)">Copy</button>
     </ion-item>
 </ion-list>
 
 
 <ion-list no-lines *ngIf="popid === 'cp-user'">
-    
+
     <ion-item (click)="command('openProfile');">
         <ion-icon item-start name="ios-contact"></ion-icon>Thông tin cá nhân
+    </ion-item>
+    <ion-item (click)="command('openLLKH');">
+        <ion-icon item-start name="ios-contact"></ion-icon>Lý lịch khoa học
     </ion-item>
     <ion-item *ngIf="isAdminItems" (click)="command('openAdmin')">
         <ion-icon item-start name="ios-people"></ion-icon> Quản trị hệ thống
@@ -29,7 +32,7 @@
     <ion-item *ngIf="isDocItems" (click)="command('openDoc')">
         <ion-icon item-start name="ios-folder"></ion-icon> Thư viện điện tử
     </ion-item>
-    
+
 
     <ion-item (click)="command('logout');">
         <ion-icon item-start name="log-out"></ion-icon>Logout
@@ -39,11 +42,11 @@
 
 
 <ion-list no-lines *ngIf="popid === 'web-cate-menu'">
-    <a detail-none ion-item ngClass="{{i.Code == 'SOPs' ? 'sops' : i.ID == currentCateID ? 'active' : '' }}" [href]="i.URL" *ngFor="let i of menuList" (click)="command();" >
+    <a detail-none ion-item ngClass="{{i.Code == 'SOPs' ? 'sops' : i.ID == currentCateID ? 'active' : '' }}" [href]="i.URL" *ngFor="let i of menuList" (click)="command();">
         {{i.Code}}
         <span *ngIf="i.Code != 'SOPs'">{{i.Name}}</span>
     </a>
-    
+
 </ion-list>
 
 <a class="version" href="https://vi.wikipedia.org/wiki/Tr%E1%BB%A3_gi%C3%BAp:X%C3%B3a_b%E1%BB%99_nh%E1%BB%9B_%C4%91%E1%BB%87m#Xo%C3%A1_b%E1%BB%99_nh%E1%BB%9B_%C4%91%E1%BB%87m" target="_blank">
