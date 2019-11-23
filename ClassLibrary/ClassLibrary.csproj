@@ -61,6 +61,9 @@
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_SYS_PermissionList.cs" />
     <Compile Include="CustomBusiness\BS_CUS_Version.cs" />
+    <Compile Include="CustomBusiness\BS_CAT_HRCOConfig.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_BaoCaoNangSuatKhoaHoc.cs" />
+    <Compile Include="CustomBusiness\BS_CAT_BangGiaKinhPhi.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_LLKH.cs" />
     <Compile Include="CustomBusiness\BS_PRO_DonXinNghiemThu.cs" />
     <Compile Include="CustomBusiness\BS_PRO_DonXinDanhGiaDaoDuc.cs" />
@@ -78,6 +81,9 @@
     <Compile Include="CustomDTO\DTO_APP_Form.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_BaoCaoNangSuatKhoaHoc.cs" />
+    <Compile Include="CustomDTO\DTO_CAT_BangGiaKinhPhi.cs" />
+    <Compile Include="CustomDTO\DTO_CAT_HRCOConfig.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_LLKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_DeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_NCVKhac.cs" />
