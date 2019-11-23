@@ -87,7 +87,7 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
         public virtual DbSet<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
         public virtual DbSet<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
-
-        public System.Data.Entity.DbSet<DTOModel.DTO_CUS_HRM_STAFF_NhanSu_LLKH> DTO_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
+        public virtual DbSet<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
     }
 }

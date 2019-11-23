@@ -149,6 +149,10 @@
         <AssociationConnector Association="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Width="1.5" PointX="12.5" PointY="129.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Width="1.5" PointX="14.75" PointY="134.375" />
+        <AssociationConnector Association="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
