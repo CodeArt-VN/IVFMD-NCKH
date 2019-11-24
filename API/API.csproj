@@ -347,6 +347,8 @@
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
     <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />
     <Compile Include="Controllers\PRO\DonXinDanhGiaDaoDucController.cs" />
+    <Compile Include="Controllers\PRO\SYLLController.cs" />
+    <Compile Include="Controllers\PRO\LLKHController.cs" />
     <Compile Include="Controllers\PRO\ThuyetMinhDeTaiController.cs" />
     <Compile Include="Controllers\PRO\NCVKhacController.cs" />
     <Compile Include="Controllers\PRO\MauPhanTichDuLieuController.cs" />

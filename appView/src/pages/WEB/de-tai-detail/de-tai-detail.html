@@ -9,7 +9,7 @@
     <ion-buttons start>
         <button ion-button icon-only class="back-btn" (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
     </ion-buttons>
-
+    <ion-title class="head-title" color="light">{{item.TenTiengViet}}</ion-title>
     <div class="emptyzone"></div>
 </ion-header>
 <ion-content>
@@ -19,36 +19,20 @@
             <!-- Hội đồng nội bộ -->
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4>
+                    <ion-col col-md-4 *ngFor="let i of listForm1">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>Synopsis</a>
+                                    <a>{{i.Name}}</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    From Synopsis
+                                    {{i.Description}}
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="openDetailModal(0)">CHỌN</button>
+                                <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">{{i.TrangThaiCode}}</button>
+                                <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
-
-                    </ion-col>
-
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Đăng kí phân tích</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    From đăng kí phân tích dữ liệu sơ bộ
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="openDetailModal(1)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -57,115 +41,18 @@
         <ion-slide class="page-2">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4>
+                    <ion-col col-md-4 *ngFor="let i of listForm2">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>Xét duyệt HDDD</a>
+                                    <a>{{i.Name}}</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    Đơn đăng kí xét duyệt HDDD
+                                    {{i.Description}}
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="openDetailModal(2)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Xét duyệt HDKH</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Đơn đăng kí xét duyệt HDKH
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="openDetailModal(3)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Lý lịch khoa học CNĐT</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Lý lịch khoa học CNĐT
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Sơ yếu lý lịch CNĐT</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Sơ yếu lý lịch CNĐT
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Lý lịch khoa học NCV chính</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Lý lịch khoa học NCV chính
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Sơ yếu lý lịch NCV chính</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Sơ yếu lý lịch NCV chính
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Thuyết minh đề tài</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Thuyết minh đề tài
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Xác nhận phối hợp</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    Xác nhận phối hợp
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">CHỌN</button>
+                                <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">{{i.TrangThaiCode}}</button>
+                                <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">CHỌN</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

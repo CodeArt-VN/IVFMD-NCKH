@@ -3,13 +3,14 @@ import { NavController, ModalController, NavParams, Events, LoadingController, T
 import { BasePage } from '../../base-page';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
-import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
+import { PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
 import { DeTaiPage } from '../de-tai/de-tai';
 import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
 import { MauPhanTichDuLieuModalPage } from '../mau-phan-tich-du-lieu-modal/mau-phan-tich-du-lieu-modal';
 import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/don-xin-danh-gia-dao-duc-modal';
 import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
+import { NhanSuLLKHModalPage } from '../nhan-su-llkh-modal/nhan-su-llkh-modal';
 
 
 /**
@@ -28,11 +29,14 @@ export class DeTaiDetailPage extends BasePage {
   @ViewChild(Slides) slides: Slides;
   //@ViewChild('pages') slides: Slides;
   slideListByType = [];
+  listForm1 = [];
+  listForm2 = [];
   pageIndex: number = 0;
   pageTitle = '';
   slideOpts: any;
+  item: any = {};
   constructor(
-    public currentProvider: PRO_DeTaiProvider,
+    public currentProvider: PRO_DeTaiCustomProvider,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -49,11 +53,6 @@ export class DeTaiDetailPage extends BasePage {
       this.id = parseInt(this.id, 10);
     }
     this.pageIndex = 0;
-    this.mockupData();
-    setTimeout(() => {
-      this.goToStep(0, null);
-    }, 300);
-   
   }
 
   mockupData() {
@@ -64,7 +63,8 @@ export class DeTaiDetailPage extends BasePage {
       { type: 0, index: 3, title: 'Thu nhận bệnh nhân', shortTitle: 'Thu nhận bệnh nhân' },
       { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
     ];
-
+    this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0});
+    this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1});
     this.slideOpts = {
       pager: false,
 
@@ -89,18 +89,42 @@ export class DeTaiDetailPage extends BasePage {
     };
   }
     preLoadData() {
+      setTimeout(() => {
+          this.updateSlides();
+      }, 300);
+      super.preLoadData();
     }
 
     loadData() {
       this.loadedData();
-      // if (this.id) {
-      //   this.pageService.getAnItem(this.id, null).then((i: any) => {
-      //     this.bindItemViewData(i);
-      //     this.loadedData();
-      //   }).catch((err) => {
-      //     this.loadedData();
-      //   });
-      // }
+      if (this.id) {
+        this.currentProvider.getItemCustom(this.id).then((ite: any) => {
+          this.item = ite;
+          
+          this.mockupData();
+          setTimeout(() => {
+            this.goToStep(0, null);
+          }, 300);
+          this.loadedData();
+        }).catch((err) => {
+          this.loadedData();
+        });
+      }
+    }
+
+    bindItemViewData(item) {
+        item.ListFormStatus.forEach(e => {
+          switch(e.FormCode) {
+            case "tbl_PRO_Sysnopsis":
+
+              break;
+            default:
+              break;
+          }
+          if(e.FormCode == "tbl_PRO_Sysnopsis"){
+
+          }
+        });
     }
 
     loadedData() {
@@ -225,7 +249,7 @@ export class DeTaiDetailPage extends BasePage {
       };
     }
 
-    /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH
+    /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
     openDetailModal(type){
         var page = null; 
         switch(type){
@@ -241,6 +265,18 @@ export class DeTaiDetailPage extends BasePage {
             case 3: 
               page = DonXinXetDuyetModalPage;
               break;
+            case 4:
+              page = NhanSuLLKHModalPage;
+              break;
+            case 5:
+              page = SysnopsisModalPage;
+              break;
+            case 6:
+              page = NhanSuLLKHModalPage;
+              break;
+            case 7:
+              page = SysnopsisModalPage;
+              break;    
         }
 
         let myModal = this.modalCtrl.create(page, { 'idDeTai': this.id }, { cssClass: 'preview-modal' });

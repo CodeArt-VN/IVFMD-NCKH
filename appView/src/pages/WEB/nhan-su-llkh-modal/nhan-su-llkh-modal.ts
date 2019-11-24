@@ -53,6 +53,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
     }
 
     bindData() {
+        debugger
         $("#frmNhanSuLLKH").empty();
         $(this.item.HTML).appendTo("#frmNhanSuLLKH");
         let id = this.item.ID;
@@ -61,8 +62,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
             init: function (element, valueAccessor) {
                 var $element = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                if (id <= 0)
-                    $element.html(initialValue);
+                $element.html(initialValue);
                 $element.on('keyup', function () {
                     var observable = valueAccessor();
                     observable($element.html());
@@ -70,225 +70,243 @@ export class NhanSuLLKHModalPage extends DetailPage {
             }
         };
 
-        let ObjModel = function (item) {
-          var self = this;
-          self.ThongTinChung = ko.observable({
-            DienThoai_CaNhan: ko.observable(""),
-            DienThoai_CoQuan: ko.observable(""),
-            DiaChi_CoQuan: ko.observable(""),
-            DiaChi_CaNhan: ko.observable(""),
-            Email_CoQuan: ko.observable(""),
-            Email_CaNhan: ko.observable(""),
+        $(".ptable").on("click", ".clone", function (e) {
+            var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+            if (sconf != null) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.add) {
+                        var context = ko.contextFor(this);
+                        context.$root.addItem(conf.name);
+                    }
+                    return false;
+                } catch (e) {
+                    return false;
+                }
+            }
+        });
+        $(".ptable").on("click", ".remove", function (e) {
+            var target = window.getSelection().baseNode;
+            var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+            if (sconf != null && (target.parentElement.tagName == "TD" || target.tagName == "TD")) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.add) {
+                        var tr = $(target).closest('tr');
+                        var context = ko.contextFor(this);
+                        context.$root.removeItem(conf.name, tr.attr('index'));
+                    }
+                    return false;
+                } catch (e) {
+                    return false;
+                }
+            }
+        });
 
-              NamPhongHocHam: ko.observable(""),//x
-              HocHam: ko.observable(""),//x
-              HocViThacSy: ko.observable(""),//x
-              NamHocViThacSy: ko.observable(""),//x
-              HocViTienSy: ko.observable(""),//x
-              NamHocViTienSy: ko.observable(""),//x
+        $(".ptable").mouseenter(function (event) {
+            var sconf = $(this).attr('conf');
+            if (sconf != null) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.add || conf.remove) {
+                        var t = $(this).find(".group_controls");
+                        //if (t.length == 0)
+                            //$("#hvtemplate").tmpl().appendTo($(this));
+                    }
+                } catch (e) {
 
-              CMND: ko.observable(""),
-              CMND_NoiCap: ko.observable(""),
-              CMND_NgayCap: ko.observable(""),
+                }
+            }
+        }).mouseleave(function (event) {
+            var t = $(this).find(".group_controls");
+            t.detach();
+        });
 
-              ChucVu: ko.observable(""),
-              PhongKhoa: ko.observable(""),
-              TruongVien: ko.observable(""),
+        var ObjModel = function (item) {
+            var self = this;
+            self.ThongTinChung = ko.observable({
+                DienThoai_CaNhan: ko.observable(""),
+                DienThoai_CoQuan: ko.observable(""),
+                DiaChi_CoQuan: ko.observable(""),
+                DiaChi_CaNhan: ko.observable(""),
+                Email_CoQuan: ko.observable(""),
+                Email_CaNhan: ko.observable(""),
 
-              GioiTinh: ko.observable(""),
-              NgaySinh: ko.observable(""),
-              HoTen: ko.observable(""),
-              LinhVuc: ko.observable(""),
-              ChuyenNganh: ko.observable(""),
-              HuongNghienCuu: ko.observable("</br></br>")
-          })
+                NamPhongHocHam: ko.observable(""),
+                HocHam: ko.observable(""),
+                HocVi: ko.observable(""),
+                HocViThacSy: ko.observable(""),
+                NamHocViThacSy: ko.observable(""),
+                HocViTienSy: ko.observable(""),
+                NamHocViTienSy: ko.observable(""),
 
-          self.ListNgoaiNgu = ko.observableArray([]);
+                CMND: ko.observable(""),
+                CMND_NoiCap: ko.observable(""),
+                CMND_NgayCap: ko.observable(""),
 
-          self.ListThoiGianCongTac = ko.observableArray(ko.utils.arrayMap(item.ListThoiGianCongTac || [{}, {}, {}], function (nn) {
-              return {
-                  ThoiGian: ko.observable(nn.ThoiGian),
-                  NoiCongTac: ko.observable(nn.NoiCongTac),
-                  ChucVu: ko.observable(nn.ChucVu)
-              };
-          }));
+                ChucVu: ko.observable(""),
+                PhongKhoa: ko.observable(""),
+                TruongVien: ko.observable(""),
 
-          self.ListQuaTrinhDaoTao = ko.observableArray(ko.utils.arrayMap(item.QuaTrinhDaoTao || [{
-              BacDaoTao: "Đại học"
-          },
-          {
-              BacDaoTao: "Thạc sỹ"
-          },
-          {
-              BacDaoTao: "Tiến sỹ"
-          }], function (nn) {
-              return {
-                  BacDaoTao: ko.observable(nn.BacDaoTao),
-                  ThoiGian: ko.observable(nn.ThoiGian),
-                  NoiDaoTao: ko.observable(nn.NoiDaoTao),
-                  ChuyenNganh: ko.observable(nn.ChuyenNganh),
-                  TenLuanAnTotNghiep: ko.observable(nn.TenLuanAn)
-              };
-          }));
+                GioiTinh: ko.observable(""),
+                NgaySinh: ko.observable(""),
+                HoTen: ko.observable(""),
+                LinhVuc: ko.observable(""),
+                ChuyenNganh: ko.observable(""),
+                HuongNghienCuu: ko.observable("</br></br>")
+            })
 
-          self.DeTaiNghienCuu = ko.observableArray(ko.utils.arrayMap(item.DeTaiNghienCuu || [{}, {}, {}], function (nn) {
-              return {
-                TT: ko.observable(nn.TT),
-                  TenDeTai: ko.observable(nn.TenDeTai),
-                  MaSoQuanLy: ko.observable(nn.MaSoCapQuanLy),
-                  ThoiGianThucHien: ko.observable(nn.ThoiGianThucHien),
-                  ChuNhiem: ko.observable(nn.ChuNhiemThamGia),
-                  NgayNghiemThu: ko.observable(nn.NgayNghiemThu),
-                  KetQua: ko.observable(nn.KetQua)
-              };
-          }));
+            self.NgoaiNgu = ko.observableArray([]);
 
-          self.ListHuongDan = ko.observableArray(ko.utils.arrayMap(item.ListHuongDan || [{}, {}, {}], function (nn) {
-              return {
-                  TT: ko.observable(nn.TT),
-                  TenSV: ko.observable(nn.TenSV),
-                  TenLuanAn: ko.observable(nn.TenLuanAn),
-                  NamTot: ko.observable(nn.NamTotNghiep),
-                  BacDaoTao: ko.observable(nn.BacDaoTao),
-                  SanPham: ko.observable(nn.SanPhamDeTai)
-              };
-          }));
+            self.ListThoiGianCongTac = ko.observableArray(ko.utils.arrayMap(item.ListThoiGianCongTac || [{}, {}, {}], function (nn) {
+                return {
+                    ThoiGian: ko.observable(nn.ThoiGian || ""),
+                    NoiCongTac: ko.observable(nn.NoiCongTac || ""),
+                    ChucVu: ko.observable(nn.ChucVu || "")
+                };
+            }));
 
-          self.ListSachQuocTe = ko.observableArray(ko.utils.arrayMap(item.SachXuatBanQuocTe || [{}, {}, {}], function (nn) {
-              return {
-                    TT: ko.observable(nn.TT),
-                  TenSach: ko.observable(nn.TenSach),
-                  SanPham: ko.observable(nn.SanPhamDeTai),
-                  NhaXuatBan: ko.observable(nn.NXB),
-                  NamXuatBan: ko.observable(nn.NamXuatBan),
-                  TacGia: ko.observable(nn.DongTacGia),
-                  ButDanh: ko.observable(nn.ButDanh)
-              };
-          }));
+            self.ListQuaTrinhDaoTao = ko.observableArray(ko.utils.arrayMap(item.ListQuaTrinhDaoTao || [{
+                Bac: "Đại học"
+            },
+            {
+                Bac: "Thạc sỹ"
+            },
+            {
+                Bac: "Tiến sỹ"
+            }], function (nn) {
+                return {
+                    Bac: ko.observable(nn.Bac || ""),
+                    ThoiGian: ko.observable(nn.ThoiGian || ""),
+                    NoiDaoTao: ko.observable(nn.NoiDaoTao || ""),
+                    ChuyenNganh: ko.observable(nn.ChuyenNganh || ""),
+                    TenLuanAnTotNghiep: ko.observable(nn.TenLuanAnTotNghiep || "")
+                };
+            }));
 
-          self.ListSachTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.SachXuatBanTrongNuoc || [{}, {}, {}], function (nn) {
-              return {
-                TT: ko.observable(nn.TT),
-                  TenSach: ko.observable(nn.TenSach),
-                  SanPham: ko.observable(nn.SanPhamDeTai),
-                  NhaXuatBan: ko.observable(nn.NXB),
-                  NamXuatBan: ko.observable(nn.NamXuatBan),
-                  TacGia: ko.observable(nn.DongTacGia),
-                  ButDanh: ko.observable(nn.ButDanh)
-              };
-          }));
+            self.ListDeTai = ko.observableArray(ko.utils.arrayMap(item.ListDeTai || [{}, {}, {}], function (nn) {
+                return {
+                    TenDeTai: ko.observable(nn.TenDeTai || ""),
+                    MaSoQuanLy: ko.observable(nn.MaSoQuanLy || ""),
+                    ThoiGianThucHien: ko.observable(nn.ThoiGianThucHien || ""),
+                    ChuNhiem: ko.observable(nn.ChuNhiem || ""),
+                    NgayNghiemThu: ko.observable(nn.NgayNghiemThu || ""),
+                    KetQua: ko.observable(nn.KetQua || "")
+                };
+            }));
 
-          self.ListTapChiQuocTe = ko.observableArray(ko.utils.arrayMap(item.TapChiQuocTe || [{}, {}, {}], function (nn) {
-              return {
-                TT: ko.observable(nn.TT),
-                TenBaiViet: ko.observable(nn.TenDeTai),
-                SanPham: ko.observable(nn.SanPhamDeTai),
-                SoHieu: ko.observable(nn.ISSN),
-                DiemIF: ko.observable(nn.IF)
-              };
-          }));
+            self.ListHuongDan = ko.observableArray(ko.utils.arrayMap(item.ListHuongDan || [{}, {}, {}], function (nn) {
+                return {
+                    TenSV: ko.observable(nn.TenSV || ""),
+                    TenLuanAn: ko.observable(nn.TenLuanAn || ""),
+                    NamTot: ko.observable(nn.NamTot || ""),
+                    BacDaoTao: ko.observable(nn.BacDaoTao || ""),
+                    SanPham: ko.observable(nn.SanPham || "")
+                };
+            }));
 
-          self.TapChiTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.TapChiTrongNuoc || [{}, {}, {}], function (nn) {
-              return {
-                  TenBaiViet: ko.observable(nn.TenDeTai),
-                  SanPhamDeTai: ko.observable(nn.SanPhamDeTai),
-                  ISSN: ko.observable(nn.ISSN),
-                  GhiChu: ko.observable(nn.GhiChu)
-              };
-          }));
+            self.ListSachQuocTe = ko.observableArray(ko.utils.arrayMap(item.ListSachQuocTe || [{}, {}, {}], function (nn) {
+                return {
+                    TenSach: ko.observable(nn.TenSach || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    NhaXuatBan: ko.observable(nn.NhaXuatBan || ""),
+                    NamXuatBan: ko.observable(nn.NamXuatBan || ""),
+                    TacGia: ko.observable(nn.TacGia || ""),
+                    ButDanh: ko.observable(nn.ButDanh || "")
+                };
+            }));
 
-          self.HoiNghiQuocTe = ko.observableArray(ko.utils.arrayMap(item.HoiNghiQuocTe || [{}, {}, {}], function (nn) {
-              return {
-                  TenDeTai: ko.observable(nn.TenDeTai),
-                  SanPhamDeTai: ko.observable(nn.SanPhamDeTai),
-                  ISSN: ko.observable(nn.ISSN),
-                  GhiChu: ko.observable(nn.GhiChu)
-              };
-          }));
+            self.ListSachTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.ListSachTrongNuoc || [{}, {}, {}], function (nn) {
+                return {
+                    TenSach: ko.observable(nn.TenSach || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    NhaXuatBan: ko.observable(nn.NhaXuatBan || ""),
+                    NamXuatBan: ko.observable(nn.NamXuatBan || ""),
+                    TacGia: ko.observable(nn.TacGia || ""),
+                    ButDanh: ko.observable(nn.ButDanh || "")
+                };
+            }));
 
-          self.HoiNghiTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.HoiNghiTrongNuoc || [{}, {}], function (nn) {
-              return {
-                  TenDeTai: ko.observable(nn.TenDeTai),
-                  SanPhamDeTai: ko.observable(nn.SanPhamDeTai),
-                  ISSN: ko.observable(nn.ISSN),
-                  GhiChu: ko.observable(nn.GhiChu)
-              };
-          }));
+            self.ListTapChiQuocTe = ko.observableArray(ko.utils.arrayMap(item.ListTapChiQuocTe || [{}, {}, {}], function (nn) {
+                return {
+                    TenBaiViet: ko.observable(nn.TenBaiViet || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    SoHieu: ko.observable(nn.SoHieu || ""),
+                    DiemIF: ko.observable(nn.DiemIF || "")
+                };
+            }));
 
-          self.GiaiThuongKHCN = ko.observableArray(ko.utils.arrayMap(item.GiaiThuongKHCN || [{}, {}], function (nn) {
-              return {
-                  Ten: ko.observable(nn.Ten),
-                  NoiDung: ko.observable(nn.NoiDung),
-                  NamCap: ko.observable(nn.NamCap),
-                  NoiCap: ko.observable(nn.NoiCap)
-              };
-          }));
+            self.ListTapChiTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.ListTapChiTrongNuoc || [{}, {}, {}], function (nn) {
+                return {
+                    TenBaiViet: ko.observable(nn.TenBaiViet || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    SoHieu: ko.observable(nn.SoHieu || ""),
+                    DiemIF: ko.observable(nn.DiemIF || "")
+                };
+            }));
 
-          self.ThamGiaHHKH = ko.observableArray(ko.utils.arrayMap(item.ThamGiaHHKH || [{}, {}, {}], function (nn) {
-              return {
-                  ThoiGian: ko.observable(nn.ThoiGian),
-                  TenHiepHoi: ko.observable(nn.TenHiepHoi),
-                  ChucDanh: ko.observable(nn.ChucDanh)
-              };
-          }));
+            self.ListHoiNghiQuocTe = ko.observableArray(ko.utils.arrayMap(item.ListHoiNghiQuocTe || [{}, {}, {}], function (nn) {
+                return {
+                    TenBaiViet: ko.observable(nn.TenBaiViet || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    SoHieu: ko.observable(nn.SoHieu || ""),
+                    DiemIF: ko.observable(nn.DiemIF || "")
+                };
+            }));
 
-          self.ThamGiaTTNC = ko.observableArray(ko.utils.arrayMap(item.ThamGiaTTNC || [{}, {}, {}], function (nn) {
-              return {
-                  ThoiGian: ko.observable(nn.ThoiGian),
-                  TenTTNC: ko.observable(nn.TenTTNC),
-                  NoiDungThamGia: ko.observable(nn.NoiDungThamGia)
-              };
-          }));
+            self.ListHoiNghiTrongNuoc = ko.observableArray(ko.utils.arrayMap(item.ListHoiNghiTrongNuoc || [{}, {}], function (nn) {
+                return {
+                    TenBaiViet: ko.observable(nn.TenBaiViet || ""),
+                    SanPham: ko.observable(nn.SanPham || ""),
+                    SoHieu: ko.observable(nn.SoHieu || ""),
+                    DiemIF: ko.observable(nn.DiemIF || "")
+                };
+            }));
 
-          self.HoatDongKhac = ko.observable(item.HoatDongKhac);
+            self.ListGiaiThuong = ko.observableArray(ko.utils.arrayMap(item.ListGiaiThuong || [{}, {}], function (nn) {
+                return {
+                    TenGiaiThuong: ko.observable(nn.TenGiaiThuong || ""),
+                    NoiDungGiaiThuong: ko.observable(nn.NoiDungGiaiThuong || ""),
+                    NamCap: ko.observable(nn.NamCap || ""),
+                    NoiCap: ko.observable(nn.NoiCap || "")
+                };
+            }));
 
-          self.addItem = function (name) {
-              if (self[name]) {
-                  var obj = {};
-                  switch (name) {
-                      case "ThoiGianCongTac":
-                          obj = {
-                              ThoiGian: ko.observable(""),
-                              NoiCongTac: ko.observable(""),
-                              ChucVu: ko.observable("")
-                          };
-                          break;
-                      case "DeTaiNghienCuu":
-                          obj = {
-                              TenDeTai: ko.observable(""),
-                              MaSoCapQuanLy: ko.observable(""),
-                              ThoiGianThucHien: ko.observable(""),
-                              ChuNhiemThamGia: ko.observable(""),
-                              NgayNghiemThu: ko.observable(""),
-                              KetQua: ko.observable("")
-                          };
-                          break;
-                      case "DeTaiHuongDanSinhVien":
-                          obj = {
-                              TenSV: ko.observable(""),
-                              TenLuanAn: ko.observable(""),
-                              NamTotNghiep: ko.observable(""),
-                              BacDaoTao: ko.observable(""),
-                              SanPhamDeTai: ko.observable("")
-                          };
-                          break;
-                      default:
-                          return false;
-                  }
-                  self[name].push(obj);
-              }
-          };
+            self.ListHiepHoiKhoaHoc = ko.observableArray(ko.utils.arrayMap(item.ListHiepHoiKhoaHoc || [{}, {}, {}], function (nn) {
+                return {
+                    ThoiGian: ko.observable(nn.ThoiGian || ""),
+                    TenHiepHoi: ko.observable(nn.TenHiepHoi || ""),
+                    ChucDanh: ko.observable(nn.ChucDanh || "")
+                };
+            }));
 
-          self.removeItem = function (name, index) {
-              if (self[name])
-                  var idx = parseInt(index);
-              self[name].splice(idx, 1);
-          };
+            self.ListTruongDaiHoc = ko.observableArray(ko.utils.arrayMap(item.ListTruongDaiHoc || [{}, {}, {}], function (nn) {
+                return {
+                    ThoiGian: ko.observable(nn.ThoiGian || ""),
+                    TenTruong: ko.observable(nn.TenTTNC || ""),
+                    NoiDungThamGia: ko.observable(nn.NoiDungThamGia || "")
+                };
+            }));
 
-          self.savedJson = ko.observable("");
-          self.save = function () {
-              self.savedJson(JSON.stringify(ko.toJS(self), null, 2));
-          };
+            self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
+
+            self.addItem = function (name) {
+                if (self[name]) {
+                    var obj = {};
+                    self[name].push(ko.observable(obj));
+                }
+            };
+
+            self.removeItem = function (name, index) {
+                if (self[name])
+                    var idx = parseInt(index);
+                self[name].splice(idx, 1);
+            };
+
+            self.savedJson = ko.observable("");
+            self.save = function () {
+                self.savedJson(JSON.stringify(ko.toJS(self || ""), null, 2));
+            };
         }
         this.model = new ObjModel(this.item);
         ko.applyBindings(this.model, document.getElementById("frmNhanSuLLKH"));

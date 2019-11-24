@@ -4,7 +4,7 @@ import { DeTaiDetailPage } from './de-tai-detail';
 
 @NgModule({
   declarations: [
-    DeTaiDetailPage,
+    DeTaiDetailPage
   ],
   imports: [
     IonicPageModule.forChild(DeTaiDetailPage),

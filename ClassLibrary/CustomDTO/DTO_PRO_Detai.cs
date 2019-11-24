@@ -19,8 +19,12 @@ namespace DTOModel
 
     public class DTO_PRO_DeTai_TrangThai
     {
+        public int Index { get; set; }
+        public int Type { get; set; }
         public string TrangThai { get; set; }
         public string TrangThaiCode { get; set; }
         public string FormCode { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

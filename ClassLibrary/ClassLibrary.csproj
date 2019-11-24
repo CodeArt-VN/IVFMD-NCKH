@@ -88,18 +88,18 @@
     <Compile Include="CustomDTO\DTO_CAT_HRCOConfig.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_LLKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_DeTai.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_LLKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_NCVKhac.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BenhNhan.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomDTO\DTO_CUS_RPT.cs" />
     <Compile Include="CustomDTO\DTO_Common.cs" />
     <Compile Include="CustomDTO\DTO_CUS_Version.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_SYLL.cs" />
     <Compile Include="CustomDTO\DTO_PRO_ThuyetMinhDeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_SAE.cs" />
     <Compile Include="CustomDTO\DTO_PRO_PhieuXemXetDaoDuc.cs" />
-    <Compile Include="CustomDTO\DTO_PRO_LLKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BangKiemLuaChonQuyTrinhXXDD.cs" />
-    <Compile Include="CustomDTO\DTO_PRO_SYLL.cs" />
     <Compile Include="CustomDTO\DTO_PRO_MauPhanTichDuLieu.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>

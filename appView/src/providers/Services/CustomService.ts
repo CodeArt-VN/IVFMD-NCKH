@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider } from '../Services/Services';
+import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider } from '../Services/Services';
 import { CommonServiceProvider } from '../CORE/common-service';
 import { APIList } from '../CORE/global-variable';
 import { SearchConfig } from './SearchConfig';
@@ -409,6 +409,26 @@ export class STAFF_NhanSu_LLKHProviderCustomProvider extends exService {
                 });
         });
     }
+}
+
+@Injectable()
+export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
+	constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+	getItemCustom(deTaiId) {
+		let that = this.commonService;
+		let apiPath = APIList.PRO_DeTai.getItemCustom;
+		return new Promise(function (resolve, reject) {
+			that.connect(apiPath.method, apiPath.url(deTaiId), null).toPromise()
+				.then(data => {
+					resolve(data);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
 }
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {

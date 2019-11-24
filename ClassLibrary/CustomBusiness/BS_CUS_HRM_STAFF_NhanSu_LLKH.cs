@@ -72,7 +72,7 @@ namespace BaseBusiness
                 //New
                 query = new DTO_CUS_HRM_STAFF_NhanSu_LLKH
                 {
-                    ID = nhanSuId
+                    IDNhanSu = nhanSuId
                 };
 
                 query.ListNgoaiNgu = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu>();

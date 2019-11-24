@@ -1,3 +1,55 @@
 page-nhan-su-llkh {
-
+    .inline {
+        display: inline-block;
+        width: 100%;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .text-justify {
+        text-align: justify;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .text-bold {
+        font-weight: bold;
+    }
+    .box {
+        display: table;
+        width: 100%;
+        margin: 0;
+    }
+    .tab-1 {
+        margin-left: 1em;
+    }
+    .box>.box-title {
+        position: absolute;
+    }
+    .box>* {
+        display: table-cell;
+        vertical-align: top;
+        padding: 3px;
+    }
+    .box>[contenteditable="true"]:hover {
+        outline: 1px dashed #44a9eb;
+    }
+    .box>[contenteditable="true"]:focus {
+        outline: 1px dashed #44a9eb;
+    }
+    #frmLLKHCNDT table {
+        border-collapse: collapse;
+    }
+    #frmLLKHCNDT table tr {
+        page-break-inside: avoid;
+        page-break-before: auto;
+    }
+    #frmLLKHCNDT table tr.table-header {
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 600;
+    }
+    #frmLLKHCNDT table tr.table-header i {
+        font-weight: normal;
+    }
 }

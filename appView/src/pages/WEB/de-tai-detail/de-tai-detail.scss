@@ -1,10 +1,13 @@
 page-de-tai-detail {
     @import '../../../theme/grid.scss';
     .head-bg {
-        background-color: #007DC5;
+        background-color: #207895;
         .head-title {
             text-transform: uppercase;
             font-weight: normal;
+            .toolbar-title {
+                color: white !important;
+            }
         }
         @media(min-width: map-get($grid, md)) {
             padding-top: 0;
@@ -22,7 +25,7 @@ page-de-tai-detail {
                 //margin-top: -49px;
             }
             .head-title {
-                display: none;
+                //display: none;
             }
         }
     }
@@ -194,6 +197,9 @@ page-de-tai-detail {
                 font-size: 13px;
                 line-height: 20px;
                 height: 60px;
+            }
+            button {
+                background-color: #207895;
             }
         }
     }

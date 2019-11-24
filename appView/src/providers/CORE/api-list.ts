@@ -896,6 +896,10 @@ export var APIListBase = {
             method: "GET",
             url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
         },
+        getItemCustom:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/DeTai/get_PRO_DeTaiCustom/") + id} 
+        },
         putItem:{
             method: "PUT",
             url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
