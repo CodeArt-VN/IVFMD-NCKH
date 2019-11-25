@@ -86,21 +86,21 @@ export class NhanSuLLKHModalPage extends DetailPage {
             }
         });
         $(".ptable").on("click", ".remove", function (e) {
-            var target = window.getSelection().baseNode;
-            var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-            if (sconf != null && (target.parentElement.tagName == "TD" || target.tagName == "TD")) {
-                try {
-                    var conf = JSON.parse(sconf);
-                    if (conf.add) {
-                        var tr = $(target).closest('tr');
-                        var context = ko.contextFor(this);
-                        context.$root.removeItem(conf.name, tr.attr('index'));
-                    }
-                    return false;
-                } catch (e) {
-                    return false;
-                }
-            }
+            // var target = window.getSelection().baseNode;
+            // var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+            // if (sconf != null && (target.parentElement.tagName == "TD" || target.tagName == "TD")) {
+            //     try {
+            //         var conf = JSON.parse(sconf);
+            //         if (conf.add) {
+            //             var tr = $(target).closest('tr');
+            //             var context = ko.contextFor(this);
+            //             context.$root.removeItem(conf.name, tr.attr('index'));
+            //         }
+            //         return false;
+            //     } catch (e) {
+            //         return false;
+            //     }
+            // }
         });
 
         $(".ptable").mouseenter(function (event) {
