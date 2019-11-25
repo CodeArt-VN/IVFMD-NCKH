@@ -6,7 +6,8 @@ import { STAFF_NhanSu_LLKHProviderCustomProvider } from '../../../providers/Serv
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
-import * as $ from 'jquery';
+import 'jquery.tmpl';
+declare var $ : any;
 import * as ko from 'knockout';
 @IonicPage({ name: 'page-nhan-su-llkh-modal', priority: 'high', defaultHistory: ['page-nhan-su-llkh-modal'] })
 @Component({
@@ -53,7 +54,6 @@ export class NhanSuLLKHModalPage extends DetailPage {
     }
 
     bindData() {
-        debugger
         $("#frmNhanSuLLKH").empty();
         $(this.item.HTML).appendTo("#frmNhanSuLLKH");
         let id = this.item.ID;
@@ -86,36 +86,32 @@ export class NhanSuLLKHModalPage extends DetailPage {
             }
         });
         $(".ptable").on("click", ".remove", function (e) {
-            // var target = window.getSelection().baseNode;
-            // var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-            // if (sconf != null && (target.parentElement.tagName == "TD" || target.tagName == "TD")) {
-            //     try {
-            //         var conf = JSON.parse(sconf);
-            //         if (conf.add) {
-            //             var tr = $(target).closest('tr');
-            //             var context = ko.contextFor(this);
-            //             context.$root.removeItem(conf.name, tr.attr('index'));
-            //         }
-            //         return false;
-            //     } catch (e) {
-            //         return false;
-            //     }
-            // }
+            var target = window.getSelection().anchorNode;
+            var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+            if (sconf != null && (target.parentElement.tagName == "TD")) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.add) {
+                        var tr = $(target).closest('tr');
+                        var context = ko.contextFor(this);
+                        context.$root.removeItem(conf.name, tr.attr('index'));
+                    }
+                    return false;
+                } catch (e) {
+                    return false;
+                }
+            }
         });
 
         $(".ptable").mouseenter(function (event) {
-            var sconf = $(this).attr('conf');
+            var sconf = this.attributes["conf"].value;
             if (sconf != null) {
-                try {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
                         var t = $(this).find(".group_controls");
-                        //if (t.length == 0)
-                            //$("#hvtemplate").tmpl().appendTo($(this));
+                        if (t.length == 0)
+                            $("#hvtemplate").tmpl().appendTo($(this));
                     }
-                } catch (e) {
-
-                }
             }
         }).mouseleave(function (event) {
             var t = $(this).find(".group_controls");
