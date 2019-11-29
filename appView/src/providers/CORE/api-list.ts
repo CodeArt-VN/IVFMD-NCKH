@@ -1179,7 +1179,41 @@ export var APIListBase = {
         getItemCustom: {
             method: "GET",
             url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/get_CUS_HRM_STAFF_NhanSu_LLKH/") + idNhanSu }
-        }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/save_CUS_HRM_STAFF_NhanSu_LLKH")}
+        },
+    },
+    PRO_LLKH:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/LLKH")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/LLKH/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/LLKH/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/LLKH")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/LLKH/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/LLKH/get_PRO_LLKH/") + idDeTai + "/" + idNhanSu }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/LLKH/save_PRO_LLKH")}
+        },
     },
 };
 

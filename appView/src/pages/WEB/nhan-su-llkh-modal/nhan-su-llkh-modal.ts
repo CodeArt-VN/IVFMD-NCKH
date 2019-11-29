@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { STAFF_NhanSu_LLKHProviderCustomProvider } from '../../../providers/Services/CustomService';
+import { STAFF_NhanSu_LLKHProviderCustomProvider, PRO_LLKHCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import 'jquery.tmpl';
-declare var $ : any;
+declare var $: any;
 import * as ko from 'knockout';
 @IonicPage({ name: 'page-nhan-su-llkh-modal', priority: 'high', defaultHistory: ['page-nhan-su-llkh-modal'] })
 @Component({
@@ -16,9 +16,11 @@ import * as ko from 'knockout';
 })
 export class NhanSuLLKHModalPage extends DetailPage {
     idNhanSu: any;
+    idDetai: any;
     model: any;
     constructor(
         public currentProvider: STAFF_NhanSu_LLKHProviderCustomProvider,
+        public proLLKHProvider: PRO_LLKHCustomProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -32,16 +34,35 @@ export class NhanSuLLKHModalPage extends DetailPage {
         if (this.idNhanSu && commonService.isNumeric(this.idNhanSu)) {
             this.idNhanSu = parseInt(this.idNhanSu, 10);
         }
+
+        this.idDetai = navParams.get('idDetai');
+        if (this.idDetai && commonService.isNumeric(this.idDetai)) {
+            this.idDetai = parseInt(this.idDetai, 10);
+        }
+        else {
+            this.idDetai = -1;
+        }
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idNhanSu).then((ite) => {
-            this.item = ite;
-            this.loadedData();
-        }).catch((data) => {
-            this.item.ID = 0;
-            this.loadedData();
-        });
+        if (this.idDetai > 0){
+            this.proLLKHProvider.getItemCustom(this.idDetai, this.idNhanSu).then((ite) => {
+                this.item = ite;
+                this.loadedData();
+            }).catch((data) => {
+                this.item.ID = 0;
+                this.loadedData();
+            });
+        }
+        else {
+            this.currentProvider.getItemCustom(this.idNhanSu).then((ite) => {
+                this.item = ite;
+                this.loadedData();
+            }).catch((data) => {
+                this.item.ID = 0;
+                this.loadedData();
+            });
+        }
     }
 
     loadedData() {
@@ -104,14 +125,18 @@ export class NhanSuLLKHModalPage extends DetailPage {
         });
 
         $(".ptable").mouseenter(function (event) {
-            var sconf = this.attributes["conf"].value;
-            if (sconf != null) {
+            try {
+                var sconf = this.attributes["conf"].value;
+                if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
                         var t = $(this).find(".group_controls");
                         if (t.length == 0)
                             $("#hvtemplate").tmpl().appendTo($(this));
                     }
+                }
+            } catch (e) {
+                return false;
             }
         }).mouseleave(function (event) {
             var t = $(this).find(".group_controls");
@@ -120,37 +145,38 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
         var ObjModel = function (item) {
             var self = this;
-            self.ThongTinChung = ko.observable({
-                DienThoai_CaNhan: ko.observable(""),
-                DienThoai_CoQuan: ko.observable(""),
-                DiaChi_CoQuan: ko.observable(""),
-                DiaChi_CaNhan: ko.observable(""),
-                Email_CoQuan: ko.observable(""),
-                Email_CaNhan: ko.observable(""),
+            self.ID = item.ID;
+            self.IDNhanSu = item.IDNhanSu;
+            self.IDDetai = item.IDDetai;
+            self.DienThoai_CaNhan = ko.observable(item.DienThoai_CaNhan || "");
+            self.DienThoai_CoQuan = ko.observable(item.DienThoai_CoQuan || "");
+            self.DiaChi_CoQuan = ko.observable(item.DiaChi_CoQuan || "");
+            self.DiaChi_CaNhan = ko.observable(item.DiaChi_CaNhan || "");
+            self.Email_CoQuan = ko.observable(item.Email_CoQuan || "");
+            self.Email_CaNhan = ko.observable(item.Email_CaNhan || "");
 
-                NamPhongHocHam: ko.observable(""),
-                HocHam: ko.observable(""),
-                HocVi: ko.observable(""),
-                HocViThacSy: ko.observable(""),
-                NamHocViThacSy: ko.observable(""),
-                HocViTienSy: ko.observable(""),
-                NamHocViTienSy: ko.observable(""),
+            self.NamPhongHocHam = ko.observable(item.NamPhongHocHam || "");
+            self.HocHam = ko.observable(item.HocHam || "");
+            self.HocVi = ko.observable(item.HocVi || "");
+            self.HocViThacSy = ko.observable(item.HocViThacSy || "");
+            self.NamHocViThacSy = ko.observable(item.NamHocViThacSy || "");
+            self.HocViTienSy = ko.observable(item.HocViTienSy || "");
+            self.NamHocViTienSy = ko.observable(item.NamHocViTienSy || "");
 
-                CMND: ko.observable(""),
-                CMND_NoiCap: ko.observable(""),
-                CMND_NgayCap: ko.observable(""),
+            self.CMND = ko.observable(item.CMND || "");
+            self.CMND_NoiCap = ko.observable(item.CMND_NoiCap || "");
+            self.CMND_NgayCap = ko.observable(item.CMND_NgayCap || "");
 
-                ChucVu: ko.observable(""),
-                PhongKhoa: ko.observable(""),
-                TruongVien: ko.observable(""),
+            self.ChucVu = ko.observable(item.ChucVu || "");
+            self.PhongKhoa = ko.observable(item.PhongKhoa || "");
+            self.TruongVien = ko.observable(item.TruongVien || "");
 
-                GioiTinh: ko.observable(""),
-                NgaySinh: ko.observable(""),
-                HoTen: ko.observable(""),
-                LinhVuc: ko.observable(""),
-                ChuyenNganh: ko.observable(""),
-                HuongNghienCuu: ko.observable("</br></br>")
-            })
+            self.GioiTinh = ko.observable(item.GioiTinh || "");
+            self.NgaySinh = ko.observable(item.NgaySinh || "");
+            self.HoTen = ko.observable(item.HoTen || item.HoTen || "");
+            self.LinhVuc = ko.observable(item.LinhVuc || "");
+            self.ChuyenNganh = ko.observable(item.ChuyenNganh || "");
+            self.HuongNghienCuu = ko.observable(item.HuongNghienCuu || "");
 
             self.NgoaiNgu = ko.observableArray([]);
 
@@ -303,6 +329,10 @@ export class NhanSuLLKHModalPage extends DetailPage {
             self.save = function () {
                 self.savedJson(JSON.stringify(ko.toJS(self || ""), null, 2));
             };
+
+            self.getItem = function () {
+                return ko.toJS(self);
+            };
         }
         this.model = new ObjModel(this.item);
         ko.applyBindings(this.model, document.getElementById("frmNhanSuLLKH"));
@@ -313,18 +343,34 @@ export class NhanSuLLKHModalPage extends DetailPage {
         item.HTML = $("#frmNhanSuLLKH").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.save(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
+            if (this.idDetai > 0){
+                this.proLLKHProvider.saveCustom(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            }
+            else {
+                this.currentProvider.saveCustom(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            }
         })
     };
 }

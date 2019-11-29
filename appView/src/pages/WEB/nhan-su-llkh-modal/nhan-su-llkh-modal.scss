@@ -1,4 +1,4 @@
-page-nhan-su-llkh {
+nhan-su-llkh-modal {
     .inline {
         display: inline-block;
         width: 100%;
@@ -19,37 +19,39 @@ page-nhan-su-llkh {
         display: table;
         width: 100%;
         margin: 0;
+        .box-title {
+            position: absolute;
+        }
+        * {
+            display: table-cell;
+            vertical-align: top;
+            padding: 3px;
+        }
+        [contenteditable="true"]:hover {
+            outline: 1px dashed #44a9eb;
+        }
+        [contenteditable="true"]:focus {
+            outline: 1px dashed #44a9eb;
+        }
     }
     .tab-1 {
         margin-left: 1em;
     }
-    .box>.box-title {
-        position: absolute;
-    }
-    .box>* {
-        display: table-cell;
-        vertical-align: top;
-        padding: 3px;
-    }
-    .box>[contenteditable="true"]:hover {
-        outline: 1px dashed #44a9eb;
-    }
-    .box>[contenteditable="true"]:focus {
-        outline: 1px dashed #44a9eb;
-    }
-    #frmLLKHCNDT table {
+    table {
         border-collapse: collapse;
-    }
-    #frmLLKHCNDT table tr {
-        page-break-inside: avoid;
-        page-break-before: auto;
-    }
-    #frmLLKHCNDT table tr.table-header {
-        text-align: center;
-        vertical-align: middle;
-        font-weight: 600;
-    }
-    #frmLLKHCNDT table tr.table-header i {
-        font-weight: normal;
+        tr {
+            page-break-inside: avoid;
+            page-break-before: auto;
+        }
+        .table-header {
+            td {
+                text-align: center;
+                vertical-align: middle;
+                font-weight: 600;
+            }
+            i {
+                font-weight: normal;
+            }
+        }
     }
 }

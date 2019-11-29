@@ -36,6 +36,24 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_LLKH);
         }
 
+        [Route("get_PRO_LLKH/{idDeTai:int}/{idNhanSu:int}")]
+        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_LLKH))]
+        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu)
+        {
+            DTO_PRO_LLKH tbl_PRO_LLKH = BS_PRO_LLKH.get_PRO_LLKHCustom(db, idDeTai, idNhanSu);
+            if (tbl_PRO_LLKH.ID == 0)
+            {
+                string html = "";
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+                tbl_PRO_LLKH.HTML = html;
+            }
+
+            return Ok(tbl_PRO_LLKH);
+        }
+
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, DTO_PRO_LLKH tbl_PRO_LLKH)
@@ -93,6 +111,25 @@ namespace API.Controllers.PRO
 				return StatusCode(HttpStatusCode.NoContent);
 			}
             return Conflict();
+        }
+
+        [Route("save_PRO_LLKH")]
+        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_LLKH))]
+        public IHttpActionResult Save(DTO_PRO_LLKH tbl_PRO_LLKH)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_PRO_LLKH result = BS_PRO_LLKH.save_PRO_LLKH(db, tbl_PRO_LLKH, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
     }
 }

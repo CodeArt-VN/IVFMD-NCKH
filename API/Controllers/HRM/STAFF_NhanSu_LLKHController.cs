@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using ClassLibrary;
 using DTOModel;
 using BaseBusiness;
+using API.Models;
+using Microsoft.AspNet.Identity;
 
 namespace API.Controllers.HRM
 {
@@ -85,6 +87,8 @@ namespace API.Controllers.HRM
                 return BadRequest(ModelState);
             }
 
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            tbl_CUS_HRM_STAFF_NhanSu_LLKH.IDNhanSu = user.StaffID;
             DTO_CUS_HRM_STAFF_NhanSu_LLKH result = BS_CUS_HRM_STAFF_NhanSu_LLKH.post_CUS_HRM_STAFF_NhanSu_LLKH(db, tbl_CUS_HRM_STAFF_NhanSu_LLKH, Username);
 			
 
@@ -111,6 +115,27 @@ namespace API.Controllers.HRM
 				return StatusCode(HttpStatusCode.NoContent);
 			}
             return Conflict();
+        }
+
+        [Route("save_CUS_HRM_STAFF_NhanSu_LLKH")]
+        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_LLKH))]
+        public IHttpActionResult Save(DTO_CUS_HRM_STAFF_NhanSu_LLKH tbl_CUS_HRM_STAFF_NhanSu_LLKH)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            tbl_CUS_HRM_STAFF_NhanSu_LLKH.IDNhanSu = user.StaffID;
+            DTO_CUS_HRM_STAFF_NhanSu_LLKH result = BS_CUS_HRM_STAFF_NhanSu_LLKH.save_CUS_HRM_STAFF_NhanSu_LLKH(db, tbl_CUS_HRM_STAFF_NhanSu_LLKH, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
     }
 }

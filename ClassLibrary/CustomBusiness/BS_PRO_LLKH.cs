@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace BaseBusiness
 {
-    public static partial class BS_CUS_HRM_STAFF_NhanSu_LLKH
+    public static partial class BS_PRO_LLKH
     {
-        public static DTO_CUS_HRM_STAFF_NhanSu_LLKH get_CUS_HRM_STAFF_NhanSu_LLKHByNhanSu(AppEntities db, int nhanSuId)
+        public static DTO_PRO_LLKH get_PRO_LLKHCustom(AppEntities db, int idDeTai, int nhanSuId)
         {
-            var query = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Where(d => d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_CUS_HRM_STAFF_NhanSu_LLKH
+            var query = db.tbl_PRO_LLKH.Where(d => d.IDDetai == idDeTai && d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_LLKH
             {
                 ID = s.ID,
+                IDDetai = s.IDDetai,
                 IDNhanSu = s.IDNhanSu,
                 ImageURL = s.ImageURL,
                 HoTen = s.HoTen,
@@ -69,102 +70,161 @@ namespace BaseBusiness
 
             if (query == null)
             {
-                //New
-                query = new DTO_CUS_HRM_STAFF_NhanSu_LLKH
+                query = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Where(d => d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_LLKH
                 {
-                    IDNhanSu = nhanSuId
+                    ID = s.ID,
+                    IDNhanSu = s.IDNhanSu,
+                    ImageURL = s.ImageURL,
+                    HoTen = s.HoTen,
+                    GioiTinh = s.GioiTinh,
+                    NgaySinh = s.NgaySinh,
+                    TruongVien = s.TruongVien,
+                    PhongKhoa = s.PhongKhoa,
+                    ChucVu = s.ChucVu,
+                    CMND = s.CMND,
+                    CMND_NgayCap = s.CMND_NgayCap,
+                    CMND_NoiCap = s.CMND_NoiCap,
+                    HocVi = s.HocVi,
+                    HocHam = s.HocHam,
+                    DiaChi_CoQuan = s.DiaChi_CoQuan,
+                    DiaChi_CaNhan = s.DiaChi_CaNhan,
+                    DienThoai_CoQuan = s.DienThoai_CoQuan,
+                    DienThoai_CaNhan = s.DienThoai_CaNhan,
+                    Email_CoQuan = s.Email_CoQuan,
+                    Email_CaNhan = s.Email_CaNhan,
+                    TaiKhoan_MST = s.TaiKhoan_MST,
+                    TaiKhoan_STK = s.TaiKhoan_STK,
+                    TaiKhoan_NganHang = s.TaiKhoan_NganHang,
+                    LinhVucChuyenMon = s.LinhVucChuyenMon,
+                    LinhVuc = s.LinhVuc,
+                    ChuyenNganh = s.ChuyenNganh,
+                    HuongNghienCuu = s.HuongNghienCuu,
+                    HoatDongKhac = s.HoatDongKhac,
+                    JSON_NgoaiNgu = s.JSON_NgoaiNgu,
+                    JSON_ThoiGianCongTac = s.JSON_ThoiGianCongTac,
+                    JSON_QuaTrinhDaoTao = s.JSON_QuaTrinhDaoTao,
+                    JSON_DeTai = s.JSON_DeTai,
+                    JSON_HuongDan = s.JSON_HuongDan,
+                    JSON_CongTrinhDaCongBo_SachQuocTe = s.JSON_CongTrinhDaCongBo_SachQuocTe,
+                    JSON_CongTrinhDaCongBo_SachTrongNuoc = s.JSON_CongTrinhDaCongBo_SachTrongNuoc,
+                    JSON_CongTrinhDaCongBo_TapChiQuocTe = s.JSON_CongTrinhDaCongBo_TapChiQuocTe,
+                    JSON_CongTrinhDaCongBo_TapChiTrongNuoc = s.JSON_CongTrinhDaCongBo_TapChiTrongNuoc,
+                    JSON_CongTrinhDaCongBo_HoiNghiQuocTe = s.JSON_CongTrinhDaCongBo_HoiNghiQuocTe,
+                    JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc = s.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc,
+                    JSON_GiaiThuong = s.JSON_GiaiThuong,
+                    JSON_ThongTinKhac_HiepHoiKhoaHoc = s.JSON_ThongTinKhac_HiepHoiKhoaHoc,
+                    JSON_ThongTinKhac_TruongDaiHoc = s.JSON_ThongTinKhac_TruongDaiHoc,
+                    HTML = s.HTML,
+                    IsDisabled = s.IsDisabled,
+                    IsDeleted = s.IsDeleted,
+                    CreatedDate = s.CreatedDate,
+                    CreatedBy = s.CreatedBy,
+                    ModifiedDate = s.ModifiedDate,
+                    ModifiedBy = s.ModifiedBy,
+                }).FirstOrDefault();
+                query.IDDetai = idDeTai;
+            }
+
+            if (query == null)
+            {
+                //New
+                query = new DTO_PRO_LLKH
+                {
+                    IDNhanSu = nhanSuId,
+                    IDDetai = idDeTai
                 };
 
-                query.ListNgoaiNgu = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu() };
-                query.ListThoiGianCongTac = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac { } };
-                query.ListQuaTrinhDaoTao = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_QuaTrinhDaoTao>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_QuaTrinhDaoTao() };
-                query.ListDeTai = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_DeTai>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_DeTai() { } };
-                query.ListHuongDan = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HuongDan>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_HuongDan() };
-                query.ListSachQuocTe = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach() };
-                query.ListSachTrongNuoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach() };
-                query.ListTapChiQuocTe = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi() };
-                query.ListTapChiTrongNuoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi() };
-                query.ListHoiNghiQuocTe = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi() };
-                query.ListHoiNghiTrongNuoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi() };
-                query.ListGiaiThuong = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong() };
-                query.ListHiepHoiKhoaHoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc() };
-                query.ListTruongDaiHoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc() };
+                query.ListNgoaiNgu = new List<DTO_PRO_LLKH_NgoaiNgu>() { new DTO_PRO_LLKH_NgoaiNgu() };
+                query.ListThoiGianCongTac = new List<DTO_PRO_LLKH_ThoiGianCongTac>() { new DTO_PRO_LLKH_ThoiGianCongTac { } };
+                query.ListQuaTrinhDaoTao = new List<DTO_PRO_LLKH_QuaTrinhDaoTao>() { new DTO_PRO_LLKH_QuaTrinhDaoTao() };
+                query.ListDeTai = new List<DTO_PRO_LLKH_DeTai>() { new DTO_PRO_LLKH_DeTai() { } };
+                query.ListHuongDan = new List<DTO_PRO_LLKH_HuongDan>() { new DTO_PRO_LLKH_HuongDan() };
+                query.ListSachQuocTe = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_Sach>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_Sach() };
+                query.ListSachTrongNuoc = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_Sach>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_Sach() };
+                query.ListTapChiQuocTe = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi() };
+                query.ListTapChiTrongNuoc = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi() };
+                query.ListHoiNghiQuocTe = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi() };
+                query.ListHoiNghiTrongNuoc = new List<DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi>() { new DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi() };
+                query.ListGiaiThuong = new List<DTO_PRO_LLKH_GiaiThuong>() { new DTO_PRO_LLKH_GiaiThuong() };
+                query.ListHiepHoiKhoaHoc = new List<DTO_PRO_LLKH_ThongTinKhac_HiepHoiKhoaHoc>() { new DTO_PRO_LLKH_ThongTinKhac_HiepHoiKhoaHoc() };
+                query.ListTruongDaiHoc = new List<DTO_PRO_LLKH_ThongTinKhac_TruongDaiHoc>() { new DTO_PRO_LLKH_ThongTinKhac_TruongDaiHoc() };
             }
             else
             {
                 //Edit
                 if (!string.IsNullOrWhiteSpace(query.JSON_NgoaiNgu))
                 {
-                    query.ListNgoaiNgu = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu>>(query.JSON_NgoaiNgu);
+                    query.ListNgoaiNgu = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_NgoaiNgu>>(query.JSON_NgoaiNgu);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_ThoiGianCongTac))
                 {
-                    query.ListThoiGianCongTac = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac>>(query.JSON_ThoiGianCongTac);
+                    query.ListThoiGianCongTac = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_ThoiGianCongTac>>(query.JSON_ThoiGianCongTac);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_QuaTrinhDaoTao))
                 {
-                    query.ListQuaTrinhDaoTao = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_QuaTrinhDaoTao>>(query.JSON_QuaTrinhDaoTao);
+                    query.ListQuaTrinhDaoTao = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_QuaTrinhDaoTao>>(query.JSON_QuaTrinhDaoTao);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_DeTai))
                 {
-                    query.ListDeTai = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_DeTai>>(query.JSON_DeTai);
+                    query.ListDeTai = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_DeTai>>(query.JSON_DeTai);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_HuongDan))
                 {
-                    query.ListHuongDan = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HuongDan>>(query.JSON_HuongDan);
+                    query.ListHuongDan = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_HuongDan>>(query.JSON_HuongDan);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_SachQuocTe))
                 {
-                    query.ListSachQuocTe = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach>>(query.JSON_CongTrinhDaCongBo_SachQuocTe);
+                    query.ListSachQuocTe = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_Sach>>(query.JSON_CongTrinhDaCongBo_SachQuocTe);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_SachTrongNuoc))
                 {
-                    query.ListSachTrongNuoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_Sach>>(query.JSON_CongTrinhDaCongBo_SachTrongNuoc);
+                    query.ListSachTrongNuoc = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_Sach>>(query.JSON_CongTrinhDaCongBo_SachTrongNuoc);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_TapChiQuocTe))
                 {
-                    query.ListTapChiQuocTe = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi>>(query.JSON_CongTrinhDaCongBo_TapChiQuocTe);
+                    query.ListTapChiQuocTe = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi>>(query.JSON_CongTrinhDaCongBo_TapChiQuocTe);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_TapChiTrongNuoc))
                 {
-                    query.ListTapChiTrongNuoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_TapChi>>(query.JSON_CongTrinhDaCongBo_TapChiTrongNuoc);
+                    query.ListTapChiTrongNuoc = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_TapChi>>(query.JSON_CongTrinhDaCongBo_TapChiTrongNuoc);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_HoiNghiQuocTe))
                 {
-                    query.ListHoiNghiQuocTe = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi>>(query.JSON_CongTrinhDaCongBo_HoiNghiQuocTe);
+                    query.ListHoiNghiQuocTe = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi>>(query.JSON_CongTrinhDaCongBo_HoiNghiQuocTe);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc))
                 {
-                    query.ListHoiNghiTrongNuoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi>>(query.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc);
+                    query.ListHoiNghiTrongNuoc = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_CongTrinhDaCongBo_HoiNghi>>(query.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_GiaiThuong))
                 {
-                    query.ListGiaiThuong = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong>>(query.JSON_GiaiThuong);
+                    query.ListGiaiThuong = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_GiaiThuong>>(query.JSON_GiaiThuong);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_ThongTinKhac_HiepHoiKhoaHoc))
                 {
-                    query.ListHiepHoiKhoaHoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc>>(query.JSON_ThongTinKhac_HiepHoiKhoaHoc);
+                    query.ListHiepHoiKhoaHoc = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_ThongTinKhac_HiepHoiKhoaHoc>>(query.JSON_ThongTinKhac_HiepHoiKhoaHoc);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_ThongTinKhac_TruongDaiHoc))
                 {
-                    query.ListTruongDaiHoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc>>(query.JSON_ThongTinKhac_TruongDaiHoc);
+                    query.ListTruongDaiHoc = JsonConvert.DeserializeObject<List<DTO_PRO_LLKH_ThongTinKhac_TruongDaiHoc>>(query.JSON_ThongTinKhac_TruongDaiHoc);
                 }
             }
 
             return query;
         }
 
-        public static DTO_CUS_HRM_STAFF_NhanSu_LLKH save_CUS_HRM_STAFF_NhanSu_LLKH(AppEntities db, DTO_CUS_HRM_STAFF_NhanSu_LLKH item, string Username)
+        public static DTO_PRO_LLKH save_PRO_LLKH(AppEntities db, DTO_PRO_LLKH item, string Username)
         {
-            var dbitem = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Find(item.ID);
+            var dbitem = db.tbl_PRO_LLKH.Find(item.ID);
             if (dbitem == null)
             {
-                dbitem = new tbl_CUS_HRM_STAFF_NhanSu_LLKH();
+                dbitem = new tbl_PRO_LLKH();
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
-                db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Add(dbitem);
+                db.tbl_PRO_LLKH.Add(dbitem);
             }
-            
+
+            dbitem.IDDetai = item.IDDetai;
             dbitem.IDNhanSu = item.IDNhanSu;
             dbitem.ImageURL = item.ImageURL;
             dbitem.HoTen = item.HoTen;

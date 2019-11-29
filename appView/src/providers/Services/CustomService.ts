@@ -408,7 +408,53 @@ export class STAFF_NhanSu_LLKHProviderCustomProvider extends exService {
                     reject(err);
                 });
         });
+	}
+
+	saveCustom(item) {
+		let that = this.commonService;
+        let apiPath = APIList.STAFF_NhanSu_LLKH.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
+}
+
+@Injectable()
+export class PRO_LLKHCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_LLKH, SearchConfig.getSearchFields('PRO_LLKH'), commonService);
     }
+    getItemCustom(idDeTai, idNhanSu) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_LLKH.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+
+	saveCustom(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_LLKH.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
 }
 
 @Injectable()
