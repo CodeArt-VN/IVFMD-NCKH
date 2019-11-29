@@ -98,7 +98,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
                         var context = ko.contextFor(this);
-                        context.$root.addItem(conf.name, conf.newObject);
+                        context.$root.addItem(conf.name, conf.props);
                     }
                     return false;
                 } catch (e) {
@@ -110,7 +110,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
         $(".ptable").on("click", ".remove", function (e) {
             var target = window.getSelection().anchorNode;
             var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-            if (sconf != null && (target.parentElement.tagName == "TD")) {
+            if (sconf != null && (target.tagName == "TD" || target.parentElement.tagName == "TD")) {
                 try {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
@@ -322,14 +322,18 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
 
-            self.addItem = function (name, newObject) {
+            self.addItem = function (name, props) {
                 if (self[name]) {
-                    var obj = newObject || {};
+                    var obj = {};
+                    $.each(props || [], function (i, o) {
+                        obj[o] = ko.observable("");
+                    })
                     self[name].push(ko.observable(obj));
                 }
             };
 
             self.removeItem = function (name, index) {
+                debugger
                 if (self[name])
                     var idx = parseInt(index);
                 self[name].splice(idx, 1);
