@@ -62,7 +62,7 @@ page-de-tai-detail {
         bottom: auto !important;
         margin-top: 12px;
         @media(min-width: map-get($grid, md)) {
-            margin-top: calc(3vh + 70px);
+            //margin-top: calc(3vh + 70px);
             padding-left: 16px;
             // @media(min-height: 400px) {
             //     margin-top: 15vh;
@@ -365,5 +365,8 @@ page-de-tai-detail {
         --border-radius: 0 100px 100px 0;
         color: white !important;
         font-size: 31px;
+    }
+    .header-button {
+        padding: 0 20px;
     }
 }

@@ -58,7 +58,7 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_DeTai);
         }
 
-        [Route("updateStatus_PRO_DeTai/{id:int}")]
+        [Route("updateStatus_PRO_DeTai/{id:int}/{actionCode}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateStatus(int id, string actionCode)
         {

@@ -1,16 +1,20 @@
 <ion-header no-border class="head-bg">
-    <div class="emptyzone">
+
+    <ion-buttons start>
+        <button ion-button icon-only class="back-btn" (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+    <ion-title class="head-title" color="light">{{item.TenTiengViet}}</ion-title>
+    <div class="emptyzone" style="height:300px">
         <div class="swiper-pagination">
             <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}" (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index + 1}} <span
                         class="title">{{i.shortTitle}}</span></span>
 
         </div>
     </div>
-    <ion-buttons start>
-        <button ion-button icon-only class="back-btn" (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
-    </ion-buttons>
-    <ion-title class="head-title" color="light">{{item.TenTiengViet}}</ion-title>
-    <div class="emptyzone"></div>
+    <div class="emptyzone header-button">
+        <button *ngIf="pageIndex==0" ng-disabled="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
+        <button *ngIf="pageIndex==0" ng-disabled="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
+    </div>
 </ion-header>
 <ion-content>
     <ion-slides class="marginLeft" pager="false" slidesPerView="1" [options]="slideOpts" (ionSlideDidChange)="slideChanged()" #pages>

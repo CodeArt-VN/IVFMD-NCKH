@@ -219,7 +219,7 @@
             <p class="box">
                 <span class="text-bold">11. Thời gian công tác:</span>
             </p>
-            <div conf='{"name":"ListThoiGianCongTac","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListThoiGianCongTac","add":true,"resizeable":true, "props": ["ThoiGian","NoiCongTac","ChucVu"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1" class="">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -242,7 +242,7 @@
             <p class="box">
                 <span class="text-bold">12. Quá trình đào tạo:</span>
             </p>
-            <div conf='{"name":"ListQuaTrinhDaoTao","add":false,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListQuaTrinhDaoTao","add":true,"resizeable":true, "props": ["Bac","ThoiGian","NoiDaoTao","ChuyenNganh","TenLuanAnTotNghiep"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <colgroup>
                         <col width="100" />
@@ -302,7 +302,7 @@
             <p class="box">
                 <span class="text-bold">1. Đề tài/dự án:</span>
             </p>
-            <div conf='{"name":"ListDeTai","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListDeTai","add":true,"resizeable":true, "props": ["TenDeTai","MaSoQuanLy","ThoiGianThucHien","ChuNhiem","NgayNghiemThu","KetQua"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -333,7 +333,7 @@
             <p class="box">
                 <span class="text-bold">2. Hướng dẫn sinh viên, học viên cao học, nghiên cứu sinh:</span>
             </p>
-            <div conf='{"name":"ListHuongDan","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListHuongDan","add":true,"resizeable":true, "props": ["TenSV","TenLuanAn","NamTot","ChuNhiem","BacDaoTao","SanPham"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -370,7 +370,7 @@
             <p class="box">
                 <span class=""><i>1.1 Sách xuất bản Quốc tế:</i></span>
             </p>
-            <div conf='{"name":"ListSachQuocTe","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListSachQuocTe","add":true,"resizeable":true, "props": ["TenSach","SanPham","NhaXuatBan","NamXuatBan","TacGia","ButDanh"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -399,7 +399,7 @@
             <p class="box">
                 <span class=""><i>1.2 Sách xuất bản trong nước:</i></span>
             </p>
-            <div conf='{"name":"ListSachTrongNuoc","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListSachTrongNuoc","add":true,"resizeable":true, "props": ["TenSach","SanPham","NhaXuatBan","NamXuatBan","TacGia","ButDanh"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -433,7 +433,7 @@
             <p class="box">
                 <span class=""><u><i>2.1. Đăng trên tạp chí Quốc tế:</i></u></span>
             </p>
-            <div conf='{"name":"ListTapChiQuocTe","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListTapChiQuocTe","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -463,7 +463,7 @@
             <p class="box">
                 <span class=""><u><i>2.2. Đăng trên tạp chí trong nước:</i></u></span>
             </p>
-            <div conf='{"name":"ListTapChiTrongNuoc","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListTapChiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -474,9 +474,9 @@
                                 <br /><i>(chỉ ghi mã số)</i>
                             </td>
                             <td>
-                                Số hiệu ISSN
+                                ISSN
                             </td>
-                            <td>Ghi chú</td>
+                            <td>Điểm IF</td>
                         </tr>
                         <!-- ko foreach: ListTapChiTrongNuoc -->
                         <tr data-bind="attr: { index: $index}">
@@ -504,9 +504,9 @@
                                 <br /><i>(chỉ ghi mã số)</i>
                             </td>
                             <td>
-                                Số hiệu ISSN
+                                ISSN
                             </td>
-                            <td>Ghi chú</td>
+                            <td>Điểm IF</td>
                         </tr>
                         <!-- ko foreach: ListHoiNghiQuocTe -->
                         <tr data-bind="attr: { index: $index}">
@@ -523,7 +523,7 @@
             <p class="box">
                 <span class=""><u><i>2.4. Đăng trên kỷ yếu Hội nghị trong nước:</i></u></span>
             </p>
-            <div conf='{"name":"ListHoiNghiTrongNuoc","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListHoiNghiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -534,9 +534,9 @@
                                 <br /><i>(chỉ ghi mã số)</i>
                             </td>
                             <td>
-                                Số hiệu ISSN
+                                ISSN
                             </td>
-                            <td>Ghi chú</td>
+                            <td>Điểm IF</td>
                         </tr>
                         <!-- ko foreach: ListHoiNghiTrongNuoc -->
                         <tr data-bind="attr: { index: $index}">
@@ -560,7 +560,7 @@
             <p class="box">
                 <span class="text-bold">1. Các giải thưởng Khoa học và Công nghệ:</span>
             </p>
-            <div conf='{"name":"ListGiaiThuong","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListGiaiThuong","add":true,"resizeable":true, "props": ["TenGiaiThuong","NoiDungGiaiThuong","NoiCap","NamCap"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -593,7 +593,7 @@
             <p class="box">
                 <span class="text-bold">1. Tham gia các Hiệp hội Khoa học, Ban biên tập các tạp chí Khoa học, Ban tổ chức các Hội nghị về KH&CN:</span>
             </p>
-            <div conf='{"name":"ListHiepHoiKhoaHoc","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListHiepHoiKhoaHoc","add":true,"resizeable":true, "props": ["ThoiGian","TenHiepHoi","ChucDanh"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
@@ -618,7 +618,7 @@
             <p class="box">
                 <span class="text-bold">2. Tham gia làm việc tại Trường Đại học/ Viện/ Trung tâm nghiên cứu theo lời mời:</span>
             </p>
-            <div conf='{"name":"ListTruongDaiHoc","add":true,"resizeable":true}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListTruongDaiHoc","add":true,"resizeable":true, "props": ["ThoiGian","TenTruong","NoiDungThamGia"]}' class="ptable" style="width:100%;position:relative;">
                 <table style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">

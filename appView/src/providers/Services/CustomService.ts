@@ -475,6 +475,19 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
 				});
 		});
 	}
+	updateStatus(deTaiId, actionCode) {
+		let that = this.commonService;
+		let apiPath = APIList.PRO_DeTai.updateStatus;
+		return new Promise(function (resolve, reject) {
+			that.connect(apiPath.method, apiPath.url(deTaiId, actionCode), null).toPromise()
+				.then(data => {
+					resolve(data);
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
 }
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {

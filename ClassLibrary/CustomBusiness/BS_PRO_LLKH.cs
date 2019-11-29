@@ -73,6 +73,7 @@ namespace BaseBusiness
                 query = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.Where(d => d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_LLKH
                 {
                     ID = s.ID,
+                    IDDetai = idDeTai,
                     IDNhanSu = s.IDNhanSu,
                     ImageURL = s.ImageURL,
                     HoTen = s.HoTen,
@@ -122,7 +123,6 @@ namespace BaseBusiness
                     ModifiedDate = s.ModifiedDate,
                     ModifiedBy = s.ModifiedBy,
                 }).FirstOrDefault();
-                query.IDDetai = idDeTai;
             }
 
             if (query == null)

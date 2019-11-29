@@ -41,15 +41,15 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai, int idNhanSu)
         {
             DTO_PRO_LLKH tbl_PRO_LLKH = BS_PRO_LLKH.get_PRO_LLKHCustom(db, idDeTai, idNhanSu);
-            if (tbl_PRO_LLKH.ID == 0)
-            {
+            //if (tbl_PRO_LLKH.ID == 0)
+            //{
                 string html = "";
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
                 {
                     html = r.ReadToEnd();
                 }
                 tbl_PRO_LLKH.HTML = html;
-            }
+            //}
 
             return Ok(tbl_PRO_LLKH);
         }

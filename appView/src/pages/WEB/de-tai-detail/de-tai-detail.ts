@@ -35,6 +35,8 @@ export class DeTaiDetailPage extends BasePage {
   pageTitle = '';
   slideOpts: any;
   item: any = {};
+  statusHDDD = 'Gửi HDDD';
+  statusHDKH = 'Gửi HDKH';
   constructor(
     public currentProvider: PRO_DeTaiCustomProvider,
     public modalCtrl: ModalController,
@@ -56,6 +58,12 @@ export class DeTaiDetailPage extends BasePage {
   }
 
   mockupData() {
+    if (this.item.IDTrangThai_HDDD == 7){
+        this.statusHDDD = 'Đang chờ duyệt HDDD';
+    }
+    if (this.item.IDTrangThai_HDKH == 13){
+      this.statusHDKH = 'Đang chờ duyệt HDKH';
+    }
     this.slideListByType = [
       { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
       { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng DD,KH' },
@@ -252,6 +260,7 @@ export class DeTaiDetailPage extends BasePage {
     /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
     openDetailModal(type){
         var page = null; 
+        var param = { 'idDeTai': this.id, 'idNhanSu': -1 };
         switch(type){
             case 0:
               page = SysnopsisModalPage;
@@ -267,19 +276,36 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 4:
               page = NhanSuLLKHModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem };
               break;
             case 5:
               page = SysnopsisModalPage;
               break;
             case 6:
               page = NhanSuLLKHModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
               break;
             case 7:
               page = SysnopsisModalPage;
               break;    
         }
 
-        let myModal = this.modalCtrl.create(page, { 'idDeTai': this.id }, { cssClass: 'preview-modal' });
+        let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
         myModal.present();
     }
+
+    updateSatus(actionCode) {
+      this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.updateStatus(this.id, actionCode).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+      })
+  };
   }

@@ -16,7 +16,7 @@ import * as ko from 'knockout';
 })
 export class NhanSuLLKHModalPage extends DetailPage {
     idNhanSu: any;
-    idDetai: any;
+    idDeTai: any;
     model: any;
     constructor(
         public currentProvider: STAFF_NhanSu_LLKHProviderCustomProvider,
@@ -35,18 +35,18 @@ export class NhanSuLLKHModalPage extends DetailPage {
             this.idNhanSu = parseInt(this.idNhanSu, 10);
         }
 
-        this.idDetai = navParams.get('idDetai');
-        if (this.idDetai && commonService.isNumeric(this.idDetai)) {
-            this.idDetai = parseInt(this.idDetai, 10);
+        this.idDeTai = navParams.get('idDeTai');
+        if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
+            this.idDeTai = parseInt(this.idDeTai, 10);
         }
         else {
-            this.idDetai = -1;
+            this.idDeTai = -1;
         }
     }
 
     loadData() {
-        if (this.idDetai > 0) {
-            this.proLLKHProvider.getItemCustom(this.idDetai, this.idNhanSu).then((ite) => {
+        if (this.idDeTai > 0) {
+            this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu).then((ite) => {
                 this.item = ite;
                 this.loadedData();
             }).catch((data) => {
@@ -110,6 +110,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
         $(".ptable").on("click", ".remove", function (e) {
             var target = window.getSelection().anchorNode;
             var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+            // @ts-ignore
             if (sconf != null && (target.tagName == "TD" || target.parentElement.tagName == "TD")) {
                 try {
                     var conf = JSON.parse(sconf);
@@ -357,7 +358,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
         item.HTML = $("#frmNhanSuLLKH").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
-            if (this.idDetai > 0) {
+            if (this.idDeTai > 0) {
                 this.proLLKHProvider.saveCustom(item).then((savedItem: any) => {
                     this.item.ID = savedItem.ID;
                     this.model.ID = savedItem.ID;
