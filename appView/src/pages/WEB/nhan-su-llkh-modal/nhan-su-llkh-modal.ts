@@ -45,7 +45,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
     }
 
     loadData() {
-        if (this.idDetai > 0){
+        if (this.idDetai > 0) {
             this.proLLKHProvider.getItemCustom(this.idDetai, this.idNhanSu).then((ite) => {
                 this.item = ite;
                 this.loadedData();
@@ -98,10 +98,11 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
                         var context = ko.contextFor(this);
-                        context.$root.addItem(conf.name);
+                        context.$root.addItem(conf.name, conf.newObject);
                     }
                     return false;
                 } catch (e) {
+                    console.error(e);
                     return false;
                 }
             }
@@ -119,11 +120,18 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     }
                     return false;
                 } catch (e) {
+                    console.error(e);
                     return false;
                 }
             }
         });
 
+        var popConrtrol = $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
+            '<div class="fieldgroup_controls">' +
+            '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+            '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+            '</div>' +
+            '</div>');
         $(".ptable").mouseenter(function (event) {
             try {
                 var sconf = this.attributes["conf"].value;
@@ -131,11 +139,13 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
                         var t = $(this).find(".group_controls");
-                        if (t.length == 0)
-                            $("#hvtemplate").tmpl().appendTo($(this));
+                        if (t.length == 0) {
+                            popConrtrol.appendTo($(this));
+                        }
                     }
                 }
             } catch (e) {
+                console.error(e);
                 return false;
             }
         }).mouseleave(function (event) {
@@ -312,9 +322,9 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
 
-            self.addItem = function (name) {
+            self.addItem = function (name, newObject) {
                 if (self[name]) {
-                    var obj = {};
+                    var obj = newObject || {};
                     self[name].push(ko.observable(obj));
                 }
             };
@@ -343,7 +353,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
         item.HTML = $("#frmNhanSuLLKH").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
-            if (this.idDetai > 0){
+            if (this.idDetai > 0) {
                 this.proLLKHProvider.saveCustom(item).then((savedItem: any) => {
                     this.item.ID = savedItem.ID;
                     this.model.ID = savedItem.ID;

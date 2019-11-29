@@ -39,7 +39,7 @@
             position: absolute;
         }
 
-        > * {
+        & > * {
             display: table-cell;
             vertical-align: top;
             padding: 3px;
@@ -47,6 +47,7 @@
 
         &.tab-1 {
             margin-left: 1em;
+            width: calc(100% - 1em) !important;
         }
 
         [contenteditable="true"] {
@@ -75,6 +76,7 @@
 
             td {
                 padding: 5px;
+                word-break: break-word;
                 page-break-inside: avoid;
                 page-break-before: auto;
             }
