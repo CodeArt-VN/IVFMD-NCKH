@@ -309,6 +309,20 @@ export class CAT_NhomProvider extends exService {
 }
 
 @Injectable()
+export class CAT_KinhPhiProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_KinhPhi, SearchConfig.getSearchFields('CAT_KinhPhi'), commonService);
+    }
+}
+
+@Injectable()
+export class CAT_BangGiaKinhPhiProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_BangGiaKinhPhi, SearchConfig.getSearchFields('CAT_BangGiaKinhPhi'), commonService);
+    }
+}
+
+@Injectable()
 export class CAT_SiteProvider extends exService {
 	constructor(public commonService: CommonServiceProvider) {
 		super(APIList.CAT_Site, SearchConfig.getSearchFields('CAT_Site'), commonService);
