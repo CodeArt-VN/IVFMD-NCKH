@@ -6,8 +6,7 @@ import { STAFF_NhanSu_LLKHProviderCustomProvider, PRO_LLKHCustomProvider } from 
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
-import 'jquery.tmpl';
-declare var $: any;
+import * as $ from 'jquery';
 import * as ko from 'knockout';
 @IonicPage({ name: 'page-nhan-su-llkh-modal', priority: 'high', defaultHistory: ['page-nhan-su-llkh-modal'] })
 @Component({
@@ -111,7 +110,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
             var target = window.getSelection().anchorNode;
             var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
             // @ts-ignore
-            if (sconf != null && (target.tagName == "TD" || target.parentElement.tagName == "TD")) {
+            if (sconf != null && (target.parentElement.tagName == "TD")) {
                 try {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
