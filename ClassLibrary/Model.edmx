@@ -380,6 +380,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="JSON_HocVi" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -1214,6 +1215,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="JSON_HocVi" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_Sysnopsis">
           <Key>
@@ -3865,6 +3867,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -4743,6 +4746,7 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_SYLL" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_PRO_Detai" FromRole="tbl_PRO_SYLL" ToRole="tbl_PRO_DeTai" />
+          <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_Sysnopsis">
           <Key>
@@ -6620,6 +6624,7 @@
           <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH">
               <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
+                <ScalarProperty Name="JSON_HocVi" ColumnName="JSON_HocVi" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -7473,6 +7478,7 @@
           <EntitySetMapping Name="tbl_PRO_SYLL">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_SYLL">
               <MappingFragment StoreEntitySet="tbl_PRO_SYLL">
+                <ScalarProperty Name="JSON_HocVi" ColumnName="JSON_HocVi" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
