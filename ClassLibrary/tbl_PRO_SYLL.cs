@@ -39,6 +39,7 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string JSON_HocVi { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
@@ -72,6 +73,7 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string JSON_HocVi { get; set; }
 	}
 }
 
@@ -117,7 +119,8 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				JSON_HocVi = s.JSON_HocVi,					
 			});
                               
         }
@@ -151,7 +154,8 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					JSON_HocVi = dbResult.JSON_HocVi,
 				};
 			}
 			else
@@ -347,6 +351,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query JSON_HocVi (string)
+			if (QueryStrings.Any(d => d.Key == "JSON_HocVi") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "JSON_HocVi").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "JSON_HocVi").Value;
+                query = query.Where(d=>d.JSON_HocVi == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -385,7 +396,8 @@ namespace BaseBusiness
 				dbitem.JSON_KinhNghiem = item.JSON_KinhNghiem;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.JSON_HocVi = item.JSON_HocVi;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -430,7 +442,8 @@ namespace BaseBusiness
 				dbitem.JSON_KinhNghiem = item.JSON_KinhNghiem;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.JSON_HocVi = item.JSON_HocVi;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
