@@ -913,7 +913,7 @@ export var APIListBase = {
             url: function(id){return appSetting.apiDomain("PRO/DeTai/") + id} 
         },
         updateStatus:{
-            method: "GET",
+            method: "POST",
             url: function(id, actionCode){return appSetting.apiDomain("PRO/DeTai/updateStatus_PRO_DeTai/") + id + "/" + actionCode} 
         }
     },

@@ -12,8 +12,9 @@
         </div>
     </div>
     <div class="emptyzone header-button">
-        <button *ngIf="pageIndex==0" ng-disabled="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
-        <button *ngIf="pageIndex==0" ng-disabled="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
+        <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light" (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
+        <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
+        <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
     </div>
 </ion-header>
 <ion-content>

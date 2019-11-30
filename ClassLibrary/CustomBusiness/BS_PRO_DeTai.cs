@@ -755,5 +755,258 @@ namespace BaseBusiness
 
         }
 
+        public static IQueryable<DTO_PRO_DeTai> get_PRO_DeTaiCustom(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        {
+            var query = db.tbl_PRO_DeTai.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
+
+            //Query keyword
+
+
+
+            //Query ID (int)
+            if (QueryStrings.Any(d => d.Key == "ID"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "ID").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.ID));
+            }
+
+            //Query IDPartner (int)
+            if (QueryStrings.Any(d => d.Key == "IDPartner"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDPartner").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDPartner));
+            }
+
+            //Query IDNCV (int)
+            if (QueryStrings.Any(d => d.Key == "IDNCV"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDNCV").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDNCV));
+            }
+
+            //Query IDChuNhiem (Nullable<int>)
+            if (QueryStrings.Any(d => d.Key == "IDChuNhiem"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDChuNhiem").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                    else if (item == "null")
+                        IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDChuNhiem));
+            }
+
+            //Query IDHRCO (Nullable<int>)
+            if (QueryStrings.Any(d => d.Key == "IDHRCO"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDHRCO").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                    else if (item == "null")
+                        IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDHRCO));
+            }
+
+            //Query IDPhanLoaiDeTai (int)
+            if (QueryStrings.Any(d => d.Key == "IDPhanLoaiDeTai"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDPhanLoaiDeTai").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDPhanLoaiDeTai));
+            }
+
+            //Query IDTrangThai_HDDD (int)
+            if (QueryStrings.Any(d => d.Key == "IDTrangThai_HDDD"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDTrangThai_HDDD").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDTrangThai_HDDD));
+            }
+
+            //Query IDTrangThai_HDKH (int)
+            if (QueryStrings.Any(d => d.Key == "IDTrangThai_HDKH"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDTrangThai_HDKH").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDTrangThai_HDKH));
+            }
+
+            //Query IDTrangThai_HRCO (int)
+            if (QueryStrings.Any(d => d.Key == "IDTrangThai_HRCO"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDTrangThai_HRCO").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDTrangThai_HRCO));
+            }
+
+            //Query IDTrangThai_NghiemThu (int)
+            if (QueryStrings.Any(d => d.Key == "IDTrangThai_NghiemThu"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDTrangThai_NghiemThu").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDTrangThai_NghiemThu));
+            }
+
+            //Query DeTai (string)
+            if (QueryStrings.Any(d => d.Key == "DeTai") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DeTai").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DeTai").Value;
+                query = query.Where(d => d.DeTai == keyword);
+            }
+
+            //Query GhiChu (string)
+            if (QueryStrings.Any(d => d.Key == "GhiChu") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "GhiChu").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "GhiChu").Value;
+                query = query.Where(d => d.GhiChu == keyword);
+            }
+
+            //Query SoNCT (string)
+            if (QueryStrings.Any(d => d.Key == "SoNCT") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "SoNCT").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "SoNCT").Value;
+                query = query.Where(d => d.SoNCT == keyword);
+            }
+
+            //Query IsDisabled (bool)
+            if (QueryStrings.Any(d => d.Key == "IsDisabled"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "IsDisabled").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.IsDisabled);
+            }
+
+            //Query IsDeleted (bool)
+            if (QueryStrings.Any(d => d.Key == "IsDeleted"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "IsDeleted").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.IsDeleted);
+            }
+
+            //Query CreatedDate (System.DateTime)
+            if (QueryStrings.Any(d => d.Key == "CreatedDateFrom") && QueryStrings.Any(d => d.Key == "CreatedDateTo"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "CreatedDateFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "CreatedDateTo").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.CreatedDate && d.CreatedDate <= toDate);
+
+            //Query CreatedBy (string)
+            if (QueryStrings.Any(d => d.Key == "CreatedBy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "CreatedBy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "CreatedBy").Value;
+                query = query.Where(d => d.CreatedBy == keyword);
+            }
+
+            //Query ModifiedDate (Nullable<System.DateTime>)
+            if (QueryStrings.Any(d => d.Key == "ModifiedDateFrom") && QueryStrings.Any(d => d.Key == "ModifiedDateTo"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ModifiedDateFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ModifiedDateTo").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.ModifiedDate && d.ModifiedDate <= toDate);
+
+            //Query ModifiedBy (string)
+            if (QueryStrings.Any(d => d.Key == "ModifiedBy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ModifiedBy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ModifiedBy").Value;
+                query = query.Where(d => d.ModifiedBy == keyword);
+            }
+
+            //Query MaSo (string)
+            if (QueryStrings.Any(d => d.Key == "MaSo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "MaSo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "MaSo").Value;
+                query = query.Where(d => d.MaSo == keyword);
+            }
+
+            //Query TenTiengViet (string)
+            if (QueryStrings.Any(d => d.Key == "TenTiengViet") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "TenTiengViet").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "TenTiengViet").Value;
+                query = query.Where(d => d.TenTiengViet == keyword);
+            }
+
+            //Query TenTiengAnh (string)
+            if (QueryStrings.Any(d => d.Key == "TenTiengAnh") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "TenTiengAnh").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "TenTiengAnh").Value;
+                query = query.Where(d => d.TenTiengAnh == keyword);
+            }
+
+
+            return toDTOCustom(query);
+
+        }
+
+        public static IQueryable<DTO_PRO_DeTai> toDTOCustom(IQueryable<tbl_PRO_DeTai> query)
+        {
+            return query
+            .Select(s => new DTO_PRO_DeTai()
+            {
+                ID = s.ID,
+                IDPartner = s.IDPartner,
+                IDNCV = s.IDNCV,
+                IDChuNhiem = s.IDChuNhiem,
+                IDHRCO = s.IDHRCO,
+                IDPhanLoaiDeTai = s.IDPhanLoaiDeTai,
+                IDTrangThai_HDDD = s.IDTrangThai_HDDD,
+                IDTrangThai_HDKH = s.IDTrangThai_HDKH,
+                IDTrangThai_HRCO = s.IDTrangThai_HRCO,
+                IDTrangThai_NghiemThu = s.IDTrangThai_NghiemThu,
+                TrangThai_HDDD = s.tbl_SYS_Var1.ValueOfVar,
+                TrangThai_HDKH = s.tbl_SYS_Var2.ValueOfVar,
+                TrangThai_HRCO = s.tbl_SYS_Var3.ValueOfVar,
+                TrangThai_NghiemThu = s.tbl_SYS_Var4.ValueOfVar,
+                DeTai = s.DeTai,
+                GhiChu = s.GhiChu,
+                SoNCT = s.SoNCT,
+                IsDisabled = s.IsDisabled,
+                IsDeleted = s.IsDeleted,
+                CreatedDate = s.CreatedDate,
+                CreatedBy = s.CreatedBy,
+                ModifiedDate = s.ModifiedDate,
+                ModifiedBy = s.ModifiedBy,
+                MaSo = s.MaSo,
+                TenTiengViet = s.TenTiengViet,
+                TenTiengAnh = s.TenTiengAnh,
+            });
+
+        }
     }
 }

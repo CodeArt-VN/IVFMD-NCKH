@@ -22,7 +22,7 @@ namespace API.Controllers.PRO
         [Route("")]
         public IQueryable<DTO_PRO_DeTai> Get()
         {
-            return BS_PRO_DeTai.get_PRO_DeTai(db, PartnerID, QueryStrings);
+            return BS_PRO_DeTai.get_PRO_DeTaiCustom(db, PartnerID, QueryStrings);
         }
 
         [Route("get_PRO_DeTaiByRefer")]
@@ -59,13 +59,18 @@ namespace API.Controllers.PRO
         }
 
         [Route("updateStatus_PRO_DeTai/{id:int}/{actionCode}")]
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult UpdateStatus(int id, string actionCode)
         {
             var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
-            else return Ok();
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            if (tbl_PRO_DeTai == null)
+            {
+                return NotFound();
+            }
+            return BadRequest();
         }
 
         [Route("{id:int}")]

@@ -35,6 +35,7 @@ export class DeTaiDetailPage extends BasePage {
   pageTitle = '';
   slideOpts: any;
   item: any = {};
+  statusHRCO = 'Gửi HRCO';
   statusHDDD = 'Gửi HDDD';
   statusHDKH = 'Gửi HDKH';
   constructor(
@@ -58,6 +59,9 @@ export class DeTaiDetailPage extends BasePage {
   }
 
   mockupData() {
+    if (this.item.IDTrangThai_HRCO == 18){
+      this.statusHRCO = 'Đang chờ duyệt HRCO';
+  }
     if (this.item.IDTrangThai_HDDD == 7){
         this.statusHDDD = 'Đang chờ duyệt HDDD';
     }
