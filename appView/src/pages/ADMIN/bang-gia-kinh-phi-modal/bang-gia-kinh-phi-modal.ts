@@ -7,12 +7,12 @@ import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 
-@IonicPage({ name: 'page-nhom-modal', priority: 'high', defaultHistory: ['page-nhom'] })
+@IonicPage({ name: 'page-bang-gia-kinh-phi-modal', priority: 'high', defaultHistory: ['page-bang-gia-kinh-phi-modal'] })
 @Component({
-    selector: 'nhom-modal',
-    templateUrl: 'nhom-modal.html',
+    selector: 'bang-gia-kinh-phi-modal',
+    templateUrl: 'bang-gia-kinh-phi-modal.html',
 })
-export class NhomModalPage extends DetailPage {
+export class BangGiaKinhPhiModalPage extends DetailPage {
     constructor(
         public currentProvider: CAT_NhomProvider,
         public viewCtrl: ViewController,
@@ -20,9 +20,9 @@ export class NhomModalPage extends DetailPage {
     ) {
         
         super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
-        this.pageName = "page-nhom";
-        this.events.unsubscribe('app:Close-page-nhom-modal');
-        this.events.subscribe('app:Close-page-nhom-modal', () => {
+        this.pageName = "bang-gia-kinh-phi-modal";
+        this.events.unsubscribe('app:Close-page-bang-gia-kinh-phi-modal');
+        this.events.subscribe('app:Close-page-bang-gia-kinh-phi-modal', () => {
             this.dismiss();
         });
         this.formGroup = formBuilder.group({
