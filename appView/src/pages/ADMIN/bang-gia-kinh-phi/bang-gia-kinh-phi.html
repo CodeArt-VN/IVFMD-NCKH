@@ -1,0 +1,76 @@
+<ion-header *ngIf="userprofile">
+
+  <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+  <div class="search">
+      <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+  </div>
+  <div class="path">
+      <a (click)="openDefaultPage()">Home</a>
+      <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+      <a class="active">Bảng giá kinh phí</a>
+  </div>
+  <div class="tools">
+
+      <button color="primary" ion-button icon-only clear (click)="refresh()">
+          <ion-icon name="refresh"></ion-icon>
+      </button>
+
+      <button color="success" ion-button icon-only clear (click)="add()">
+          <ion-icon name="ios-add-circle"></ion-icon>
+      </button>
+
+      <span class="split" *ngIf="selected.length"></span>
+
+      <button ion-button icon-only clear *ngIf="selected.length" (click)="copy()">
+          <ion-icon name="ios-copy"></ion-icon>
+      </button>
+      <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
+          <ion-icon name="ios-create"></ion-icon>
+      </button>
+      <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
+          <ion-icon name="ios-trash"></ion-icon>
+      </button>
+  </div>
+
+  <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+
+</ion-header>
+
+<ion-content>
+  <ion-row>
+
+      <ion-col class="doc-menu">
+          <div class="root-items" *ngFor="let i of FormGroups">
+              <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
+                  <ion-icon [name]="t.Icon"></ion-icon>
+                  <span>
+                      {{t.Name}}
+                  </span>
+              </a>
+          </div>
+      </ion-col>
+
+
+      <ion-col class="doc-main">
+          <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'"
+              [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items"
+              [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'>
+              
+              <ngx-datatable-column name="Mã" prop="Code" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      <a (click)="openDetail(i)">
+                          {{i.Code}}
+                      </a>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Kinh phí" prop="KinhPhi"></ngx-datatable-column>
+              <ngx-datatable-column name="Ngày hiệu lực" prop="NgayHieuLuc"></ngx-datatable-column>
+              <ngx-datatable-column name="Giá" prop="Gia"></ngx-datatable-column>
+          </ngx-datatable>
+
+
+
+
+      </ion-col>
+  </ion-row>
+</ion-content>

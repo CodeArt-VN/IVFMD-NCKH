@@ -862,6 +862,54 @@ export var APIListBase = {
         }
 		
     },
+
+    CAT_KinhPhi: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/KinhPhi") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("CAT/KinhPhi/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("CAT/KinhPhi/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/KinhPhi") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("CAT/KinhPhi/") + id }
+        }
+
+    },
+
+    CAT_BangGiaKinhPhi: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/BangGiaKinhPhi") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("CAT/BangGiaKinhPhi/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("CAT/BangGiaKinhPhi/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/BangGiaKinhPhi") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("CAT/BangGiaKinhPhi/") + id }
+        }
+
+    },
     
     CAT_Site:{
         getList:{
