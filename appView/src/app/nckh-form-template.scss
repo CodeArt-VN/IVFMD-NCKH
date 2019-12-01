@@ -49,6 +49,10 @@
             position: absolute;
         }
 
+        & > input[type="checkbox"] {
+            vertical-align: initial;
+        }
+
         & > * {
             display: table-cell;
             vertical-align: text-top;
