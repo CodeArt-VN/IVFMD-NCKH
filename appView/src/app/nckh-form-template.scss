@@ -1,5 +1,6 @@
 .nckh-form-template {
     size: a4;
+    min-width: 7in;
     max-width: 7in;
     font-size: 13pt;
     margin: 1in 1in 1in 1in;
@@ -30,18 +31,32 @@
         margin-left: 1em;
     }
 
+    .block {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+
+    .pblock {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
     .box {
         display: table;
         width: 100%;
-        margin: 0;
+        margin: 2px 0;
 
         .box-title {
             position: absolute;
         }
 
+        & > input[type="checkbox"] {
+            vertical-align: initial;
+        }
+
         & > * {
             display: table-cell;
-            vertical-align: top;
+            vertical-align: text-top;
             padding: 3px;
         }
 
@@ -60,25 +75,65 @@
     table.nckh-table {
         border-collapse: collapse;
 
-        tr {
-            page-break-inside: avoid;
-            page-break-before: auto;
+        thead {
+            display: table-row-group;
 
-            &.table-header {
-                text-align: center;
-                vertical-align: middle;
-                font-weight: 600;
-
-                i {
-                    font-weight: normal;
-                }
-            }
-
-            td {
-                padding: 5px;
-                word-break: break-word;
+            tr {
                 page-break-inside: avoid;
                 page-break-before: auto;
+
+                &.table-header {
+                    text-align: center;
+                    vertical-align: middle;
+                    font-weight: 600;
+
+                    i {
+                        font-weight: normal;
+                    }
+                }
+
+                td, th {
+                    padding: 3px;
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        tbody {
+            width: 100%;
+
+            tr {
+                page-break-inside: avoid;
+                page-break-before: auto;
+
+                td {
+                    padding: 3px;
+                    word-break: break-word;
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+                    vertical-align: top;
+                }
+            }
+        }
+
+        &.table-inside-table {
+            border: 0;
+
+            tr {
+                > td {
+                    border: 1px solid #607d8b;
+                    border-bottom: 0;
+
+                    &:first-child{
+                        border-left: 0;
+                    }
+
+                    &:last-child{
+                        border-right: 0;
+                    }
+                }
             }
         }
     }

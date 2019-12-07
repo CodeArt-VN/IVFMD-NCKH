@@ -57,63 +57,143 @@
             </p>
         </div>
         <div>
-            <p class="box">
-                <span class="box-title text-bold" style="width: 106px;">5. Số CMND:</span>
-                <span contenteditable="true" style="text-indent: 102px;" data-bind="editableHTML: CMND"></span>
-                <span style="width: 82px;" class="text-bold">Ngày cấp:</span>
-                <span contenteditable="true" style="width:100px;" data-bind="editableHTML: CMND_NgayCap"></span>
-                <span style="width: 70px;" class="text-bold">Nơi cấp:</span>
-                <span contenteditable="true" style="width:100px;" data-bind="editableHTML: CMND_NoiCap"></span>
-            </p>
-        </div>
-        <div>
-            <div class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="0">
+            <div style="width:100%;position:relative;">
+                <table class="nckh-table" style="width:100%;" border="0">
                     <colgroup>
-                        <col width="76" />
-                        <col width="60" />
+                        <col width="106" />
                         <col />
-                        <col width="64" />
-                        <col width="200" />
+                        <col width="150" />
+                        <col width="150" />
                     </colgroup>
                     <tbody style="width:100%;">
                         <tr>
-                            <td rowspan="2" style="vertical-align:text-top"><b>6. Học vị:</b></td>
-                            <td>Thạc sỹ</td>
-                            <td contenteditable="true" data-bind="editableHTML: HocVi"></td>
-                            <td>năm đạt:</td>
-                            <td contenteditable="true" data-bind="editableHTML: NamHocViThacSy"></td>
+                            <td style="padding-left: 0;">
+                                <p class="box">
+                                    <span class="box-title text-bold">5. Số CMND:</span>
+                                    <span contenteditable="true"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span contenteditable="true" data-bind="editableHTML: CMND"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title">Ngày cấp:</span>
+                                    <span contenteditable="true" style="text-indent: 82px;" data-bind="editableHTML: CMND_NgayCap"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title">Nơi cấp:</span>
+                                    <span contenteditable="true" style="text-indent: 70px;" data-bind="editableHTML: CMND_NoiCap"></span>
+                                </p>
+                            </td>
                         </tr>
-                        <!--<tr>
-                            <td>Tiến sỹ</td>
-                            <td contenteditable="true" data-bind="editableHTML: HocViTienSy"></td>
-                            <td>năm đạt:</td>
-                            <td contenteditable="true" data-bind="editableHTML: NamHocViTienSy"></td>
-                        </tr>-->
                     </tbody>
                 </table>
             </div>
         </div>
         <div>
-            <p class="box">
-                <span class="box-title text-bold" style="width: 106px;">6. Học hàm:</span>
-                <span contenteditable="true" style="width:30px;" data-bind="editableHTML: HocHam"></span>
-                <span style="width: 96px;">năm phong:</span>
-                <span contenteditable="true" style="width:30px;" data-bind="editableHTML: NamPhongHocHam"></span>
-            </p>
+            <div style="width:100%;position:relative;">
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <colgroup>
+                        <col width="78" />
+                        <col />
+                        <col width="250" />
+                    </colgroup>
+                    <tbody style="width:100%;">
+                        <tr>
+                            <td style="padding-left: 0;" rowspan="2">
+                                <p class="box">
+                                    <span class="box-title text-bold">6. Học vị:</span>
+                                    <span contenteditable="true"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title">Thạc sỹ</span>
+                                    <span contenteditable="true" style="text-indent: 57px;" data-bind="editableHTML: HocVi"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title">năm đạt:</span>
+                                    <span contenteditable="true" style="text-indent: 62px;" data-bind="editableHTML: NamHocViThacSy"></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title" >Tiến sỹ</span>
+                                    <span contenteditable="true" style="text-indent: 55px;" data-bind="editableHTML: HocViTienSy"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title" >năm đạt:</span>
+                                    <span contenteditable="true" style="text-indent: 62px;" data-bind="editableHTML: NamHocViTienSy"></span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div style="width:100%;position:relative;">
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <colgroup>
+                        <col width="97" />
+                        <col />
+                        <col width="250" />
+                    </colgroup>
+                    <tbody style="width:100%;">
+                        <tr>
+                            <td style="padding-left: 0;">
+                                <p class="box">
+                                    <span class="box-title text-bold">7. Học hàm:</span>
+                                    <span contenteditable="true"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span contenteditable="true" data-bind="editableHTML: HocHam"></span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="box">
+                                    <span class="box-title">năm phong:</span>
+                                    <span contenteditable="true" style="text-indent: 84px;" data-bind="editableHTML: NamPhongHocHam"></span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="description">
             <p class="box">
                 <span class="text-bold">8. Liên lạc:</span>
             </p>
-            <table class="table" style="width:100%;" border="1">
-                <tbody style="width:100%;">
+            <table class="nckh-table" style="width:100%;" border="1">
+                <colgroup>
+                    <col width="30" class="text-center"/>
+                    <col width="120" />
+                    <col />
+                    <col />
+                </colgroup>
+                <thead>
                     <tr class="table-header">
-                        <td style="width:30px" class="text-center">TT</td>
-                        <td style="width:100px"></td>
+                        <td class="text-center">TT</td>
+                        <td></td>
                         <td>Cơ quan</td>
                         <td>Cá nhân</td>
                     </tr>
+                </thead>
+                <tbody style="width:100%;">
                     <tr>
                         <td class="text-center">1</td>
                         <td>Địa chỉ</td>
@@ -155,7 +235,7 @@
                 <span class="text-bold">10. Trình độ ngoại ngữ:</span>
             </p>
             <div conf='{"name":"NgoaiNgu","add":false,"resizeable":false}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
+                <table class="nckh-table" style="width:100%;" border="1">
                     <tbody style="width:100%;">
                         <tr class="table-header">
                             <td rowspan="2">TT</td>
@@ -220,20 +300,25 @@
                 <span class="text-bold">11. Thời gian công tác:</span>
             </p>
             <div conf='{"name":"ListThoiGianCongTac","add":true,"resizeable":true, "props": ["ThoiGian","NoiCongTac","ChucVu"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1" class="">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="100" />
+                        <col width="200" />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>Thời gian</td>
                             <td>Nơi công tác</td>
                             <td>Chức vụ</td>
                         </tr>
-                        <!-- ko foreach: ListThoiGianCongTac -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListThoiGianCongTac">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: NoiCongTac"></td>
                             <td contenteditable="true" data-bind="editableHTML: ChucVu"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -243,7 +328,7 @@
                 <span class="text-bold">12. Quá trình đào tạo:</span>
             </p>
             <div conf='{"name":"ListQuaTrinhDaoTao","add":true,"resizeable":true, "props": ["Bac","ThoiGian","NoiDaoTao","ChuyenNganh","TenLuanAnTotNghiep"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
+                <table class="nckh-table" style="width:100%;" border="1">
                     <colgroup>
                         <col width="100" />
                         <col width="100" />
@@ -251,7 +336,7 @@
                         <col width="100" />
                         <col />
                     </colgroup>
-                    <tbody style="width:100%;">
+                    <thead>
                         <tr class="table-header">
                             <td>Bậc đào tạo</td>
                             <td>Thời gian</td>
@@ -259,7 +344,8 @@
                             <td>Chuyên ngành</td>
                             <td>Tên luận án tốt nghiệp</td>
                         </tr>
-                        <!-- ko foreach: ListQuaTrinhDaoTao -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListQuaTrinhDaoTao">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="true" data-bind="editableHTML: Bac"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
@@ -267,7 +353,6 @@
                             <td contenteditable="true" data-bind="editableHTML: ChuyenNganh"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenLuanAnTotNghiep"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -303,8 +388,17 @@
                 <span class="text-bold">1. Đề tài/dự án:</span>
             </p>
             <div conf='{"name":"ListDeTai","add":true,"resizeable":true, "props": ["TenDeTai","MaSoQuanLy","ThoiGianThucHien","ChuNhiem","NgayNghiemThu","KetQua"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên đề tài/dự án</td>
@@ -314,7 +408,8 @@
                             <td>Ngày nghiệm thu</td>
                             <td>Kết quả</td>
                         </tr>
-                        <!-- ko foreach: ListDeTai -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListDeTai">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
@@ -324,7 +419,6 @@
                             <td contenteditable="true" data-bind="editableHTML: NgayNghiemThu"></td>
                             <td contenteditable="true" data-bind="editableHTML: KetQua"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -334,8 +428,16 @@
                 <span class="text-bold">2. Hướng dẫn sinh viên, học viên cao học, nghiên cứu sinh:</span>
             </p>
             <div conf='{"name":"ListHuongDan","add":true,"resizeable":true, "props": ["TenSV","TenLuanAn","NamTot","ChuNhiem","BacDaoTao","SanPham"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên SV, HVCH, NCS</td>
@@ -344,7 +446,8 @@
                             <td>Bậc đào tạo</td>
                             <td>Sản phẩm của đề tài/dự án<br />(chỉ ghi mã số)</td>
                         </tr>
-                        <!-- ko foreach: ListHuongDan -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListHuongDan">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSV"></td>
@@ -353,7 +456,6 @@
                             <td contenteditable="true" data-bind="editableHTML: BacDaoTao"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -371,8 +473,17 @@
                 <span class=""><i>1.1 Sách xuất bản Quốc tế:</i></span>
             </p>
             <div conf='{"name":"ListSachQuocTe","add":true,"resizeable":true, "props": ["TenSach","SanPham","NhaXuatBan","NamXuatBan","TacGia","ButDanh"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên sách</td>
@@ -382,7 +493,8 @@
                             <td>Tác giả/đồng tác giả</td>
                             <td>Bút danh</td>
                         </tr>
-                        <!-- ko foreach: ListSachQuocTe -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListSachQuocTe">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSach"></td>
@@ -392,7 +504,6 @@
                             <td contenteditable="true" data-bind="editableHTML: TacGia"></td>
                             <td contenteditable="true" data-bind="editableHTML: ButDanh"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -400,8 +511,17 @@
                 <span class=""><i>1.2 Sách xuất bản trong nước:</i></span>
             </p>
             <div conf='{"name":"ListSachTrongNuoc","add":true,"resizeable":true, "props": ["TenSach","SanPham","NhaXuatBan","NamXuatBan","TacGia","ButDanh"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên sách</td>
@@ -411,7 +531,8 @@
                             <td>Tác giả/đồng tác giả</td>
                             <td>Bút danh</td>
                         </tr>
-                        <!-- ko foreach: ListSachTrongNuoc -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListSachTrongNuoc">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSach"></td>
@@ -421,7 +542,6 @@
                             <td contenteditable="true" data-bind="editableHTML: TacGia"></td>
                             <td contenteditable="true" data-bind="editableHTML: ButDanh"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -434,8 +554,15 @@
                 <span class=""><u><i>2.1. Đăng trên tạp chí Quốc tế:</i></u></span>
             </p>
             <div conf='{"name":"ListTapChiQuocTe","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên tác giả, tên bài viết, tên tạp chí và số của tạp chí, trang đăng bài viết, năm xuất bản</td>
@@ -448,7 +575,8 @@
                             </td>
                             <td>Điểm IF</td>
                         </tr>
-                        <!-- ko foreach: ListTapChiQuocTe -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListTapChiQuocTe">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
@@ -456,7 +584,6 @@
                             <td contenteditable="true" data-bind="editableHTML: SoHieu"></td>
                             <td contenteditable="true" data-bind="editableHTML: DiemIF"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -464,8 +591,15 @@
                 <span class=""><u><i>2.2. Đăng trên tạp chí trong nước:</i></u></span>
             </p>
             <div conf='{"name":"ListTapChiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên tác giả, tên bài viết, tên tạp chí và số của tạp chí, trang đăng bài viết, năm xuất bản</td>
@@ -478,7 +612,8 @@
                             </td>
                             <td>Điểm IF</td>
                         </tr>
-                        <!-- ko foreach: ListTapChiTrongNuoc -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListTapChiTrongNuoc">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
@@ -486,7 +621,6 @@
                             <td contenteditable="true" data-bind="editableHTML: SoHieu"></td>
                             <td contenteditable="true" data-bind="editableHTML: DiemIF"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -494,8 +628,15 @@
                 <span class=""><u><i>2.3. Đăng trên kỷ yếu Hội nghị Quốc tế:</i></u></span>
             </p>
             <div conf='{"name":"ListHoiNghiQuocTe","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1" class="nckh-table">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên tác giả, tên bài viết, tên Hội nghị, thời gian tổ chức, nơi tố chức</td>
@@ -508,7 +649,8 @@
                             </td>
                             <td>Điểm IF</td>
                         </tr>
-                        <!-- ko foreach: ListHoiNghiQuocTe -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListHoiNghiQuocTe">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
@@ -516,7 +658,6 @@
                             <td contenteditable="true" data-bind="editableHTML: SoHieu"></td>
                             <td contenteditable="true" data-bind="editableHTML: DiemIF"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -524,8 +665,15 @@
                 <span class=""><u><i>2.4. Đăng trên kỷ yếu Hội nghị trong nước:</i></u></span>
             </p>
             <div conf='{"name":"ListHoiNghiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên tác giả, tên bài viết, tên Hội nghị, thời gian tổ chức, nơi tố chức</td>
@@ -538,7 +686,8 @@
                             </td>
                             <td>Điểm IF</td>
                         </tr>
-                        <!-- ko foreach: ListHoiNghiTrongNuoc -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListHoiNghiTrongNuoc">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
@@ -546,7 +695,6 @@
                             <td contenteditable="true" data-bind="editableHTML: SoHieu"></td>
                             <td contenteditable="true" data-bind="editableHTML: DiemIF"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -561,8 +709,15 @@
                 <span class="text-bold">1. Các giải thưởng Khoa học và Công nghệ:</span>
             </p>
             <div conf='{"name":"ListGiaiThuong","add":true,"resizeable":true, "props": ["TenGiaiThuong","NoiDungGiaiThuong","NoiCap","NamCap"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Tên giải thưởng</td>
@@ -570,7 +725,8 @@
                             <td>Nơi cấp</td>
                             <td>Năm cấp</td>
                         </tr>
-                        <!-- ko foreach: ListGiaiThuong -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListGiaiThuong">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenGiaiThuong"></td>
@@ -578,7 +734,6 @@
                             <td contenteditable="true" data-bind="editableHTML: NoiCap"></td>
                             <td contenteditable="true" data-bind="editableHTML: NamCap"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -594,22 +749,28 @@
                 <span class="text-bold">1. Tham gia các Hiệp hội Khoa học, Ban biên tập các tạp chí Khoa học, Ban tổ chức các Hội nghị về KH&CN:</span>
             </p>
             <div conf='{"name":"ListHiepHoiKhoaHoc","add":true,"resizeable":true, "props": ["ThoiGian","TenHiepHoi","ChucDanh"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Thời gian</td>
                             <td>Tên Hiệp hội/ Tạp chí/ Hội nghị</td>
                             <td>Chức danh</td>
                         </tr>
-                        <!-- ko foreach: ListHiepHoiKhoaHoc -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListHiepHoiKhoaHoc">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenHiepHoi"></td>
                             <td contenteditable="true" data-bind="editableHTML: ChucDanh"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -619,22 +780,28 @@
                 <span class="text-bold">2. Tham gia làm việc tại Trường Đại học/ Viện/ Trung tâm nghiên cứu theo lời mời:</span>
             </p>
             <div conf='{"name":"ListTruongDaiHoc","add":true,"resizeable":true, "props": ["ThoiGian","TenTruong","NoiDungThamGia"]}' class="ptable" style="width:100%;position:relative;">
-                <table style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                <table class="nckh-table" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" class="text-center" />
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
                         <tr class="table-header">
                             <td>TT</td>
                             <td>Thời gian</td>
                             <td>Tên Trường Đại học/ Viện/ Trung tâm nghiên cứu</td>
                             <td>Nội dung tham gia</td>
                         </tr>
-                        <!-- ko foreach: ListTruongDaiHoc -->
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListTruongDaiHoc">
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenTruong"></td>
                             <td contenteditable="true" data-bind="editableHTML: NoiDungThamGia"></td>
                         </tr>
-                        <!-- /ko -->
                     </tbody>
                 </table>
             </div>
@@ -645,14 +812,55 @@
                 <span contenteditable="true" style="text-indent: 171px;" data-bind="editableHTML: HoatDongKhac"></span>
             </p>
         </div>
-    </div>
-
-    <script id="hvtemplate" type="text/x-jquery-tmpl">
-        <div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">
-            <div class="fieldgroup_controls">
-                <button class="remove"><i class="fa fa-minus"></i> Xóa</button>
-                <button class="clone"><i class="fa fa-plus"></i> Thêm</button>
+        <div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;">
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="width: 210px;">
+                                <table class="nckh-table" style="width:100%;font-style:italic;" border="0">
+                                    <colgroup>
+                                        <col width="76">
+                                        <col width="76">
+                                        <col width="92">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding-left: 0;text-align:center;">
+                                                <p class="box">
+                                                    <span class="box-title">Ngày</span>
+                                                    <span contenteditable="true" style="text-indent: 38px;"></span>
+                                                </p>
+                                            </td>
+                                            <td style="padding-left: 0;text-align:center;">
+                                                <p class="box">
+                                                    <span class="box-title">tháng</span>
+                                                    <span contenteditable="true" style="text-indent: 42px;"></span>
+                                                </p>
+                                            </td>
+                                            <td style="padding-left: 0;text-align:center;">
+                                                <p class="box">
+                                                    <span class="box-title">năm</span>
+                                                    <span contenteditable="true" style="text-indent: 32px;"></span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                            </td>
+                            <td class="text-center">
+                                <b>Người khai</b>
+                                <br>
+                                <i>(Ký và ghi rõ họ tên)</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </script>
+    </div>
 </div>

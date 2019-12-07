@@ -198,6 +198,23 @@ namespace BaseBusiness
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HRCO;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
+
+                        foreach (var item in db.tbl_PRO_HRCO.Where(c => c.IDDeTai == ID))
+                            db.tbl_PRO_HRCO.Remove(item);
+
+                        var lstNhanSuID = db.tbl_CAT_HRCOConfig.Where(c => c.IsDeleted == false).Select(c => c.IDNhanSu).Distinct().ToList();
+                        foreach (var item in lstNhanSuID)
+                        {
+                            tbl_PRO_HRCO obj = new tbl_PRO_HRCO
+                            {
+                                CreatedBy = Username,
+                                CreatedDate = DateTime.Now,
+                                IDDeTai = ID,
+                                IDNhanSu = item,
+                            };
+                            db.tbl_PRO_HRCO.Add(obj);
+                        }
+                        db.SaveChanges();
                     }
                     else return "Đã gửi trước đó, vui lòng chờ duyệt";
                 }
