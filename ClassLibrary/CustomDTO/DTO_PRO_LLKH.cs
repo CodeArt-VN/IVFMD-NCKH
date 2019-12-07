@@ -22,6 +22,7 @@ namespace DTOModel
         public List<DTO_PRO_LLKH_GiaiThuong> ListGiaiThuong { get; set; }
         public List<DTO_PRO_LLKH_ThongTinKhac_HiepHoiKhoaHoc> ListHiepHoiKhoaHoc { get; set; }
         public List<DTO_PRO_LLKH_ThongTinKhac_TruongDaiHoc> ListTruongDaiHoc { get; set; }
+        public List<DTO_PRO_LLKH_HocVi> ListHocVi { get; set; }
     }
 
     public class DTO_PRO_LLKH_NgoaiNgu
@@ -129,5 +130,12 @@ namespace DTOModel
         public string ThoiGian { get; set; }
         public string TenTruong { get; set; }
         public string NoiDungThamGia { get; set; }
+    }
+
+    public class DTO_PRO_LLKH_HocVi
+    {
+        public string TT { get; set; }
+        public string Bac { get; set; }
+        public string Nam { get; set; }
     }
 }

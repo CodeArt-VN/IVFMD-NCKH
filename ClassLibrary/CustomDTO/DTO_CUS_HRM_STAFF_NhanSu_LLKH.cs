@@ -22,6 +22,7 @@ namespace DTOModel
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong> ListGiaiThuong { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc> ListHiepHoiKhoaHoc { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc> ListTruongDaiHoc { get; set; }
+        public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi> ListHocVi { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu
@@ -35,9 +36,9 @@ namespace DTOModel
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu_ChiTiet
     {
-        public bool Tot { get; set; }
-        public bool Kha { get; set; }
-        public bool TB { get; set; }
+        public string Tot { get; set; }
+        public string Kha { get; set; }
+        public string TB { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac
@@ -129,5 +130,12 @@ namespace DTOModel
         public string ThoiGian { get; set; }
         public string TenTruong { get; set; }
         public string NoiDungThamGia { get; set; }
+    }
+
+    public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi
+    {
+        public string TT { get; set; }
+        public string Bac { get; set; }
+        public string Nam { get; set; }
     }
 }

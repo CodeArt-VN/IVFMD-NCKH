@@ -58,6 +58,7 @@ namespace BaseBusiness
                 JSON_GiaiThuong = s.JSON_GiaiThuong,
                 JSON_ThongTinKhac_HiepHoiKhoaHoc = s.JSON_ThongTinKhac_HiepHoiKhoaHoc,
                 JSON_ThongTinKhac_TruongDaiHoc = s.JSON_ThongTinKhac_TruongDaiHoc,
+                JSON_HocVi = s.JSON_HocVi,
                 HTML = s.HTML,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
@@ -89,6 +90,7 @@ namespace BaseBusiness
                 query.ListGiaiThuong = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong() };
                 query.ListHiepHoiKhoaHoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc() };
                 query.ListTruongDaiHoc = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc() };
+                query.ListHocVi = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi() };
             }
             else
             {
@@ -148,6 +150,10 @@ namespace BaseBusiness
                 if (!string.IsNullOrWhiteSpace(query.JSON_ThongTinKhac_TruongDaiHoc))
                 {
                     query.ListTruongDaiHoc = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc>>(query.JSON_ThongTinKhac_TruongDaiHoc);
+                }
+                if (!string.IsNullOrWhiteSpace(query.JSON_HocVi))
+                {
+                    query.ListHocVi = JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi>>(query.JSON_HocVi);
                 }
             }
 
