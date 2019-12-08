@@ -22,6 +22,7 @@ import { DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvide
 
 import { ACCOUNT_ApplicationUserProvider, ManualProvider, ReportProvider, Sys_VarProvider, PRO_SysnopsisCustomProvider, PRO_MauPhanTichDuLieuCustomProvider, PRO_DonXinXetDuyetCustomProvider, PRO_DonXinDanhGiaDaoDucCustomProvider, PRO_DonXinNghiemThuCustomProvider, PRO_BenhNhanCustomProvider, PRO_NCVKhacCustomProvider, STAFF_NhanSu_LLKHProviderCustomProvider, PRO_DeTaiCustomProvider, PRO_LLKHCustomProvider } from '../providers/Services/CustomService';
 import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
             locationStrategy: 'local',//'local'; Set to 'path' to remove hashbangs when using Deeplinking.
         }),
         PipesModule,
+        BrowserAnimationsModule
     ],
   
     bootstrap: [IonicApp],
@@ -62,8 +64,6 @@ import { ViewerModalPage } from '../pages/DOC/viewer-modal/viewer-modal';
 
         DOC_FileProvider, DOC_File_ActitityProvider, DOC_File_PermissionProvider, DOC_FileInFolderProvider, DOC_FolderProvider, DOC_Folder_ActivityProvider, DOC_Folder_PermissionProvider, HRM_LIST_BoPhanProvider, HRM_LIST_ChucDanhProvider, HRM_STAFF_NhanSuProvider, SYS_CauHinhHeThongProvider, SYS_PermissionListProvider, SYS_PermissionListDetailDataProvider, SYS_RoleProvider, VersionProvider, PAR_DonHangProvider, PAR_DonHang_ChiTietProvider, PAR_PartnerProvider, PAR_ThongTinSanPhamProvider, PROD_SanPhamProvider, PROD_SanPham_ChiTietProvider, SYS_AppsProvider, SYS_ConfigProvider, SYS_ControllerActionsProvider, SYS_FormProvider, SYS_FormDetailProvider, SYS_FormGroupProvider, WEB_BaiVietProvider, WEB_BaiViet_DanhMucProvider, WEB_BaiViet_TagProvider, WEB_DanhMucProvider, WEB_TagProvider, CAT_TagsProvider, CAT_NhomProvider, CAT_KinhPhiProvider, CAT_BangGiaKinhPhiProvider, CAT_SiteProvider, PRO_DeTaiProvider, PRO_BenhNhanProvider, PRO_NCVKhacProvider, 
         HRM_BenhNhanProvider, STAFF_NhanSu_LLKHProvider, PRO_LLKHProvider
-        
-
     ]
 })
 export class AppModule { }

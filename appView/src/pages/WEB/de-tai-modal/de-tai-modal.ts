@@ -8,6 +8,7 @@ import { Sys_VarProvider, PRO_BenhNhanCustomProvider, PRO_NCVKhacCustomProvider 
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
 import { DeTaiBenhNhanModalPage } from '../de-tai-benh-nhan-modal/de-tai-benh-nhan-modal';
+import { DateAdapter } from "@angular/material";
 
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -28,7 +29,6 @@ export class DeTaiModalPage extends DetailPage {
     lstNCVKhac: any[] = [];
     lstNCVSelected: any[] = [];
     queryNCV: any = {};
-
     constructor(
         public currentProvider: PRO_DeTaiProvider,
         public staffProvider: HRM_STAFF_NhanSuProvider,
@@ -38,9 +38,11 @@ export class DeTaiModalPage extends DetailPage {
         public viewCtrl: ViewController,
         public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
+        private dateAdapter: DateAdapter<Date>
     ) {
 
         super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
+        this.dateAdapter.setLocale('vi');   
         this.pageName = "page-de-tai";
         this.events.unsubscribe('app:Close-page-de-tai-modal');
         this.events.subscribe('app:Close-page-de-tai-modal', () => {
@@ -54,7 +56,8 @@ export class DeTaiModalPage extends DetailPage {
             SoNCT: [''],
             GhiChu: [''],
             IDChuNhiem: ['', Validators.compose([Validators.required])],
-            IDPhanLoaiDeTai: ['', Validators.compose([Validators.required])]
+            IDPhanLoaiDeTai: ['', Validators.compose([Validators.required])],
+            myDate: [Date],
         });
     }
 
@@ -76,6 +79,7 @@ export class DeTaiModalPage extends DetailPage {
 
     loadedData() {
     }
+
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
