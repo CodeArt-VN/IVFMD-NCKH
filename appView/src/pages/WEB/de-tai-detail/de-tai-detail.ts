@@ -19,13 +19,14 @@ import { NhanSuLLKHModalPage } from '../nhan-su-llkh-modal/nhan-su-llkh-modal';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@IonicPage({ name: 'page-de-tai-detail', segment: 'de-tai-detail/:id', priority: 'high' })
+@IonicPage({ name: 'page-de-tai-detail', segment: 'de-tai-detail/:value', priority: 'high' })
 @Component({
   selector: 'page-de-tai-detail',
   templateUrl: 'de-tai-detail.html',
 })
 export class DeTaiDetailPage extends BasePage {
   id: any;
+  paramValue: any;
   @ViewChild(Slides) slides: Slides;
   //@ViewChild('pages') slides: Slides;
   slideListByType = [];
@@ -52,6 +53,15 @@ export class DeTaiDetailPage extends BasePage {
   ) {
     super('page-de-tai-detail', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
     this.id = navParams.get('id');
+    this.paramValue = navParams.get('value');
+    try {
+      var arr = this.paramValue.split('-');
+      this.id = arr[arr.length-1];
+    } 
+    catch (e) {
+      this.id = 0;
+    }
+
     if (this.id && commonService.isNumeric(this.id)) {
       this.id = parseInt(this.id, 10);
     }

@@ -13,8 +13,6 @@ import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-
 import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/don-xin-danh-gia-dao-duc-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
 
-
-
 @IonicPage({ name: 'page-de-tai', segment: 'de-tai', priority: 'high' }) 
 @Component({ selector: 'page-de-tai', templateUrl: 'de-tai.html' })
 export class DeTaiPage extends ListPage {
@@ -33,7 +31,7 @@ export class DeTaiPage extends ListPage {
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public commonService: CommonServiceProvider,
-        public accountService: AccountServiceProvider,
+        public accountService: AccountServiceProvider
     ) {
         super('page-de-tai', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
         
@@ -51,7 +49,7 @@ export class DeTaiPage extends ListPage {
     }
 
     openDetailPage(item) {
-        this.navCtrl.setRoot('page-de-tai-detail', { 'id': item.ID });
+        this.navCtrl.setRoot('page-de-tai-detail', { 'value': 'view-de-tai-' + item.ID });
         //this.navCtrl.push(DeTaiDetailPage, { 'id': item.ID });
         return false;
     }
@@ -68,5 +66,4 @@ export class DeTaiPage extends ListPage {
         };
         this.openDetail(item);
     }
-    
 }

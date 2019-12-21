@@ -27,6 +27,7 @@ export class NotFoundPage {
 
 
     check() {
+        debugger
         console.log('page-check', this.navParams.data);
         if (this.navParams.data) {
             let urlcommand = this.navParams.data["**"];
@@ -39,6 +40,10 @@ export class NotFoundPage {
                 }
                 else if (urlcommand.indexOf('share-file-') > -1) {
                     this.navCtrl.setRoot("page-sops", { cmd: 'open-file', id: id });
+                    return;
+                }
+                else if (urlcommand.indexOf('view-de-tai-') > -1) {
+                    this.navCtrl.setRoot('page-de-tai-detail', { 'value': 'view-de-tai-' + id });
                     return;
                 }
             }
