@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { KinhPhiPage } from './nhom';
+import { KinhPhiPage } from './kinh-phi';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({

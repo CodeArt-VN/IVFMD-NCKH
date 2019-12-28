@@ -56,21 +56,20 @@
               [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items"
               [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'>
               
-              <ngx-datatable-column name="Mã" prop="Code" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+              <ngx-datatable-column name="Kinh phí" prop="KinhPhi" headerClass="name" cellClass="name">
                   <ng-template let-i="row" ngx-datatable-cell-template>
                       <a (click)="openDetail(i)">
-                          {{i.Code}}
+                          {{i.KinhPhi}}
                       </a>
                   </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Kinh phí" prop="KinhPhi"></ngx-datatable-column>
-              <ngx-datatable-column name="Ngày hiệu lực" prop="NgayHieuLuc"></ngx-datatable-column>
-              <ngx-datatable-column name="Giá" prop="Gia"></ngx-datatable-column>
+              <ngx-datatable-column name="Ngày hiệu lực" prop="NgayHieuLuc" [width]="150">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      {{i.NgayHieuLuc | date: 'dd/MM/yyyy' }}
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Giá" prop="Gia" [width]="150"></ngx-datatable-column>
           </ngx-datatable>
-
-
-
-
       </ion-col>
   </ion-row>
 </ion-content>

@@ -63,6 +63,7 @@ export class DetailPage extends BasePage {
     }
 
     saveChange() {
+        debugger
         this.showActionMore = false;
         this.submitAttempt = true;
         if (!this.formGroup.valid) {

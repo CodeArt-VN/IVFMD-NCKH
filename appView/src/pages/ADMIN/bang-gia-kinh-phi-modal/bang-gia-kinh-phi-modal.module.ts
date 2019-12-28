@@ -1,16 +1,21 @@
-import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { NhomModalPage } from './nhom-modal';
-
+import { BangGiaKinhPhiModalPage } from './bang-gia-kinh-phi-modal';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   declarations: [
-    NhomModalPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(NhomModalPage)
-  ],
-  exports: [
-    NhomModalPage
-  ]
+    BangGiaKinhPhiModalPage,
+    ],
+    imports: [
+        NgxDatatableModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        IonicPageModule.forChild(BangGiaKinhPhiModalPage)
+    ],
+    exports: [
+        BangGiaKinhPhiModalPage
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class NhomModalPageModule { }
+export class BangGiaKinhPhiModalPageModule { }

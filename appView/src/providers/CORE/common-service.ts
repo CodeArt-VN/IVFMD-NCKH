@@ -70,7 +70,7 @@ export class CommonServiceProvider {
         }
         else if (pmethod == "PUT") {
             //return this.http.put(URL, data, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
-            return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+            return this.http.put(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
                 if (error.status == 0) {
                     return Promise.reject('Can not connect to API server!');
                 } else {
@@ -89,7 +89,7 @@ export class CommonServiceProvider {
         }
         else if (pmethod == "DELETE") {
             //return this.http.delete(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch(this.handleError);
-            return this.http.post(URL, JSON.stringify(data), options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
+            return this.http.delete(URL, options).map((res: any) => { return res._body == "" ? res : res.json(); }).catch((error: any) => {
                 if (error.status == 0) {
                     return Promise.reject('Can not connect to API server!');
                 } else {
