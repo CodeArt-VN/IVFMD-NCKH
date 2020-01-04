@@ -5,60 +5,55 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formGroup">
-      <div padding></div>
-      <div class="c-control">
-          <label class="c-label" for="IDKinhPhi">
-              Kinh phí
-              <span *ngIf="!formGroup.controls.IDKinhPhi.valid && !formGroup.controls.IDKinhPhi.pending && (formGroup.controls.IDKinhPhi.dirty || submitAttempt)"
-                    ion-text color="danger">(*)</span>
-          </label>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="IDKinhPhi">
+                Kinh phí
+                <span *ngIf="!formGroup.controls.IDKinhPhi.valid && !formGroup.controls.IDKinhPhi.pending && (formGroup.controls.IDKinhPhi.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
 
-          <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi">
-              <option *ngFor="let t of kinhPhis" [value]="t.ID">{{t.Name}}</option>
-          </select>
-      </div>
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi">
+                <option *ngFor="let t of kinhPhis" [value]="t.ID">{{t.Name}}</option>
+            </select>
+        </div>
 
-      <div class="c-control">
-          <label class="c-label" for="Name">Tên
-              <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
-      </div>
+        <div class="c-control">
+            <label class="c-label" for="Gia">
+                Giá
+                <span *ngIf="!formGroup.controls.Gia.valid && !formGroup.controls.Gia.pending && (formGroup.controls.Gia.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Gia" [(ngModel)]="item.Gia" formControlName="Gia" type="number">
+        </div>
 
-      <div class="c-control">
-          <label class="c-label" for="GhiChu">Mô tả
-              <span *ngIf="!formGroup.controls.GhiChu.valid && !formGroup.controls.GhiChu.pending && (formGroup.controls.GhiChu.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <textarea rows="3" class="c-input" id="GhiChu" [(ngModel)]="item.GhiChu" formControlName="GhiChu" type="textarea"></textarea>
+        <div class="c-control">
+            <label class="c-label" for="NgayHieuLuc">
+                Ngày
+                <span *ngIf="!formGroup.controls.NgayHieuLuc.valid && !formGroup.controls.NgayHieuLuc.pending && (formGroup.controls.NgayHieuLuc.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input matInput [matDatepicker]="NgayHieuLuc" [(ngModel)]="item.NgayHieuLuc" formControlName="NgayHieuLuc" class="c-input" style="width: calc(100% - 50px);">
+            <mat-datepicker-toggle matSuffix [for]="NgayHieuLuc"></mat-datepicker-toggle>
+            <mat-datepicker #NgayHieuLuc></mat-datepicker>
+        </div>
 
-      </div>
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Thêm
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
 
-      <div class="c-control">
-          <label class="c-label" for="Sort">Thứ tự
-              <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
-      </div>
-
-      <div class="c-control" *ngIf="item.ID==0">
-          <label class="c-label" for=""></label>
-          <button ion-button float-right (click)="saveChange()">
-              Thêm nhóm
-          </button>
-      </div>
-      <div class="c-control" *ngIf="item.ID!=0">
-          <label class="c-label" for=""></label>
-
-          <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
-              Lưu
-          </button>
-          <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
-              Hủy thay đổi
-          </button>
-      </div>
-  </form>
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
 </ion-content>

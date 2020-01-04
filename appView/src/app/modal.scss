@@ -1,44 +1,58 @@
 .modal-wrapper {
-        
+
     $modal-width: 750px;
-    width: 100vw; 
+    width: 100vw;
 
     @media(min-width: map-get($grid-breakpoints, md)) {
         // left: calc(50% - #{$modal-width / 2 } );
         // top: calc(50% - #{$modal-width / 2 } );
-
-        top:0;
+        top: 0;
         right: 0;
         bottom: 0;
         left: 0;
         margin: auto;
-
-
         position: absolute;
         width: $modal-width;
         height: $modal-width;
         max-height: 100vh;
         max-width: 100vw;
-
         border-radius: 0;
         box-shadow: 0 0px 30px map-get($map: $colors, $key: ivf1);
     }
 
-    ion-header{
-        .close-btn{
-            position: absolute;
-            right: 15px;
-            top: 0px;
-            font-size: 30px;
-       }
+    ion-header {
+        &.fixed-button {
+            background-color: #fff;
+            box-shadow: 2px 2px 2px #cecece;
+
+            .close-btn {
+                position: relative;
+                font-size: 2.8em;
+                height: auto;
+                background-color: #fff;
+            }
+        }
+
+        &:not(.fixed-button) {
+            .close-btn {
+                position: absolute;
+                right: 15px;
+                top: 0px;
+                font-size: 30px;
+            }
+        }
     }
 
-    form{
+    form {
         display: block;
         padding: 50px 20px;
+
         @media(min-width: map-get($grid-breakpoints, md)) {
             padding: 50px;
         }
     }
-    
+
+    .nckh-form-wrapper {
+        padding: 50px 20px;
+    }
 }

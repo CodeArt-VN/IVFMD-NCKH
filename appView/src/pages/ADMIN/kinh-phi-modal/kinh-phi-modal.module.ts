@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { KinhPhiModalPage } from './nhom-modal';
+import { KinhPhiModalPage } from './kinh-phi-modal';
 
 @NgModule({
   declarations: [

@@ -1,10 +1,36 @@
 .nckh-form-template {
+    background-color: #fff;
     size: a4;
-    min-width: 7in;
-    max-width: 7in;
-    font-size: 13pt;
-    margin: 1in 1in 1in 1in;
+    min-width: 8.27in;
+    max-width: 8.27in;
+    margin: auto;
+    padding: 1in;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    min-height: 11.69in;
+    -webkit-box-shadow: 0 0 2px 1px #cecece;
+    -moz-box-shadow: 0 0 2px 1px #cecece;
+    box-shadow: 0 0 2px 1px #cecece;
+
+    .font-size-14 {
+        font-size: 14pt;
+    }
+
+    .font-size-13 {
+        font-size: 13pt;
+    }
+
+    .font-size-12 {
+        font-size: 12pt;
+    }
+
+    .font-size-11 {
+        font-size: 11pt;
+    }
+
+    .font-size-10 {
+        font-size: 10pt;
+    }
 
     .inline {
         display: inline-block;
@@ -27,6 +53,10 @@
         font-weight: bold;
     }
 
+    .text-italic {
+        font-style: italic;
+    }
+
     .tab-1 {
         margin-left: 1em;
     }
@@ -39,12 +69,25 @@
     .pblock {
         margin-top: 5px;
         margin-bottom: 5px;
+        border: 1px dashed transparent;
+
+        &:hover {
+            border-width: 1px;
+        }
+    }
+
+    .prow {
+        border: 1px dashed transparent;
+
+        &:hover {
+            border: 1px dashed #44a9eb;
+        }
     }
 
     .box {
         display: table;
         width: 100%;
-        margin: 2px 0;
+        margin: 0 0 3px 0;
 
         .box-title {
             position: absolute;
@@ -114,6 +157,10 @@
                     page-break-inside: avoid;
                     page-break-before: auto;
                     vertical-align: top;
+
+                    &[contenteditable="true"] {
+                        padding: 6px;
+                    }
                 }
             }
         }
@@ -126,11 +173,11 @@
                     border: 1px solid #607d8b;
                     border-bottom: 0;
 
-                    &:first-child{
+                    &:first-child {
                         border-left: 0;
                     }
 
-                    &:last-child{
+                    &:last-child {
                         border-right: 0;
                     }
                 }

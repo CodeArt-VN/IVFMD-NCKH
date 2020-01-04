@@ -3,9 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-
 import { MyApp } from './app.component';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { File } from '@ionic-native/file';
@@ -52,9 +50,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ],
     providers: [
         StatusBar, SplashScreen, File, FileTransfer, Facebook, GoogleAnalytics,
-
         { provide: ErrorHandler, useClass: IonicErrorHandler },
-        
         AccountServiceProvider,
         CommonServiceProvider,
 
