@@ -36,6 +36,24 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_SYLL);
         }
 
+        [Route("get_PRO_SYLL/{idDeTai:int}/{idNhanSu:int}")]
+        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
+        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu)
+        {
+            DTO_PRO_SYLL tbl_PRO_SYLL = BS_PRO_SYLL.get_PRO_SYLLCustom(db, idDeTai, idNhanSu);
+            //if (tbl_PRO_LLKH.ID == 0)
+            //{
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
+            {
+                html = r.ReadToEnd();
+            }
+            tbl_PRO_SYLL.HTML = html;
+            //}
+
+            return Ok(tbl_PRO_SYLL);
+        }
+
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, DTO_PRO_SYLL tbl_PRO_SYLL)

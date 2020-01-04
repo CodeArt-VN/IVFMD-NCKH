@@ -343,6 +343,7 @@
     <Compile Include="Controllers\HRM\LIST_ChucDanhController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSu_LLKHController.cs" />
+    <Compile Include="Controllers\HRM\STAFF_NhanSu_SYLLController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
     <Compile Include="Controllers\PRO\BenhNhanController.cs" />
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
@@ -388,6 +389,7 @@
     <Content Include="Content\FormTemplate\DonXinXetDuyet.html" />
     <Content Include="Content\FormTemplate\MauPhanTichDuLieu.html" />
     <Content Include="Content\FormTemplate\NhanSuLLKH.html" />
+    <Content Include="Content\FormTemplate\NhanSuSYLL.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
