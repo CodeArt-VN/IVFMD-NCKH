@@ -9,23 +9,23 @@
     font-size: 13pt;
     min-height: 11.69in;
 
-    &.font-size-14 {
+    .font-size-14 {
         font-size: 14pt;
     }
 
-    &.font-size-13 {
+    .font-size-13 {
         font-size: 13pt;
     }
 
-    &.font-size-12 {
+    .font-size-12 {
         font-size: 12pt;
     }
 
-    &.font-size-11 {
+    .font-size-11 {
         font-size: 11pt;
     }
 
-    &.font-size-10 {
+    .font-size-10 {
         font-size: 10pt;
     }
 
@@ -50,6 +50,10 @@
         font-weight: bold;
     }
 
+    .text-italic {
+        font-style: italic;
+    }
+
     .tab-1 {
         margin-left: 1em;
     }
@@ -62,12 +66,25 @@
     .pblock {
         margin-top: 5px;
         margin-bottom: 5px;
+        border: 1px dashed transparent;
+
+        &:hover {
+            border-width: 1px;
+        }
+    }
+
+    .prow {
+        border: 1px dashed transparent;
+
+        &:hover {
+            border: 1px dashed #44a9eb;
+        }
     }
 
     .box {
         display: table;
         width: 100%;
-        margin: 2px 0;
+        margin: 0 0 3px 0;
 
         .box-title {
             position: absolute;
@@ -137,6 +154,10 @@
                     page-break-inside: avoid;
                     page-break-before: auto;
                     vertical-align: top;
+
+                    &[contenteditable="true"] {
+                        padding: 6px;
+                    }
                 }
             }
         }
