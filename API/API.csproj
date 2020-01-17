@@ -344,6 +344,7 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSuController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSu_LLKHController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\BaoCaoTienDoController.cs" />
     <Compile Include="Controllers\PRO\BenhNhanController.cs" />
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
     <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />

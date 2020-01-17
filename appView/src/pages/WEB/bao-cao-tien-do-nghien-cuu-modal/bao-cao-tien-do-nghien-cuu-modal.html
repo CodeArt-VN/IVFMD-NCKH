@@ -1,0 +1,52 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="SoCaThuThapHopLe">
+                Số ca thu thập hợp lệ
+                <span *ngIf="!formGroup.controls.SoCaThuThapHopLe.valid && !formGroup.controls.SoCaThuThapHopLe.pending && (formGroup.controls.SoCaThuThapHopLe.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="SoCaThuThapHopLe" [(ngModel)]="item.SoCaThuThapHopLe" formControlName="SoCaThuThapHopLe" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="TienDoThuNhanMau">
+                Tiến độ thu nhận mẫu
+                <span *ngIf="!formGroup.controls.TienDoThuNhanMau.valid && !formGroup.controls.TienDoThuNhanMau.pending && (formGroup.controls.TienDoThuNhanMau.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <textarea rows="3" class="c-input" id="TienDoThuNhanMau" [(ngModel)]="item.TienDoThuNhanMau" formControlName="TienDoThuNhanMau" type="textarea"></textarea>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="KhoKhan">
+                Khó khăn
+            </label>
+            <textarea rows="3" class="c-input" id="KhoKhan" [(ngModel)]="item.KhoKhan" formControlName="KhoKhan" type="textarea"></textarea>
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

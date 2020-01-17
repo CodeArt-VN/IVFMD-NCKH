@@ -11,6 +11,7 @@ import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/
 import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
 import { NhanSuLLKHModalPage } from '../nhan-su-llkh-modal/nhan-su-llkh-modal';
+import { BaoCaoTienDoNghienCuuPage } from '../bao-cao-tien-do-nghien-cuu/bao-cao-tien-do-nghien-cuu';
 
 
 /**
@@ -32,6 +33,7 @@ export class DeTaiDetailPage extends BasePage {
   slideListByType = [];
   listForm1 = [];
   listForm2 = [];
+  listForm4 = [];
   pageIndex: number = 0;
   pageTitle = '';
   slideOpts: any;
@@ -86,7 +88,8 @@ export class DeTaiDetailPage extends BasePage {
       { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
     ];
     this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0});
-    this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1});
+      this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
+      this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
     this.slideOpts = {
       pager: false,
 
@@ -301,11 +304,28 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 7:
               page = SysnopsisModalPage;
-              break;    
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                page = BaoCaoTienDoNghienCuuPage;
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
         }
-
-        let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
-        myModal.present();
+        if (type != 11) {
+            let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
+            myModal.present();
+        } else {
+            this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'params-' + this.id });
+            return false;
+        }
     }
 
     updateSatus(actionCode) {

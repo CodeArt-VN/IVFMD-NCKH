@@ -72,13 +72,14 @@
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>Synopsis</a>
+                                    <a>Số NCT</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    From Synopsis
+                                    Hướng dẫn đăng ký NCT
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">TẠO MỚI</button>
+                                <!--<button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>-->
                             </ion-card-content>
                         </ion-card>
 
@@ -90,20 +91,20 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-3>
+                    <ion-col col-md-4 *ngFor="let i of listForm4">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>Synopsis</a>
+                                    <a>{{i.Name}}</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    From Synopsis
+                                    {{i.Description}}
                                 </p>
                                 <div padding></div>
-                                <button ion-button block (click)="goToStep(0, 0)">TẠO MỚI</button>
+                                <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>
                             </ion-card-content>
                         </ion-card>
-
                     </ion-col>
                 </ion-row>
             </ion-grid>

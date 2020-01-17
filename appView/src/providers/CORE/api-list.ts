@@ -1128,6 +1128,33 @@ export var APIListBase = {
         }
     },
 
+    PRO_BaoCaoTienDoNghienCuu: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/") + id }
+        },
+        getListCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/get_PRO_BaoCaoTienDoNghienCuuByDeTai/") + idDeTai }
+        }
+    },
+
     PRO_NCVKhac:{
         getList:{
             method: "GET",

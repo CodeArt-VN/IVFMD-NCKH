@@ -27,7 +27,6 @@ export class NotFoundPage {
 
 
     check() {
-        debugger
         console.log('page-check', this.navParams.data);
         if (this.navParams.data) {
             let urlcommand = this.navParams.data["**"];
