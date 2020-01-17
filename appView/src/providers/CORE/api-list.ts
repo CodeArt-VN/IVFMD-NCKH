@@ -1326,6 +1326,36 @@ export var APIListBase = {
             url: function(){return appSetting.apiDomain("PRO/SYLL/save_PRO_SYLL")}
         },
     },
+    PRO_XemXetDD:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/get_PRO_BangKiemLuaChonQuyTrinhXXDD/") + idDeTai }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/save_PRO_BangKiemLuaChonQuyTrinhXXDD")}
+        },
+    },
 };
 
 

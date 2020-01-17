@@ -91,5 +91,7 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
 
         public System.Data.Entity.DbSet<DTOModel.DTO_CUS_HRM_STAFF_NhanSu_SYLL> DTO_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
+
+        public System.Data.Entity.DbSet<DTOModel.DTO_PRO_BangKiemLuaChonQuyTrinhXXDD> DTO_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
     }
 }

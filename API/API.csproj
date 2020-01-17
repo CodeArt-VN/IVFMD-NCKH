@@ -345,6 +345,7 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSu_LLKHController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSu_SYLLController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\BangKiemLuaChonQuyTrinhXXDDController.cs" />
     <Compile Include="Controllers\PRO\BenhNhanController.cs" />
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
     <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />
@@ -384,6 +385,7 @@
     <Content Include="Content\ej2\fabric.css" />
     <Content Include="Content\ej2\highcontrast.css" />
     <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\FormTemplate\BangKiemLuaChonQuyTrinhXXDD.html" />
     <Content Include="Content\FormTemplate\DonXinNghiemThu.html" />
     <Content Include="Content\FormTemplate\DonXinDanhGiaDaoDuc.html" />
     <Content Include="Content\FormTemplate\DonXinXetDuyet.html" />
