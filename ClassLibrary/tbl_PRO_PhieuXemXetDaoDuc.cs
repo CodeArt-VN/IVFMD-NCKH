@@ -95,6 +95,7 @@ namespace DTOModel
 		public string TenNCSYH { get; set; }
 		public string JSON_CacNCV { get; set; }
 		public string DonViChuTri { get; set; }
+
 		public string NguoiGiaoDich_HoTen { get; set; }
 		public string NguoiGiaoDich_DiaChiGiaoDich { get; set; }
 		public string NguoiGiaoDich_DienThoaiCQ { get; set; }
@@ -102,7 +103,9 @@ namespace DTOModel
 		public string NguoiGiaoDich_DienThoaiNR { get; set; }
 		public string NguoiGiaoDich_DienThoaiDD { get; set; }
 		public string NguoiGiaoDich_Email { get; set; }
+		
 		public string JSON_CacCoQuan { get; set; }
+
 		public bool QuyChe_TreEm { get; set; }
 		public bool QuyChe_NguoiQuanHeLeThuoc { get; set; }
 		public bool QuyChe_PhongXa { get; set; }
@@ -115,6 +118,8 @@ namespace DTOModel
 		public bool QuyChe_NguoiDanToc { get; set; }
 		public bool QuyChe_ThuNghiemLamSang { get; set; }
 		public bool QuyChe_SuDungMauMoNguoi { get; set; }
+		public bool QuyChe_CoTroGiupKiThuat { get; set; }
+
 		public string ThongTinNguonTaiTro { get; set; }
 		public string ThongTinNCYSHSinhVien { get; set; }
 		public string QuyTrinh_MoTaDuAn { get; set; }
@@ -123,17 +128,25 @@ namespace DTOModel
 		public string QuyTrinh_VanDeLienQuan { get; set; }
 		public string QuyTrinh_DiaDiemNghienCuu { get; set; }
 		public string QuyTrinh_NghienCuuTaiNoiLamViecNguoiThamGia { get; set; }
+		
 		public bool NguyCoTiemTang_NhomNghienCuu { get; set; }
 		public bool NguyCoTiemTang_NguoiThamGia { get; set; }
 		public bool NguyCoTiemTang_CongDongCuaTruong { get; set; }
 		public bool NguyCoTiemTang_CongDongLonHon { get; set; }
+
 		public string NguyCoTiemTang_SoSanhRuiRo { get; set; }
 		public string NguyCoTiemTang_QuyTrinhGiamRuiRo { get; set; }
 		public string NguyCoTiemTang_CachXuLyRuiRo { get; set; }
+		public string NguyCoTiemTang_SucKhoeVaTinhAnToan { get; set; }
+		public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
+		public string NguyCoTiemTang_ThaoTacGen { get; set; }
+
+
 		public string LoiIchTiemTang_NhungLoiIch { get; set; }
 		public string LoiIchTiemTang_AiDuocLoi { get; set; }
 		public string LoiIchTiemTang_DongGopKhoaHoc { get; set; }
 		public string LoiIchTiemTang_SoSanh { get; set; }
+
 		public string HTML { get; set; }
 		public bool IsDisabled { get; set; }
 		public bool IsDeleted { get; set; }
