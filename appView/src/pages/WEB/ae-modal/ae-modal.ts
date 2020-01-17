@@ -72,25 +72,6 @@ export class AEModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
-            self.HoTenChuNhiem = ko.observable(item.HoTenChuNhiem);
-            self.DonVi = ko.observable(item.DonVi);
-            self.DiaChi = ko.observable(item.DiaChi);
-            self.DienThoai = ko.observable(item.DienThoai);
-            self.TenDeTai = ko.observable(item.TenDeTai);
-            self.TenDonViChuTri = ko.observable(item.TenDonViChuTri);
-            self.DiaChiDonVi = ko.observable(item.DiaChiDonVi);
-            self.DienThoaiDonVi = ko.observable(item.DienThoaiDonVi);
-            self.DiaDiemNghienCuu = ko.observable(item.DiaDiemNghienCuu);
-            self.ThoiGianNghienCuu = ko.observable(item.ThoiGianNghienCuu);
-            self.TuNgay = ko.observable(item.TuNgay);
-            self.DenNgay = ko.observable(item.DenNgay);
-            self.ThuyetMinhDeCuong = ko.observable(item.ThuyetMinhDeCuong);
-            self.LLKHChuNhiem = ko.observable(item.LLKHChuNhiem);
-            self.LLKHNCV = ko.observable(item.LLKHNCV);
-            self.GiayToKhac = ko.observable(item.GiayToKhac);
-            self.GhiChuGiayToKha = ko.observable(item.GhiChuGiayToKha);
-
             self.getItem = function () {
                 return ko.toJS(self);
             };

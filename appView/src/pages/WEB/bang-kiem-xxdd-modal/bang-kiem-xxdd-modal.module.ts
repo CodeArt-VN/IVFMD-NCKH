@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { BangKiemXxddModalPage } from './bang-kiem-xxdd-modal';
+import { BangKiemXXDDModalPage } from './bang-kiem-xxdd-modal';
 
 @NgModule({
   declarations: [
-    BangKiemXxddModalPage,
+    BangKiemXXDDModalPage,
   ],
   imports: [
-    IonicPageModule.forChild(BangKiemXxddModalPage),
+    IonicPageModule.forChild(BangKiemXXDDModalPage),
   ],
   exports: [
-    BangKiemXxddModalPage
+    BangKiemXXDDModalPage
   ]
 })
-export class BangKiemXxddModalPageModule {}
+export class BangKiemXXDDModalPageModule {}
