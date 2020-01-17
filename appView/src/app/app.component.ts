@@ -9,6 +9,7 @@ import { GlobalData } from '../providers/CORE/global-variable';
 import { AccountServiceProvider } from '../providers/CORE/account-service';
 import { StaffModalPage } from '../pages/ADMIN/staff-modal/staff-modal';
 import { NhanSuLLKHModalPage } from '../pages/WEB/nhan-su-llkh-modal/nhan-su-llkh-modal';
+import { NhanSuSYLLModalPage } from '../pages/WEB/nhan-su-syll-modal/nhan-su-syll-modal';
 import { PopoverPage } from '../pages/HETHONG/popover/popover';
 
 
@@ -170,6 +171,23 @@ export class MyApp {
         }
     }
 
+    openSYLL() {
+        if (this.userprofile.Id) {
+            if (this.userprofile.StaffID) {
+                let myModal = this.modalCtrl.create(NhanSuSYLLModalPage, { 'idNhanSu': this.userprofile.StaffID }, { cssClass: 'preview-modal' });
+                myModal.present();
+            }
+            this.menu.close();
+
+
+
+        }
+        else if (this.activePage != 'page-login') {
+            this.menu.close();
+            this.openPage({ Code: 'page-login' });
+        }
+    }
+
     logout() {
         this.accountService.logout()
             .then(_ => {
@@ -203,6 +221,9 @@ export class MyApp {
             }
             else if (data == 'openLLKH') {
                 this.openLLKH();
+            }
+            else if (data == 'openSYLL') {
+                this.openSYLL();
             }
             else if (data == 'logout') {
                 this.logout();

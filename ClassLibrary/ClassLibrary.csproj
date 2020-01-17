@@ -61,6 +61,8 @@
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BaoCaoTienDoNghienCuu.cs" />
+    <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_SYLL.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_BangKiemLuaChonQuyTrinhXXDD.cs" />
     <Compile Include="CustomBusiness\BS_PRO_LLKH.cs" />
     <Compile Include="CustomBusiness\BS_CUS_SYS_PermissionList.cs" />
     <Compile Include="CustomBusiness\BS_CUS_Version.cs" />
@@ -72,6 +74,9 @@
     <Compile Include="CustomBusiness\BS_PRO_DonXinDanhGiaDaoDuc.cs" />
     <Compile Include="CustomBusiness\BS_PRO_MauPhanTichDuLieu.cs" />
     <Compile Include="CustomBusiness\BS_PRO_DonXinXetDuyet.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_PhieuXemXetDaoDuc.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_SAE.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_SYLL.cs" />
     <Compile Include="CustomBusiness\BS_PRO_Sysnopsis.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BenhNhan.cs" />
     <Compile Include="CustomBusiness\BS_PRO_NCVKhac.cs" />
@@ -86,6 +91,8 @@
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BaoCaoTienDoNghienCuu.cs" />
+    <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_SYLL.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_BangKiemLuaChonQuyTrinhXXDD.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BaoCaoNangSuatKhoaHoc.cs" />
     <Compile Include="CustomDTO\DTO_CAT_BangGiaKinhPhi.cs" />
     <Compile Include="CustomDTO\DTO_CAT_HRCOConfig.cs" />
@@ -102,7 +109,6 @@
     <Compile Include="CustomDTO\DTO_PRO_ThuyetMinhDeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_SAE.cs" />
     <Compile Include="CustomDTO\DTO_PRO_PhieuXemXetDaoDuc.cs" />
-    <Compile Include="CustomDTO\DTO_PRO_BangKiemLuaChonQuyTrinhXXDD.cs" />
     <Compile Include="CustomDTO\DTO_PRO_MauPhanTichDuLieu.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>

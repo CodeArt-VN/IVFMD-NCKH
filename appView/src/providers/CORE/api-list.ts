@@ -1293,6 +1293,178 @@ export var APIListBase = {
             url: function(){return appSetting.apiDomain("PRO/LLKH/save_PRO_LLKH")}
         },
     },
+    STAFF_NhanSu_SYLL:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/get_CUS_HRM_STAFF_NhanSu_SYLL/") + idNhanSu }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/save_CUS_HRM_STAFF_NhanSu_SYLL")}
+        },
+    },
+    PRO_SYLL:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/SYLL")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/SYLL/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/SYLL/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/SYLL")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/SYLL/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/SYLL/get_PRO_SYLL/") + idDeTai + "/" + idNhanSu }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/SYLL/save_PRO_SYLL")}
+        },
+    },
+    PRO_XemXetDD:{
+        getList:{
+            method: "GET",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD")}  
+        },
+        getItem:{
+            method: "GET",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        putItem:{
+            method: "PUT",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        postItem:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD")}
+        },
+        delItem:{
+            method: "DELETE",
+            url: function(id){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/") + id} 
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/get_PRO_BangKiemLuaChonQuyTrinhXXDD/") + idDeTai }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/save_PRO_BangKiemLuaChonQuyTrinhXXDD")}
+        },
+    },
+    PRO_PhieuXemXetDaoDuc: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/get_PRO_PhieuXemXetDaoDuc/") + idDeTai }
+        }
+    },
+    PRO_AE: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/AE") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/AE/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/AE/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/AE") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/AE/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/AE/get_PRO_AE/") + idDeTai }
+        }
+    },
+    PRO_SAE: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/SAE") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/SAE/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/SAE/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/SAE") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/SAE/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE/") + idDeTai }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/SAE/save_PRO_SAE")}
+        },
+    },
 };
 
 
