@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AeModalPage } from './ae-modal';
+import { AEModalPage } from './ae-modal';
 
 @NgModule({
   declarations: [
-    AeModalPage,
+    AEModalPage,
   ],
   imports: [
-      IonicPageModule.forChild(AeModalPage)
+      IonicPageModule.forChild(AEModalPage)
   ],
   exports: [
-    AeModalPage
+    AEModalPage
   ]
 })
-export class AeModalPageModule {}
+export class AEModalPageModule {}

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SaeModalPage } from './sae-modal';
+import { SAEModalPage } from './sae-modal';
 
 @NgModule({
   declarations: [
-    SaeModalPage,
+    SAEModalPage,
   ],
   imports: [
-      IonicPageModule.forChild(SaeModalPage)
+      IonicPageModule.forChild(SAEModalPage)
   ],
   exports: [
-    SaeModalPage
+    SAEModalPage
   ]
 })
-export class SaeModalPageModule {}
+export class SAEModalPageModule {}
