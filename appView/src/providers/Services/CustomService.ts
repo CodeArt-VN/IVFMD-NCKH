@@ -588,6 +588,79 @@ export class PRO_BangKiemXXDDCustomProvider extends exService {
 		});
 	}
 }
+
+@Injectable()
+export class PRO_PhieuXemXetDaoDucCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_PhieuXemXetDaoDuc, SearchConfig.getSearchFields('PRO_PhieuXemXetDaoDuc'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_PhieuXemXetDaoDuc.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+}
+
+@Injectable()
+export class PRO_AECustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_AE, SearchConfig.getSearchFields('PRO_AE'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_AE.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+}
+
+@Injectable()
+export class PRO_SAECustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_SAE, SearchConfig.getSearchFields('PRO_SAE'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_SAE.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+
+	saveCustom(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_SAE.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

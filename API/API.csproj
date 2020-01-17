@@ -345,11 +345,14 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSu_LLKHController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSu_SYLLController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\AEController.cs" />
     <Compile Include="Controllers\PRO\BangKiemLuaChonQuyTrinhXXDDController.cs" />
     <Compile Include="Controllers\PRO\BenhNhanController.cs" />
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
     <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />
     <Compile Include="Controllers\PRO\DonXinDanhGiaDaoDucController.cs" />
+    <Compile Include="Controllers\PRO\PhieuXemXetDaoDucController.cs" />
+    <Compile Include="Controllers\PRO\SAEController.cs" />
     <Compile Include="Controllers\PRO\SYLLController.cs" />
     <Compile Include="Controllers\PRO\LLKHController.cs" />
     <Compile Include="Controllers\PRO\ThuyetMinhDeTaiController.cs" />

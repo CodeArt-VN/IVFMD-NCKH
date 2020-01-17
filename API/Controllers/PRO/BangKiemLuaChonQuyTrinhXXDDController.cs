@@ -112,5 +112,24 @@ namespace API.Controllers.PRO
 			}
             return Conflict();
         }
+
+        [Route("save_PRO_BangKiemLuaChonQuyTrinhXXDD")]
+        [ResponseType(typeof(DTO_PRO_BangKiemLuaChonQuyTrinhXXDD))]
+        public IHttpActionResult Save(DTO_PRO_BangKiemLuaChonQuyTrinhXXDD tbl_PRO_BangKiemLuaChonQuyTrinhXXDD)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_PRO_BangKiemLuaChonQuyTrinhXXDD result = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.save_PRO_BangKiemLuaChonQuyTrinhXXDD(db, tbl_PRO_BangKiemLuaChonQuyTrinhXXDD, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }
