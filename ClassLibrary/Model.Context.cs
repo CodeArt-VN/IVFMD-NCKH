@@ -90,5 +90,6 @@ namespace ClassLibrary
         public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
         public virtual DbSet<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
         public virtual DbSet<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
+        public virtual DbSet<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
     }
 }

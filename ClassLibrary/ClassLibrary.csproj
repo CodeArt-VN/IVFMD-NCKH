@@ -229,6 +229,9 @@
     <Compile Include="tbl_PRO_BaoCaoNangSuatKhoaHoc.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_PRO_BaoCaoNghiemThuDeTai.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_PRO_BaoCaoTienDoNghienCuu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
