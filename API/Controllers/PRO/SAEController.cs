@@ -37,7 +37,7 @@ namespace API.Controllers.PRO
         }
 
         [Route("get_PRO_SAE/{idDeTai:int}")]
-        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
+        [ResponseType(typeof(DTO_PRO_SAE))]
         public IHttpActionResult GetCustom(int idDeTai)
         {
             DTO_PRO_SAE tbl_PRO_SAE = BS_PRO_SAE.get_PRO_SAECustom(db, idDeTai);

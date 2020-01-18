@@ -37,7 +37,7 @@ namespace API.Controllers.PRO
         }
 
         [Route("get_PRO_PhieuXemXetDaoDuc/{idDeTai:int}")]
-        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
+        [ResponseType(typeof(DTO_PRO_PhieuXemXetDaoDuc))]
         public IHttpActionResult GetCustom(int idDeTai)
         {
             DTO_PRO_PhieuXemXetDaoDuc tbl_PRO_PhieuXemXetDaoDuc = BS_PRO_PhieuXemXetDaoDuc.get_PRO_PhieuXemXetDaoDucCustom(db, idDeTai);

@@ -118,7 +118,7 @@ namespace DTOModel
 		public bool QuyChe_NguoiDanToc { get; set; }
 		public bool QuyChe_ThuNghiemLamSang { get; set; }
 		public bool QuyChe_SuDungMauMoNguoi { get; set; }
-		public bool QuyChe_CoTroGiupKiThuat { get; set; }
+	    public bool QuyChe_CoTroGiupKiThuat { get; set; }
 
 		public string ThongTinNguonTaiTro { get; set; }
 		public string ThongTinNCYSHSinhVien { get; set; }
@@ -138,7 +138,7 @@ namespace DTOModel
 		public string NguyCoTiemTang_QuyTrinhGiamRuiRo { get; set; }
 		public string NguyCoTiemTang_CachXuLyRuiRo { get; set; }
 		public string NguyCoTiemTang_SucKhoeVaTinhAnToan { get; set; }
-		public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
+	    public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
 		public string NguyCoTiemTang_ThaoTacGen { get; set; }
 
 

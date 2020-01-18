@@ -37,10 +37,10 @@ namespace API.Controllers.PRO
         }
 
         [Route("get_PRO_AE/{idDeTai:int}")]
-        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
+        [ResponseType(typeof(DTO_PRO_AE))]
         public IHttpActionResult GetCustom(int idDeTai)
         {
-            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AE(db, idDeTai);
+            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai);
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";

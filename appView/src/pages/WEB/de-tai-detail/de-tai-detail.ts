@@ -12,6 +12,10 @@ import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
 import { NhanSuLLKHModalPage } from '../nhan-su-llkh-modal/nhan-su-llkh-modal';
 import { BaoCaoTienDoNghienCuuPage } from '../bao-cao-tien-do-nghien-cuu/bao-cao-tien-do-nghien-cuu';
+import { PhieuXemXetDaoDucModalPage } from '../phieu-xem-xet-dao-duc-modal/phieu-xem-xet-dao-duc-modal';
+import { AEModalPage } from '../ae-modal/ae-modal';
+import { SAEModalPage } from '../sae-modal/sae-modal';
+
 
 
 /**
@@ -310,14 +314,17 @@ export class DeTaiDetailPage extends BasePage {
             case 9:
                 break;
             case 10:
+              page = PhieuXemXetDaoDucModalPage;
                 break;
             case 11:
-                page = BaoCaoTienDoNghienCuuPage;
-                break;
+              page = BaoCaoTienDoNghienCuuPage;
+              break;
             case 12:
-                break;
+              page = AEModalPage;
+              break;
             case 13:
-                break;
+              page = SAEModalPage;
+              break;
         }
         if (type != 11) {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });

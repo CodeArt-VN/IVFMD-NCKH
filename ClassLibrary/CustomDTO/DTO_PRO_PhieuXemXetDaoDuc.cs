@@ -8,12 +8,6 @@ namespace DTOModel
 {
     public partial class DTO_PRO_PhieuXemXetDaoDuc
     {
-        public bool QuyChe_CoTroGiupKiThuat { get; set; }
-
-        public string NguyCoTiemTang_SucKhoeVaTinhAnToan { get; set; }
-        public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
-        public string NguyCoTiemTang_ThaoTacGen { get; set; }
-
         //4
         public string NguoiThamGiaNghienCuu_DuKien { get; set; }
         public string NguoiThamGiaNghienCuu_CachXacDinh { get; set; }

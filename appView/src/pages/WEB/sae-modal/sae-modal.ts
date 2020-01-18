@@ -73,6 +73,56 @@ export class SAEModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
 
+            self.ListThuocThuLamSan = ko.observableArray(ko.utils.arrayMap(item.ListThuocThuLamSan || [{}, {}, {}, {}, {}, {}, {}], function (nn) {
+                return {
+                    STT: ko.observable(nn.ThoiGian || ""),
+                    TenThuoc: ko.observable(nn.TenHiepHoi || ""),
+                    DangBaoChe: ko.observable(nn.ChucDanh || ""),
+                    DuongDung: ko.observable(nn.ChucDanh || ""),
+                    LieuDung: ko.observable(nn.ChucDanh || ""),
+                    NgayBatDau: ko.observable(nn.ChucDanh || ""),
+                    NgayKetThuc: ko.observable(nn.ChucDanh || "")
+                };
+            }));
+            
+            self.ListCanThiepThuocThuLamSan = ko.observableArray(ko.utils.arrayMap(item.ListCanThiepThuocThuLamSan || [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}], function (nn) {
+                return {
+                    STT: ko.observable(nn.ThoiGian || ""),
+                    NgungLieu_Co: ko.observable(nn.TenHiepHoi || ""),
+                    NgungLieu_Khong: ko.observable(nn.ChucDanh || ""),
+                    CaiThien_Co: ko.observable(nn.ChucDanh || ""),
+                    CaiThien_Khong: ko.observable(nn.ChucDanh || ""),
+                    CaiThien_KhongCoThongTin: ko.observable(nn.ChucDanh || ""),
+                    XuatHienLai_Co: ko.observable(nn.ChucDanh || ""),
+                    XuatHienLai_Khong: ko.observable(nn.ChucDanh || ""),
+                    XuatHienLai_KhongCoThongTin: ko.observable(nn.ChucDanh || ""),
+                    XuatHienLai_KhongTaiSuDung: ko.observable(nn.ChucDanh || "")
+                };
+            }));
+
+            self.ListThuocSuDungDongThoi = ko.observableArray(ko.utils.arrayMap(item.ListThuocSuDungDongThoi || [{}, {}, {}, {}, {}, {}, {}], function (nn) {
+                return {
+                    STT: ko.observable(nn.ThoiGian || ""),
+                    TenThuoc: ko.observable(nn.TenHiepHoi || ""),
+                    DangBaoChe: ko.observable(nn.ChucDanh || ""),
+                    DuongDung: ko.observable(nn.ChucDanh || ""),
+                    LieuDung: ko.observable(nn.ChucDanh || ""),
+                    NgayBatDau: ko.observable(nn.ChucDanh || ""),
+                    NgayKetThuc: ko.observable(nn.ChucDanh || "")
+                };
+            }));
+
+            self.ListDanhGiaNCV = ko.observableArray(ko.utils.arrayMap(item.ListDanhGiaNCV || [{}, {}, {}, {}, {}, {}, {}], function (nn) {
+                return {
+                    STT: ko.observable(nn.ThoiGian || ""),
+                    KetQua_Co: ko.observable(nn.TenHiepHoi || ""),
+                    KetQua_Khong: ko.observable(nn.ChucDanh || ""),
+                    KetQua_ChuaKetLuan: ko.observable(nn.ChucDanh || ""),
+                    LieuDung: ko.observable(nn.ChucDanh || ""),
+                    PhanUng_DuocDuKien: ko.observable(nn.ChucDanh || ""),
+                    PhanUng_NgoaiDuKien: ko.observable(nn.ChucDanh || "")
+                };
+            }));
             self.getItem = function () {
                 return ko.toJS(self);
             };
