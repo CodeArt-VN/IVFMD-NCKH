@@ -60,6 +60,7 @@
     <Compile Include="CustomBusiness\BS_CUS_DOC_Folder.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_AE.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BaoCaoTienDoNghienCuu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_SYLL.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BangKiemLuaChonQuyTrinhXXDD.cs" />
@@ -228,6 +229,9 @@
     <Compile Include="tbl_PRO_BaoCaoNangSuatKhoaHoc.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_PRO_BaoCaoNghiemThuDeTai.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_PRO_BaoCaoTienDoNghienCuu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -244,6 +248,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_DonXinXetDuyet.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_HoiNghiHoiThao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_HRCO.cs">

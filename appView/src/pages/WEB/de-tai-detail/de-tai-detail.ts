@@ -11,8 +11,13 @@ import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/
 import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
 import { NhanSuLLKHModalPage } from '../nhan-su-llkh-modal/nhan-su-llkh-modal';
-import { BaoCaoTienDoNghienCuuPage } from '../bao-cao-tien-do-nghien-cuu/bao-cao-tien-do-nghien-cuu';
+import { NhanSuSYLLModalPage } from '../nhan-su-syll-modal/nhan-su-syll-modal';
 
+import { BaoCaoTienDoNghienCuuPage } from '../bao-cao-tien-do-nghien-cuu/bao-cao-tien-do-nghien-cuu';
+import { PhieuXemXetDaoDucModalPage } from '../phieu-xem-xet-dao-duc-modal/phieu-xem-xet-dao-duc-modal';
+import { AEModalPage } from '../ae-modal/ae-modal';
+import { SAEModalPage } from '../sae-modal/sae-modal';
+import { BangKiemXXDDModalPage } from '../bang-kiem-xxdd-modal/bang-kiem-xxdd-modal';
 
 /**
  * Generated class for the DeTaiDetailPage page.
@@ -303,21 +308,29 @@ export class DeTaiDetailPage extends BasePage {
               param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
               break;
             case 7:
-              page = SysnopsisModalPage;
+              page = NhanSuSYLLModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
                 break;
             case 8:
                 break;
             case 9:
+              page = DonXinNghiemThuModalPage;
                 break;
             case 10:
+              page = PhieuXemXetDaoDucModalPage;
                 break;
             case 11:
-                page = BaoCaoTienDoNghienCuuPage;
-                break;
+              page = BaoCaoTienDoNghienCuuPage;
+              break;
             case 12:
-                break;
+              page = AEModalPage;
+              break;
             case 13:
-                break;
+              page = SAEModalPage;
+              break;
+            case 14:
+              page = BangKiemXXDDModalPage;
+              break;
         }
         if (type != 11) {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });

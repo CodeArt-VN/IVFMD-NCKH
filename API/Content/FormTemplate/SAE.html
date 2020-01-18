@@ -382,7 +382,7 @@
         </tbody>
     </table>
     <br />
-    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocThuLamSan","add":true,"resizeable":true,"props": ["STT","TenThuoc","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -430,10 +430,10 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocThuLamSan">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: ThuocThuHoacPhacDo"></td>
+                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: TenThuoc"></td>
                     <td contenteditable="true" data-bind="editableHTML: DangBaoChe"></td>
                     <td contenteditable="true" data-bind="editableHTML: DuongDung"></td>
                     <td contenteditable="true" data-bind="editableHTML: LieuDung"></td>
@@ -451,7 +451,7 @@
         </div>
     </div>
     <br />
-    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListCanThiepThuocThuLamSan","add":true,"resizeable":true,"props": ["STT","NgungLieu_Co","NgungLieu_Khong","CaiThien_Co","CaiThien_Khong","CaiThien_KhongCoThongTin","XuatHienLai_Co","XuatHienLai_Khong","XuatHienLai_KhongCoThongTin","XuatHienLai_KhongTaiSuDung"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -515,34 +515,34 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
+            <tbody style="width:100%;" data-bind="foreach: ListCanThiepThuocThuLamSan">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: CoSAE" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: NgungLieu_Co" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongSAE" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: NgungLieu_Khong" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: CoCaiThienSAE" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: CaiThien_Co" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongCaiThienSAE" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: CaiThien_Khong" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongCoTTCaiThienSAE" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: CaiThien_KhongCoThongTin" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: CoBienCo" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_Co" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongBienCo" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_Khong" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongCoTTBienCo" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_KhongCoThongTin" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongTaiSuDung" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_KhongTaiSuDung" class="text-center">
                         <input type="checkbox" />
                     </td>
                 </tr>
@@ -553,7 +553,7 @@
         </div>
     </div>
     <br />
-    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocSuDungDongThoi","add":true,"resizeable":true,"props": ["STT","TenThuoc","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -602,10 +602,10 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocSuDungDongThoi">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: ThuocThuHoacPhacDo"></td>
+                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: TenThuoc"></td>
                     <td contenteditable="true" data-bind="editableHTML: DangBaoChe"></td>
                     <td contenteditable="true" data-bind="editableHTML: DuongDung"></td>
                     <td contenteditable="true" data-bind="editableHTML: LieuDung"></td>
@@ -616,7 +616,7 @@
         </table>
     </div>
     <br />
-    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","CoTheLienQuan","KhongLienQuan","ChuaKetLuan","DaBiet","NgoaiDuKien"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListDanhGiaNCV","add":true,"resizeable":true,"props": ["STT","KetQua_Co","KetQua_Khong","KetQua_ChuaKetLuan","PhanUng_DuocDuKien","PhanUng_NgoaiDuKien"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -662,22 +662,22 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
+            <tbody style="width:100%;" data-bind="foreach: ListDanhGiaNCV">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: CoTheLienQuan" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: KetQua_Co" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KhongLienQuan" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KetQua_Khong" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: ChuaKetLuan" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KetQua_ChuaKetLuan" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: DaBiet" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: PhanUng_DuocDuKien" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: NgoaiDuKien" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: PhanUng_NgoaiDuKien" class="text-center">
                         <input type="checkbox" />
                     </td>
                 </tr>

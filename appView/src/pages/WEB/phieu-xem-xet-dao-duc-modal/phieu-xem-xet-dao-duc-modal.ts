@@ -73,24 +73,162 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
-            self.HoTenChuNhiem = ko.observable(item.HoTenChuNhiem);
-            self.DonVi = ko.observable(item.DonVi);
-            self.DiaChi = ko.observable(item.DiaChi);
-            self.DienThoai = ko.observable(item.DienThoai);
-            self.TenDeTai = ko.observable(item.TenDeTai);
-            self.TenDonViChuTri = ko.observable(item.TenDonViChuTri);
-            self.DiaChiDonVi = ko.observable(item.DiaChiDonVi);
-            self.DienThoaiDonVi = ko.observable(item.DienThoaiDonVi);
-            self.DiaDiemNghienCuu = ko.observable(item.DiaDiemNghienCuu);
-            self.ThoiGianNghienCuu = ko.observable(item.ThoiGianNghienCuu);
-            self.TuNgay = ko.observable(item.TuNgay);
-            self.DenNgay = ko.observable(item.DenNgay);
-            self.ThuyetMinhDeCuong = ko.observable(item.ThuyetMinhDeCuong);
-            self.LLKHChuNhiem = ko.observable(item.LLKHChuNhiem);
-            self.LLKHNCV = ko.observable(item.LLKHNCV);
-            self.GiayToKhac = ko.observable(item.GiayToKhac);
-            self.GhiChuGiayToKha = ko.observable(item.GhiChuGiayToKha);
+            self.ID = item.ID;
+            self.IDDeTai = item.IDDeTai;
+            self.MaSo = ko.observable(item.MaSo);
+            self.NghienCuuDuocTaiTro = ko.observable(item.NghienCuuDuocTaiTro);
+            self.XinPhepTapThe = ko.observable(item.XinPhepTapThe);
+            self.KhongThuocNghienCuuNao = ko.observable(item.KhongThuocNghienCuuNao);
+            self.NghienCuuHocVienSauDaiHoc = ko.observable(item.NghienCuuHocVienSauDaiHoc);
+            self.DonXinTaiCapPhep = ko.observable(item.DonXinTaiCapPhep);
+            self.NghienCuuCuaSinhVienDaiHoc = ko.observable(item.NghienCuuCuaSinhVienDaiHoc);
+            self.SoGiayPhepCu = ko.observable(item.SoGiayPhepCu);
+            self.TenNCSYH = ko.observable(item.TenNCSYH);
+            self.DonViChuTri = ko.observable(item.DonViChuTri);
+            self.NguoiGiaoDich_HoTen = ko.observable(item.NguoiGiaoDich_HoTen);
+            self.NguoiGiaoDich_DienThoaiCQ = ko.observable(item.NguoiGiaoDich_DienThoaiCQ);
+            self.NguoiGiaoDich_DienThoaiFx = ko.observable(item.NguoiGiaoDich_DienThoaiFx);
+            self.NguoiGiaoDich_DienThoaiNR = ko.observable(item.NguoiGiaoDich_DienThoaiNR);
+            self.NguoiGiaoDich_DienThoaiDD = ko.observable(item.NguoiGiaoDich_DienThoaiDD);
+            self.NguoiGiaoDich_Email = ko.observable(item.NguoiGiaoDich_Email);
+            self.QuyChe_TreEm = ko.observable(item.QuyChe_TreEm);
+            self.QuyChe_NguoiQuanHeLeThuoc = ko.observable(item.QuyChe_NguoiQuanHeLeThuoc);
+            self.QuyChe_PhongXa = ko.observable(item.QuyChe_PhongXa);
+            self.QuyChe_PhacDoDieuTri = ko.observable(item.QuyChe_PhacDoDieuTri);
+            self.QuyChe_GienNguoi = ko.observable(item.QuyChe_GienNguoi);
+            self.QuyChe_NguoiTonThuongThanKinh = ko.observable(item.QuyChe_NguoiTonThuongThanKinh);
+            self.QuyChe_CacTapTheNhomNguoi = ko.observable(item.QuyChe_CacTapTheNhomNguoi);
+            self.QuyChe_NghienCuuDichTeHoc = ko.observable(item.QuyChe_NghienCuuDichTeHoc);
+            self.QuyChe_NguoiCanChamSocYTe = ko.observable(item.QuyChe_NguoiCanChamSocYTe);
+            self.QuyChe_NguoiDanToc = ko.observable(item.QuyChe_NguoiDanToc);
+            self.QuyChe_ThuNghiemLamSang = ko.observable(item.QuyChe_ThuNghiemLamSang);
+            self.QuyChe_SuDungMauMoNguoi = ko.observable(item.QuyChe_SuDungMauMoNguoi);
+            self.QuyChe_CoTroGiupKiThuat = ko.observable(item.QuyChe_CoTroGiupKiThuat);
+            self.ThongTinNguonTaiTro = ko.observable(item.ThongTinNguonTaiTro);
+            self.ThongTinNCYSHSinhVien = ko.observable(item.ThongTinNCYSHSinhVien);
+            self.QuyTrinh_MoTaDuAn = ko.observable(item.QuyTrinh_MoTaDuAn);
+            self.QuyTrinh_QuyTrinhThucHien = ko.observable(item.QuyTrinh_QuyTrinhThucHien);
+            self.QuyTrinh_MucDich = ko.observable(item.QuyTrinh_MucDich);
+            self.QuyTrinh_VanDeLienQuan = ko.observable(item.QuyTrinh_VanDeLienQuan);
+            self.QuyTrinh_DiaDiemNghienCuu = ko.observable(item.QuyTrinh_DiaDiemNghienCuu);
+            self.QuyTrinh_NghienCuuTaiNoiLamViecNguoiThamGia = ko.observable(item.QuyTrinh_NghienCuuTaiNoiLamViecNguoiThamGia);
+            self.NguyCoTiemTang_NhomNghienCuu = ko.observable(item.NguyCoTiemTang_NhomNghienCuu);
+            self.NguyCoTiemTang_NguoiThamGia = ko.observable(item.NguyCoTiemTang_NguoiThamGia);
+            self.NguyCoTiemTang_CongDongCuaTruong = ko.observable(item.NguyCoTiemTang_CongDongCuaTruong);
+            self.NguyCoTiemTang_CongDongLonHon = ko.observable(item.NguyCoTiemTang_CongDongLonHon);
+            self.NguyCoTiemTang_SoSanhRuiRo = ko.observable(item.NguyCoTiemTang_SoSanhRuiRo);
+            self.NguyCoTiemTang_QuyTrinhGiamRuiRo = ko.observable(item.NguyCoTiemTang_QuyTrinhGiamRuiRo);
+            self.NguyCoTiemTang_CachXuLyRuiRo = ko.observable(item.NguyCoTiemTang_CachXuLyRuiRo);
+            self.NguyCoTiemTang_SucKhoeVaTinhAnToan = ko.observable(item.NguyCoTiemTang_SucKhoeVaTinhAnToan);
+            self.NguyCoTiemTang_CacVanDeAnToanSinhHoc = ko.observable(item.GhiChuGiayToKha);
+            self.NguyCoTiemTang_ThaoTacGen = ko.observable(item.NguyCoTiemTang_ThaoTacGen);
+            self.LoiIchTiemTang_NhungLoiIch = ko.observable(item.LoiIchTiemTang_NhungLoiIch);
+            self.LoiIchTiemTang_AiDuocLoi = ko.observable(item.LoiIchTiemTang_AiDuocLoi);
+            self.LoiIchTiemTang_DongGopKhoaHoc = ko.observable(item.LoiIchTiemTang_DongGopKhoaHoc);
+            self.LoiIchTiemTang_SoSanh = ko.observable(item.LoiIchTiemTang_SoSanh);
+            self.QuyChe_CoTroGiupKiThuat = ko.observable(item.QuyChe_CoTroGiupKiThuat);
+            self.NguoiThamGiaNghienCuu_DuKien = ko.observable(item.NguoiThamGiaNghienCuu_DuKien);
+            self.NguoiThamGiaNghienCuu_CachXacDinh = ko.observable(item.NguoiThamGiaNghienCuu_CachXacDinh);
+            self.NguoiThamGiaNghienCuu_TreViThanhNien = ko.observable(item.NguoiThamGiaNghienCuu_TreViThanhNien);
+            self.NguoiThamGiaNghienCuu_ThieuNangTriTue = ko.observable(item.NguoiThamGiaNghienCuu_ThieuNangTriTue);
+            self.NguoiThamGiaNghienCuu_CoQuanHeLeThuoc = ko.observable(item.NguoiThamGiaNghienCuu_CoQuanHeLeThuoc);
+            self.NguoiThamGiaNghienCuu_MoiQuanHeSanCo = ko.observable(item.NguoiThamGiaNghienCuu_MoiQuanHeSanCo);
+            self.NguoiThamGiaNghienCuu_RaoCanNgonNgu = ko.observable(item.NguoiThamGiaNghienCuu_RaoCanNgonNgu);
+            self.NguoiThamGiaNghienCuu_SangTuyen = ko.observable(item.NguoiThamGiaNghienCuu_SangTuyen);
+            self.NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung = ko.observable(item.NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung);
+            self.NguoiThamGiaNghienCuu_DanTocThieuSo = ko.observable(item.NguoiThamGiaNghienCuu_DanTocThieuSo);
+            self.NguoiThamGiaNghienCuu_ThamGiaTapThe = ko.observable(item.NguoiThamGiaNghienCuu_ThamGiaTapThe);
+            self.NguoiThamGiaNghienCuu_ChiTraKhuyenKhich = ko.observable(item.NguoiThamGiaNghienCuu_ChiTraKhuyenKhich);
+            self.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung = ko.observable(item.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung);
+            self.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat = ko.observable(item.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat);
+            self.QuyTrinhXinChapThuanTinhNguyen = ko.observable(item.QuyTrinhXinChapThuanTinhNguyen);
+            self.QuanLyDLVaBaoMat_ThuThapTrucTiep = ko.observable(item.QuanLyDLVaBaoMat_ThuThapTrucTiep);
+            self.QuanLyDLVaBaoMat_TiepCanThongTinCaNhan = ko.observable(item.QuanLyDLVaBaoMat_TiepCanThongTinCaNhan);
+            self.QuanLyDLVaBaoMat_GhiLaiDL = ko.observable(item.QuanLyDLVaBaoMat_GhiLaiDL);
+            self.QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam = ko.observable(item.QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam);
+            self.QuanLyDLVaBaoMat_BaoMatThongTin = ko.observable(item.QuanLyDLVaBaoMat_BaoMatThongTin);
+            self.QuanLyDLVaBaoMat_LuuTruDLTrongXNam = ko.observable(item.QuanLyDLVaBaoMat_LuuTruDLTrongXNam);
+            self.QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat = ko.observable(item.QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat);
+            self.QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan = ko.observable(item.QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan);
+            self.QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru = ko.observable(item.QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru);
+            self.QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon = ko.observable(item.QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon);
+            self.QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat = ko.observable(item.QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat);
+            self.QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan = ko.observable(item.QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan);
+            self.QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru = ko.observable(item.QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru);
+            self.QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon = ko.observable(item.QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon);
+            self.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru = ko.observable(item.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru);
+            self.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo = ko.observable(item.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo);
+            self.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat = ko.observable(item.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat);
+            self.ThoiGianThucHien_ThuNghiem_NgayBatDau = ko.observable(item.ThoiGianThucHien_ThuNghiem_NgayBatDau);
+            self.ThoiGianThucHien_ThuNghiem_NgayKetThuc = ko.observable(item.ThoiGianThucHien_ThuNghiem_NgayKetThuc);
+            self.ThoiGianThucHien_ThuNghiem_ThangBatDau = ko.observable(item.ThoiGianThucHien_ThuNghiem_ThangBatDau);
+            self.ThoiGianThucHien_ThuNghiem_ThangKetThuc = ko.observable(item.ThoiGianThucHien_ThuNghiem_ThangKetThuc);
+            self.ThoiGianThucHien_ThuNghiem_NamBatDau = ko.observable(item.ThoiGianThucHien_ThuNghiem_NamBatDau);
+            self.ThoiGianThucHien_ThuNghiem_NamKetThuc = ko.observable(item.ThoiGianThucHien_ThuNghiem_NamKetThuc);
+            self.ThoiGianThucHien_ThuThapDL_NgayBatDau = ko.observable(item.ThoiGianThucHien_ThuThapDL_NgayBatDau);
+            self.ThoiGianThucHien_ThuThapDL_NgayKetThuc = ko.observable(item.ThoiGianThucHien_ThuThapDL_NgayKetThuc);
+            self.ThoiGianThucHien_ThuThapDL_ThangBatDau = ko.observable(item.ThoiGianThucHien_ThuThapDL_ThangBatDau);
+            self.ThoiGianThucHien_ThuThapDL_ThangKetThuc = ko.observable(item.ThoiGianThucHien_ThuThapDL_ThangKetThuc);
+            self.ThoiGianThucHien_ThuThapDL_NamBatDau = ko.observable(item.ThoiGianThucHien_ThuThapDL_NamBatDau);
+            self.ThoiGianThucHien_ThuThapDL_NamKetThuc = ko.observable(item.ThoiGianThucHien_ThuThapDL_NamKetThuc);
+            self.ThoiGianThucHien_TongThoiGian_NgayBatDau = ko.observable(item.ThoiGianThucHien_TongThoiGian_NgayBatDau);
+            self.ThoiGianThucHien_TongThoiGian_NgayKetThuc = ko.observable(item.ThoiGianThucHien_TongThoiGian_NgayKetThuc);
+            self.ThoiGianThucHien_TongThoiGian_ThangBatDau = ko.observable(item.ThoiGianThucHien_TongThoiGian_ThangBatDau);
+            self.ThoiGianThucHien_TongThoiGian_ThangKetThuc = ko.observable(item.ThoiGianThucHien_TongThoiGian_ThangKetThuc);
+            self.ThoiGianThucHien_TongThoiGian_NamBatDau = ko.observable(item.ThoiGianThucHien_TongThoiGian_NamBatDau);
+            self.ThoiGianThucHien_TongThoiGian_NamKetThuc = ko.observable(item.ThoiGianThucHien_TongThoiGian_NamKetThuc);
+            self.MauThuanLoiIch_NghienCuuTheoYeuCau = ko.observable(item.MauThuanLoiIch_NghienCuuTheoYeuCau);
+            self.MauThuanLoiIch_PhuThuocTaiChinh = ko.observable(item.MauThuanLoiIch_PhuThuocTaiChinh);
+            self.MauThuanLoiIch_LoiIchTaiChinh = ko.observable(item.MauThuanLoiIch_LoiIchTaiChinh);
+            self.CanNhacDaoDucKhac = ko.observable(item.CanNhacDaoDucKhac);
+            self.TongQuanTaiLieuKeHoachPhuongPhap = ko.observable(item.TongQuanTaiLieuKeHoachPhuongPhap);
+            self.CanKet_TenNCYSH = ko.observable(item.CanKet_TenNCYSH);
+            self.YKienNguoiHuongDan_TenNCYSH = ko.observable(item.YKienNguoiHuongDan_TenNCYSH);
+            self.YKienNguoiHuongDan_NhanXet = ko.observable(item.YKienNguoiHuongDan_NhanXet);
+            self.YKienNguoiHuongDan_BoMon = ko.observable(item.YKienNguoiHuongDan_BoMon);
+            self.YKienNguoiHuongDan_NgayKy = ko.observable(item.YKienNguoiHuongDan_NgayKy);
+            self.YKienNguoiHuongDan_ThangKy = ko.observable(item.YKienNguoiHuongDan_ThangKy);
+            self.YKienNguoiHuongDan_NamKy = ko.observable(item.YKienNguoiHuongDan_NamKy);
+            self.YKienNguoiHuongDan_HoTenVaChucDanh = ko.observable(item.YKienNguoiHuongDan_HoTenVaChucDanh);
+            self.YKienTruongKhoa_XemXetBoiHDKH = ko.observable(item.YKienTruongKhoa_XemXetBoiHDKH);
+            self.YKienTruongKhoa_XemXetBoiCapCaNhan = ko.observable(item.YKienTruongKhoa_XemXetBoiCapCaNhan);
+            self.YKienTruongKhoa_XemXetBoiKhoaPhong = ko.observable(item.YKienTruongKhoa_XemXetBoiKhoaPhong);
+            self.YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap = ko.observable(item.YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap);
+            self.YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap = ko.observable(item.YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap);
+            self.YKienTruongKhoa_NhanXet = ko.observable(item.YKienTruongKhoa_NhanXet);
+            self.YKienTruongKhoa_BoMon = ko.observable(item.YKienTruongKhoa_BoMon);
+            self.YKienTruongKhoa_NgayKy = ko.observable(item.YKienTruongKhoa_NgayKy);
+            self.YKienTruongKhoa_ThangKy = ko.observable(item.YKienTruongKhoa_ThangKy);
+            self.YKienTruongKhoa_NamKy = ko.observable(item.YKienTruongKhoa_NamKy);
+            self.YKienTruongKhoa_HoTenVaChucDanh = ko.observable(item.YKienTruongKhoa_HoTenVaChucDanh);
 
+            self.ListNCV = ko.observableArray(ko.utils.arrayMap(item.ListNCV || [{}, {}, {}], function (nn) {
+                return {
+                    HoTen: ko.observable(nn.ThoiGian || ""),
+                    ChucDanh: ko.observable(nn.TenHiepHoi || ""),
+                    ChucVu: ko.observable(nn.ChucDanh || "")
+                };
+            }));
+
+            self.ListCoQuan = ko.observableArray(ko.utils.arrayMap(item.ListCoQuan || [{}, {}, {}, {}, {}], function (nn) {
+                return {
+                    CoQuan: ko.observable(nn.ThoiGian || ""),
+                    DuocCapPhep: ko.observable(nn.TenHiepHoi || ""),
+                    ChoCapPhep: ko.observable(nn.ChucDanh || ""),
+                    ChuaXinPhep: ko.observable(nn.ChucDanh || ""),
+                    GhiChuKhac: ko.observable(nn.ChucDanh || "")
+                };
+            }));
+
+            self.CanKet_ListChuKy = ko.observableArray(ko.utils.arrayMap(item.CanKet_ListChuKy || [{}, {}, {}, {}, {}], function (nn) {
+                return {
+                    BoMon: ko.observable(nn.ThoiGian || ""),
+                    NgayKy: ko.observable(nn.TenHiepHoi || ""),
+                    ThangKy: ko.observable(nn.ChucDanh || ""),
+                    NamKy: ko.observable(nn.ChucDanh || ""),
+                    HoTenVaChucDanh: ko.observable(nn.ChucDanh || "")
+                };
+            }));
             self.getItem = function () {
                 return ko.toJS(self);
             };

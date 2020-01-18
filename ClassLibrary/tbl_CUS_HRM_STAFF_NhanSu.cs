@@ -28,6 +28,7 @@ namespace ClassLibrary
             this.tbl_CAT_HRCOConfig = new HashSet<tbl_CAT_HRCOConfig>();
             this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
             this.tbl_CUS_HRM_STAFF_NhanSu_HOSREM = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM>();
+            this.tbl_PRO_HoiNghiHoiThao = new HashSet<tbl_PRO_HoiNghiHoiThao>();
         }
     
         public int IDPartner { get; set; }
@@ -74,6 +75,8 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
     }
 }
 namespace DTOModel
