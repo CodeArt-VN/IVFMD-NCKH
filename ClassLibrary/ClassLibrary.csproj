@@ -247,6 +247,9 @@
     <Compile Include="tbl_PRO_DonXinXetDuyet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_PRO_HoiNghiHoiThao.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_PRO_HRCO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

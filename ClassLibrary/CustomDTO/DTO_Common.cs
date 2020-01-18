@@ -28,5 +28,10 @@
         TrangThai_NghiemThu_ChoGui = -24,
         TrangThai_NghiemThu_ChoDuyet = -25,
         TrangThai_NghiemThu_DaDuyet = -26,
+
+        TrangThai_HNHT = 6,
+        TrangThai_HNHT_ChoGui = -31,
+        TrangThai_HNHT_ChoDuyet = -32,
+        TrangThai_HNHT_DaDuyet = -33,
     }
 }
