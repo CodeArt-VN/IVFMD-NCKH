@@ -389,6 +389,7 @@
     <Content Include="Content\ej2\fabric.css" />
     <Content Include="Content\ej2\highcontrast.css" />
     <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\FormTemplate\AE.html" />
     <Content Include="Content\FormTemplate\BangKiemLuaChonQuyTrinhXXDD.html" />
     <Content Include="Content\FormTemplate\DonXinNghiemThu.html" />
     <Content Include="Content\FormTemplate\DonXinDanhGiaDaoDuc.html" />
@@ -396,6 +397,8 @@
     <Content Include="Content\FormTemplate\MauPhanTichDuLieu.html" />
     <Content Include="Content\FormTemplate\NhanSuLLKH.html" />
     <Content Include="Content\FormTemplate\NhanSuSYLL.html" />
+    <Content Include="Content\FormTemplate\PhieuXemXetDaoDuc.html" />
+    <Content Include="Content\FormTemplate\SAE.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
