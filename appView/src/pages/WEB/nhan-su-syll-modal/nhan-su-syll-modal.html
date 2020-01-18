@@ -1,19 +1,15 @@
-<ion-header>
-    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
-    <ion-icon name="close" color="ivf1"></ion-icon>
-</button>
-</ion-header>
-
-<ion-content>
-    <br />
-    <div id="frmNhanSuSYLL"></div>
-    <div class="c-control">
-        <label class="c-label" for=""></label>
-        <button ion-button float-right (click)="saveChange()">
+<ion-header class="fixed-button">
+    <button class="close-btn" ion-button float-right (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+    <button ion-button float-right (click)="saveChange()">
         Lưu
     </button>
-        <button color="warning" ion-button float-right (click)="cancel()">
+    <button color="warning" ion-button float-right (click)="cancel()">
         Hủy thay đổi
     </button>
-    </div>
+</ion-header>
+<ion-content style="background-color: #eaeaea;">
+    <br />
+    <div id="frmNhanSuSYLL" class="nckh-form-wrapper"></div>
 </ion-content>

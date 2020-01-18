@@ -579,11 +579,11 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
 @Injectable()
 export class PRO_BangKiemXXDDCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
-        super(APIList.PRO_BangKiemXXDD, SearchConfig.getSearchFields('PRO_BangKiemXXDD'), commonService);
+        super(APIList.PRO_XemXetDD, SearchConfig.getSearchFields('PRO_XemXetDD'), commonService);
     }
     getItemCustom(idDeTai) {
         let that = this.commonService;
-        let apiPath = APIList.PRO_BangKiemXXDD.getItemCustom;
+        let apiPath = APIList.PRO_XemXetDD.getItemCustom;
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
                 .then(data => {
@@ -597,7 +597,7 @@ export class PRO_BangKiemXXDDCustomProvider extends exService {
 
 	saveCustom(item) {
 		let that = this.commonService;
-        let apiPath = APIList.PRO_BangKiemXXDD.saveCustom;
+        let apiPath = APIList.PRO_XemXetDD.saveCustom;
 		return new Promise((resolve, reject) => {
 			that.connect(apiPath.method, apiPath.url(), item).toPromise()
 				.then((data) => {
