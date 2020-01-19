@@ -229,6 +229,9 @@
     <Compile Include="tbl_PRO_BaoCaoNangSuatKhoaHoc.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_PRO_BaoCaoNghiemThuDeTai.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_PRO_BaoCaoTienDoNghienCuu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -245,6 +248,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_DonXinXetDuyet.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_HoiNghiHoiThao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_HRCO.cs">

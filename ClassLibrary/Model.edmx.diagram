@@ -153,6 +153,11 @@
         <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Width="1.5" PointX="14.75" PointY="134.375" />
         <AssociationConnector Association="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" Width="1.5" PointX="21.5" PointY="105.125" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" Width="1.5" PointX="14.75" PointY="138.75" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
