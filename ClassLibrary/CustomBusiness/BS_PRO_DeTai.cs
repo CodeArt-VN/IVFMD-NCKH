@@ -191,7 +191,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHRCO")
                 {
-                    if (db.tbl_CAT_HRCOConfig.Count(c => c.IsDeleted == false) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
@@ -296,7 +296,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHDDD")
                 {
-                    if (db.tbl_CAT_HRCOConfig.Count(c => c.IsDeleted == false) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
@@ -384,7 +384,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHDKH")
                 {
-                    if (db.tbl_CAT_HRCOConfig.Count(c => c.IsDeleted == false) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
@@ -472,7 +472,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendNghiemThu")
                 {
-                    if (db.tbl_CAT_HRCOConfig.Count(c => c.IsDeleted == false) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
@@ -555,6 +555,21 @@ namespace BaseBusiness
                 }
                 #endregion
                 #endregion
+            }
+
+            return string.Empty;
+        }
+
+        public static string updateNCT_PRO_DeTai(AppEntities db, int ID, string NCT, string Username)
+        {
+            tbl_PRO_DeTai dbitem = db.tbl_PRO_DeTai.Find(ID);
+
+            if (dbitem != null)
+            {
+                dbitem.SoNCT = NCT;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
             }
 
             return string.Empty;

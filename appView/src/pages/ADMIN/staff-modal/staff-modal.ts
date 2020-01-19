@@ -66,6 +66,7 @@ export class StaffModalPage extends DetailPage {
             SoDienThoai: [''],
             DiaChi: [''],
             IDRole: [''],
+            IsHRCO: false
         });
 
         this.changePasswordForm = formBuilder.group({
@@ -148,6 +149,7 @@ export class StaffModalPage extends DetailPage {
             this.userAccount.Address = this.item.DiaChi;
             this.userAccount.StaffID = this.item.ID;
             this.userAccount.PartnerID = this.item.IDPartner;
+            this.userAccount.IsHRCO = this.item.IsHRCO;
             this.urserProvider.save(this.userAccount).then(() => {
                 super.saveChange();
             })
@@ -279,6 +281,7 @@ export class StaffModalPage extends DetailPage {
                 this.userAccount.StaffID = this.item.ID;
                 this.userAccount.PartnerID = this.item.IDPartner;
                 this.userAccount.UserName = this.newPassword;
+                this.userAccount.IsHRCO = this.item.IsHRCO;
                 this.urserProvider.save(this.userAccount)
                     .then(() => {
                         this.toastMessage('Đã tạo tài khoản cho nhân sự ' + this.item.Name);
