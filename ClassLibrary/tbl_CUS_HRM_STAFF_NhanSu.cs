@@ -51,6 +51,7 @@ namespace ClassLibrary
         public string Email { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
+        public Nullable<bool> IsHRCO { get; set; }
         public virtual tbl_CUS_HRM_LIST_BoPhan tbl_CUS_HRM_LIST_BoPhan { get; set; }
         public virtual tbl_CUS_HRM_LIST_ChucDanh tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
@@ -104,6 +105,7 @@ namespace DTOModel
 		public string Email { get; set; }
 		public string SoDienThoai { get; set; }
 		public string DiaChi { get; set; }
+		public Nullable<bool> IsHRCO { get; set; }
 	}
 }
 
@@ -145,7 +147,8 @@ namespace BaseBusiness
 				Ho = s.Ho,							
 				Email = s.Email,							
 				SoDienThoai = s.SoDienThoai,							
-				DiaChi = s.DiaChi,					
+				DiaChi = s.DiaChi,							
+				IsHRCO = s.IsHRCO,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -175,7 +178,8 @@ namespace BaseBusiness
 					Ho = dbResult.Ho,							
 					Email = dbResult.Email,							
 					SoDienThoai = dbResult.SoDienThoai,							
-					DiaChi = dbResult.DiaChi,
+					DiaChi = dbResult.DiaChi,							
+					IsHRCO = dbResult.IsHRCO,
 				};
 			}
 			else
@@ -362,6 +366,8 @@ namespace BaseBusiness
                 query = query.Where(d=>d.DiaChi == keyword);
             }
 
+			//Query IsHRCO (Nullable<bool>)
+
 
 			return toDTO(query);
 
@@ -407,7 +413,8 @@ namespace BaseBusiness
 				dbitem.Ho = item.Ho;							
 				dbitem.Email = item.Email;							
 				dbitem.SoDienThoai = item.SoDienThoai;							
-				dbitem.DiaChi = item.DiaChi;                
+				dbitem.DiaChi = item.DiaChi;							
+				dbitem.IsHRCO = item.IsHRCO;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -448,7 +455,8 @@ namespace BaseBusiness
 				dbitem.Ho = item.Ho;							
 				dbitem.Email = item.Email;							
 				dbitem.SoDienThoai = item.SoDienThoai;							
-				dbitem.DiaChi = item.DiaChi;                
+				dbitem.DiaChi = item.DiaChi;							
+				dbitem.IsHRCO = item.IsHRCO;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

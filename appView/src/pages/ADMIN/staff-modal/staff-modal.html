@@ -61,46 +61,58 @@
                         <label class="c-label" for="Code">
                             <div class="top-btns">
                                 <button [color]="userAccount.LockoutEnabled ? 'danger': 'success'" [disabled]="showLogout" *ngIf="userAccount.ID"
-                                    (click)="changeLock()" small ion-button icon-only>
+                                        (click)="changeLock()" small ion-button icon-only>
                                     <ion-icon [name]="userAccount.LockoutEnabled ? 'ios-lock-outline' : 'ios-unlock-outline'"></ion-icon>
                                 </button>
                                 <button color="danger" [disabled]="showLogout" *ngIf="showRolesEdit && userAccount.ID" [outline]="!checkRole('HOST')" (click)="changeRole('HOST')"
-                                    small ion-button>
+                                        small ion-button>
                                     HOST
                                 </button>
                             </div>
                             Mã nhân sự
                             <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
+                                  ion-text color="danger">(*)</span>
                         </label>
                         <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text" [attr.disabled]="isViewProfile ? '' : null">
                     </div>
 
                     <div class="c-control">
-                        <label class="c-label" for="Name">Tên nhân sự
+                        <label class="c-label" for="Name">
+                            Tên nhân sự
                             <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
+                                  ion-text color="danger">(*)</span>
                         </label>
                         <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
                     </div>
                     <div class="c-control">
-                        <label class="c-label" for="SoDienThoai">Số điện thoại
+                        <label class="c-label" for="SoDienThoai">
+                            Số điện thoại
                             <span *ngIf="!formGroup.controls.SoDienThoai.valid && !formGroup.controls.SoDienThoai.pending && (formGroup.controls.SoDienThoai.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
+                                  ion-text color="danger">(*)</span>
                         </label>
                         <input class="c-input" id="SoDienThoai" [(ngModel)]="item.SoDienThoai" formControlName="SoDienThoai" type="text">
                     </div>
                     <div class="c-control">
-                        <label class="c-label" for="Email">Email
+                        <label class="c-label" for="Email">
+                            Email
                             <span *ngIf="!formGroup.controls.Email.valid && !formGroup.controls.Email.pending && (formGroup.controls.Email.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
+                                  ion-text color="danger">(*)</span>
                         </label>
                         <input class="c-input" id="Email" [(ngModel)]="item.Email" formControlName="Email" type="text" [attr.disabled]="isViewProfile ? '' : null">
                     </div>
                     <div class="c-control">
-                        <label class="c-label" for="IDRole">Thuộc nhóm người dùng
+                        <label class="c-label" for="HRCO">
+                            HRCO
+                            <span *ngIf="!formGroup.controls.IsHRCO.valid && !formGroup.controls.IsHRCO.pending && (formGroup.controls.IsHRCO.dirty || submitAttempt)"
+                                  ion-text></span>
+                        </label>
+                        <input id="IsHRCO" [(ngModel)]="item.IsHRCO" formControlName="IsHRCO" type="checkbox" [attr.disabled]="isViewProfile ? '' : null">
+                    </div>
+                    <div class="c-control">
+                        <label class="c-label" for="IDRole">
+                            Thuộc nhóm người dùng
                             <span *ngIf="!formGroup.controls.IDRole.valid && !formGroup.controls.IDRole.pending && (formGroup.controls.IDRole.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
+                                  ion-text color="danger">(*)</span>
                         </label>
 
                         <select class="c-input c-dropdown" [(ngModel)]="item.IDRole" formControlName="IDRole" [attr.disabled]="isViewProfile ? '' : null">
@@ -116,12 +128,12 @@
 
 
                     <!-- <div class="c-control">
-                        <label class="c-label" for="DiaChi">Địa chỉ
-                            <span *ngIf="!formGroup.controls.DiaChi.valid && !formGroup.controls.DiaChi.pending && (formGroup.controls.DiaChi.dirty || submitAttempt)"
-                                ion-text color="danger">(*)</span>
-                        </label>
-                        <input class="c-input" id="DiaChi" [(ngModel)]="item.DiaChi" formControlName="DiaChi" type="text">
-                    </div> -->
+        <label class="c-label" for="DiaChi">Địa chỉ
+            <span *ngIf="!formGroup.controls.DiaChi.valid && !formGroup.controls.DiaChi.pending && (formGroup.controls.DiaChi.dirty || submitAttempt)"
+                ion-text color="danger">(*)</span>
+        </label>
+        <input class="c-input" id="DiaChi" [(ngModel)]="item.DiaChi" formControlName="DiaChi" type="text">
+    </div> -->
 
                     <div class="c-control" *ngIf="item.ID==0">
                         <label class="c-label" for=""></label>

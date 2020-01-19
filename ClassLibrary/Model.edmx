@@ -305,6 +305,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="250" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="250" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="2000" />
+          <Property Name="IsHRCO" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
           <Key>
@@ -4005,6 +4006,7 @@
           <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HRCO" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Relationship="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HoiNghiHoiThao" />
+          <Property Name="IsHRCO" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
           <Key>
@@ -6960,6 +6962,7 @@
           <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu">
               <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu">
+                <ScalarProperty Name="IsHRCO" ColumnName="IsHRCO" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
