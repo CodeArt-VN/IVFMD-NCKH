@@ -26,6 +26,13 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         public bool IsDisabled { get; set; }
         public bool IsDeleted { get; set; }
+        public string TenDeTai { get; set; }
+        public string ChuNhiemDeTai { get; set; }
+        public string NCVChinh { get; set; }
+        public string NgayDuyetNghienCuu { get; set; }
+        public string SoNCT { get; set; }
+        public string ThoiGianTienHanh { get; set; }
+        public string CoMau { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -45,6 +52,13 @@ namespace DTOModel
 		public string ModifiedBy { get; set; }
 		public bool IsDisabled { get; set; }
 		public bool IsDeleted { get; set; }
+		public string TenDeTai { get; set; }
+		public string ChuNhiemDeTai { get; set; }
+		public string NCVChinh { get; set; }
+		public string NgayDuyetNghienCuu { get; set; }
+		public string SoNCT { get; set; }
+		public string ThoiGianTienHanh { get; set; }
+		public string CoMau { get; set; }
 	}
 }
 
@@ -77,7 +91,14 @@ namespace BaseBusiness
 				ModifiedDate = s.ModifiedDate,							
 				ModifiedBy = s.ModifiedBy,							
 				IsDisabled = s.IsDisabled,							
-				IsDeleted = s.IsDeleted,					
+				IsDeleted = s.IsDeleted,							
+				TenDeTai = s.TenDeTai,							
+				ChuNhiemDeTai = s.ChuNhiemDeTai,							
+				NCVChinh = s.NCVChinh,							
+				NgayDuyetNghienCuu = s.NgayDuyetNghienCuu,							
+				SoNCT = s.SoNCT,							
+				ThoiGianTienHanh = s.ThoiGianTienHanh,							
+				CoMau = s.CoMau,					
 			});
                               
         }
@@ -98,7 +119,14 @@ namespace BaseBusiness
 					ModifiedDate = dbResult.ModifiedDate,							
 					ModifiedBy = dbResult.ModifiedBy,							
 					IsDisabled = dbResult.IsDisabled,							
-					IsDeleted = dbResult.IsDeleted,
+					IsDeleted = dbResult.IsDeleted,							
+					TenDeTai = dbResult.TenDeTai,							
+					ChuNhiemDeTai = dbResult.ChuNhiemDeTai,							
+					NCVChinh = dbResult.NCVChinh,							
+					NgayDuyetNghienCuu = dbResult.NgayDuyetNghienCuu,							
+					SoNCT = dbResult.SoNCT,							
+					ThoiGianTienHanh = dbResult.ThoiGianTienHanh,							
+					CoMau = dbResult.CoMau,
 				};
 			}
 			else
@@ -198,6 +226,55 @@ namespace BaseBusiness
                     query = query.Where(d => qBoolValue == d.IsDeleted);
             }
 
+			//Query TenDeTai (string)
+			if (QueryStrings.Any(d => d.Key == "TenDeTai") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "TenDeTai").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "TenDeTai").Value;
+                query = query.Where(d=>d.TenDeTai == keyword);
+            }
+
+			//Query ChuNhiemDeTai (string)
+			if (QueryStrings.Any(d => d.Key == "ChuNhiemDeTai") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ChuNhiemDeTai").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ChuNhiemDeTai").Value;
+                query = query.Where(d=>d.ChuNhiemDeTai == keyword);
+            }
+
+			//Query NCVChinh (string)
+			if (QueryStrings.Any(d => d.Key == "NCVChinh") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NCVChinh").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NCVChinh").Value;
+                query = query.Where(d=>d.NCVChinh == keyword);
+            }
+
+			//Query NgayDuyetNghienCuu (string)
+			if (QueryStrings.Any(d => d.Key == "NgayDuyetNghienCuu") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NgayDuyetNghienCuu").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NgayDuyetNghienCuu").Value;
+                query = query.Where(d=>d.NgayDuyetNghienCuu == keyword);
+            }
+
+			//Query SoNCT (string)
+			if (QueryStrings.Any(d => d.Key == "SoNCT") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "SoNCT").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "SoNCT").Value;
+                query = query.Where(d=>d.SoNCT == keyword);
+            }
+
+			//Query ThoiGianTienHanh (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianTienHanh") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianTienHanh").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianTienHanh").Value;
+                query = query.Where(d=>d.ThoiGianTienHanh == keyword);
+            }
+
+			//Query CoMau (string)
+			if (QueryStrings.Any(d => d.Key == "CoMau") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "CoMau").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "CoMau").Value;
+                query = query.Where(d=>d.CoMau == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -223,7 +300,14 @@ namespace BaseBusiness
 				dbitem.TienDoThuNhanMau = item.TienDoThuNhanMau;							
 				dbitem.KhoKhan = item.KhoKhan;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.TenDeTai = item.TenDeTai;							
+				dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;							
+				dbitem.NCVChinh = item.NCVChinh;							
+				dbitem.NgayDuyetNghienCuu = item.NgayDuyetNghienCuu;							
+				dbitem.SoNCT = item.SoNCT;							
+				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
+				dbitem.CoMau = item.CoMau;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -255,7 +339,14 @@ namespace BaseBusiness
 				dbitem.TienDoThuNhanMau = item.TienDoThuNhanMau;							
 				dbitem.KhoKhan = item.KhoKhan;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.TenDeTai = item.TenDeTai;							
+				dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;							
+				dbitem.NCVChinh = item.NCVChinh;							
+				dbitem.NgayDuyetNghienCuu = item.NgayDuyetNghienCuu;							
+				dbitem.SoNCT = item.SoNCT;							
+				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
+				dbitem.CoMau = item.CoMau;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

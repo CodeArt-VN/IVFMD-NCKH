@@ -340,7 +340,7 @@ export class DeTaiDetailPage extends BasePage {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
             myModal.present();
         } else {
-            this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'params-' + this.id });
+            this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
             return false;
         }
     }
@@ -358,5 +358,20 @@ export class DeTaiDetailPage extends BasePage {
                 this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
             });
       })
-  };
+    };
+
+    updateNCT() {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.updateNCT(this.id, this.item.SoNCT).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
+    };
   }

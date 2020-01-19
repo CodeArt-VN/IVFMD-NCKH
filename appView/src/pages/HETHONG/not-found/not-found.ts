@@ -44,6 +44,9 @@ export class NotFoundPage {
                 else if (urlcommand.indexOf('view-de-tai-') > -1) {
                     this.navCtrl.setRoot('page-de-tai-detail', { 'value': 'view-de-tai-' + id });
                     return;
+                } else if (urlcommand.indexOf('view-bao-cao-tien-do-') > -1) {
+                    this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + id });
+                    return;
                 }
             }
         }

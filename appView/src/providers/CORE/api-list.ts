@@ -963,6 +963,10 @@ export var APIListBase = {
         updateStatus:{
             method: "POST",
             url: function(id, actionCode){return appSetting.apiDomain("PRO/DeTai/updateStatus_PRO_DeTai/") + id + "/" + actionCode} 
+        },
+        updateNCT: {
+            method: "POST",
+            url: function (id, soNCT) { return appSetting.apiDomain("PRO/DeTai/updateNCT_PRO_DeTai/") + id + "/" + soNCT }
         }
     },
     

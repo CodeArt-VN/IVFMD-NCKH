@@ -573,7 +573,20 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
 					reject(err);
 				});
 		});
-	}
+    }
+    updateNCT(deTaiId, soNCT) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DeTai.updateNCT;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(deTaiId, soNCT), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()

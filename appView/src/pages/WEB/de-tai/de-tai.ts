@@ -19,7 +19,6 @@ export class DeTaiPage extends ListPage {
     
 
     FormGroups = [];
-
     constructor(
         public currentProvider: PRO_DeTaiProvider,
 

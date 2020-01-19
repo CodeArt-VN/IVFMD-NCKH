@@ -829,6 +829,13 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="TenDeTai" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ChuNhiemDeTai" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NCVChinh" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayDuyetNghienCuu" Type="nvarchar" MaxLength="4000" />
+          <Property Name="SoNCT" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ThoiGianTienHanh" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CoMau" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_BenhNhan">
           <Key>
@@ -6558,6 +6565,13 @@
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoTienDoNghienCuu" ToRole="tbl_PRO_DeTai" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="TenDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NCVChinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDuyetNghienCuu" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="SoNCT" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CoMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu">
           <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
@@ -8464,6 +8478,13 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoTienDoNghienCuu">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoTienDoNghienCuu">
+                <ScalarProperty Name="CoMau" ColumnName="CoMau" />
+                <ScalarProperty Name="ThoiGianTienHanh" ColumnName="ThoiGianTienHanh" />
+                <ScalarProperty Name="SoNCT" ColumnName="SoNCT" />
+                <ScalarProperty Name="NgayDuyetNghienCuu" ColumnName="NgayDuyetNghienCuu" />
+                <ScalarProperty Name="NCVChinh" ColumnName="NCVChinh" />
+                <ScalarProperty Name="ChuNhiemDeTai" ColumnName="ChuNhiemDeTai" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />

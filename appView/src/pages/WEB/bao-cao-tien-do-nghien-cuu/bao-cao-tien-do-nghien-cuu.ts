@@ -45,15 +45,15 @@ export class BaoCaoTienDoNghienCuuPage extends ListPage {
 
     loadData() {
         this.gridConfig.page++;
-        debugger
         this.currentProvider.getListCustom(this.idDeTai).then((result: any) => {
-            debugger
-            this.lstData = [...result.data];
+            this.lstData = [...result];
+            this.lstData.forEach((i) => {
+                i.NgayTaoText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
+            })
             this.lastKeyword = this.keyword;
-            this.gridConfig.totalRows = result.count;
+            this.gridConfig.totalRows = result.length;
             this.loadedData();
         }).catch((data) => {
-            debugger
             this.lstData = [];
             this.lastKeyword = this.keyword;
             this.gridConfig.totalRows = 0;

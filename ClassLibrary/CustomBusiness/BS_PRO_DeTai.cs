@@ -795,9 +795,16 @@ namespace BaseBusiness
 
         }
 
-        public static IQueryable<DTO_PRO_DeTai> get_PRO_DeTaiCustom(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings)
+        public static IQueryable<DTO_PRO_DeTai> get_PRO_DeTaiCustom(AppEntities db, int PartnerID, int StaffID, Dictionary<string, string> QueryStrings)
         {
             var query = db.tbl_PRO_DeTai.Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
+
+            var staff = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == StaffID);
+            if (staff != null)
+            {
+                if (staff.IsHRCO != true)
+                    query = query.Where(c => c.IDNCV == staff.ID || c.IDChuNhiem == staff.ID || (c.tbl_PRO_NCVKhac.Count > 0 && c.tbl_PRO_NCVKhac.Any(d => d.IDNCV == staff.ID)));
+            }
 
             //Query keyword
 
