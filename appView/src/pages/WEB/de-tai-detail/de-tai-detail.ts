@@ -39,6 +39,8 @@ export class DeTaiDetailPage extends BasePage {
   listForm1 = [];
   listForm2 = [];
   listForm4 = [];
+  listForm5 = [];
+
   pageIndex: number = 0;
   pageTitle = '';
   slideOpts: any;
@@ -95,6 +97,8 @@ export class DeTaiDetailPage extends BasePage {
     this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0});
       this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
       this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
+      this.listForm5 = this.item.ListFormStatus.filter((c) => { return c.Type == 4 });
+
     this.slideOpts = {
       pager: false,
 
