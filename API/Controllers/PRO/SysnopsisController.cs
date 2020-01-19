@@ -37,24 +37,24 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_Sysnopsis);
         }
 
-        [Route("get_PRO_SysnopsisByDeTai/{idDeTai:int}")]
+        [Route("get_PRO_SysnopsisByDeTai/{idDeTai:int}/{isReset?}")]
         [ResponseType(typeof(DTO_PRO_Sysnopsis))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isReset = false)
         {
             DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_SysnopsisByDeTai(db, idDeTai);
-            if (tbl_PRO_Sysnopsis == null)
+            if (tbl_PRO_Sysnopsis == null || isReset == true)
             {
                 string html = "";
                 using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis.html")))
                 {
                     html = r.ReadToEnd();
                 }
-
-                tbl_PRO_Sysnopsis = new DTO_PRO_Sysnopsis
-                {
-                    IDDeTai = idDeTai,
-                    HTML = html
-                };
+                if (tbl_PRO_Sysnopsis == null)
+                    tbl_PRO_Sysnopsis = new DTO_PRO_Sysnopsis
+                    {
+                        IDDeTai = idDeTai
+                    };
+                tbl_PRO_Sysnopsis.HTML = html;
             }
 
             return Ok(tbl_PRO_Sysnopsis);

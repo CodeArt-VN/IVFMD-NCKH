@@ -44,6 +44,17 @@ export class SysnopsisModalPage extends DetailPage {
         });
     }
 
+    loadDataReset() {
+        this.currentProvider.getItemCustom(this.idDeTai, true).then((ite) => {
+            //this.commonService.copyPropertiesValue(ite, this.item);
+            this.item = ite;
+            this.loadedData();
+        }).catch((data) => {
+            this.item.ID = 0;
+            this.loadedData();
+        });
+    }
+
     loadedData() {
         ko.cleanNode($('#frmSynopsis')[0]);
         this.bindData();

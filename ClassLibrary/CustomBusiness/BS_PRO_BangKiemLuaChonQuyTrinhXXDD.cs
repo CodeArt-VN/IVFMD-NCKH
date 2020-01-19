@@ -110,8 +110,10 @@ namespace BaseBusiness
             dbitem.PhanSau_NCYSH_DuDieuKienXemXet = item.PhanSau_NCYSH_DuDieuKienXemXet;
             dbitem.PhanSau_NCYSH_HoTen = item.PhanSau_NCYSH_HoTen;
             dbitem.PhanSau_NCYSH_NgayThangNam = item.PhanSau_NCYSH_NgayThangNam;
-            dbitem.PhanSau_NCYSH_GuiThongBao_KHTH = item.PhanSau_NCYSH_GuiThongBao_KHTH;
-            dbitem.PhanSau_NCYSH_GuiThongBao_TCKT = item.PhanSau_NCYSH_GuiThongBao_TCKT;
+            dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Co = item.PhanSau_NCYSH_GuiThongBao_KHTH_Co;
+            dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Khong = item.PhanSau_NCYSH_GuiThongBao_KHTH_Khong;
+            dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Co = item.PhanSau_NCYSH_GuiThongBao_TCKT_Co;
+            dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Khong = item.PhanSau_NCYSH_GuiThongBao_TCKT_Khong;
             dbitem.PhanSau_NGS_KhongThuocPhamVi = item.PhanSau_NGS_KhongThuocPhamVi;
             dbitem.PhanSau_NGS_DuDieuKienXemXet = item.PhanSau_NGS_DuDieuKienXemXet;
             dbitem.PhanSau_NGS_HoTen = item.PhanSau_NGS_HoTen;

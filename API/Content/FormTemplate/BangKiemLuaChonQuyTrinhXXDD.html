@@ -50,7 +50,7 @@
                         A. con người
                     </td>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanMot_ConNguoi" />
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@
                         B. động vật
                     </td>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanMot_DongVat" />
                     </td>
                 </tr>
             </tbody>
@@ -77,23 +77,23 @@
             <tbody style="width:100%;">
                 <tr>
                     <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;"><b>Tên NCYSH</b></td>
-                    <td style="border: 1px solid black;" contenteditable="true"></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: PhanHai_TenNCYSH"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true"></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true"></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true"></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border-bottom-color:#fff"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
             </tbody>
         </table>
@@ -106,13 +106,13 @@
             <tbody style="width:100%;">
                 <tr>
                     <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;" rowspan="2"><b>Nghiên cứu viên chính</b></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: PhanHai_NCVChinh_HoTen"></td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Khoa/phòng</span>
-                            <span contenteditable="true" style="text-indent: 84px;" ></span>
+                            <span contenteditable="true" style="text-indent: 84px;" data-bind="editableHTML: PhanHai_NCVChinh_KhoaPhong"></span>
                         </p>
                     </td>
                 </tr>
@@ -121,7 +121,7 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Bệnh viện</span>
-                            <span contenteditable="true" style="text-indent: 69px;" ></span>
+                            <span contenteditable="true" style="text-indent: 69px;" data-bind="editableHTML: PhanHai_NCVChinh_BenhVien"></span>
                         </p>
                     </td>
                 </tr>
@@ -130,7 +130,7 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Điện thoại</span>
-                            <span contenteditable="true" style="text-indent: 71px;" ></span>
+                            <span contenteditable="true" style="text-indent: 71px;" data-bind="editableHTML: PhanHai_NCVChinh_DienThoai"></span>
                         </p>
                     </td>
                 </tr>
@@ -139,7 +139,7 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Email</span>
-                            <span contenteditable="true" style="text-indent: 41px;" ></span>
+                            <span contenteditable="true" style="text-indent: 41px;" data-bind="editableHTML: PhanHai_NCVChinh_Email"></span>
                         </p>
                     </td>
                 </tr>
@@ -148,19 +148,19 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Địa chỉ liên hệ</span>
-                            <span contenteditable="true" style="text-indent: 98px;" ></span>
+                            <span contenteditable="true" style="text-indent: 98px;" data-bind="editableHTML: PhanHai_NCVChinh_DiaChiLienHe"></span>
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td style="border-bottom-color:#fff"></td>
-                    <td style="border: 1px solid black;">
-                        <p class="box" style="margin:0;">
-                            <span class="box-title"></span>
-                            <span contenteditable="true" style="text-indent: 104px;" ></span>
-                        </p>
-                    </td>
-                </tr>
+                <!-- <tr> -->
+                <!-- <td style="border-bottom-color:#fff"></td> -->
+                <!-- <td style="border: 1px solid black;"> -->
+                <!-- <p class="box" style="margin:0;"> -->
+                <!-- <span class="box-title"></span> -->
+                <!-- <span contenteditable="true" style="text-indent: 104px;" data-bind="editableHTML: TenDeTai"></span> -->
+                <!-- </p> -->
+                <!-- </td> -->
+                <!-- </tr> -->
             </tbody>
         </table>
         <br />
@@ -172,13 +172,13 @@
             <tbody style="width:100%;">
                 <tr>
                     <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;" rowspan="2"><b>Người giám sát/hướng dẫn</b> <i>(nếu liên quan)</i></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: PhanHai_NGS_HoTen"></td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Nơi làm việc</span>
-                            <span contenteditable="true" style="text-indent: 86px;" ></span>
+                            <span contenteditable="true" style="text-indent: 86px;" data-bind="editableHTML: PhanHai_NGS_NoiLamViec"></span>
                         </p>
                     </td>
                 </tr>
@@ -187,7 +187,7 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Điện thoại</span>
-                            <span contenteditable="true" style="text-indent: 71px;" ></span>
+                            <span contenteditable="true" style="text-indent: 71px;" data-bind="editableHTML: PhanHai_NGS_DienThoai"></span>
                         </p>
                     </td>
                 </tr>
@@ -196,7 +196,7 @@
                     <td style="border: 1px solid black;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">Email</span>
-                            <span contenteditable="true" style="text-indent: 41px;" ></span>
+                            <span contenteditable="true" style="text-indent: 41px;" data-bind="editableHTML: PhanHai_NGS_Email"></span>
                         </p>
                     </td>
                 </tr>
@@ -227,13 +227,13 @@
                         A1. Dược phẩm (Thuốc tân dược, dược liệu, thuốc y học cổ truyền)
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().DuocPham" />
                     </td>
                     <td>
                         A6. Các thủ thuật, phẫu thuật
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().CacThuThuat" />
                     </td>
                 </tr>
                 <tr>
@@ -241,13 +241,13 @@
                         A2. Chế phẩm sinh học (Vắc – xin và các chế phẩm sinh học khác)
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().ChePhamSinhHoc" />
                     </td>
                     <td>
                         A7. Các mẫu sinh học (mẫu máu, bệnh phẩm, sữa mẹ)
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().CacMauSinhHoc" />
                     </td>
                 </tr>
                 <tr>
@@ -255,13 +255,13 @@
                         A3. Các phương pháp điều trị không dùng thuốc
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().PhuongPhapKhongDungThuoc"
                     </td>
                     <td>
                         A8. Điều tra dịch tễ học
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().DieuTraDichTeHoc" />
                     </td>
                 </tr>
                 <tr>
@@ -269,13 +269,13 @@
                         A4. Các thiết bị y tế
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().CacThietBiYTe" />
                     </td>
                     <td>
                         A9. Xã hội học và tâm lý học
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().XaHoiHoc" />
                     </td>
                 </tr>
                 <tr>
@@ -283,7 +283,7 @@
                         A5. Phương pháp xạ trị và hình ảnh
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_A().PhuongPhapXaTri" />
                     </td>
                     <td></td>
                     <td class="text-center"></td>
@@ -309,13 +309,13 @@
                         B.1 Ghi/lưu trữ thông tin xác định danh tính cá nhân
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().GhiThongTin" />
                     </td>
                     <td>
                         B.7 Có chi trả khuyến khích
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().ChiTraKhuyenKhich" />
                     </td>
                 </tr>
                 <tr>
@@ -323,13 +323,13 @@
                         B.2 Sự tham gia của người không có năng lực hành vi
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().NguoiKhongCoNangLucHanhVi" />
                     </td>
                     <td>
                         B.8 Có thu thập thông tin nhạy cảm
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().ThongTinNhayCam" />
                     </td>
                 </tr>
                 <tr>
@@ -337,13 +337,13 @@
                         B.3 Sự tham gia của vị thành niên
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().ViThanhNien" />
                     </td>
                     <td>
                         B.9 Có thu thập bí mật cá nhân
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().BiMatCaNhan" />
                     </td>
                 </tr>
                 <tr>
@@ -351,13 +351,13 @@
                         B.4 Sự tham gia của người có quan hệ phụ thuộc vào nghiên cứu viên
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().NguoiCoQuanHePhuThuoc" />
                     </td>
                     <td>
                         B.10 Có thể liên quan đến trách nhiệm pháp lý
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().TrachNhiemPhapLy" />
                     </td>
                 </tr>
                 <tr>
@@ -365,13 +365,13 @@
                         B.5 Các vấn đề nhạy cảm về văn hoá
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().CacVanDeNhayCamVeVanHoa" />
                     </td>
                     <td>
                         B.11 Có sự tham gia có chọn lọc của người thiểu số
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().NguoiThieuSo" />
                     </td>
                 </tr>
                 <tr>
@@ -379,7 +379,7 @@
                         B.6 Gây đau đớn hoặc mệt mỏi tâm lý cao hơn mức thông thường
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanBa_B().GayDauDon" />
                     </td>
                     <td></td>
                     <td class="text-center"></td>
@@ -440,7 +440,7 @@
                         C.4 Thử nghiệm thuốc thử nghiệm/thủ thuật can thiệp/thông tin nhạy cảm
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().ThuNghiemThuocThuNghiem" />
                     </td>
                 </tr>
                 <tr>
@@ -448,7 +448,7 @@
                         C.5 Sử dụng bộ công cụ chuẩn (có trong quyết định phê duyệt của HĐĐĐ của bệnh viện)
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().SuDungCongCuChuan" />
                     </td>
                 </tr>
                 <tr>
@@ -456,7 +456,7 @@
                         C.6 Dễ dàng quản lý nguy cơ?
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().DeDangQuanLyNguyCo" />
                     </td>
                 </tr>
                 <tr>
@@ -464,7 +464,7 @@
                         C.7 Đây là nghiên cứu lượng giá chất lượng đào tạo?
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().NghienCuuLuongGia" />
                     </td>
                 </tr>
                 <tr>
@@ -472,7 +472,7 @@
                         C.8 Dự án gồm nhiều cơ quan/đơn vị tham gia?
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().NhieuCoQuanThamGia" />
                     </td>
                 </tr>
                 <tr>
@@ -480,7 +480,7 @@
                         C.9 Đây là đơn xin gia hạn/tái xin phép?
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: PhanNam().XinGiaHan" />
                     </td>
                 </tr>
             </tbody>
@@ -528,41 +528,41 @@
             <tbody style="width:100%;">
                 <tr>
                     <td rowspan="3" style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;"><b>Họ tên và  &nbsp; thông tin về &nbsp;  các nghiên cứu viên khác</b></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
+                </tr>
+                <tr>
+                    <td style="border:none;"></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td style="border-bottom-color:#fff"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
             </tbody>
         </table>
@@ -580,29 +580,29 @@
             <tbody style="width:100%;">
                 <tr>
                     <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;"><b>Mô tả NCYSH</b></td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
                     <td rowspan="6" style="border-bottom-color:#fff;font-style:italic;" class="text-center">
                         PHẢI nộp một bản điện tử đề cương NCYSH cho thư ký HĐĐĐ (<a href="mailto:bsvinh.dq@myduchospital.vn">bsvinh.dq@myduchospital.vn</a>).
                         Có thế nộp kèm theo một phụ lục riêng, nếu cần.
                     </td>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" ></td>
+                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                 </tr>
             </tbody>
         </table>
@@ -660,14 +660,14 @@
                 <tbody style="width:100%;">
                     <tr>
                         <td>
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NCYSH_KhongThuocPhamVi" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
                             HOẶC
                         </td>
                         <td style="vertical-align:middle;">
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NCYSH_DuDieuKienXemXet" />
                             Đủ điều kiện được xem xét theo quy trình rút gọn.
                         </td>
                     </tr>
@@ -724,7 +724,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Họ tên:
                                     </td>
-                                    <td contenteditable="true" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_NCYSH_HoTen" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
                                 </tr>
                             </table>
                         </td>
@@ -740,7 +740,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Ngày:
                                     </td>
-                                    <td contenteditable="true" style="padding:3px;">
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_NCYSH_NgayThangNam" style="padding:3px;">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
@@ -766,10 +766,10 @@
                                         Xin gửi thông báo đến Phòng KHTH
                                     </td>
                                     <td>
-                                        <input type="checkbox" /> Có
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH_Co" /> Có
                                     </td>
                                     <td>
-                                        <input type="checkbox" /> Không
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH_Khong" /> Không
                                     </td>
                                 </tr>
                                 <tr>
@@ -777,10 +777,10 @@
                                         Xin gửi thông báo đến Phòng TCKT
                                     </td>
                                     <td>
-                                        <input type="checkbox" /> Có
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT_Co" /> Có
                                     </td>
                                     <td>
-                                        <input type="checkbox" /> Không
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT_Khong" /> Không
                                     </td>
                                 </tr>
                             </table>
@@ -812,14 +812,14 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NGS_KhongThuocPhamVi" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
                             HOẶC
                         </td>
                         <td style="vertical-align:middle;">
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NGS_DuDieuKienXemXet" />
                             Đủ điều kiện được xem xét theo quy trình rút gọn.
                         </td>
                     </tr>
@@ -867,7 +867,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Họ tên:
                                     </td>
-                                    <td contenteditable="true" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_NGS_HoTen" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
                                 </tr>
                             </table>
                         </td>
@@ -883,7 +883,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Ngày:
                                     </td>
-                                    <td contenteditable="true" style="padding:3px;">
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_NGS_NgayThangNam" style="padding:3px;">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
@@ -920,14 +920,14 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_TruongKhoa_KhongThuocPhamVi" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
                             HOẶC
                         </td>
                         <td style="vertical-align:middle;">
-                            <input type="checkbox" />
+                            <input type="checkbox" data-bind="checked: PhanSau_TruongKhoa_DuDieuKienXemXet" />
                             Đủ điều kiện được xem xét theo quy trình rút gọn.
                         </td>
                     </tr>
@@ -956,7 +956,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Ngày:
                                     </td>
-                                    <td contenteditable="true" style="padding:3px;">
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_TruongKhoa_NgayThangNam" style="padding:3px;">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
@@ -974,7 +974,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Chức vụ:
                                     </td>
-                                    <td contenteditable="true" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_TruongKhoa_ChucVu" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
                                 </tr>
                             </table>
                         </td>
@@ -990,7 +990,7 @@
                                     <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                         Ký và ghi rõ họ tên:
                                     </td>
-                                    <td contenteditable="true" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
+                                    <td contenteditable="true" data-bind="editableHTML: PhanSau_TruongKhoa_HoTen" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
                                 </tr>
                             </table>
                         </td>
@@ -1025,7 +1025,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_KhongThuocPhamVi" />
                     </td>
                     <td colspan="2">
                         Không thuộc phạm vi điều chỉnh hoặc được miễn xem xét về đạo đức theo quy chế hiện hành
@@ -1033,7 +1033,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_DuocXemXetDaoDuc" />
                     </td>
                     <td colspan="2">
                         Được xem xét về đạo đức theo quy trình rút gọn
@@ -1041,7 +1041,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_DuocXemXetDaoDucRutGon" />
                     </td>
                     <td colspan="2">
                         Được xem xét về đạo đức theo quy trình rút gọn với điều kiện được chỉ ra ở phần dưới đây
@@ -1049,7 +1049,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_CanDuocHoiDongXemXet" />
                     </td>
                     <td colspan="2">
                         Cần được Hội đồng Đạo đức xem xét theo quy trình đầy đủ trong cuộc họp HĐĐĐ

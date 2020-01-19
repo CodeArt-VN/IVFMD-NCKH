@@ -254,11 +254,11 @@ export class PRO_SysnopsisCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_Sysnopsis, SearchConfig.getSearchFields('PRO_Sysnopsis'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isReset?) {
         let that = this.commonService;
         let apiPath = APIList.PRO_Sysnopsis.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isReset), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })

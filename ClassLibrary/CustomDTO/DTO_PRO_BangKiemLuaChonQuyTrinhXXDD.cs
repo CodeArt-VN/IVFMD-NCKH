@@ -22,6 +22,7 @@ namespace DTOModel
         public bool CacPhuongPhapChePham { get; set; }
         public bool CacThietBiYTe { get; set; }
         public bool PhuongPhapXaTri { get; set; }
+        public bool PhuongPhapKhongDungThuoc { get; set; }
         public bool CacThuThuat { get; set; }
         public bool CacMauSinhHoc { get; set; }
         public bool DieuTraDichTeHoc { get; set; }
