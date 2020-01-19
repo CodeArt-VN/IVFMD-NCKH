@@ -2,7 +2,7 @@
     <div>
         <div style="text-align:right;">
             Mã số báo cáo của đơn vị:
-            <span contenteditable="true" style="min-width:100px;display:inline-block">
+            <span contenteditable="true" data-bind="editableHTML: MaSo" style="min-width:100px;display:inline-block">
                 …………………………
             </span>
         </div>
@@ -29,10 +29,10 @@
                     Loại báo cáo:
                 </td>
                 <td style="vertical-align:middle;">
-                    <input type="checkbox" /> Báo cáo lần đầu
+                    <input type="checkbox" data-bind="checked: BaoCaoLanDau" /> Báo cáo lần đầu
                 </td>
                 <td style="vertical-align:middle;">
-                    <input type="checkbox" /> Báo cáo bổ sung
+                    <input type="checkbox" data-bind="checked: BaoCaoBoSung" /> Báo cáo bổ sung
                 </td>
             </tr>
             <tr>
@@ -43,7 +43,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: TuVong" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tử vong
                         </span>
@@ -51,7 +51,7 @@
                 </td>
                 <td colspan="2">
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: DeDoaTinhMang" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Đe dọa tính mạng
                         </span>
@@ -61,7 +61,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: NhapVien" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Nhập viện/kéo dài thời gian nằm viện
                         </span>
@@ -69,7 +69,7 @@
                 </td>
                 <td colspan="2">
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: TanTat" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tàn tật/thương tật vĩnh viễn/nặng nề
                         </span>
@@ -79,7 +79,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: DiTatBamSinh" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Dị tật bẩm sinh/dị dạng thai nhi
                         </span>
@@ -87,7 +87,7 @@
                 </td>
                 <td colspan="2">
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;" />
+                        <input type="checkbox" data-bind="checked: YeuCanCanThiepYKhoa" style="position: absolute;z-index:99;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Yêu cầu can thiệp y khoa để ngăn chặn một trong các tình huống trên hoặc được đánh giá
                             có ý nghĩa về mặt y khoa bởi nghiên cứu viên hoặc nghiên cứu viên chính
@@ -110,7 +110,7 @@
                 <td>
                     Tên nghiên cứu
                 </td>
-                <td colspan="3" contenteditable="true" style=" padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: TenNghienCuu" style=" padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                     ..........................................................................................
                 </td>
@@ -120,13 +120,13 @@
                     Thiết kế nghiên cứu
                 </td>
                 <td>
-                    <input type="checkbox" />Nhãn mở
+                    <input type="checkbox" data-bind="checked: ThietKeNghienCuu_NhanMo" />Nhãn mở
                 </td>
                 <td>
-                    <input type="checkbox" />Mù đơn
+                    <input type="checkbox" data-bind="checked: ThietKeNghienCuu_MuDon" />Mù đơn
                 </td>
                 <td>
-                    <input type="checkbox" />Mù đôi
+                    <input type="checkbox" data-bind="checked: ThietKeNghienCuu_MuDoi" />Mù đôi
                 </td>
             </tr>
             <tr>
@@ -135,20 +135,20 @@
                     SAE có dẫn đến mở mù không?
                 </td>
                 <td style="vertical-align:middle">
-                    <input type="checkbox" />Có
+                    <input type="checkbox" data-bind="checked: MoMu_Co" />Có
                 </td>
                 <td style="vertical-align:middle">
-                    <input type="checkbox" />Không
+                    <input type="checkbox" data-bind="checked: MoMu_Khong" />Không
                 </td>
                 <td style="vertical-align:middle">
-                    <input type="checkbox" />Không có thông tin
+                    <input type="checkbox" data-bind="checked: MoMu_KhongCoThongTin" />Không có thông tin
                 </td>
             </tr>
             <tr>
                 <td>
                     Nhà tài trợ
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: NhaTaiTro" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -156,7 +156,7 @@
                 <td>
                     Tên nghiên cứu viên chính
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: HoTenNCV" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -164,7 +164,7 @@
                 <td>
                     Điểm nghiên cứu ghi nhận SAE
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: DiemNghienCuu" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -172,7 +172,7 @@
                 <td>
                     Thời điểm nhận được thông tin về SAE
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: ThoiDiemNhanThongTin" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -180,7 +180,7 @@
                 <td>
                     Thời điểm xuất hiện SAE
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: ThoiDiemXuatHien" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -188,15 +188,15 @@
                 <td>
                     Thời điểm kết thúc SAE (hoặc đánh dấu vào ô <i>“Đang tiếp diễn”</i> nếu SAE đang tiếp diễn)
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
-                    .............................................................<input type="checkbox" /> Đang tiếp diễn
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: ThoiDiemKetThuc" style="padding: 0 6px;vertical-align:middle;">
+                    .............................................................<input type="checkbox" data-bind="checked: DangTiepDien" /> Đang tiếp diễn
                 </td>
             </tr>
             <tr>
                 <td>
                     Tên SAE (chẩn đoán SAE hoặc các triệu chứng chính của SAE)
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: TenSAE" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                     ..........................................................................................
                 </td>
@@ -206,7 +206,7 @@
                     Tên viết tắt của người tham gia thử thuốc trên lâm sàng
 
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: TenNguoiThuThuoc" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -214,7 +214,7 @@
                 <td>
                     Mã số của người tham gia thử thuốc trên lâm sàng
                 </td>
-                <td colspan="3" contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: MaSoNguoiThuThuoc" style="padding: 0 6px;vertical-align:middle;">
                     ..........................................................................................
                 </td>
             </tr>
@@ -245,7 +245,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                <td colspan="3" contenteditable="true" data-bind="editableHTML: MoTaDienBien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                     .............................................................................................................................................
                     .............................................................................................................................................
                     .............................................................................................................................................
@@ -273,7 +273,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_HoiPhucKhongDiChung" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Hồi phục không để lại di chứng
                         </span>
@@ -281,7 +281,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_DangHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Đang hồi phục
                         </span>
@@ -289,7 +289,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_TuVong" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tử vong (ngày tử vong:…………………)
                         </span>
@@ -299,7 +299,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_HoiPhucCoDiChung" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Hồi phục nhưng có để lại di chứng
                         </span>
@@ -307,7 +307,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_ChuaHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Chưa hồi phục
                         </span>
@@ -315,7 +315,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height:100%;" />
+                        <input type="checkbox" data-bind="checked: KetQua_KhongCoThongTin" style="position: absolute;z-index:99;height:100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Không có thông tin
                         </span>
@@ -340,7 +340,7 @@
                 <td>
                     Ngày sinh
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiThamGia_NgaySinh" style="padding: 0 6px;vertical-align:middle;">
                     ..............................................................................................................
                 </td>
             </tr>
@@ -348,7 +348,7 @@
                 <td>
                     Tuổi
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiThamGia_Tuoi" style="padding: 0 6px;vertical-align:middle;">
                     ..............................................................................................................
                 </td>
             </tr>
@@ -357,8 +357,8 @@
                     Giới tính
                 </td>
                 <td style="padding: 0 6px;vertical-align:middle;">
-                    <input type="checkbox" />Nam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" />Nữ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" data-bind="checked: NguoiThamGia_GioiTinh_Nam" />Nam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" data-bind="checked: NguoiThamGia_GioiTinh_Nu" />Nữ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     Với nữ: <input type="checkbox" />Đang mang thai (tuần thứ <span contenteditable="true">………</span>)
                 </td>
             </tr>
@@ -366,7 +366,7 @@
                 <td>
                     Cân nặng (Kg)
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiThamGia_CanNang" style="padding: 0 6px;vertical-align:middle;">
                     ..............................................................................................................
                 </td>
             </tr>
@@ -374,7 +374,7 @@
                 <td>
                     Tiền sử y khoa liên quan đến SAE
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiThamGia_TienSuYKhoa" style="padding: 0 6px;vertical-align:middle;">
                     ..............................................................................................................
                     ..............................................................................................................
                 </td>
@@ -382,7 +382,7 @@
         </tbody>
     </table>
     <br />
-    <div conf='{"name":"ListThuocThuLamSan","add":true,"resizeable":true,"props": ["STT","TenThuoc","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -430,10 +430,10 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocThuLamSan">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: TenThuoc"></td>
+                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: ThuocThuHoacPhacDo"></td>
                     <td contenteditable="true" data-bind="editableHTML: DangBaoChe"></td>
                     <td contenteditable="true" data-bind="editableHTML: DuongDung"></td>
                     <td contenteditable="true" data-bind="editableHTML: LieuDung"></td>
@@ -451,7 +451,7 @@
         </div>
     </div>
     <br />
-    <div conf='{"name":"ListCanThiepThuocThuLamSan","add":true,"resizeable":true,"props": ["STT","NgungLieu_Co","NgungLieu_Khong","CaiThien_Co","CaiThien_Khong","CaiThien_KhongCoThongTin","XuatHienLai_Co","XuatHienLai_Khong","XuatHienLai_KhongCoThongTin","XuatHienLai_KhongTaiSuDung"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -515,34 +515,34 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListCanThiepThuocThuLamSan">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: NgungLieu_Co" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: CoSAE" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: NgungLieu_Khong" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongSAE" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: CaiThien_Co" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: CoCaiThienSAE" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: CaiThien_Khong" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongCaiThienSAE" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: CaiThien_KhongCoThongTin" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongCoTTCaiThienSAE" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_Co" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: CoBienCo" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_Khong" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongBienCo" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_KhongCoThongTin" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongCoTTBienCo" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: XuatHienLai_KhongTaiSuDung" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongTaiSuDung" class="text-center">
                         <input type="checkbox" />
                     </td>
                 </tr>
@@ -553,7 +553,7 @@
         </div>
     </div>
     <br />
-    <div conf='{"name":"ListThuocSuDungDongThoi","add":true,"resizeable":true,"props": ["STT","TenThuoc","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","ThuocThuHoacPhacDo","DangBaoChe","DuongDung","LieuDung","NgayBatDau","NgayKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -602,10 +602,10 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListThuocSuDungDongThoi">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: TenThuoc"></td>
+                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: ThuocThuHoacPhacDo"></td>
                     <td contenteditable="true" data-bind="editableHTML: DangBaoChe"></td>
                     <td contenteditable="true" data-bind="editableHTML: DuongDung"></td>
                     <td contenteditable="true" data-bind="editableHTML: LieuDung"></td>
@@ -616,7 +616,7 @@
         </table>
     </div>
     <br />
-    <div conf='{"name":"ListDanhGiaNCV","add":true,"resizeable":true,"props": ["STT","KetQua_Co","KetQua_Khong","KetQua_ChuaKetLuan","PhanUng_DuocDuKien","PhanUng_NgoaiDuKien"]}' class="ptable pconf" style="width:100%;position:relative;">
+    <div conf='{"name":"ListThuocThu","add":true,"resizeable":true,"props": ["Index","CoTheLienQuan","KhongLienQuan","ChuaKetLuan","DaBiet","NgoaiDuKien"]}' class="ptable pconf" style="width:100%;position:relative;">
         <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;border-left-width: 0;border-right-width: 0;" border="1">
             <colgroup>
                 <col width="10" style="border-left-width: 1px;" />
@@ -662,22 +662,22 @@
                     </td>
                 </tr>
             </thead>
-            <tbody style="width:100%;" data-bind="foreach: ListDanhGiaNCV">
+            <tbody style="width:100%;" data-bind="foreach: ListThuocThu">
                 <tr data-bind="attr: { index: $index}">
-                    <td contenteditable="true" data-bind="editableHTML: STT" class="text-center"></td>
-                    <td contenteditable="true" data-bind="editableHTML: KetQua_Co" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: Index" class="text-center"></td>
+                    <td contenteditable="true" data-bind="editableHTML: CoTheLienQuan" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KetQua_Khong" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: KhongLienQuan" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: KetQua_ChuaKetLuan" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: ChuaKetLuan" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: PhanUng_DuocDuKien" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: DaBiet" class="text-center">
                         <input type="checkbox" />
                     </td>
-                    <td contenteditable="true" data-bind="editableHTML: PhanUng_NgoaiDuKien" class="text-center">
+                    <td contenteditable="true" data-bind="editableHTML: NgoaiDuKien" class="text-center">
                         <input type="checkbox" />
                     </td>
                 </tr>
@@ -694,7 +694,7 @@
         <div>
             - Giải thích lý do cho đánh giá về quan hệ nhân quả và tính chất dự kiến trước của SAE:
         </div>
-        <div contenteditable="true" style="line-height:1.5em;">
+        <div contenteditable="true" data-bind="editableHTML: LyDoDanhGia" style="line-height:1.5em;">
             ................................................................................................................................................
             ................................................................................................................................................
             ................................................................................................................................................
@@ -702,7 +702,7 @@
         <div>
             - Có bao nhiêu SAE hoặc AE tương tự đã từng xảy ra trong nghiên cứu này tính tới thời điểm báo cáo:
         </div>
-        <div contenteditable="true" style="line-height:1.5em;">
+        <div contenteditable="true" data-bind="editableHTML: LyDoDanhGia_SoLuong" style="line-height:1.5em;">
             + Tại điểm nghiên cứu đã ghi nhận SAE/AE được đề cập trong báo cáo này: ....................
             <br />
             + Tại các điểm nghiên cứu khác: ..........................................................................................
@@ -730,7 +730,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_TiepTucThamGia" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tiếp tục tham gia <br />nghiên cứu
                         </span>
@@ -738,7 +738,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_TamNgungThamGia" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tạm ngừng tham gia <br />nghiên cứu
                         </span>
@@ -746,7 +746,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_RutKhoiNghienCuu" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Rút khỏi <br />nghiên cứu
                         </span>
@@ -761,7 +761,7 @@
             <tr>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_TiepTucTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tiếp tục triển khai <br />nghiên cứu
                         </span>
@@ -769,7 +769,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Tạm ngừng triển khai <br />nghiên cứu
                         </span>
@@ -777,7 +777,7 @@
                 </td>
                 <td>
                     <div style="position: relative;">
-                        <input type="checkbox" style="position: absolute;z-index:99;height: 100%;" />
+                        <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_NgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                         <span style="position: relative;padding-left: 25px;display: block;">
                             Ngừng triển khai <br />nghiên cứu
                         </span>
@@ -785,7 +785,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" style="vertical-align:middle;line-height:1.5em;" contenteditable="true">
+                <td colspan="3" style="vertical-align:middle;line-height:1.5em;" contenteditable="true" data-bind="editableHTML: YKienHDDD_DeXuatKhac">
                     <b>Đề xuất khác</b> (nếu có):&nbsp;  .....................................................................................................
                     .............................................................................................................................................
                     .............................................................................................................................................
@@ -818,7 +818,7 @@
                 <td>
                     Ngày ký <i>(ngày/tháng/năm):</i>
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiBaoCao_NgayKy" style="padding: 0 6px;vertical-align:middle;">
                     ……………………………………………………………
                 </td>
             </tr>
@@ -826,7 +826,7 @@
                 <td>
                     Họ tên đầy đủ:
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiBaoCao_HoTen" style="padding: 0 6px;vertical-align:middle;">
                     ……………………………………………………………
                 </td>
             </tr>
@@ -834,7 +834,7 @@
                 <td>
                     Chức vụ, khoa/phòng:
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiBaoCao_ChucVu" style="padding: 0 6px;vertical-align:middle;">
                     ……………………………………………………………
                 </td>
             </tr>
@@ -842,7 +842,7 @@
                 <td>
                     Số điện thoại:
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiBaoCao_DienThoai" style="padding: 0 6px;vertical-align:middle;">
                     ……………………………………………………………
                 </td>
             </tr>
@@ -850,7 +850,7 @@
                 <td>
                     Địa chỉ email:
                 </td>
-                <td contenteditable="true" style="padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHTML: NguoiBaoCao_Email" style="padding: 0 6px;vertical-align:middle;">
                     ……………………………………………………………
                 </td>
             </tr>

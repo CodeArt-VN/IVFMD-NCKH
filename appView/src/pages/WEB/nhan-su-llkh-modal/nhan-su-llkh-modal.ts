@@ -320,6 +320,15 @@ export class NhanSuLLKHModalPage extends DetailPage {
                 };
             }));
 
+            self.ListNgoaiNgu = ko.observableArray(ko.utils.arrayMap(item.ListNgoaiNgu || [{}, {}, {}, {}], function (nn) {
+                return {
+                    Nghe: ko.observable(nn.Nghe || ""),
+                    Noi: ko.observable(nn.Noi || ""),
+                    Viet: ko.observable(nn.Viet || ""),
+                    Doc: ko.observable(nn.Doc || "")
+                };
+            }));
+            
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
 
             self.addItem = function (name, props) {
