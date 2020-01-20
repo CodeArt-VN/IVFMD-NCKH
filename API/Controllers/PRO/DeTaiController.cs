@@ -22,7 +22,8 @@ namespace API.Controllers.PRO
         [Route("")]
         public IQueryable<DTO_PRO_DeTai> Get()
         {
-            return BS_PRO_DeTai.get_PRO_DeTaiCustom(db, PartnerID, QueryStrings);
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            return BS_PRO_DeTai.get_PRO_DeTaiCustom(db, PartnerID, user.StaffID, QueryStrings);
         }
 
         [Route("get_PRO_DeTaiByRefer")]
@@ -70,7 +71,22 @@ namespace API.Controllers.PRO
             {
                 return NotFound();
             }
-            return BadRequest();
+            return Ok(tbl_PRO_DeTai);
+        }
+
+        [Route("updateNCT_PRO_DeTai/{id:int}/{soNCT}")]
+        [ResponseType(typeof(DTO_PRO_DeTai))]
+        public IHttpActionResult UpdateNCT(int id, string soNCT)
+        {
+            var result = BS_PRO_DeTai.updateNCT_PRO_DeTai(db, id, soNCT, Username);
+            if (!string.IsNullOrEmpty(result))
+                return BadRequest(result);
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            if (tbl_PRO_DeTai == null)
+            {
+                return NotFound();
+            }
+            return Ok(tbl_PRO_DeTai);
         }
 
         [Route("{id:int}")]
