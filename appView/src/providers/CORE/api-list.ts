@@ -8,7 +8,7 @@
 
 export var appSetting = {
 	mainService: {
-        //base: "http://ivfmd.demo.codeart.vn/",
+        //base: "http://nckh.appcenter.vn/",
         base: "http://localhost:54009/",
 		api: "api/",
 	},
@@ -1156,6 +1156,10 @@ export var APIListBase = {
         getListCustom: {
             method: "GET",
             url: function (idDeTai) { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/get_PRO_BaoCaoTienDoNghienCuuByDeTai/") + idDeTai }
+        },
+        getListAll: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/get_PRO_BaoCaoTienDoNghienCuuAll") }
         }
     },
 

@@ -82,7 +82,7 @@ export class DetailPage extends BasePage {
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();
-                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                    //this.toastMessage('Không lưu được, \nvui lòng thử lại.');
                     this.savedChange();
                 });
             })

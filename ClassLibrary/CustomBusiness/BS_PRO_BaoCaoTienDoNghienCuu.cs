@@ -280,6 +280,11 @@ namespace BaseBusiness
                         if (trangthaiHDDD != null)
                             dbitem.NgayDuyetNghienCuu = trangthaiHDDD.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss");
                     }
+                    else
+                    {
+                        item.Error = "Đề tài chưa duyệt, không thể tạo báo cáo";
+                        return item;
+                    }
 
                     var donxindanhgiaDD = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == item.IDDeTai && c.IsDeleted == false);
                     if (donxindanhgiaDD != null)

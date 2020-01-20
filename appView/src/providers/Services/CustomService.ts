@@ -347,6 +347,19 @@ export class PRO_BaoCaoTienDoNghienCuuCustomProvider extends exService {
                 });
         });
     }
+    getListAll() {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoTienDoNghienCuu.getListAll;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()
