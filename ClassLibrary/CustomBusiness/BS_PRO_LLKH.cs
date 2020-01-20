@@ -12,7 +12,7 @@ namespace BaseBusiness
 {
     public static partial class BS_PRO_LLKH
     {
-        public static DTO_PRO_LLKH get_PRO_LLKHCustom(AppEntities db, int idDeTai, int nhanSuId)
+        public static DTO_PRO_LLKH get_PRO_LLKHCustom(AppEntities db, int idDeTai, int nhanSuId, bool? isReset)
         {
             var query = db.tbl_PRO_LLKH.Where(d => d.IDDetai == idDeTai && d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_LLKH
             {
