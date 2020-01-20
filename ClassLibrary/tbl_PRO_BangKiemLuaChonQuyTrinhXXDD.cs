@@ -59,10 +59,8 @@ namespace ClassLibrary
         public bool PhanSau_NCYSH_DuDieuKienXemXet { get; set; }
         public string PhanSau_NCYSH_HoTen { get; set; }
         public string PhanSau_NCYSH_NgayThangNam { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_KHTH_Co { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_KHTH_Khong { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_TCKT_Co { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_TCKT_Khong { get; set; }
+        public bool PhanSau_NCYSH_GuiThongBao_KHTH { get; set; }
+        public bool PhanSau_NCYSH_GuiThongBao_TCKT { get; set; }
         public bool PhanSau_NGS_KhongThuocPhamVi { get; set; }
         public bool PhanSau_NGS_DuDieuKienXemXet { get; set; }
         public string PhanSau_NGS_HoTen { get; set; }
@@ -136,11 +134,9 @@ namespace DTOModel
 		public bool PhanSau_NCYSH_DuDieuKienXemXet { get; set; }
 		public string PhanSau_NCYSH_HoTen { get; set; }
 		public string PhanSau_NCYSH_NgayThangNam { get; set; }
-		public bool PhanSau_NCYSH_GuiThongBao_KHTH_Co { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_KHTH_Khong { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_TCKT_Co { get; set; }
-        public bool PhanSau_NCYSH_GuiThongBao_TCKT_Khong { get; set; }
-        public bool PhanSau_NGS_KhongThuocPhamVi { get; set; }
+		public bool PhanSau_NCYSH_GuiThongBao_KHTH { get; set; }
+		public bool PhanSau_NCYSH_GuiThongBao_TCKT { get; set; }
+		public bool PhanSau_NGS_KhongThuocPhamVi { get; set; }
 		public bool PhanSau_NGS_DuDieuKienXemXet { get; set; }
 		public string PhanSau_NGS_HoTen { get; set; }
 		public string PhanSau_NGS_NgayThangNam { get; set; }
@@ -227,11 +223,9 @@ namespace BaseBusiness
 				PhanSau_NCYSH_DuDieuKienXemXet = s.PhanSau_NCYSH_DuDieuKienXemXet,							
 				PhanSau_NCYSH_HoTen = s.PhanSau_NCYSH_HoTen,							
 				PhanSau_NCYSH_NgayThangNam = s.PhanSau_NCYSH_NgayThangNam,							
-				PhanSau_NCYSH_GuiThongBao_KHTH_Co = s.PhanSau_NCYSH_GuiThongBao_KHTH_Co,
-				PhanSau_NCYSH_GuiThongBao_KHTH_Khong = s.PhanSau_NCYSH_GuiThongBao_KHTH_Khong,
-                PhanSau_NCYSH_GuiThongBao_TCKT_Co = s.PhanSau_NCYSH_GuiThongBao_TCKT_Co,	
-                PhanSau_NCYSH_GuiThongBao_TCKT_Khong = s.PhanSau_NCYSH_GuiThongBao_TCKT_Khong,
-                PhanSau_NGS_KhongThuocPhamVi = s.PhanSau_NGS_KhongThuocPhamVi,							
+				PhanSau_NCYSH_GuiThongBao_KHTH = s.PhanSau_NCYSH_GuiThongBao_KHTH,							
+				PhanSau_NCYSH_GuiThongBao_TCKT = s.PhanSau_NCYSH_GuiThongBao_TCKT,							
+				PhanSau_NGS_KhongThuocPhamVi = s.PhanSau_NGS_KhongThuocPhamVi,							
 				PhanSau_NGS_DuDieuKienXemXet = s.PhanSau_NGS_DuDieuKienXemXet,							
 				PhanSau_NGS_HoTen = s.PhanSau_NGS_HoTen,							
 				PhanSau_NGS_NgayThangNam = s.PhanSau_NGS_NgayThangNam,							
@@ -305,12 +299,10 @@ namespace BaseBusiness
 					PhanSau_NCYSH_KhongThuocPhamVi = dbResult.PhanSau_NCYSH_KhongThuocPhamVi,							
 					PhanSau_NCYSH_DuDieuKienXemXet = dbResult.PhanSau_NCYSH_DuDieuKienXemXet,							
 					PhanSau_NCYSH_HoTen = dbResult.PhanSau_NCYSH_HoTen,							
-					PhanSau_NCYSH_NgayThangNam = dbResult.PhanSau_NCYSH_NgayThangNam,			
-                    PhanSau_NCYSH_GuiThongBao_KHTH_Co = dbResult.PhanSau_NCYSH_GuiThongBao_KHTH_Co,
-                    PhanSau_NCYSH_GuiThongBao_KHTH_Khong = dbResult.PhanSau_NCYSH_GuiThongBao_KHTH_Khong,
-                    PhanSau_NCYSH_GuiThongBao_TCKT_Co = dbResult.PhanSau_NCYSH_GuiThongBao_TCKT_Co,
-                    PhanSau_NCYSH_GuiThongBao_TCKT_Khong = dbResult.PhanSau_NCYSH_GuiThongBao_TCKT_Khong,
-                    PhanSau_NGS_KhongThuocPhamVi = dbResult.PhanSau_NGS_KhongThuocPhamVi,							
+					PhanSau_NCYSH_NgayThangNam = dbResult.PhanSau_NCYSH_NgayThangNam,							
+					PhanSau_NCYSH_GuiThongBao_KHTH = dbResult.PhanSau_NCYSH_GuiThongBao_KHTH,							
+					PhanSau_NCYSH_GuiThongBao_TCKT = dbResult.PhanSau_NCYSH_GuiThongBao_TCKT,							
+					PhanSau_NGS_KhongThuocPhamVi = dbResult.PhanSau_NGS_KhongThuocPhamVi,							
 					PhanSau_NGS_DuDieuKienXemXet = dbResult.PhanSau_NGS_DuDieuKienXemXet,							
 					PhanSau_NGS_HoTen = dbResult.PhanSau_NGS_HoTen,							
 					PhanSau_NGS_NgayThangNam = dbResult.PhanSau_NGS_NgayThangNam,							
@@ -668,40 +660,24 @@ namespace BaseBusiness
                 query = query.Where(d=>d.PhanSau_NCYSH_NgayThangNam == keyword);
             }
 
-			//Query PhanSau_NCYSH_GuiThongBao_KHTH_Co (bool)
-			if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH_Co"))
+			//Query PhanSau_NCYSH_GuiThongBao_KHTH (bool)
+			if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH"))
             {
-                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH_Co").Value;
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH").Value;
                 if (bool.TryParse(qValue, out bool qBoolValue))
-                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_KHTH_Co);
+                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_KHTH);
             }
 
-            //Query PhanSau_NCYSH_GuiThongBao_KHTH_Khong (bool)
-            if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH_Khong"))
+			//Query PhanSau_NCYSH_GuiThongBao_TCKT (bool)
+			if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT"))
             {
-                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_KHTH_Khong").Value;
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT").Value;
                 if (bool.TryParse(qValue, out bool qBoolValue))
-                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_KHTH_Khong);
+                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_TCKT);
             }
 
-            //Query PhanSau_NCYSH_GuiThongBao_TCKT_Co (bool)
-            if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT_Co"))
-            {
-                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT_Co").Value;
-                if (bool.TryParse(qValue, out bool qBoolValue))
-                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_TCKT_Co);
-            }
-
-            //Query PhanSau_NCYSH_GuiThongBao_TCKT_Khong (bool)
-            if (QueryStrings.Any(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT_Khong"))
-            {
-                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NCYSH_GuiThongBao_TCKT_Khong").Value;
-                if (bool.TryParse(qValue, out bool qBoolValue))
-                    query = query.Where(d => qBoolValue == d.PhanSau_NCYSH_GuiThongBao_TCKT_Khong);
-            }
-
-            //Query PhanSau_NGS_KhongThuocPhamVi (bool)
-            if (QueryStrings.Any(d => d.Key == "PhanSau_NGS_KhongThuocPhamVi"))
+			//Query PhanSau_NGS_KhongThuocPhamVi (bool)
+			if (QueryStrings.Any(d => d.Key == "PhanSau_NGS_KhongThuocPhamVi"))
             {
                 var qValue = QueryStrings.FirstOrDefault(d => d.Key == "PhanSau_NGS_KhongThuocPhamVi").Value;
                 if (bool.TryParse(qValue, out bool qBoolValue))
@@ -915,11 +891,9 @@ namespace BaseBusiness
 				dbitem.PhanSau_NCYSH_KhongThuocPhamVi = item.PhanSau_NCYSH_KhongThuocPhamVi;							
 				dbitem.PhanSau_NCYSH_DuDieuKienXemXet = item.PhanSau_NCYSH_DuDieuKienXemXet;							
 				dbitem.PhanSau_NCYSH_HoTen = item.PhanSau_NCYSH_HoTen;							
-				dbitem.PhanSau_NCYSH_NgayThangNam = item.PhanSau_NCYSH_NgayThangNam;
-                dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Co = item.PhanSau_NCYSH_GuiThongBao_KHTH_Co;
-                dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Khong = item.PhanSau_NCYSH_GuiThongBao_KHTH_Khong;
-                dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Co = item.PhanSau_NCYSH_GuiThongBao_TCKT_Co;
-                dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Khong = item.PhanSau_NCYSH_GuiThongBao_TCKT_Khong;
+				dbitem.PhanSau_NCYSH_NgayThangNam = item.PhanSau_NCYSH_NgayThangNam;							
+				dbitem.PhanSau_NCYSH_GuiThongBao_KHTH = item.PhanSau_NCYSH_GuiThongBao_KHTH;							
+				dbitem.PhanSau_NCYSH_GuiThongBao_TCKT = item.PhanSau_NCYSH_GuiThongBao_TCKT;							
 				dbitem.PhanSau_NGS_KhongThuocPhamVi = item.PhanSau_NGS_KhongThuocPhamVi;							
 				dbitem.PhanSau_NGS_DuDieuKienXemXet = item.PhanSau_NGS_DuDieuKienXemXet;							
 				dbitem.PhanSau_NGS_HoTen = item.PhanSau_NGS_HoTen;							
@@ -1005,12 +979,10 @@ namespace BaseBusiness
 				dbitem.PhanSau_NCYSH_KhongThuocPhamVi = item.PhanSau_NCYSH_KhongThuocPhamVi;							
 				dbitem.PhanSau_NCYSH_DuDieuKienXemXet = item.PhanSau_NCYSH_DuDieuKienXemXet;							
 				dbitem.PhanSau_NCYSH_HoTen = item.PhanSau_NCYSH_HoTen;							
-				dbitem.PhanSau_NCYSH_NgayThangNam = item.PhanSau_NCYSH_NgayThangNam;			
-                dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Co = item.PhanSau_NCYSH_GuiThongBao_KHTH_Co;
-                dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Khong = item.PhanSau_NCYSH_GuiThongBao_KHTH_Khong;
-                dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Co = item.PhanSau_NCYSH_GuiThongBao_TCKT_Co;
-                dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Khong = item.PhanSau_NCYSH_GuiThongBao_TCKT_Khong;
-                dbitem.PhanSau_NGS_KhongThuocPhamVi = item.PhanSau_NGS_KhongThuocPhamVi;							
+				dbitem.PhanSau_NCYSH_NgayThangNam = item.PhanSau_NCYSH_NgayThangNam;							
+				dbitem.PhanSau_NCYSH_GuiThongBao_KHTH = item.PhanSau_NCYSH_GuiThongBao_KHTH;							
+				dbitem.PhanSau_NCYSH_GuiThongBao_TCKT = item.PhanSau_NCYSH_GuiThongBao_TCKT;							
+				dbitem.PhanSau_NGS_KhongThuocPhamVi = item.PhanSau_NGS_KhongThuocPhamVi;							
 				dbitem.PhanSau_NGS_DuDieuKienXemXet = item.PhanSau_NGS_DuDieuKienXemXet;							
 				dbitem.PhanSau_NGS_HoTen = item.PhanSau_NGS_HoTen;							
 				dbitem.PhanSau_NGS_NgayThangNam = item.PhanSau_NGS_NgayThangNam;							

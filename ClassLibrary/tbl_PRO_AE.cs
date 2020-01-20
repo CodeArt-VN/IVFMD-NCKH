@@ -139,8 +139,7 @@ namespace DTOModel
 		public bool KetQua_DangHoiPhuc { get; set; }
 		public bool KetQua_ChuaHoiPhuc { get; set; }
 		public bool KetQua_KhongBiet { get; set; }
-        public bool KetQua_TuVong { get; set; }
-        public string KetQua_TuVong_Ngay { get; set; }
+		public string KetQua_TuVong_Ngay { get; set; }
 		public string KetQua_TuVong_Thang { get; set; }
 		public string KetQua_TuVong_Nam { get; set; }
 		public bool NghiemTrong_Khong { get; set; }
@@ -188,13 +187,7 @@ namespace DTOModel
 		public string NT_NgayBaoCao_Thang { get; set; }
 		public string NT_NgayBaoCao_Nam { get; set; }
 		public string NT_GhiChu { get; set; }
-        public bool TienHanhSAE1_Khong { get; set; }
-        public bool TienHanhSAE1_Co { get; set; }
-        public string HoTenThucHien1 { get; set; }
-        public string NgayBaoCao_Ngay1 { get; set; }
-        public string NgayBaoCao_Thang1 { get; set; }
-        public string NgayBaoCao_Nam1 { get; set; }
-        public string HTML { get; set; }
+		public string HTML { get; set; }
 		public bool IsDisabled { get; set; }
 		public bool IsDeleted { get; set; }
 		public System.DateTime CreatedDate { get; set; }
