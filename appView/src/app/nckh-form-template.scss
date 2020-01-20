@@ -1,6 +1,6 @@
 .nckh-form-template {
-    background-color: #fff;
     size: a4;
+    background-color: #fff;
     min-width: 8.27in;
     max-width: 8.27in;
     margin: auto;
@@ -61,6 +61,10 @@
         margin-left: 1em;
     }
 
+    .tab-2 {
+        margin-left: 2em;
+    }
+
     .block {
         margin-top: 7px;
         margin-bottom: 7px;
@@ -81,6 +85,22 @@
 
         &:hover {
             border: 1px dashed #44a9eb;
+        }
+    }
+
+    .box-inline {
+        display: table;
+        width: 100%;
+        margin: 0 0 3px 0;
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0;
+        }
+
+        .box {
+            margin: 0;
         }
     }
 
@@ -106,6 +126,11 @@
         &.tab-1 {
             margin-left: 1em;
             width: calc(100% - 1em) !important;
+        }
+
+        &.tab-2 {
+            margin-left: 2em;
+            width: calc(100% - 2em) !important;
         }
 
         [contenteditable="true"] {
@@ -160,6 +185,16 @@
 
                     &[contenteditable="true"] {
                         padding: 6px;
+                    }
+                }
+            }
+        }
+
+        &.td-padding-0 {
+            tbody {
+                tr {
+                    > td {
+                        padding: 0
                     }
                 }
             }
