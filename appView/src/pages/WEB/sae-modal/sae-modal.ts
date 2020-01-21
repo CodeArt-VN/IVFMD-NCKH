@@ -72,7 +72,7 @@ export class SAEModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-
+            that.commonService.copyPropertiesValue(item, self);
             self.ListThuocThuLamSan = ko.observableArray(ko.utils.arrayMap(item.ListThuocThuLamSan || [{}, {}, {}, {}, {}, {}, {}], function (nn) {
                 return {
                     STT: ko.observable(nn.ThoiGian || ""),
