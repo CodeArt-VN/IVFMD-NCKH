@@ -173,6 +173,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
             self.HocViTienSy = ko.observable(item.HocViTienSy || "");
             self.NamHocViTienSy = ko.observable(item.NamHocViTienSy || "");
 
+            
+            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_MST || "");
+            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_STK || "");
+            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_NganHang || "");
+
+
             self.CMND = ko.observable(item.CMND || "");
             self.CMND_NoiCap = ko.observable(item.CMND_NoiCap || "");
             self.CMND_NgayCap = ko.observable(item.CMND_NgayCap || "");
@@ -331,18 +337,21 @@ export class NhanSuLLKHModalPage extends DetailPage {
             
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
 
-            self.addItem = function (name, props) {
+            self.addItem = function (name, props, index) {
                 if (self[name]) {
                     var obj = {};
                     $.each(props || [], function (i, o) {
                         obj[o] = ko.observable("");
                     })
-                    self[name].push(ko.observable(obj));
+                    if (index && index > -1 && index < self[name]().length) {
+                        self[name].splice(index, 0, ko.observable(obj));
+                    } else {
+                        self[name].push(ko.observable(obj));
+                    }
                 }
             };
 
             self.removeItem = function (name, index) {
-                debugger
                 if (self[name])
                     var idx = parseInt(index);
                 self[name].splice(idx, 1);
