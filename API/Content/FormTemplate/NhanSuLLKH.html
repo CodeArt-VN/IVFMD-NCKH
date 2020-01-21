@@ -114,13 +114,13 @@
                             <td>
                                 <p class="box">
                                     <span class="box-title">Thạc sỹ</span>
-                                    <span contenteditable="true" style="text-indent: 57px;" data-bind="editableHTML: HocVi"></span>
+                                    <span contenteditable="true" style="text-indent: 55px;" data-bind="editableHTML: HocVi"></span>
                                 </p>
                             </td>
                             <td>
                                 <p class="box">
                                     <span class="box-title">năm đạt:</span>
-                                    <span contenteditable="true" style="text-indent: 62px;" data-bind="editableHTML: NamHocViThacSy"></span>
+                                    <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHTML: NamHocViThacSy"></span>
                                 </p>
                             </td>
                         </tr>
@@ -128,13 +128,13 @@
                             <td>
                                 <p class="box">
                                     <span class="box-title">Tiến sỹ</span>
-                                    <span contenteditable="true" style="text-indent: 55px;" data-bind="editableHTML: HocViTienSy"></span>
+                                    <span contenteditable="true" style="text-indent: 52px;" data-bind="editableHTML: HocViTienSy"></span>
                                 </p>
                             </td>
                             <td>
                                 <p class="box">
                                     <span class="box-title">năm đạt:</span>
-                                    <span contenteditable="true" style="text-indent: 62px;" data-bind="editableHTML: NamHocViTienSy"></span>
+                                    <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHTML: NamHocViTienSy"></span>
                                 </p>
                             </td>
                         </tr>
@@ -146,7 +146,7 @@
             <div style="width:100%;position:relative;">
                 <table class="nckh-table" style="width:100%;" border="0">
                     <colgroup>
-                        <col width="97" />
+                        <col width="93" />
                         <col />
                         <col width="250" />
                     </colgroup>
@@ -154,8 +154,7 @@
                         <tr>
                             <td style="padding-left: 0;">
                                 <p class="box">
-                                    <span class="box-title text-bold">7. Học hàm:</span>
-                                    <span contenteditable="true"></span>
+                                    <span class="text-bold">7. Học hàm:</span>
                                 </p>
                             </td>
                             <td>
@@ -166,7 +165,7 @@
                             <td>
                                 <p class="box">
                                     <span class="box-title">năm phong:</span>
-                                    <span contenteditable="true" style="text-indent: 84px;" data-bind="editableHTML: NamPhongHocHam"></span>
+                                    <span contenteditable="true" style="text-indent: 82px;" data-bind="editableHTML: NamPhongHocHam"></span>
                                 </p>
                             </td>
                         </tr>
@@ -215,28 +214,36 @@
                 </tbody>
             </table>
         </div>
-        <!--<div>
+        <div>
             <p class="box">
                 <span class="text-bold">9. Thông tin tài khoản cá nhân:</span>
             </p>
             <p class="box">
-                <span class="box-title" style="width: 190px;">- Mã số thuế cá nhân:</span>
-                <span contenteditable="true" data-bind="editableHTML: ThoiGianNghienCuu().ThangBatDau"></span>
+                <span class="box-title">- Mã số thuế cá nhân:</span>
+                <span contenteditable="true" style="text-indent: 152px;" data-bind="editableHTML: ThoiGianNghienCuu().ThangBatDau"></span>
             </p>
-            <p class="box">
-                <span class="box-title" style="width: 190px;">- Số tài khoản:</span>
-                <span contenteditable="true" style="width: 90px;" data-bind="editableHTML: ThoiGianNghienCuu().ThangBatDau"></span>
-                <span style="width: 150px;">Tại ngân hàng:</span>
-                <span contenteditable="true" style="width: 90px;" data-bind="editableHTML: ThoiGianNghienCuu().ThangKetThuc"></span>
-            </p>
-        </div>-->
+            <div class="box-inline">
+                <div style="display:inline-block;min-width:40%">
+                    <p class="box">
+                        <span class="box-title">- Số tài khoản:</span>
+                        <span contenteditable="true" style="text-indent: 103px;" data-bind="editableHTML: HoTen"></span>
+                    </p>
+                </div>
+                <div style="display:inline-block;min-width:60%">
+                    <p class="box">
+                        <span class="box-title">Tại ngân hàng:</span>
+                        <span contenteditable="true" style="text-indent: 106px;" data-bind="editableHTML: HoTen"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
         <div>
             <p class="box">
                 <span class="text-bold">10. Trình độ ngoại ngữ:</span>
             </p>
-            <div conf='{"name":"NgoaiNgu","add":false,"resizeable":false}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNgoaiNgu","add":false,"resizeable":false, "props": ["NgoaiNgu","NgheTot","NgheKha","NgheTB","NoiTot","NoiKha","NoiTB","VietTot","VietKha","VietTB","DocTot","DocKha","DocTB"]}' class="ptable" style="width:100%;position:relative;">
                 <table class="nckh-table" style="width:100%;" border="1">
-                    <tbody style="width:100%;">
+                    <thead>
                         <tr class="table-header">
                             <td rowspan="2">TT</td>
                             <td rowspan="2">Tên ngoại ngữ</td>
@@ -245,7 +252,7 @@
                             <td colspan="3">Viết</td>
                             <td colspan="3">Đọc hiểu tài liệu</td>
                         </tr>
-                        <tr>
+                        <tr class="table-header" style="font-weight:normal">
                             <td>Tốt</td>
                             <td>Khá</td>
                             <td>TB</td>
@@ -259,37 +266,23 @@
                             <td>Khá</td>
                             <td>TB</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Tiếng Anh</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListNgoaiNgu">
+                        <tr data-bind="attr: { index: $index}">
+                            <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                            <td contenteditable="true" data-bind="editableHTML: NgoaiNgu"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NgheTot"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NgheKha"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NgheTB"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NoiTot"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NoiKha"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: NoiTB"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: VietTot"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: VietKha"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: VietTB"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: DocTot"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: DocKha"></td>
+                            <td class="text-center" contenteditable="true" data-bind="editableHTML: DocTB"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -806,7 +799,6 @@
                 </table>
             </div>
         </div>
-        <br />
         <div>
             <p class="box">
                 <span class="box-title" style="width: 171px;">Hoạt động khác:</span>
@@ -817,14 +809,13 @@
             <table class="nckh-table" style="width:100%;" border="0">
                 <tbody style="width:100%;">
                     <tr>
-                        <td>
-                        </td>
-                        <td style="width: 220px;">
+                        <td></td>
+                        <td style="width: 210px;">
                             <table class="nckh-table" style="width:100%;font-style:italic;" border="0">
                                 <colgroup>
                                     <col width="76">
                                     <col width="76">
-                                    <col width="96">
+                                    <col width="92">
                                 </colgroup>
                                 <tbody>
                                     <tr>
@@ -852,8 +843,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-center">
-                        </td>
+                        <td class="text-center"></td>
                         <td class="text-center">
                             <b>Người khai</b>
                             <br>

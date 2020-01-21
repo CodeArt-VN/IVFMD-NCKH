@@ -1,11 +1,5 @@
 <ion-header>
-    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
-        <ion-icon name="close" color="ivf1"></ion-icon>
-    </button>
-</ion-header>
-
-<ion-content>
-    <ion-segment [(ngModel)]="tab">
+    <ion-segment [(ngModel)]="tab" style="width: 700px;">
         <ion-segment-button value="1">
             Thông tin chung
         </ion-segment-button>
@@ -16,6 +10,12 @@
             Bệnh nhân
         </ion-segment-button>
     </ion-segment>
+    <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
     <div [ngSwitch]="tab">
         <div *ngSwitchCase="'1'">
             <form [formGroup]="formGroup">

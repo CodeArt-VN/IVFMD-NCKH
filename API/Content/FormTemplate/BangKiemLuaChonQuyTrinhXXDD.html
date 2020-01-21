@@ -255,7 +255,7 @@
                         A3. Các phương pháp điều trị không dùng thuốc
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" data-bind="checked: PhanBa_A().PhuongPhapKhongDungThuoc"
+                        <input type="checkbox" data-bind="checked: PhanBa_A().PhuongPhapKhongDungThuoc" />
                     </td>
                     <td>
                         A8. Điều tra dịch tễ học
@@ -527,42 +527,20 @@
             </colgroup>
             <tbody style="width:100%;">
                 <tr>
-                    <td rowspan="3" style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;"><b>Họ tên và  &nbsp; thông tin về &nbsp;  các nghiên cứu viên khác</b></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border:none;"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
-                </tr>
-                <tr>
-                    <td style="border-bottom-color:#fff"></td>
-                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
+                    <td style="vertical-align: top;border-right:0;padding:0">
+                        <div style="background-color:#e0e0e0;padding:6px 3px;border: 1px solid black;border-right:0;line-height:1.25em">
+                            <b>Họ tên và  <br /> thông tin về <br />  các nghiên cứu viên khác</b>
+                        </div>
+                    </td>
+                    <td style="padding:0">
+                        <table class="nckh-table table-in-table" style="width:100%;" border="1">
+                            <tbody data-bind="foreach: ListNghienCuuVienKhac">
+                                <tr>
+                                    <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: HoTen"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -78,15 +78,26 @@ export class DeTaiDetailPage extends BasePage {
   }
 
   mockupData() {
-    if (this.item.IDTrangThai_HRCO == 18){
+    if (this.item.IDTrangThai_HRCO == 19){
       this.statusHRCO = 'Đang chờ duyệt HRCO';
+  }
+  else if (this.item.IDTrangThai_HRCO == 20) {
+      this.statusHRCO = 'Đã duyệt HRCO';
   }
     if (this.item.IDTrangThai_HDDD == 7){
         this.statusHDDD = 'Đang chờ duyệt HDDD';
     }
+    else if (this.item.IDTrangThai_HRCO == 8) {
+      this.statusHRCO = 'Đã duyệt HDDD';
+  }
+
     if (this.item.IDTrangThai_HDKH == 13){
       this.statusHDKH = 'Đang chờ duyệt HDKH';
     }
+    else if (this.item.IDTrangThai_HRCO == 14) {
+      this.statusHRCO = 'Đã duyệt HDKH';
+  }
+
     this.slideListByType = [
       { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
       { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng DD,KH' },

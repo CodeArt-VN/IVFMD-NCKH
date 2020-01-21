@@ -13,8 +13,15 @@
     </div>
     <div class="emptyzone header-button">
         <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light" (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
+        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19" ion-button block color="light" (click)="updateSatus('ApprovedHRCO')">Duyệt HRCO</button>
+
+
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7" ion-button block color="light" (click)="updateSatus('ApprovedHDDD')">Duyệt HDDD</button>
+
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDKH == 13" ion-button block color="light" (click)="updateSatus('ApprovedHDKH')">Duyệt HDKH</button>
+
     </div>
 </ion-header>
 <ion-content>
