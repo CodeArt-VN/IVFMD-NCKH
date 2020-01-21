@@ -316,7 +316,8 @@ export class DeTaiDetailPage extends BasePage {
               param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem };
               break;
             case 5:
-              page = SysnopsisModalPage;
+              page = NhanSuSYLLModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem };
               break;
             case 6:
               page = NhanSuLLKHModalPage;

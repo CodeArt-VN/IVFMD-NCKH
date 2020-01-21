@@ -64,20 +64,20 @@
                 <td style="vertical-align:middle;">
                     2.	Ngày khởi phát
                 </td>
-                <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                    |__|__|/|__|_|/|__|__|__|__| (ngày/tháng/năm)
+                <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                    <span contenteditable="true" data-bind="editableHTML: NgayKhoiPhat_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayKhoiPhat_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayKhoiPhat_Nam">|__|__|__|__|</span> (ngày/tháng/năm)
                     <br />
-                    |__|__|:|__|__| (giờ - phút)
+                    <span contenteditable="true" data-bind="editableHTML: NgayKhoiPhat_Gio">|__|__|</span>:<span contenteditable="true" data-bind="editableHTML: NgayKhoiPhat_Phut">|__|__|</span> (giờ - phút)
                 </td>
             </tr>
             <tr>
                 <td style="vertical-align:middle;">
                     3.	Ngày kết thúc
                 </td>
-                <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                    |__|__|/|__|_|/|__|__|__|__| (ngày/tháng/năm)
+                <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                    <span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Nam">|__|__|__|__|</span> (ngày/tháng/năm)
                     <br />
-                    |__|__|:|__|__| (giờ - phút)
+                    <span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Gio">|__|__|</span>:<span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Phut">|__|__|</span> (giờ - phút)
                     <br />
                     <input type="checkbox" data-bind="checked: NgayKhoiPhat_DangTiepDien" /> Đang tiếp diễn
                 </td>
@@ -144,7 +144,7 @@
                 <td style="vertical-align:middle;">
                     10.	Kết quả
                 </td>
-                <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                <td style="line-height: 1.5em; padding: 0 6px;">
                     <input type="checkbox" data-bind="checked: KetQua_HoiPhucKhongDiChung" /> Hồi phục không có di chứng
                     <br />
                     <input type="checkbox" data-bind="checked: KetQua_CoDiChung" /> Hồi phục có di chứng
@@ -153,7 +153,8 @@
                     <br />
                     <input type="checkbox" data-bind="checked: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
                     <br />
-                    <input type="checkbox" /> Tử vong, ngày tử vong: |__|__|/|__|__|/|__|__|__|__|
+                    <input type="checkbox" data-bind="checked: KetQua_TuVong" /> Tử vong, ngày tử vong:
+                    <span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Nam">|__|__|__|__|</span>
                     <br />
                     <input type="checkbox" data-bind="checked: KetQua_KhongBiet" /> Không biết
                 </td>
@@ -187,9 +188,9 @@
                     12.	AE này co tiến triển thành SAE không?
                 </td>
                 <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                    <input type="checkbox" /> Không
+                    <input type="checkbox" data-bind="checked: TienHanhSAE1_Khong" /> Không
                     <br />
-                    <input type="checkbox" /> Có, ghi thông tin SAE vào mẫu tương ứng
+                    <input type="checkbox" data-bind="checked: TienHanhSAE1_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
                 </td>
             </tr>
         </tbody>
@@ -209,9 +210,9 @@
                 <br />
                 _______________________________________
             </td>
-            <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+            <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                 <br />
-                |__|__|/|__|__|/|__|__|__|__|
+                <span contenteditable="true" data-bind="editableHTML: NgayBaoCao_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayBaoCao_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NgayBaoCao_Nam">|__|__|__|__|</span>
             </td>
         </tr>
     </table>
@@ -235,9 +236,9 @@
                     Ngày/Giờ tăng độ nặng, trở nên nghiêm trọng
                 </td>
                 <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                    |__|__|/|__|__|/|__|__|__|__| (ngày – tháng – năm)
+                    <span contenteditable="true" data-bind="editableHTML: NT_NgayGioTangDoNang_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NT_NgayGioTangDoNang_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NT_NgayGioTangDoNang_Nam">|__|__|__|__|</span> (ngày – tháng – năm)
                     <br />
-                    |__|__| : |__|__| (giờ - phút)
+                    <span contenteditable="true" data-bind="editableHTML: NT_NgayGioTangDoNang_Gio">|__|__|</span>:<span contenteditable="true" data-bind="editableHTML: NT_NgayGioTangDoNang_Phut">|__|__|</span> (giờ - phút)
                     <br />
                     Nếu không rõ giờ, ghi N/A
                 </td>
@@ -347,13 +348,13 @@
             </td>
         </tr>
         <tr>
-            <td contenteditable="true" data-bind="editableHTML: HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+            <td contenteditable="true" data-bind="editableHTML: NT_HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                 <br />
                 _______________________________________
             </td>
-            <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+            <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                 <br />
-                |__|__|/|__|__|/|__|__|__|__|
+                <span contenteditable="true" data-bind="editableHTML: NT_NgayBaoCao_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NT_NgayBaoCao_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: NT_NgayBaoCao_Nam">|__|__|__|__|</span>
             </td>
         </tr>
     </table>
@@ -362,26 +363,8 @@
         <div>
             21. Ghi chú (cập nhật thông tin biến cố bất lợi, mô tả chi tiết)
         </div>
-        <div contenteditable="true">
-            <table class="nckh-table" style="width:100%;">
-                <tbody>
-                    <tr>
-                        <td style="border-bottom:1px dotted #9E9E9E;padding:8px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px dotted #9E9E9E;padding:8px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px dotted #9E9E9E;padding:8px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px dotted #9E9E9E;padding:8px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px dotted #9E9E9E;padding:8px;"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div contenteditable="true" style="line-height:1.8em">
+            .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
         </div>
     </div>
     <br />

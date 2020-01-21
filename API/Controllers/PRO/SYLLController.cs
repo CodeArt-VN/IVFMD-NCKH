@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using ClassLibrary;
 using DTOModel;
 using BaseBusiness;
+using API.Models;
+using Microsoft.AspNet.Identity;
 
 namespace API.Controllers.PRO
 {
@@ -111,6 +113,27 @@ namespace API.Controllers.PRO
 				return StatusCode(HttpStatusCode.NoContent);
 			}
             return Conflict();
+        }
+
+        [Route("save_PRO_SYLL")]
+        [ResponseType(typeof(DTO_PRO_SYLL))]
+        public IHttpActionResult Save(DTO_PRO_SYLL tbl_PRO_SYLL)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            tbl_PRO_SYLL.IDNhanSu = user.StaffID;
+            DTO_PRO_SYLL result = BS_PRO_SYLL.save_PRO_SYLL(db, tbl_PRO_SYLL, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
     }
 }
