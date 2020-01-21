@@ -1,4 +1,4 @@
-﻿<div class="nckh-form-template">
+﻿<div class="nckh-form-template font-size-12">
     <div style="border: 1px solid black;background-color:#e0e0e0">
         <table class="nckh-table" style="width:100%;" border="1">
             <tbody style="width:100%;">
@@ -39,46 +39,77 @@
         </div>
         <table class="nckh-table" style="width:100%;margin-top:5px;" border="0">
             <colgroup>
-                <col width="180" style="border-left: 1px solid black;" />
-                <col width="180" style="border-left: 1px solid black;" />
-                <col style="border-left: 1px solid black;border-right: 1px solid black;" />
+                <col width="200" style="border-left: 1px solid black;" />
+                <col width="200" style="border-left: 1px solid black;" />
+                <col width="200" style="border-left: 1px solid black;border-right: 1px solid black;" />
             </colgroup>
             <tbody style="width:100%;">
                 <tr style="border-top: 1px solid black;">
                     <td>
-                        <input type="checkbox" data-bind="checked: NghienCuuDuocTaiTro" />
-                        Nghiên cứu được tài trợ
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: NghienCuuDuocTaiTro" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Nghiên cứu được tài trợ
+                            </span>
+                        </div>
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: NghienCuuHocVienSauDaiHoc" />
-                        Nghiên cứu của học viên sau đại học
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: NghienCuuHocVienSauDaiHoc" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Nghiên cứu của học viên sau đại học
+                            </span>
+                        </div>
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: NghienCuuCuaSinhVienDaiHoc" />
-                        Nghiên cứu của sinh viên đại học
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: NghienCuuCuaSinhVienDaiHoc" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Nghiên cứu của sinh viên đại học
+                            </span>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" data-bind="checked: XinPhepTapThe" />
-                        Xin phép tập thể
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: XinPhepTapThe" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Xin phép tập thể
+                            </span>
+                        </div>
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: DonXinTaiCapPhep" />
-                        Đơn xin tái cấp phép
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: DonXinTaiCapPhep" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Đơn xin tái cấp phép
+                            </span>
+                        </div>
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: SoGiayPhepCu" />
-                        Số giấy phép cũ
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: SoGiayPhepCu" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Số giấy phép cũ
+                            </span>
+                        </div>
                     </td>
                 </tr>
                 <tr style="border-bottom: 1px solid black;">
                     <td>
-                        <input type="checkbox" data-bind="checked: KhongThuocNghienCuuNao" />
-                        Không thuộc nghiên cứu nào ở trên
+                        <div style="position: relative;">
+                            <input type="checkbox" data-bind="checked: KhongThuocNghienCuuNao" style="position: absolute;z-index:99;" />
+                            <span style="position: relative;padding-left: 25px;display: block;">
+                                Không thuộc nghiên cứu nào ở trên
+                            </span>
+                        </div>
+
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
                 </tr>
             </tbody>
         </table>
