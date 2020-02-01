@@ -795,6 +795,8 @@
           <Property Name="IDKinhPhi" Type="int" />
           <Property Name="KinhPhi" Type="money" Nullable="false" />
           <Property Name="IDNCV" Type="int" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="ApprovedDate" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNghiemThuDeTai">
           <Key>
@@ -4595,6 +4597,8 @@
           <Property Name="IDKinhPhi" Type="Int32" />
           <Property Name="KinhPhi" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="IDNCV" Type="Int32" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="tbl_CAT_KinhPhi" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_KinhPhi" />
           <NavigationProperty Name="tbl_CAT_Nhom" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Nhom" />
           <NavigationProperty Name="tbl_CAT_Site" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Site" />
@@ -7581,6 +7585,8 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="IDNCV" ColumnName="IDNCV" />
                 <ScalarProperty Name="KinhPhi" ColumnName="KinhPhi" />
                 <ScalarProperty Name="IDKinhPhi" ColumnName="IDKinhPhi" />

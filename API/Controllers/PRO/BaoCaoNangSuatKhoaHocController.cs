@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using ClassLibrary;
 using DTOModel;
 using BaseBusiness;
+using API.Models;
+using Microsoft.AspNet.Identity;
 
 namespace API.Controllers.PRO
 {
@@ -20,13 +22,8 @@ namespace API.Controllers.PRO
         [Route("")]
         public IQueryable<DTO_PRO_BaoCaoNangSuatKhoaHoc> Get()
         {
-            return BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocCustom(db, QueryStrings);
-        }
-
-        [Route("get_PRO_BaoCaoNangSuatKhoaHocByDeTai/{deTaiId:int}")]
-        public IQueryable<DTO_PRO_BaoCaoNangSuatKhoaHoc> GetByDeTai(int deTaiId)
-        {
-            return BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocByDeTai(db, deTaiId, QueryStrings);
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            return BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocCustom(db, user.StaffID, QueryStrings);
         }
 
         [Route("{id:int}", Name = "get_PRO_BaoCaoNangSuatKhoaHoc")]
@@ -55,6 +52,9 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            if (user.StaffID <= 0)
+                return BadRequest("Chưa tạo nhân sự cho tài khoản");
 
             bool result = BS_PRO_BaoCaoNangSuatKhoaHoc.put_PRO_BaoCaoNangSuatKhoaHoc(db, id, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
 
@@ -81,6 +81,21 @@ namespace API.Controllers.PRO
                 return CreatedAtRoute("get_PRO_BaoCaoNangSuatKhoaHoc", new { id = result.ID }, result);
             }
             return Conflict();
+        }
+
+        [Route("updateStatus_PRO_BaoCaoNangSuatKhoaHoc/{id:int}/{actionCode}")]
+        [ResponseType(typeof(DTO_PRO_DeTai))]
+        public IHttpActionResult UpdateStatus(int id, string actionCode)
+        {
+            var result = BS_PRO_BaoCaoNangSuatKhoaHoc.updateStatus_PRO_BaoCaoNangSuatKhoaHoc(db, id, actionCode, Username);
+            if (!string.IsNullOrEmpty(result))
+                return BadRequest(result);
+            DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHoc(db, id);
+            if (tbl_PRO_BaoCaoNangSuatKhoaHoc == null)
+            {
+                return NotFound();
+            }
+            return Ok(tbl_PRO_BaoCaoNangSuatKhoaHoc);
         }
 
         [Route("{id:int}")]

@@ -805,6 +805,7 @@ namespace BaseBusiness
                 if (staff.IsHRCO != true)
                     query = query.Where(c => c.IDNCV == staff.ID || c.IDChuNhiem == staff.ID || (c.tbl_PRO_NCVKhac.Count > 0 && c.tbl_PRO_NCVKhac.Any(d => d.IDNCV == staff.ID)));
             }
+            else query = query.Where(c => false);
 
             //Query keyword
 

@@ -1,0 +1,99 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="TenDeTai">
+                Tên đề tài
+                <span *ngIf="!formGroup.controls.TenDeTai.valid && !formGroup.controls.TenDeTai.pending && (formGroup.controls.TenDeTai.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="TenDeTai" [(ngModel)]="item.TenDeTai" formControlName="TenDeTai" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="TapChiHoiNghi">
+                Tạp chí hội nghị
+                <span *ngIf="!formGroup.controls.TapChiHoiNghi.valid && !formGroup.controls.TapChiHoiNghi.pending && (formGroup.controls.TapChiHoiNghi.dirty || submitAttempt)"></span>
+            </label>
+            <input class="c-input" id="TapChiHoiNghi" [(ngModel)]="item.TapChiHoiNghi" formControlName="TapChiHoiNghi" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="NgayBaoCao">
+                Ngày báo cáo
+                <span *ngIf="!formGroup.controls.NgayBaoCao.valid && !formGroup.controls.NgayBaoCao.pending && (formGroup.controls.NgayBaoCao.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="item.NgayBaoCao" formControlName="NgayBaoCao" class="c-input" style="width: calc(100% - 50px);">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </div>
+
+        <!--<div class="c-control">
+            <label class="c-label" for="IDNhom">
+                Nhóm
+                <span *ngIf="!formGroup.controls.IDNhom.valid && !formGroup.controls.IDNhom.pending && (formGroup.controls.IDNhom.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDNhom" formControlName="IDNhom">
+                <option *ngFor="let t of nhoms" [value]="t.ID">{{t.Name}}</option>
+            </select>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="IDSite">
+                Site
+                <span *ngIf="!formGroup.controls.IDSite.valid && !formGroup.controls.IDSite.pending && (formGroup.controls.IDSite.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDSite" formControlName="IDSite">
+                <option *ngFor="let t of sites" [value]="t.ID">{{t.Name}}</option>
+            </select>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="IDKinhPhi">
+                Tên kinh phí
+                <span *ngIf="!formGroup.controls.IDKinhPhi.valid && !formGroup.controls.IDKinhPhi.pending && (formGroup.controls.IDKinhPhi.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi">
+                <option *ngFor="let t of kinhphis" [value]="t.ID">{{t.Name}}</option>
+            </select>
+        </div>-->
+
+        <div class="c-control">
+            <label class="c-label" for="KinhPhi">
+                Kinh phí
+                <span *ngIf="!formGroup.controls.KinhPhi.valid && !formGroup.controls.KinhPhi.pending && (formGroup.controls.KinhPhi.dirty || submitAttempt)"></span>
+            </label>
+            <input class="c-input" id="KinhPhi" [(ngModel)]="item.KinhPhi" formControlName="KinhPhi" type="number">
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

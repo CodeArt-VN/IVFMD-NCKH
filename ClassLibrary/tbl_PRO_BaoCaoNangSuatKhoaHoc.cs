@@ -31,6 +31,8 @@ namespace ClassLibrary
         public Nullable<int> IDKinhPhi { get; set; }
         public decimal KinhPhi { get; set; }
         public int IDNCV { get; set; }
+        public bool IsApproved { get; set; }
+        public Nullable<System.DateTime> ApprovedDate { get; set; }
         public virtual tbl_CAT_KinhPhi tbl_CAT_KinhPhi { get; set; }
         public virtual tbl_CAT_Nhom tbl_CAT_Nhom { get; set; }
         public virtual tbl_CAT_Site tbl_CAT_Site { get; set; }
@@ -58,6 +60,8 @@ namespace DTOModel
 		public Nullable<int> IDKinhPhi { get; set; }
 		public decimal KinhPhi { get; set; }
 		public int IDNCV { get; set; }
+		public bool IsApproved { get; set; }
+		public Nullable<System.DateTime> ApprovedDate { get; set; }
 	}
 }
 
@@ -95,7 +99,9 @@ namespace BaseBusiness
 				ModifiedBy = s.ModifiedBy,							
 				IDKinhPhi = s.IDKinhPhi,							
 				KinhPhi = s.KinhPhi,							
-				IDNCV = s.IDNCV,					
+				IDNCV = s.IDNCV,							
+				IsApproved = s.IsApproved,							
+				ApprovedDate = s.ApprovedDate,					
 			});
                               
         }
@@ -121,7 +127,9 @@ namespace BaseBusiness
 					ModifiedBy = dbResult.ModifiedBy,							
 					IDKinhPhi = dbResult.IDKinhPhi,							
 					KinhPhi = dbResult.KinhPhi,							
-					IDNCV = dbResult.IDNCV,
+					IDNCV = dbResult.IDNCV,							
+					IsApproved = dbResult.IsApproved,							
+					ApprovedDate = dbResult.ApprovedDate,
 				};
 			}
 			else
@@ -278,6 +286,19 @@ namespace BaseBusiness
                     query = query.Where(d => IDs.Contains(d.IDNCV));
             }
 
+			//Query IsApproved (bool)
+			if (QueryStrings.Any(d => d.Key == "IsApproved"))
+            {
+                var qValue = QueryStrings.FirstOrDefault(d => d.Key == "IsApproved").Value;
+                if (bool.TryParse(qValue, out bool qBoolValue))
+                    query = query.Where(d => qBoolValue == d.IsApproved);
+            }
+
+			//Query ApprovedDate (Nullable<System.DateTime>)
+			if (QueryStrings.Any(d => d.Key == "ApprovedDateFrom") && QueryStrings.Any(d => d.Key == "ApprovedDateTo"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ApprovedDateFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ApprovedDateTo").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.ApprovedDate && d.ApprovedDate <= toDate);
+
 
 			return toDTO(query);
 
@@ -308,7 +329,9 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
 				dbitem.KinhPhi = item.KinhPhi;							
-				dbitem.IDNCV = item.IDNCV;                
+				dbitem.IDNCV = item.IDNCV;							
+				dbitem.IsApproved = item.IsApproved;							
+				dbitem.ApprovedDate = item.ApprovedDate;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -345,7 +368,9 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
 				dbitem.KinhPhi = item.KinhPhi;							
-				dbitem.IDNCV = item.IDNCV;                
+				dbitem.IDNCV = item.IDNCV;							
+				dbitem.IsApproved = item.IsApproved;							
+				dbitem.ApprovedDate = item.ApprovedDate;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

@@ -969,6 +969,33 @@ export var APIListBase = {
             url: function (id, soNCT) { return appSetting.apiDomain("PRO/DeTai/updateNCT_PRO_DeTai/") + id + "/" + soNCT }
         }
     },
+
+    PRO_BaoCaoNangSuatKhoaHoc: {
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/") + id }
+        },
+        getList: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/")}
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/") + id }
+        },
+        updateStatus: {
+            method: "POST",
+            url: function (id, actionCode) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/updateStatus_PRO_BaoCaoNangSuatKhoaHoc/") + id + "/" + actionCode }
+        },
+    },
     
     SYS_Var:{
         getList:{

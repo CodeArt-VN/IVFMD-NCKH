@@ -103,6 +103,9 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            if (user.StaffID <= 0)
+                return BadRequest("Chưa tạo nhân sự cho tài khoản");
+
             DTO_PRO_DeTai result = BS_PRO_DeTai.save_PRO_DeTai(db, PartnerID, id, user.StaffID, tbl_PRO_DeTai, Username);
 
             if (result != null)
