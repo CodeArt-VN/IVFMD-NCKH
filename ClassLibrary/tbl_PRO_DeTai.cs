@@ -20,10 +20,13 @@ namespace ClassLibrary
         {
             this.tbl_PRO_AE = new HashSet<tbl_PRO_AE>();
             this.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD = new HashSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD>();
+            this.tbl_PRO_BaoCaoNghiemThuDeTai = new HashSet<tbl_PRO_BaoCaoNghiemThuDeTai>();
+            this.tbl_PRO_BaoCaoTienDoNghienCuu = new HashSet<tbl_PRO_BaoCaoTienDoNghienCuu>();
             this.tbl_PRO_BenhNhan = new HashSet<tbl_PRO_BenhNhan>();
             this.tbl_PRO_DonXinDanhGiaDaoDuc = new HashSet<tbl_PRO_DonXinDanhGiaDaoDuc>();
             this.tbl_PRO_DonXinNghiemThu = new HashSet<tbl_PRO_DonXinNghiemThu>();
             this.tbl_PRO_DonXinXetDuyet = new HashSet<tbl_PRO_DonXinXetDuyet>();
+            this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
             this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
             this.tbl_PRO_MauPhanTichDuLieu = new HashSet<tbl_PRO_MauPhanTichDuLieu>();
             this.tbl_PRO_NCVKhac = new HashSet<tbl_PRO_NCVKhac>();
@@ -34,9 +37,6 @@ namespace ClassLibrary
             this.tbl_PRO_Tags = new HashSet<tbl_PRO_Tags>();
             this.tbl_PRO_ThuyetMinhDeTai = new HashSet<tbl_PRO_ThuyetMinhDeTai>();
             this.tbl_PRO_TrangThai_Log = new HashSet<tbl_PRO_TrangThai_Log>();
-            this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
-            this.tbl_PRO_BaoCaoTienDoNghienCuu = new HashSet<tbl_PRO_BaoCaoTienDoNghienCuu>();
-            this.tbl_PRO_BaoCaoNghiemThuDeTai = new HashSet<tbl_PRO_BaoCaoNghiemThuDeTai>();
         }
     
         public int ID { get; set; }
@@ -68,6 +68,10 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_BenhNhan> tbl_PRO_BenhNhan { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var1 { get; set; }
@@ -80,6 +84,8 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_DonXinNghiemThu> tbl_PRO_DonXinNghiemThu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DonXinXetDuyet> tbl_PRO_DonXinXetDuyet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -100,12 +106,6 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_ThuyetMinhDeTai> tbl_PRO_ThuyetMinhDeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
     }
 }
 namespace DTOModel

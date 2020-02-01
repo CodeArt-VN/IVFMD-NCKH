@@ -31,8 +31,8 @@
                 <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
                     <ion-icon [name]="t.Icon"></ion-icon>
                     <span>
-                      {{t.Name}}
-                  </span>
+                        {{t.Name}}
+                    </span>
                 </a>
             </div>
         </ion-col>
@@ -43,24 +43,26 @@
                            [selectionType]="'single'" (select)='onSelect($event)'>
 
                 <ngx-datatable-column name="Tên đề tài" prop="TenDeTai" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-        <ng-template let-i="row" ngx-datatable-cell-template>
-            {{i.TenDeTai}}
-        </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
-    <ngx-datatable-column name="Nghiên cứu viên chính" prop="NCVChinh"></ngx-datatable-column>
-    <ngx-datatable-column name="Ngày duyệt NC" prop="NgayDuyetNghienCuu" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-        <ng-template let-i="row" ngx-datatable-cell-template>
-            {{i.NgayDuyetNghienCuu}}
-        </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Số NCT" prop="SoNCT"></ngx-datatable-column>
-    <ngx-datatable-column name="Thời gian tiến hành theo nghiên cứu ban đầu" prop="ThoiGianTienHanh" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-        <ng-template let-i="row" ngx-datatable-cell-template>
-            {{i.ThoiGianTienHanh}}
-        </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Cỡ mẫu" prop="CoMau"></ngx-datatable-column>
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="openDetail(i)">
+                            {{i.TenDeTai}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
+                <ngx-datatable-column name="Nghiên cứu viên chính" prop="NCVChinh"></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày duyệt NC" prop="NgayDuyetNghienCuu" [width]="170" [maxWidth]="170" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.NgayDuyetNghienCuu}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Số NCT" prop="SoNCT"></ngx-datatable-column>
+                <ngx-datatable-column name="TG tiến hành theo nghiên cứu ban đầu" prop="ThoiGianTienHanh" [width]="300" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.ThoiGianTienHanh}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Cỡ mẫu" prop="CoMau"></ngx-datatable-column>
                 <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
                 <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau"></ngx-datatable-column>
                 <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>

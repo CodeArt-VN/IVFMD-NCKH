@@ -48,6 +48,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsManual" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_CAT_Nhom">
           <Key>
@@ -689,6 +690,14 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayKetThuc_Ngay" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKetThuc_Thang" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKetThuc_Nam" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKetThuc_Gio" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKetThuc_Phut" Type="nvarchar" MaxLength="4000" />
+          <Property Name="KetQua_TuVong" Type="bit" />
+          <Property Name="TienHanhSAE1_Co" Type="bit" />
+          <Property Name="TienHanhSAE1_Khong" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
           <Key>
@@ -761,6 +770,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="YKienHDDD_So" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
           <Key>
@@ -781,6 +794,7 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IDKinhPhi" Type="int" />
           <Property Name="KinhPhi" Type="money" Nullable="false" />
+          <Property Name="IDNCV" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNghiemThuDeTai">
           <Key>
@@ -1245,6 +1259,16 @@
           <Property Name="YKienTruongKhoa_NamKy" Type="nvarchar(max)" />
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="nvarchar(max)" />
           <Property Name="JSON_ChuKy" Type="nvarchar(max)" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="bit" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="bit" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
           <Key>
@@ -2362,6 +2386,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Type="Self.tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+              <PropertyRef Name="IDNCV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
           <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="0..1" />
           <End Role="tbl_PRO_BaoCaoNghiemThuDeTai" Type="Self.tbl_PRO_BaoCaoNghiemThuDeTai" Multiplicity="*" />
@@ -3097,6 +3133,10 @@
             <End Role="tbl_CAT_Site" EntitySet="tbl_CAT_Site" />
             <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_BaoCaoNghiemThuDeTai" EntitySet="tbl_PRO_BaoCaoNghiemThuDeTai" />
@@ -3264,6 +3304,7 @@
       <Schema Namespace="AppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AppEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" />
+          <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="AppModel.tbl_CAT_HRCOConfig" />
           <EntitySet Name="tbl_CAT_KinhPhi" EntityType="AppModel.tbl_CAT_KinhPhi" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="AppModel.tbl_CAT_Nhom" />
           <EntitySet Name="tbl_CAT_Site" EntityType="AppModel.tbl_CAT_Site" />
@@ -3279,6 +3320,7 @@
           <EntitySet Name="tbl_CUS_HRM_LIST_BoPhan" EntityType="AppModel.tbl_CUS_HRM_LIST_BoPhan" />
           <EntitySet Name="tbl_CUS_HRM_LIST_ChucDanh" EntityType="AppModel.tbl_CUS_HRM_LIST_ChucDanh" />
           <EntitySet Name="tbl_CUS_HRM_STAFF_NhanSu" EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu" />
+          <EntitySet Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
           <EntitySet Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH" EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH" />
           <EntitySet Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL" EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_SYLL" />
           <EntitySet Name="tbl_CUS_SYS_CauHinhHeThong" EntityType="AppModel.tbl_CUS_SYS_CauHinhHeThong" />
@@ -3293,11 +3335,15 @@
           <EntitySet Name="tbl_PRO_AE" EntityType="AppModel.tbl_PRO_AE" />
           <EntitySet Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" EntityType="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" />
           <EntitySet Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntityType="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          <EntitySet Name="tbl_PRO_BaoCaoNghiemThuDeTai" EntityType="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" />
+          <EntitySet Name="tbl_PRO_BaoCaoTienDoNghienCuu" EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" />
           <EntitySet Name="tbl_PRO_BenhNhan" EntityType="AppModel.tbl_PRO_BenhNhan" />
           <EntitySet Name="tbl_PRO_DeTai" EntityType="AppModel.tbl_PRO_DeTai" />
           <EntitySet Name="tbl_PRO_DonXinDanhGiaDaoDuc" EntityType="AppModel.tbl_PRO_DonXinDanhGiaDaoDuc" />
           <EntitySet Name="tbl_PRO_DonXinNghiemThu" EntityType="AppModel.tbl_PRO_DonXinNghiemThu" />
           <EntitySet Name="tbl_PRO_DonXinXetDuyet" EntityType="AppModel.tbl_PRO_DonXinXetDuyet" />
+          <EntitySet Name="tbl_PRO_HoiNghiHoiThao" EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" />
+          <EntitySet Name="tbl_PRO_HRCO" EntityType="AppModel.tbl_PRO_HRCO" />
           <EntitySet Name="tbl_PRO_LLKH" EntityType="AppModel.tbl_PRO_LLKH" />
           <EntitySet Name="tbl_PRO_MauPhanTichDuLieu" EntityType="AppModel.tbl_PRO_MauPhanTichDuLieu" />
           <EntitySet Name="tbl_PRO_NCVKhac" EntityType="AppModel.tbl_PRO_NCVKhac" />
@@ -3326,6 +3372,10 @@
           <AssociationSet Name="FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" Association="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi">
             <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
             <End Role="tbl_CAT_BangGiaKinhPhi" EntitySet="tbl_CAT_BangGiaKinhPhi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_CAT_HRCOConfig" EntitySet="tbl_CAT_HRCOConfig" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi">
             <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
@@ -3435,6 +3485,10 @@
             <End Role="tbl_CUS_SYS_Role" EntitySet="tbl_CUS_SYS_Role" />
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
@@ -3442,6 +3496,14 @@
           <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" Association="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
@@ -3454,6 +3516,10 @@
           <AssociationSet Name="FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_PRO_SYLL" EntitySet="tbl_PRO_SYLL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu">
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
+            <End Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" EntitySet="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_tbl_SYS_CauHinhHeThong_dbo_tbl_CUS_KhachHang_IDPartner" Association="AppModel.FK_dbo_tbl_SYS_CauHinhHeThong_dbo_tbl_CUS_KhachHang_IDPartner">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
@@ -3507,6 +3573,14 @@
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" EntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_BaoCaoNghiemThuDeTai" EntitySet="tbl_PRO_BaoCaoNghiemThuDeTai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_BaoCaoTienDoNghienCuu" EntitySet="tbl_PRO_BaoCaoTienDoNghienCuu" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_BenhNhan" EntitySet="tbl_PRO_BenhNhan" />
@@ -3542,6 +3616,10 @@
           <AssociationSet Name="FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_DonXinXetDuyet" EntitySet="tbl_PRO_DonXinXetDuyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_LLKH_tbl_PRO_Detai" Association="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
@@ -3582,6 +3660,10 @@
           <AssociationSet Name="FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_TrangThai_Log" EntitySet="tbl_PRO_TrangThai_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var">
+            <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
+            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiTrangThai" Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiTrangThai">
             <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
@@ -3639,44 +3721,6 @@
             <End Role="tbl_WEB_DanhMuc" EntitySet="tbl_WEB_DanhMuc" />
             <End Role="tbl_WEB_DanhMuc1" EntitySet="tbl_WEB_DanhMuc" />
           </AssociationSet>
-          <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="AppModel.tbl_CAT_HRCOConfig" />
-          <EntitySet Name="tbl_PRO_HRCO" EntityType="AppModel.tbl_PRO_HRCO" />
-          <AssociationSet Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
-            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
-            <End Role="tbl_CAT_HRCOConfig" EntitySet="tbl_CAT_HRCOConfig" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
-            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
-            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
-            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
-            <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
-          </AssociationSet>
-          <EntitySet Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
-          <EntitySet Name="tbl_PRO_BaoCaoTienDoNghienCuu" EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" />
-          <AssociationSet Name="FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu">
-            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
-            <End Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" EntitySet="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai">
-            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
-            <End Role="tbl_PRO_BaoCaoTienDoNghienCuu" EntitySet="tbl_PRO_BaoCaoTienDoNghienCuu" />
-          </AssociationSet>
-          <EntitySet Name="tbl_PRO_HoiNghiHoiThao" EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" />
-          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
-            <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
-            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var">
-            <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
-            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
-          </AssociationSet>
-          <EntitySet Name="tbl_PRO_BaoCaoNghiemThuDeTai" EntityType="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" />
-          <AssociationSet Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
-            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
-            <End Role="tbl_PRO_BaoCaoNghiemThuDeTai" EntitySet="tbl_PRO_BaoCaoNghiemThuDeTai" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_CAT_BangGiaKinhPhi">
           <Key>
@@ -3694,6 +3738,20 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CAT_KinhPhi" Relationship="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" FromRole="tbl_CAT_BangGiaKinhPhi" ToRole="tbl_CAT_KinhPhi" />
         </EntityType>
+        <EntityType Name="tbl_CAT_HRCOConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CAT_HRCOConfig" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+        </EntityType>
         <EntityType Name="tbl_CAT_KinhPhi">
           <Key>
             <PropertyRef Name="ID" />
@@ -3709,6 +3767,7 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsManual" Type="Boolean" />
           <NavigationProperty Name="tbl_CAT_BangGiaKinhPhi" Relationship="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_CAT_BangGiaKinhPhi" />
           <NavigationProperty Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
         </EntityType>
@@ -3998,22 +4057,45 @@
           <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SoDienThoai" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="IsHRCO" Type="Boolean" />
+          <NavigationProperty Name="tbl_CAT_HRCOConfig" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CAT_HRCOConfig" />
           <NavigationProperty Name="tbl_CUS_HRM_LIST_BoPhan" Relationship="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_HRM_LIST_BoPhan_IDBoPhan" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_LIST_BoPhan" />
           <NavigationProperty Name="tbl_CUS_HRM_LIST_ChucDanh" Relationship="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_HRM_LIST_ChucDanh_IDChucDanh" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_LIST_ChucDanh" />
           <NavigationProperty Name="tbl_PAR_Partner" Relationship="AppModel.FK_dbo_tbl_CUS_HRM_STAFF_NhanSu_dbo_tbl_CUS_KhachHang_IDPartner" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PAR_Partner" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_STAFF_NhanSu_SYLL" />
           <NavigationProperty Name="tbl_CUS_SYS_Role" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_tbl_CUS_SYS_Role" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_SYS_Role" />
+          <NavigationProperty Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_DeTai1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_DeTai" />
+          <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HoiNghiHoiThao" />
+          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HRCO" />
           <NavigationProperty Name="tbl_PRO_LLKH" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_LLKH" />
           <NavigationProperty Name="tbl_PRO_NCVKhac" Relationship="AppModel.FK_tbl_PRO_NCVKhac_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_NCVKhac" />
           <NavigationProperty Name="tbl_PRO_SYLL" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_SYLL" />
-          <NavigationProperty Name="tbl_CAT_HRCOConfig" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CAT_HRCOConfig" />
-          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HRCO" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Relationship="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" />
-          <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu" ToRole="tbl_PRO_HoiNghiHoiThao" />
-          <Property Name="IsHRCO" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_DonViCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_HoatDongKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_KinhNghiemLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_BaiDangTapChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="JSON_QuaTrinhDaoTao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
           <Key>
@@ -4068,8 +4150,8 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -4405,6 +4487,14 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Ngay" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Thang" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Nam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Gio" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Phut" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="KetQua_TuVong" Type="Boolean" />
+          <Property Name="TienHanhSAE1_Co" Type="Boolean" />
+          <Property Name="TienHanhSAE1_Khong" Type="Boolean" />
           <NavigationProperty Name="tbl_CUS_HRM_BenhNhan" Relationship="AppModel.FK_tbl_PRO_AE_tbl_CUS_HRM_BenhNhan" FromRole="tbl_PRO_AE" ToRole="tbl_CUS_HRM_BenhNhan" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_AE_tbl_PRO_DeTai" FromRole="tbl_PRO_AE" ToRole="tbl_PRO_DeTai" />
         </EntityType>
@@ -4479,6 +4569,10 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YKienHDDD_So" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
@@ -4500,9 +4594,68 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDKinhPhi" Type="Int32" />
           <Property Name="KinhPhi" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IDNCV" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbl_CAT_KinhPhi" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_KinhPhi" />
           <NavigationProperty Name="tbl_CAT_Nhom" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Nhom" />
           <NavigationProperty Name="tbl_CAT_Site" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CAT_Site" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_BaoCaoNghiemThuDeTai">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_DanhSachThamGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Abstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_LoiCamOn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_MucLuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_CacChuVietTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_DanhMucCacBang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_MucTieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Chuong1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Chuong2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_VatLieuPhuongPhap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Chuong3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Chuong4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_Chuong5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_KetLuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_TaiLieuThamKhao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
+          <Property Name="SoCaThuThapHopLe" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TienDoThuNhanMau" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="KhoKhan" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="TenDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NCVChinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDuyetNghienCuu" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="SoNCT" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CoMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoTienDoNghienCuu" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BenhNhan">
           <Key>
@@ -4550,6 +4703,8 @@
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_AE" Relationship="AppModel.FK_tbl_PRO_AE_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_AE" />
           <NavigationProperty Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" />
+          <NavigationProperty Name="tbl_PRO_BaoCaoNghiemThuDeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BaoCaoNghiemThuDeTai" />
+          <NavigationProperty Name="tbl_PRO_BaoCaoTienDoNghienCuu" Relationship="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BaoCaoTienDoNghienCuu" />
           <NavigationProperty Name="tbl_PRO_BenhNhan" Relationship="AppModel.FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BenhNhan" />
           <NavigationProperty Name="tbl_SYS_Var" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiDeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
           <NavigationProperty Name="tbl_SYS_Var1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HDDD" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
@@ -4559,6 +4714,7 @@
           <NavigationProperty Name="tbl_PRO_DonXinDanhGiaDaoDuc" Relationship="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinDanhGiaDaoDuc" />
           <NavigationProperty Name="tbl_PRO_DonXinNghiemThu" Relationship="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinNghiemThu" />
           <NavigationProperty Name="tbl_PRO_DonXinXetDuyet" Relationship="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinXetDuyet" />
+          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_HRCO" />
           <NavigationProperty Name="tbl_PRO_LLKH" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_LLKH" />
           <NavigationProperty Name="tbl_PRO_MauPhanTichDuLieu" Relationship="AppModel.FK_tbl_PRO_MauPhanTichDuLieu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_MauPhanTichDuLieu" />
           <NavigationProperty Name="tbl_PRO_NCVKhac" Relationship="AppModel.FK_tbl_PRO_NCVKhac_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_NCVKhac" />
@@ -4569,9 +4725,6 @@
           <NavigationProperty Name="tbl_PRO_Tags" Relationship="AppModel.FK_tbl_PRO_Tags_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_Tags" />
           <NavigationProperty Name="tbl_PRO_ThuyetMinhDeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_ThuyetMinhDeTai" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log" Relationship="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_TrangThai_Log" />
-          <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_HRCO" />
-          <NavigationProperty Name="tbl_PRO_BaoCaoTienDoNghienCuu" Relationship="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BaoCaoTienDoNghienCuu" />
-          <NavigationProperty Name="tbl_PRO_BaoCaoNghiemThuDeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BaoCaoNghiemThuDeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -4675,6 +4828,45 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" FromRole="tbl_PRO_DonXinXetDuyet" ToRole="tbl_PRO_DeTai" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_HoiNghiHoiThao">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNhanVien" Type="Int32" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="7" />
+          <Property Name="DiaDiem" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="TenHoiNghi" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CVBaoCaoVien" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="BaiAbstract" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HTMLHosrem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDTrangThai" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <NavigationProperty Name="tbl_SYS_Var" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_SYS_Var" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_HRCO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
+          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HRCO" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_HRCO" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_LLKH">
           <Key>
@@ -4838,7 +5030,6 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_PhieuXemXetDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_PhieuXemXetDaoDuc" ToRole="tbl_PRO_DeTai" />
           <Property Name="NguoiThamGiaNghienCuu_DuKien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NguoiThamGiaNghienCuu_CachXacDinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NguoiThamGiaNghienCuu_TreViThanhNien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -4914,6 +5105,17 @@
           <Property Name="YKienTruongKhoa_NamKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="Boolean" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="Boolean" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_PhieuXemXetDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_PhieuXemXetDaoDuc" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
           <Key>
@@ -5022,9 +5224,9 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_SYLL" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_PRO_Detai" FromRole="tbl_PRO_SYLL" ToRole="tbl_PRO_DeTai" />
-          <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_Sysnopsis">
           <Key>
@@ -5386,10 +5588,10 @@
           <NavigationProperty Name="tbl_PRO_DeTai2" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HDKH" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_DeTai3" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HRCO" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_DeTai4" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_NghiemThu" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
+          <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_HoiNghiHoiThao" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_PhanLoaiTrangThai" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_TrangThai_Log" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThaiCu" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_TrangThai_Log" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log2" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThaiMoi" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_TrangThai_Log" />
-          <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_HoiNghiHoiThao" />
         </EntityType>
         <EntityType Name="tbl_WEB_BaiViet">
           <Key>
@@ -5522,6 +5724,18 @@
             </Principal>
             <Dependent Role="tbl_CAT_BangGiaKinhPhi">
               <PropertyRef Name="IDKinhPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_CAT_HRCOConfig" Role="tbl_CAT_HRCOConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_HRCOConfig">
+              <PropertyRef Name="IDNhanSu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5849,6 +6063,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+              <PropertyRef Name="IDNCV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu">
           <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
           <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="*" />
@@ -5870,6 +6096,30 @@
             </Principal>
             <Dependent Role="tbl_PRO_DeTai">
               <PropertyRef Name="IDChuNhiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_PRO_HoiNghiHoiThao" Role="tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
+              <PropertyRef Name="IDNhanSu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5905,6 +6155,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbl_PRO_SYLL">
+              <PropertyRef Name="IDNhanSu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu">
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
+          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
               <PropertyRef Name="IDNhanSu" />
             </Dependent>
           </ReferentialConstraint>
@@ -6065,6 +6327,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" Role="tbl_PRO_BaoCaoNghiemThuDeTai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoNghiemThuDeTai">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Role="tbl_PRO_BaoCaoTienDoNghienCuu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BaoCaoTienDoNghienCuu">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai">
           <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
           <End Type="AppModel.tbl_PRO_BenhNhan" Role="tbl_PRO_BenhNhan" Multiplicity="*" />
@@ -6169,6 +6455,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbl_PRO_DonXinXetDuyet">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HRCO">
               <PropertyRef Name="IDDeTai" />
             </Dependent>
           </ReferentialConstraint>
@@ -6290,6 +6588,18 @@
             </Principal>
             <Dependent Role="tbl_PRO_TrangThai_Log">
               <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var">
+          <End Type="AppModel.tbl_SYS_Var" Role="tbl_SYS_Var" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HoiNghiHoiThao" Role="tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SYS_Var">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
+              <PropertyRef Name="IDTrangThai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6461,234 +6771,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbl_CAT_HRCOConfig">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CAT_HRCOConfig" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
-        </EntityType>
-        <EntityType Name="tbl_PRO_HRCO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HRCO" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_HRCO" ToRole="tbl_PRO_DeTai" />
-        </EntityType>
-        <Association Name="FK_tbl_CAT_HRCOConfig_tbl_CUS_HRM_STAFF_NhanSu">
-          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
-          <End Type="AppModel.tbl_CAT_HRCOConfig" Role="tbl_CAT_HRCOConfig" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_CAT_HRCOConfig">
-              <PropertyRef Name="IDNhanSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
-          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
-          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_HRCO">
-              <PropertyRef Name="IDNhanSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
-          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
-          <End Type="AppModel.tbl_PRO_HRCO" Role="tbl_PRO_HRCO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_PRO_DeTai">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_HRCO">
-              <PropertyRef Name="IDDeTai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_DonViCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_HoatDongKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_KinhNghiemLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_BaiDangTapChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="JSON_QuaTrinhDaoTao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="SoCaThuThapHopLe" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="TienDoThuNhanMau" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="KhoKhan" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoTienDoNghienCuu" ToRole="tbl_PRO_DeTai" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="TenDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NCVChinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayDuyetNghienCuu" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="SoNCT" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CoMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_tbl_tbl_CUS_HRM_STAFF_NhanSu_HOSREM_tbl_CUS_HRM_STAFF_NhanSu">
-          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
-          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
-              <PropertyRef Name="IDNhanSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_PRO_BaoCaoTienDoNghienCuu_tbl_PRO_DeTai">
-          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
-          <End Type="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Role="tbl_PRO_BaoCaoTienDoNghienCuu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_PRO_DeTai">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_BaoCaoTienDoNghienCuu">
-              <PropertyRef Name="IDDeTai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbl_PRO_HoiNghiHoiThao">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDNhanVien" Type="Int32" />
-          <Property Name="ThoiGian" Type="DateTime" Precision="7" />
-          <Property Name="DiaDiem" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="TenHoiNghi" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="CVBaoCaoVien" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiAbstract" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="HTMLHosrem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IDTrangThai" Type="Int32" Nullable="false" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
-          <NavigationProperty Name="tbl_SYS_Var" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_SYS_Var" />
-        </EntityType>
-        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
-          <End Type="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Role="tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="0..1" />
-          <End Type="AppModel.tbl_PRO_HoiNghiHoiThao" Role="tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_CUS_HRM_STAFF_NhanSu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
-              <PropertyRef Name="IDNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var">
-          <End Type="AppModel.tbl_SYS_Var" Role="tbl_SYS_Var" Multiplicity="1" />
-          <End Type="AppModel.tbl_PRO_HoiNghiHoiThao" Role="tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_SYS_Var">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
-              <PropertyRef Name="IDTrangThai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbl_PRO_BaoCaoNghiemThuDeTai">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDDeTai" Type="Int32" />
-          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_DanhSachThamGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Abstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_LoiCamOn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_MucLuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_CacChuVietTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_DanhMucCacBang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_MucTieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Chuong1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Chuong2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_VatLieuPhuongPhap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Chuong3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Chuong4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_Chuong5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_KetLuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="JSON_TaiLieuThamKhao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
-        </EntityType>
-        <Association Name="FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai">
-          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="0..1" />
-          <End Type="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" Role="tbl_PRO_BaoCaoNghiemThuDeTai" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_PRO_DeTai">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_PRO_BaoCaoNghiemThuDeTai">
-              <PropertyRef Name="IDDeTai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6711,9 +6793,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CAT_HRCOConfig">
+            <EntityTypeMapping TypeName="AppModel.tbl_CAT_HRCOConfig">
+              <MappingFragment StoreEntitySet="tbl_CAT_HRCOConfig">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_CAT_KinhPhi">
             <EntityTypeMapping TypeName="AppModel.tbl_CAT_KinhPhi">
               <MappingFragment StoreEntitySet="tbl_CAT_KinhPhi">
+                <ScalarProperty Name="IsManual" ColumnName="IsManual" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -6997,6 +7094,28 @@
                 <ScalarProperty Name="IDBoPhan" ColumnName="IDBoPhan" />
                 <ScalarProperty Name="IDChucDanh" ColumnName="IDChucDanh" />
                 <ScalarProperty Name="IDPartner" ColumnName="IDPartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
+            <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
+              <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
+                <ScalarProperty Name="JSON_QuaTrinhDaoTao" ColumnName="JSON_QuaTrinhDaoTao" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="HTML" ColumnName="HTML" />
+                <ScalarProperty Name="JSON_BaiDangTapChi" ColumnName="JSON_BaiDangTapChi" />
+                <ScalarProperty Name="JSON_KinhNghiemLamViec" ColumnName="JSON_KinhNghiemLamViec" />
+                <ScalarProperty Name="JSON_HoatDongKhac" ColumnName="JSON_HoatDongKhac" />
+                <ScalarProperty Name="JSON_DonViCongTac" ColumnName="JSON_DonViCongTac" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7286,6 +7405,14 @@
           <EntitySetMapping Name="tbl_PRO_AE">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_AE">
               <MappingFragment StoreEntitySet="tbl_PRO_AE">
+                <ScalarProperty Name="TienHanhSAE1_Khong" ColumnName="TienHanhSAE1_Khong" />
+                <ScalarProperty Name="TienHanhSAE1_Co" ColumnName="TienHanhSAE1_Co" />
+                <ScalarProperty Name="KetQua_TuVong" ColumnName="KetQua_TuVong" />
+                <ScalarProperty Name="NgayKetThuc_Phut" ColumnName="NgayKetThuc_Phut" />
+                <ScalarProperty Name="NgayKetThuc_Gio" ColumnName="NgayKetThuc_Gio" />
+                <ScalarProperty Name="NgayKetThuc_Nam" ColumnName="NgayKetThuc_Nam" />
+                <ScalarProperty Name="NgayKetThuc_Thang" ColumnName="NgayKetThuc_Thang" />
+                <ScalarProperty Name="NgayKetThuc_Ngay" ColumnName="NgayKetThuc_Ngay" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -7377,6 +7504,10 @@
           <EntitySetMapping Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
               <MappingFragment StoreEntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
+                <ScalarProperty Name="NgayKy_Nam" ColumnName="NgayKy_Nam" />
+                <ScalarProperty Name="NgayKy_Thang" ColumnName="NgayKy_Thang" />
+                <ScalarProperty Name="NgayKy_Ngay" ColumnName="NgayKy_Ngay" />
+                <ScalarProperty Name="YKienHDDD_So" ColumnName="YKienHDDD_So" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -7450,6 +7581,7 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+                <ScalarProperty Name="IDNCV" ColumnName="IDNCV" />
                 <ScalarProperty Name="KinhPhi" ColumnName="KinhPhi" />
                 <ScalarProperty Name="IDKinhPhi" ColumnName="IDKinhPhi" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -7463,6 +7595,63 @@
                 <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
                 <ScalarProperty Name="IDSite" ColumnName="IDSite" />
                 <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_BaoCaoNghiemThuDeTai">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai">
+              <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNghiemThuDeTai">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="HTML" ColumnName="HTML" />
+                <ScalarProperty Name="JSON_TaiLieuThamKhao" ColumnName="JSON_TaiLieuThamKhao" />
+                <ScalarProperty Name="JSON_KetLuan" ColumnName="JSON_KetLuan" />
+                <ScalarProperty Name="JSON_Chuong5" ColumnName="JSON_Chuong5" />
+                <ScalarProperty Name="JSON_Chuong4" ColumnName="JSON_Chuong4" />
+                <ScalarProperty Name="JSON_Chuong3" ColumnName="JSON_Chuong3" />
+                <ScalarProperty Name="JSON_VatLieuPhuongPhap" ColumnName="JSON_VatLieuPhuongPhap" />
+                <ScalarProperty Name="JSON_Chuong2" ColumnName="JSON_Chuong2" />
+                <ScalarProperty Name="JSON_Chuong1" ColumnName="JSON_Chuong1" />
+                <ScalarProperty Name="JSON_MucTieu" ColumnName="JSON_MucTieu" />
+                <ScalarProperty Name="JSON_DanhMucCacBang" ColumnName="JSON_DanhMucCacBang" />
+                <ScalarProperty Name="JSON_CacChuVietTat" ColumnName="JSON_CacChuVietTat" />
+                <ScalarProperty Name="JSON_MucLuc" ColumnName="JSON_MucLuc" />
+                <ScalarProperty Name="JSON_LoiCamOn" ColumnName="JSON_LoiCamOn" />
+                <ScalarProperty Name="JSON_Abstract" ColumnName="JSON_Abstract" />
+                <ScalarProperty Name="JSON_TomTat" ColumnName="JSON_TomTat" />
+                <ScalarProperty Name="JSON_DanhSachThamGia" ColumnName="JSON_DanhSachThamGia" />
+                <ScalarProperty Name="ChuNhiemDeTai" ColumnName="ChuNhiemDeTai" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_BaoCaoTienDoNghienCuu">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu">
+              <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoTienDoNghienCuu">
+                <ScalarProperty Name="CoMau" ColumnName="CoMau" />
+                <ScalarProperty Name="ThoiGianTienHanh" ColumnName="ThoiGianTienHanh" />
+                <ScalarProperty Name="SoNCT" ColumnName="SoNCT" />
+                <ScalarProperty Name="NgayDuyetNghienCuu" ColumnName="NgayDuyetNghienCuu" />
+                <ScalarProperty Name="NCVChinh" ColumnName="NCVChinh" />
+                <ScalarProperty Name="ChuNhiemDeTai" ColumnName="ChuNhiemDeTai" />
+                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
+                <ScalarProperty Name="TienDoThuNhanMau" ColumnName="TienDoThuNhanMau" />
+                <ScalarProperty Name="SoCaThuThapHopLe" ColumnName="SoCaThuThapHopLe" />
                 <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -7614,6 +7803,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_HoiNghiHoiThao">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HoiNghiHoiThao">
+              <MappingFragment StoreEntitySet="tbl_PRO_HoiNghiHoiThao">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDTrangThai" ColumnName="IDTrangThai" />
+                <ScalarProperty Name="HTMLHosrem" ColumnName="HTMLHosrem" />
+                <ScalarProperty Name="BaiFulltext" ColumnName="BaiFulltext" />
+                <ScalarProperty Name="BaiAbstract" ColumnName="BaiAbstract" />
+                <ScalarProperty Name="CVBaoCaoVien" ColumnName="CVBaoCaoVien" />
+                <ScalarProperty Name="TenHoiNghi" ColumnName="TenHoiNghi" />
+                <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_HRCO">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HRCO">
+              <MappingFragment StoreEntitySet="tbl_PRO_HRCO">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_PRO_LLKH">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_LLKH">
               <MappingFragment StoreEntitySet="tbl_PRO_LLKH">
@@ -7714,6 +7940,16 @@
           <EntitySetMapping Name="tbl_PRO_PhieuXemXetDaoDuc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_PhieuXemXetDaoDuc">
               <MappingFragment StoreEntitySet="tbl_PRO_PhieuXemXetDaoDuc">
+                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" />
+                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Co" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Co" />
                 <ScalarProperty Name="JSON_ChuKy" ColumnName="JSON_ChuKy" />
                 <ScalarProperty Name="YKienTruongKhoa_HoTenVaChucDanh" ColumnName="YKienTruongKhoa_HoTenVaChucDanh" />
                 <ScalarProperty Name="YKienTruongKhoa_NamKy" ColumnName="YKienTruongKhoa_NamKy" />
@@ -8420,136 +8656,6 @@
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_CAT_HRCOConfig">
-            <EntityTypeMapping TypeName="AppModel.tbl_CAT_HRCOConfig">
-              <MappingFragment StoreEntitySet="tbl_CAT_HRCOConfig">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_PRO_HRCO">
-            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HRCO">
-              <MappingFragment StoreEntitySet="tbl_PRO_HRCO">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
-                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
-            <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
-              <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu_HOSREM">
-                <ScalarProperty Name="JSON_QuaTrinhDaoTao" ColumnName="JSON_QuaTrinhDaoTao" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="HTML" ColumnName="HTML" />
-                <ScalarProperty Name="JSON_BaiDangTapChi" ColumnName="JSON_BaiDangTapChi" />
-                <ScalarProperty Name="JSON_KinhNghiemLamViec" ColumnName="JSON_KinhNghiemLamViec" />
-                <ScalarProperty Name="JSON_HoatDongKhac" ColumnName="JSON_HoatDongKhac" />
-                <ScalarProperty Name="JSON_DonViCongTac" ColumnName="JSON_DonViCongTac" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="IDNhanSu" ColumnName="IDNhanSu" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_PRO_BaoCaoTienDoNghienCuu">
-            <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu">
-              <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoTienDoNghienCuu">
-                <ScalarProperty Name="CoMau" ColumnName="CoMau" />
-                <ScalarProperty Name="ThoiGianTienHanh" ColumnName="ThoiGianTienHanh" />
-                <ScalarProperty Name="SoNCT" ColumnName="SoNCT" />
-                <ScalarProperty Name="NgayDuyetNghienCuu" ColumnName="NgayDuyetNghienCuu" />
-                <ScalarProperty Name="NCVChinh" ColumnName="NCVChinh" />
-                <ScalarProperty Name="ChuNhiemDeTai" ColumnName="ChuNhiemDeTai" />
-                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="KhoKhan" ColumnName="KhoKhan" />
-                <ScalarProperty Name="TienDoThuNhanMau" ColumnName="TienDoThuNhanMau" />
-                <ScalarProperty Name="SoCaThuThapHopLe" ColumnName="SoCaThuThapHopLe" />
-                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_PRO_HoiNghiHoiThao">
-            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HoiNghiHoiThao">
-              <MappingFragment StoreEntitySet="tbl_PRO_HoiNghiHoiThao">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="IDTrangThai" ColumnName="IDTrangThai" />
-                <ScalarProperty Name="HTMLHosrem" ColumnName="HTMLHosrem" />
-                <ScalarProperty Name="BaiFulltext" ColumnName="BaiFulltext" />
-                <ScalarProperty Name="BaiAbstract" ColumnName="BaiAbstract" />
-                <ScalarProperty Name="CVBaoCaoVien" ColumnName="CVBaoCaoVien" />
-                <ScalarProperty Name="TenHoiNghi" ColumnName="TenHoiNghi" />
-                <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
-                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
-                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_PRO_BaoCaoNghiemThuDeTai">
-            <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai">
-              <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNghiemThuDeTai">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
-                <ScalarProperty Name="HTML" ColumnName="HTML" />
-                <ScalarProperty Name="JSON_TaiLieuThamKhao" ColumnName="JSON_TaiLieuThamKhao" />
-                <ScalarProperty Name="JSON_KetLuan" ColumnName="JSON_KetLuan" />
-                <ScalarProperty Name="JSON_Chuong5" ColumnName="JSON_Chuong5" />
-                <ScalarProperty Name="JSON_Chuong4" ColumnName="JSON_Chuong4" />
-                <ScalarProperty Name="JSON_Chuong3" ColumnName="JSON_Chuong3" />
-                <ScalarProperty Name="JSON_VatLieuPhuongPhap" ColumnName="JSON_VatLieuPhuongPhap" />
-                <ScalarProperty Name="JSON_Chuong2" ColumnName="JSON_Chuong2" />
-                <ScalarProperty Name="JSON_Chuong1" ColumnName="JSON_Chuong1" />
-                <ScalarProperty Name="JSON_MucTieu" ColumnName="JSON_MucTieu" />
-                <ScalarProperty Name="JSON_DanhMucCacBang" ColumnName="JSON_DanhMucCacBang" />
-                <ScalarProperty Name="JSON_CacChuVietTat" ColumnName="JSON_CacChuVietTat" />
-                <ScalarProperty Name="JSON_MucLuc" ColumnName="JSON_MucLuc" />
-                <ScalarProperty Name="JSON_LoiCamOn" ColumnName="JSON_LoiCamOn" />
-                <ScalarProperty Name="JSON_Abstract" ColumnName="JSON_Abstract" />
-                <ScalarProperty Name="JSON_TomTat" ColumnName="JSON_TomTat" />
-                <ScalarProperty Name="JSON_DanhSachThamGia" ColumnName="JSON_DanhSachThamGia" />
-                <ScalarProperty Name="ChuNhiemDeTai" ColumnName="ChuNhiemDeTai" />
-                <ScalarProperty Name="TenDeTai" ColumnName="TenDeTai" />
-                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,67 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="TenDeTai">
+                Tên đề tài
+            </label>
+            <input class="c-input" id="TenDeTai" [(ngModel)]="item.TenDeTai" formControlName="TenDeTai" type="text">
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="ChuNhiemDeTai">
+                Chủ nhiệm đề tài
+            </label>
+            <input class="c-input" id="ChuNhiemDeTai" [(ngModel)]="item.ChuNhiemDeTai" formControlName="ChuNhiemDeTai" type="text">
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="NCVChinh">
+                NCV chính
+            </label>
+            <input class="c-input" id="NCVChinh" [(ngModel)]="item.NCVChinh" formControlName="NCVChinh" type="text">
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="SoNCT">
+                Số NCT
+            </label>
+            <input class="c-input" id="SoNCT" [(ngModel)]="item.SoNCT" formControlName="SoNCT" type="text">
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="ThoiGianTienHanh">
+                Thời gian tiến hành theo nghiên cứu ban đầu
+            </label>
+            <input class="c-input" id="ThoiGianTienHanh" [(ngModel)]="item.ThoiGianTienHanh" formControlName="ThoiGianTienHanh" type="text">
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="CoMau">
+                Cỡ mẫu
+            </label>
+            <textarea rows="3" class="c-input" id="CoMau" [(ngModel)]="item.CoMau" formControlName="CoMau" type="textarea"></textarea>
+        </div>
+        <div class="c-control">
+            <label class="c-label" for="SoCaThuThapHopLe">
+                Số ca thu thập hợp lệ
+            </label>
+            <input class="c-input" id="SoCaThuThapHopLe" [(ngModel)]="item.SoCaThuThapHopLe" formControlName="SoCaThuThapHopLe" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="TienDoThuNhanMau">
+                Tiến độ thu nhận mẫu
+            </label>
+            <textarea rows="3" class="c-input" id="TienDoThuNhanMau" [(ngModel)]="item.TienDoThuNhanMau" formControlName="TienDoThuNhanMau" type="textarea"></textarea>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="KhoKhan">
+                Khó khăn
+            </label>
+            <textarea rows="3" class="c-input" id="KhoKhan" [(ngModel)]="item.KhoKhan" formControlName="KhoKhan" type="textarea"></textarea>
+        </div>
+    </form>
+</ion-content>

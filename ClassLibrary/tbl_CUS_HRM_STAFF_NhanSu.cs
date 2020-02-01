@@ -18,17 +18,18 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_CUS_HRM_STAFF_NhanSu()
         {
+            this.tbl_CAT_HRCOConfig = new HashSet<tbl_CAT_HRCOConfig>();
             this.tbl_CUS_HRM_STAFF_NhanSu_LLKH = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH>();
             this.tbl_CUS_HRM_STAFF_NhanSu_SYLL = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL>();
+            this.tbl_PRO_BaoCaoNangSuatKhoaHoc = new HashSet<tbl_PRO_BaoCaoNangSuatKhoaHoc>();
             this.tbl_PRO_DeTai = new HashSet<tbl_PRO_DeTai>();
             this.tbl_PRO_DeTai1 = new HashSet<tbl_PRO_DeTai>();
+            this.tbl_PRO_HoiNghiHoiThao = new HashSet<tbl_PRO_HoiNghiHoiThao>();
+            this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
             this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
             this.tbl_PRO_NCVKhac = new HashSet<tbl_PRO_NCVKhac>();
             this.tbl_PRO_SYLL = new HashSet<tbl_PRO_SYLL>();
-            this.tbl_CAT_HRCOConfig = new HashSet<tbl_CAT_HRCOConfig>();
-            this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
             this.tbl_CUS_HRM_STAFF_NhanSu_HOSREM = new HashSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM>();
-            this.tbl_PRO_HoiNghiHoiThao = new HashSet<tbl_PRO_HoiNghiHoiThao>();
         }
     
         public int IDPartner { get; set; }
@@ -52,6 +53,8 @@ namespace ClassLibrary
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
         public Nullable<bool> IsHRCO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
         public virtual tbl_CUS_HRM_LIST_BoPhan tbl_CUS_HRM_LIST_BoPhan { get; set; }
         public virtual tbl_CUS_HRM_LIST_ChucDanh tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
@@ -61,9 +64,15 @@ namespace ClassLibrary
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
         public virtual tbl_CUS_SYS_Role tbl_CUS_SYS_Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BaoCaoNangSuatKhoaHoc> tbl_PRO_BaoCaoNangSuatKhoaHoc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -71,13 +80,7 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_SYLL> tbl_PRO_SYLL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
     }
 }
 namespace DTOModel

@@ -30,9 +30,11 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         public Nullable<int> IDKinhPhi { get; set; }
         public decimal KinhPhi { get; set; }
+        public int IDNCV { get; set; }
         public virtual tbl_CAT_KinhPhi tbl_CAT_KinhPhi { get; set; }
         public virtual tbl_CAT_Nhom tbl_CAT_Nhom { get; set; }
         public virtual tbl_CAT_Site tbl_CAT_Site { get; set; }
+        public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
 namespace DTOModel
@@ -55,6 +57,7 @@ namespace DTOModel
 		public string ModifiedBy { get; set; }
 		public Nullable<int> IDKinhPhi { get; set; }
 		public decimal KinhPhi { get; set; }
+		public int IDNCV { get; set; }
 	}
 }
 
@@ -91,7 +94,8 @@ namespace BaseBusiness
 				ModifiedDate = s.ModifiedDate,							
 				ModifiedBy = s.ModifiedBy,							
 				IDKinhPhi = s.IDKinhPhi,							
-				KinhPhi = s.KinhPhi,					
+				KinhPhi = s.KinhPhi,							
+				IDNCV = s.IDNCV,					
 			});
                               
         }
@@ -116,7 +120,8 @@ namespace BaseBusiness
 					ModifiedDate = dbResult.ModifiedDate,							
 					ModifiedBy = dbResult.ModifiedBy,							
 					IDKinhPhi = dbResult.IDKinhPhi,							
-					KinhPhi = dbResult.KinhPhi,
+					KinhPhi = dbResult.KinhPhi,							
+					IDNCV = dbResult.IDNCV,
 				};
 			}
 			else
@@ -261,6 +266,18 @@ namespace BaseBusiness
                 if (decimal.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "KinhPhiFrom").Value, out decimal fromVal) && decimal.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "KinhPhiTo").Value, out decimal toVal))
                     query = query.Where(d => fromVal <= d.KinhPhi && d.KinhPhi <= toVal);
 
+			//Query IDNCV (int)
+			if (QueryStrings.Any(d => d.Key == "IDNCV"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDNCV").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDNCV));
+            }
+
 
 			return toDTO(query);
 
@@ -290,7 +307,8 @@ namespace BaseBusiness
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
-				dbitem.KinhPhi = item.KinhPhi;                
+				dbitem.KinhPhi = item.KinhPhi;							
+				dbitem.IDNCV = item.IDNCV;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -326,7 +344,8 @@ namespace BaseBusiness
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
-				dbitem.KinhPhi = item.KinhPhi;                
+				dbitem.KinhPhi = item.KinhPhi;							
+				dbitem.IDNCV = item.IDNCV;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

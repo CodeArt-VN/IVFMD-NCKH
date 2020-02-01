@@ -119,12 +119,12 @@ namespace BaseBusiness
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 1, Type = 0, Name = "Đăng kí phân tích", Description = "Đăng kí phân tích", FormCode = "tbl_PRO_MauPhanTichDuLieu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 
                 if (db.tbl_PRO_DonXinDanhGiaDaoDuc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HDDD", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HDDD", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 
                 if (db.tbl_PRO_DonXinXetDuyet.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HDKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HDKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HĐKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HĐKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_LLKH.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDChuNhiem && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
@@ -299,16 +299,16 @@ namespace BaseBusiness
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
-                    if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
                     {
                         tbl_PRO_TrangThai_Log dbLog = new tbl_PRO_TrangThai_Log();
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 2;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HRCO;
-                        dbitem.IDTrangThai_HRCO = -(int)SYSVarType.TrangThai_HRCO_ChoDuyet;
-                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HRCO;
+                        dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_ChoDuyet;
+                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
@@ -325,7 +325,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 2;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDDD;
                         dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
@@ -346,7 +346,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 2;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDDD;
                         dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_DaDuyet;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
@@ -367,7 +367,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 2;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDDD;
                         dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
@@ -387,16 +387,16 @@ namespace BaseBusiness
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
-                    if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
                     {
                         tbl_PRO_TrangThai_Log dbLog = new tbl_PRO_TrangThai_Log();
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
-                        dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HRCO;
-                        dbitem.IDTrangThai_HRCO = -(int)SYSVarType.TrangThai_HRCO_ChoDuyet;
-                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HRCO;
+                        dbLog.IDPhanLoaiTrangThai = 3;
+                        dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDKH;
+                        dbitem.IDTrangThai_HDKH = -(int)SYSVarType.TrangThai_HDKH_ChoDuyet;
+                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDKH;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
@@ -413,7 +413,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 3;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDKH;
                         dbitem.IDTrangThai_HDKH = -(int)SYSVarType.TrangThai_HDKH_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDKH;
@@ -434,7 +434,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 3;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDKH;
                         dbitem.IDTrangThai_HDKH = -(int)SYSVarType.TrangThai_HDKH_DaDuyet;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDKH;
@@ -455,7 +455,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 3;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HDKH;
                         dbitem.IDTrangThai_HDKH = -(int)SYSVarType.TrangThai_HDKH_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDKH;
@@ -475,16 +475,16 @@ namespace BaseBusiness
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
-                    if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
                     {
                         tbl_PRO_TrangThai_Log dbLog = new tbl_PRO_TrangThai_Log();
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
-                        dbLog.IDTrangThaiCu = dbitem.IDTrangThai_HRCO;
-                        dbitem.IDTrangThai_HRCO = -(int)SYSVarType.TrangThai_HRCO_ChoDuyet;
-                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HRCO;
+                        dbLog.IDPhanLoaiTrangThai = 4;
+                        dbLog.IDTrangThaiCu = dbitem.IDTrangThai_NghiemThu;
+                        dbitem.IDTrangThai_NghiemThu = -(int)SYSVarType.TrangThai_NghiemThu_ChoDuyet;
+                        dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_NghiemThu;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
@@ -501,7 +501,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 4;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_NghiemThu;
                         dbitem.IDTrangThai_NghiemThu = -(int)SYSVarType.TrangThai_NghiemThu_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_NghiemThu;
@@ -522,7 +522,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 4;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_NghiemThu;
                         dbitem.IDTrangThai_NghiemThu = -(int)SYSVarType.TrangThai_NghiemThu_DaDuyet;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_NghiemThu;
@@ -543,7 +543,7 @@ namespace BaseBusiness
                         dbLog.CreatedBy = Username;
                         dbLog.CreatedDate = DateTime.Now;
                         dbLog.IDDeTai = dbitem.ID;
-                        dbLog.IDPhanLoaiTrangThai = 1;
+                        dbLog.IDPhanLoaiTrangThai = 4;
                         dbLog.IDTrangThaiCu = dbitem.IDTrangThai_NghiemThu;
                         dbitem.IDTrangThai_NghiemThu = -(int)SYSVarType.TrangThai_NghiemThu_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_NghiemThu;
@@ -1052,6 +1052,8 @@ namespace BaseBusiness
                 MaSo = s.MaSo,
                 TenTiengViet = s.TenTiengViet,
                 TenTiengAnh = s.TenTiengAnh,
+                NCVChinh = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
+                ChuNhiemDeTai = s.IDChuNhiem > 0 ? s.tbl_CUS_HRM_STAFF_NhanSu1.Name : ""
             });
 
         }

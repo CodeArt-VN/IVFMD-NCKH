@@ -4,6 +4,7 @@ import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { ListPage } from '../../list-page';
 import { PRO_BaoCaoTienDoNghienCuuCustomProvider } from '../../../providers/Services/CustomService';
+import { TongHopBaoCaoTienDoNghienCuuModalPage } from '../tong-hop-bao-cao-tien-do-nghien-cuu-modal/tong-hop-bao-cao-tien-do-nghien-cuu-modal';
 
 @IonicPage({ name: 'page-tong-hop-bao-cao-tien-do-nghien-cuu', segment: 'tong-hop-bao-cao-tien-do-nghien-cuu', priority: 'high' }) 
 @Component({ selector: 'page-tong-hop-bao-cao-tien-do-nghien-cuu', templateUrl: 'tong-hop-bao-cao-tien-do-nghien-cuu.html' })
@@ -45,6 +46,13 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
             this.gridConfig.totalRows = 0;
             this.loadedData();
         });
+    }
+
+    openDetail(item) {
+        let myModal = this.modalCtrl.create(TongHopBaoCaoTienDoNghienCuuModalPage, {
+            'id': item.ID, 'idDeTai': item.IDDeTai
+        });
+        myModal.present();
     }
     
     preLoadData(){

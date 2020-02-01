@@ -5,56 +5,69 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formGroup">
-      <div padding></div>
-      <div class="c-control">
-          <label class="c-label" for="Code">Mã
-              <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text">
-      </div>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="Code">
+                Mã
+                <span *ngIf="!formGroup.controls.Code.valid && !formGroup.controls.Code.pending && (formGroup.controls.Code.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Code" [(ngModel)]="item.Code" formControlName="Code" type="text">
+        </div>
 
-      <div class="c-control">
-          <label class="c-label" for="Name">Kinh phí
-              <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
-      </div>
+        <div class="c-control">
+            <label class="c-label" for="Name">
+                Kinh phí
+                <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+        </div>
 
-      <div class="c-control">
-          <label class="c-label" for="GhiChu">Ghi chú
-              <span *ngIf="!formGroup.controls.GhiChu.valid && !formGroup.controls.GhiChu.pending && (formGroup.controls.GhiChu.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <textarea rows="3" class="c-input" id="GhiChu" [(ngModel)]="item.GhiChu" formControlName="GhiChu" type="textarea"></textarea>
+        <div class="c-control">
+            <label class="c-label" for="GhiChu">
+                Ghi chú
+                <span *ngIf="!formGroup.controls.GhiChu.valid && !formGroup.controls.GhiChu.pending && (formGroup.controls.GhiChu.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <textarea rows="3" class="c-input" id="GhiChu" [(ngModel)]="item.GhiChu" formControlName="GhiChu" type="textarea"></textarea>
 
-      </div>
+        </div>
 
-      <div class="c-control">
-          <label class="c-label" for="Sort">Thứ tự
-              <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
-                  ion-text color="danger">(*)</span>
-          </label>
-          <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
-      </div>
+        <div class="c-control">
+            <label class="c-label" for="IsManual">
+                Kinh phí nhập tay
+                <span *ngIf="!formGroup.controls.IsManual.valid && !formGroup.controls.IsManual.pending && (formGroup.controls.IsManual.dirty || submitAttempt)"
+                      ion-text></span>
+            </label>
+            <input id="IsManual" [(ngModel)]="item.IsManual" formControlName="IsManual" type="checkbox">
+        </div>
 
-      <div class="c-control" *ngIf="item.ID==0">
-          <label class="c-label" for=""></label>
-          <button ion-button float-right (click)="saveChange()">
-              Lưu
-          </button>
-      </div>
-      <div class="c-control" *ngIf="item.ID!=0">
-          <label class="c-label" for=""></label>
+        <div class="c-control">
+            <label class="c-label" for="Sort">
+                Thứ tự
+                <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
+        </div>
 
-          <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
-              Lưu
-          </button>
-          <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
-              Hủy thay đổi
-          </button>
-      </div>
-  </form>
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
 </ion-content>

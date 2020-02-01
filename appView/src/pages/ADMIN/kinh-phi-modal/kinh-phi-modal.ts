@@ -29,7 +29,8 @@ export class KinhPhiModalPage extends DetailPage {
             Code: ['', Validators.compose([Validators.required])],
             Name: ['', Validators.compose([Validators.required])],
             GhiChu: [''],
-            Sort: ['']
+            Sort: [''],
+            IsManual: false
         });
     }
 

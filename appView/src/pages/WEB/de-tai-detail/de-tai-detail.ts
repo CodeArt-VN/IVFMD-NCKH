@@ -46,8 +46,8 @@ export class DeTaiDetailPage extends BasePage {
   slideOpts: any;
   item: any = {};
   statusHRCO = 'Gửi HRCO';
-  statusHDDD = 'Gửi HDDD';
-  statusHDKH = 'Gửi HDKH';
+  statusHDDD = 'Gửi HĐĐĐ';
+  statusHDKH = 'Gửi HĐKH';
   constructor(
     public currentProvider: PRO_DeTaiCustomProvider,
     public modalCtrl: ModalController,
@@ -72,67 +72,67 @@ export class DeTaiDetailPage extends BasePage {
     }
 
     if (this.id && commonService.isNumeric(this.id)) {
-      this.id = parseInt(this.id, 10);
+            this.id = parseInt(this.id, 10);
+        }
+        this.pageIndex = 0;
     }
-    this.pageIndex = 0;
-  }
 
-  mockupData() {
-    if (this.item.IDTrangThai_HRCO == 19){
-      this.statusHRCO = 'Đang chờ duyệt HRCO';
-  }
-  else if (this.item.IDTrangThai_HRCO == 20) {
-      this.statusHRCO = 'Đã duyệt HRCO';
-  }
-    if (this.item.IDTrangThai_HDDD == 7){
-        this.statusHDDD = 'Đang chờ duyệt HDDD';
+    mockupData() {
+        if (this.item.IDTrangThai_HRCO == 19) {
+            this.statusHRCO = 'Đang chờ HRCO duyệt ';
+        }
+        else if (this.item.IDTrangThai_HRCO == 20) {
+            this.statusHRCO = 'HRCO đã duyệt ';
+        }
+        if (this.item.IDTrangThai_HDDD == 7) {
+            this.statusHDDD = 'Đang chờ HĐĐĐ duyệt ';
+        }
+        else if (this.item.IDTrangThai_HRCO == 8) {
+            this.statusHRCO = 'HĐĐĐ đã duyệt';
+        }
+
+        if (this.item.IDTrangThai_HDKH == 13) {
+            this.statusHDKH = 'Đang chờ HĐKH duyệt ';
+        }
+        else if (this.item.IDTrangThai_HRCO == 14) {
+            this.statusHRCO = 'HĐKH đã duyệt';
+        }
+
+        this.slideListByType = [
+            { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
+            { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng ĐĐ, KH' },
+            { type: 0, index: 2, title: 'Đăng ký Clinical Trial', shortTitle: 'Đăng ký Clinical Trial' },
+            { type: 0, index: 3, title: 'Thu nhận bệnh nhân', shortTitle: 'Thu nhận bệnh nhân' },
+            { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
+        ];
+        this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0 });
+        this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
+        this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
+        this.listForm5 = this.item.ListFormStatus.filter((c) => { return c.Type == 4 });
+
+        this.slideOpts = {
+            pager: false,
+
+            autoHeight: true,
+            calculateHeight: true,
+            slidesPerView: 1,
+            slidesPerColumn: 1,
+            // allowSlidePrev:false,
+            //allowSlideNext: false,
+            // noSwipingClass: 'no-swipe',
+            // noSwiping: true,
+            allowTouchMove: false,
+            // pagination: {
+            //   el: '.swiper-pagination',
+            //   clickable: true,
+            //   paginationClickable: true,
+            //   renderBullet: function (index, className) {
+            //     return '<span class="' + className + '">' + (index + 1) + '</span>';
+            //   },
+            // },
+
+        };
     }
-    else if (this.item.IDTrangThai_HRCO == 8) {
-      this.statusHRCO = 'Đã duyệt HDDD';
-  }
-
-    if (this.item.IDTrangThai_HDKH == 13){
-      this.statusHDKH = 'Đang chờ duyệt HDKH';
-    }
-    else if (this.item.IDTrangThai_HRCO == 14) {
-      this.statusHRCO = 'Đã duyệt HDKH';
-  }
-
-    this.slideListByType = [
-      { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
-      { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng DD,KH' },
-      { type: 0, index: 2, title: 'Đăng ký Clinical Trial', shortTitle: 'Đăng ký Clinical Trial' },
-      { type: 0, index: 3, title: 'Thu nhận bệnh nhân', shortTitle: 'Thu nhận bệnh nhân' },
-      { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
-    ];
-    this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0});
-      this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
-      this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
-      this.listForm5 = this.item.ListFormStatus.filter((c) => { return c.Type == 4 });
-
-    this.slideOpts = {
-      pager: false,
-
-      autoHeight: true,
-      calculateHeight: true,
-      slidesPerView: 1,
-      slidesPerColumn: 1,
-      // allowSlidePrev:false,
-      //allowSlideNext: false,
-      // noSwipingClass: 'no-swipe',
-      // noSwiping: true,
-      allowTouchMove: false,
-      // pagination: {
-      //   el: '.swiper-pagination',
-      //   clickable: true,
-      //   paginationClickable: true,
-      //   renderBullet: function (index, className) {
-      //     return '<span class="' + className + '">' + (index + 1) + '</span>';
-      //   },
-      // },
-
-    };
-  }
     preLoadData() {
       setTimeout(() => {
           this.updateSlides();
@@ -328,6 +328,8 @@ export class DeTaiDetailPage extends BasePage {
               param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
                 break;
             case 8:
+                //page = ThuyeMinhDeTaiModalPage;
+                //param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
                 break;
             case 9:
               page = DonXinNghiemThuModalPage;
@@ -367,7 +369,7 @@ export class DeTaiDetailPage extends BasePage {
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
             });
       })
     };

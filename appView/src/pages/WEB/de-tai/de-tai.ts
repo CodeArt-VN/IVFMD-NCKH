@@ -58,6 +58,12 @@ export class DeTaiPage extends ListPage {
         myModal.present();
     }
 
+    loadedData() {
+        this.items.forEach((i) => {
+            i.NgayTaoText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
+        })
+    }
+
     add() {
         let item = {
             ID: 0,

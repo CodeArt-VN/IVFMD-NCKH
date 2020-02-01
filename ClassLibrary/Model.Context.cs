@@ -26,6 +26,7 @@ namespace ClassLibrary
         }
     
         public virtual DbSet<tbl_CAT_BangGiaKinhPhi> tbl_CAT_BangGiaKinhPhi { get; set; }
+        public virtual DbSet<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
         public virtual DbSet<tbl_CAT_KinhPhi> tbl_CAT_KinhPhi { get; set; }
         public virtual DbSet<tbl_CAT_Nhom> tbl_CAT_Nhom { get; set; }
         public virtual DbSet<tbl_CAT_Site> tbl_CAT_Site { get; set; }
@@ -41,6 +42,7 @@ namespace ClassLibrary
         public virtual DbSet<tbl_CUS_HRM_LIST_BoPhan> tbl_CUS_HRM_LIST_BoPhan { get; set; }
         public virtual DbSet<tbl_CUS_HRM_LIST_ChucDanh> tbl_CUS_HRM_LIST_ChucDanh { get; set; }
         public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu> tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
         public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_LLKH> tbl_CUS_HRM_STAFF_NhanSu_LLKH { get; set; }
         public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_SYLL> tbl_CUS_HRM_STAFF_NhanSu_SYLL { get; set; }
         public virtual DbSet<tbl_CUS_SYS_CauHinhHeThong> tbl_CUS_SYS_CauHinhHeThong { get; set; }
@@ -55,11 +57,15 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PRO_AE> tbl_PRO_AE { get; set; }
         public virtual DbSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
         public virtual DbSet<tbl_PRO_BaoCaoNangSuatKhoaHoc> tbl_PRO_BaoCaoNangSuatKhoaHoc { get; set; }
+        public virtual DbSet<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
+        public virtual DbSet<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
         public virtual DbSet<tbl_PRO_BenhNhan> tbl_PRO_BenhNhan { get; set; }
         public virtual DbSet<tbl_PRO_DeTai> tbl_PRO_DeTai { get; set; }
         public virtual DbSet<tbl_PRO_DonXinDanhGiaDaoDuc> tbl_PRO_DonXinDanhGiaDaoDuc { get; set; }
         public virtual DbSet<tbl_PRO_DonXinNghiemThu> tbl_PRO_DonXinNghiemThu { get; set; }
         public virtual DbSet<tbl_PRO_DonXinXetDuyet> tbl_PRO_DonXinXetDuyet { get; set; }
+        public virtual DbSet<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
+        public virtual DbSet<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         public virtual DbSet<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
         public virtual DbSet<tbl_PRO_MauPhanTichDuLieu> tbl_PRO_MauPhanTichDuLieu { get; set; }
         public virtual DbSet<tbl_PRO_NCVKhac> tbl_PRO_NCVKhac { get; set; }
@@ -85,11 +91,5 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
-        public virtual DbSet<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
-        public virtual DbSet<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
-        public virtual DbSet<tbl_CUS_HRM_STAFF_NhanSu_HOSREM> tbl_CUS_HRM_STAFF_NhanSu_HOSREM { get; set; }
-        public virtual DbSet<tbl_PRO_BaoCaoTienDoNghienCuu> tbl_PRO_BaoCaoTienDoNghienCuu { get; set; }
-        public virtual DbSet<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
-        public virtual DbSet<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
     }
 }

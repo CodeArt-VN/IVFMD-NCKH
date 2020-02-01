@@ -15,6 +15,8 @@ namespace DTOModel
         public string TrangThai_NghiemThu { get; set; }
         public List<DTO_PRO_DeTai_TrangThai> ListFormStatus { get; set; }
         public string ActionCode { get; set; }
+        public string NCVChinh { get; set; }
+        public string ChuNhiemDeTai { get; set; }
     }
 
     public class DTO_PRO_DeTai_TrangThai
