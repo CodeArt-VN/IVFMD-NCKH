@@ -53,28 +53,34 @@
 
         <ion-col class="doc-main">
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items" [selected]="selected"
-                [selectionType]="'single'" (select)='onSelect($event)'>
-
+                           [selectionType]="'single'" (select)='onSelect($event)'>
+                <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="openDetailPage(i)">
+                            Chi tiết
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
                 <ngx-datatable-column name="Tên đề tài" prop="DeTai" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetail(i)">
-                          {{i.DeTai}}
-                      </a>
+                            {{i.DeTai}}
+                        </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="" prop="" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="openDetailPage(i)">
-                          Chi tiết
-                      </a>
-                    </ng-template>
-                </ngx-datatable-column>
+                <ngx-datatable-column name="NCV Chính" prop="NCVChinh"></ngx-datatable-column>
+                <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HRCO" prop="TrangThai_HRCO"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HDDD" prop="TrangThai_HDDD"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HDKH" prop="TrangThai_HDKH"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái Nghiệm thu" prop="TrangThai_NghiemThu"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Mô tả" prop="GhiChu"></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày tạo" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.NgayTaoText}}
+                    </ng-template>
+                </ngx-datatable-column>
             </ngx-datatable>
 
 
