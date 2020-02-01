@@ -109,7 +109,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         $(".ptable").on("click", ".remove", function (e) {
             var target = window.getSelection().anchorNode;
             var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-            if (sconf != null && (target.parentElement.tagName == "TD" || target.tagName == "TD")) {
+            if (sconf != null && (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TD")) {
                 try {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
