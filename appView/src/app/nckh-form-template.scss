@@ -73,18 +73,14 @@
     .pblock {
         margin-top: 5px;
         margin-bottom: 5px;
-        border: 1px dashed transparent;
 
         &:hover {
-            border-width: 1px;
         }
     }
 
     .prow {
-        border: 1px dashed transparent;
-
         &:hover {
-            border: 1px dashed #44a9eb;
+            box-shadow: 0px 0px 2px #44a9eb;
         }
     }
 

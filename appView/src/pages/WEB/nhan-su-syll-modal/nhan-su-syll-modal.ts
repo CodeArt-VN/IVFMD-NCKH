@@ -96,8 +96,38 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 try {
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
-                        var context = ko.contextFor(this);
-                        context.$root.addItem(conf.name, conf.props);
+                        var target = window.getSelection().anchorNode;
+                        if (!target) {
+                            var context = ko.contextFor(this);
+                            context.$root.addItem(conf.name, conf.props);
+                        }
+                        // @ts-ignore
+                        else {
+                            var sconf1 = $(target).closest(".pconf").attr("conf");
+                            if (sconf1 == null) {
+                                var context = ko.contextFor(this);
+                                context.$root.addItem(conf.name, conf.props);
+                            } else {
+                                try {
+                                    var conf1 = JSON.parse(sconf1);
+                                    if (conf1.name === conf.name) {
+                                        if (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR") {
+                                            var tr = $(target).closest('tr');
+                                            var context = ko.contextFor(this);
+                                            context.$root.addItem(conf.name, conf.props, tr.attr('index'));
+                                        } else if ($(target).closest('.prow')) {
+                                            var row = $(target).closest('.prow');
+                                            var context = ko.contextFor(this);
+                                            context.$root.addItem(conf.name, conf.props, row.attr('index'));
+                                        }
+                                    } else {
+                                        var context = ko.contextFor(this);
+                                        context.$root.addItem(conf.name, conf.props);
+                                    }
+                                } catch (e) {
+                                }
+                            }
+                        }
                     }
                     return false;
                 } catch (e) {
@@ -108,37 +138,45 @@ export class NhanSuSYLLModalPage extends DetailPage {
         });
         $(".ptable").on("click", ".remove", function (e) {
             var target = window.getSelection().anchorNode;
-            var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-            if (sconf != null && (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TD")) {
-                try {
-                    var conf = JSON.parse(sconf);
-                    if (conf.add) {
-                        var tr = $(target).closest('tr');
-                        var context = ko.contextFor(this);
-                        context.$root.removeItem(conf.name, tr.attr('index'));
+            if (target) {
+                var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
+                var sconf1 = $(target).closest(".ptable").attr("conf");
+                if (sconf != null && sconf1 != null && (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR")) {
+                    try {
+                        var conf = JSON.parse(sconf);
+                        var conf1 = JSON.parse(sconf1);
+                        if (conf.name === conf1.name && conf.add) {
+                            var tr = $(target).closest('tr');
+                            var context = ko.contextFor(this);
+                            context.$root.removeItem(conf.name, tr.attr('index'));
+                        }
+                        return false;
+                    } catch (e) {
+                        console.error(e);
+                        return false;
                     }
-                    return false;
-                } catch (e) {
-                    console.error(e);
-                    return false;
                 }
             }
         });
         $(".pblock").on("click", ".remove", function (e) {
             var target = window.getSelection().anchorNode;
-            var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
-            if (sconf != null) {
-                try {
-                    var conf = JSON.parse(sconf);
-                    if (conf.remove) {
-                        var row = $(target).closest('.prow');
-                        var context = ko.contextFor(this);
-                        context.$root.removeItem(conf.name, row.attr('index'));
+            if (target) {
+                var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
+                var sconf1 = $(target).closest(".pconf").attr("conf");
+                if (sconf != null && sconf1 != null) {
+                    try {
+                        var conf = JSON.parse(sconf);
+                        var conf1 = JSON.parse(sconf1);
+                        if (conf.name === conf1.name && conf.add) {
+                            var row = $(target).closest('.prow');
+                            var context = ko.contextFor(this);
+                            context.$root.removeItem(conf.name, row.attr('index'));
+                        }
+                        return false;
+                    } catch (e) {
+                        console.error(e);
+                        return false;
                     }
-                    return false;
-                } catch (e) {
-                    console.error(e);
-                    return false;
                 }
             }
         });
@@ -189,6 +227,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
                         var t = $(this).find(".group_controls");
                         if (t.length == 0) {
                             pblockPopConrtrol.appendTo($(this));
+                            event.stopPropagation()
                         }
                     }
                 }
@@ -200,7 +239,8 @@ export class NhanSuSYLLModalPage extends DetailPage {
             var t = $(this).find(".group_controls");
             t.detach();
         });
-        $(".prow").mouseenter(function (event) {
+
+        $(".pblock").on("mouseenter", ".prow", function (event) {
             try {
                 var sconf = this.attributes["conf"].value;
                 if (sconf != null) {
@@ -216,7 +256,8 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 console.error(e);
                 return false;
             }
-        }).mouseleave(function (event) {
+        });
+        $(".pblock").on("mouseleave", ".prow", function (event) {
             var t = $(this).find(".group_controls");
             t.detach();
         });
@@ -258,21 +299,38 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 };
             }));
 
-            self.addItem = function (name, props) {
-                if (self[name]) {
-                    var obj = {};
-                    $.each(props || [], function (i, o) {
-                        obj[o] = ko.observable("");
-                    })
-                    self[name].push(ko.observable(obj));
+            self.addItem = function (name, props, index) {
+                try {
+                    if (self[name]) {
+                        var obj;
+                        if (Array.isArray(props)) {
+                            obj = {};
+                            $.each(props || [], function (i, o) {
+                                obj[o] = ko.observable("");
+                            })
+                        } else {
+                            obj = "";
+                        }
+                        if (index)
+                            index = parseInt(index);
+                        if (index > -1 && index < self[name]().length) {
+                            self[name].splice(index + 1, 0, ko.observable(obj));
+                        } else {
+                            self[name].push(ko.observable(obj));
+                        }
+                    }
+                } catch (e) {
+                    console.error(e);
                 }
             };
 
             self.removeItem = function (name, index) {
-                debugger
-                if (self[name])
-                    var idx = parseInt(index);
-                self[name].splice(idx, 1);
+                try {
+                    if (self[name]().length > 1)
+                        self[name].splice(parseInt(index), 1);
+                } catch (e) {
+                    console.error(e);
+                }
             };
 
             self.savedJson = ko.observable("");
