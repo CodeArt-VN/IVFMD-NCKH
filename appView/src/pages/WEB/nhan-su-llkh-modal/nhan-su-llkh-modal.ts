@@ -326,12 +326,22 @@ export class NhanSuLLKHModalPage extends DetailPage {
                 };
             }));
 
-            self.ListNgoaiNgu = ko.observableArray(ko.utils.arrayMap(item.ListNgoaiNgu || [{}, {}, {}, {}], function (nn) {
+            self.ListNgoaiNgu = ko.observableArray(ko.utils.arrayMap(item.ListNgoaiNgu || [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}], function (nn) {
                 return {
-                    Nghe: ko.observable(nn.Nghe || ""),
-                    Noi: ko.observable(nn.Noi || ""),
-                    Viet: ko.observable(nn.Viet || ""),
-                    Doc: ko.observable(nn.Doc || "")
+                    NgoaiNgu: ko.observable(nn.NgoaiNgu || ""),
+                    NgheTot: ko.observable(nn.NgheTot || ""),
+                    NgheKha: ko.observable(nn.NgheKha || ""),
+                    NgheTB: ko.observable(nn.NgheTB || ""),
+                    NoiTot: ko.observable(nn.NoiTot || ""),
+                    NoiKha: ko.observable(nn.NoiKha || ""),
+                    NoiTB: ko.observable(nn.NoiTB || ""),
+                    VietTot: ko.observable(nn.VietTot || ""),
+                    VietKha: ko.observable(nn.VietKha || ""),
+                    VietTB: ko.observable(nn.VietTB || ""),
+                    DocTot: ko.observable(nn.DocTot || ""),
+                    DocKha: ko.observable(nn.DocKha || ""),
+                    DocTB: ko.observable(nn.DocTB || "")
+
                 };
             }));
             

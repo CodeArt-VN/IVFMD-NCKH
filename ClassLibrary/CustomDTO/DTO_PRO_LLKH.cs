@@ -28,18 +28,26 @@ namespace DTOModel
     public class DTO_PRO_LLKH_NgoaiNgu
     {
         public string NgoaiNgu { get; set; }
-        public DTO_PRO_LLKH_NgoaiNgu_ChiTiet Nghe { get; set; }
-        public DTO_PRO_LLKH_NgoaiNgu_ChiTiet Noi { get; set; }
-        public DTO_PRO_LLKH_NgoaiNgu_ChiTiet Viet { get; set; }
-        public DTO_PRO_LLKH_NgoaiNgu_ChiTiet Doc { get; set; }
+        public string NgheTot { get; set; }
+        public string NgheKha { get; set; }
+        public string NgheTB { get; set; }
+        public string NoiTot { get; set; }
+        public string NoiKha { get; set; }
+        public string NoiTB { get; set; }
+        public string VietTot { get; set; }
+        public string VietKha { get; set; }
+        public string VietTB { get; set; }
+        public string DocTot { get; set; }
+        public string DocKha { get; set; }
+        public string DocTB { get; set; }
     }
 
-    public class DTO_PRO_LLKH_NgoaiNgu_ChiTiet
-    {
-        public bool Tot { get; set; }
-        public bool Kha { get; set; }
-        public bool TB { get; set; }
-    }
+    //public class DTO_PRO_LLKH_NgoaiNgu_ChiTiet
+    //{
+    //    public bool Tot { get; set; }
+    //    public bool Kha { get; set; }
+    //    public bool TB { get; set; }
+    //}
 
     public class DTO_PRO_LLKH_ThoiGianCongTac
     {
