@@ -1,18 +1,18 @@
-﻿import { Component, } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { ListPage } from '../../list-page';
-import { PRO_BaoCaoNangSuatKhoaHocCustomProvider } from '../../../providers/Services/CustomService';
-import { BaoCaoNangSuatKhoaHocModalPage } from '../bao-cao-nang-suat-khoa-hoc-modal/bao-cao-nang-suat-khoa-hoc-modal';
-@IonicPage({ name: 'page-bao-cao-nang-suat-khoa-hoc', segment: 'bao-cao-nang-suat-khoa-hoc', priority: 'high' }) 
-@Component({ selector: 'page-bao-cao-nang-suat-khoa-hoc', templateUrl: 'bao-cao-nang-suat-khoa-hoc.html' })
-export class BaoCaoNangSuatKhoaHocPage extends ListPage {
+import { PRO_HoiNghiHoiThaoCustomProvider } from '../../../providers/Services/CustomService';
+import { HoiNghiHoiThaoModalPage } from '../hoi-nghi-hoi-thao-modal/hoi-nghi-hoi-thao-modal';
+
+@IonicPage({ name: 'page-hoi-nghi-hoi-thao', segment: 'hoi-nghi-hoi-thao', priority: 'high' }) 
+@Component({ selector: 'page-hoi-nghi-hoi-thao', templateUrl: 'hoi-nghi-hoi-thao.html' })
+export class HoiNghiHoiThaoPage extends ListPage {
     FormGroups = [];
     canApprove = false;
     constructor(
-        public currentProvider: PRO_BaoCaoNangSuatKhoaHocCustomProvider,
-
+        public currentProvider: PRO_HoiNghiHoiThaoCustomProvider,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -23,11 +23,11 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
         public commonService: CommonServiceProvider,
         public accountService: AccountServiceProvider
     ) {
-        super('page-bao-cao-nang-suat-khoa-hoc', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
+        super('page-hoi-nghi-hoi-thao', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
     }
     
     preLoadData(){
-        this.canApprove = this.isUserCanUse('page-bao-cao-nang-suat-khoa-hoc-hrco');
+        this.canApprove = this.isUserCanUse('page-hoi-nghi-hoi-thao-hrco');
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
         super.preLoadData();
     }
@@ -38,13 +38,13 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     }
 
     openDetail(item) {
-        let myModal = this.modalCtrl.create(BaoCaoNangSuatKhoaHocModalPage, { 'id': item.ID });
+        let myModal = this.modalCtrl.create(HoiNghiHoiThaoModalPage, { 'id': item.ID });
         myModal.present();
     }
 
-    approve(item) {
+    action(item, actionCode) {
         this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.updateStatus(item.ID, "Approved").then((savedItem: any) => {
+            this.currentProvider.updateStatus(item.ID, actionCode).then((savedItem: any) => {
                 if (this.loading) this.loading.dismiss();
                 this.events.publish('app:Update' + this.pageName);
                 console.log('publish => app:Update ' + this.pageName);
@@ -59,9 +59,34 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
 
     loadedData() {
         this.items.forEach((i) => {
-            i.NgayBaoCaoText = this.commonService.dateFormat(i.NgayBaoCao, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
+            i.ThoiGianText = this.commonService.dateFormat(i.ThoiGian, 'dd/mm/yy hh:MM');
+            i.CreatedDateText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');
         })
     }
+
+    uploadCVHosrem(item) {
+
+    }
+
+    downloadBaiAbstract(item) {
+
+    }
+
+    uploadBaiAbstract(item) {
+        this.showActionMore = false;
+        debugger
+        this.importfile.nativeElement.value = "";
+        this.importfile.nativeElement.click();
+    }
+
+    downloadBaiFulltext(item) {
+
+    }
+
+    uploadBaiFulltext(item) {
+
+    }
+
 
     add() {
         let item = {

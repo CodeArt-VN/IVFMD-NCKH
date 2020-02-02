@@ -193,7 +193,7 @@ namespace BaseBusiness
             });
         }
 
-        public static DTO_PRO_BaoCaoNangSuatKhoaHoc save_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int StaffID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
+        public static DTO_PRO_BaoCaoNangSuatKhoaHoc postCustom_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int StaffID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
         {
             tbl_PRO_BaoCaoNangSuatKhoaHoc dbitem = new tbl_PRO_BaoCaoNangSuatKhoaHoc();
             if (item != null)
@@ -250,6 +250,48 @@ namespace BaseBusiness
             }
             return item;
         }
+
+        public static string putCustom_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int ID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
+        {
+            string result = string.Empty;
+            var dbitem = db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Find(ID);
+            if (dbitem != null)
+            {
+                dbitem.IDDeTai = item.IDDeTai;
+                dbitem.IDNhom = item.IDNhom;
+                dbitem.IDSite = item.IDSite;
+                dbitem.TenDeTai = item.TenDeTai;
+                dbitem.NgayBaoCao = item.NgayBaoCao;
+                dbitem.TapChiHoiNghi = item.TapChiHoiNghi;
+                dbitem.IsDisabled = item.IsDisabled;
+                dbitem.IsDeleted = item.IsDeleted;
+                dbitem.IDKinhPhi = item.IDKinhPhi;
+                dbitem.KinhPhi = item.KinhPhi;
+                dbitem.IDNCV = item.IDNCV;
+                dbitem.IsApproved = item.IsApproved;
+                dbitem.ApprovedDate = item.ApprovedDate;
+
+                if (item.IsApproved)
+                    return "Kinh phí đã duyệt, không thể chỉnh sửa";
+
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BaoCaoNangSuatKhoaHoc", DateTime.Now, Username);
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("put_PRO_BaoCaoNangSuatKhoaHoc", e);
+                    result = e.InnerException.Message;
+                }
+            }
+            return result;
+        }
+
 
         public static string updateStatus_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int ID, string ActionCode, string Username)
         {

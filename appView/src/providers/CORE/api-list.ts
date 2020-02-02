@@ -996,6 +996,33 @@ export var APIListBase = {
             url: function (id, actionCode) { return appSetting.apiDomain("PRO/BaoCaoNangSuatKhoaHoc/updateStatus_PRO_BaoCaoNangSuatKhoaHoc/") + id + "/" + actionCode }
         },
     },
+
+    PRO_HoiNghiHoiThao: {
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/") + id }
+        },
+        getList: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/") }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThao") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/") + id }
+        },
+        updateStatus: {
+            method: "POST",
+            url: function (id, actionCode) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/updateStatus_PRO_HoiNghiHoiThao/") + id + "/" + actionCode }
+        },
+    },
     
     SYS_Var:{
         getList:{

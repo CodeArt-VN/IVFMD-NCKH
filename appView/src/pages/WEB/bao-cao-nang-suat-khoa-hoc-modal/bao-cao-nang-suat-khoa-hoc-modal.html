@@ -35,7 +35,7 @@
             <mat-datepicker #myDatepicker></mat-datepicker>
         </div>
 
-        <!--<div class="c-control">
+        <div class="c-control">
             <label class="c-label" for="IDNhom">
                 Nhóm
                 <span *ngIf="!formGroup.controls.IDNhom.valid && !formGroup.controls.IDNhom.pending && (formGroup.controls.IDNhom.dirty || submitAttempt)"
@@ -69,7 +69,7 @@
             <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi">
                 <option *ngFor="let t of kinhphis" [value]="t.ID">{{t.Name}}</option>
             </select>
-        </div>-->
+        </div>
 
         <div class="c-control">
             <label class="c-label" for="KinhPhi">

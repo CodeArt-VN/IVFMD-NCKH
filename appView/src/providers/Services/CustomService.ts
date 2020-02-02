@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider } from '../Services/Services';
+import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider, PRO_BaoCaoNangSuatKhoaHocProvider, PRO_HoiNghiHoiThaoProvider } from '../Services/Services';
 import { CommonServiceProvider } from '../CORE/common-service';
 import { APIList } from '../CORE/global-variable';
 import { SearchConfig } from './SearchConfig';
@@ -592,6 +592,46 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
         let apiPath = APIList.PRO_DeTai.updateNCT;
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(deTaiId, soNCT), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_HoiNghiHoiThaoCustomProvider extends PRO_HoiNghiHoiThaoProvider {
+    constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+    updateStatus(id, actionCode) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThao.updateStatus;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(id, actionCode), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_BaoCaoNangSuatKhoaHocCustomProvider extends PRO_BaoCaoNangSuatKhoaHocProvider {
+    constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+    updateStatus(id, actionCode) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoNangSuatKhoaHoc.updateStatus;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(id, actionCode), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })

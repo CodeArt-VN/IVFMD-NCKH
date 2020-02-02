@@ -16,39 +16,39 @@ using Microsoft.AspNet.Identity;
 
 namespace API.Controllers.PRO
 {
-    [RoutePrefix("api/PRO/BaoCaoNangSuatKhoaHoc")]
-    public class BaoCaoNangSuatKhoaHocController : CustomApiController
+    [RoutePrefix("api/PRO/HoiNghiHoiThao")]
+    public class HoiNghiHoiThaoController : CustomApiController
     {
         [Route("")]
-        public IQueryable<DTO_PRO_BaoCaoNangSuatKhoaHoc> Get()
+        public IQueryable<DTO_PRO_HoiNghiHoiThao> Get()
         {
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            return BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocCustom(db, user.StaffID, QueryStrings);
+            return BS_PRO_HoiNghiHoiThao.get_PRO_HoiNghiHoiThaoCustom(db, user.StaffID, QueryStrings);
         }
 
-        [Route("{id:int}", Name = "get_PRO_BaoCaoNangSuatKhoaHoc")]
-        [ResponseType(typeof(DTO_PRO_BaoCaoNangSuatKhoaHoc))]
+        [Route("{id:int}", Name = "get_PRO_HoiNghiHoiThao")]
+        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
         public IHttpActionResult Get(int id)
         {
-            DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHoc(db, id);
-            if (tbl_PRO_BaoCaoNangSuatKhoaHoc == null)
+            DTO_PRO_HoiNghiHoiThao tbl_PRO_HoiNghiHoiThao = BS_PRO_HoiNghiHoiThao.get_PRO_HoiNghiHoiThao(db, id);
+            if (tbl_PRO_HoiNghiHoiThao == null)
             {
                 return NotFound();
             }
 
-            return Ok(tbl_PRO_BaoCaoNangSuatKhoaHoc);
+            return Ok(tbl_PRO_HoiNghiHoiThao);
         }
 
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(int id, DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc)
+        public IHttpActionResult Put(int id, DTO_PRO_HoiNghiHoiThao tbl_PRO_HoiNghiHoiThao)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != tbl_PRO_BaoCaoNangSuatKhoaHoc.ID)
+            if (id != tbl_PRO_HoiNghiHoiThao.ID)
             {
                 return BadRequest();
             }
@@ -56,17 +56,17 @@ namespace API.Controllers.PRO
             if (user.StaffID <= 0)
                 return BadRequest("Chưa tạo nhân sự cho tài khoản");
 
-            string res = BS_PRO_BaoCaoNangSuatKhoaHoc.putCustom_PRO_BaoCaoNangSuatKhoaHoc(db, id, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
+            bool res = BS_PRO_HoiNghiHoiThao.putCustom_PRO_HoiNghiHoiThao(db, id, tbl_PRO_HoiNghiHoiThao, Username);
 
-            if (string.IsNullOrEmpty(res))
+            if (res)
                 return StatusCode(HttpStatusCode.NoContent);
             else
-                return BadRequest(res);
+                return NotFound();
         }
 
         [Route("")]
-        [ResponseType(typeof(DTO_PRO_BaoCaoNangSuatKhoaHoc))]
-        public IHttpActionResult Post(DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc)
+        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
+        public IHttpActionResult Post(DTO_PRO_HoiNghiHoiThao tbl_PRO_HoiNghiHoiThao)
         {
             if (!ModelState.IsValid)
             {
@@ -76,41 +76,42 @@ namespace API.Controllers.PRO
             if (user.StaffID <= 0)
                 return BadRequest("Tài khoản chưa tạo nhân sự, không thể tạo mới");
 
-            DTO_PRO_BaoCaoNangSuatKhoaHoc result = BS_PRO_BaoCaoNangSuatKhoaHoc.postCustom_PRO_BaoCaoNangSuatKhoaHoc(db, user.StaffID, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
+            tbl_PRO_HoiNghiHoiThao.IDTrangThai = -(int)SYSVarType.TrangThai_HNHT_ChoGui;
+            DTO_PRO_HoiNghiHoiThao result = BS_PRO_HoiNghiHoiThao.postCustom_PRO_HoiNghiHoiThao(db, tbl_PRO_HoiNghiHoiThao, Username);
 
             if (result != null)
             {
-                return CreatedAtRoute("get_PRO_BaoCaoNangSuatKhoaHoc", new { id = result.ID }, result);
+                return CreatedAtRoute("get_PRO_HoiNghiHoiThao", new { id = result.ID }, result);
             }
             return Conflict();
         }
 
-        [Route("updateStatus_PRO_BaoCaoNangSuatKhoaHoc/{id:int}/{actionCode}")]
+        [Route("updateStatus_PRO_HoiNghiHoiThao/{id:int}/{actionCode}")]
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult UpdateStatus(int id, string actionCode)
         {
-            var result = BS_PRO_BaoCaoNangSuatKhoaHoc.updateStatus_PRO_BaoCaoNangSuatKhoaHoc(db, id, actionCode, Username);
+            var result = BS_PRO_HoiNghiHoiThao.updateStatus_PRO_HoiNghiHoiThao(db, id, actionCode, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
-            DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHoc(db, id);
-            if (tbl_PRO_BaoCaoNangSuatKhoaHoc == null)
+            DTO_PRO_HoiNghiHoiThao tbl_PRO_HoiNghiHoiThao = BS_PRO_HoiNghiHoiThao.get_PRO_HoiNghiHoiThao(db, id);
+            if (tbl_PRO_HoiNghiHoiThao == null)
             {
                 return NotFound();
             }
-            return Ok(tbl_PRO_BaoCaoNangSuatKhoaHoc);
+            return Ok(tbl_PRO_HoiNghiHoiThao);
         }
 
         [Route("{id:int}")]
-        [ResponseType(typeof(DTO_PRO_BaoCaoNangSuatKhoaHoc))]
+        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_BaoCaoNangSuatKhoaHoc.check_PRO_BaoCaoNangSuatKhoaHoc_Exists(db, id);
+            bool check = BS_PRO_HoiNghiHoiThao.check_PRO_HoiNghiHoiThao_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_BaoCaoNangSuatKhoaHoc.delete_PRO_BaoCaoNangSuatKhoaHoc(db, id, Username);
+            bool result = BS_PRO_HoiNghiHoiThao.delete_PRO_HoiNghiHoiThao(db, id, Username);
 
             if (result)
             {
