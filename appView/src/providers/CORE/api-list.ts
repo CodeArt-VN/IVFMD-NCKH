@@ -1241,7 +1241,11 @@ export var APIListBase = {
 		getListByDeTai:{
             method: "GET",
             url: function(deTaiId){return appSetting.apiDomain("PRO/BenhNhan/get_PRO_BenhNhanByDeTai/") + deTaiId}  
-        }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/BenhNhan/save_PRO_BenhNhan")}
+        },
     },
 
     HRM_BenhNhan:{
