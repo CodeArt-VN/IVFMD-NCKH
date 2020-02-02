@@ -48,6 +48,7 @@ export class DeTaiDetailPage extends BasePage {
   statusHRCO = 'Gửi HRCO';
   statusHDDD = 'Gửi HĐĐĐ';
   statusHDKH = 'Gửi HĐKH';
+  canApprove = false;
   constructor(
     public currentProvider: PRO_DeTaiCustomProvider,
     public modalCtrl: ModalController,
@@ -134,10 +135,16 @@ export class DeTaiDetailPage extends BasePage {
         };
     }
     preLoadData() {
+        this.canApprove = this.isUserCanUse('page-de-tai-hrco');
       setTimeout(() => {
           this.updateSlides();
       }, 300);
       super.preLoadData();
+    }
+
+    isUserCanUse(functionCode) {
+        let menus = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        return menus[0].Forms.findIndex(d => d.Code == functionCode) > -1;
     }
 
     loadData() {

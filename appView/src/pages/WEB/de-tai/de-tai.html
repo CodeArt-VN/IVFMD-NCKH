@@ -21,9 +21,6 @@
 
         <span class="split" *ngIf="selected.length"></span>
 
-        <button ion-button icon-only clear *ngIf="selected.length" (click)="copy()">
-          <ion-icon name="ios-copy"></ion-icon>
-      </button>
         <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
           <ion-icon name="ios-create"></ion-icon>
       </button>
@@ -71,8 +68,8 @@
                 <ngx-datatable-column name="NCV Chính" prop="NCVChinh"></ngx-datatable-column>
                 <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HRCO" prop="TrangThai_HRCO"></ngx-datatable-column>
-                <ngx-datatable-column name="Trạng thái HDDD" prop="TrangThai_HDDD"></ngx-datatable-column>
-                <ngx-datatable-column name="Trạng thái HDKH" prop="TrangThai_HDKH"></ngx-datatable-column>
+                <ngx-datatable-column name="Trạng thái HĐĐĐ" prop="TrangThai_HDDD"></ngx-datatable-column>
+                <ngx-datatable-column name="Trạng thái HĐKH" prop="TrangThai_HDKH"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái Nghiệm thu" prop="TrangThai_NghiemThu"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Mô tả" prop="GhiChu"></ngx-datatable-column>
