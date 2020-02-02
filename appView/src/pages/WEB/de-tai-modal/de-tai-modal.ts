@@ -169,12 +169,12 @@ export class DeTaiModalPage extends DetailPage {
         });
     }
 
-    addBN() {
+    addBN(isNew) {
         let item = {
             ID: 0,
             
         };
-        let modal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id });
+        let modal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': isNew });
         modal.present();
     }
 

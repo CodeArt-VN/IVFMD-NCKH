@@ -175,8 +175,8 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
             
             self.TaiKhoan_MST = ko.observable(item.TaiKhoan_MST || "");
-            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_STK || "");
-            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_NganHang || "");
+            self.TaiKhoan_STK = ko.observable(item.TaiKhoan_STK || "");
+            self.TaiKhoan_NganHang = ko.observable(item.TaiKhoan_NganHang || "");
 
 
             self.CMND = ko.observable(item.CMND || "");

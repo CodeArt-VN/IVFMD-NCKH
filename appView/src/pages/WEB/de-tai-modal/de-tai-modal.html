@@ -172,10 +172,13 @@
                           <ion-icon name="refresh"></ion-icon>
                       </button>
 
-                <button color="success" ion-button icon-only clear (click)="addBN()">
-                          <ion-icon name="ios-add-circle"></ion-icon>
+                <button color="success" ion-button icon-only clear (click)="addBN(0)">
+                          <ion-icon name="ios-search"></ion-icon>
                       </button>
 
+                <button color="success" ion-button icon-only clear (click)="addBN(1)">
+                        <ion-icon name="ios-add-circle"></ion-icon>
+                    </button>
                 <span class="split" *ngIf="lstBNSelected.length"></span>
 
                 <button ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="openDetailBN(lstBNSelected[0])">

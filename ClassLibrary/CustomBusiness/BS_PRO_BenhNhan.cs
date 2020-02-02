@@ -38,5 +38,67 @@ namespace BaseBusiness
             });
 
         }
+
+        public static DTO_PRO_BenhNhan save_PRO_BenhNhan(AppEntities db, DTO_PRO_BenhNhan item, string Username)
+        {
+            tbl_PRO_BenhNhan dbitem = new tbl_PRO_BenhNhan();
+            if (item != null)
+            {
+                tbl_CUS_HRM_BenhNhan dbitem1 = new tbl_CUS_HRM_BenhNhan();
+                dbitem1.MaBenhNhan = item.MaBenhNhan;
+                dbitem1.HoTen = item.TenBenhNhan;
+                dbitem1.GioiTinh = item.GioiTinh;
+                dbitem1.IsDisabled = item.IsDisabled;
+                dbitem1.IsDeleted = item.IsDeleted;
+
+                dbitem1.CreatedBy = Username;
+                dbitem1.CreatedDate = DateTime.Now;
+
+                dbitem1.ModifiedBy = Username;
+                dbitem1.ModifiedDate = DateTime.Now;
+
+                db.tbl_CUS_HRM_BenhNhan.Add(dbitem1);
+                db.SaveChanges();
+
+                BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_BenhNhan", DateTime.Now, Username);
+
+                dbitem.IDDeTai = item.IDDeTai;
+                dbitem.IDBenhNhan = dbitem1.ID;
+                dbitem.IsDisabled = item.IsDisabled;
+                dbitem.IsDeleted = item.IsDeleted;
+
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+
+                try
+                {
+                    db.tbl_PRO_BenhNhan.Add(dbitem);
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BenhNhan", DateTime.Now, Username);
+
+
+                    item.ID = dbitem.ID;
+
+                    item.CreatedBy = dbitem.CreatedBy;
+                    item.CreatedDate = dbitem.CreatedDate;
+
+                    item.ModifiedBy = dbitem.ModifiedBy;
+                    item.ModifiedDate = dbitem.ModifiedDate;
+
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("post_PRO_BenhNhan", e);
+                    item = null;
+                }
+            }
+            return item;
+        }
+
     }
 }

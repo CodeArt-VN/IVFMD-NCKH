@@ -100,5 +100,24 @@ namespace API.Controllers.PRO
         {
             return BS_PRO_BenhNhan.get_PRO_BenhNhanByDeTai(db, deTaiId);
         }
+
+        [Route("save_PRO_BenhNhan")]
+        [ResponseType(typeof(DTO_PRO_BenhNhan))]
+        public IHttpActionResult Save(DTO_PRO_BenhNhan tbl_PRO_BenhNhan)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_PRO_BenhNhan result = BS_PRO_BenhNhan.save_PRO_BenhNhan(db, tbl_PRO_BenhNhan, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

@@ -7,7 +7,7 @@
 <ion-content>
     <form [formGroup]="formGroup">
         <div padding></div>
-        <div class="c-control">
+        <div class="c-control" *ngIf="isNew==0">
             <label class="c-label" for="IDBenhNhan">Bệnh nhân
         <span
             *ngIf="!formGroup.controls.IDBenhNhan.valid && !formGroup.controls.IDBenhNhan.pending && (formGroup.controls.IDBenhNhan.dirty || submitAttempt)"
@@ -18,12 +18,48 @@
         <option *ngFor="let t of benhNhans" [value]="t.ID">{{t.HoTen}}</option>
     </select>
         </div>
-        <div class="c-control" *ngIf="item.ID==0">
+
+        <div class="c-control" *ngIf="isNew==1">
+            <label class="c-label" for="MaBenhNhan">Mã bệnh nhân
+          <span
+              *ngIf="!formGroup.controls.MaBenhNhan.valid && !formGroup.controls.MaBenhNhan.pending && (formGroup.controls.MaBenhNhan.dirty || submitAttempt)"
+              ion-text color="danger">(*)</span>
+        </label>
+            <input class="c-input" id="MaBenhNhan" [(ngModel)]="item.MaBenhNhan" formControlName="MaBenhNhan" type="text">
+        </div>
+
+        <div class="c-control" *ngIf="isNew==1">
+            <label class="c-label" for="TenBenhNhan">Tên bệnh nhân
+          <span
+              *ngIf="!formGroup.controls.TenBenhNhan.valid && !formGroup.controls.TenBenhNhan.pending && (formGroup.controls.TenBenhNhan.dirty || submitAttempt)"
+              ion-text color="danger">(*)</span>
+        </label>
+            <input class="c-input" id="TenBenhNhan" [(ngModel)]="item.TenBenhNhan" formControlName="TenBenhNhan" type="text">
+        </div>
+
+        <div class="c-control" *ngIf="isNew==1">
+            <label class="c-label" for="GioiTinh">Giới tính
+          <span
+              *ngIf="!formGroup.controls.GioiTinh.valid && !formGroup.controls.GioiTinh.pending && (formGroup.controls.GioiTinh.dirty || submitAttempt)"
+              ion-text color="danger">(*)</span>
+        </label>
+            <input class="c-input" id="GioiTinh" [(ngModel)]="item.GioiTinh" formControlName="GioiTinh" type="text">
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0&&isNew==0">
             <label class="c-label" for=""></label>
             <button ion-button float-right (click)="saveChange()">
         Thêm bệnh nhân
       </button>
         </div>
+
+        <div class="c-control" *ngIf="item.ID==0&&isNew==1">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="createBN()">
+        Thêm bệnh nhân
+      </button>
+        </div>
+
         <div class="c-control" *ngIf="item.ID!=0">
             <label class="c-label" for=""></label>
 

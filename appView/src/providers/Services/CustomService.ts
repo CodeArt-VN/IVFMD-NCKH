@@ -422,6 +422,19 @@ export class PRO_BenhNhanCustomProvider extends PRO_BenhNhanProvider{
 				});
 		});
 	}
+
+	saveCustom(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_BenhNhan.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
 }
 
 @Injectable()
