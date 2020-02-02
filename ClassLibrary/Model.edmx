@@ -774,6 +774,16 @@
           <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="4000" />
           <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="4000" />
           <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="bit" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="bit" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="bit" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="bit" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
           <Key>
@@ -1261,16 +1271,6 @@
           <Property Name="YKienTruongKhoa_NamKy" Type="nvarchar(max)" />
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="nvarchar(max)" />
           <Property Name="JSON_ChuKy" Type="nvarchar(max)" />
-          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="bit" />
-          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="bit" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="bit" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="bit" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="bit" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="bit" />
-          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="bit" />
-          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="bit" />
-          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="bit" />
-          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
           <Key>
@@ -4575,6 +4575,16 @@
           <Property Name="NgayKy_Ngay" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_Thang" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_Nam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="Boolean" />
+          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="Boolean" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="Boolean" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="Boolean" />
+          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="Boolean" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
@@ -5109,16 +5119,6 @@
           <Property Name="YKienTruongKhoa_NamKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="Boolean" />
-          <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="Boolean" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="Boolean" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" Type="Boolean" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" Type="Boolean" />
-          <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" Type="Boolean" />
-          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Co" Type="Boolean" />
-          <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="Boolean" />
-          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="Boolean" />
-          <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="Boolean" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_PhieuXemXetDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_PhieuXemXetDaoDuc" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
@@ -7508,6 +7508,16 @@
           <EntitySetMapping Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
               <MappingFragment StoreEntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
+                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" />
+                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Co" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Co" />
+                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Khong" />
+                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Co" />
                 <ScalarProperty Name="NgayKy_Nam" ColumnName="NgayKy_Nam" />
                 <ScalarProperty Name="NgayKy_Thang" ColumnName="NgayKy_Thang" />
                 <ScalarProperty Name="NgayKy_Ngay" ColumnName="NgayKy_Ngay" />
@@ -7946,16 +7956,6 @@
           <EntitySetMapping Name="tbl_PRO_PhieuXemXetDaoDuc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_PhieuXemXetDaoDuc">
               <MappingFragment StoreEntitySet="tbl_PRO_PhieuXemXetDaoDuc">
-                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" />
-                <ScalarProperty Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" ColumnName="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" />
-                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Khong" />
-                <ScalarProperty Name="PhanSau_NGS_KhongThuocPhamVi_Co" ColumnName="PhanSau_NGS_KhongThuocPhamVi_Co" />
-                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Khong" />
-                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_TCKT_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_TCKT_Co" />
-                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Khong" />
-                <ScalarProperty Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" ColumnName="PhanSau_NCYSH_GuiThongBao_KHTH_Co" />
-                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Khong" />
-                <ScalarProperty Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" ColumnName="PhanSau_NCYSH_KhongThuocPhamVi_Co" />
                 <ScalarProperty Name="JSON_ChuKy" ColumnName="JSON_ChuKy" />
                 <ScalarProperty Name="YKienTruongKhoa_HoTenVaChucDanh" ColumnName="YKienTruongKhoa_HoTenVaChucDanh" />
                 <ScalarProperty Name="YKienTruongKhoa_NamKy" ColumnName="YKienTruongKhoa_NamKy" />

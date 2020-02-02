@@ -1,5 +1,4 @@
 <ion-header no-border class="head-bg">
-
     <ion-buttons start>
         <button ion-button icon-only class="back-btn" (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
     </ion-buttons>
@@ -8,20 +7,17 @@
         <div class="swiper-pagination">
             <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}" (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index + 1}} <span
                         class="title">{{i.shortTitle}}</span></span>
-
         </div>
     </div>
     <div class="emptyzone header-button">
         <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light" (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
-        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19" ion-button block color="light" (click)="updateSatus('ApprovedHRCO')">Duyệt HRCO</button>
-
+        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHRCO')">HRCO Duyệt</button>
 
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
-        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7" ion-button block color="light" (click)="updateSatus('ApprovedHDDD')">Duyệt HDDD</button>
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7 && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDDD')">HĐĐĐ Duyệt</button>
 
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
-        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDKH == 13" ion-button block color="light" (click)="updateSatus('ApprovedHDKH')">Duyệt HDKH</button>
-
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDKH == 13  && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDKH')">HĐKH Duyệt</button>
     </div>
 </ion-header>
 <ion-content>
