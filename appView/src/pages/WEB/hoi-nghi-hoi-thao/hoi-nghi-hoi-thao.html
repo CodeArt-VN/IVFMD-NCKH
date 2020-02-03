@@ -54,12 +54,14 @@
                 <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
                     <ion-icon [name]="t.Icon"></ion-icon>
                     <span>
-                      {{t.Name}}
-                  </span>
+                        {{t.Name}}
+                    </span>
                 </a>
             </div>
         </ion-col>
 
+        <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+               [uploader]="uploader" />
 
         <ion-col class="doc-main">
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items" [selected]="selected"
@@ -80,9 +82,9 @@
                 <ngx-datatable-column name="Địa điểm" prop="DiaDiem"></ngx-datatable-column>
                 <ngx-datatable-column name="Báo cáo viên" prop="NCVChinh"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái" prop="TrangThai"></ngx-datatable-column>
-                <ngx-datatable-column name="Upload CV" prop="UploadCVHosrem">
+                <ngx-datatable-column name="CV Hosrem" prop="UploadCVHosrem">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="uploadCVHosrem(i)">
+                        <a (click)="downloadCVHosrem(i)">
                             {{i.UploadCVHosrem}}
                         </a>
                     </ng-template>
@@ -92,17 +94,17 @@
                         <a (click)="downloadBaiAbstract(i)">
                             {{i.UploadBaiAbstract}}
                         </a>&nbsp;
-                        <a (click)="uploadBaiAbstract(i)">
+                        <a (click)="uploadBaiAbstractClick(i)">
                             <ion-icon name="cloud-upload"></ion-icon>
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Upload bài FullText" prop="UploadBaiFulltext">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="donwloadBaiFulltext(i)">
+                        <a (click)="donwloadBaiFullText(i)">
                             {{i.UploadBaiFulltext}}
                         </a>&nbsp;
-                        <a (click)="uploadBaiFulltext(i)">
+                        <a (click)="uploadBaiFullTextClick(i)">
                             <ion-icon name="cloud-upload"></ion-icon>
                         </a>
                     </ng-template>

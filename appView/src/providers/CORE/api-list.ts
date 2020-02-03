@@ -1022,6 +1022,14 @@ export var APIListBase = {
             method: "POST",
             url: function (id, actionCode) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/updateStatus_PRO_HoiNghiHoiThao/") + id + "/" + actionCode }
         },
+        uploadAbstract: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/uploadAbstract_PRO_HoiNghiHoiThao/")}
+        },
+        uploadFullText: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/uploadFullText_PRO_HoiNghiHoiThao/")}
+        },
     },
     
     SYS_Var:{

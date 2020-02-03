@@ -633,6 +633,32 @@ export class PRO_HoiNghiHoiThaoCustomProvider extends PRO_HoiNghiHoiThaoProvider
                 });
         });
     }
+    uploadAbstract(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThao.uploadAbstract;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    uploadFullText(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThao.uploadFullText;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()

@@ -77,7 +77,7 @@ namespace API.Controllers
                 }
                 else
                 {
-                    int id = 0;
+                    int id = 1;
                     var uid = User.Identity.GetUserId();
                     var user = UserManager.FindById(uid);
 

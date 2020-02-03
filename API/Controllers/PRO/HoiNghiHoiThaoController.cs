@@ -64,6 +64,32 @@ namespace API.Controllers.PRO
                 return NotFound();
         }
 
+        [Route("uploadAbstract_PRO_HoiNghiHoiThao")]
+        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
+        public IHttpActionResult UploadAbstract(DTO_PRO_HoiNghiHoiThao item)
+        {
+            BS_PRO_HoiNghiHoiThao.uploadAbstract_PRO_HoiNghiHoiThao(db, item.ID, item.BaiAbstract, Username);
+            var res = BS_PRO_HoiNghiHoiThao.get_PRO_HoiNghiHoiThao(db, item.ID);
+            if (res == null)
+            {
+                return NotFound();
+            }
+            return Ok(res);
+        }
+
+        [Route("uploadFullText_PRO_HoiNghiHoiThao")]
+        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
+        public IHttpActionResult UploadFullText(DTO_PRO_HoiNghiHoiThao item)
+        {
+            BS_PRO_HoiNghiHoiThao.uploadFullText_PRO_HoiNghiHoiThao(db, item.ID, item.BaiFulltext, Username);
+            var res = BS_PRO_HoiNghiHoiThao.get_PRO_HoiNghiHoiThao(db, item.ID);
+            if (res == null)
+            {
+                return NotFound();
+            }
+            return Ok(res);
+        }
+
         [Route("")]
         [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao))]
         public IHttpActionResult Post(DTO_PRO_HoiNghiHoiThao tbl_PRO_HoiNghiHoiThao)
@@ -77,6 +103,7 @@ namespace API.Controllers.PRO
                 return BadRequest("Tài khoản chưa tạo nhân sự, không thể tạo mới");
 
             tbl_PRO_HoiNghiHoiThao.IDTrangThai = -(int)SYSVarType.TrangThai_HNHT_ChoGui;
+            tbl_PRO_HoiNghiHoiThao.IDNhanVien = user.StaffID;
             DTO_PRO_HoiNghiHoiThao result = BS_PRO_HoiNghiHoiThao.postCustom_PRO_HoiNghiHoiThao(db, tbl_PRO_HoiNghiHoiThao, Username);
 
             if (result != null)
