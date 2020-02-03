@@ -219,6 +219,61 @@ namespace BaseBusiness
             return result;
         }
 
+        public static bool uploadAbstract_PRO_HoiNghiHoiThao(AppEntities db, int ID, string path, string Username)
+        {
+            bool result = false;
+            var dbitem = db.tbl_PRO_HoiNghiHoiThao.Find(ID);
+            if (dbitem != null)
+            {
+                dbitem.BaiAbstract = path;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_HoiNghiHoiThao", DateTime.Now, Username);
+
+                    result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("uploadAbstract_PRO_HoiNghiHoiThao", e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+        public static bool uploadFullText_PRO_HoiNghiHoiThao(AppEntities db, int ID, string path, string Username)
+        {
+            bool result = false;
+            var dbitem = db.tbl_PRO_HoiNghiHoiThao.Find(ID);
+            if (dbitem != null)
+            {
+                dbitem.BaiFulltext = path;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_HoiNghiHoiThao", DateTime.Now, Username);
+
+                    result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("uploadFullText_PRO_HoiNghiHoiThao", e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+
         public static DTO_PRO_HoiNghiHoiThao postCustom_PRO_HoiNghiHoiThao(AppEntities db, DTO_PRO_HoiNghiHoiThao item, string Username)
         {
             tbl_PRO_HoiNghiHoiThao dbitem = new tbl_PRO_HoiNghiHoiThao();
