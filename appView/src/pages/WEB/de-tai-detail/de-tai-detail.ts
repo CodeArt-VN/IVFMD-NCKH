@@ -360,7 +360,11 @@ export class DeTaiDetailPage extends BasePage {
               page = BangKiemXXDDModalPage;
               break;
         }
-        if (type != 11) {
+        if (type == 12 || type == 13) {
+          let myModal = this.modalCtrl.create(page, param, { cssClass: 'select-modal' });
+          myModal.present();
+        } 
+        else if (type != 11) {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
             myModal.present();
         } else {

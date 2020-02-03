@@ -78,7 +78,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             };
         }
         this.model = new ObjModel(this.item);
-        ko.applyBindings(this.model, document.getElementById("frmAE"));
+        ko.applyBindings(this.model, document.getElementById("frmThuyetMinhDeTai"));
     };
 
     saveChange() {

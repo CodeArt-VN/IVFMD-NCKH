@@ -401,6 +401,7 @@
     <Content Include="Content\FormTemplate\PhieuXemXetDaoDuc.html" />
     <Content Include="Content\FormTemplate\SAE.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
+    <Content Include="Content\FormTemplate\ThuyetMinhDeTai.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
     <Content Include="Content\styles\compatibility\bootstrap.css" />
