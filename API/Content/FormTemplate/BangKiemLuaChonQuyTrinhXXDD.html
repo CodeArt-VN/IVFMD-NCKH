@@ -616,7 +616,7 @@
                 <tbody style="width:100%;">
                     <tr>
                         <td>
-                            <input type="checkbox" data-bind="checked: PhanSau_NCYSH_KhongThuocPhamVi" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NCYSH_KhongThuocPhamVi_Co" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
@@ -722,10 +722,10 @@
                                         Xin gửi thông báo đến Phòng KHTH
                                     </td>
                                     <td>
-                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH" /> Có
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH_Co" /> Có
                                     </td>
                                     <td>
-                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH" /> Không
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_KHTH_Khong" /> Không
                                     </td>
                                 </tr>
                                 <tr>
@@ -733,10 +733,10 @@
                                         Xin gửi thông báo đến Phòng TCKT
                                     </td>
                                     <td>
-                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT" /> Có
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT_Co" /> Có
                                     </td>
                                     <td>
-                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT" /> Không
+                                        <input type="checkbox" data-bind="checked: PhanSau_NCYSH_GuiThongBao_TCKT_Khong" /> Không
                                     </td>
                                 </tr>
                             </table>
@@ -768,7 +768,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" data-bind="checked: PhanSau_NGS_KhongThuocPhamVi" />
+                            <input type="checkbox" data-bind="checked: PhanSau_NGS_KhongThuocPhamVi_Co" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
@@ -876,7 +876,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" data-bind="checked: PhanSau_TruongKhoa_KhongThuocPhamVi" />
+                            <input type="checkbox" data-bind="checked: PhanSau_TruongKhoa_KhongThuocPhamVi_Co" />
                             Không thuộc phạm vi điều chỉnh về đạo đức/được miễn xem xét theo quy chế của bệnh viện.
                         </td>
                         <td class="text-center" style="vertical-align:middle;">
@@ -969,7 +969,7 @@
                         Ý KIẾN CỦA CHỦ TỊCH HỘI ĐỒNG ĐẠO ĐỨC
                     </td>
                     <td style="text-align:right;">
-                        Số: ________/ĐĐ- BVMĐ
+                        Số: <span contenteditable="true" data-bind="editableHTML: YKienHDDD_So">_______</span>/ĐĐ- BVMĐ
                     </td>
                 </tr>
                 <tr>
@@ -1033,8 +1033,8 @@
                                 <td class="text-bold" style="padding-left:0;vertical-align:middle;">
                                     Ngày:
                                 </td>
-                                <td contenteditable="true" style="padding:3px;">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <td style="padding:3px;">
+                                    <span contenteditable="true" data-bind="editableHTML: NgayKy_Ngay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>/<span contenteditable="true" data-bind="editableHTML: NgayKy_Thang">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>/<span contenteditable="true" data-bind="editableHTML: NgayKy_Nam">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </td>
                             </tr>
                         </table>

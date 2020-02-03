@@ -713,11 +713,11 @@ export class PRO_AECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_AE, SearchConfig.getSearchFields('PRO_AE'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, idBenhNhan) {
         let that = this.commonService;
         let apiPath = APIList.PRO_AE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -733,11 +733,11 @@ export class PRO_SAECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_SAE, SearchConfig.getSearchFields('PRO_SAE'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, idBenhNhan) {
         let that = this.commonService;
         let apiPath = APIList.PRO_SAE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -760,6 +760,27 @@ export class PRO_SAECustomProvider extends exService {
 		});
 	}
 }
+
+@Injectable()
+export class PRO_ThuyetMinhDeTaiCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_ThuyetMinhDeTai, SearchConfig.getSearchFields('PRO_ThuyetMinhDeTai'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_ThuyetMinhDeTai.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+}
+
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

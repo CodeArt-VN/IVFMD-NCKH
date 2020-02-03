@@ -8,6 +8,7 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+
 @IonicPage({ name: 'page-sae-modal', priority: 'high', defaultHistory: ['page-sae-modal'] })
 @Component({
     selector: 'sae-modal',
@@ -15,6 +16,7 @@ import * as ko from 'knockout';
 })
 export class SAEModalPage extends DetailPage {
     idDeTai: any;
+    idBenhNhan: any;
     model: any;
     constructor(
         public currentProvider: PRO_SAECustomProvider,
@@ -31,10 +33,15 @@ export class SAEModalPage extends DetailPage {
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
         }
+
+        this.idBenhNhan = navParams.get('idBenhNhan');
+        if (this.idBenhNhan && commonService.isNumeric(this.idBenhNhan)) {
+            this.idBenhNhan = parseInt(this.idBenhNhan, 10);
+        }
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan).then((ite) => {
             this.item = ite;
             this.loadedData();
         }).catch((data) => {

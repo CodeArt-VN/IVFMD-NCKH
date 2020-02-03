@@ -11,9 +11,9 @@ namespace BaseBusiness
 {
     public static partial class BS_PRO_AE
     {
-        public static DTO_PRO_AE get_PRO_AEByDeTai(AppEntities db, int deTaiId)
+        public static DTO_PRO_AE get_PRO_AEByDeTai(AppEntities db, int deTaiId, int idBenhNhan)
         {
-            var query = db.tbl_PRO_AE.Where(d => d.IDDeTai == deTaiId && d.IsDeleted == false).Select(s => new DTO_PRO_AE
+            var query = db.tbl_PRO_AE.Where(d => d.IDDeTai == deTaiId && d.IDBenhNhan == idBenhNhan && d.IsDeleted == false).Select(s => new DTO_PRO_AE
             {
                 ID = s.ID,
                 IDDeTai = s.IDDeTai,
@@ -106,7 +106,8 @@ namespace BaseBusiness
             {
                 query = new DTO_PRO_AE
                 {
-                    IDDeTai = deTaiId
+                    IDDeTai = deTaiId,
+                    IDBenhNhan = idBenhNhan
                 };
             }
 

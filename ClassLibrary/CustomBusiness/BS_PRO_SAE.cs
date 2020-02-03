@@ -12,9 +12,9 @@ namespace BaseBusiness
 {
     public static partial class BS_PRO_SAE
     {
-        public static DTO_PRO_SAE get_PRO_SAECustom(AppEntities db, int idDeTai)
+        public static DTO_PRO_SAE get_PRO_SAECustom(AppEntities db, int idDeTai, int idBenhNhan)
         {
-            var query = db.tbl_PRO_SAE.Where(d => d.IDDeTai == idDeTai && d.IsDeleted == false).Select(s => new DTO_PRO_SAE
+            var query = db.tbl_PRO_SAE.Where(d => d.IDDeTai == idDeTai && d.IDBenhNhan == idBenhNhan && d.IsDeleted == false).Select(s => new DTO_PRO_SAE
             {
                 ID = s.ID,
                 IDDeTai = s.IDDeTai,
@@ -95,7 +95,8 @@ namespace BaseBusiness
                 //New
                 query = new DTO_PRO_SAE
                 {
-                    IDDeTai = idDeTai
+                    IDDeTai = idDeTai,
+                    IDBenhNhan = idBenhNhan
                 };
 
                 query.ListCanThiepThuocThuLamSan = new List<DTO_PRO_SAE_CanThiepThuocThuLamSan>() { new DTO_PRO_SAE_CanThiepThuocThuLamSan() };

@@ -18,6 +18,8 @@ import { PhieuXemXetDaoDucModalPage } from '../phieu-xem-xet-dao-duc-modal/phieu
 import { AEModalPage } from '../ae-modal/ae-modal';
 import { SAEModalPage } from '../sae-modal/sae-modal';
 import { BangKiemXXDDModalPage } from '../bang-kiem-xxdd-modal/bang-kiem-xxdd-modal';
+import { ChonBenhNhanModalPage } from '../chon-benh-nhan-modal/chon-benh-nhan-modal';
+import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
 
 /**
  * Generated class for the DeTaiDetailPage page.
@@ -304,7 +306,7 @@ export class DeTaiDetailPage extends BasePage {
     /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
     openDetailModal(type){
         var page = null; 
-        var param = { 'idDeTai': this.id, 'idNhanSu': -1 };
+        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1 };
         switch(type){
             case 0:
               page = SysnopsisModalPage;
@@ -320,23 +322,22 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 4:
               page = NhanSuLLKHModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1 };
               break;
             case 5:
               page = NhanSuSYLLModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1 };
               break;
             case 6:
               page = NhanSuLLKHModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1 };
               break;
             case 7:
               page = NhanSuSYLLModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1 };
                 break;
             case 8:
-                //page = ThuyeMinhDeTaiModalPage;
-                //param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV };
+                page = ThuyetMinhDeTaiModalPage;
                 break;
             case 9:
               page = DonXinNghiemThuModalPage;
@@ -348,10 +349,12 @@ export class DeTaiDetailPage extends BasePage {
               page = BaoCaoTienDoNghienCuuPage;
               break;
             case 12:
-              page = AEModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1 };
+              page = ChonBenhNhanModalPage;
               break;
             case 13:
-              page = SAEModalPage;
+              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2 };
+              page = ChonBenhNhanModalPage;
               break;
             case 14:
               page = BangKiemXXDDModalPage;

@@ -36,11 +36,11 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_AE);
         }
 
-        [Route("get_PRO_AE/{idDeTai:int}")]
+        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}")]
         [ResponseType(typeof(DTO_PRO_AE))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan)
         {
-            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai);
+            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai, idBenhNhan);
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
