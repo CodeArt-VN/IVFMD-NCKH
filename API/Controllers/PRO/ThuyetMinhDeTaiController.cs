@@ -57,13 +57,32 @@ namespace API.Controllers.PRO
                     HTML = html,
                     ListNhanLucNghienCuu = new List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(),
                     ListGioiThieuChuyenGia = new List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia>(),
-                    CacBienSoCanThuThap = new DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThapJson
+                    ListBienSo = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>()
                     {
-                        ListBienSoDocLap = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>(),
-                        ListBienSoNen = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>(),
-                        ListBienSoPhuThuoc = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>()
+                        new DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap()
+                        {
+                            LoaiBienSo =  (int)DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap.BienSo.BSNen
+                        },
+                        new DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap()
+                        {
+                            LoaiBienSo =  (int)DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap.BienSo.BSDocLap
+                        },
+                        new DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap()
+                        {
+                            LoaiBienSo =  (int)DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap.BienSo.BSPhuThuoc
+                        },
                     },
-                    KeHoachThucHien = new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien()
+                    ListKeHoachThucHien = new List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietDeCuong),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.ThongQuaHDKH),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.ThuThapSoLieu),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.PhanTichSoLieuGiuaKy),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.PhanTichSoLieuCuoiCung),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoTrongNuoc),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.NghiemThuDeTai),
+                        new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoQuocTe)
+                    }
                 };
             }
 

@@ -1,4 +1,5 @@
-﻿<div class="nckh-form-template nckh-form-14 font-size-12">
+﻿
+<div class="nckh-form-template nckh-form-10 font-size-13">
     <div class="inline text-center text-bold">
         <table style="width:100%;">
             <tr>
@@ -56,19 +57,19 @@
             </div>
             <div style="line-height: 1.5em;">
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_QuanLy"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_QuanLy" />
                     <span style="display: inline;">Quản lý</span>
                 </p>
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_SinhHocVaCongNghe"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_SinhHocVaCongNghe" />
                     <span style="display: inline;">Sinh học và công nghệ sinh học</span>
                 </p>
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_KhoaHocSucKhoe"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_KhoaHocSucKhoe" />
                     <span style="display: inline;">Khoa học sức khỏe</span>
                 </p>
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_Khac"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A2_Khac" />
                     <span style="display: inline;">Khác <span contenteditable="true" data-bind="editableHTML: A2_KhacMoTa">…</span></span>
                 </p>
                 <p class="box tab-1">
@@ -83,15 +84,15 @@
             </div>
             <div style="line-height: 1.5em;">
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuCoBan"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuCoBan" />
                     <span style="display: inline;">Nghiên cứu cơ bản</span>
                 </p>
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuUngDung"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuUngDung" />
                     <span style="display: inline;">Nghiên cứu ứng dụng</span>
                 </p>
                 <p class="box tab-1">
-                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuTrienKhai"/>
+                    <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checked: A3_NghienCuuTrienKhai" />
                     <span style="display: inline;">Nghiên cứu triển khai</span>
                 </p>
             </div>
@@ -237,7 +238,7 @@
             <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                 A9. Nhân lực nghiên cứu
             </div>
-            <div conf='{"name":"ListNhanLucNghienCuu","add":true,"resizeable":true, "props": ["HoTen","DonVi","SoThangLamViec"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNhanLucNghienCuu","add":true,"resizeable":true, "props": ["HoTen","DonVi","SoThangLamViec"]}' class="ptable pconf" style="width:100%;position:relative;">
                 <table class="nckh-table" style="width:100%;" border="1">
                     <colgroup>
                         <col width="30" />
@@ -307,7 +308,7 @@
                 <div style="padding:5px 0;">
                     <b style="color:blue;">Giới thiệu chuyên gia/nhà khoa học am hiểu đề tài này</b> <i>(không bắt buộc)</i>
                 </div>
-                <div conf='{"name":"ListGioiThieuChuyenGia","add":true,"resizeable":true, "props": ["HoTen","HuongNghienCuu","CoQuan","DienThoai"]}' class="ptable" style="width:100%;position:relative;">
+                <div conf='{"name":"ListGioiThieuChuyenGia","add":true,"resizeable":true, "props": ["HoTen","HuongNghienCuu","CoQuan","DienThoai"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table class="nckh-table" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
@@ -369,7 +370,7 @@
                     <div class="tab-1" style="padding:5px 0;">
                         -&nbsp;&nbsp;&nbsp;Kế hoạch thực hiện
                     </div>
-                    <div conf='{"name":"ListKeHoach","add":false,"resizeable":true, "props": ["NoiDung","ThoiGianThucHien","KetQua","NguoiThucHien"]}' class="ptable" style="width:100%;position:relative;">
+                    <div conf='{"name":"ListKeHoachThucHien","add":false,"resizeable":true, "props": ["NoiDung","ThoiGianThucHien","KetQua","NguoiThucHien"]}' class="ptable pconf" style="width:100%;position:relative;">
                         <table class="nckh-table" style="width:100%;" border="1">
                             <colgroup>
                                 <col />
@@ -385,8 +386,8 @@
                                     <td>Người thực hiện</td>
                                 </tr>
                             </thead>
-                            <tbody style="width:100%;" data-bind="foreach: ListKeHoach">
-                                <tr data-bind="attr: { index: $index, task_id: KeHoachID}">
+                            <tbody style="width:100%;">
+                                <tr data-bind="attr: { index: $index}">
                                     <td contenteditable="false" data-bind="editableHTML: NoiDung"></td>
                                     <td contenteditable="true" data-bind="editableHTML: ThoiGianThucHien"></td>
                                     <td contenteditable="true" data-bind="editableHTML: KetQua"></td>
@@ -470,7 +471,7 @@
                     <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                         6.	Các biến số cần thu thập
                     </div>
-                    <div conf='{"name":"ListBienCo","add":true,"resizeable":true, "props": ["HoTen","HuongNghienCuu","CoQuan","DienThoai"]}' class="ptable tab-1" style="position:relative;">
+                    <div conf='{"name":"ListBienSo","add":true,"resizeable":true, "props": ["Ten","PhanLoai","LoaiBienSo--2","GiaTri","CachThuThap"]}' class="ptable pconf tab-1" style="position:relative;">
                         <table class="nckh-table" style="width:100%;" border="1">
                             <colgroup>
                                 <col />
@@ -490,19 +491,20 @@
                                 <tr style="background-color:rgb(231,255,231)">
                                     <td style="padding: 6px;" colspan="4" class="text-bold"><i>Biến số nền</i></td>
                                 </tr>
-                                <!-- ko foreach: ListBienCoNen -->
-                                <tr data-bind="attr: { index: $index, type:  'BienCoNen'}">
-                                    <td contenteditable="true" data-bind="editableHTML: TenBienCo"></td>
+                                <!-- ko foreach: { data: filter(ListBienSo,'LoaiBienSo',true,0)} -->
+                                <tr data-bind="attr: { index: $index, removeable: removeable }" values="LoaiBienSo">
+                                    <td contenteditable="true" data-bind="editableHTML: Ten"></td>
                                     <td contenteditable="true" data-bind="editableHTML: PhanLoai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: GiaTri"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CachThuThap"></td>
                                 </tr>
+                                <!-- /ko -->
                                 <tr style="background-color:rgb(231,255,231)">
                                     <td style="padding: 6px;" colspan="4" class="text-bold"><i>Biến số độc lập</i></td>
                                 </tr>
-                                <!-- ko foreach: BienCoDocLap -->
-                                <tr data-bind="attr: { index: $index, type: 'BienCoDocLap'}">
-                                    <td contenteditable="true" data-bind="editableHTML: TenBienCo"></td>
+                                <!-- ko foreach: { data: filter(ListBienSo,'LoaiBienSo',true,1)} -->
+                                <tr data-bind="attr: { index: $index, removeable: removeable }" values="LoaiBienSo">
+                                    <td contenteditable="true" data-bind="editableHTML: Ten"></td>
                                     <td contenteditable="true" data-bind="editableHTML: PhanLoai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: GiaTri"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CachThuThap"></td>
@@ -511,9 +513,9 @@
                                 <tr style="background-color:rgb(231,255,231)">
                                     <td style="padding: 6px;" colspan="4" class="text-bold"><i>Biến phụ thuộc</i></td>
                                 </tr>
-                                <!-- ko foreach: BienCoPhuThuoc -->
-                                <tr data-bind="attr: { index: $index, type: 'BienCoPhuThuoc'}">
-                                    <td contenteditable="true" data-bind="editableHTML: TenBienCo"></td>
+                                <!-- ko foreach: { data: filter(ListBienSo,'LoaiBienSo',true,2)} -->
+                                <tr data-bind="attr: { index: $index, removeable: removeable }" values="LoaiBienSo">
+                                    <td contenteditable="true" data-bind="editableHTML: Ten"></td>
                                     <td contenteditable="true" data-bind="editableHTML: PhanLoai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: GiaTri"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CachThuThap"></td>
@@ -602,7 +604,7 @@
                 <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                     B5. Tổng hợp kinh phí
                 </div>
-                <div conf='{"name":"ListChiPhi","add":false,"resizeable":true, "props": ["NoiDung","KinhPhi","KhoanChi","PhanTram"]}' class="ptable" style="width:100%;position:relative;">
+                <div conf='{"name":"ListChiPhi","add":false,"resizeable":true, "props": ["NoiDung","KinhPhi","KhoanChi","PhanTram"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <div class="text-right">
                         <i>Đơn vị tính: ngàn đồng</i>
                     </div>
@@ -695,7 +697,7 @@
             <div class="block-heading heading-1 text-bold" style="padding:5px 0;">
                 Khoản 1. Công lao động
             </div>
-            <div conf='{"name":"ListCongLaoDong","add":false,"resizeable":true, "props": ["NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListCongLaoDong","add":false,"resizeable":true, "props": ["NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                 <div class="text-right">
                     <i>Đơn vị tính: ngàn đồng</i>
                 </div>
@@ -748,7 +750,7 @@
             <div class="block-heading heading-1 text-bold" style="padding:5px 0;">
                 Khoản 2. Nguyên vật liệu, năng lượng
             </div>
-            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                 <div class="text-right">
                     <i>Đơn vị tính: ngàn đồng</i>
                 </div>
@@ -799,7 +801,7 @@
             <div class="block-heading heading-1 text-bold" style="padding:5px 0;">
                 Khoản 3. Thiết bị, máy móc
             </div>
-            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                 <div class="text-right">
                     <i>Đơn vị tính: ngàn đồng</i>
                 </div>
@@ -850,7 +852,7 @@
             <div class="block-heading heading-1 text-bold" style="padding:5px 0;">
                 Khoản 4. Chi khác
             </div>
-            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNguyenVatLieu","add":false,"resizeable":true, "props": ["STT","NoiDung","KinhPhi","KhoanChi","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                 <div class="text-right">
                     <i>Đơn vị tính: ngàn đồng</i>
                 </div>
