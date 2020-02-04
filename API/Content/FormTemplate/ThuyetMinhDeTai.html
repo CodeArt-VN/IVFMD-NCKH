@@ -237,7 +237,7 @@
             <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                 A9. Nhân lực nghiên cứu
             </div>
-            <div conf='{"name":"ListGioiThieuChuyenGia","add":true,"resizeable":true, "props": ["HoTen","DonVi","SoThangLamViec"]}' class="ptable" style="width:100%;position:relative;">
+            <div conf='{"name":"ListNhanLucNghienCuu","add":true,"resizeable":true, "props": ["HoTen","DonVi","SoThangLamViec"]}' class="ptable" style="width:100%;position:relative;">
                 <table class="nckh-table" style="width:100%;" border="1">
                     <colgroup>
                         <col width="30" />
@@ -262,19 +262,19 @@
                         </tr>
                         <tr>
                             <td contenteditable="false" class="text-center">1</td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHTML: HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHTML: DonVi"></td>
+                            <td contenteditable="true" data-bind="editableHTML: SoThangLamViec"></td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-bold">Thành viên chủ chốt</td>
                         </tr>
-                        <!-- ko foreach: ListGioiThieuChuyenGia -->
+                        <!-- ko foreach: ListNhanLucNghienCuu -->
                         <tr data-bind="attr: { index: $index}">
                             <td contenteditable="false" class="text-center" data-bind="{text: ($index() + 1)}"></td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHTML: A6_HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHTML: HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHTML: DonVi"></td>
+                            <td contenteditable="true" data-bind="editableHTML: SoThangLamViec"></td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
