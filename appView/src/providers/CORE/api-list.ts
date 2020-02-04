@@ -967,6 +967,10 @@ export var APIListBase = {
         updateNCT: {
             method: "POST",
             url: function (id, soNCT) { return appSetting.apiDomain("PRO/DeTai/updateNCT_PRO_DeTai/") + id + "/" + soNCT }
+        },
+        print: {
+            method: "GET",
+            url: function (id, type) { return appSetting.apiDomain("PRO/DeTai/print/") + id + "/" + type }
         }
     },
 

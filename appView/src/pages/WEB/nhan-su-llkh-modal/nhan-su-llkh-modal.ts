@@ -415,4 +415,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
             }
         })
     };
+
+    print() {
+        var html = $("#frmNhanSuLLKH").html();
+        console.log(html);
+        this.loadingMessage('Lấy dữ liệu in...').then(() => {
+
+        });
+    };
 }
