@@ -105,8 +105,8 @@ namespace API.Controllers.PRO
 
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
-            tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.CacBienSoCanThuThap);
-            tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.KeHoachThucHien);
+            tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListBienSo);
+            tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien);
 
             bool result = BS_PRO_ThuyetMinhDeTai.put_PRO_ThuyetMinhDeTai(db, id, tbl_PRO_ThuyetMinhDeTai, Username);
             
@@ -127,8 +127,8 @@ namespace API.Controllers.PRO
 
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
-            tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.CacBienSoCanThuThap);
-            tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.KeHoachThucHien);
+            tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListBienSo);
+            tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien);
 
             DTO_PRO_ThuyetMinhDeTai result = BS_PRO_ThuyetMinhDeTai.post_PRO_ThuyetMinhDeTai(db, tbl_PRO_ThuyetMinhDeTai, Username);
 
