@@ -8,6 +8,7 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 @IonicPage({ name: 'page-nhan-su-syll-modal', priority: 'high', defaultHistory: ['page-nhan-su-syll-modal'] })
 @Component({
     selector: 'nhan-su-syll-modal',
@@ -20,6 +21,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
     constructor(
         public currentProvider: STAFF_NhanSu_SYLLProviderCustomProvider,
         public proSYLLProvider: PRO_SYLLCustomProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -78,189 +80,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmNhanSuSYLL");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
-
-        $(".ptable,.pblock").on("click", ".clone", function (e) {
-            var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
-            if (sconf != null) {
-                try {
-                    var conf = JSON.parse(sconf);
-                    if (conf.add) {
-                        var target = window.getSelection().anchorNode;
-                        if (!target) {
-                            var context = ko.contextFor(this);
-                            context.$root.addItem(conf.name, conf.props);
-                        }
-                        // @ts-ignore
-                        else {
-                            var sconf1 = $(target).closest(".pconf").attr("conf");
-                            if (sconf1 == null) {
-                                var context = ko.contextFor(this);
-                                context.$root.addItem(conf.name, conf.props);
-                            } else {
-                                try {
-                                    var conf1 = JSON.parse(sconf1);
-                                    if (conf1.name === conf.name) {
-                                        if (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR") {
-                                            var tr = $(target).closest('tr');
-                                            var context = ko.contextFor(this);
-                                            context.$root.addItem(conf.name, conf.props, tr.attr('index'));
-                                        } else if ($(target).closest('.prow')) {
-                                            var row = $(target).closest('.prow');
-                                            var context = ko.contextFor(this);
-                                            context.$root.addItem(conf.name, conf.props, row.attr('index'));
-                                        }
-                                    } else {
-                                        var context = ko.contextFor(this);
-                                        context.$root.addItem(conf.name, conf.props);
-                                    }
-                                } catch (e) {
-                                }
-                            }
-                        }
-                    }
-                    return false;
-                } catch (e) {
-                    console.error(e);
-                    return false;
-                }
-            }
-        });
-        $(".ptable").on("click", ".remove", function (e) {
-            var target = window.getSelection().anchorNode;
-            if (target) {
-                var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-                var sconf1 = $(target).closest(".ptable").attr("conf");
-                if (sconf != null && sconf1 != null && (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR")) {
-                    try {
-                        var conf = JSON.parse(sconf);
-                        var conf1 = JSON.parse(sconf1);
-                        if (conf.name === conf1.name && conf.add) {
-                            var tr = $(target).closest('tr');
-                            var context = ko.contextFor(this);
-                            context.$root.removeItem(conf.name, tr.attr('index'));
-                        }
-                        return false;
-                    } catch (e) {
-                        console.error(e);
-                        return false;
-                    }
-                }
-            }
-        });
-        $(".pblock").on("click", ".remove", function (e) {
-            var target = window.getSelection().anchorNode;
-            if (target) {
-                var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
-                var sconf1 = $(target).closest(".pconf").attr("conf");
-                if (sconf != null && sconf1 != null) {
-                    try {
-                        var conf = JSON.parse(sconf);
-                        var conf1 = JSON.parse(sconf1);
-                        if (conf.name === conf1.name && conf.add) {
-                            var row = $(target).closest('.prow');
-                            var context = ko.contextFor(this);
-                            context.$root.removeItem(conf.name, row.attr('index'));
-                        }
-                        return false;
-                    } catch (e) {
-                        console.error(e);
-                        return false;
-                    }
-                }
-            }
-        });
-        var ptablePopConrtrol = $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +
-            '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-            '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-            '</div>' +
-            '</div>');
-
-        $(".ptable").mouseenter(function (event) {
-            try {
-                var sconf = this.attributes["conf"].value;
-                if (sconf != null) {
-                    var conf = JSON.parse(sconf);
-                    if (conf.add || conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            ptablePopConrtrol.appendTo($(this));
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error(e);
-                return false;
-            }
-        }).mouseleave(function (event) {
-            var t = $(this).find(".group_controls");
-            t.detach();
-        });
-        
-        var prowPopConrtrol = $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +                
-            '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-            '</div>' +
-            '</div>');
-        var pblockPopConrtrol = $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +                
-            '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-            '</div>' +
-            '</div>');
-         $(".pblock").mouseenter(function (event) {
-             try {
-                var sconf = this.attributes["conf"].value;
-                if (sconf != null) {
-                    var conf = JSON.parse(sconf);
-                    if (conf.add || conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            pblockPopConrtrol.appendTo($(this));
-                            event.stopPropagation()
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error(e);
-                return false;
-            }
-        }).mouseleave(function (event) {
-            var t = $(this).find(".group_controls");
-            t.detach();
-        });
-
-        $(".pblock").on("mouseenter", ".prow", function (event) {
-            try {
-                var sconf = this.attributes["conf"].value;
-                if (sconf != null) {
-                    var conf = JSON.parse(sconf);
-                    if (conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            prowPopConrtrol.appendTo($(this));
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error(e);
-                return false;
-            }
-        });
-        $(".pblock").on("mouseleave", ".prow", function (event) {
-            var t = $(this).find(".group_controls");
-            t.detach();
-        });
+        this.nckhProvider.init();
 
         var ObjModel = function (item) {
             var self = this;

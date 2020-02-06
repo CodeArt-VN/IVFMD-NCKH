@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 
-window["$"] = $;
-window["jQuery"] = $;
-
 @Injectable()
 export class NCKHServiceProvider {
     constructor() {

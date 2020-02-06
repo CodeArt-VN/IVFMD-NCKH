@@ -8,6 +8,7 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 @IonicPage({ name: 'page-don-xin-nghiem-thu-modal', priority: 'high', defaultHistory: ['page-don-xin-nghiem-thu-modal'] })
 @Component({
     selector: 'don-xin-nghiem-thu-modal',
@@ -18,6 +19,7 @@ export class DonXinNghiemThuModalPage extends DetailPage {
     model: any;
     constructor(
         public currentProvider: PRO_DonXinNghiemThuCustomProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -57,18 +59,7 @@ export class DonXinNghiemThuModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmDonXinNghiemThu");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                if (id <= 0)
-                    $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
+        this.nckhProvider.init();
 
         let ObjModel = function (item) {
             var self = this;

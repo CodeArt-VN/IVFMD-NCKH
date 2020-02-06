@@ -8,6 +8,7 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 @IonicPage({ name: 'page-phieu-xem-xet-dao-duc-modal', priority: 'high', defaultHistory: ['page-phieu-xem-xet-dao-duc-modal'] })
 @Component({
     selector: 'phieu-xem-xet-dao-duc-modal',
@@ -18,6 +19,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
     model: any;
     constructor(
         public currentProvider: PRO_PhieuXemXetDaoDucCustomProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -57,19 +59,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmPhieuXemXetDaoDuc");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                if (id <= 0)
-                    $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
-
+        this.nckhProvider.init();
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
@@ -213,10 +203,10 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
             self.ListCoQuan = ko.observableArray(ko.utils.arrayMap(item.ListCoQuan || [{}, {}, {}, {}, {}], function (nn) {
                 return {
                     CoQuan: ko.observable(nn.ThoiGian || ""),
-                    DuocCapPhep: ko.observable(nn.TenHiepHoi || ""),
-                    ChoCapPhep: ko.observable(nn.ChucDanh || ""),
-                    ChuaXinPhep: ko.observable(nn.ChucDanh || ""),
-                    GhiChuKhac: ko.observable(nn.ChucDanh || "")
+                    DuocCapPhep: ko.observable(nn.TenHiepHoi || false),
+                    ChoCapPhep: ko.observable(nn.ChucDanh || false),
+                    ChuaXinPhep: ko.observable(nn.ChucDanh || false),
+                    GhiChuKhac: ko.observable(nn.ChucDanh || false)
                 };
             }));
 

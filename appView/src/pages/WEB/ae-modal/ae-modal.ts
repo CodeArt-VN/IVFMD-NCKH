@@ -8,6 +8,8 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
+
 @IonicPage({ name: 'page-ae-modal', priority: 'high', defaultHistory: ['page-ae-modal'] })
 @Component({
     selector: 'ae-modal',
@@ -19,6 +21,7 @@ export class AEModalPage extends DetailPage {
     model: any;
     constructor(
         public currentProvider: PRO_AECustomProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -63,18 +66,8 @@ export class AEModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmAE");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                if (id <= 0)
-                    $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
+        
+        this.nckhProvider.init();
 
         let ObjModel = function (item) {
             var self = this;
