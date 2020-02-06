@@ -100,5 +100,90 @@ namespace BaseBusiness
 
             return query;
         }
+
+        public static DTO_CUS_HRM_STAFF_NhanSu_HOSREM save_CUS_HRM_STAFF_NhanSu_HOSREM(AppEntities db, DTO_CUS_HRM_STAFF_NhanSu_HOSREM item, string Username)
+        {
+            var dbitem = db.tbl_CUS_HRM_STAFF_NhanSu_HOSREM.Find(item.ID);
+            if (dbitem == null)
+            {
+                dbitem = new tbl_CUS_HRM_STAFF_NhanSu_HOSREM();
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+                db.tbl_CUS_HRM_STAFF_NhanSu_HOSREM.Add(dbitem);
+            }
+
+            dbitem.IDNhanSu = item.IDNhanSu;
+            dbitem.HoTen = item.HoTen;
+            dbitem.Email = item.Email;
+            dbitem.JSON_DonViCongTac = item.JSON_DonViCongTac;
+            dbitem.JSON_HoatDongKhac = item.JSON_HoatDongKhac;
+            dbitem.JSON_KinhNghiemLamViec = item.JSON_KinhNghiemLamViec;
+            dbitem.JSON_BaiDangTapChi = item.JSON_BaiDangTapChi;
+            dbitem.HTML = item.HTML;
+            dbitem.IsDisabled = item.IsDisabled;
+            dbitem.IsDeleted = item.IsDeleted;
+            dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;
+
+            if (item.ListDonViCongTac != null)
+            {
+                dbitem.JSON_DonViCongTac = JsonConvert.SerializeObject(item.ListDonViCongTac);
+            }
+            else
+                dbitem.JSON_DonViCongTac = string.Empty;
+
+            if (item.ListHoatDongKhac != null)
+            {
+                dbitem.JSON_HoatDongKhac = JsonConvert.SerializeObject(item.ListHoatDongKhac);
+            }
+            else
+                dbitem.JSON_HoatDongKhac = string.Empty;
+
+            if (item.ListKinhNghiemLamViec != null)
+            {
+                dbitem.JSON_KinhNghiemLamViec = JsonConvert.SerializeObject(item.ListKinhNghiemLamViec);
+            }
+            else
+                dbitem.JSON_KinhNghiemLamViec = string.Empty;
+
+            if (item.ListQuaTrinhDaoTao != null)
+            {
+                dbitem.JSON_QuaTrinhDaoTao = JsonConvert.SerializeObject(item.ListQuaTrinhDaoTao);
+            }
+            else
+                dbitem.JSON_QuaTrinhDaoTao = string.Empty;
+
+            if (item.ListBaiDangTapChi != null)
+            {
+                dbitem.JSON_BaiDangTapChi = JsonConvert.SerializeObject(item.ListBaiDangTapChi);
+            }
+            else
+                dbitem.JSON_BaiDangTapChi = string.Empty;
+
+            dbitem.HTML = item.HTML;
+            dbitem.IsDisabled = item.IsDisabled;
+            dbitem.IsDeleted = item.IsDeleted;
+
+            dbitem.ModifiedBy = Username;
+            dbitem.ModifiedDate = DateTime.Now;
+
+            try
+            {
+                db.SaveChanges();
+
+                BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_HOSREM", DateTime.Now, Username);
+                item.ID = dbitem.ID;
+                item.CreatedBy = dbitem.CreatedBy;
+                item.CreatedDate = dbitem.CreatedDate;
+
+                item.ModifiedBy = dbitem.ModifiedBy;
+                item.ModifiedDate = dbitem.ModifiedDate;
+                return item;
+            }
+            catch (DbEntityValidationException e)
+            {
+                errorLog.logMessage("save_CUS_HRM_STAFF_NhanSu_HOSREM", e);
+                return null;
+            }
+        }
     }
 }

@@ -1569,6 +1569,36 @@ export var APIListBase = {
             url: function (idDeTai) { return appSetting.apiDomain("PRO/ThuyetMinhDeTai/get_PRO_ThuyetMinhDeTaiByDeTai/") + idDeTai }
         }
     },
+    STAFF_NhanSu_Hosrem: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai, idBenhNhan) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/get_CUS_HRM_STAFF_NhanSu_HOSREM/") + idDeTai + "/" + idBenhNhan }
+        },
+        saveCustom:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/save_CUS_HRM_STAFF_NhanSu_HOSREM")}
+        },
+    }
 };
 
 
