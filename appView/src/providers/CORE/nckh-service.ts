@@ -7,7 +7,7 @@ export class NCKHServiceProvider {
     constructor() {
     }
     init() {
-        var me = this;
+        // bindingHandlers
         ko.bindingHandlers.editableHTML = {
             init: function (element, valueAccessor) {
                 var $element = $(element);
@@ -19,41 +19,40 @@ export class NCKHServiceProvider {
                 });
             }
         };
+
+        // eventHandlers
         $(".ptable,.pblock").on("click", ".clone", function (e) {
-            var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
+            var target = $(e.currentTarget).closest(".pconf"),
+                sconf = target.attr("conf");
             if (sconf != null) {
                 try {
+                    var context = ko.contextFor(target[0]);
                     var conf = JSON.parse(sconf);
                     if (conf.add) {
-                        var target = window.getSelection().anchorNode;
-                        if (!target) {
-                            var context = ko.contextFor(this);
-                            me.addItem(context, conf.name, conf.props, null, null);
+                        var anchorNode = window.getSelection().anchorNode;
+                        if (!anchorNode) {
+                            this.addItem(context, conf.name, conf.props, null, null);
                         }
                         // @ts-ignore
                         else {
-                            var sconf1 = $(target).closest(".pconf").attr("conf");
+                            var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
                             if (sconf1 == null) {
-                                var context = ko.contextFor(this);
-                                me.addItem(context, conf.name, conf.props, null, null);
+                                this.addItem(context, conf.name, conf.props, null, null);
                             } else {
                                 try {
                                     var conf1 = JSON.parse(sconf1);
                                     if (conf1.name === conf.name) {
-                                        if (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR") {
-                                            var tr = $(target).closest('tr');
-                                            var context = ko.contextFor(this);
+                                        if (anchorNode.parentElement.tagName == "TD" || anchorNode.parentElement.tagName == "TR") {
+                                            var tr = $(anchorNode).closest('tr');
                                             var obj = ko.contextFor(tr[0]).$data;
-                                            me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
-                                        } else if ($(target).closest('.prow')) {
-                                            var row = $(target).closest('.prow');
-                                            var context = ko.contextFor(this);
+                                            this.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
+                                        } else if ($(anchorNode).closest('.prow')) {
+                                            var row = $(anchorNode).closest('.prow');
                                             var obj = ko.contextFor(row[0]).$data;
-                                            me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
+                                            this.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
                                         }
                                     } else {
-                                        var context = ko.contextFor(this);
-                                        me.addItem(context, conf.name, conf.props, null, null);
+                                        this.addItem(context, conf.name, conf.props, null, null);
                                     }
                                 } catch (e) {
                                 }
@@ -68,20 +67,21 @@ export class NCKHServiceProvider {
             }
         });
         $(".ptable").on("click", ".remove", function (e) {
-            var target = window.getSelection().anchorNode;
-            if (target) {
-                var sconf = $(e.currentTarget).closest(".ptable").attr("conf");
-                var sconf1 = $(target).closest(".ptable").attr("conf");
-                if (sconf != null && sconf1 != null && (target.parentElement.tagName == "TD" || target.parentElement.tagName == "TR")) {
+            var anchorNode = window.getSelection().anchorNode;
+            if (anchorNode) {
+                var ptable = $(e.currentTarget).closest(".pconf"),
+                    sconf = ptable.attr("conf");
+                var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
+                if (sconf != null && sconf1 != null && (anchorNode.parentElement.tagName == "TD" || anchorNode.parentElement.tagName == "TR")) {
                     try {
                         var conf = JSON.parse(sconf);
                         var conf1 = JSON.parse(sconf1);
                         if (conf.name === conf1.name && conf.add) {
-                            var tr = $(target).closest('tr');
+                            var tr = $(anchorNode).closest('tr');
                             if (tr.attr('removeable') == "1" || tr.attr('removeable') == "true") {
-                                var context = ko.contextFor(this);
+                                var context = ko.contextFor(ptable[0]);
                                 var obj = ko.contextFor(tr[0]).$data;
-                                me.removeItem(context, conf.name, obj);
+                                this.removeItem(context, conf.name, obj);
                             }
                         }
                         return false;
@@ -93,20 +93,21 @@ export class NCKHServiceProvider {
             }
         });
         $(".pblock").on("click", ".remove", function (e) {
-            var target = window.getSelection().anchorNode;
-            if (target) {
-                var sconf = $(e.currentTarget).closest(".pconf").attr("conf");
-                var sconf1 = $(target).closest(".pconf").attr("conf");
+            var anchorNode = window.getSelection().anchorNode;
+            if (anchorNode) {
+                var pblock = $(e.currentTarget).closest(".pconf"),
+                    sconf = pblock.attr("conf");
+                var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
                 if (sconf != null && sconf1 != null) {
                     try {
                         var conf = JSON.parse(sconf);
                         var conf1 = JSON.parse(sconf1);
                         if (conf.name === conf1.name && conf.add) {
-                            var row = $(target).closest('.prow');
-                            if (row.attr('removeable') == "1" || row.attr('removeable') == "true") {
-                                var context = ko.contextFor(this);
-                                var obj = ko.contextFor(row[0]).$data;
-                                me.removeItem(context, conf.name, obj);
+                            var prow = $(anchorNode).closest('.prow');
+                            if (prow.length >= 1 && prow.attr('removeable') == "1" || prow.attr('removeable') == "true") {
+                                var context = ko.contextFor(pblock[0]);
+                                var obj = ko.contextFor(prow[0]).$data;
+                                this.removeItem(context, conf.name, obj);
                             }
                         }
                         return false;
@@ -117,22 +118,26 @@ export class NCKHServiceProvider {
                 }
             }
         });
-        var ptablePopConrtrol = $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +
-            '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-            '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-            '</div>' +
-            '</div>');
 
+
+
+        var ptableGroupConrtrol =
+            $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
+                '<div class="fieldgroup_controls">' +
+                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                '</div>' +
+                '</div>');
         $(".ptable").mouseenter(function (event) {
             try {
-                var sconf = this.attributes["conf"].value;
+                var ptable = $(event.currentTarget),
+                    sconf = ptable.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            ptablePopConrtrol.appendTo($(this));
+                        var group_controls = ptable.find(".group_controls");
+                        if (group_controls.length == 0) {
+                            ptableGroupConrtrol.appendTo(ptable);
                         }
                     }
                 }
@@ -141,29 +146,27 @@ export class NCKHServiceProvider {
                 return false;
             }
         }).mouseleave(function (event) {
-            var t = $(this).find(".group_controls");
-            t.detach();
+            var ptable = $(event.currentTarget),
+                group_controls = ptable.find(".group_controls");
+            group_controls.detach();
         });
 
-        var prowPopConrtrol = $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +
-            '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-            '</div>' +
-            '</div>');
-        var pblockPopConrtrol = $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-            '<div class="fieldgroup_controls">' +
-            '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-            '</div>' +
-            '</div>');
+        var pblockConrtrol =
+            $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
+                '<div class="fieldgroup_controls">' +
+                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                '</div>' +
+                '</div>');
         $(".pblock").mouseenter(function (event) {
             try {
-                var sconf = this.attributes["conf"].value;
+                var pblock = $(event.currentTarget);
+                var sconf = pblock.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            pblockPopConrtrol.appendTo($(this));
+                        var group_controls = pblock.find(".group_controls");
+                        if (group_controls.length == 0) {
+                            pblockConrtrol.appendTo(pblock);
                             event.stopPropagation()
                         }
                     }
@@ -173,19 +176,26 @@ export class NCKHServiceProvider {
                 return false;
             }
         }).mouseleave(function (event) {
-            var t = $(this).find(".group_controls");
+            var t = $(event.currentTarget).find(".group_controls");
             t.detach();
         });
 
+        var prowConrtrol =
+            $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
+                '<div class="fieldgroup_controls">' +
+                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                '</div>' +
+                '</div>');
         $(".pblock").on("mouseenter", ".prow", function (event) {
             try {
-                var sconf = this.attributes["conf"].value;
+                var pblock = $(event.currentTarget);
+                var sconf = pblock.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.remove) {
-                        var t = $(this).find(".group_controls");
-                        if (t.length == 0) {
-                            prowPopConrtrol.appendTo($(this));
+                        var group_controls = pblock.find(".group_controls");
+                        if (group_controls.length == 0) {
+                            prowConrtrol.appendTo(pblock);
                         }
                     }
                 }
@@ -195,8 +205,9 @@ export class NCKHServiceProvider {
             }
         });
         $(".pblock").on("mouseleave", ".prow", function (event) {
-            var t = $(this).find(".group_controls");
-            t.detach();
+            var pblock = $(event.currentTarget),
+                group_controls = pblock.find(".group_controls");
+            group_controls.detach();
         });
     }
     observableSimpleArray(arr) {

@@ -65,7 +65,7 @@
                             <span contenteditable="true" style="text-indent: 0;"></span>
                         </p>
                         <div data-bind="foreach: ListTrinhDoChuyenMon">
-                            <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index}" style="position:relative;">
+                            <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removeable: true }" style="position:relative;">
                                 <p class="box tab-1">
                                     <span class="box-title">Học vị:</span>
                                     <span contenteditable="true" style="text-indent: 54px;" data-bind="editableHTML: HocVi"></span>
@@ -110,7 +110,7 @@
                                 </tr>
                             </thead>
                             <tbody style="width:100%;" data-bind="foreach: ListKinhNghiem">
-                                <tr data-bind="attr: { index: $index}">
+                                <tr data-bind="attr: { index: $index, removeable: true }">
                                     <td contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: NhiemVuCaNhan"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CoQuanChuTri"></td>

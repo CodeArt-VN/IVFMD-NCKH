@@ -251,7 +251,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListNgoaiNgu">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: NgoaiNgu"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: NgheTot"></td>
@@ -290,7 +290,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListThoiGianCongTac">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: NoiCongTac"></td>
                             <td contenteditable="true" data-bind="editableHTML: ChucVu"></td>
@@ -322,7 +322,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListQuaTrinhDaoTao">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="true" data-bind="editableHTML: Bac"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: NoiDaoTao"></td>
@@ -386,7 +386,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListDeTai">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                             <td contenteditable="true" data-bind="editableHTML: MaSoQuanLy"></td>
@@ -424,7 +424,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListHuongDan">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSV"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenLuanAn"></td>
@@ -471,7 +471,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListSachQuocTe">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSach"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -509,7 +509,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListSachTrongNuoc">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenSach"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -553,7 +553,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListTapChiQuocTe">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -590,7 +590,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListTapChiTrongNuoc">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -627,7 +627,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListHoiNghiQuocTe">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -664,7 +664,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListHoiNghiTrongNuoc">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenBaiViet"></td>
                             <td contenteditable="true" data-bind="editableHTML: SanPham"></td>
@@ -703,7 +703,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListGiaiThuong">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenGiaiThuong"></td>
                             <td contenteditable="true" data-bind="editableHTML: NoiDungGiaiThuong"></td>
@@ -741,7 +741,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListHiepHoiKhoaHoc">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenHiepHoi"></td>
@@ -772,7 +772,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListTruongDaiHoc">
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: ThoiGian"></td>
                             <td contenteditable="true" data-bind="editableHTML: TenTruong"></td>

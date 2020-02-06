@@ -271,7 +271,7 @@
                             <td colspan="4" class="text-bold">Thành viên chủ chốt</td>
                         </tr>
                         <!-- ko foreach: ListNhanLucNghienCuu -->
-                        <tr data-bind="attr: { index: $index}">
+                        <tr data-bind="attr: { index: $index, removeable: true }">
                             <td contenteditable="false" class="text-center" data-bind="{text: ($index() + 1)}"></td>
                             <td contenteditable="true" data-bind="editableHTML: HoTen"></td>
                             <td contenteditable="true" data-bind="editableHTML: DonVi"></td>
@@ -327,7 +327,7 @@
                             </tr>
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListGioiThieuChuyenGia">
-                            <tr data-bind="attr: { index: $index}">
+                            <tr data-bind="attr: { index: $index, removeable: true }">
                                 <td contenteditable="false" class="text-center" data-bind="{text: ($index() + 1)}"></td>
                                 <td contenteditable="true" data-bind="editableHTML: HoTen"></td>
                                 <td contenteditable="true" data-bind="editableHTML: HuongNghienCuu"></td>
@@ -387,7 +387,7 @@
                                 </tr>
                             </thead>
                             <tbody style="width:100%;">
-                                <tr data-bind="attr: { index: $index}">
+                                <tr data-bind="attr: { index: $index, removeable: true }">
                                     <td contenteditable="false" data-bind="editableHTML: NoiDung"></td>
                                     <td contenteditable="true" data-bind="editableHTML: ThoiGianThucHien"></td>
                                     <td contenteditable="true" data-bind="editableHTML: KetQua"></td>
