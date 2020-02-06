@@ -78,7 +78,7 @@ export class NCKHServiceProvider {
                         var conf1 = JSON.parse(sconf1);
                         if (conf.name === conf1.name && conf.add) {
                             var tr = $(anchorNode).closest('tr');
-                            if (tr.attr('removeable') == "1" || tr.attr('removeable') == "true") {
+                            if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
                                 var context = ko.contextFor(ptable[0]);
                                 var obj = ko.contextFor(tr[0]).$data;
                                 this.removeItem(context, conf.name, obj);
@@ -104,7 +104,7 @@ export class NCKHServiceProvider {
                         var conf1 = JSON.parse(sconf1);
                         if (conf.name === conf1.name && conf.add) {
                             var prow = $(anchorNode).closest('.prow');
-                            if (prow.length >= 1 && prow.attr('removeable') == "1" || prow.attr('removeable') == "true") {
+                            if (prow.length >= 1 && prow.attr('removable') == "1" || prow.attr('removable') == "true") {
                                 var context = ko.contextFor(pblock[0]);
                                 var obj = ko.contextFor(prow[0]).$data;
                                 this.removeItem(context, conf.name, obj);
@@ -123,11 +123,11 @@ export class NCKHServiceProvider {
 
         var ptableGroupConrtrol =
             $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-                '</div>' +
-                '</div>');
+                  '<div class="fieldgroup_controls">' +
+                      '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                      '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                  '</div>' +
+              '</div>');
         $(".ptable").mouseenter(function (event) {
             try {
                 var ptable = $(event.currentTarget),
@@ -153,10 +153,10 @@ export class NCKHServiceProvider {
 
         var pblockConrtrol =
             $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-                '</div>' +
-                '</div>');
+                  '<div class="fieldgroup_controls">' +
+                      '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                  '</div>' +
+              '</div>');
         $(".pblock").mouseenter(function (event) {
             try {
                 var pblock = $(event.currentTarget);
@@ -182,10 +182,10 @@ export class NCKHServiceProvider {
 
         var prowConrtrol =
             $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-                '</div>' +
-                '</div>');
+                  '<div class="fieldgroup_controls">' +
+                      '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                  '</div>' +
+              '</div>');
         $(".pblock").on("mouseenter", ".prow", function (event) {
             try {
                 var pblock = $(event.currentTarget);

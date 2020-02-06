@@ -12,6 +12,31 @@ namespace DTOModel
         public List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia> ListGioiThieuChuyenGia { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien> ListKeHoachThucHien { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap> ListBienSo { get; set; }
+
+        public string TongHopKinhPhi_KinhPhi { get; set; }
+        public string TongHopKinhPhi_KhoanChi { get; set; }
+        public string TongHopKinhPhi_PhanTram { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi> ListKinhPhiTongHop { get; set; }
+
+        public string TongHopKinhPhi_CongLaoDong_GhiChu { get; set; }
+        public string TongHopKinhPhi_CongLaoDong_KinhPhi { get; set; }
+        public string TongHopKinhPhi_CongLaoDong_KhoanChi { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiCongLaoDong { get; set; }
+
+        public string TongHopKinhPhi_NguyenVatLieu_GhiChu { get; set; }
+        public string TongHopKinhPhi_NguyenVatLieu_KinhPhi { get; set; }
+        public string TongHopKinhPhi_NguyenVatLieu_KhoanChi { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiNguyenVatLieu { get; set; }
+
+        public string TongHopKinhPhi_ThietBi_GhiChu { get; set; }
+        public string TongHopKinhPhi_ThietBi_KinhPhi { get; set; }
+        public string TongHopKinhPhi_ThietBi_KhoanChi { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiThietBi { get; set; }
+
+        public string TongHopKinhPhi_Khac_GhiChu { get; set; }
+        public string TongHopKinhPhi_Khac_KinhPhi { get; set; }
+        public string TongHopKinhPhi_Khac_KhoanChi { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiKhac { get; set; }
     }
 
     public class DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien
@@ -79,51 +104,163 @@ namespace DTOModel
 
     public class DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi
     {
-        public string TraCongLaoDong_KinhPhi { get; set; }
-        public string TraCongLaoDong_KhoanChi { get; set; }
-        public string TraCongLaoDong_PhanTram { get; set; }
+        public enum NoiDungKinhPhi
+        {
+            Khoan1TraCongLaoDong = 1,
+            Khoan2NguyenLieu,
+            Khoan3ThietBi,
+            Khoan4Khac
+        }
+        public static string Khoan1TraCongLaoDong = "Khoản 1: Trả công lao động";
+        public static string Khoan2NguyenLieu = "Khoản 2: Nguyên vật liệu, năng lượng";
+        public static string Khoan3ThietBi = "Khoản 3: Thiết bị, máy móc";
+        public static string Khoan4Khac = "Khoản 4: Chi khác";
 
-        public string NguyenVatLieu_KinhPhi { get; set; }
-        public string NguyenVatLieu_KhoanChi { get; set; }
-        public string NguyenVatLieu_PhanTram { get; set; }
+        public DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi()
+        {
 
-        public string ThietBi_KinhPhi { get; set; }
-        public string ThietBi_KhoanChi { get; set; }
-        public string ThietBi_PhanTram { get; set; }
+        }
+        public DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(NoiDungKinhPhi loaiKinhPhi)
+        {
+            this.LoaiKinhPhi = loaiKinhPhi;
+            switch (loaiKinhPhi)
+            {
+                case NoiDungKinhPhi.Khoan1TraCongLaoDong:
+                    this.NoiDung = Khoan1TraCongLaoDong;
+                    break;
+                case NoiDungKinhPhi.Khoan2NguyenLieu:
+                    this.NoiDung = Khoan2NguyenLieu;
+                    break;
+                case NoiDungKinhPhi.Khoan3ThietBi:
+                    this.NoiDung = Khoan3ThietBi;
+                    break;
+                case NoiDungKinhPhi.Khoan4Khac:
+                    this.NoiDung = Khoan4Khac;
+                    break;
+            }
+        }
 
-        public string ChiKhac_KinhPhi { get; set; }
-        public string ChiKhac_KhoanChi { get; set; }
-        public string ChiKhac_PhanTram { get; set; }
-
-        public string TongCong_KinhPhi { get; set; }
-        public string TongCong_KhoanChi { get; set; }
-        public string TongCong_PhanTram { get; set; }
+        public NoiDungKinhPhi LoaiKinhPhi { get; set; }
+        public string NoiDung { get; set; }
+        public string KinhPhi { get; set; }
+        public string KhoanChi { get; set; }
+        public string PhanTram { get; set; }
     }
 
-    public class DTO_PRO_ThuyetMinhDeTai_CongLaoDong
+    public class DTO_PRO_ThuyetMinhDeTai_KinhPhi
     {
-        public string VietDeCuong_KinhPhi { get; set; }
-        public string VietDeCuong_KhoanChi { get; set; }
-        public string VietDeCuong_GhiChu { get; set; }
+        public enum NoiDungKinhPhi
+        {
+            Khoan1VietDeCuong = 1,
+            Khoan2ThuThapDL,
+            Khoan3XLVaPTSoLieu,
+            Khoan4DieuPhoiNghienCuu,
+            Khoan5VietBaiDangBao,
 
-        public string ThuThapDuLieu_KinhPhi { get; set; }
-        public string ThuThapDuLieu_KhoanChi { get; set; }
-        public string ThuThapDuLieu_GhiChu { get; set; }
+            Khoan1NguyenVatLieu = 11,
+            Khoan2DungCuPhuTungReTien,
+            Khoan3NangLuong,
+            Khoan4SachTaiLieu,
 
-        public string XuLyPhanTich_KinhPhi { get; set; }
-        public string XuLyPhanTich_KhoanChi { get; set; }
-        public string XuLyPhanTich_GhiChu { get; set; }
+            Khoan1MuaThietBi = 21,
+            Khoan2ThueThietBi,
+            Khoan3VanChuyenLapDat,
 
-        public string DieuPhoiNghienCuu_KinhPhi { get; set; }
-        public string DieuPhoiNghienCuu_KhoanChi { get; set; }
-        public string DieuPhoiNghienCuu_GhiChu { get; set; }
+            Khoan1HopTacTrongNuoc = 31,
+            Khoan2HDDD,
+            Khoan3HDKH,
+            Khoan4DuPhong
+        }
+        public static string VietDeCuong = "Viết đề cương nghiên cứu";
+        public static string ThuThapDL = "Thu thập dữ liệu nghiên cứu";
+        public static string XLVaPTSoLieu = "Xử lý và phân tích số liệu";
+        public static string DieuPhoiNghienCuu = "Điều phối nghiên cứu";
+        public static string VietBaiDangBao = "Viết bài đăng báo và báo cáo tổng kết";
 
-        public string VietBaiBao_KinhPhi { get; set; }
-        public string VietBaiBao_KhoanChi { get; set; }
-        public string VietBaiBao_GhiChu { get; set; }
 
-        public string TongCong_KinhPhi { get; set; }
-        public string TongCong_KhoanChi { get; set; }
-        public string TongCong_GhiChu { get; set; }
+        public static string NguyenVatLieu = "Nguyên, vật liệu";
+        public static string DungCuPhuTungReTien = "Dụng cụ, phụ tùng, vật rẻ tiền mau hỏng";
+        public static string NangLuong = "Năng lượng, nhiên liệu";
+        public static string SachTaiLieu = "Mua sách, tài liệu, số liệu";
+
+
+        public static string MuaThietBi = "Mua thiết bị";
+        public static string ThueThietBi = "Thuê thiết bị";
+        public static string VanChuyenLapDat = "Vận chuyển lắp đặt";
+
+
+        public static string HopTacTrongNuoc = "Hợp tác trong nước";
+        public static string HDDD = "Hội đồng đạo đức";
+        public static string HDKH = "Hội đồng khoa học";
+        public static string DuPhong = "Dự phòng (Đăng ký sở hữu trí tuệ, tổ chức hội thảo, liên lạc, văn phòng phẩm, in ấn, dịch tài liệu…)";
+
+        public DTO_PRO_ThuyetMinhDeTai_KinhPhi()
+        {
+
+        }
+        public DTO_PRO_ThuyetMinhDeTai_KinhPhi(NoiDungKinhPhi kinhPhi)
+        {
+            this.LoaiKinhPhi = kinhPhi;
+            switch (kinhPhi)
+            {
+                case NoiDungKinhPhi.Khoan1VietDeCuong:
+                    this.NoiDung = VietDeCuong;
+                    break;
+                case NoiDungKinhPhi.Khoan2ThuThapDL:
+                    this.NoiDung = ThuThapDL;
+                    break;
+                case NoiDungKinhPhi.Khoan3XLVaPTSoLieu:
+                    this.NoiDung = XLVaPTSoLieu;
+                    break;
+                case NoiDungKinhPhi.Khoan4DieuPhoiNghienCuu:
+                    this.NoiDung = DieuPhoiNghienCuu;
+                    break;
+                case NoiDungKinhPhi.Khoan5VietBaiDangBao:
+                    this.NoiDung = VietBaiDangBao;
+                    break;
+
+                case NoiDungKinhPhi.Khoan1NguyenVatLieu:
+                    this.NoiDung = NguyenVatLieu;
+                    break;
+                case NoiDungKinhPhi.Khoan2DungCuPhuTungReTien:
+                    this.NoiDung = DungCuPhuTungReTien;
+                    break;
+                case NoiDungKinhPhi.Khoan3NangLuong:
+                    this.NoiDung = NangLuong;
+                    break;
+                case NoiDungKinhPhi.Khoan4SachTaiLieu:
+                    this.NoiDung = SachTaiLieu;
+                    break;
+
+                case NoiDungKinhPhi.Khoan1MuaThietBi:
+                    this.NoiDung = MuaThietBi;
+                    break;
+                case NoiDungKinhPhi.Khoan2ThueThietBi:
+                    this.NoiDung = ThueThietBi;
+                    break;
+                case NoiDungKinhPhi.Khoan3VanChuyenLapDat:
+                    this.NoiDung = VanChuyenLapDat;
+                    break;
+
+                case NoiDungKinhPhi.Khoan1HopTacTrongNuoc:
+                    this.NoiDung = HopTacTrongNuoc;
+                    break;
+                case NoiDungKinhPhi.Khoan2HDDD:
+                    this.NoiDung = HDDD;
+                    break;
+                case NoiDungKinhPhi.Khoan3HDKH:
+                    this.NoiDung = HDKH;
+                    break;
+                case NoiDungKinhPhi.Khoan4DuPhong:
+                    this.NoiDung = DuPhong;
+                    break;
+            }
+        }
+
+        public NoiDungKinhPhi LoaiKinhPhi { get; set; }
+        public string NoiDung { get; set; }
+        public string KinhPhi { get; set; }
+        public string KhoanChi { get; set; }
+        public string GhiChu { get; set; }
     }
 }
