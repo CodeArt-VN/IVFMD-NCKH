@@ -1592,7 +1592,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idBenhNhan) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/get_CUS_HRM_STAFF_NhanSu_HOSREM/") + idDeTai + "/" + idBenhNhan }
+            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/get_CUS_HRM_STAFF_NhanSu_HOSREM/") + idNhanSu }
         },
         saveCustom:{
             method: "POST",

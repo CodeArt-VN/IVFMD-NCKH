@@ -244,6 +244,9 @@ export class MyApp {
             else if (data == 'openSYLL') {
                 this.openSYLL();
             }
+            else if (data == 'openHosrem') {
+                this.openHosrem();
+            }
             else if (data == 'logout') {
                 this.logout();
             }
