@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 
+window["$"] = $;
+window["jQuery"] = $;
+
 @Injectable()
 export class NCKHServiceProvider {
     constructor() {
     }
     init() {
+        var me = this;
+
         // bindingHandlers
         ko.bindingHandlers.editableHTML = {
             init: function (element, valueAccessor) {
@@ -31,13 +36,13 @@ export class NCKHServiceProvider {
                     if (conf.add) {
                         var anchorNode = window.getSelection().anchorNode;
                         if (!anchorNode) {
-                            this.addItem(context, conf.name, conf.props, null, null);
+                            me.addItem(context, conf.name, conf.props, null, null);
                         }
                         // @ts-ignore
                         else {
                             var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
                             if (sconf1 == null) {
-                                this.addItem(context, conf.name, conf.props, null, null);
+                                me.addItem(context, conf.name, conf.props, null, null);
                             } else {
                                 try {
                                     var conf1 = JSON.parse(sconf1);
@@ -45,14 +50,14 @@ export class NCKHServiceProvider {
                                         if (anchorNode.parentElement.tagName == "TD" || anchorNode.parentElement.tagName == "TR") {
                                             var tr = $(anchorNode).closest('tr');
                                             var obj = ko.contextFor(tr[0]).$data;
-                                            this.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
+                                            me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
                                         } else if ($(anchorNode).closest('.prow')) {
                                             var row = $(anchorNode).closest('.prow');
                                             var obj = ko.contextFor(row[0]).$data;
-                                            this.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
+                                            me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
                                         }
                                     } else {
-                                        this.addItem(context, conf.name, conf.props, null, null);
+                                        me.addItem(context, conf.name, conf.props, null, null);
                                     }
                                 } catch (e) {
                                 }
@@ -81,7 +86,7 @@ export class NCKHServiceProvider {
                             if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
                                 var context = ko.contextFor(ptable[0]);
                                 var obj = ko.contextFor(tr[0]).$data;
-                                this.removeItem(context, conf.name, obj);
+                                me.removeItem(context, conf.name, obj);
                             }
                         }
                         return false;
@@ -107,7 +112,7 @@ export class NCKHServiceProvider {
                             if (prow.length >= 1 && prow.attr('removable') == "1" || prow.attr('removable') == "true") {
                                 var context = ko.contextFor(pblock[0]);
                                 var obj = ko.contextFor(prow[0]).$data;
-                                this.removeItem(context, conf.name, obj);
+                                me.removeItem(context, conf.name, obj);
                             }
                         }
                         return false;

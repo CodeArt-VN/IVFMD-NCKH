@@ -8,8 +8,8 @@
 
 export var appSetting = {
 	mainService: {
-        base: "http://nckh.appcenter.vn/",
-        //base: "http://localhost:54009/",
+        //base: "http://nckh.appcenter.vn/",
+        base: "http://localhost:54009/",
 		api: "api/",
 	},
 	apiDomain:function(api){
