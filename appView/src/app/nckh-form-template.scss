@@ -32,6 +32,27 @@
         font-size: 10pt;
     }
 
+    &.form-header-footer {
+        padding-top: 0; 
+        padding-bottom: 0;
+    }
+    .page-header, .page-header-space { 
+        height: 1in; 
+    }
+    .page-footer, .page-footer-space { 
+        height: 1in; 
+    }
+    .page-footer { 
+        bottom: 0; 
+        width: 100%; 
+        background: #fff; 
+    }
+    .page-header { 
+        top: 0mm; 
+        width: 100%; 
+        background: #fff; 
+    }
+
     .inline {
         display: inline-block;
         width: 100%;
@@ -234,6 +255,14 @@
 
         .print-hidden {
             display: none;
+        }
+
+        .group_controls { 
+            display: none;
+        }
+        
+        .nckh-form-template {
+            box-shadow: none; 
         }
 
         .box {

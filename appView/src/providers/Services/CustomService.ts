@@ -612,7 +612,19 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
                     reject(err);
                 });
         });
-    }
+	}
+	print(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_DeTai.print;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
 }
 
 @Injectable()
@@ -807,6 +819,38 @@ export class PRO_ThuyetMinhDeTaiCustomProvider extends exService {
 	}
 }
 
+@Injectable()
+export class STAFF_NhanSu_HosremCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.STAFF_NhanSu_Hosrem, SearchConfig.getSearchFields('STAFF_NhanSu_Hosrem'), commonService);
+    }
+    getItemCustom(idNhanSu) {
+        let that = this.commonService;
+        let apiPath = APIList.STAFF_NhanSu_Hosrem.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idNhanSu), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+	}
+
+	saveCustom(item) {
+		let that = this.commonService;
+        let apiPath = APIList.STAFF_NhanSu_Hosrem.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+	}
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

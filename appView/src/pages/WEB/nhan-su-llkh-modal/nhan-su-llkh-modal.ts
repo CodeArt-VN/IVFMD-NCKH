@@ -81,17 +81,6 @@ export class NhanSuLLKHModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmNhanSuLLKH");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
 
         this.nckhProvider.init();
 
@@ -288,26 +277,6 @@ export class NhanSuLLKHModalPage extends DetailPage {
             }));
             
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
-
-            self.addItem = function (name, props, index) {
-                if (self[name]) {
-                    var obj = {};
-                    $.each(props || [], function (i, o) {
-                        obj[o] = ko.observable("");
-                    })
-                    if (index && index > -1 && index < self[name]().length) {
-                        self[name].splice(index, 0, ko.observable(obj));
-                    } else {
-                        self[name].push(ko.observable(obj));
-                    }
-                }
-            };
-
-            self.removeItem = function (name, index) {
-                if (self[name])
-                    var idx = parseInt(index);
-                self[name].splice(idx, 1);
-            };
 
             self.savedJson = ko.observable("");
             self.save = function () {

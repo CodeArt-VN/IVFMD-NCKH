@@ -46,7 +46,7 @@ namespace API.Controllers.PRO
             if (tbl_PRO_ThuyetMinhDeTai == null)
             {
                 string html = "";
-                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
                 {
                     html = r.ReadToEnd();
                 }
@@ -82,6 +82,40 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoTrongNuoc),
                         new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.NghiemThuDeTai),
                         new DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien(DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoQuocTe)
+                    },
+                    ListKinhPhiTongHop = new List<DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan1TraCongLaoDong),
+                        new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan2NguyenLieu),
+                        new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan3ThietBi),
+                        new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan4Khac),
+                    },
+                    ListKinhPhiCongLaoDong = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan1VietDeCuong),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2ThuThapDL),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3XLVaPTSoLieu),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DieuPhoiNghienCuu),
+                    },
+                    ListKinhPhiNguyenVatLieu = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan1NguyenVatLieu),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2DungCuPhuTungReTien),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3NangLuong),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4SachTaiLieu),
+                    },
+                    ListKinhPhiThietBi = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan1MuaThietBi),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2ThueThietBi),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3VanChuyenLapDat),
+                    },
+                    ListKinhPhiKhac = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan1HopTacTrongNuoc),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2HDDD),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3HDKH),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DuPhong),
                     }
                 };
             }
@@ -107,9 +141,11 @@ namespace API.Controllers.PRO
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
             tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListBienSo);
             tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien);
+            tbl_PRO_ThuyetMinhDeTai.B52_JSON_TongHopKinhPhi = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiTongHop);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_NguyenVatLieu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiNguyenVatLieu);
 
             bool result = BS_PRO_ThuyetMinhDeTai.put_PRO_ThuyetMinhDeTai(db, id, tbl_PRO_ThuyetMinhDeTai, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -132,7 +168,7 @@ namespace API.Controllers.PRO
 
             DTO_PRO_ThuyetMinhDeTai result = BS_PRO_ThuyetMinhDeTai.post_PRO_ThuyetMinhDeTai(db, tbl_PRO_ThuyetMinhDeTai, Username);
 
-			if (result != null)
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_ThuyetMinhDeTai", new { id = result.ID }, result);
             }
@@ -143,17 +179,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_ThuyetMinhDeTai))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_ThuyetMinhDeTai.check_PRO_ThuyetMinhDeTai_Exists(db, id); 
+            bool check = BS_PRO_ThuyetMinhDeTai.check_PRO_ThuyetMinhDeTai_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_ThuyetMinhDeTai.delete_PRO_ThuyetMinhDeTai(db, id, Username); 
+            bool result = BS_PRO_ThuyetMinhDeTai.delete_PRO_ThuyetMinhDeTai(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }
