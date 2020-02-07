@@ -57,7 +57,7 @@ namespace BaseBusiness
                     var chunhiem = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == detai.IDChuNhiem);
                     if (chunhiem != null)
                     {
-                        query.HoTenChuNhiem = chunhiem.Ho + " " + chunhiem.Ten;
+                        query.HoTenChuNhiem = chunhiem.Name;
                         query.DiaChi = chunhiem.DiaChi;
                         query.DienThoai = chunhiem.SoDienThoai;
                     }

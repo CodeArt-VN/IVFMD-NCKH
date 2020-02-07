@@ -51,7 +51,7 @@ namespace BaseBusiness
                 var nhansu = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == nhanSuId);
                 if (nhansu != null)
                 {
-                    query.HoTen = nhansu.Ho + " " + nhansu.Ten;
+                    query.HoTen = nhansu.Name;
                     query.Email = nhansu.Email;
 
                     var syll = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == nhanSuId && c.IsDeleted == false);
