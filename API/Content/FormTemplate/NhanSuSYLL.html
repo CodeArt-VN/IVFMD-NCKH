@@ -125,7 +125,7 @@
                                 </tr>
                             </thead>
                             <tbody style="width:100%;" data-bind="foreach: ListKinhNghiem">
-                                <tr data-bind="attr: { index: $index}">
+                                <tr data-bind="attr: { index: $index, removable: true }">
                                     <td contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: NhiemVuCaNhan"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CoQuanChuTri"></td>
