@@ -44,6 +44,20 @@
                             <span class="box-title">4. Địa chỉ gửi thư:</span>
                             <span contenteditable="true" style="text-indent: 129px;" data-bind="editableHTML: DiaChi"></span>
                         </p>
+                        <div class="box-inline">
+                            <div style="display:inline-block;min-width:50%">
+                                <p class="box">
+                                    <span class="box-title">5. Điện thoại CQ:</span>
+                                    <span contenteditable="true" style="text-indent: 126px;" data-bind="editableHTML: DienThoaiCQ"></span>
+                                </p>
+                            </div>
+                            <div style="display:inline-block;min-width:50%">
+                                <p class="box">
+                                    <span class="box-title">Mobile:</span>
+                                    <span contenteditable="true" style="text-indent: 58px;" data-bind="editableHTML: Mobile"></span>
+                                </p>
+                            </div>
+                        </div>
                         <p class="box">
                             <span class="box-title">6. Email:</span>
                             <span contenteditable="true" style="text-indent: 66px;" data-bind="editableHTML: Email"></span>
@@ -100,8 +114,7 @@
             <tr style="page-break-inside:auto;">
                 <td>
                     <p class="box">
-                        <span class="box-title">10. Kinh nghiệm nghiên cứu:</span>
-                        <span contenteditable="true" style="text-indent: 206px;"></span>
+                        <span>10. Kinh nghiệm nghiên cứu:</span>
                     </p>
                     <p class="box text-bold" style="margin-bottom:1em">
                         <span>
@@ -146,19 +159,19 @@
                         <div style="display:inline-block;min-width:136px">
                             <p class="box">
                                 <span class="box-title">TP. HCM, ngày </span>
-                                <span contenteditable="true" style="text-indent:110px;" class="text-center"></span>
+                                <span contenteditable="true" style="text-indent:110px;" class="text-center" data-bind="editableHTML: NgayKy"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:72px">
                             <p class="box">
                                 <span class="box-title">tháng</span>
-                                <span contenteditable="true" style="text-indent:38px;"></span>
+                                <span contenteditable="true" style="text-indent:38px;" data-bind="editableHTML: ThangKy"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:60px">
                             <p class="box">
                                 <span class="box-title">năm</span>
-                                <span contenteditable="true" style="text-indent:35px;"></span>
+                                <span contenteditable="true" style="text-indent:35px;" data-bind="editableHTML: NamKy"></span>
                             </p>
                         </div>
                     </div>
