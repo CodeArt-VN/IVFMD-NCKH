@@ -1,17 +1,31 @@
-﻿<div class="nckh-form-template nckh-form-09 font-size-13">
-    <div class="inline text-center text-bold">
+﻿<div class="nckh-form-template nckh-form-09 form-header-footer font-size-13">
+    <div class="page-header">
+        <table style="width: 100%;padding-top: 30px;border-bottom: 1px solid black;font-size: 10pt;font-style:italic;">
+            <tr style="border-bottom:1px solid black;">
+                <td style="vertical-align:top">
+                    Phụ lục 7
+                </td>
+                <td style="text-align:right;vertical-align:top">
+                    Quy chế tổ chức & hoạt động của HĐĐĐ_BVMĐ
+                    <br />
+                    Cập nhật tháng 9/2014
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline text-center text-bold" style="font-size: 14pt;">
         <p style="margin:0;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
         <p style="border-bottom: 1px solid black;display: inline;padding-bottom: .3em;">Độc lập – Tự do – Hạnh phúc</p>
     </div>
-    <div class="inline text-center text-bold" style="padding-top:2em;">
-        <p style="margin: 6px;font-size:14pt">
+    <div class="inline text-center text-bold" style="padding-top:2em;font-size: 14pt;">
+        <p style="margin: 6px;">
             SƠ YẾU LÝ LỊCH KHOA HỌC<br />
             NGHIÊN CỨU VIÊN CHÍNH NCYSH
         </p>
     </div>
-    <div>
+    <div class="block">
         <table border="1" bordercolor="#607D8B" class="nckh-table" style="width:100%;border-collapse: collapse;">
-            <tr>
+            <tr style="page-break-inside:auto;">
                 <td>
                     <div>
                         <p class="box">
@@ -41,7 +55,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="page-break-inside:auto;">
                 <td>
                     <p class="box">
                         <span class="box-title">8. Cơ quan - nơi làm việc:</span>
@@ -59,13 +73,13 @@
                         <span class="box-title">Địa chỉ cơ quan:</span>
                         <span contenteditable="true" style="text-indent: 118px;" data-bind="editableHTML: DiaChiCoQuan"></span>
                     </p>
-                    <div class="pblock pconf" conf='{"name":"ListTrinhDoChuyenMon","add":true,"remove":true,"props":["HocVi","NamNhanBang","ChuyenNganhDaoTao"]}' style="width:100%;position:relative;">
+                    <div class="pblock pconf" conf='{"name":"ListTrinhDoChuyenMon","add":true,"remove":true,"props":["HocVi","NamNhanBang","ChuyenNganhDaoTao"]}' style="width:100%;position:relative;page-break-inside:auto">
                         <p class="box">
                             <span class="box-title" style="width: 100%;">9. Trình độ chuyên môn (ghi đầy đủ cho từng loại văn bằng đã được nhận)</span>
                             <span contenteditable="true" style="text-indent: 0;"></span>
                         </p>
-                        <div data-bind="foreach: ListTrinhDoChuyenMon">
-                            <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removable: true }" style="position:relative;">
+                        <div data-bind="foreach: ListTrinhDoChuyenMon" style="page-break-inside:auto">
+                            <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removeable: true }" style="position:relative;page-break-inside:auto">
                                 <p class="box tab-1">
                                     <span class="box-title">Học vị:</span>
                                     <span contenteditable="true" style="text-indent: 54px;" data-bind="editableHTML: HocVi"></span>
@@ -83,15 +97,16 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="page-break-inside:auto;">
                 <td>
                     <p class="box">
                         <span class="box-title">10. Kinh nghiệm nghiên cứu:</span>
                         <span contenteditable="true" style="text-indent: 206px;"></span>
                     </p>
-                    <p class="box">
-                        <span class="box-title text-bold" style="width: 100%;">Các đề tài/dự án đã chủ trì hoặc tham gia trong 5 năm gần đây:</span>
-                        <span contenteditable="true" style="text-indent: 0;"></span>
+                    <p class="box text-bold" style="margin-bottom:1em">
+                        <span>
+                            Các đề tài/dự án đã chủ trì hoặc tham gia trong 5 năm gần đây:
+                        </span>
                     </p>
                     <div conf='{"name":"ListKinhNghiem","add":true,"resizeable":true,"props": ["TenDeTai","NhiemVuCaNhan","CoQuanChuTri","NamBatDauKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
                         <table class="nckh-table table-inside-table" style="width:100%;" border="0">
@@ -110,7 +125,7 @@
                                 </tr>
                             </thead>
                             <tbody style="width:100%;" data-bind="foreach: ListKinhNghiem">
-                                <tr data-bind="attr: { index: $index, removable: true }">
+                                <tr data-bind="attr: { index: $index}">
                                     <td contenteditable="true" data-bind="editableHTML: TenDeTai"></td>
                                     <td contenteditable="true" data-bind="editableHTML: NhiemVuCaNhan"></td>
                                     <td contenteditable="true" data-bind="editableHTML: CoQuanChuTri"></td>
@@ -161,5 +176,14 @@
                 </span>
             </p>
         </div>
+    </div>
+    <div class="page-footer">
+        <table style="width: 100%;padding-top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
+            <tr style="border-bottom:1px solid black;">
+                <td style="vertical-align:middle" class="text-center">
+                    1
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
