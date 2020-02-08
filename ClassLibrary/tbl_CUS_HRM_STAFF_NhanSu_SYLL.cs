@@ -42,6 +42,7 @@ namespace ClassLibrary
         public string NgayKy_Thang { get; set; }
         public string NgayKy_Nam { get; set; }
         public string NgayKy_ChuKy { get; set; }
+        public string DienThoaiNhaRieng { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
@@ -77,6 +78,7 @@ namespace DTOModel
 		public string NgayKy_Thang { get; set; }
 		public string NgayKy_Nam { get; set; }
 		public string NgayKy_ChuKy { get; set; }
+		public string DienThoaiNhaRieng { get; set; }
 	}
 }
 
@@ -125,7 +127,8 @@ namespace BaseBusiness
 				NgayKy_Ngay = s.NgayKy_Ngay,							
 				NgayKy_Thang = s.NgayKy_Thang,							
 				NgayKy_Nam = s.NgayKy_Nam,							
-				NgayKy_ChuKy = s.NgayKy_ChuKy,					
+				NgayKy_ChuKy = s.NgayKy_ChuKy,							
+				DienThoaiNhaRieng = s.DienThoaiNhaRieng,					
 			});
                               
         }
@@ -162,7 +165,8 @@ namespace BaseBusiness
 					NgayKy_Ngay = dbResult.NgayKy_Ngay,							
 					NgayKy_Thang = dbResult.NgayKy_Thang,							
 					NgayKy_Nam = dbResult.NgayKy_Nam,							
-					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,
+					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,							
+					DienThoaiNhaRieng = dbResult.DienThoaiNhaRieng,
 				};
 			}
 			else
@@ -374,6 +378,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.NgayKy_ChuKy == keyword);
             }
 
+			//Query DienThoaiNhaRieng (string)
+			if (QueryStrings.Any(d => d.Key == "DienThoaiNhaRieng") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DienThoaiNhaRieng").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DienThoaiNhaRieng").Value;
+                query = query.Where(d=>d.DienThoaiNhaRieng == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -415,7 +426,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -463,7 +475,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
