@@ -101,6 +101,10 @@ export class NhanSuSYLLModalPage extends DetailPage {
             self.ThuTruongCoQuan = ko.observable(item.ThuTruongCoQuan || "");
             self.DienThoaiThuTruong = ko.observable(item.DienThoaiThuTruong || "");
             self.DiaChiCoQuan = ko.observable(item.DiaChiCoQuan || "");
+            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay || "");
+            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang || "");
+            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam || "");
+            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy || "");
            
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
