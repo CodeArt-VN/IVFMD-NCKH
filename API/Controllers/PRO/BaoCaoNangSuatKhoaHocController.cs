@@ -78,6 +78,9 @@ namespace API.Controllers.PRO
 
             DTO_PRO_BaoCaoNangSuatKhoaHoc result = BS_PRO_BaoCaoNangSuatKhoaHoc.postCustom_PRO_BaoCaoNangSuatKhoaHoc(db, user.StaffID, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
 
+            if (result != null && !string.IsNullOrEmpty(result.Error))
+                return BadRequest(result.Error);
+
             if (result != null)
             {
                 return CreatedAtRoute("get_PRO_BaoCaoNangSuatKhoaHoc", new { id = result.ID }, result);

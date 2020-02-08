@@ -216,6 +216,26 @@ namespace BaseBusiness
                 dbitem.ModifiedBy = Username;
                 dbitem.ModifiedDate = DateTime.Now;
 
+                string sKey = SYSConfigCode.ThoiGianBaoCaoNSKH.ToString();
+                var config = db.tbl_SYS_Config.FirstOrDefault(c => c.Code == sKey && !c.IsDeleted);
+                if (config != null)
+                {
+                    try
+                    {
+                        var setting = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO_SYS_Config_ThoiGianBaoCaoNSKH>(config.Value);
+                        if (setting != null && setting.NgayBatDau.HasValue && setting.NgayKetThuc.HasValue)
+                        {
+                            int NgayBatDau = setting.NgayBatDau.Value.Day;
+                            int NgayKetThuc = setting.NgayKetThuc.Value.Day;
+                            if (dbitem.CreatedDate.Day < NgayBatDau || dbitem.CreatedDate.Day > NgayKetThuc)
+                            {
+                                item.Error = "Đã hết thời hạn được báo cáo, thời hạn báo cáo cho phép từ ngày " + NgayBatDau + " đến ngày " + NgayKetThuc + " hằng tháng";
+                            }
+                        }
+                    }
+                    catch { }
+                }
+
                 var kinhphi = db.tbl_CAT_KinhPhi.FirstOrDefault(c => c.ID == item.IDKinhPhi);
                 if (kinhphi != null && kinhphi.IsManual != true)
                 {

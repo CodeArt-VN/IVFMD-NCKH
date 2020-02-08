@@ -34,4 +34,9 @@
         TrangThai_HNHT_ChoDuyet = -32,
         TrangThai_HNHT_DaDuyet = -33,
     }
+
+    public enum SYSConfigCode
+    {
+        ThoiGianBaoCaoNSKH
+    }
 }

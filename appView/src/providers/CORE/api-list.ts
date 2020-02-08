@@ -910,6 +910,17 @@ export var APIListBase = {
         }
 
     },
+
+    CAT_ThietLapThoiGianBaoCaoNSKH: {
+        get: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapThoiGianBaoCaoNSKH") }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapThoiGianBaoCaoNSKH") }
+        },
+    },
     
     CAT_Site:{
         getList:{

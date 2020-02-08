@@ -851,6 +851,39 @@ export class STAFF_NhanSu_HosremCustomProvider extends exService {
 		});
 	}
 }
+
+@Injectable()
+export class CAT_ThietLapThoiGianBaoCaoNSKHProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_ThietLapThoiGianBaoCaoNSKH, SearchConfig.getSearchFields('CAT_ThietLapThoiGianBaoCaoNSKH'), commonService);
+    }
+    get() {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapThoiGianBaoCaoNSKH.get;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    saveCustom(item) {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapThoiGianBaoCaoNSKH.postItem;
+        return new Promise((resolve, reject) => {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then((data) => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        });
+    }
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {
