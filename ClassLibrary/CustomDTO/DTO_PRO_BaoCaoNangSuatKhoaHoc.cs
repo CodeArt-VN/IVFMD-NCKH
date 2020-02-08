@@ -8,5 +8,6 @@
         public string TenKinhPhi { get; set; }
         public string NCVChinh { get; set; }
         public string TrangThaiDuyet { get; set; }
+        public string Error { get; set; }
     }
 }

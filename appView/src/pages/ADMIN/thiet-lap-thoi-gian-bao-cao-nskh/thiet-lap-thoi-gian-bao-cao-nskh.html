@@ -1,0 +1,56 @@
+<ion-header *ngIf="userprofile">
+
+  <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+  <div class="search">
+      <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+  </div>
+  <div class="path">
+      <a (click)="openDefaultPage()">Home</a>
+      <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+      <a class="active">Thiết lập thời gian báo cáo NSKH</a>
+  </div>
+  <div class="tools">
+      <button color="success" ion-button icon-only clear (click)="saveCustom()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+  </div>
+
+  <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+
+</ion-header>
+
+<ion-content>
+  <ion-row>
+      <ion-col class="doc-menu">
+          <div class="root-items" *ngFor="let i of FormGroups">
+              <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
+                  <ion-icon [name]="t.Icon"></ion-icon>
+                  <span>
+                      {{t.Name}}
+                  </span>
+              </a>
+          </div>
+      </ion-col>
+
+
+      <ion-col class="doc-main">
+          <div class="c-control" style="padding:10px">
+              <label class="c-label" for="NgayBatDau">
+                  Ngày bắt đầu
+              </label>
+              <input matInput [matDatepicker]="NgayBatDau" [(ngModel)]="item.ThoiGianBaoCaoNSKH.NgayBatDau" class="c-input" style="width: calc(100% - 50px);">
+              <mat-datepicker-toggle matSuffix [for]="NgayBatDau"></mat-datepicker-toggle>
+              <mat-datepicker #NgayBatDau></mat-datepicker>
+          </div>
+
+          <div class="c-control" style="padding:10px">
+              <label class="c-label" for="NgayKetThuc">
+                  Ngày kết thúc
+              </label>
+              <input matInput [matDatepicker]="NgayKetThuc" [(ngModel)]="item.ThoiGianBaoCaoNSKH.NgayKetThuc" class="c-input" style="width: calc(100% - 50px);">
+              <mat-datepicker-toggle matSuffix [for]="NgayKetThuc"></mat-datepicker-toggle>
+              <mat-datepicker #NgayKetThuc></mat-datepicker>
+          </div>
+      </ion-col>
+  </ion-row>
+</ion-content>
