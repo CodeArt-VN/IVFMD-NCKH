@@ -124,8 +124,6 @@ namespace API.Controllers.PRO
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            tbl_PRO_SYLL.IDNhanSu = user.StaffID;
             DTO_PRO_SYLL result = BS_PRO_SYLL.save_PRO_SYLL(db, tbl_PRO_SYLL, Username);
 
 
