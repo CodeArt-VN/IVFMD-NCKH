@@ -29,4 +29,13 @@ namespace DTOModel
         public string Name { get; set; }
         public string Description { get; set; }
     }
+
+    public class DTO_PRO_DeTai_PrinterData
+    {
+        public int id { get; set; }
+        public int type { get; set; }
+        public string htmlContent { get; set; }
+        public string htmlFooter { get; set; }
+        public string htmlHeader { get; set; }
+    }
 }

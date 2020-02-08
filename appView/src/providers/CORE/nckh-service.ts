@@ -48,10 +48,12 @@ export class NCKHServiceProvider {
                                             var tr = $(anchorNode).closest('tr');
                                             var obj = ko.contextFor(tr[0]).$data;
                                             me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
-                                        } else if ($(anchorNode).closest('.prow')) {
+                                        } else if ($(anchorNode).closest('.prow') && $(anchorNode).closest('.prow').length > 0) {
                                             var row = $(anchorNode).closest('.prow');
                                             var obj = ko.contextFor(row[0]).$data;
-                                            me.addItem(context, conf.name, conf.props, obj, tr.attr('values'));
+                                            me.addItem(context, conf.name, conf.props, obj, row.attr('values'));
+                                        } else {
+                                            me.addItem(context, conf.name, conf.props, null, null);
                                         }
                                     } else {
                                         me.addItem(context, conf.name, conf.props, null, null);
@@ -97,16 +99,14 @@ export class NCKHServiceProvider {
         $(".pblock").on("click", ".remove", function (e) {
             var anchorNode = window.getSelection().anchorNode;
             if (anchorNode) {
-                var pblock = $(e.currentTarget).closest(".pconf"),
+                var prow = $(e.currentTarget).closest(".prow"),
+                    pblock = prow.closest(".pconf"),
                     sconf = pblock.attr("conf");
-                var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
-                if (sconf != null && sconf1 != null) {
+                if (sconf != null) {
                     try {
                         var conf = JSON.parse(sconf);
-                        var conf1 = JSON.parse(sconf1);
-                        if (conf.name === conf1.name && conf.add) {
-                            var prow = $(anchorNode).closest('.prow');
-                            if (prow.length >= 1 && prow.attr('removable') == "1" || prow.attr('removable') == "true") {
+                        if (conf.add) {
+                            if (prow.attr('removable') == "1" || prow.attr('removable') == "true") {
                                 var context = ko.contextFor(pblock[0]);
                                 var obj = ko.contextFor(prow[0]).$data;
                                 me.removeItem(context, conf.name, obj);
@@ -120,7 +120,6 @@ export class NCKHServiceProvider {
                 }
             }
         });
-
 
 
         var ptableGroupConrtrol =
