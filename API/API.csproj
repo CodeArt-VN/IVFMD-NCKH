@@ -400,6 +400,7 @@
     <Content Include="Content\FormTemplate\HOSREM.html" />
     <Content Include="Content\FormTemplate\MauPhanTichDuLieu.html" />
     <Content Include="Content\FormTemplate\NhanSuLLKH.html" />
+    <Content Include="Content\FormTemplate\NhanSuSYLL_ChuNhiemDeTai.html" />
     <Content Include="Content\FormTemplate\NhanSuSYLL.html" />
     <Content Include="Content\FormTemplate\PhieuXemXetDaoDuc.html" />
     <Content Include="Content\FormTemplate\SAE.html" />

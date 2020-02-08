@@ -362,10 +362,16 @@ export class DeTaiDetailPage extends BasePage {
         }
         if (type == 12 || type == 13) {
           let myModal = this.modalCtrl.create(page, param, { cssClass: 'select-modal' });
+          myModal.onDidDismiss(data => {
+            this.loadData();
+          });
           myModal.present();
         } 
         else if (type != 11) {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
+            myModal.onDidDismiss(data => {
+              this.loadData();
+            });
             myModal.present();
         } else {
             this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });

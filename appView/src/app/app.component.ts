@@ -211,6 +211,7 @@ export class MyApp {
         this.accountService.logout()
             .then(_ => {
                 this.menu.close();
+                this.countLoop = 0;
                 //account service check user changed and publish event...
             })
             .catch(err => {

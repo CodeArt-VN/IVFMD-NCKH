@@ -124,8 +124,6 @@ namespace API.Controllers.HRM
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            tbl_CUS_HRM_STAFF_NhanSu_SYLL.IDNhanSu = user.StaffID;
             DTO_CUS_HRM_STAFF_NhanSu_SYLL result = BS_CUS_HRM_STAFF_NhanSu_SYLL.save_CUS_HRM_STAFF_NhanSu_SYLL(db, tbl_CUS_HRM_STAFF_NhanSu_SYLL, Username);
 
 

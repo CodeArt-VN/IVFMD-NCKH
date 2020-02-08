@@ -44,7 +44,7 @@ namespace BaseBusiness
 
             if (query == null)
             {
-                query = db.tbl_PRO_SYLL.Where(d => d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_SYLL
+                query = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.Where(d => d.IDNhanSu == nhanSuId && d.IsDeleted == false).Select(s => new DTO_PRO_SYLL
                 {
                     ID = s.ID,
                     IDDetai = idDeTai,
