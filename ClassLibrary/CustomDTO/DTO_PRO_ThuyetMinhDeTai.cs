@@ -12,30 +12,10 @@ namespace DTOModel
         public List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia> ListGioiThieuChuyenGia { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien> ListKeHoachThucHien { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap> ListBienSo { get; set; }
-
-        public string TongHopKinhPhi_KinhPhi { get; set; }
-        public string TongHopKinhPhi_KhoanChi { get; set; }
-        public string TongHopKinhPhi_PhanTram { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi> ListKinhPhiTongHop { get; set; }
-
-        public string TongHopKinhPhi_CongLaoDong_GhiChu { get; set; }
-        public string TongHopKinhPhi_CongLaoDong_KinhPhi { get; set; }
-        public string TongHopKinhPhi_CongLaoDong_KhoanChi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiCongLaoDong { get; set; }
-
-        public string TongHopKinhPhi_NguyenVatLieu_GhiChu { get; set; }
-        public string TongHopKinhPhi_NguyenVatLieu_KinhPhi { get; set; }
-        public string TongHopKinhPhi_NguyenVatLieu_KhoanChi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiNguyenVatLieu { get; set; }
-
-        public string TongHopKinhPhi_ThietBi_GhiChu { get; set; }
-        public string TongHopKinhPhi_ThietBi_KinhPhi { get; set; }
-        public string TongHopKinhPhi_ThietBi_KhoanChi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiThietBi { get; set; }
-
-        public string TongHopKinhPhi_Khac_GhiChu { get; set; }
-        public string TongHopKinhPhi_Khac_KinhPhi { get; set; }
-        public string TongHopKinhPhi_Khac_KhoanChi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiKhac { get; set; }
     }
 
@@ -109,12 +89,14 @@ namespace DTOModel
             Khoan1TraCongLaoDong = 1,
             Khoan2NguyenLieu,
             Khoan3ThietBi,
-            Khoan4Khac
+            Khoan4Khac,
+            Cong = 0
         }
         public static string Khoan1TraCongLaoDong = "Khoản 1: Trả công lao động";
         public static string Khoan2NguyenLieu = "Khoản 2: Nguyên vật liệu, năng lượng";
         public static string Khoan3ThietBi = "Khoản 3: Thiết bị, máy móc";
         public static string Khoan4Khac = "Khoản 4: Chi khác";
+        public static string Cong = "Cộng:";
 
         public DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi()
         {
@@ -137,6 +119,9 @@ namespace DTOModel
                 case NoiDungKinhPhi.Khoan4Khac:
                     this.NoiDung = Khoan4Khac;
                     break;
+                case NoiDungKinhPhi.Cong:
+                    this.NoiDung = Cong;
+                    break;
             }
         }
 
@@ -151,6 +136,7 @@ namespace DTOModel
     {
         public enum NoiDungKinhPhi
         {
+            Cong = 0,
             Khoan1VietDeCuong = 1,
             Khoan2ThuThapDL,
             Khoan3XLVaPTSoLieu,
@@ -171,6 +157,7 @@ namespace DTOModel
             Khoan3HDKH,
             Khoan4DuPhong
         }
+        public static string Cong = "Cộng:";
         public static string VietDeCuong = "Viết đề cương nghiên cứu";
         public static string ThuThapDL = "Thu thập dữ liệu nghiên cứu";
         public static string XLVaPTSoLieu = "Xử lý và phân tích số liệu";
@@ -203,6 +190,10 @@ namespace DTOModel
             this.LoaiKinhPhi = kinhPhi;
             switch (kinhPhi)
             {
+                case NoiDungKinhPhi.Cong:
+                    this.NoiDung = Cong;
+                    break;
+
                 case NoiDungKinhPhi.Khoan1VietDeCuong:
                     this.NoiDung = VietDeCuong;
                     break;

@@ -628,23 +628,14 @@
                             </tr>
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListKinhPhiTongHop">
-                            <tr data-bind="attr: { index: $index, removable: false }">
-                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                            <tr data-bind="attr: { index: $index, removable: false, summary: LoaiKinhPhi() == 0 }">
+                                <td class="text-center" contenteditable="false" data-bind="{text: LoaiKinhPhi() != 0 ? ($index() + 1) : ''}"></td>
                                 <td contenteditable="false" data-bind="editableHTML: NoiDung"></td>
                                 <td class="text-center" contenteditable="true" data-bind="editableHTML: KinhPhi"></td>
                                 <td class="text-center" contenteditable="true" data-bind="editableHTML: KhoanChi"></td>
                                 <td class="text-center" contenteditable="true" data-bind="editableHTML: PhanTram"></td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td></td>
-                                <td style="padding: 6px;" class="text-bold text-center">Cộng:</td>
-                                <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_KinhPhi"></td>
-                                <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_KhoanChi"></td>
-                                <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_PhanTram"></td>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -725,23 +716,14 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListKinhPhiCongLaoDong">
-                        <tr data-bind="attr: { index: $index, removable: false }">
-                            <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                        <tr data-bind="attr: { index: $index, removable: false, summary: LoaiKinhPhi() == 0 }">
+                            <td class="text-center" contenteditable="false" data-bind="{text: LoaiKinhPhi() != 0 ? ($index() + 1) : ''}"></td>
                             <td contenteditable="false" data-bind="editableHTML: NoiDung"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KinhPhi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KhoanChi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: GhiChu"></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 6px;" class="text-bold text-center">Cộng:</td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_CongLaoDong_KinhPhi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_CongLaoDong_KhoanChi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_CongLaoDong_GhiChu"></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -776,23 +758,14 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListKinhPhiNguyenVatLieu">
-                        <tr data-bind="attr: { index: $index, removable: false }">
-                            <td class="text-center text-bold" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                        <tr data-bind="attr: { index: $index, removable: false, summary: LoaiKinhPhi() == 0 }">
+                            <td class="text-center" contenteditable="false" data-bind="{text: LoaiKinhPhi() != 0 ? ($index() + 1) : ''}"></td>
                             <td contenteditable="false" class="text-bold" data-bind="editableHTML: NoiDung"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KinhPhi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KhoanChi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: GhiChu"></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 6px;" class="text-bold text-center">Cộng:</td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_NguyenVatLieu_KinhPhi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_NguyenVatLieu_KhoanChi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_NguyenVatLieu_GhiChu"></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -827,23 +800,14 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListKinhPhiThietBi">
-                        <tr data-bind="attr: { index: $index, removable: false }">
-                            <td class="text-center text-bold" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                        <tr data-bind="attr: { index: $index, removable: false, summary: LoaiKinhPhi() == 0 }">
+                            <td class="text-center" contenteditable="false" data-bind="{text: LoaiKinhPhi() != 0 ? ($index() + 1) : ''}"></td>
                             <td contenteditable="false" class="text-bold" data-bind="editableHTML: NoiDung"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KinhPhi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KhoanChi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: GhiChu"></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 6px;" class="text-bold text-center">Cộng:</td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_ThietBi_KinhPhi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_ThietBi_KhoanChi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_ThietBi_GhiChu"></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -878,23 +842,14 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListKinhPhiKhac">
-                        <tr data-bind="attr: { index: $index, removable: false }">
-                            <td class="text-center text-bold" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                        <tr data-bind="attr: { index: $index, removable: false, summary: LoaiKinhPhi() == 0 }">
+                            <td class="text-center" contenteditable="false" data-bind="{text: LoaiKinhPhi() != 0 ? ($index() + 1) : ''}"></td>
                             <td contenteditable="false" class="text-bold" data-bind="editableHTML: NoiDung"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KinhPhi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: KhoanChi"></td>
                             <td class="text-center" contenteditable="true" data-bind="editableHTML: GhiChu"></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 6px;" class="text-bold text-center">Cộng:</td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_Khac_KinhPhi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_Khac_KhoanChi"></td>
-                            <td class="text-bold text-center" contenteditable="true" data-bind="editableHTML: TongHopKinhPhi_Khac_GhiChu"></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

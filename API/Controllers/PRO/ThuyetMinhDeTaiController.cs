@@ -89,6 +89,7 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan2NguyenLieu),
                         new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan3ThietBi),
                         new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Khoan4Khac),
+                        new DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi(DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi.NoiDungKinhPhi.Cong),
                     },
                     ListKinhPhiCongLaoDong = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
                     {
@@ -96,6 +97,7 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2ThuThapDL),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3XLVaPTSoLieu),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DieuPhoiNghienCuu),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     },
                     ListKinhPhiNguyenVatLieu = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
                     {
@@ -103,12 +105,14 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2DungCuPhuTungReTien),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3NangLuong),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4SachTaiLieu),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     },
                     ListKinhPhiThietBi = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
                     {
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan1MuaThietBi),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2ThueThietBi),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3VanChuyenLapDat),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     },
                     ListKinhPhiKhac = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
                     {
@@ -116,6 +120,7 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2HDDD),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3HDKH),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DuPhong),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     }
                 };
             }
