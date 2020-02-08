@@ -81,7 +81,11 @@ export class DonXinXetDuyetModalPage extends DetailPage {
             self.LLKHNCV = ko.observable(item.LLKHNCV);
             self.GiayToKhac = ko.observable(item.GiayToKhac);
             self.GhiChuGiayToKha = ko.observable(item.GhiChuGiayToKha);
-
+            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay);
+            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang);
+            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam);
+            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy);
+            
             self.getItem = function () {
                 return ko.toJS(self);
             };

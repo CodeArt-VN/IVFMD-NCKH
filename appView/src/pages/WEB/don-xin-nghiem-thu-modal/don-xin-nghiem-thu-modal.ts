@@ -84,7 +84,11 @@ export class DonXinNghiemThuModalPage extends DetailPage {
             self.HopDongThucHienDeTai = ko.observable(item.HopDongThucHienDeTai);
             self.BangGiaiNganKinhPhi = ko.observable(item.BangGiaiNganKinhPhi);
             self.BaiDangBao = ko.observable(item.BaiDangBao);
-
+            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay);
+            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang);
+            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam);
+            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy);
+            
             self.getItem = function () {
                 return ko.toJS(self);
             };

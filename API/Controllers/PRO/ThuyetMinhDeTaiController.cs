@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using ClassLibrary;
 using DTOModel;
 using BaseBusiness;
+using Newtonsoft.Json;
 
 namespace API.Controllers.PRO
 {
@@ -41,16 +42,15 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_ThuyetMinhDeTai))]
         public IHttpActionResult GetCustom(int idDeTai)
         {
-            //DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTaiByDeTai(db, idDeTai);
-            DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = null;
+            DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTai(db, idDeTai);
+
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
+            {
+                html = r.ReadToEnd();
+            }
             if (tbl_PRO_ThuyetMinhDeTai == null)
             {
-                string html = "";
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-
                 tbl_PRO_ThuyetMinhDeTai = new DTO_PRO_ThuyetMinhDeTai
                 {
                     IDDeTai = idDeTai,
@@ -124,6 +124,50 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     }
                 };
+            }
+            else
+            {
+                tbl_PRO_ThuyetMinhDeTai.HTML = html;
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai = JsonConvert.DeserializeObject<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>>(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia>>(tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListBienSo = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>>(tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien>>(tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.B52_JSON_TongHopKinhPhi))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiTongHop = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_TongHopKinhPhi>>(tbl_PRO_ThuyetMinhDeTai.B52_JSON_TongHopKinhPhi);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_KhoanCongLaoDong))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_KhoanCongLaoDong);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_NguyenVatLieu))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiNguyenVatLieu = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_NguyenVatLieu);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ThietBi))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiThietBi = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ThietBi);
+                }
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac);
+                }
             }
 
             return Ok(tbl_PRO_ThuyetMinhDeTai);

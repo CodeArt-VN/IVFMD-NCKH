@@ -79,6 +79,7 @@
     <Compile Include="CustomBusiness\BS_PRO_PhieuXemXetDaoDuc.cs" />
     <Compile Include="CustomBusiness\BS_PRO_SAE.cs" />
     <Compile Include="CustomBusiness\BS_PRO_SYLL.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_ThuyetMinhDeTai.cs" />
     <Compile Include="CustomBusiness\BS_PRO_Sysnopsis.cs" />
     <Compile Include="CustomBusiness\BS_PRO_BenhNhan.cs" />
     <Compile Include="CustomBusiness\BS_PRO_NCVKhac.cs" />
