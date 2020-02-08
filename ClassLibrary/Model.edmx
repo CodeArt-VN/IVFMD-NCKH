@@ -411,6 +411,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tbl_CUS_SYS_CauHinhHeThong">
           <Key>
@@ -4183,6 +4187,10 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_SYLL" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_CUS_SYS_CauHinhHeThong">
           <Key>
@@ -7182,6 +7190,10 @@
           <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu_SYLL">
               <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
+                <ScalarProperty Name="NgayKy_ChuKy" ColumnName="NgayKy_ChuKy" />
+                <ScalarProperty Name="NgayKy_Nam" ColumnName="NgayKy_Nam" />
+                <ScalarProperty Name="NgayKy_Thang" ColumnName="NgayKy_Thang" />
+                <ScalarProperty Name="NgayKy_Ngay" ColumnName="NgayKy_Ngay" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

@@ -94,11 +94,17 @@ export class DeTaiModalPage extends DetailPage {
     }
 
     addNCV() {
+        var that = this;
         let item = {
             ID: 0,
             
         };
         let modal = this.modalCtrl.create(NcvKhacModalPage, { 'id': item.ID, 'idDeTai': this.id });
+
+        modal.onDidDismiss(data => {
+            console.log('test');
+            that.refreshNCV();
+        });
         modal.present();
     }
 

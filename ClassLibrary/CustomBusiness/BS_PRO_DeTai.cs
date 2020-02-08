@@ -119,24 +119,24 @@ namespace BaseBusiness
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 1, Type = 0, Name = "Đăng kí phân tích", Description = "Đăng kí phân tích", FormCode = "tbl_PRO_MauPhanTichDuLieu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 
                 if (db.tbl_PRO_DonXinDanhGiaDaoDuc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức hướng nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức trong nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức trong nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 
                 if (db.tbl_PRO_DonXinXetDuyet.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HĐKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 3, Type = 1, Name = "Xét duyệt HĐKH", Description = "Đơn xin xét duyệt đề tài nghiên cứu khoa học", FormCode = "tbl_PRO_DonXinXetDuyet", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_LLKH.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDChuNhiem && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học", FormCode = "tbl_PRO_LLKH", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học CNĐT", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học CNĐT", FormCode = "tbl_PRO_LLKH", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_SYLL.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDChuNhiem && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 5, Type = 1, Name = "Sơ yếu lý lịch CNĐT", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 5, Type = 1, Name = "Sơ yếu lý lịch CNĐT", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 5, Type = 1, Name = "Sơ yếu lý lịch CNĐT", Description = "Sơ yếu lý lịch CNĐT", FormCode = "tbl_PRO_SYLL", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 5, Type = 1, Name = "Sơ yếu lý lịch CNĐT", Description = "Sơ yếu lý lịch CNĐT", FormCode = "tbl_PRO_SYLL", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_LLKH.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDNCV && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 6, Type = 1, Name = "Lý lịch khoa học NCV Chính", Description = "Lý lịch khoa học", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 6, Type = 1, Name = "Lý lịch khoa học NCV Chính", Description = "Lý lịch khoa học", FormCode = "tbl_PRO_LLKH", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 6, Type = 1, Name = "Lý lịch khoa học NCV chính", Description = "Lý lịch khoa học NCV chính", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 6, Type = 1, Name = "Lý lịch khoa học NCV chính", Description = "Lý lịch khoa học NCV chính", FormCode = "tbl_PRO_LLKH", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_SYLL.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDNCV && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 7, Type = 1, Name = "Sơ yếu lý lịch NCV chính", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Đã tạo", TrangThaiCode = "Update" });

@@ -93,7 +93,7 @@ namespace BaseBusiness
             {
                 ID = s.ID,
                 IDNhanSu = s.IDNhanSu,
-                HoTen = s.tbl_CUS_HRM_STAFF_NhanSu.Ho + " " + s.tbl_CUS_HRM_STAFF_NhanSu.Ten,
+                HoTen = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
                 ChucDanh = s.tbl_CUS_HRM_STAFF_NhanSu.IDChucDanh > 0 ? s.tbl_CUS_HRM_STAFF_NhanSu.tbl_CUS_HRM_LIST_ChucDanh.Name : "",
                 BoPhan = s.tbl_CUS_HRM_STAFF_NhanSu.IDBoPhan > 0 ? s.tbl_CUS_HRM_STAFF_NhanSu.tbl_CUS_HRM_LIST_BoPhan.Name : "",
                 IsDisabled = s.IsDisabled,

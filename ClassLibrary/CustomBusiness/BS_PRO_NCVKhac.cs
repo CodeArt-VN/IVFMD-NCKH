@@ -28,7 +28,7 @@ namespace BaseBusiness
                 ID = s.ID,
                 IDDeTai = s.IDDeTai,
                 IDNCV = s.IDNCV,
-                TenNCV = s.tbl_CUS_HRM_STAFF_NhanSu.Ho + " " + s.tbl_CUS_HRM_STAFF_NhanSu.Ten,
+                TenNCV = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
                 ChucDanh = s.ChucDanh,
                 ChucVu = s.ChucVu,
                 IsCanView = s.IsCanView,
