@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { STAFF_NhanSu_LLKHProviderCustomProvider, PRO_LLKHCustomProvider } from '../../../providers/Services/CustomService';
+import { STAFF_NhanSu_LLKHProviderCustomProvider, PRO_LLKHCustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -23,6 +23,8 @@ export class NhanSuLLKHModalPage extends DetailPage {
         public currentProvider: STAFF_NhanSu_LLKHProviderCustomProvider,
         public proLLKHProvider: PRO_LLKHCustomProvider,
         public nckhProvider: NCKHServiceProvider,
+        public deTaiCustomProvider: PRO_DeTaiCustomProvider,
+
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -331,7 +333,20 @@ export class NhanSuLLKHModalPage extends DetailPage {
         var html = $("#frmNhanSuLLKH").html();
         console.log(html);
         this.loadingMessage('Lấy dữ liệu in...').then(() => {
-
+            var itemPrint = {
+                id: this.id,
+                type: 0,
+                htmlContent: html,
+                htmlFooter: '',
+                htmlHeader: ''
+            };
+            this.deTaiCustomProvider.print(itemPrint).then((res: any) => {
+                if (this.loading) this.loading.dismiss();
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không in được, \nvui lòng thử lại.');
+            });
         });
     };
 }
