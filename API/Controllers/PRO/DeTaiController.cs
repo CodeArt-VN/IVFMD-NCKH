@@ -151,10 +151,9 @@ namespace API.Controllers.PRO
             return Conflict();
         }
 
-        [HttpGet]
-        [Route("print/{type:int}/{id:int}")]
-        [ResponseType(typeof(DTO_PRO_DeTai))]
-        public IHttpActionResult Print(int id)
+        [Route("print")]
+        [ResponseType(typeof(DTO_PRO_DeTai_PrinterData))]
+        public IHttpActionResult Print(DTO_PRO_DeTai_PrinterData item)
         {
             return Ok("");
         }
