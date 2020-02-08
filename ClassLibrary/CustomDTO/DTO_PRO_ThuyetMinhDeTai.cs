@@ -8,6 +8,7 @@ namespace DTOModel
 {
     public partial class DTO_PRO_ThuyetMinhDeTai
     {
+        public DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu ChuNhiemDeTai { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu> ListNhanLucNghienCuu { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia> ListGioiThieuChuyenGia { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien> ListKeHoachThucHien { get; set; }

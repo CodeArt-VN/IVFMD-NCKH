@@ -55,6 +55,7 @@ namespace API.Controllers.PRO
                 {
                     IDDeTai = idDeTai,
                     HTML = html,
+                    ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu(),
                     ListNhanLucNghienCuu = new List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(),
                     ListGioiThieuChuyenGia = new List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia>(),
                     ListBienSo = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>()
@@ -142,12 +143,16 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
 
+            tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
             tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListBienSo);
             tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien);
             tbl_PRO_ThuyetMinhDeTai.B52_JSON_TongHopKinhPhi = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiTongHop);
             tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_NguyenVatLieu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiNguyenVatLieu);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_KhoanCongLaoDong = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ThietBi = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiThietBi);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac);
 
             bool result = BS_PRO_ThuyetMinhDeTai.put_PRO_ThuyetMinhDeTai(db, id, tbl_PRO_ThuyetMinhDeTai, Username);
 
@@ -166,10 +171,16 @@ namespace API.Controllers.PRO
                 return BadRequest(ModelState);
             }
 
+            tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
             tbl_PRO_ThuyetMinhDeTai.B326_JSON_CacBienSoCanThuThap = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListBienSo);
             tbl_PRO_ThuyetMinhDeTai.B313_JSON_KeHoachThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKeHoachThucHien);
+            tbl_PRO_ThuyetMinhDeTai.B52_JSON_TongHopKinhPhi = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiTongHop);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_NguyenVatLieu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiNguyenVatLieu);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_KhoanCongLaoDong = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ThietBi = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiThietBi);
+            tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac);
 
             DTO_PRO_ThuyetMinhDeTai result = BS_PRO_ThuyetMinhDeTai.post_PRO_ThuyetMinhDeTai(db, tbl_PRO_ThuyetMinhDeTai, Username);
 
