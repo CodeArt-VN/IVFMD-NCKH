@@ -42,7 +42,7 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_ThuyetMinhDeTai))]
         public IHttpActionResult GetCustom(int idDeTai)
         {
-            DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTai(db, idDeTai);
+            DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTaiByDeTai(db, idDeTai);
 
             string html = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
