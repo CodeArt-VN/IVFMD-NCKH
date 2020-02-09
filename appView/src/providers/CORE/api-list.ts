@@ -1503,6 +1503,10 @@ export var APIListBase = {
             method: "GET",
             url: function () { return appSetting.apiDomain("PRO/AE") }
         },
+        getListByDeTai: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/AE/get_PRO_AE_ByDeTai/") + idDeTai }
+        },
         getItem: {
             method: "GET",
             url: function (id) { return appSetting.apiDomain("PRO/AE/") + id }
@@ -1521,13 +1525,17 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idBenhNhan) { return appSetting.apiDomain("PRO/AE/get_PRO_AE/") + idDeTai + "/" + idBenhNhan }
+            url: function (idDeTai, idBenhNhan, id) { return appSetting.apiDomain("PRO/AE/get_PRO_AE/") + idDeTai + "/" + idBenhNhan + "/" + id }
         }
     },
     PRO_SAE: {
         getList: {
             method: "GET",
             url: function () { return appSetting.apiDomain("PRO/SAE") }
+        },
+        getListByDeTai: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE_ByDeTai/") + idDeTai }
         },
         getItem: {
             method: "GET",
@@ -1547,7 +1555,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idBenhNhan) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE/") + idDeTai + "/" + idBenhNhan }
+            url: function (idDeTai, idBenhNhan, id) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE/") + idDeTai + "/" + idBenhNhan + "/" + id}
         },
         saveCustom:{
             method: "POST",

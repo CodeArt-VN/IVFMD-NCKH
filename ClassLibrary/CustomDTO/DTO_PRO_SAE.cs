@@ -8,6 +8,7 @@ namespace DTOModel
 {
     public partial class DTO_PRO_SAE
     {
+        public string HoTenBenhNhan { get; set; }
         public List<DTO_PRO_SAE_ThuocThuLamSan> ListThuocThuLamSan { get; set; }
         public List<DTO_PRO_SAE_CanThiepThuocThuLamSan> ListCanThiepThuocThuLamSan { get; set; }
         public List<DTO_PRO_SAE_ThuocSuDungDongThoi> ListThuocSuDungDongThoi { get; set; }

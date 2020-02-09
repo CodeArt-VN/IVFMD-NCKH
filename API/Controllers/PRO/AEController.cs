@@ -23,6 +23,12 @@ namespace API.Controllers.PRO
             return BS_PRO_AE.get_PRO_AE(db, QueryStrings);
         }
 
+        [Route("get_PRO_AE_ByDeTai/{idDeTai:int}")]
+        public IQueryable<DTO_PRO_AE> GetByDeTai(int idDeTai)
+        {
+            return BS_PRO_AE.get_PRO_AEByDeTais(db, idDeTai);
+        }
+
         [Route("{id:int}", Name = "get_PRO_AE")]
         [ResponseType(typeof(DTO_PRO_AE))]
         public IHttpActionResult Get(int id)
@@ -36,11 +42,11 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_AE);
         }
 
-        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}")]
+        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}/{id?:int}")]
         [ResponseType(typeof(DTO_PRO_AE))]
-        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan)
+        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1)
         {
-            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai, idBenhNhan);
+            DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai, idBenhNhan, id);
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";

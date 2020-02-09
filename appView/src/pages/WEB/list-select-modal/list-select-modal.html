@@ -1,0 +1,33 @@
+<ion-header>
+  <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
+      <ion-icon name="close" color="ivf1"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+  <div class="tools">
+      <button color="primary" ion-button icon-only clear (click)="refreshFrom()">
+          <ion-icon name="refresh"></ion-icon>
+      </button>
+
+      <button color="success" ion-button icon-only clear (click)="addFrom()">
+        <ion-icon name="ios-search"></ion-icon>
+      </button>
+  </div>
+  <ion-row>
+      <ion-col class="doc-main">
+          <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstForm" [selected]="lstFormSelected"
+              [selectionType]="'single'" (select)='onSelectForm($event)'>
+
+              <ngx-datatable-column name="Họ tên" prop="HoTenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      <a (click)="openDetailForm(i)">
+                          {{i.HoTenBenhNhan}}
+                      </a>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Mã số" prop="MaSo"></ngx-datatable-column>
+          </ngx-datatable>
+      </ion-col>
+  </ion-row>
+</ion-content>

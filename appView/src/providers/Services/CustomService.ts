@@ -751,11 +751,11 @@ export class PRO_AECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_AE, SearchConfig.getSearchFields('PRO_AE'), commonService);
     }
-    getItemCustom(idDeTai, idBenhNhan) {
+    getItemCustom(idDeTai, idBenhNhan, id) {
         let that = this.commonService;
         let apiPath = APIList.PRO_AE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -764,6 +764,19 @@ export class PRO_AECustomProvider extends exService {
                 });
         });
 	}
+	getListByDeTai(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_AE.getListByDeTai;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()
@@ -771,11 +784,11 @@ export class PRO_SAECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_SAE, SearchConfig.getSearchFields('PRO_SAE'), commonService);
     }
-    getItemCustom(idDeTai, idBenhNhan) {
+    getItemCustom(idDeTai, idBenhNhan, id) {
         let that = this.commonService;
         let apiPath = APIList.PRO_SAE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -797,6 +810,20 @@ export class PRO_SAECustomProvider extends exService {
 				})
 		});
 	}
+
+	getListByDeTai(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_SAE.getListByDeTai;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()
