@@ -177,7 +177,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
 
             self.ListKinhPhiCongLaoDong = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiCongLaoDong, function (nn) {
                 return {
-                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi),
                     NoiDung: ko.observable(nn.NoiDung || ""),
                     KinhPhi: ko.observable(nn.KinhPhi || ""),
                     KhoanChi: ko.observable(nn.KhoanChi || ""),
@@ -186,7 +186,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             }));
             self.ListKinhPhiNguyenVatLieu = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiNguyenVatLieu, function (nn) {
                 return {
-                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi),
                     NoiDung: ko.observable(nn.NoiDung || ""),
                     KinhPhi: ko.observable(nn.KinhPhi || ""),
                     KhoanChi: ko.observable(nn.KhoanChi || ""),
@@ -195,7 +195,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             }));
             self.ListKinhPhiThietBi = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiThietBi, function (nn) {
                 return {
-                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi),
                     NoiDung: ko.observable(nn.NoiDung || ""),
                     KinhPhi: ko.observable(nn.KinhPhi || ""),
                     KhoanChi: ko.observable(nn.KhoanChi || ""),
@@ -204,7 +204,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             }));
             self.ListKinhPhiKhac = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiKhac, function (nn) {
                 return {
-                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi),
                     NoiDung: ko.observable(nn.NoiDung || ""),
                     KinhPhi: ko.observable(nn.KinhPhi || ""),
                     KhoanChi: ko.observable(nn.KhoanChi || ""),
@@ -213,7 +213,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             }));
             self.ListKinhPhiTongHop = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiTongHop, function (nn) {
                 return {
-                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi),
                     NoiDung: ko.observable(nn.NoiDung || ""),
                     KinhPhi: ko.observable(nn.KinhPhi || ""),
                     KhoanChi: ko.observable(nn.KhoanChi || ""),
