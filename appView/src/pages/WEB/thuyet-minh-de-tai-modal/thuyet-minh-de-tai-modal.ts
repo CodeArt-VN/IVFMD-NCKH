@@ -63,7 +63,23 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
-
+            self.filter = function (arr, prop, ko, val) {
+                console.log(val)
+                var data = arr().filter(function (v) {
+                    if (ko) {
+                        return v[prop]() == val;
+                    } else {
+                        return v[prop] == val;
+                    }
+                })
+                var removable = data.length > 1 ? 1 : 0;
+                var ab = data.map(function (o) {
+                    o.removable = removable;
+                    return o;
+                })
+                return ab;
+            }
+            
             self.A1_TenTiengViet = ko.observable(item.A1_TenTiengViet);
             self.A1_TenTiengAnh = ko.observable(item.A1_TenTiengAnh);
             self.A2_KhacMoTa = ko.observable(item.A2_KhacMoTa);
