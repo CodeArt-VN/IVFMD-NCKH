@@ -125,12 +125,6 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             self.B52_CNDT_NgayKy_Nam = ko.observable(item.B52_CNDT_NgayKy_Nam);
             self.B52_CNDT_NgayKy_ChuKy = ko.observable(item.B52_CNDT_NgayKy_ChuKy);
         
-            self.ChuNhiemDeTai = ko.observable({
-                HoTen: ko.observable(item.ChuNhiemDeTai.HoTen || ""),
-                DonVi: ko.observable(item.ChuNhiemDeTai.DonVi || ""),
-                SoThangLamViec: ko.observable(item.ChuNhiemDeTai.SoThangLamViec || ""),
-            })
-
             self.ListNhanLucNghienCuu = ko.observableArray(ko.utils.arrayMap(item.ListNhanLucNghienCuu || [{}, {}, {}, {}], function (nn) {
                 return {
                     TT: ko.observable(nn.TT || ""),
@@ -156,25 +150,6 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
                     ThoiGianThucHien: ko.observable(nn.ThoiGianThucHien || ""),
                     DuKienKetQua: ko.observable(nn.DuKienKetQua || ""),
                     NguoiThucHien: ko.observable(nn.NguoiThucHien || "")
-                };
-            }));
-
-            self.ListBienSo = ko.observableArray(ko.utils.arrayMap(item.ListBienSo || [{}, {}, {}, {}, {}], function (nn) {
-                return {
-                    Ten: ko.observable(nn.Ten || ""),
-                    PhanLoai: ko.observable(nn.PhanLoai || false),
-                    GiaTri: ko.observable(nn.GiaTri || false),
-                    CachThuThap: ko.observable(nn.CachThuThap || false),
-                    LoaiBienSo: ko.observable(nn.LoaiBienSo || false)
-                };
-            }));
-
-            self.ListKinhPhiTongHop = ko.observableArray(ko.utils.arrayMap(item.ListKinhPhiTongHop || [{}, {}, {}, {}], function (nn) {
-                return {
-                    NoiDung: ko.observable(nn.NoiDung || ""),
-                    KinhPhi: ko.observable(nn.KinhPhi || ""),
-                    KhoanChi: ko.observable(nn.KhoanChi || ""),
-                    PhanTram: ko.observable(nn.PhanTram || "")
                 };
             }));
 
@@ -213,6 +188,40 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
                     GhiChu: ko.observable(nn.GhiChu || "")
                 };
             }));
+
+            self.ListBienSo = ko.observableArray(ko.utils.arrayMap(item.ListBienSo || [{ LoaiBienSo: 1 }, { LoaiBienSo: 2 }, { LoaiBienSo: 0 }], function (nn) {
+                return {
+                    Ten: ko.observable(nn.Ten || ""),
+                    PhanLoai: ko.observable(nn.PhanLoai || ""),
+                    GiaTri: ko.observable(nn.GiaTri || ""),
+                    CachThuThap: ko.observable(nn.CachThuThap || ""),
+                    LoaiBienSo: ko.observable(nn.LoaiBienSo)
+                };
+            }));
+            self.ChuNhiemDeTai = ko.observable({
+                HoTen: ko.observable(item.ChuNhiemDeTai.HoTen || ""),
+                DonVi: ko.observable(item.ChuNhiemDeTai.DonVi || ""),
+                SoThangLamViec: ko.observable(item.ChuNhiemDeTai.SoThangLamViec || ""),
+            })
+            self.ListKinhPhiTongHop = ko.observableArray(ko.utils.arrayMap([{
+                LoaiKinhPhi: 1,
+                NoiDung: "A",
+            }, {
+                LoaiKinhPhi: 2,
+                NoiDung: "B",
+            }, {
+                LoaiKinhPhi: 0,
+                NoiDung: "Cộng:",
+            }], function (nn) {
+                return {
+                    LoaiKinhPhi: ko.observable(nn.LoaiKinhPhi || ""),
+                    NoiDung: ko.observable(nn.NoiDung || ""),
+                    KinhPhi: ko.observable(nn.KinhPhi || ""),
+                    KhoanChi: ko.observable(nn.KhoanChi || ""),
+                    PhanTram: ko.observable(nn.PhanTram)
+                };
+            }));
+
             self.getItem = function () {
                 return ko.toJS(self);
             };
