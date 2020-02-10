@@ -19,6 +19,8 @@ import { AEModalPage } from '../ae-modal/ae-modal';
 import { SAEModalPage } from '../sae-modal/sae-modal';
 import { BangKiemXXDDModalPage } from '../bang-kiem-xxdd-modal/bang-kiem-xxdd-modal';
 import { ChonBenhNhanModalPage } from '../chon-benh-nhan-modal/chon-benh-nhan-modal';
+import { ListSelectModalPage } from '../list-select-modal/list-select-modal';
+
 import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
 
 /**
@@ -350,18 +352,18 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 12:
               param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1 };
-              page = ChonBenhNhanModalPage;
+              page = ListSelectModalPage;
               break;
             case 13:
               param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2 };
-              page = ChonBenhNhanModalPage;
+              page = ListSelectModalPage;
               break;
             case 14:
               page = BangKiemXXDDModalPage;
               break;
         }
         if (type == 12 || type == 13) {
-          let myModal = this.modalCtrl.create(page, param, { cssClass: 'select-modal' });
+          let myModal = this.modalCtrl.create(page, param);
           myModal.onDidDismiss(data => {
             this.loadData();
           });

@@ -770,7 +770,8 @@ export class PRO_AECustomProvider extends exService {
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
                 .then(data => {
-                    resolve(data);
+					var result = { count: data.length, data: data };
+					resolve(result);
                 })
                 .catch(err => {
                     reject(err);
@@ -817,7 +818,8 @@ export class PRO_SAECustomProvider extends exService {
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
                 .then(data => {
-                    resolve(data);
+                    var result = { count: data.length, data: data };
+					resolve(result);
                 })
                 .catch(err => {
                     reject(err);

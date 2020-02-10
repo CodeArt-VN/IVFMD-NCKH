@@ -6,18 +6,18 @@
 
 <ion-content>
   <div class="tools">
-      <button color="primary" ion-button icon-only clear (click)="refreshFrom()">
+      <button color="primary" ion-button icon-only clear (click)="refreshForm()">
           <ion-icon name="refresh"></ion-icon>
       </button>
 
-      <button color="success" ion-button icon-only clear (click)="addFrom()">
+      <button color="success" ion-button icon-only clear (click)="addForm()">
         <ion-icon name="ios-search"></ion-icon>
       </button>
   </div>
   <ion-row>
       <ion-col class="doc-main">
           <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstForm" [selected]="lstFormSelected"
-              [selectionType]="'single'" (select)='onSelectForm($event)'>
+              [selectionType]="'single'">
 
               <ngx-datatable-column name="Họ tên" prop="HoTenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
                   <ng-template let-i="row" ngx-datatable-cell-template>

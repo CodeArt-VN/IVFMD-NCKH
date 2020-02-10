@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
@@ -9,6 +9,7 @@ import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
 import { DeTaiBenhNhanModalPage } from '../de-tai-benh-nhan-modal/de-tai-benh-nhan-modal';
 import { DateAdapter } from "@angular/material";
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -29,6 +30,8 @@ export class DeTaiModalPage extends DetailPage {
     lstNCVKhac: any[] = [];
     lstNCVSelected: any[] = [];
     queryNCV: any = {};
+    @ViewChild(DatatableComponent) table: DatatableComponent;
+
     constructor(
         public currentProvider: PRO_DeTaiProvider,
         public staffProvider: HRM_STAFF_NhanSuProvider,
@@ -90,6 +93,8 @@ export class DeTaiModalPage extends DetailPage {
         this.lstNCVSelected = [];
         this.ncvKhacProvider.getByDeTai(this.id).then(value => {
             this.lstNCVKhac = [...value['data']];
+            debugger
+            this.table.recalculate();
         });
     }
 

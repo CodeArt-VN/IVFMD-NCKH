@@ -42,7 +42,7 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_AE);
         }
 
-        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}/{id?:int}")]
+        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}/{id:int}")]
         [ResponseType(typeof(DTO_PRO_AE))]
         public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1)
         {

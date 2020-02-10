@@ -92,101 +92,7 @@ namespace BaseBusiness
                     ModifiedDate = s.ModifiedDate,
                     ModifiedBy = s.ModifiedBy,
                 }).FirstOrDefault();
-            }
-            else
-            {
-                query = db.tbl_PRO_SAE.Where(d => d.IDDeTai == idDeTai && d.IDBenhNhan == idBenhNhan && d.IsDeleted == false).Select(s => new DTO_PRO_SAE
-                {
-                    ID = s.ID,
-                    IDDeTai = s.IDDeTai,
-                    IDBenhNhan = s.IDBenhNhan,
-                    MaSo = s.MaSo,
-                    BaoCaoLanDau = s.BaoCaoLanDau,
-                    BaoCaoBoSung = s.BaoCaoBoSung,
-                    TuVong = s.TuVong,
-                    DeDoaTinhMang = s.DeDoaTinhMang,
-                    NhapVien = s.NhapVien,
-                    TanTat = s.TanTat,
-                    DiTatBamSinh = s.DiTatBamSinh,
-                    YeuCanCanThiepYKhoa = s.YeuCanCanThiepYKhoa,
-                    TenNghienCuu = s.TenNghienCuu,
-                    ThietKeNghienCuu_NhanMo = s.ThietKeNghienCuu_NhanMo,
-                    ThietKeNghienCuu_MuDon = s.ThietKeNghienCuu_MuDon,
-                    ThietKeNghienCuu_MuDoi = s.ThietKeNghienCuu_MuDoi,
-                    MoMu_Co = s.MoMu_Co,
-                    MoMu_Khong = s.MoMu_Khong,
-                    MoMu_KhongCoThongTin = s.MoMu_KhongCoThongTin,
-                    NhaTaiTro = s.NhaTaiTro,
-                    HoTenNCV = s.HoTenNCV,
-                    DiemNghienCuu = s.DiemNghienCuu,
-                    ThoiDiemNhanThongTin = s.ThoiDiemNhanThongTin,
-                    ThoiDiemXuatHien = s.ThoiDiemXuatHien,
-                    ThoiDiemKetThuc = s.ThoiDiemKetThuc,
-                    DangTiepDien = s.DangTiepDien,
-                    TenSAE = s.TenSAE,
-                    TenNguoiThuThuoc = s.TenNguoiThuThuoc,
-                    MaSoNguoiThuThuoc = s.MaSoNguoiThuThuoc,
-                    MoTaDienBien = s.MoTaDienBien,
-                    KetQua_HoiPhucKhongDiChung = s.KetQua_HoiPhucKhongDiChung,
-                    KetQua_HoiPhucCoDiChung = s.KetQua_HoiPhucCoDiChung,
-                    KetQua_DangHoiPhuc = s.KetQua_DangHoiPhuc,
-                    KetQua_ChuaHoiPhuc = s.KetQua_ChuaHoiPhuc,
-                    KetQua_TuVong = s.KetQua_TuVong,
-                    KetQua_TuVong_Ngay = s.KetQua_TuVong_Ngay,
-                    KetQua_KhongCoThongTin = s.KetQua_KhongCoThongTin,
-                    NguoiThamGia_NgaySinh = s.NguoiThamGia_NgaySinh,
-                    NguoiThamGia_Tuoi = s.NguoiThamGia_Tuoi,
-                    NguoiThamGia_GioiTinh_Nam = s.NguoiThamGia_GioiTinh_Nam,
-                    NguoiThamGia_GioiTinh_Nu = s.NguoiThamGia_GioiTinh_Nu,
-                    NguoiThamGia_GioiTinh_Nu_DangMangThai = s.NguoiThamGia_GioiTinh_Nu_DangMangThai,
-                    NguoiThamGia_GioiTinh_Nu_TuanMangThai = s.NguoiThamGia_GioiTinh_Nu_TuanMangThai,
-                    NguoiThamGia_CanNang = s.NguoiThamGia_CanNang,
-                    NguoiThamGia_TienSuYKhoa = s.NguoiThamGia_TienSuYKhoa,
-                    JSON_ThuocThuLamSang = s.JSON_ThuocThuLamSang,
-                    JSON_CanThiepThuocThuLamSang = s.JSON_CanThiepThuocThuLamSang,
-                    JSON_ThuocSuDungDongThoi = s.JSON_ThuocSuDungDongThoi,
-                    JSON_DanhGiaNCV = s.JSON_DanhGiaNCV,
-                    LyDoDanhGia = s.LyDoDanhGia,
-                    LyDoDanhGia_SoLuong = s.LyDoDanhGia_SoLuong,
-                    LyDoDanhGia_SoLuongNghienCuuKhac = s.LyDoDanhGia_SoLuongNghienCuuKhac,
-                    YKienHDDD_NguoiThamGia_TiepTucThamGia = s.YKienHDDD_NguoiThamGia_TiepTucThamGia,
-                    YKienHDDD_NguoiThamGia_TamNgungThamGia = s.YKienHDDD_NguoiThamGia_TamNgungThamGia,
-                    YKienHDDD_NguoiThamGia_RutKhoiNghienCuu = s.YKienHDDD_NguoiThamGia_RutKhoiNghienCuu,
-                    YKienHDDD_DeXuatNghienCuu_TiepTucTrienKhai = s.YKienHDDD_DeXuatNghienCuu_TiepTucTrienKhai,
-                    YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai = s.YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai,
-                    YKienHDDD_DeXuatNghienCuu_NgungTrienKhai = s.YKienHDDD_DeXuatNghienCuu_NgungTrienKhai,
-                    YKienHDDD_DeXuatKhac = s.YKienHDDD_DeXuatKhac,
-                    NguoiBaoCao_ChuKy = s.NguoiBaoCao_ChuKy,
-                    NguoiBaoCao_NgayKy = s.NguoiBaoCao_NgayKy,
-                    NguoiBaoCao_HoTen = s.NguoiBaoCao_HoTen,
-                    NguoiBaoCao_ChucVu = s.NguoiBaoCao_ChucVu,
-                    NguoiBaoCao_DienThoai = s.NguoiBaoCao_DienThoai,
-                    NguoiBaoCao_Email = s.NguoiBaoCao_Email,
-                    HTML = s.HTML,
-                    IsDisabled = s.IsDisabled,
-                    IsDeleted = s.IsDeleted,
-                    CreatedDate = s.CreatedDate,
-                    CreatedBy = s.CreatedBy,
-                    ModifiedDate = s.ModifiedDate,
-                    ModifiedBy = s.ModifiedBy,
-                }).FirstOrDefault();
-            }
-            if (query == null)
-            {
-                //New
-                query = new DTO_PRO_SAE
-                {
-                    IDDeTai = idDeTai,
-                    IDBenhNhan = idBenhNhan
-                };
 
-                query.ListCanThiepThuocThuLamSan = new List<DTO_PRO_SAE_CanThiepThuocThuLamSan>() { new DTO_PRO_SAE_CanThiepThuocThuLamSan() };
-                query.ListDanhGiaNCV = new List<DTO_PRO_SAE_DanhGiaNCV>() { new DTO_PRO_SAE_DanhGiaNCV() };
-                query.ListThuocSuDungDongThoi = new List<DTO_PRO_SAE_ThuocSuDungDongThoi>() { new DTO_PRO_SAE_ThuocSuDungDongThoi() };
-                query.ListThuocThuLamSan = new List<DTO_PRO_SAE_ThuocThuLamSan>() { new DTO_PRO_SAE_ThuocThuLamSan() };
-            }
-            else
-            {
                 //Edit
                 if (!string.IsNullOrWhiteSpace(query.JSON_CanThiepThuocThuLamSang))
                 {
@@ -204,6 +110,20 @@ namespace BaseBusiness
                 {
                     query.ListThuocThuLamSan = JsonConvert.DeserializeObject<List<DTO_PRO_SAE_ThuocThuLamSan>>(query.JSON_ThuocThuLamSang);
                 }
+            }
+            else
+            {
+                //New
+                query = new DTO_PRO_SAE
+                {
+                    IDDeTai = idDeTai,
+                    IDBenhNhan = idBenhNhan
+                };
+
+                query.ListCanThiepThuocThuLamSan = new List<DTO_PRO_SAE_CanThiepThuocThuLamSan>() { new DTO_PRO_SAE_CanThiepThuocThuLamSan() };
+                query.ListDanhGiaNCV = new List<DTO_PRO_SAE_DanhGiaNCV>() { new DTO_PRO_SAE_DanhGiaNCV() };
+                query.ListThuocSuDungDongThoi = new List<DTO_PRO_SAE_ThuocSuDungDongThoi>() { new DTO_PRO_SAE_ThuocSuDungDongThoi() };
+                query.ListThuocThuLamSan = new List<DTO_PRO_SAE_ThuocThuLamSan>() { new DTO_PRO_SAE_ThuocThuLamSan() };
             }
 
             return query;

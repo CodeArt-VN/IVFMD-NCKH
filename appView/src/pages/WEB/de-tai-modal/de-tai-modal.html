@@ -150,7 +150,7 @@
             </div>
             <ion-row>
                 <ion-col class="doc-main">
-                    <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected"
+                    <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected"
                         [selectionType]="'single'" (select)='onSelectNCV($event)'>
 
                         <ngx-datatable-column name="Họ tên" prop="TenNCV" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">

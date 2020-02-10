@@ -16,6 +16,7 @@ import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
     templateUrl: 'sae-modal.html',
 })
 export class SAEModalPage extends DetailPage {
+    id: any;
     idDeTai: any;
     idBenhNhan: any;
     model: any;
@@ -40,10 +41,18 @@ export class SAEModalPage extends DetailPage {
         if (this.idBenhNhan && commonService.isNumeric(this.idBenhNhan)) {
             this.idBenhNhan = parseInt(this.idBenhNhan, 10);
         }
+
+        this.id = navParams.get('id');
+        if (this.id && commonService.isNumeric(this.id)) {
+            this.id = parseInt(this.id, 10);
+        }
+        else {
+            this.id = -1;
+        }
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan, this.id).then((ite) => {
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -164,8 +173,7 @@ export class SAEModalPage extends DetailPage {
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.saveCustom(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
+                this.item.ID = this.id = this.model.ID = savedItem.ID;
                 if (this.loading) this.loading.dismiss();
                 this.events.publish('app:Update' + this.pageName);
                 console.log('publish => app:Update ' + this.pageName);

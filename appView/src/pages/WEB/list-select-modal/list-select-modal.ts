@@ -71,7 +71,7 @@ export class ListSelectModalPage extends DetailPage {
     }
 
     addForm() {
-      var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': this.type };
+      var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': this.type };
       let myModal = this.modalCtrl.create(ChonBenhNhanModalPage, param, { cssClass: 'select-modal' });
 
       myModal.present();
@@ -79,7 +79,7 @@ export class ListSelectModalPage extends DetailPage {
     openDetailForm(i) {
         this.dismiss();
         var page = null; 
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': i.idBenhNhan, 'id': i.ID };
+        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': i.IDBenhNhan, 'id': i.ID };
         switch(this.type){
             case 1:
               page = AEModalPage;
