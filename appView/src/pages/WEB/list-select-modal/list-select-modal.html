@@ -1,4 +1,5 @@
 <ion-header>
+    <h2>&nbsp;&nbsp; Danh sách báo cáo</h2>
   <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
       <ion-icon name="close" color="ivf1"></ion-icon>
   </button>
@@ -27,6 +28,13 @@
                   </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Mã số" prop="MaSo"></ngx-datatable-column>
+              <ngx-datatable-column [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                <ng-template let-i="row" ngx-datatable-cell-template>
+                    <a (click)="deleteForm(i)">
+                        Xóa
+                    </a>
+                </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
       </ion-col>
   </ion-row>
