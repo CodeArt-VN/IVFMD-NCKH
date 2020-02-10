@@ -305,6 +305,16 @@ export class DeTaiDetailPage extends BasePage {
       };
     }
 
+    refreshData(){
+      this.currentProvider.getItemCustom(this.id).then((ite: any) => {
+        this.item = ite;
+        this.listForm1 = this.item.ListFormStatus.filter((c) => { return c.Type == 0 });
+        this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
+        this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
+        this.listForm5 = this.item.ListFormStatus.filter((c) => { return c.Type == 4 });
+      });
+    }
+
     /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
     openDetailModal(type){
         var page = null; 
@@ -365,14 +375,14 @@ export class DeTaiDetailPage extends BasePage {
         if (type == 12 || type == 13) {
           let myModal = this.modalCtrl.create(page, param);
           myModal.onDidDismiss(data => {
-            this.loadData();
+            this.refreshData();
           });
           myModal.present();
         } 
         else if (type != 11) {
             let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
             myModal.onDidDismiss(data => {
-              this.loadData();
+              this.refreshData();
             });
             myModal.present();
         } else {
