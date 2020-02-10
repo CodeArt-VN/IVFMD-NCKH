@@ -107,7 +107,6 @@ export class DeTaiModalPage extends DetailPage {
         let modal = this.modalCtrl.create(NcvKhacModalPage, { 'id': item.ID, 'idDeTai': this.id });
 
         modal.onDidDismiss(data => {
-            console.log('test');
             that.refreshNCV();
         });
         modal.present();
@@ -186,6 +185,9 @@ export class DeTaiModalPage extends DetailPage {
             
         };
         let modal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': isNew });
+        modal.onDidDismiss(data => {
+            this.refreshBN();
+        });
         modal.present();
     }
 
