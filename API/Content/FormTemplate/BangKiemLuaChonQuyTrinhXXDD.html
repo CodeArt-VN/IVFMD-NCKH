@@ -1086,53 +1086,40 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="padding:0">
-                        <table style="width:100%;">
-                            <colgroup>
-                                <col width="140" />
-                                <col />
-                            </colgroup>
-                            <tr>
-                                <td class="text-bold" style="padding-left:0;vertical-align:middle;">
-                                    Ngày:
-                                </td>
-                                <td style="padding:3px;">
-                                    <span contenteditable="true" data-bind="editableHTML: NgayKy_Ngay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>/<span contenteditable="true" data-bind="editableHTML: NgayKy_Thang">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>/<span contenteditable="true" data-bind="editableHTML: NgayKy_Nam">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                </td>
-                            </tr>
-                        </table>
+                    <td colspan="3" style="padding:0;border: 1px solid black;border-bottom: 0;">
+                        <div class="box-inline">
+                            <div style="display:inline-block;min-width:70px">
+                                <p class="box">
+                                    <span class="box-title text-bold">Ngày:</span>
+                                    <span contenteditable="true" style="text-indent:50px;" data-bind="editableHTML: NgayKy_Ngay"></span>
+                                </p>
+                            </div>
+                            <div>/</div>
+                            <div style="display:inline-block;min-width:20px">
+                                <p class="box">
+                                    <span contenteditable="true" style="text-indent:0;text-align:center;" data-bind="editableHTML: NgayKy_Thang"></span>
+                                </p>
+                            </div>
+                            <div>/</div>
+                            <div style="display:inline-block;min-width:60px">
+                                <p class="box">
+                                    <span contenteditable="true" style="text-indent:0;" data-bind="editableHTML: NgayKy_Nam"></span>
+                                </p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="padding:0">
-                        <table style="width:100%;">
-                            <colgroup>
-                                <col width="140" />
-                                <col />
-                            </colgroup>
-                            <tr>
-                                <td class="text-bold" style="padding-left:0;vertical-align:middle;">
-                                    Chủ tịch:
-                                </td>
-                                <td contenteditable="true" style="border-bottom:0px solid #9E9E9E;padding:3px;"></td>
-                            </tr>
-                        </table>
+                    <td colspan="3" style="border: 1px solid black;border-top:0;border-bottom: 0;">
+                        <b>Chủ tịch:</b>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="padding:0">
-                        <table style="width:100%;">
-                            <colgroup>
-                                <col width="140" />
-                                <col />
-                            </colgroup>
-                            <tr>
-                                <td class="text-bold" style="padding-left:0;vertical-align:middle;">
-                                    Ký và ghi rõ họ tên:
-                                </td>
-                                <td contenteditable="true" style="border-bottom:0px solid #9E9E9E;padding:3px;"></td>
-                            </tr>
-                        </table>
+                    <td colspan="3" style="padding:0;border: 1px solid black;border-top:0;">
+                        <p class="box" style="min-height:100px;">
+                            <span class="box-title text-bold">Ký và ghi rõ họ tên:</span>
+                            <span contenteditable="true" style="text-indent: 140px;"></span>
+                        </p>
                     </td>
                 </tr>
             </tbody>
