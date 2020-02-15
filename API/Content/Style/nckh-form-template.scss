@@ -1,0 +1,263 @@
+.nckh-form-template {
+    size: a4;
+    background-color: #fff;
+    min-width: 8.27in;
+    max-width: 8.27in;
+    margin: auto;
+    padding: 1in;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    min-height: 11.69in;
+    box-shadow: none;
+
+    &.font-size-14, .font-size-14 {
+        font-size: 14pt;
+    }
+
+    &.font-size-13, .font-size-13 {
+        font-size: 13pt;
+    }
+
+    &.font-size-12, .font-size-12 {
+        font-size: 12pt;
+    }
+
+    &.font-size-11, .font-size-11 {
+        font-size: 11pt;
+    }
+
+    &.font-size-10, .font-size-10 {
+        font-size: 10pt;
+    }
+
+    &.form-header-footer {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .page-header, .page-header-space {
+        height: 1in;
+    }
+
+    .page-footer, .page-footer-space {
+        height: 1in;
+    }
+
+    .page-footer {
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+    }
+
+    .page-header {
+        top: 0mm;
+        width: 100%;
+        background: #fff;
+    }
+
+    .inline {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .text-italic {
+        font-style: italic;
+    }
+
+    .tab-1 {
+        margin-left: 1em;
+    }
+
+    .tab-2 {
+        margin-left: 2em;
+    }
+
+    .block {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+
+    .pblock {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        &:hover {
+        }
+    }
+
+    .prow {
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    .box-inline {
+        display: table;
+        width: 100%;
+        margin: 0 0 3px 0;
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0;
+        }
+
+        &.tab-1 {
+            margin-left: 1em;
+            width: calc(100% - 1em) !important;
+        }
+
+        &.tab-2 {
+            margin-left: 2em;
+            width: calc(100% - 2em) !important;
+        }
+
+        .box {
+            margin: 0;
+        }
+    }
+
+    .box {
+        display: table;
+        width: 100%;
+        margin: 0 0 3px 0;
+
+        .box-title {
+            position: absolute;
+        }
+
+        & > input[type="checkbox"] {
+            vertical-align: initial;
+        }
+
+        & > * {
+            display: table-cell;
+            vertical-align: text-top;
+            padding: 3px;
+        }
+
+        &.tab-1 {
+            margin-left: 1em;
+            width: calc(100% - 1em) !important;
+        }
+
+        &.tab-2 {
+            margin-left: 2em;
+            width: calc(100% - 2em) !important;
+        }
+
+        [contenteditable="true"] {
+            &:hover, &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    table.nckh-table {
+        border-collapse: collapse;
+        font-size: inherit;
+
+        thead {
+            display: table-row-group;
+
+            tr {
+                page-break-inside: avoid;
+                page-break-before: auto;
+
+                &.table-header {
+                    text-align: center;
+                    vertical-align: middle;
+                    font-weight: 600;
+
+                    i {
+                        font-weight: normal;
+                    }
+                }
+
+                td, th {
+                    padding: 3px;
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        tbody {
+            width: 100%;
+
+            tr {
+                page-break-inside: avoid;
+                page-break-before: auto;
+
+                &[summary="true"] {
+                    td {
+                        font-weight: 600;
+                        text-align: center;
+                    }
+                }
+
+                td {
+                    padding: 3px;
+                    word-break: break-word;
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+                    vertical-align: top;
+
+                    &[contenteditable="true"] {
+                        padding: 6px;
+                    }
+                }
+            }
+        }
+
+        &.td-padding-0 {
+            tbody {
+                tr {
+                    > td {
+                        padding: 0
+                    }
+                }
+            }
+        }
+
+        &.table-inside-table {
+            border: 0;
+
+            tr {
+                > td {
+                    border: 1px solid #607d8b;
+                    border-bottom: 0;
+
+                    &:first-child {
+                        border-left: 0;
+                    }
+
+                    &:last-child {
+                        border-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .group_controls {
+        display: none;
+    }
+}

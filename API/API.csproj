@@ -129,8 +129,8 @@
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Compression.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Compression.Base.16.3.0.29\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Compression.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.HtmlToPdfConverter.QtWebKit.AspNet.17.4.0.46\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Core, Version=13.1450.0.30, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.Core.dll</HintPath>
@@ -153,8 +153,8 @@
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.ExcelToPDFConverter.Base.16.3.0.29\lib\net46\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.HtmlConverter.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.HtmlConverter.Base.16.3.0.29\lib\net46\Syncfusion.HtmlConverter.Base.dll</HintPath>
+    <Reference Include="Syncfusion.HtmlConverter.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.HtmlToPdfConverter.QtWebKit.AspNet.17.4.0.46\lib\net46\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Licensing.16.3.0.29\lib\net46\Syncfusion.Licensing.dll</HintPath>
@@ -165,8 +165,8 @@
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.OfficeChartToImageConverter.WPF.16.3.0.29\lib\net46\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Pdf.Base, Version=16.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Pdf.Base.16.3.0.29\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Pdf.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.HtmlToPdfConverter.QtWebKit.AspNet.17.4.0.46\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Helper.MVC, Version=13.1500.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\SyncfusionASPNETMVC5.ExcelToPDFConverter.Base45.13.1.0.30\lib\net45\Syncfusion.Pdf.Helper.MVC.dll</HintPath>
@@ -373,6 +373,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlToPdfConverter.cs" />
     <Compile Include="Hubs\EventHub.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -429,6 +430,12 @@
     <Content Include="Content\Style\formTemplate.css" />
     <Content Include="Content\Style\highcontrast.css" />
     <Content Include="Content\Style\material.css" />
+    <Content Include="Content\Style\nckh-form-template.css">
+      <DependentUpon>nckh-form-template.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Style\nckh-form-template.min.css">
+      <DependentUpon>nckh-form-template.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="pdf\build\pdf.js" />
     <Content Include="pdf\build\pdf.worker.js" />
@@ -547,6 +554,11 @@
     <Content Include="Content\styles\Grid\Fonts\Grid control Font.ttf" />
     <Content Include="Content\styles\Grid\Fonts\Grid control Font.woff" />
     <Content Include="Content\styles\material.scss" />
+    <Content Include="Content\Style\nckh-form-template.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
