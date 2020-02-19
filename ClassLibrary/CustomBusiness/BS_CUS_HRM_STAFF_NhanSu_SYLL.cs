@@ -92,6 +92,10 @@ namespace BaseBusiness
             dbitem.ThuTruongCoQuan = item.ThuTruongCoQuan;
             dbitem.DienThoaiThuTruong = item.DienThoaiThuTruong;
             dbitem.DiaChiCoQuan = item.DiaChiCoQuan;
+            dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
 
             if (item.ListKinhNghiem != null)
             {

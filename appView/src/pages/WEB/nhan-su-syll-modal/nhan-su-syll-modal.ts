@@ -116,10 +116,10 @@ export class NhanSuSYLLModalPage extends DetailPage {
 
             self.ListKinhNghiem = ko.observableArray(ko.utils.arrayMap(item.ListKinhNghiem || [{}, {}, {}], function (nn) {
                 return {
-                    TenDeTai: ko.observable(nn.ThoiGian || ""),
-                    NhiemVuCaNhan: ko.observable(nn.NoiCongTac || ""),
-                    CoQuanChuTri: ko.observable(nn.ChucVu || ""),
-                    NamBatDauKetThuc: ko.observable(nn.ChucVu || "")
+                    TenDeTai: ko.observable(nn.TenDeTai || ""),
+                    NhiemVuCaNhan: ko.observable(nn.NhiemVuCaNhan || ""),
+                    CoQuanChuTri: ko.observable(nn.CoQuanChuTri || ""),
+                    NamBatDauKetThuc: ko.observable(nn.NamBatDauKetThuc || "")
                 };
             }));
 
