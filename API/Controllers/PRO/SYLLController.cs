@@ -38,17 +38,27 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_SYLL);
         }
 
-        [Route("get_PRO_SYLL/{idDeTai:int}/{idNhanSu:int}")]
+        [Route("get_PRO_SYLL/{idDeTai:int}/{idNhanSu:int}/{isChuNhiem}")]
         [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
-        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu)
+        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu, bool isChuNhiem)
         {
             DTO_PRO_SYLL tbl_PRO_SYLL = BS_PRO_SYLL.get_PRO_SYLLCustom(db, idDeTai, idNhanSu);
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
-            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
+            if (isChuNhiem)
             {
-                html = r.ReadToEnd();
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+            else
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
+                {
+                    html = r.ReadToEnd();
+                }
             }
             tbl_PRO_SYLL.HTML = html;
             //}

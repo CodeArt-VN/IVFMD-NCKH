@@ -541,11 +541,11 @@ export class PRO_SYLLCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_LLKH, SearchConfig.getSearchFields('PRO_LLKH'), commonService);
     }
-    getItemCustom(idDeTai, idNhanSu) {
+    getItemCustom(idDeTai, idNhanSu, isChuNhiem) {
         let that = this.commonService;
         let apiPath = APIList.PRO_SYLL.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu, isChuNhiem), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })

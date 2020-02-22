@@ -17,6 +17,7 @@ import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 export class NhanSuSYLLModalPage extends DetailPage {
     idNhanSu: any;
     idDeTai: any;
+    isChuNhiem: false;
     model: any;
     constructor(
         public currentProvider: STAFF_NhanSu_SYLLProviderCustomProvider,
@@ -43,11 +44,18 @@ export class NhanSuSYLLModalPage extends DetailPage {
         else {
             this.idDeTai = -1;
         }
+        debugger
+        this.isChuNhiem = navParams.get('isChuNhiem');
+        if (this.isChuNhiem) {
+        }
+        else {
+            this.isChuNhiem = false;
+        }
     }
 
     loadData() {
         if (this.idDeTai > 0) {
-            this.proSYLLProvider.getItemCustom(this.idDeTai, this.idNhanSu).then((ite) => {
+            this.proSYLLProvider.getItemCustom(this.idDeTai, this.idNhanSu, this.isChuNhiem).then((ite) => {
                 this.item = ite;
                 this.loadedData();
             }).catch((data) => {
@@ -105,6 +113,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
             self.NgayKy_Thang = ko.observable(item.NgayKy_Thang || "");
             self.NgayKy_Nam = ko.observable(item.NgayKy_Nam || "");
             self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy || "");
+            self.DienThoaiNhaRieng = ko.observable(item.DienThoaiNhaRieng || "");
            
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
