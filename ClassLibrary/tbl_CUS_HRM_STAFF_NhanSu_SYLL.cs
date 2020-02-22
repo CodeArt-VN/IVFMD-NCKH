@@ -43,6 +43,7 @@ namespace ClassLibrary
         public string NgayKy_Nam { get; set; }
         public string NgayKy_ChuKy { get; set; }
         public string DienThoaiNhaRieng { get; set; }
+        public string JSON_HocVi { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
@@ -79,6 +80,7 @@ namespace DTOModel
 		public string NgayKy_Nam { get; set; }
 		public string NgayKy_ChuKy { get; set; }
 		public string DienThoaiNhaRieng { get; set; }
+		public string JSON_HocVi { get; set; }
 	}
 }
 
@@ -128,7 +130,8 @@ namespace BaseBusiness
 				NgayKy_Thang = s.NgayKy_Thang,							
 				NgayKy_Nam = s.NgayKy_Nam,							
 				NgayKy_ChuKy = s.NgayKy_ChuKy,							
-				DienThoaiNhaRieng = s.DienThoaiNhaRieng,					
+				DienThoaiNhaRieng = s.DienThoaiNhaRieng,							
+				JSON_HocVi = s.JSON_HocVi,					
 			});
                               
         }
@@ -166,7 +169,8 @@ namespace BaseBusiness
 					NgayKy_Thang = dbResult.NgayKy_Thang,							
 					NgayKy_Nam = dbResult.NgayKy_Nam,							
 					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,							
-					DienThoaiNhaRieng = dbResult.DienThoaiNhaRieng,
+					DienThoaiNhaRieng = dbResult.DienThoaiNhaRieng,							
+					JSON_HocVi = dbResult.JSON_HocVi,
 				};
 			}
 			else
@@ -385,6 +389,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.DienThoaiNhaRieng == keyword);
             }
 
+			//Query JSON_HocVi (string)
+			if (QueryStrings.Any(d => d.Key == "JSON_HocVi") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "JSON_HocVi").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "JSON_HocVi").Value;
+                query = query.Where(d=>d.JSON_HocVi == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -427,7 +438,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
 				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
-				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;                
+				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;							
+				dbitem.JSON_HocVi = item.JSON_HocVi;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -476,7 +488,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
 				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
-				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;                
+				dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;							
+				dbitem.JSON_HocVi = item.JSON_HocVi;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

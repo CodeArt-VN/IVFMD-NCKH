@@ -65,6 +65,10 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string NgayKy_Ngay { get; set; }
+        public string NgayKy_Thang { get; set; }
+        public string NgayKy_Nam { get; set; }
+        public string NgayKy_ChuKy { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
@@ -124,6 +128,10 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string NgayKy_Ngay { get; set; }
+		public string NgayKy_Thang { get; set; }
+		public string NgayKy_Nam { get; set; }
+		public string NgayKy_ChuKy { get; set; }
 	}
 }
 
@@ -195,7 +203,11 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				NgayKy_Ngay = s.NgayKy_Ngay,							
+				NgayKy_Thang = s.NgayKy_Thang,							
+				NgayKy_Nam = s.NgayKy_Nam,							
+				NgayKy_ChuKy = s.NgayKy_ChuKy,					
 			});
                               
         }
@@ -255,7 +267,11 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					NgayKy_Ngay = dbResult.NgayKy_Ngay,							
+					NgayKy_Thang = dbResult.NgayKy_Thang,							
+					NgayKy_Nam = dbResult.NgayKy_Nam,							
+					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,
 				};
 			}
 			else
@@ -633,6 +649,34 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query NgayKy_Ngay (string)
+			if (QueryStrings.Any(d => d.Key == "NgayKy_Ngay") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Ngay").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Ngay").Value;
+                query = query.Where(d=>d.NgayKy_Ngay == keyword);
+            }
+
+			//Query NgayKy_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "NgayKy_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Thang").Value;
+                query = query.Where(d=>d.NgayKy_Thang == keyword);
+            }
+
+			//Query NgayKy_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "NgayKy_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_Nam").Value;
+                query = query.Where(d=>d.NgayKy_Nam == keyword);
+            }
+
+			//Query NgayKy_ChuKy (string)
+			if (QueryStrings.Any(d => d.Key == "NgayKy_ChuKy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_ChuKy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NgayKy_ChuKy").Value;
+                query = query.Where(d=>d.NgayKy_ChuKy == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -697,7 +741,11 @@ namespace BaseBusiness
 				dbitem.JSON_ThongTinKhac_TruongDaiHoc = item.JSON_ThongTinKhac_TruongDaiHoc;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
+				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
+				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -768,7 +816,11 @@ namespace BaseBusiness
 				dbitem.JSON_ThongTinKhac_TruongDaiHoc = item.JSON_ThongTinKhac_TruongDaiHoc;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
+				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
+				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
