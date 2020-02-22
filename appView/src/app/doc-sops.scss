@@ -203,6 +203,17 @@ html{
                             color: map-get($map: $colors, $key: ivfdark1);
                             font-size: 1.4rem;
                             font-weight: bold;
+
+                            > div{
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+                            
+                            .datatable-header-cell-wrapper{
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
                         }
                         .sort-btn{
                             font-family: "Ionicons";
@@ -227,7 +238,15 @@ html{
                         .datatable-body-cell{
                             line-height: 50px;
                             color: map-get($map: $colors, $key: ivfdark1);
-                            
+
+                            .datatable-body-cell-label{
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
                             a{
                                 .icon{
                                     width: 40px;

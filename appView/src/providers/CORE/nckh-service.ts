@@ -97,30 +97,26 @@ export class NCKHServiceProvider {
             }
         });
         $(".pblock").on("click", ".remove", function (e) {
-            var anchorNode = window.getSelection().anchorNode;
-            if (anchorNode) {
-                var prow = $(e.currentTarget).closest(".prow"),
-                    pblock = prow.closest(".pconf"),
-                    sconf = pblock.attr("conf");
-                if (sconf != null) {
-                    try {
-                        var conf = JSON.parse(sconf);
-                        if (conf.add) {
-                            if (prow.attr('removable') == "1" || prow.attr('removable') == "true") {
-                                var context = ko.contextFor(pblock[0]);
-                                var obj = ko.contextFor(prow[0]).$data;
-                                me.removeItem(context, conf.name, obj);
-                            }
+            var prow = $(e.currentTarget).closest(".prow"),
+                pblock = prow.closest(".pconf"),
+                sconf = pblock.attr("conf");
+            if (sconf != null) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.add) {
+                        if (prow.attr('removable') == "1" || prow.attr('removable') == "true") {
+                            var context = ko.contextFor(pblock[0]);
+                            var obj = ko.contextFor(prow[0]).$data;
+                            me.removeItem(context, conf.name, obj);
                         }
-                        return false;
-                    } catch (e) {
-                        console.error(e);
-                        return false;
                     }
+                    return false;
+                } catch (e) {
+                    console.error(e);
+                    return false;
                 }
             }
         });
-
 
         var ptableGroupConrtrol =
             $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +

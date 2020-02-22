@@ -31,6 +31,7 @@ namespace BaseBusiness
                 ThuTruongCoQuan = s.ThuTruongCoQuan,
                 DienThoaiThuTruong = s.DienThoaiThuTruong,
                 DiaChiCoQuan = s.DiaChiCoQuan,
+                
                 JSON_TrinhDoChuyenMon = s.JSON_TrinhDoChuyenMon,
                 JSON_KinhNghiem = s.JSON_KinhNghiem,
                 HTML = s.HTML,
