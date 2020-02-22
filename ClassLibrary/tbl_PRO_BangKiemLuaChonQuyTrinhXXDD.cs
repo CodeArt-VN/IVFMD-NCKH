@@ -99,6 +99,12 @@ namespace ClassLibrary
         public string ThoiGianTienHanhDenNgay_Ngay { get; set; }
         public string ThoiGianTienHanhDenNgay_Thang { get; set; }
         public string ThoiGianTienHanhDenNgay_Nam { get; set; }
+        public string ThoiGianThuThapDenNgay_Ngay { get; set; }
+        public string ThoiGianThuThapDenNgay_Thang { get; set; }
+        public string ThoiGianThuThapDenNgay_Nam { get; set; }
+        public string ThoiGianNghienCuuDenNgay_Ngay { get; set; }
+        public string ThoiGianNghienCuuDenNgay_Thang { get; set; }
+        public string ThoiGianNghienCuuDenNgay_Nam { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -191,6 +197,12 @@ namespace DTOModel
 		public string ThoiGianTienHanhDenNgay_Ngay { get; set; }
 		public string ThoiGianTienHanhDenNgay_Thang { get; set; }
 		public string ThoiGianTienHanhDenNgay_Nam { get; set; }
+		public string ThoiGianThuThapDenNgay_Ngay { get; set; }
+		public string ThoiGianThuThapDenNgay_Thang { get; set; }
+		public string ThoiGianThuThapDenNgay_Nam { get; set; }
+		public string ThoiGianNghienCuuDenNgay_Ngay { get; set; }
+		public string ThoiGianNghienCuuDenNgay_Thang { get; set; }
+		public string ThoiGianNghienCuuDenNgay_Nam { get; set; }
 	}
 }
 
@@ -296,7 +308,13 @@ namespace BaseBusiness
 				PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = s.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong,							
 				ThoiGianTienHanhDenNgay_Ngay = s.ThoiGianTienHanhDenNgay_Ngay,							
 				ThoiGianTienHanhDenNgay_Thang = s.ThoiGianTienHanhDenNgay_Thang,							
-				ThoiGianTienHanhDenNgay_Nam = s.ThoiGianTienHanhDenNgay_Nam,					
+				ThoiGianTienHanhDenNgay_Nam = s.ThoiGianTienHanhDenNgay_Nam,							
+				ThoiGianThuThapDenNgay_Ngay = s.ThoiGianThuThapDenNgay_Ngay,							
+				ThoiGianThuThapDenNgay_Thang = s.ThoiGianThuThapDenNgay_Thang,							
+				ThoiGianThuThapDenNgay_Nam = s.ThoiGianThuThapDenNgay_Nam,							
+				ThoiGianNghienCuuDenNgay_Ngay = s.ThoiGianNghienCuuDenNgay_Ngay,							
+				ThoiGianNghienCuuDenNgay_Thang = s.ThoiGianNghienCuuDenNgay_Thang,							
+				ThoiGianNghienCuuDenNgay_Nam = s.ThoiGianNghienCuuDenNgay_Nam,					
 			});
                               
         }
@@ -390,7 +408,13 @@ namespace BaseBusiness
 					PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = dbResult.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong,							
 					ThoiGianTienHanhDenNgay_Ngay = dbResult.ThoiGianTienHanhDenNgay_Ngay,							
 					ThoiGianTienHanhDenNgay_Thang = dbResult.ThoiGianTienHanhDenNgay_Thang,							
-					ThoiGianTienHanhDenNgay_Nam = dbResult.ThoiGianTienHanhDenNgay_Nam,
+					ThoiGianTienHanhDenNgay_Nam = dbResult.ThoiGianTienHanhDenNgay_Nam,							
+					ThoiGianThuThapDenNgay_Ngay = dbResult.ThoiGianThuThapDenNgay_Ngay,							
+					ThoiGianThuThapDenNgay_Thang = dbResult.ThoiGianThuThapDenNgay_Thang,							
+					ThoiGianThuThapDenNgay_Nam = dbResult.ThoiGianThuThapDenNgay_Nam,							
+					ThoiGianNghienCuuDenNgay_Ngay = dbResult.ThoiGianNghienCuuDenNgay_Ngay,							
+					ThoiGianNghienCuuDenNgay_Thang = dbResult.ThoiGianNghienCuuDenNgay_Thang,							
+					ThoiGianNghienCuuDenNgay_Nam = dbResult.ThoiGianNghienCuuDenNgay_Nam,
 				};
 			}
 			else
@@ -966,6 +990,48 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ThoiGianTienHanhDenNgay_Nam == keyword);
             }
 
+			//Query ThoiGianThuThapDenNgay_Ngay (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianThuThapDenNgay_Ngay") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Ngay").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Ngay").Value;
+                query = query.Where(d=>d.ThoiGianThuThapDenNgay_Ngay == keyword);
+            }
+
+			//Query ThoiGianThuThapDenNgay_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianThuThapDenNgay_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Thang").Value;
+                query = query.Where(d=>d.ThoiGianThuThapDenNgay_Thang == keyword);
+            }
+
+			//Query ThoiGianThuThapDenNgay_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianThuThapDenNgay_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianThuThapDenNgay_Nam").Value;
+                query = query.Where(d=>d.ThoiGianThuThapDenNgay_Nam == keyword);
+            }
+
+			//Query ThoiGianNghienCuuDenNgay_Ngay (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianNghienCuuDenNgay_Ngay") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Ngay").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Ngay").Value;
+                query = query.Where(d=>d.ThoiGianNghienCuuDenNgay_Ngay == keyword);
+            }
+
+			//Query ThoiGianNghienCuuDenNgay_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianNghienCuuDenNgay_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Thang").Value;
+                query = query.Where(d=>d.ThoiGianNghienCuuDenNgay_Thang == keyword);
+            }
+
+			//Query ThoiGianNghienCuuDenNgay_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianNghienCuuDenNgay_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianNghienCuuDenNgay_Nam").Value;
+                query = query.Where(d=>d.ThoiGianNghienCuuDenNgay_Nam == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1064,7 +1130,13 @@ namespace BaseBusiness
 				dbitem.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = item.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong;							
 				dbitem.ThoiGianTienHanhDenNgay_Ngay = item.ThoiGianTienHanhDenNgay_Ngay;							
 				dbitem.ThoiGianTienHanhDenNgay_Thang = item.ThoiGianTienHanhDenNgay_Thang;							
-				dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;                
+				dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;							
+				dbitem.ThoiGianThuThapDenNgay_Ngay = item.ThoiGianThuThapDenNgay_Ngay;							
+				dbitem.ThoiGianThuThapDenNgay_Thang = item.ThoiGianThuThapDenNgay_Thang;							
+				dbitem.ThoiGianThuThapDenNgay_Nam = item.ThoiGianThuThapDenNgay_Nam;							
+				dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;							
+				dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;							
+				dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1169,7 +1241,13 @@ namespace BaseBusiness
 				dbitem.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = item.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong;							
 				dbitem.ThoiGianTienHanhDenNgay_Ngay = item.ThoiGianTienHanhDenNgay_Ngay;							
 				dbitem.ThoiGianTienHanhDenNgay_Thang = item.ThoiGianTienHanhDenNgay_Thang;							
-				dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;                
+				dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;							
+				dbitem.ThoiGianThuThapDenNgay_Ngay = item.ThoiGianThuThapDenNgay_Ngay;							
+				dbitem.ThoiGianThuThapDenNgay_Thang = item.ThoiGianThuThapDenNgay_Thang;							
+				dbitem.ThoiGianThuThapDenNgay_Nam = item.ThoiGianThuThapDenNgay_Nam;							
+				dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;							
+				dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;							
+				dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

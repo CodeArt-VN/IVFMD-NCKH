@@ -797,6 +797,12 @@
           <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
           <Key>
@@ -4641,6 +4647,12 @@
           <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
@@ -7604,6 +7616,12 @@
           <EntitySetMapping Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
               <MappingFragment StoreEntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
+                <ScalarProperty Name="ThoiGianNghienCuuDenNgay_Nam" ColumnName="ThoiGianNghienCuuDenNgay_Nam" />
+                <ScalarProperty Name="ThoiGianNghienCuuDenNgay_Thang" ColumnName="ThoiGianNghienCuuDenNgay_Thang" />
+                <ScalarProperty Name="ThoiGianNghienCuuDenNgay_Ngay" ColumnName="ThoiGianNghienCuuDenNgay_Ngay" />
+                <ScalarProperty Name="ThoiGianThuThapDenNgay_Nam" ColumnName="ThoiGianThuThapDenNgay_Nam" />
+                <ScalarProperty Name="ThoiGianThuThapDenNgay_Thang" ColumnName="ThoiGianThuThapDenNgay_Thang" />
+                <ScalarProperty Name="ThoiGianThuThapDenNgay_Ngay" ColumnName="ThoiGianThuThapDenNgay_Ngay" />
                 <ScalarProperty Name="ThoiGianTienHanhDenNgay_Nam" ColumnName="ThoiGianTienHanhDenNgay_Nam" />
                 <ScalarProperty Name="ThoiGianTienHanhDenNgay_Thang" ColumnName="ThoiGianTienHanhDenNgay_Thang" />
                 <ScalarProperty Name="ThoiGianTienHanhDenNgay_Ngay" ColumnName="ThoiGianTienHanhDenNgay_Ngay" />
