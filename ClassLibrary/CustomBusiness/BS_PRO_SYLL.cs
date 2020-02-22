@@ -31,7 +31,7 @@ namespace BaseBusiness
                 ThuTruongCoQuan = s.ThuTruongCoQuan,
                 DienThoaiThuTruong = s.DienThoaiThuTruong,
                 DiaChiCoQuan = s.DiaChiCoQuan,
-                
+                DienThoaiNhaRieng = s.DienThoaiNhaRieng,
                 JSON_TrinhDoChuyenMon = s.JSON_TrinhDoChuyenMon,
                 JSON_KinhNghiem = s.JSON_KinhNghiem,
                 HTML = s.HTML,
@@ -62,6 +62,7 @@ namespace BaseBusiness
                     ThuTruongCoQuan = s.ThuTruongCoQuan,
                     DienThoaiThuTruong = s.DienThoaiThuTruong,
                     DiaChiCoQuan = s.DiaChiCoQuan,
+                    DienThoaiNhaRieng = s.DienThoaiNhaRieng,
                     JSON_TrinhDoChuyenMon = s.JSON_TrinhDoChuyenMon,
                     JSON_KinhNghiem = s.JSON_KinhNghiem,
                     HTML = s.HTML,
@@ -121,6 +122,7 @@ namespace BaseBusiness
             dbitem.NgaySinh = item.NgaySinh;
             dbitem.DiaChi = item.DiaChi;
             dbitem.DienThoaiCQ = item.DienThoaiCQ;
+            dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;
             dbitem.Mobile = item.Mobile;
             dbitem.Email = item.Email;
             dbitem.ChucVu = item.ChucVu;
