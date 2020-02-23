@@ -225,6 +225,10 @@
                     &[contenteditable="true"] {
                         padding: 6px;
                     }
+
+                    .box:last-child {
+                        margin-bottom: 0;
+                    }
                 }
             }
         }
