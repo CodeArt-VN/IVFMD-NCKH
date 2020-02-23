@@ -8,6 +8,8 @@ import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
+
 @IonicPage({ name: 'page-hosrem-modal', priority: 'high', defaultHistory: ['page-hosrem-modal'] })
 @Component({
     selector: 'hosrem-modal',
@@ -18,6 +20,7 @@ export class HosremModalPage extends DetailPage {
     model: any;
     constructor(
         public currentProvider: STAFF_NhanSu_HosremCustomProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -58,24 +61,25 @@ export class HosremModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmHosrem");
         let id = this.item.ID;
         var that = this;
-        ko.bindingHandlers.editableHTML = {
-            init: function (element, valueAccessor) {
-                var $element = $(element);
-                var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                if (id <= 0)
-                    $element.html(initialValue);
-                $element.on('keyup', function () {
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
-            }
-        };
+        this.nckhProvider.init();
 
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
+            that.nckhProvider.copyPropertiesValue(item, self);
+            self.ListDonViCongTac = that.nckhProvider.observableSimpleArray(item.ListDonViCongTac, ["- ", "- "]);
+            self.ListQuaTrinhDaoTao = that.nckhProvider.observableSimpleArray(item.ListQuaTrinhDaoTao, ["- ", "- "]);
+            self.ListHoatDongKhac = that.nckhProvider.observableSimpleArray(item.ListHoatDongKhac, ["- ", "- "]);
+            self.ListBaiDangTapChi = that.nckhProvider.observableSimpleArray(item.ListBaiDangTapChi, ["- ", "- "]);
+            self.ListKinhNghiemLamViec = that.nckhProvider.observableSimpleArray(item.ListKinhNghiemLamViec, ["- ", "- "]);
             self.getItem = function () {
-                return ko.toJS(self);
+                var obj = ko.toJS(self);
+                obj.ListDonViCongTac = that.nckhProvider.stringifySimpleArray(obj.ListDonViCongTac);
+                obj.ListQuaTrinhDaoTao = that.nckhProvider.stringifySimpleArray(obj.ListQuaTrinhDaoTao);
+                obj.ListHoatDongKhac = that.nckhProvider.stringifySimpleArray(obj.ListHoatDongKhac);
+                obj.ListBaiDangTapChi = that.nckhProvider.stringifySimpleArray(obj.ListBaiDangTapChi);
+                obj.ListKinhNghiemLamViec = that.nckhProvider.stringifySimpleArray(obj.ListKinhNghiemLamViec);
+                return obj;
             };
         }
         this.model = new ObjModel(this.item);

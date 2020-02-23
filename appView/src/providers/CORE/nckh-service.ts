@@ -207,17 +207,28 @@ export class NCKHServiceProvider {
             group_controls.detach();
         });
     }
-    observableSimpleArray(arr) {
+    observableSimpleArray(arr, samples: Array<string>) {
+        if ((arr == null || arr == undefined || arr.length == 0) && samples != null && samples.length > 0)
+            arr = samples;
         return ko.observableArray($.map(arr, function (str) {
             return {
                 data: ko.observable(str)
             };
         }));
     }
+    copyPropertiesValue(fromItem, toItem) {
+        for (let x in fromItem) {
+            if (x != '_isChecked' && (typeof fromItem[x] == "string" || fromItem[x] == undefined || fromItem[x] == null)) {
+                toItem[x] = ko.observable(fromItem[x] || "");
+            }
+        }
+    }
     stringifySimpleArray(arr) {
-        return ko.computed(function () {
-            return JSON.stringify($.map(arr, function (str) { return str.data(); }));
-        });
+        return $.map(arr, function (str) {
+            if (typeof str.data === "function")
+                return str.data();
+            return str.data;
+        })
     }
     getItem(context) {
         try {
