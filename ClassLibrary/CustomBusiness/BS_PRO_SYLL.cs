@@ -72,6 +72,10 @@ namespace BaseBusiness
                     CreatedBy = s.CreatedBy,
                     ModifiedDate = s.ModifiedDate,
                     ModifiedBy = s.ModifiedBy,
+                    NgayKy_ChuKy = s.NgayKy_ChuKy,
+                    NgayKy_Nam = s.NgayKy_Nam,
+                    NgayKy_Ngay = s.NgayKy_Ngay,
+                    NgayKy_Thang = s.NgayKy_Thang
                 }).FirstOrDefault();
             }
 
@@ -130,6 +134,10 @@ namespace BaseBusiness
             dbitem.ThuTruongCoQuan = item.ThuTruongCoQuan;
             dbitem.DienThoaiThuTruong = item.DienThoaiThuTruong;
             dbitem.DiaChiCoQuan = item.DiaChiCoQuan;
+            dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
 
             if (item.ListKinhNghiem != null)
             {
