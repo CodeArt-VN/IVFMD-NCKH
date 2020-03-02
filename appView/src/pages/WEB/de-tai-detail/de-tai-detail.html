@@ -129,6 +129,8 @@
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                                <button *ngIf="i.TrangThaiCode === 'Uploaded'" ion-button block (click)="upload(i.Index)">Đã upload</button>
+                                <button *ngIf="i.TrangThaiCode === 'NotUpload'" ion-button block (click)="upload(i.Index)">Chưa upload</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

@@ -170,13 +170,13 @@ namespace BaseBusiness
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm xem xét đạo đức", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm xem xét đạo đức", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
-                if (db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 0, Type = -1, Name = "Sysnopsis", Description = "Sysnopsis", FormCode = "tbl_PRO_BaoCaoNangSuatKhoaHoc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 0, Type = -1, Name = "Sysnopsis", Description = "Sysnopsis", FormCode = "tbl_PRO_BaoCaoNangSuatKhoaHoc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                if (db.tbl_PRO_DonXinNghiemThu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
-                if (db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 0, Type = -1, Name = "Sysnopsis", Description = "Sysnopsis", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 0, Type = -1, Name = "Sysnopsis", Description = "Sysnopsis", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                if (db.tbl_PRO_DonXinNghiemThu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Đã up", TrangThaiCode = "Uploaded" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Chưa up", TrangThaiCode = "NotUpload" });
             }
             return query;
         }
