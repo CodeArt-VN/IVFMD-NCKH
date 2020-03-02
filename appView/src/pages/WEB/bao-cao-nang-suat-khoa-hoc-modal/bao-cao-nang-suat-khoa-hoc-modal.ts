@@ -21,6 +21,7 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
     kinhphis = [];
     sites = [];
     nhoms = [];
+    canApprove = false;
     constructor(
         public currentProvider: PRO_BaoCaoNangSuatKhoaHocProvider,
         public kinhphiProvider: CAT_KinhPhiProvider,
@@ -34,6 +35,7 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
 
         super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
         this.dateAdapter.setLocale('vi');   
+        this.canApprove = navParams.get('canApprove');
         this.pageName = "page-bao-cao-nang-suat-khoa-hoc";
         this.events.unsubscribe('app:Close-page-bao-cao-nang-suat-khoa-hoc-modal');
         this.events.subscribe('app:Close-page-bao-cao-nang-suat-khoa-hoc-modal', () => {

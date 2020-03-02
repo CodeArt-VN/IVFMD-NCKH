@@ -50,7 +50,7 @@
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
-                <ngx-datatable-column name="Nghiên cứu viên chính" prop="NCVChinh"></ngx-datatable-column>
+                <ngx-datatable-column name="Nghiên cứu viên chính" prop="NCVChinh" [width]="180" ></ngx-datatable-column>
                 <ngx-datatable-column name="Ngày duyệt NC" prop="NgayDuyetNghienCuu" [width]="170" [maxWidth]="170" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         {{i.NgayDuyetNghienCuu}}
@@ -64,7 +64,7 @@
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Cỡ mẫu" prop="CoMau"></ngx-datatable-column>
                 <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
-                <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau"></ngx-datatable-column>
+                <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau" [width]="180"></ngx-datatable-column>
                 <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>
                 <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>

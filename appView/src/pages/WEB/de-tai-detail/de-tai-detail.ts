@@ -370,21 +370,25 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 14:
               page = BangKiemXXDDModalPage;
-              break;
+                break;
+            case 15:
+                break;
         }
         if (type == 12 || type == 13) {
           let myModal = this.modalCtrl.create(page, param);
           myModal.onDidDismiss(data => {
             this.refreshData();
           });
-          myModal.present();
-        } 
-        else if (type != 11) {
-            let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
-            myModal.onDidDismiss(data => {
-              this.refreshData();
-            });
             myModal.present();
+        }
+        else if (type != 11) {
+            if (page != null) {
+                let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
+                myModal.onDidDismiss(data => {
+                    this.refreshData();
+                });
+                myModal.present();
+            }
         } else {
             this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
             return false;
@@ -419,5 +423,9 @@ export class DeTaiDetailPage extends BasePage {
                 this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
             });
         })
+    };
+
+    upload() {
+
     };
   }

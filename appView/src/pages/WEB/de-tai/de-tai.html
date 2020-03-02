@@ -58,7 +58,7 @@
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Tên đề tài" prop="DeTai" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="Tên đề tài" prop="DeTai" [width]="200" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetail(i)">
                             {{i.DeTai}}
@@ -70,7 +70,7 @@
                 <ngx-datatable-column name="Trạng thái HRCO" prop="TrangThai_HRCO"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HĐĐĐ" prop="TrangThai_HDDD"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái HĐKH" prop="TrangThai_HDKH"></ngx-datatable-column>
-                <ngx-datatable-column name="Trạng thái Nghiệm thu" prop="TrangThai_NghiemThu"></ngx-datatable-column>
+                <ngx-datatable-column name="Trạng thái Nghiệm thu" prop="TrangThai_NghiemThu" [width]="180"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Mô tả" prop="GhiChu"></ngx-datatable-column>
                 <ngx-datatable-column name="Ngày tạo" prop="CreatedDate" [width]="150" [maxWidth]="150">

@@ -61,7 +61,7 @@
 
         <div class="c-control">
             <label class="c-label" for="IDKinhPhi">
-                Tên kinh phí
+                Sản phẩm khoa học
                 <span *ngIf="!formGroup.controls.IDKinhPhi.valid && !formGroup.controls.IDKinhPhi.pending && (formGroup.controls.IDKinhPhi.dirty || submitAttempt)"
                       ion-text color="danger">(*)</span>
             </label>
@@ -71,7 +71,7 @@
             </select>
         </div>
 
-        <div class="c-control">
+        <div class="c-control" *ngIf="canApprove">
             <label class="c-label" for="KinhPhi">
                 Kinh phí
                 <span *ngIf="!formGroup.controls.KinhPhi.valid && !formGroup.controls.KinhPhi.pending && (formGroup.controls.KinhPhi.dirty || submitAttempt)"></span>

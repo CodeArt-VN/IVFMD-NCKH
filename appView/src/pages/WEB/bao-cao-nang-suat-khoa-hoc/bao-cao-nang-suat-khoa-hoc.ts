@@ -38,13 +38,28 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     }
 
     openDetail(item) {
-        let myModal = this.modalCtrl.create(BaoCaoNangSuatKhoaHocModalPage, { 'id': item.ID });
+        let myModal = this.modalCtrl.create(BaoCaoNangSuatKhoaHocModalPage, { 'id': item.ID, 'canApprove': this.canApprove });
         myModal.present();
     }
 
     approve(item) {
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.updateStatus(item.ID, "Approved").then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
+    }
+
+    unApprove(item) {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.updateStatus(item.ID, "UnApproved").then((savedItem: any) => {
                 if (this.loading) this.loading.dismiss();
                 this.events.publish('app:Update' + this.pageName);
                 console.log('publish => app:Update ' + this.pageName);
