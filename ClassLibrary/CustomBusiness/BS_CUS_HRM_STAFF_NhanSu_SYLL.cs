@@ -56,7 +56,7 @@ namespace BaseBusiness
                 var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
                 if (objNhanSu != null)
                 {
-                    query.HoTen = objNhanSu.Ho + " " + objNhanSu.Ten;
+                    query.HoTen = objNhanSu.Name;
                     query.Email = objNhanSu.Email;
                     query.DiaChi = objNhanSu.DiaChi;
                     query.Mobile = objNhanSu.SoDienThoai;

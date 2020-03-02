@@ -395,8 +395,7 @@ export class DeTaiDetailPage extends BasePage {
       this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.updateStatus(this.id, actionCode).then((savedItem: any) => {
                 if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
+                this.refreshData();
                 this.toastMessage('Đã cập nhật!');
             }).catch(err => {
                 console.log(err);
