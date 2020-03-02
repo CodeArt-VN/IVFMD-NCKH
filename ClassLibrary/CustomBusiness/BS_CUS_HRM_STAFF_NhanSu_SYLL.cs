@@ -53,6 +53,14 @@ namespace BaseBusiness
                     IDNhanSu = nhanSuId
                 };
 
+                var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
+                if (objNhanSu != null)
+                {
+                    query.HoTen = objNhanSu.Ho + " " + objNhanSu.Ten;
+                    query.Email = objNhanSu.Email;
+                    query.DiaChi = objNhanSu.DiaChi;
+                    query.Mobile = objNhanSu.SoDienThoai;
+                }
                 query.ListKinhNghiem = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem() };
                 query.ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon() };
             }
