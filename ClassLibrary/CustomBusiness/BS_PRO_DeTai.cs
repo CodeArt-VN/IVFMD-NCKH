@@ -151,8 +151,8 @@ namespace BaseBusiness
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 9, Type = 4, Name = "Nghiệm thu", Description = "Đơn xin nghiệm thu", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_PhieuXemXetDaoDuc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_BaoCaoTienDoNghienCuu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 11, Type = 3, Name = "Tiến độ nghiên cứu", Description = "Báo cáo tiến độ nghiên cứu", FormCode = "tbl_PRO_BaoCaoTienDoNghienCuu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
@@ -167,8 +167,8 @@ namespace BaseBusiness
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 13, Type = 3, Name = "Báo cáo SAE", Description = "Báo cáo SAE", FormCode = "tbl_PRO_SAE", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm xem xét đạo đức", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm xem xét đạo đức", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 0, Type = -1, Name = "Sysnopsis", Description = "Sysnopsis", FormCode = "tbl_PRO_BaoCaoNangSuatKhoaHoc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
