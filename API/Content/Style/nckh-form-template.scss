@@ -1,13 +1,10 @@
 .nckh-form-template {
-    size: a4;
     background-color: #fff;
     min-width: 8.27in;
     max-width: 8.27in;
     margin: auto;
-    padding: 1in;
     font-family: 'Times New Roman', Times, serif;
     font-size: 13pt;
-    min-height: 11.69in;
     box-shadow: none;
 
     &.font-size-14, .font-size-14 {
@@ -30,9 +27,9 @@
         font-size: 10pt;
     }
 
-    &.form-header-footer {
-        padding-top: 0;
-        padding-bottom: 0;
+    &.no-header-footer {
+        padding-top: 1in;
+        padding-bottom: 1in;
     }
 
     .page-header, .page-header-space {

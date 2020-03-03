@@ -404,6 +404,7 @@
     <Content Include="Content\FormTemplate\NhanSuSYLL_ChuNhiemDeTai.html" />
     <Content Include="Content\FormTemplate\NhanSuSYLL.html" />
     <Content Include="Content\FormTemplate\PhieuXemXetDaoDuc.html" />
+    <Content Include="Content\FormTemplate\EmptyLayout.html" />
     <Content Include="Content\FormTemplate\SAE.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
     <Content Include="Content\FormTemplate\ThuyetMinhDeTai.html" />

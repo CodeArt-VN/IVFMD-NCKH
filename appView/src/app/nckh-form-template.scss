@@ -19,9 +19,9 @@
         font-size: 10pt;
     }
 
-    &.form-header-footer {
-        padding-top: 0;
-        padding-bottom: 0;
+    &.no-header-footer {
+        padding-top: 1in;
+        padding-bottom: 1in;
     }
 
     .page-header, .page-header-space {

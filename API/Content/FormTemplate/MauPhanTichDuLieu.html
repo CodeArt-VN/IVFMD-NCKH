@@ -1,399 +1,401 @@
-﻿<div class="nckh-form-template nckh-form-04 font-size-13">
-    <div class="text-center text-bold" style="display: inline-block;width: 100%;">
-        <p style="margin: 16pt;">
-            MẪU PHÂN TÍCH DỮ LIỆU SƠ BỘ
-        </p>
-    </div>
-    <div>
-        <table border="1" bordercolor="#607D8B" class="nckh-table" style="width:100%;border-collapse: collapse;">
-            <colgroup>
-                <col />
-                <col width="40" />
-                <col />
-                <col width="40" />
-            </colgroup>
-            <thead style="display: table-row-group">
-                <tr>
-                    <td class="text-bold text-center" style="width:50%">
-                        Tên biến số
-                    </td>
-                    <td class="text-bold text-center">
-                        Lựa chọn
-                    </td>
-                    <td class="text-bold text-center">
-                        Tên biến số
-                    </td>
-                    <td class="text-bold text-center">
-                        Lựa chọn
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-bold">
-                        Đặc điểm nền bệnh nhân
-                    </td>
-                    <td class="text-bold">
-                    </td>
-                    <td class="text-bold">
-                        Kết quả thai
-                    </td>
-                    <td class="text-bold">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Tuổi vợ - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().TuoiVo" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ Beta dương - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeBeTaDuong" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        BMI (kg/m2) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().BMI" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ thai lâm sàng - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiLamSang" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        AMH vợ (ng/ml) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().AMHVo" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ làm tổ - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeLamTo" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        AFC - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().AFC" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ đa thai 2 thai – n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeDaThai2Thai" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Thời gian vô sinh (năm) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().ThoiGianVoSinh" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ đa thai 3 thai – n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeDaThai3Thai" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số chu kỳ chọc hút - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().SoChuKyChocHut" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ sẩy thai dưới 12w - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThaiDuoi12W" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Loại vô sinh - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().LoaiVoSinh" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ thai diễn tiến 12w- n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiDienTien12W" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Chỉ định TTTON - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: DacDiemNen().ChiDinhTTTON" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ sẩy thai 12 - 24w - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThai1224W" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-bold">
-                        Kích thích buồng trứng
-                    </td>
-                    <td class="text-center">
-                    </td>
-                    <td class="">
-                        Tỷ lệ thai diễn tiến 24w- n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiDienTien24W" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        E2 ngày trigger (pmol/L) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KichThichBuongTrung().E2NgayTrigger" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ sẩy thai trên 24w - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThaiTren24W" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        P4 ngày trigger (pmol/L) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KichThichBuongTrung().P4NgayTrigger" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ sinh sống - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSinhSong" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Thời gian KTBT (ngày) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KichThichBuongTrung().ThoiGianKTBT" />
-                    </td>
-                    <td class="">
-                        Tỷ lệ sinh đôi - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSinhDoi" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Liều đầu FSH - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KichThichBuongTrung().LieuDauFSH" />
-                    </td>
-                    <td class="">
-                        Loại thai sinh - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().LoaiThaiSinh" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Tổng liều FSH – IU - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KichThichBuongTrung().TongLieuFSH" />
-                    </td>
-                    <td class="">
-                        Sinh thường
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().SinhThuong" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số trứng chọc hút - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().SoTrungChocHut" />
-                    </td>
-                    <td class="">
-                        Sinh mổ
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().SinhMo" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-bold">
-                        Labo
-                    </td>
-                    <td class="text-center">
-                    </td>
-                    <td class="">
-                        Tuần thai sinh – mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TuanThaiSinh" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số trứng ICSI - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().SoTrungICSI" />
-                    </td>
-                    <td class="">
-                        Cân nặng trẻ (gram) – mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().CanNangTre" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số trứng thụ tinh - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().SoTrungThuTinh" />
-                    </td>
-                    <td class="">
-                        Quá kích buồng trứng - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().QuaKichBuongTrung" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Tỷ lệ 2PN - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().TyLe2PN" />
-                    </td>
-                    <td class="">
-                        Biến chứng sản khoa - n (%)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().BienChungSanKhoa" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Tỷ lệ tạo phôi - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().TyLeTaoPhoi" />
-                    </td>
-                    <td class="">
-                        Cao huyết áp thai kỳ
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().CaoHuyetApThaiKy" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số phôi - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().SoPhoi" />
-                    </td>
-                    <td class="">
-                        Tiểu đường thai kỳ
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: KetQuaThai().TieuDuongThaiKy" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số phôi L1+L2- mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: LaBo().SoPhoiL1L2" />
-                    </td>
-                    <td class="text-bold">
-                        Biến số khác (nếu có)
-                    </td>
-                    <td class="text-center">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-bold">
-                        Chu kỳ chuyển phôi
-                    </td>
-                    <td class="text-center">
-                    </td>
-                    <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong1">
-                    </td>
-                    <td class="text-center">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số phôi chuyển TB - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().SoPhoiChuyenTB" />
-                    </td>
-                    <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong2">
-                    </td>
-                    <td class="text-center">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        Số phôi tốt loại 1+2 chuyển TB - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().SoPhoiTotChuyenTB" />
-                    </td>
-                    <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong3">
-                    </td>
-                    <td class="text-center">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="">
-                        NMTC (mm) - mean (sd)
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().NMTC" />
-                    </td>
-                    <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong4">
-                    </td>
-                    <td class="text-center">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+﻿<div class="form-template-body">
+    <div class="nckh-form-template no-header-footer nckh-form-04 font-size-13">
+        <div class="text-center text-bold" style="display: inline-block;width: 100%;">
+            <p style="margin: 16pt;">
+                MẪU PHÂN TÍCH DỮ LIỆU SƠ BỘ
+            </p>
+        </div>
+        <div>
+            <table border="1" bordercolor="#607D8B" class="nckh-table" style="width:100%;border-collapse: collapse;">
+                <colgroup>
+                    <col />
+                    <col width="40" />
+                    <col />
+                    <col width="40" />
+                </colgroup>
+                <thead style="display: table-row-group">
+                    <tr>
+                        <td class="text-bold text-center" style="width:50%">
+                            Tên biến số
+                        </td>
+                        <td class="text-bold text-center">
+                            Lựa chọn
+                        </td>
+                        <td class="text-bold text-center">
+                            Tên biến số
+                        </td>
+                        <td class="text-bold text-center">
+                            Lựa chọn
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-bold">
+                            Đặc điểm nền bệnh nhân
+                        </td>
+                        <td class="text-bold">
+                        </td>
+                        <td class="text-bold">
+                            Kết quả thai
+                        </td>
+                        <td class="text-bold">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Tuổi vợ - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().TuoiVo" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ Beta dương - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeBeTaDuong" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            BMI (kg/m2) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().BMI" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ thai lâm sàng - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiLamSang" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            AMH vợ (ng/ml) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().AMHVo" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ làm tổ - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeLamTo" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            AFC - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().AFC" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ đa thai 2 thai – n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeDaThai2Thai" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Thời gian vô sinh (năm) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().ThoiGianVoSinh" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ đa thai 3 thai – n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeDaThai3Thai" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số chu kỳ chọc hút - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().SoChuKyChocHut" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ sẩy thai dưới 12w - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThaiDuoi12W" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Loại vô sinh - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().LoaiVoSinh" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ thai diễn tiến 12w- n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiDienTien12W" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Chỉ định TTTON - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: DacDiemNen().ChiDinhTTTON" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ sẩy thai 12 - 24w - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThai1224W" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">
+                            Kích thích buồng trứng
+                        </td>
+                        <td class="text-center">
+                        </td>
+                        <td class="">
+                            Tỷ lệ thai diễn tiến 24w- n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeThaiDienTien24W" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            E2 ngày trigger (pmol/L) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KichThichBuongTrung().E2NgayTrigger" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ sẩy thai trên 24w - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSayThaiTren24W" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            P4 ngày trigger (pmol/L) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KichThichBuongTrung().P4NgayTrigger" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ sinh sống - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSinhSong" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Thời gian KTBT (ngày) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KichThichBuongTrung().ThoiGianKTBT" />
+                        </td>
+                        <td class="">
+                            Tỷ lệ sinh đôi - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TyLeSinhDoi" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Liều đầu FSH - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KichThichBuongTrung().LieuDauFSH" />
+                        </td>
+                        <td class="">
+                            Loại thai sinh - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().LoaiThaiSinh" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Tổng liều FSH – IU - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KichThichBuongTrung().TongLieuFSH" />
+                        </td>
+                        <td class="">
+                            Sinh thường
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().SinhThuong" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số trứng chọc hút - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().SoTrungChocHut" />
+                        </td>
+                        <td class="">
+                            Sinh mổ
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().SinhMo" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">
+                            Labo
+                        </td>
+                        <td class="text-center">
+                        </td>
+                        <td class="">
+                            Tuần thai sinh – mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TuanThaiSinh" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số trứng ICSI - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().SoTrungICSI" />
+                        </td>
+                        <td class="">
+                            Cân nặng trẻ (gram) – mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().CanNangTre" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số trứng thụ tinh - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().SoTrungThuTinh" />
+                        </td>
+                        <td class="">
+                            Quá kích buồng trứng - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().QuaKichBuongTrung" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Tỷ lệ 2PN - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().TyLe2PN" />
+                        </td>
+                        <td class="">
+                            Biến chứng sản khoa - n (%)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().BienChungSanKhoa" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Tỷ lệ tạo phôi - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().TyLeTaoPhoi" />
+                        </td>
+                        <td class="">
+                            Cao huyết áp thai kỳ
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().CaoHuyetApThaiKy" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số phôi - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().SoPhoi" />
+                        </td>
+                        <td class="">
+                            Tiểu đường thai kỳ
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: KetQuaThai().TieuDuongThaiKy" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số phôi L1+L2- mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: LaBo().SoPhoiL1L2" />
+                        </td>
+                        <td class="text-bold">
+                            Biến số khác (nếu có)
+                        </td>
+                        <td class="text-center">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">
+                            Chu kỳ chuyển phôi
+                        </td>
+                        <td class="text-center">
+                        </td>
+                        <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong1">
+                        </td>
+                        <td class="text-center">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số phôi chuyển TB - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().SoPhoiChuyenTB" />
+                        </td>
+                        <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong2">
+                        </td>
+                        <td class="text-center">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            Số phôi tốt loại 1+2 chuyển TB - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().SoPhoiTotChuyenTB" />
+                        </td>
+                        <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong3">
+                        </td>
+                        <td class="text-center">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            NMTC (mm) - mean (sd)
+                        </td>
+                        <td class="text-center">
+                            <input type="checkbox" data-bind="checked: ChuKyChuyenPhoi().NMTC" />
+                        </td>
+                        <td contenteditable="true" style="width:100%;" data-bind="editableHTML: BienSoKhac().Dong4">
+                        </td>
+                        <td class="text-center">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
