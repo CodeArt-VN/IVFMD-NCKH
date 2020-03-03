@@ -124,9 +124,9 @@ namespace API.Controllers.PRO
             }
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             DTO_PRO_DeTai result = BS_PRO_DeTai.save_PRO_DeTai(db, PartnerID, -1, user.StaffID, tbl_PRO_DeTai, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_DeTai", new { id = result.ID }, result);
             }
@@ -137,17 +137,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_DeTai.check_PRO_DeTai_Exists(db, id); 
+            bool check = BS_PRO_DeTai.check_PRO_DeTai_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_DeTai.delete_PRO_DeTai(db, id, Username); 
+            bool result = BS_PRO_DeTai.delete_PRO_DeTai(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 
@@ -155,7 +156,9 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai_PrinterData))]
         public IHttpActionResult Print(DTO_PRO_DeTai_PrinterData item)
         {
-            return Ok("");
+            var path = @"~/HTMLFiles/" + DateTime.Now.Ticks.ToString() + ".pdf";
+            var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter);
+            return Ok(path);
         }
     }
 }

@@ -1,4 +1,12 @@
 .nckh-form-template {
+    background-color: #fff;
+    min-width: 8.27in;
+    max-width: 8.27in;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    box-shadow: none;
+
     &.font-size-14, .font-size-14 {
         font-size: 14pt;
     }
@@ -92,7 +100,7 @@
 
     .prow {
         &:hover {
-            box-shadow: 0px 0px 2px #44a9eb;
+            box-shadow: none;
         }
     }
 
@@ -153,7 +161,7 @@
 
         [contenteditable="true"] {
             &:hover, &:focus {
-                outline: 1px dashed #44a9eb;
+                outline: none;
             }
         }
     }
@@ -212,10 +220,6 @@
                     &[contenteditable="true"] {
                         padding: 6px;
                     }
-
-                    .box:last-child {
-                        margin-bottom: 0;
-                    }
                 }
             }
         }
@@ -249,30 +253,8 @@
             }
         }
     }
-}
 
-@media print {
-    .nckh-form-template {
-        font-family: 'Times New Roman', Times, serif;
-
-        .print-hidden {
-            display: none;
-        }
-
-        .group_controls { 
-            display: none;
-        }
-        
-        .nckh-form-template {
-            box-shadow: none; 
-        }
-
-        .box {
-            [contenteditable="true"] {
-                &:hover, &:focus {
-                    outline: none;
-                }
-            }
-        }
+    .group_controls {
+        display: none;
     }
 }

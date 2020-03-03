@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { PRO_ThuyetMinhDeTaiCustomProvider } from '../../../providers/Services/CustomService';
+import { PRO_ThuyetMinhDeTaiCustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -20,6 +20,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
     constructor(
         public currentProvider: PRO_ThuyetMinhDeTaiCustomProvider,
         public nckhProvider: NCKHServiceProvider,
+        public deTaiCustomProvider: PRO_DeTaiCustomProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -257,5 +258,24 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
                 this.toastMessage('Không lưu được, \nvui lòng thử lại.');
             });
         })
+    };
+
+    print() {
+        this.loadingMessage('Lấy dữ liệu in...').then(() => {
+            var itemPrint = {
+                id: this.id,
+                type: 0,
+                htmlContent: $("#frmThuyetMinhDeTai .form-template-body").html(),
+                htmlFooter: $("#frmThuyetMinhDeTai .form-template-footer").html(),
+                htmlHeader: $("#frmThuyetMinhDeTai .form-template-header").html()
+            };
+            this.deTaiCustomProvider.print(itemPrint).then((res: any) => {
+                if (this.loading) this.loading.dismiss();
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không in được, \nvui lòng thử lại.');
+            });
+        });
     };
 }
