@@ -45,7 +45,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         else {
             this.idDeTai = -1;
         }
-        debugger
+
         this.isChuNhiem = navParams.get('isChuNhiem');
         if (this.isChuNhiem) {
         }
