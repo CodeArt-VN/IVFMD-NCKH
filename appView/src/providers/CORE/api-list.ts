@@ -1435,7 +1435,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/SYLL/get_PRO_SYLL/") + idDeTai + "/" + idNhanSu }
+            url: function (idDeTai, idNhanSu, isChuNhiem) { return appSetting.apiDomain("PRO/SYLL/get_PRO_SYLL/") + idDeTai + "/" + idNhanSu + "/" + isChuNhiem }
         },
         saveCustom:{
             method: "POST",

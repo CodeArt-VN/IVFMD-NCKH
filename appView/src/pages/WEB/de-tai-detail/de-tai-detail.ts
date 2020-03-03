@@ -318,7 +318,7 @@ export class DeTaiDetailPage extends BasePage {
     /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
     openDetailModal(type){
         var page = null; 
-        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1 };
+        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false };
         switch(type){
             case 0:
               page = SysnopsisModalPage;
@@ -334,19 +334,19 @@ export class DeTaiDetailPage extends BasePage {
               break;
             case 4:
               page = NhanSuLLKHModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1 };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': false };
               break;
             case 5:
               page = NhanSuSYLLModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1 };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': true };
               break;
             case 6:
               page = NhanSuLLKHModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1 };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
               break;
             case 7:
               page = NhanSuSYLLModalPage;
-              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1 };
+              param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
                 break;
             case 8:
                 page = ThuyetMinhDeTaiModalPage;
@@ -361,30 +361,34 @@ export class DeTaiDetailPage extends BasePage {
               page = BaoCaoTienDoNghienCuuPage;
               break;
             case 12:
-              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1 };
+              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1, 'isChuNhiem': false };
               page = ListSelectModalPage;
               break;
             case 13:
-              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2 };
+              param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2, 'isChuNhiem': false };
               page = ListSelectModalPage;
               break;
             case 14:
               page = BangKiemXXDDModalPage;
-              break;
+                break;
+            case 15:
+                break;
         }
         if (type == 12 || type == 13) {
           let myModal = this.modalCtrl.create(page, param);
           myModal.onDidDismiss(data => {
             this.refreshData();
           });
-          myModal.present();
-        } 
-        else if (type != 11) {
-            let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
-            myModal.onDidDismiss(data => {
-              this.refreshData();
-            });
             myModal.present();
+        }
+        else if (type != 11) {
+            if (page != null) {
+                let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
+                myModal.onDidDismiss(data => {
+                    this.refreshData();
+                });
+                myModal.present();
+            }
         } else {
             this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
             return false;
@@ -395,8 +399,7 @@ export class DeTaiDetailPage extends BasePage {
       this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.updateStatus(this.id, actionCode).then((savedItem: any) => {
                 if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
+                this.refreshData();
                 this.toastMessage('Đã cập nhật!');
             }).catch(err => {
                 console.log(err);
@@ -410,8 +413,9 @@ export class DeTaiDetailPage extends BasePage {
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.updateNCT(this.id, this.item.SoNCT).then((savedItem: any) => {
                 if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
+                //this.events.publish('app:Update' + this.pageName);
+                //console.log('publish => app:Update ' + this.pageName);
+                this.refreshData();
                 this.toastMessage('Đã cập nhật!');
             }).catch(err => {
                 console.log(err);
@@ -419,5 +423,9 @@ export class DeTaiDetailPage extends BasePage {
                 this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
             });
         })
+    };
+
+    upload() {
+
     };
   }

@@ -26,7 +26,7 @@
                         </div>
                     </td>
                     <td style="vertical-align:middle;border-bottom: 0;border-left: 0;">
-                        Số: _____/ĐĐ-BVMĐ
+                        Số:  <span contenteditable="true" style="min-width: 20px;display: inline-block;" data-bind="editableHTML: MaSo">_______</span>/ĐĐ-BVMĐ
                     </td>
                 </tr>
                 <tr>
@@ -565,6 +565,67 @@
         </div>
     </div>
     <br />
+    <div>
+        <div style="padding:2px 0; margin-bottom:6px;">
+            <b>
+                Thời gian tiến hành thử nghiệm của nghiên cứu
+            </b>
+            <br />
+            <div style="padding: 5px  0 3px 0px;">
+                từ
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanh_Ngay" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanh_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanh_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                <span>
+                    đến
+                </span>
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanhDenNgay_Ngay" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanhDenNgay_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianTienHanhDenNgay_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+            </div>
+        </div>
+        <div style="padding:2px 0; margin-bottom:6px;">
+            <b>
+                Thời gian thu thập số liệu của nghiên cứu
+            </b>
+            <br />
+            <div style="padding: 5px  0 3px 0px;">
+                từ
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianThuThap_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianThuThap_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                <span>
+                    đến
+                </span>
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianThuThapDenNgay_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianThuThapDenNgay_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+            </div>
+        </div>
+        <div style="padding:2px 0; margin-bottom:6px;">
+            <b>
+                Toàn bộ quỹ thời gian nghiên cứu
+            </b>
+            <br />
+            <div style="padding: 5px  0 3px 0px;">
+                từ
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianNghienCuu_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianNghienCuu_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                <span>
+                    đến
+                </span>
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianNghienCuuDenNgay_Thang" style="min-width: 40px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+                /
+                <span contenteditable="true" data-bind="editableHTML: ThoiGianNghienCuuDenNgay_Nam" style="min-width: 50px;border-bottom: 0px solid black; padding: 3px 0;display: inline-block;text-align:center;"></span>
+            </div>
+        </div>
+    </div>
+    <br />
     <div style="border: 2px solid black;background-color:#fff;position:relative;padding: 6px 10px">
         <table class="nckh-table" style="width:100%;" border="0">
             <colgroup>
@@ -1032,7 +1093,7 @@
                         Ý KIẾN CỦA CHỦ TỊCH HỘI ĐỒNG ĐẠO ĐỨC
                     </td>
                     <td style="text-align:right;">
-                        Số: <span contenteditable="true" data-bind="editableHTML: YKienHDDD_So">_______</span>/ĐĐ- BVMĐ
+                        Số: <span contenteditable="true" style="min-width: 20px;display: inline-block;" data-bind="editableHTML: YKienHDDD_So">_______</span>/ĐĐ- BVMĐ
                     </td>
                 </tr>
                 <tr>

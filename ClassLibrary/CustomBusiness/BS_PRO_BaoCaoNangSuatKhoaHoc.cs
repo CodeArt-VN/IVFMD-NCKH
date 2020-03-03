@@ -286,13 +286,22 @@ namespace BaseBusiness
                 dbitem.IsDisabled = item.IsDisabled;
                 dbitem.IsDeleted = item.IsDeleted;
                 dbitem.IDKinhPhi = item.IDKinhPhi;
-                dbitem.KinhPhi = item.KinhPhi;
                 dbitem.IDNCV = item.IDNCV;
                 dbitem.IsApproved = item.IsApproved;
                 dbitem.ApprovedDate = item.ApprovedDate;
 
                 if (item.IsApproved)
                     return "Kinh phí đã duyệt, không thể chỉnh sửa";
+
+                var kinhphi = db.tbl_CAT_KinhPhi.FirstOrDefault(c => c.ID == item.IDKinhPhi);
+                if (kinhphi != null && kinhphi.IsManual != true)
+                {
+                    DateTime dt = item.NgayBaoCao;
+                    var banggia = db.tbl_CAT_BangGiaKinhPhi.Where(c => c.IDKinhPhi == item.IDKinhPhi && c.NgayHieuLuc <= dt).OrderByDescending(c => c.NgayHieuLuc).FirstOrDefault();
+                    if (banggia != null)
+                        dbitem.KinhPhi = banggia.Gia;
+                }
+                else dbitem.KinhPhi = item.KinhPhi;
 
                 dbitem.ModifiedBy = Username;
                 dbitem.ModifiedDate = DateTime.Now;
@@ -311,7 +320,6 @@ namespace BaseBusiness
             }
             return result;
         }
-
 
         public static string updateStatus_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int ID, string ActionCode, string Username)
         {

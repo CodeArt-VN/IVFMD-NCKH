@@ -39,6 +39,10 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                NgayKy_ChuKy = s.NgayKy_ChuKy,
+                NgayKy_Nam = s.NgayKy_Nam,
+                NgayKy_Ngay = s.NgayKy_Ngay,
+                NgayKy_Thang = s.NgayKy_Thang
             }).FirstOrDefault();
 
             if (query == null)
@@ -49,6 +53,14 @@ namespace BaseBusiness
                     IDNhanSu = nhanSuId
                 };
 
+                var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
+                if (objNhanSu != null)
+                {
+                    query.HoTen = objNhanSu.Name;
+                    query.Email = objNhanSu.Email;
+                    query.DiaChi = objNhanSu.DiaChi;
+                    query.Mobile = objNhanSu.SoDienThoai;
+                }
                 query.ListKinhNghiem = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem() };
                 query.ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon() };
             }
@@ -92,6 +104,10 @@ namespace BaseBusiness
             dbitem.ThuTruongCoQuan = item.ThuTruongCoQuan;
             dbitem.DienThoaiThuTruong = item.DienThoaiThuTruong;
             dbitem.DiaChiCoQuan = item.DiaChiCoQuan;
+            dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
 
             if (item.ListKinhNghiem != null)
             {

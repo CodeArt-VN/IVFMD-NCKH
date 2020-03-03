@@ -85,15 +85,29 @@ export class BangKiemXXDDModalPage extends DetailPage {
             self.PhanBon_C2_MoTaQuyTrinh = ko.observable(item.PhanBon_C2_MoTaQuyTrinh);
             self.PhanBon_C2_CachTienHanh = ko.observable(item.PhanBon_C2_CachTienHanh);
             self.PhanBon_C3_MoTaQuyTrinh = ko.observable(item.PhanBon_C3_MoTaQuyTrinh);
+
             self.ThoiGianTienHanh_Ngay = ko.observable(item.ThoiGianTienHanh_Ngay);
             self.ThoiGianTienHanh_Thang = ko.observable(item.ThoiGianTienHanh_Thang);
             self.ThoiGianTienHanh_Nam = ko.observable(item.ThoiGianTienHanh_Nam);
+            self.ThoiGianTienHanhDenNgay_Ngay = ko.observable(item.ThoiGianTienHanhDenNgay_Ngay);
+            self.ThoiGianTienHanhDenNgay_Thang = ko.observable(item.ThoiGianTienHanhDenNgay_Thang);
+            self.ThoiGianTienHanhDenNgay_Nam = ko.observable(item.ThoiGianTienHanhDenNgay_Nam);
+
             self.ThoiGianThuThap_Ngay = ko.observable(item.ThoiGianThuThap_Ngay);
             self.ThoiGianThuThap_Thang = ko.observable(item.ThoiGianThuThap_Thang);
             self.ThoiGianThuThap_Nam = ko.observable(item.ThoiGianThuThap_Nam);
+            self.ThoiGianThuThapDenNgay_Ngay = ko.observable(item.ThoiGianThuThapDenNgay_Ngay);
+            self.ThoiGianThuThapDenNgay_Thang = ko.observable(item.ThoiGianThuThapDenNgay_Thang);
+            self.ThoiGianThuThapDenNgay_Nam = ko.observable(item.ThoiGianThuThapDenNgay_Nam);
+
             self.ThoiGianNghienCuu_Ngay = ko.observable(item.ThoiGianNghienCuu_Ngay);
             self.ThoiGianNghienCuu_Thang = ko.observable(item.ThoiGianNghienCuu_Thang);
             self.ThoiGianNghienCuu_Nam = ko.observable(item.ThoiGianNghienCuu_Nam);
+            self.ThoiGianNghienCuuDenNgay_Ngay = ko.observable(item.ThoiGianNghienCuuDenNgay_Ngay);
+            self.ThoiGianNghienCuuDenNgay_Thang = ko.observable(item.ThoiGianNghienCuuDenNgay_Thang);
+            self.ThoiGianNghienCuuDenNgay_Nam = ko.observable(item.ThoiGianNghienCuuDenNgay_Nam);
+
+
             self.PhanSau_NCYSH_HoTen = ko.observable(item.PhanSau_NCYSH_HoTen);
             self.PhanSau_NCYSH_NgayThangNam = ko.observable(item.PhanSau_NCYSH_NgayThangNam);
             self.PhanSau_NGS_HoTen = ko.observable(item.PhanSau_NGS_HoTen);
