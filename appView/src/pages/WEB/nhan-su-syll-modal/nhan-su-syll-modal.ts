@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { STAFF_NhanSu_SYLLProviderCustomProvider, PRO_SYLLCustomProvider } from '../../../providers/Services/CustomService';
+import { STAFF_NhanSu_SYLLProviderCustomProvider, PRO_SYLLCustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -23,6 +23,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         public currentProvider: STAFF_NhanSu_SYLLProviderCustomProvider,
         public proSYLLProvider: PRO_SYLLCustomProvider,
         public nckhProvider: NCKHServiceProvider,
+        public deTaiCustomProvider: PRO_DeTaiCustomProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -44,7 +45,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         else {
             this.idDeTai = -1;
         }
-        debugger
+
         this.isChuNhiem = navParams.get('isChuNhiem');
         if (this.isChuNhiem) {
         }
@@ -132,45 +133,6 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 };
             }));
 
-            self.addItem = function (name, props, index) {
-                try {
-                    if (self[name]) {
-                        var obj;
-                        if (Array.isArray(props)) {
-                            obj = {};
-                            $.each(props || [], function (i, o) {
-                                obj[o] = ko.observable("");
-                            })
-                        } else {
-                            obj = "";
-                        }
-                        if (index)
-                            index = parseInt(index);
-                        if (index > -1 && index < self[name]().length) {
-                            self[name].splice(index + 1, 0, ko.observable(obj));
-                        } else {
-                            self[name].push(ko.observable(obj));
-                        }
-                    }
-                } catch (e) {
-                    console.error(e);
-                }
-            };
-
-            self.removeItem = function (name, index) {
-                try {
-                    if (self[name]().length > 1)
-                        self[name].splice(parseInt(index), 1);
-                } catch (e) {
-                    console.error(e);
-                }
-            };
-
-            self.savedJson = ko.observable("");
-            self.save = function () {
-                self.savedJson(JSON.stringify(ko.toJS(self || ""), null, 2));
-            };
-
             self.getItem = function () {
                 return ko.toJS(self);
             };
@@ -213,5 +175,24 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 });
             }
         })
+    };
+
+    print() {
+        this.loadingMessage('Lấy dữ liệu in...').then(() => {
+            var itemPrint = {
+                id: this.id,
+                type: 0,
+                htmlContent: $("#frmNhanSuSYLL .form-template-body").html(),
+                htmlFooter: $("#frmNhanSuSYLL .form-template-footer").html(),
+                htmlHeader: $("#frmNhanSuSYLL .form-template-header").html()
+            };
+            this.deTaiCustomProvider.print(itemPrint).then((res: any) => {
+                if (this.loading) this.loading.dismiss();
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không in được, \nvui lòng thử lại.');
+            });
+        });
     };
 }

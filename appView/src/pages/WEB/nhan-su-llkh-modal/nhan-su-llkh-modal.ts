@@ -330,15 +330,13 @@ export class NhanSuLLKHModalPage extends DetailPage {
     };
 
     print() {
-        var html = $("#frmNhanSuLLKH").html();
-        console.log(html);
         this.loadingMessage('Lấy dữ liệu in...').then(() => {
             var itemPrint = {
                 id: this.id,
                 type: 0,
-                htmlContent: html,
-                htmlFooter: '',
-                htmlHeader: ''
+                htmlContent: $("#frmNhanSuLLKH .form-template-body").html(),
+                htmlFooter: $("#frmNhanSuLLKH .form-template-footer").html(),
+                htmlHeader: $("#frmNhanSuLLKH .form-template-header").html()
             };
             this.deTaiCustomProvider.print(itemPrint).then((res: any) => {
                 if (this.loading) this.loading.dismiss();
