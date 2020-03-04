@@ -65,6 +65,8 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PRO_DonXinNghiemThu> tbl_PRO_DonXinNghiemThu { get; set; }
         public virtual DbSet<tbl_PRO_DonXinXetDuyet> tbl_PRO_DonXinXetDuyet { get; set; }
         public virtual DbSet<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
+        public virtual DbSet<tbl_PRO_HoiNghiHoiThao_DangKy> tbl_PRO_HoiNghiHoiThao_DangKy { get; set; }
+        public virtual DbSet<tbl_PRO_HoiNghiHoiThao_DangKyDeTai> tbl_PRO_HoiNghiHoiThao_DangKyDeTai { get; set; }
         public virtual DbSet<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         public virtual DbSet<tbl_PRO_LLKH> tbl_PRO_LLKH { get; set; }
         public virtual DbSet<tbl_PRO_MauPhanTichDuLieu> tbl_PRO_MauPhanTichDuLieu { get; set; }

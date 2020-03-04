@@ -33,6 +33,21 @@
         TrangThai_HNHT_ChoGui = -31,
         TrangThai_HNHT_ChoDuyet = -32,
         TrangThai_HNHT_DaDuyet = -33,
+
+        HinhThucXetDuyet = 7,
+        HinhThucXetDuyet_RutGon = -38,
+        HinhThucXetDuyet_DayDu = -39,
+
+        TinhTrangNghienCuu = 8,
+        TinhTrangNghienCuu_DangNhanMau = -41,
+        TinhTrangNghienCuu_PhanTichSoLieu = -42,
+        TinhTrangNghienCuu_VietBaiDangBao = -43,
+        TinhTrangNghienCuu_GuiBaiTapChi = -44,
+        TinhTrangNghienCuu_NghiemThu = -45,
+
+        HinhThucDangKy = 9,
+        HinhThucDangKy_Oral = -49,
+        HinhThucDangKy_Poster = -50,
     }
 
     public enum SYSConfigCode

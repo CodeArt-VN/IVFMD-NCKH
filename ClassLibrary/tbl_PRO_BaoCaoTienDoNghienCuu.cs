@@ -33,7 +33,9 @@ namespace ClassLibrary
         public string SoNCT { get; set; }
         public string ThoiGianTienHanh { get; set; }
         public string CoMau { get; set; }
+        public Nullable<int> IDTinhTrangNghienCuu { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
+        public virtual tbl_SYS_Var tbl_SYS_Var { get; set; }
     }
 }
 namespace DTOModel
@@ -59,6 +61,7 @@ namespace DTOModel
 		public string SoNCT { get; set; }
 		public string ThoiGianTienHanh { get; set; }
 		public string CoMau { get; set; }
+		public Nullable<int> IDTinhTrangNghienCuu { get; set; }
 	}
 }
 
@@ -98,7 +101,8 @@ namespace BaseBusiness
 				NgayDuyetNghienCuu = s.NgayDuyetNghienCuu,							
 				SoNCT = s.SoNCT,							
 				ThoiGianTienHanh = s.ThoiGianTienHanh,							
-				CoMau = s.CoMau,					
+				CoMau = s.CoMau,							
+				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,					
 			});
                               
         }
@@ -126,7 +130,8 @@ namespace BaseBusiness
 					NgayDuyetNghienCuu = dbResult.NgayDuyetNghienCuu,							
 					SoNCT = dbResult.SoNCT,							
 					ThoiGianTienHanh = dbResult.ThoiGianTienHanh,							
-					CoMau = dbResult.CoMau,
+					CoMau = dbResult.CoMau,							
+					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,
 				};
 			}
 			else
@@ -275,6 +280,20 @@ namespace BaseBusiness
                 query = query.Where(d=>d.CoMau == keyword);
             }
 
+			//Query IDTinhTrangNghienCuu (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDTinhTrangNghienCuu"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDTinhTrangNghienCuu").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDTinhTrangNghienCuu));
+            }
+
 
 			return toDTO(query);
 
@@ -307,7 +326,8 @@ namespace BaseBusiness
 				dbitem.NgayDuyetNghienCuu = item.NgayDuyetNghienCuu;							
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
-				dbitem.CoMau = item.CoMau;                
+				dbitem.CoMau = item.CoMau;							
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -346,7 +366,8 @@ namespace BaseBusiness
 				dbitem.NgayDuyetNghienCuu = item.NgayDuyetNghienCuu;							
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
-				dbitem.CoMau = item.CoMau;                
+				dbitem.CoMau = item.CoMau;							
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

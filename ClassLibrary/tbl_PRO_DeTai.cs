@@ -61,6 +61,10 @@ namespace ClassLibrary
         public string MaSo { get; set; }
         public string TenTiengViet { get; set; }
         public string TenTiengAnh { get; set; }
+        public string MaSoProtocalID { get; set; }
+        public string MaSoHDDD { get; set; }
+        public string FileUpload { get; set; }
+        public Nullable<int> IDHinhThucXetDuyet { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -78,6 +82,7 @@ namespace ClassLibrary
         public virtual tbl_SYS_Var tbl_SYS_Var2 { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var3 { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var4 { get; set; }
+        public virtual tbl_SYS_Var tbl_SYS_Var5 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DonXinDanhGiaDaoDuc> tbl_PRO_DonXinDanhGiaDaoDuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -135,6 +140,10 @@ namespace DTOModel
 		public string MaSo { get; set; }
 		public string TenTiengViet { get; set; }
 		public string TenTiengAnh { get; set; }
+		public string MaSoProtocalID { get; set; }
+		public string MaSoHDDD { get; set; }
+		public string FileUpload { get; set; }
+		public Nullable<int> IDHinhThucXetDuyet { get; set; }
 	}
 }
 
@@ -178,7 +187,11 @@ namespace BaseBusiness
 				ModifiedBy = s.ModifiedBy,							
 				MaSo = s.MaSo,							
 				TenTiengViet = s.TenTiengViet,							
-				TenTiengAnh = s.TenTiengAnh,					
+				TenTiengAnh = s.TenTiengAnh,							
+				MaSoProtocalID = s.MaSoProtocalID,							
+				MaSoHDDD = s.MaSoHDDD,							
+				FileUpload = s.FileUpload,							
+				IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,					
 			});
                               
         }
@@ -210,7 +223,11 @@ namespace BaseBusiness
 					ModifiedBy = dbResult.ModifiedBy,							
 					MaSo = dbResult.MaSo,							
 					TenTiengViet = dbResult.TenTiengViet,							
-					TenTiengAnh = dbResult.TenTiengAnh,
+					TenTiengAnh = dbResult.TenTiengAnh,							
+					MaSoProtocalID = dbResult.MaSoProtocalID,							
+					MaSoHDDD = dbResult.MaSoHDDD,							
+					FileUpload = dbResult.FileUpload,							
+					IDHinhThucXetDuyet = dbResult.IDHinhThucXetDuyet,
 				};
 			}
 			else
@@ -431,6 +448,41 @@ namespace BaseBusiness
                 query = query.Where(d=>d.TenTiengAnh == keyword);
             }
 
+			//Query MaSoProtocalID (string)
+			if (QueryStrings.Any(d => d.Key == "MaSoProtocalID") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "MaSoProtocalID").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "MaSoProtocalID").Value;
+                query = query.Where(d=>d.MaSoProtocalID == keyword);
+            }
+
+			//Query MaSoHDDD (string)
+			if (QueryStrings.Any(d => d.Key == "MaSoHDDD") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "MaSoHDDD").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "MaSoHDDD").Value;
+                query = query.Where(d=>d.MaSoHDDD == keyword);
+            }
+
+			//Query FileUpload (string)
+			if (QueryStrings.Any(d => d.Key == "FileUpload") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FileUpload").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FileUpload").Value;
+                query = query.Where(d=>d.FileUpload == keyword);
+            }
+
+			//Query IDHinhThucXetDuyet (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDHinhThucXetDuyet"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDHinhThucXetDuyet").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDHinhThucXetDuyet));
+            }
+
 
 			return toDTO(query);
 
@@ -469,7 +521,11 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.MaSo = item.MaSo;							
 				dbitem.TenTiengViet = item.TenTiengViet;							
-				dbitem.TenTiengAnh = item.TenTiengAnh;                
+				dbitem.TenTiengAnh = item.TenTiengAnh;							
+				dbitem.MaSoProtocalID = item.MaSoProtocalID;							
+				dbitem.MaSoHDDD = item.MaSoHDDD;							
+				dbitem.FileUpload = item.FileUpload;							
+				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -512,7 +568,11 @@ namespace BaseBusiness
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.MaSo = item.MaSo;							
 				dbitem.TenTiengViet = item.TenTiengViet;							
-				dbitem.TenTiengAnh = item.TenTiengAnh;                
+				dbitem.TenTiengAnh = item.TenTiengAnh;							
+				dbitem.MaSoProtocalID = item.MaSoProtocalID;							
+				dbitem.MaSoHDDD = item.MaSoHDDD;							
+				dbitem.FileUpload = item.FileUpload;							
+				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

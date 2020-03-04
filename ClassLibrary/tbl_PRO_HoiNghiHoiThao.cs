@@ -15,6 +15,13 @@ namespace ClassLibrary
     
     public partial class tbl_PRO_HoiNghiHoiThao
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_PRO_HoiNghiHoiThao()
+        {
+            this.tbl_PRO_HoiNghiHoiThao_DangKy = new HashSet<tbl_PRO_HoiNghiHoiThao_DangKy>();
+            this.tbl_PRO_HoiNghiHoiThao_DangKyDeTai = new HashSet<tbl_PRO_HoiNghiHoiThao_DangKyDeTai>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> IDNhanVien { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }
@@ -31,7 +38,12 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ThoiGianHetHan { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoiNghiHoiThao_DangKy> tbl_PRO_HoiNghiHoiThao_DangKy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoiNghiHoiThao_DangKyDeTai> tbl_PRO_HoiNghiHoiThao_DangKyDeTai { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var { get; set; }
     }
 }
@@ -56,6 +68,7 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public Nullable<System.DateTime> ThoiGianHetHan { get; set; }
 	}
 }
 
@@ -93,7 +106,8 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				ThoiGianHetHan = s.ThoiGianHetHan,					
 			});
                               
         }
@@ -119,7 +133,8 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					ThoiGianHetHan = dbResult.ThoiGianHetHan,
 				};
 			}
 			else
@@ -259,6 +274,11 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query ThoiGianHetHan (Nullable<System.DateTime>)
+			if (QueryStrings.Any(d => d.Key == "ThoiGianHetHanFrom") && QueryStrings.Any(d => d.Key == "ThoiGianHetHanTo"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanTo").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.ThoiGianHetHan && d.ThoiGianHetHan <= toDate);
+
 
 			return toDTO(query);
 
@@ -289,7 +309,8 @@ namespace BaseBusiness
 				dbitem.HTMLHosrem = item.HTMLHosrem;							
 				dbitem.IDTrangThai = item.IDTrangThai;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -326,7 +347,8 @@ namespace BaseBusiness
 				dbitem.HTMLHosrem = item.HTMLHosrem;							
 				dbitem.IDTrangThai = item.IDTrangThai;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

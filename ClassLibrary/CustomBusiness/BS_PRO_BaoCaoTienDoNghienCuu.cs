@@ -115,6 +115,63 @@ namespace BaseBusiness
             return toDTOCustom(query);
         }
 
+        public static List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> get_PRO_BaoCaoTienDoNghienCuuTheoDeTai(AppEntities db, Dictionary<string, string> QueryStrings, List<int> lstStatusID)
+        {
+            List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> result = new List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai>();
+            var query = db.tbl_PRO_BaoCaoTienDoNghienCuu.AsQueryable();
+            if (lstStatusID != null && lstStatusID.Count > 0)
+                query = query.Where(c => c.IDTinhTrangNghienCuu > 0 && lstStatusID.Contains(c.IDTinhTrangNghienCuu.Value));
+            query = query.Where(d => d.IsDeleted == false);
+
+            var lstData = query.Select(c => new { c.IDDeTai, c.tbl_PRO_DeTai.SoNCT, c.tbl_PRO_DeTai.TenTiengViet, c.ChuNhiemDeTai, c.NCVChinh, c.NgayDuyetNghienCuu, c.ThoiGianTienHanh, c.CreatedBy, c.CreatedDate, SoLanDaBaoCao = db.tbl_PRO_BaoCaoTienDoNghienCuu.Count(d => d.IDDeTai == c.ID && d.IsDeleted == false) }).ToList();
+            var lstIDDeTai = lstData.Select(c => c.IDDeTai).Distinct().ToList();
+            foreach (var item in lstIDDeTai)
+            {
+                DTO_PRO_BaoCaoTienDoNghienCuu_DeTai obj = new DTO_PRO_BaoCaoTienDoNghienCuu_DeTai
+                {
+                    IDDeTai = item,
+                };
+                var detai = lstData.Where(c => c.IDDeTai == item).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
+                if (detai != null)
+                {
+                    obj.TenDeTai = detai.TenTiengViet;
+                    obj.ChuNhiemDeTai = detai.ChuNhiemDeTai;
+                    obj.NCVChinh = detai.NCVChinh;
+                    obj.NgayDuyetNghienCuu = detai.NgayDuyetNghienCuu;
+                    obj.SoNCT = detai.SoNCT;
+                    obj.ThoiGianTienHanh = detai.ThoiGianTienHanh;
+                    obj.LastReportDate = detai.CreatedDate;
+                    obj.LastReportBy = detai.CreatedBy;
+                    obj.SoLanDaBaoCao = detai.SoLanDaBaoCao;
+                    var trangthaiHDDD = db.tbl_PRO_TrangThai_Log.Where(c => c.IDDeTai == obj.IDDeTai && c.IDTrangThaiMoi == -(int)SYSVarType.TrangThai_HDDD_DaDuyet).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
+                    if (trangthaiHDDD != null && !string.IsNullOrEmpty(obj.ThoiGianTienHanh))
+                    {
+                        int month = 0;
+                        try
+                        {
+                            month = Int32.Parse(obj.ThoiGianTienHanh);
+                        }
+                        catch { }
+                        DateTime dtEnd = trangthaiHDDD.CreatedDate.AddMonths(month);
+                        if (dtEnd < DateTime.Now)
+                            obj.CompletePercent = 100;
+                        else
+                        {
+                            try
+                            {
+                                obj.CompletePercent = Convert.ToInt32(Math.Round((dtEnd - DateTime.Now).TotalDays / (dtEnd - trangthaiHDDD.CreatedDate).TotalDays, 0));
+                            }
+                            catch { }
+                        }
+                    }
+                    result.Add(obj);
+                }
+            }
+
+            result = result.OrderByDescending(c => c.LastReportDate).ToList();
+            return result;
+        }
+
         public static IQueryable<DTO_PRO_BaoCaoTienDoNghienCuu> get_PRO_BaoCaoTienDoNghienCuuByDeTai(AppEntities db, int deTaiId, Dictionary<string, string> QueryStrings)
         {
             var query = db.tbl_PRO_BaoCaoTienDoNghienCuu.AsQueryable();
@@ -259,7 +316,7 @@ namespace BaseBusiness
                 dbitem.KhoKhan = item.KhoKhan;
                 dbitem.IsDisabled = item.IsDisabled;
                 dbitem.IsDeleted = item.IsDeleted;
-
+                dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu ?? -(int)SYSVarType.PhanLoaiDeTai;
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
 
@@ -282,7 +339,7 @@ namespace BaseBusiness
                     }
                     else
                     {
-                        item.Error = "Đề tài chưa duyệt, không thể tạo báo cáo";
+                        item.Error = "Đề tài chưa duyệt HĐĐĐ, không thể tạo báo cáo";
                         return item;
                     }
 
