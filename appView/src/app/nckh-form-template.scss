@@ -36,6 +36,14 @@
         bottom: 0;
         width: 100%;
         background: #fff;
+
+        .print-hidden {
+            visibility: visible;
+        }
+
+        .uiview-hidden{
+            visibility:collapse;
+        }
     }
 
     .page-header {

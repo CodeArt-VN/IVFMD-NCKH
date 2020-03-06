@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Syncfusion.HtmlConverter;
 using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Parsing;
 
 namespace API
 {
@@ -22,7 +25,7 @@ namespace API
         /// <param name="headerHtml"></param>
         /// <param name="footerHtml"></param>
         /// <returns></returns>
-        public static string HtmlToPdf(string filePath, string bodyHtml, string headerHtml, string footerHtml)
+        public static string HtmlToPdf(string filePath, string bodyHtml, string headerHtml, string footerHtml, bool firstPageHeader = false)
         {
             string css = "";
             string html = "";
@@ -35,17 +38,57 @@ namespace API
                 html = r.ReadToEnd().Replace("[[CSS]]", css);
             }
 
+            PdfDocument document = new PdfDocument();
+            document.PageSettings.Size = PdfPageSize.A4;
+            document.PageSettings.SetMargins(0);
+
+
             //Initialize HTML to PDF converter
             var htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
             //Create new settings
             var setting = CreateConverterSetting();
-            setting.PdfHeader = HeaderHTMLtoPDF(html.Replace("[[HTML]]", headerHtml));
-            setting.PdfFooter = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml));
+            var pdfHeader = HeaderHTMLtoPDF(html.Replace("[[HTML]]", headerHtml));
+            var pdfFooter = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml));
+            setting.PdfPageSize = new SizeF(PdfPageSize.A4.Width, PdfPageSize.A4.Height - pdfHeader.Height - pdfFooter.Height);
+
             htmlConverter.ConverterSettings = setting;
             //Convert to PDF
-            PdfDocument document = htmlConverter.Convert(html.Replace("[[HTML]]", bodyHtml), string.Empty);
+            PdfDocument docBody = htmlConverter.Convert(html.Replace("[[HTML]]", bodyHtml), string.Empty);
+            Stream stream = new MemoryStream();
+            docBody.Save(stream);
+            docBody.Close();
+            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(stream);
+            for (int i = 0; i < pdfLoadedDocument.Pages.Count; i++)
+            {
+                PdfLoadedPage loadedPage = pdfLoadedDocument.Pages[i] as PdfLoadedPage;
+                PdfTemplate template = loadedPage.CreateTemplate();
+                PdfSection section = document.Sections.Add();
+                PdfPage page = section.Pages.Add();
+                PdfGraphics graphics = page.Graphics;
+                if (i == 0)
+                {
+                    section.Template.Top = pdfHeader;
+                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml.Replace("[[Page]]", "1").Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
+                }
+                else
+                {
+                    if (firstPageHeader)
+                    {
+                        section.Template.Top = HeaderHTMLtoPDF(html.Replace("[[HTML]]", string.Empty));
+                    }
+                    else
+                    {
+                        section.Template.Top = HeaderHTMLtoPDF(html.Replace("[[HTML]]", headerHtml));
+                    }
+                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml.Replace("[[Page]]", (i + 1).ToString()).Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
+                }
+                graphics.DrawPdfTemplate(template, new PointF(0, pdfHeader.Height), new SizeF(page.Size.Width, page.Size.Height - pdfHeader.Height - pdfFooter.Height));
+            }
+
             //Save the document
             document.Save(filePath);
+            document.Close();
+            stream.Dispose();
             return filePath;
         }
 
@@ -114,5 +157,9 @@ namespace API
             //footer.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
             //return footer;
         }
+
+
+
+
     }
 }

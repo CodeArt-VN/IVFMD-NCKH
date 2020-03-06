@@ -34,6 +34,7 @@ namespace DTOModel
     {
         public int id { get; set; }
         public int type { get; set; }
+        public bool firstPageHeader { get; set; }
         public string htmlContent { get; set; }
         public string htmlFooter { get; set; }
         public string htmlHeader { get; set; }
