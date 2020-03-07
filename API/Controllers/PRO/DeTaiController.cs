@@ -157,7 +157,7 @@ namespace API.Controllers.PRO
         public IHttpActionResult Print(DTO_PRO_DeTai_PrinterData item)
         {
             var path = @"~/HTMLFiles/" + DateTime.Now.Ticks.ToString() + ".pdf";
-            var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter);
+            var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.firstPageHeader);
             return Ok(path);
         }
     }
