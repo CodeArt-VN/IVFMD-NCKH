@@ -13,6 +13,7 @@ using DTOModel;
 using BaseBusiness;
 using API.Models;
 using Microsoft.AspNet.Identity;
+using System.Configuration;
 
 namespace API.Controllers.PRO
 {
@@ -156,7 +157,8 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai_PrinterData))]
         public IHttpActionResult Print(DTO_PRO_DeTai_PrinterData item)
         {
-            var path = @"~/HTMLFiles/" + DateTime.Now.Ticks.ToString() + ".pdf";
+            var exportPath = ConfigurationManager.AppSettings["PdfExportPath"] ?? @"~/PDFFiles/";
+            var path = System.IO.Path.Combine(exportPath, DateTime.Now.Ticks.ToString() + ".pdf");
             var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.firstPageHeader);
             return Ok(path);
         }

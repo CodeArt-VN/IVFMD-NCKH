@@ -105,61 +105,28 @@ namespace API
             return settings;
         }
 
-        //Convert header HTML to PDF and get pdf page template element of the result
         private static PdfPageTemplateElement HeaderHTMLtoPDF(string htmlString)
         {
-            HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            WebKitConverterSettings webKitSettings = new WebKitConverterSettings();
-            webKitSettings.PdfPageSize = new System.Drawing.SizeF(PdfPageSize.A4.Width, 50);
-            webKitSettings.Orientation = PdfPageOrientation.Landscape;
-            //Set webkitpath
-            webKitSettings.WebKitPath = QtBinariesPath;
-            webKitSettings.WebKitViewPort = new System.Drawing.Size(1024, 0);
-            htmlConverter.ConverterSettings = webKitSettings;
-            //Convert URL to PDF
+            var htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
+            htmlConverter.ConverterSettings = CreateConverterSetting(true, 50);
+            //Convert Html to PDF
             PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
             System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
             PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
             header.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
             return header;
-            //var htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            //htmlConverter.ConverterSettings = CreateConverterSetting(true, 50);
-            ////Convert Html to PDF
-            //PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
-            //System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
-            //PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
-            //header.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
-            //return header;
         }
 
         private static PdfPageTemplateElement FooterHTMLtoPDF(string htmlString)
         {
             HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            WebKitConverterSettings webKitSettings = new WebKitConverterSettings();
-            webKitSettings.PdfPageSize = new SizeF(PdfPageSize.A4.Width, 50);
-            webKitSettings.Orientation = PdfPageOrientation.Landscape;
-            //Set webkitpath
-            webKitSettings.WebKitPath = QtBinariesPath;
-            webKitSettings.WebKitViewPort = new Size(1024, 0);
-            htmlConverter.ConverterSettings = webKitSettings;
-            //Convert URL to PDF
+            htmlConverter.ConverterSettings = CreateConverterSetting(true, 50);
+            //Convert Html to PDF
             PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
-            RectangleF bounds = new RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
+            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
             PdfPageTemplateElement footer = new PdfPageTemplateElement(bounds);
             footer.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
             return footer;
-            //HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            //htmlConverter.ConverterSettings = CreateConverterSetting(true, 25);
-            ////Convert Html to PDF
-            //PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
-            //System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
-            //PdfPageTemplateElement footer = new PdfPageTemplateElement(bounds);
-            //footer.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
-            //return footer;
         }
-
-
-
-
     }
 }
