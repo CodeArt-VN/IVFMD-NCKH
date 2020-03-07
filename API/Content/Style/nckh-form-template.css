@@ -27,6 +27,8 @@
     bottom: 0;
     width: 100%;
     background: #fff; }
+    .nckh-form-template .page-footer .print-hidden {
+      visibility: collapse; }
   .nckh-form-template .page-header {
     top: 0mm;
     width: 100%;

@@ -58,7 +58,6 @@ namespace BaseBusiness
                 JSON_GiaiThuong = s.JSON_GiaiThuong,
                 JSON_ThongTinKhac_HiepHoiKhoaHoc = s.JSON_ThongTinKhac_HiepHoiKhoaHoc,
                 JSON_ThongTinKhac_TruongDaiHoc = s.JSON_ThongTinKhac_TruongDaiHoc,
-                JSON_HocVi = s.JSON_HocVi,
                 HTML = s.HTML,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
@@ -66,6 +65,11 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                JSON_HocVi = s.JSON_HocVi,
+                NgayKy_Ngay = s.NgayKy_Ngay,
+                NgayKy_Thang = s.NgayKy_Thang,
+                NgayKy_Nam = s.NgayKy_Nam,
+                NgayKy_ChuKy = s.NgayKy_ChuKy,
             }).FirstOrDefault();
 
             if (query == null)

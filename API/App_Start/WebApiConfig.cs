@@ -20,8 +20,9 @@ namespace API
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            
-            
+
+            config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
+
 
             EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
             cors.SupportsCredentials = true;

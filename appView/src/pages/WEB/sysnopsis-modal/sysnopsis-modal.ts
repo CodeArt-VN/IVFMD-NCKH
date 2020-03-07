@@ -36,6 +36,7 @@ export class SysnopsisModalPage extends DetailPage {
         }
     }
 
+
     loadData() {
         this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
             //this.commonService.copyPropertiesValue(ite, this.item);
