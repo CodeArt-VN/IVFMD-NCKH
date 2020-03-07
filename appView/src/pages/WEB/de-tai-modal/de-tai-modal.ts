@@ -9,7 +9,6 @@ import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
 import { DateAdapter } from "@angular/material";
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 
@@ -19,6 +18,7 @@ import 'jqueryui';
     templateUrl: 'de-tai-modal.html',
 })
 export class DeTaiModalPage extends DetailPage {
+    myDatePicker: any = {};
     tab = '1';
     staffs = [];
     typeOfTopics = [];

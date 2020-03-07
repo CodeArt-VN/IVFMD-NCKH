@@ -23,6 +23,7 @@ import { ListSelectModalPage } from '../list-select-modal/list-select-modal';
 import { DanhSachBenhNhanModalPage } from '../danh-sach-benh-nhan-modal/danh-sach-benh-nhan-modal';
 
 import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
+import { TienDoNghienCuuModalPage } from '../tien-do-nghien-cuu-modal/tien-do-nghien-cuu-modal';
 
 /**
  * Generated class for the DeTaiDetailPage page.
@@ -359,7 +360,7 @@ export class DeTaiDetailPage extends BasePage {
               page = PhieuXemXetDaoDucModalPage;
                 break;
             case 11:
-              page = BaoCaoTienDoNghienCuuPage;
+              //page = BaoCaoTienDoNghienCuuPage;
               break;
             case 12:
               param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1, 'isChuNhiem': false };
@@ -390,9 +391,14 @@ export class DeTaiDetailPage extends BasePage {
                 });
                 myModal.present();
             }
-        } else {
-            this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
-            return false;
+        } else if (type == 11) {
+                let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': this.id });
+                myModal.onDidDismiss(data => {
+                    this.refreshData();
+                });
+                myModal.present();
+            //this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
+            //return false;
         }
     }
 
