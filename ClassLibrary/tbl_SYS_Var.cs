@@ -25,6 +25,7 @@ namespace ClassLibrary
             this.tbl_PRO_DeTai3 = new HashSet<tbl_PRO_DeTai>();
             this.tbl_PRO_DeTai4 = new HashSet<tbl_PRO_DeTai>();
             this.tbl_PRO_DeTai5 = new HashSet<tbl_PRO_DeTai>();
+            this.tbl_PRO_DeTai6 = new HashSet<tbl_PRO_DeTai>();
             this.tbl_PRO_HoiNghiHoiThao = new HashSet<tbl_PRO_HoiNghiHoiThao>();
             this.tbl_PRO_HoiNghiHoiThao_DangKyDeTai = new HashSet<tbl_PRO_HoiNghiHoiThao_DangKyDeTai>();
             this.tbl_PRO_HoiNghiHoiThao_DangKyDeTai1 = new HashSet<tbl_PRO_HoiNghiHoiThao_DangKyDeTai>();
@@ -55,6 +56,8 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai4 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai5 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_DeTai> tbl_PRO_DeTai6 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

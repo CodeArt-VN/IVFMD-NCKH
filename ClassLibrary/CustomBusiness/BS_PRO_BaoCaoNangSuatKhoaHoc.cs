@@ -193,7 +193,7 @@ namespace BaseBusiness
             });
         }
 
-        public static DTO_PRO_BaoCaoNangSuatKhoaHoc postCustom_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int StaffID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
+        public static DTO_PRO_BaoCaoNangSuatKhoaHoc post_PRO_BaoCaoNangSuatKhoaHocCustom(AppEntities db, int StaffID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
         {
             tbl_PRO_BaoCaoNangSuatKhoaHoc dbitem = new tbl_PRO_BaoCaoNangSuatKhoaHoc();
             if (item != null)
@@ -271,7 +271,7 @@ namespace BaseBusiness
             return item;
         }
 
-        public static string putCustom_PRO_BaoCaoNangSuatKhoaHoc(AppEntities db, int ID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
+        public static string put_PRO_BaoCaoNangSuatKhoaHocCustom(AppEntities db, int ID, DTO_PRO_BaoCaoNangSuatKhoaHoc item, string Username)
         {
             string result = string.Empty;
             var dbitem = db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Find(ID);

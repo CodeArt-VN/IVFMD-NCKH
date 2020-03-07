@@ -9,4 +9,16 @@
         public DateTime? NgayKetThuc { get; set; }
     }
 
+    public partial class DTO_SYS_Config_ThoiGianBaoCaoTDNC
+    {
+        public int GiaiDoan1_NgayBatDau { get; set; }
+        public int GiaiDoan1_NgayKetThuc{ get; set; }
+        public int GiaiDoan2_NgayBatDau { get; set; }
+        public int GiaiDoan2_NgayKetThuc { get; set; }
+    }
+
+    public partial class DTO_SYS_Config_Template
+    {
+        public string MauTrinhBayPPT { get; set; }
+    }
 }

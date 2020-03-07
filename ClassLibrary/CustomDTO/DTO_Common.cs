@@ -52,6 +52,8 @@
 
     public enum SYSConfigCode
     {
-        ThoiGianBaoCaoNSKH
+        ThoiGianBaoCaoNSKH,
+        ThoiGianBaoCaoTDNC,
+        Template,
     }
 }

@@ -5,6 +5,10 @@
     {
         public string Error { get; set; }
         public string TinhTrangNghienCuu { get; set; }
+        public string TinhTrangNghienCuuHienTai { get; set; }
+        public int SoLanDaBaoCao { get; set; }
+        public int CompletePercent { get; set; }
+        public int Sort { get; set; }
     }
 
     public class DTO_PRO_BaoCaoTienDoNghienCuu_DeTai

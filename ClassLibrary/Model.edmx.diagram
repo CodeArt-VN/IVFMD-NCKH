@@ -5,69 +5,69 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fe521cf2abf8474b9564c8b08d2c8d43" Name="Diagram1" ZoomLevel="58">
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" Width="1.5" PointX="9.75" PointY="130.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_HRCOConfig" Width="1.5" PointX="3.75" PointY="94.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_KinhPhi" Width="1.5" PointX="7.5" PointY="130.375" />
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_Nhom" Width="1.5" PointX="7.5" PointY="78.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_Site" Width="1.5" PointX="7.5" PointY="73.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_CAT_Tags" Width="1.5" PointX="6.75" PointY="92.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File" Width="1.5" PointX="4.5" PointY="81.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Actitity" Width="1.5" PointX="6.75" PointY="87.375" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Permission" Width="1.5" PointX="9.75" PointY="82.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_FileInFolder" Width="1.5" PointX="6.75" PointY="66.375" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder" Width="1.5" PointX="4.5" PointY="49.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Activity" Width="1.5" PointX="6.75" PointY="50.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Permission" Width="1.5" PointX="9.75" PointY="65.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_BenhNhan" Width="1.5" PointX="3.75" PointY="97.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_BoPhan" Width="1.5" PointX="2.25" PointY="118.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_ChucDanh" Width="1.5" PointX="2.25" PointY="87" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Width="1.5" PointX="1.5" PointY="92" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Width="1.5" PointX="3.75" PointY="132.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH" Width="1.5" PointX="3.75" PointY="61.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_SYLL" Width="1.5" PointX="3.75" PointY="74.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_CauHinhHeThong" Width="1.5" PointX="4.5" PointY="89" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionList" Width="1.5" PointX="7.5" PointY="82.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionListDetailData" Width="1.5" PointX="9.75" PointY="78.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_Role" Width="1.5" PointX="2.25" PointY="81.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_CUS_Version" Width="1.5" PointX="4.5" PointY="44.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang" Width="1.5" PointX="4.5" PointY="242" />
-        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang_ChiTiet" Width="1.5" PointX="6.75" PointY="241.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_PAR_Partner" Width="1.5" PointX="2.25" PointY="122.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_PAR_ThongTinSanPham" Width="1.5" PointX="8.5" PointY="124.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_AE" Width="1.5" PointX="17" PointY="99.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Width="1.5" PointX="6" PointY="215.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Width="1.5" PointX="9.75" PointY="93.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" Width="1.5" PointX="6" PointY="200.875" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Width="1.5" PointX="6" PointY="106.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_BenhNhan" Width="1.5" PointX="6" PointY="102.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_DeTai" Width="1.5" PointX="3.75" PointY="103.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinDanhGiaDaoDuc" Width="1.5" PointX="6" PointY="184" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinNghiemThu" Width="1.5" PointX="6" PointY="192.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinXetDuyet" Width="1.5" PointX="6" PointY="208" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" Width="1.5" PointX="8.75" PointY="106.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKy" Width="1.5" PointX="20" PointY="107.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKyDeTai" Width="1.5" PointX="22.25" PointY="107.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_HRCO" Width="1.5" PointX="6" PointY="112.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_LLKH" Width="1.5" PointX="6" PointY="117.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_MauPhanTichDuLieu" Width="1.5" PointX="6" PointY="55.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_NCVKhac" Width="1.5" PointX="6" PointY="97.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_PhieuXemXetDaoDuc" Width="1.5" PointX="6" PointY="156.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_SAE" Width="1.5" PointX="14" PointY="101.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_SYLL" Width="1.5" PointX="11" PointY="105.5" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_Sysnopsis" Width="1.5" PointX="6" PointY="235" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_Tags" Width="1.5" PointX="9" PointY="101.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_ThuyetMinhDeTai" Width="1.5" PointX="6" PointY="137.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_PRO_TrangThai_Log" Width="1.5" PointX="9" PointY="114.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham" Width="1.5" PointX="6.25" PointY="31.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham_ChiTiet" Width="1.5" PointX="8.5" PointY="33.125" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_Apps" Width="1.5" PointX="0.75" PointY="38.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" Width="1.5" PointX="12.75" PointY="82.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_HRCOConfig" Width="1.5" PointX="9.75" PointY="129.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_KinhPhi" Width="1.5" PointX="10.5" PointY="83.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_Nhom" Width="1.5" PointX="10.5" PointY="93.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_Site" Width="1.5" PointX="10.5" PointY="88.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CAT_Tags" Width="1.5" PointX="12.75" PointY="119.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File" Width="1.5" PointX="5.25" PointY="132.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Actitity" Width="1.5" PointX="7.5" PointY="138.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_File_Permission" Width="1.5" PointX="7.5" PointY="132.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_FileInFolder" Width="1.5" PointX="7.5" PointY="143.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder" Width="1.5" PointX="5.25" PointY="143" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Activity" Width="1.5" PointX="7.5" PointY="148.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_DOC_Folder_Permission" Width="1.5" PointX="12.5" PointY="137.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_BenhNhan" Width="1.5" PointX="18.75" PointY="117.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_BoPhan" Width="1.5" PointX="5.25" PointY="115.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_LIST_ChucDanh" Width="1.5" PointX="5.25" PointY="127.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu" Width="1.5" PointX="7.5" PointY="118" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_HOSREM" Width="1.5" PointX="9.75" PointY="116.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH" Width="1.5" PointX="9.75" PointY="133.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_HRM_STAFF_NhanSu_SYLL" Width="1.5" PointX="9.75" PointY="122.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_CauHinhHeThong" Width="1.5" PointX="5.25" PointY="148.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionList" Width="1.5" PointX="7.5" PointY="127.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_PermissionListDetailData" Width="1.5" PointX="9.75" PointY="146.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_SYS_Role" Width="1.5" PointX="5.25" PointY="122.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_CUS_Version" Width="1.5" PointX="5.25" PointY="102.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang" Width="1.5" PointX="5.25" PointY="153.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_DonHang_ChiTiet" Width="1.5" PointX="7.5" PointY="153" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_Partner" Width="1.5" PointX="3" PointY="113" />
+        <EntityTypeShape EntityType="AppModel.tbl_PAR_ThongTinSanPham" Width="1.5" PointX="15.25" PointY="117" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_AE" Width="1.5" PointX="21" PointY="99.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Width="1.5" PointX="12" PointY="186" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Width="1.5" PointX="12.75" PointY="123.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai" Width="1.5" PointX="12" PointY="55.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BaoCaoTienDoNghienCuu" Width="1.5" PointX="3.75" PointY="106.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_BenhNhan" Width="1.5" PointX="12" PointY="107.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DeTai" Width="1.5" PointX="9.75" PointY="103.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinDanhGiaDaoDuc" Width="1.5" PointX="12" PointY="169.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinNghiemThu" Width="1.5" PointX="12" PointY="205.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_DonXinXetDuyet" Width="1.5" PointX="12" PointY="178.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" Width="1.5" PointX="6.75" PointY="106.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKy" Width="1.5" PointX="9" PointY="99.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKyDeTai" Width="1.5" PointX="17.25" PointY="96.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_HRCO" Width="1.5" PointX="12" PointY="103.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_LLKH" Width="1.5" PointX="15" PointY="94.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_MauPhanTichDuLieu" Width="1.5" PointX="12" PointY="146.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_NCVKhac" Width="1.5" PointX="15" PointY="112.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_PhieuXemXetDaoDuc" Width="1.5" PointX="12" PointY="213.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_SAE" Width="1.5" PointX="18" PointY="101.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_SYLL" Width="1.5" PointX="12" PointY="111.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_Sysnopsis" Width="1.5" PointX="12" PointY="130.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_Tags" Width="1.5" PointX="15" PointY="107.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_ThuyetMinhDeTai" Width="1.5" PointX="12" PointY="151.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PRO_TrangThai_Log" Width="1.5" PointX="12" PointY="98.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham" Width="1.5" PointX="13" PointY="87.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_SanPham_ChiTiet" Width="1.5" PointX="17.25" PointY="91.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Apps" Width="1.5" PointX="0.75" PointY="96" />
         <EntityTypeShape EntityType="AppModel.tbl_SYS_Config" Width="1.5" PointX="8.5" PointY="0.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_ControllerActions" Width="1.5" PointX="5.25" PointY="26.25" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_Form" Width="1.5" PointX="5.25" PointY="38.625" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormDetail" Width="1.5" PointX="7.5" PointY="38.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormGroup" Width="1.5" PointX="3" PointY="38.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_ControllerActions" Width="1.5" PointX="5.25" PointY="91.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Form" Width="1.5" PointX="5.25" PointY="95.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormDetail" Width="1.5" PointX="7.5" PointY="94" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormGroup" Width="1.5" PointX="3" PointY="96.125" />
         <EntityTypeShape EntityType="AppModel.tbl_SYS_Template" Width="1.5" PointX="8.5" PointY="5.75" />
-        <EntityTypeShape EntityType="AppModel.tbl_SYS_Var" Width="1.5" PointX="1.5" PointY="106.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Var" Width="1.5" PointX="1.5" PointY="106.5" />
         <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet" Width="1.5" PointX="3.75" PointY="1.25" />
         <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet_DanhMuc" Width="1.5" PointX="10.5" PointY="0.75" />
         <EntityTypeShape EntityType="AppModel.tbl_WEB_BaiViet_Tag" Width="1.5" PointX="6" PointY="3.875" />
@@ -135,6 +135,7 @@
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HRCO" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_NghiemThu" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WHinhThucXetDuyet" />
+        <AssociationConnector Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" />
         <AssociationConnector Association="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" />

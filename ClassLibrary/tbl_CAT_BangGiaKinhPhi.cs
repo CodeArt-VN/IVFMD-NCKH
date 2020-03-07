@@ -204,7 +204,7 @@ namespace BaseBusiness
             if (dbitem != null)
             {							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
-				dbitem.NgayHieuLuc = item.NgayHieuLuc;							
+				dbitem.NgayHieuLuc = item.NgayHieuLuc.ToLocalTime();							
 				dbitem.Gia = item.Gia;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;                
@@ -235,7 +235,7 @@ namespace BaseBusiness
             if (item != null)
             {							
 				dbitem.IDKinhPhi = item.IDKinhPhi;							
-				dbitem.NgayHieuLuc = item.NgayHieuLuc;							
+				dbitem.NgayHieuLuc = item.NgayHieuLuc.ToLocalTime();							
 				dbitem.Gia = item.Gia;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;                

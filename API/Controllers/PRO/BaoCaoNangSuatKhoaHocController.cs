@@ -56,7 +56,7 @@ namespace API.Controllers.PRO
             if (user.StaffID <= 0)
                 return BadRequest("Chưa tạo nhân sự cho tài khoản");
 
-            string res = BS_PRO_BaoCaoNangSuatKhoaHoc.putCustom_PRO_BaoCaoNangSuatKhoaHoc(db, id, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
+            string res = BS_PRO_BaoCaoNangSuatKhoaHoc.put_PRO_BaoCaoNangSuatKhoaHocCustom(db, id, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
 
             if (string.IsNullOrEmpty(res))
                 return StatusCode(HttpStatusCode.NoContent);
@@ -76,7 +76,7 @@ namespace API.Controllers.PRO
             if (user.StaffID <= 0)
                 return BadRequest("Tài khoản chưa tạo nhân sự, không thể tạo mới");
 
-            DTO_PRO_BaoCaoNangSuatKhoaHoc result = BS_PRO_BaoCaoNangSuatKhoaHoc.postCustom_PRO_BaoCaoNangSuatKhoaHoc(db, user.StaffID, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
+            DTO_PRO_BaoCaoNangSuatKhoaHoc result = BS_PRO_BaoCaoNangSuatKhoaHoc.post_PRO_BaoCaoNangSuatKhoaHocCustom(db, user.StaffID, tbl_PRO_BaoCaoNangSuatKhoaHoc, Username);
 
             if (result != null && !string.IsNullOrEmpty(result.Error))
                 return BadRequest(result.Error);

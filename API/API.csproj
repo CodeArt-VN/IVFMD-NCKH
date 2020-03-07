@@ -326,6 +326,8 @@
     <Compile Include="Controllers\CAT\HRCOConfigController.cs" />
     <Compile Include="Controllers\CAT\BangGiaKinhPhiController.cs" />
     <Compile Include="Controllers\CAT\KinhPhiController.cs" />
+    <Compile Include="Controllers\CAT\ThietLapTemplate.cs" />
+    <Compile Include="Controllers\CAT\ThietLapThoiGianBaoCaoTDNCController.cs" />
     <Compile Include="Controllers\CAT\ThietLapThoiGianBaoCaoNSKHController.cs" />
     <Compile Include="Controllers\CAT\NhomController.cs" />
     <Compile Include="Controllers\CAT\SiteController.cs" />

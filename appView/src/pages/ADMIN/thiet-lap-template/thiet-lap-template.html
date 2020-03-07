@@ -1,0 +1,59 @@
+<ion-header *ngIf="userprofile">
+
+  <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+  <div class="search">
+      <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+  </div>
+  <div class="path">
+      <a (click)="openDefaultPage()">Home</a>
+      <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+      <a class="active">Thiết lập Template</a>
+  </div>
+  <div class="tools">
+      <button color="success" ion-button icon-only clear (click)="saveCustom()">
+          <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+  </div>
+
+  <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col class="doc-menu">
+            <div class="root-items" *ngFor="let i of FormGroups">
+                <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
+                    <ion-icon [name]="t.Icon"></ion-icon>
+                    <span>
+                        {{t.Name}}
+                    </span>
+                </a>
+            </div>
+        </ion-col>
+
+        <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+               [uploader]="uploader" />
+
+        <ion-col class="doc-main">
+            <ion-grid>
+                <ion-row responsive-sm>
+                    <ion-col col-6 col-sm-6 padding-right>
+                        <div class="c-control">
+                            <label class="c-label" for="MauTrinhBayPPT">Mẫu trình bày Power Point</label>
+
+                        </div>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 padding-right>
+                        <a (click)="downloadMauTrinhBayPPT()">
+                            Download
+                        </a>&nbsp;
+                        <a (click)="uploadMauTrinhBayPPT()">
+                            Upload
+                        </a>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-col>
+    </ion-row>
+</ion-content>
