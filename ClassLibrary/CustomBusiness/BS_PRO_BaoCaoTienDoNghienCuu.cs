@@ -115,15 +115,49 @@ namespace BaseBusiness
             return toDTOCustom(query);
         }
 
-        public static List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> get_PRO_BaoCaoTienDoNghienCuuTheoDeTai(AppEntities db, Dictionary<string, string> QueryStrings, List<int> lstStatusID)
+        public static List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> get_PRO_BaoCaoTienDoNghienCuuTheoDeTai(AppEntities db, Dictionary<string, string> QueryStrings)
         {
             List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> result = new List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai>();
+            List<int> ListStatusID = new List<int>();
             var query = db.tbl_PRO_BaoCaoTienDoNghienCuu.AsQueryable();
-            if (lstStatusID != null && lstStatusID.Count > 0)
-                query = query.Where(c => c.IDTinhTrangNghienCuu > 0 && lstStatusID.Contains(c.IDTinhTrangNghienCuu.Value));
+            if (QueryStrings.Any(d => d.Key == "ListStatusID") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value;
+                try
+                {
+                    ListStatusID = keyword.Split(',').Select(int.Parse).ToList();
+                    if (ListStatusID.Count > 0)
+                        query = query.Where(c => c.tbl_PRO_DeTai.IDTinhTrangNghienCuu > 0 && ListStatusID.Contains(c.tbl_PRO_DeTai.IDTinhTrangNghienCuu.Value));
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateFrom") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value.Replace("\\", "");
+                try
+                {
+                    DateTime dt = Convert.ToDateTime(keyword);
+                    //DateTime dt = DateTime.ParseExact(keyword, "yyyy-MM-ddTHH:mm:ss.fffZ", System.Globalization.CultureInfo.InvariantCulture);
+                    query = query.Where(c => c.CreatedDate >= dt);
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateTo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value.Replace("\\", "");
+                try
+                {
+                    DateTime dt = Convert.ToDateTime(keyword);
+                    query = query.Where(c => c.CreatedDate <= dt);
+                }
+                catch { }
+            }
+
             query = query.Where(d => d.IsDeleted == false);
 
-            var lstData = query.Select(c => new { c.IDDeTai, c.tbl_PRO_DeTai.SoNCT, c.tbl_PRO_DeTai.TenTiengViet, c.ChuNhiemDeTai, c.NCVChinh, c.NgayDuyetNghienCuu, c.ThoiGianTienHanh, c.CreatedBy, c.CreatedDate, SoLanDaBaoCao = db.tbl_PRO_BaoCaoTienDoNghienCuu.Count(d => d.IDDeTai == c.ID && d.IsDeleted == false) }).ToList();
+            var lstData = query.Select(c => new { c.IDDeTai, c.tbl_PRO_DeTai.SoNCT, c.tbl_PRO_DeTai.TenTiengViet, c.ChuNhiemDeTai, c.NCVChinh, c.NgayDuyetNghienCuu, c.ThoiGianTienHanh, c.CreatedBy, c.CreatedDate, SoLanDaBaoCao = db.tbl_PRO_BaoCaoTienDoNghienCuu.Count(d => d.IDDeTai == c.IDDeTai && d.IsDeleted == false) }).ToList();
             var lstIDDeTai = lstData.Select(c => c.IDDeTai).Distinct().ToList();
             foreach (var item in lstIDDeTai)
             {
@@ -169,6 +203,107 @@ namespace BaseBusiness
             }
 
             result = result.OrderByDescending(c => c.LastReportDate).ToList();
+            return result;
+        }
+
+        public static List<DTO_PRO_BaoCaoTienDoNghienCuu> get_PRO_BaoCaoTienDoNghienCuuTheoDeTaiChiTiet(AppEntities db, Dictionary<string, string> QueryStrings)
+        {
+            List<DTO_PRO_BaoCaoTienDoNghienCuu> result = new List<DTO_PRO_BaoCaoTienDoNghienCuu>();
+            List<int> ListStatusID = new List<int>();
+            var query = db.tbl_PRO_BaoCaoTienDoNghienCuu.AsQueryable();
+            if (QueryStrings.Any(d => d.Key == "ListStatusID") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value;
+                try
+                {
+                    ListStatusID = keyword.Split(',').Select(int.Parse).ToList();
+                    if (ListStatusID.Count > 0)
+                        query = query.Where(c => c.tbl_PRO_DeTai.IDTinhTrangNghienCuu > 0 && ListStatusID.Contains(c.tbl_PRO_DeTai.IDTinhTrangNghienCuu.Value));
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateFrom") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value;
+                try
+                {
+                    DateTime dt = Convert.ToDateTime(keyword);
+                    query = query.Where(c => c.CreatedDate >= dt);
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateTo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value;
+                try
+                {
+                    DateTime dt = Convert.ToDateTime(keyword);
+                    query = query.Where(c => c.CreatedDate <= dt);
+                }
+                catch { }
+            }
+
+            query = query.Where(d => d.IsDeleted == false);
+
+            var lstData = query.Select(c => new { c.IDDeTai, c.tbl_PRO_DeTai.SoNCT, c.tbl_PRO_DeTai.TenTiengViet, c.ChuNhiemDeTai, c.NCVChinh, c.NgayDuyetNghienCuu, c.ThoiGianTienHanh, c.CreatedBy, c.CreatedDate, SoLanDaBaoCao = db.tbl_PRO_BaoCaoTienDoNghienCuu.Count(d => d.IDDeTai == c.IDDeTai && d.IsDeleted == false), c.CoMau, c.KhoKhan, c.SoCaThuThapHopLe, c.TienDoThuNhanMau, TinhTrangNghienCuu = c.IDTinhTrangNghienCuu > 0 ? c.tbl_SYS_Var.ValueOfVar : "", TinhTrangNghienCuuHienTai = c.tbl_PRO_DeTai.IDTinhTrangNghienCuu > 0 ? c.tbl_PRO_DeTai.tbl_SYS_Var6.ValueOfVar : "" }).ToList();
+            foreach (var itemGroup in lstData.GroupBy(c=>c.IDDeTai))
+            {
+                var trangthaiHDDD = db.tbl_PRO_TrangThai_Log.Where(c => c.IDDeTai == itemGroup.Key && c.IDTrangThaiMoi == -(int)SYSVarType.TrangThai_HDDD_DaDuyet).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
+                foreach (var item in itemGroup)
+                {
+                    DTO_PRO_BaoCaoTienDoNghienCuu obj = new DTO_PRO_BaoCaoTienDoNghienCuu
+                    {
+                        IDDeTai = item.IDDeTai,
+                        TenDeTai = item.TenTiengViet,
+                        ChuNhiemDeTai = item.ChuNhiemDeTai,
+                        CoMau = item.CoMau,
+                        KhoKhan = item.KhoKhan,
+                        SoCaThuThapHopLe = item.SoCaThuThapHopLe,
+                        SoLanDaBaoCao = item.SoLanDaBaoCao,
+                        SoNCT = item.SoNCT,
+                        NCVChinh = item.NCVChinh,
+                        NgayDuyetNghienCuu = item.NgayDuyetNghienCuu,
+                        TienDoThuNhanMau = item.TienDoThuNhanMau,
+                        TinhTrangNghienCuu = item.TinhTrangNghienCuu,
+                        TinhTrangNghienCuuHienTai = item.TinhTrangNghienCuuHienTai,
+                        ThoiGianTienHanh = item.ThoiGianTienHanh,
+                        CreatedBy = item.CreatedBy,
+                        CreatedDate = item.CreatedDate
+                    };
+
+                    if (trangthaiHDDD != null && !string.IsNullOrEmpty(item.ThoiGianTienHanh))
+                    {
+                        int month = 0;
+                        try
+                        {
+                            month = Int32.Parse(item.ThoiGianTienHanh);
+                        }
+                        catch { }
+                        DateTime dtEnd = trangthaiHDDD.CreatedDate.AddMonths(month);
+                        if (dtEnd < DateTime.Now)
+                            obj.CompletePercent = 100;
+                        else
+                        {
+                            try
+                            {
+                                obj.CompletePercent = Convert.ToInt32(Math.Round((dtEnd - DateTime.Now).TotalDays / (dtEnd - trangthaiHDDD.CreatedDate).TotalDays, 0));
+                            }
+                            catch { }
+                        }
+                    }
+
+                    result.Add(obj);
+                }
+            }
+
+            result = result.OrderBy(c => c.TenDeTai).OrderByDescending(c => c.CreatedDate).ToList();
+            int sort = 1;
+            foreach (var item in result)
+            {
+                item.Sort = sort++;
+            }
             return result;
         }
 
@@ -323,9 +458,50 @@ namespace BaseBusiness
                 dbitem.ModifiedBy = Username;
                 dbitem.ModifiedDate = DateTime.Now;
 
+                string sKey = SYSConfigCode.ThoiGianBaoCaoTDNC.ToString();
+                var config = db.tbl_SYS_Config.FirstOrDefault(c => c.Code == sKey && !c.IsDeleted);
+                if (config != null)
+                {
+                    try
+                    {
+                        var setting = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO_SYS_Config_ThoiGianBaoCaoTDNC>(config.Value);
+                        if (setting != null)
+                        {
+                            int GiaiDoan1_NgayBatDau = setting.GiaiDoan1_NgayBatDau;
+                            int GiaiDoan1_NgayKetThuc = setting.GiaiDoan1_NgayKetThuc;
+                            int GiaiDoan2_NgayBatDau = setting.GiaiDoan2_NgayBatDau;
+                            int GiaiDoan2_NgayKetThuc = setting.GiaiDoan2_NgayKetThuc;
+                            bool isSuccess = false;
+                            if (GiaiDoan1_NgayBatDau > 0 && GiaiDoan1_NgayKetThuc > 0)
+                            {
+                                if (dbitem.CreatedDate.Day >= GiaiDoan1_NgayBatDau && dbitem.CreatedDate.Day <= GiaiDoan1_NgayKetThuc)
+                                {
+                                    isSuccess = true;
+                                }
+                            }
+
+                            if (!isSuccess && GiaiDoan2_NgayBatDau > 0 && GiaiDoan2_NgayKetThuc > 0)
+                            {
+                                if (dbitem.CreatedDate.Day >= GiaiDoan2_NgayBatDau && dbitem.CreatedDate.Day <= GiaiDoan2_NgayKetThuc)
+                                {
+                                    isSuccess = true;
+                                }
+                            }
+                            if (!isSuccess)
+                            {
+                                item.Error = "Đã hết thời hạn được báo cáo, thời hạn báo cáo cho phép từ ngày " + GiaiDoan1_NgayBatDau.ToString("00") + " đến " + GiaiDoan1_NgayKetThuc.ToString("00") + " và từ ngày " + GiaiDoan2_NgayBatDau.ToString("00") + " đến " + GiaiDoan2_NgayKetThuc.ToString("00") + " hằng tháng";
+                                return item;
+                            }
+                        }
+                    }
+                    catch { }
+                }
+
                 var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == item.IDDeTai);
                 if (detai != null)
                 {
+                    detai.IDTinhTrangNghienCuu = dbitem.IDTinhTrangNghienCuu;
+
                     dbitem.TenDeTai = detai.TenTiengViet;
                     dbitem.ChuNhiemDeTai = detai.tbl_CUS_HRM_STAFF_NhanSu1 != null ? detai.tbl_CUS_HRM_STAFF_NhanSu1.Name : "";
                     dbitem.SoNCT = detai.SoNCT;
@@ -335,7 +511,7 @@ namespace BaseBusiness
                     {
                         var trangthaiHDDD = db.tbl_PRO_TrangThai_Log.Where(c => c.IDDeTai == item.IDDeTai && c.IDTrangThaiMoi == -(int)SYSVarType.TrangThai_HDDD_DaDuyet).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
                         if (trangthaiHDDD != null)
-                            dbitem.NgayDuyetNghienCuu = trangthaiHDDD.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss");
+                            dbitem.NgayDuyetNghienCuu = trangthaiHDDD.CreatedDate.ToString("dd/MM/yyyy HH:mm");
                     }
                     else
                     {
@@ -382,5 +558,84 @@ namespace BaseBusiness
             return item;
         }
 
+        public static string put_PRO_BaoCaoTienDoNghienCuuCustom(AppEntities db, int ID, DTO_PRO_BaoCaoTienDoNghienCuu item, string Username)
+        {
+            string result = string.Empty;
+            var dbitem = db.tbl_PRO_BaoCaoTienDoNghienCuu.Find(ID);
+            if (dbitem != null)
+            {
+                dbitem.IDDeTai = item.IDDeTai;
+                dbitem.SoCaThuThapHopLe = item.SoCaThuThapHopLe;
+                dbitem.TienDoThuNhanMau = item.TienDoThuNhanMau;
+                dbitem.KhoKhan = item.KhoKhan;
+                dbitem.IsDisabled = item.IsDisabled;
+                dbitem.IsDeleted = item.IsDeleted;
+                dbitem.TenDeTai = item.TenDeTai;
+                dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;
+                dbitem.NCVChinh = item.NCVChinh;
+                dbitem.NgayDuyetNghienCuu = item.NgayDuyetNghienCuu;
+                dbitem.SoNCT = item.SoNCT;
+                dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;
+                dbitem.CoMau = item.CoMau;
+                dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;
+
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                string sKey = SYSConfigCode.ThoiGianBaoCaoTDNC.ToString();
+                var config = db.tbl_SYS_Config.FirstOrDefault(c => c.Code == sKey && !c.IsDeleted);
+                if (config != null)
+                {
+                    try
+                    {
+                        var setting = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO_SYS_Config_ThoiGianBaoCaoTDNC>(config.Value);
+                        if (setting != null)
+                        {
+                            int GiaiDoan1_NgayBatDau = setting.GiaiDoan1_NgayBatDau;
+                            int GiaiDoan1_NgayKetThuc = setting.GiaiDoan1_NgayKetThuc;
+                            int GiaiDoan2_NgayBatDau = setting.GiaiDoan2_NgayBatDau;
+                            int GiaiDoan2_NgayKetThuc = setting.GiaiDoan2_NgayKetThuc;
+                            bool isSuccess = false;
+                            if (GiaiDoan1_NgayBatDau > 0 && GiaiDoan1_NgayKetThuc > 0)
+                            {
+                                if (dbitem.ModifiedDate.Value.Day >= GiaiDoan1_NgayBatDau && dbitem.ModifiedDate.Value.Day <= GiaiDoan1_NgayKetThuc)
+                                {
+                                    isSuccess = true;
+                                }
+                            }
+
+                            if (!isSuccess && GiaiDoan2_NgayBatDau > 0 && GiaiDoan2_NgayKetThuc > 0)
+                            {
+                                if (dbitem.ModifiedDate.Value.Day >= GiaiDoan2_NgayBatDau && dbitem.ModifiedDate.Value.Day <= GiaiDoan2_NgayKetThuc)
+                                {
+                                    isSuccess = true;
+                                }
+                            }
+                            if (!isSuccess)
+                                item.Error = "Đã hết thời hạn được báo cáo, thời hạn báo cáo cho phép từ ngày " + GiaiDoan1_NgayBatDau.ToString("00") + " đến " + GiaiDoan1_NgayKetThuc.ToString("00") + " và từ ngày " + GiaiDoan2_NgayBatDau.ToString("00") + " đến " + GiaiDoan2_NgayKetThuc.ToString("00") + " hằng tháng";
+                        }
+                    }
+                    catch { }
+                }
+
+                try
+                {
+                    var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == item.IDDeTai);
+                    if (detai != null)
+                    {
+                        detai.IDTinhTrangNghienCuu = dbitem.IDTinhTrangNghienCuu;
+                    }
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BaoCaoTienDoNghienCuu", DateTime.Now, Username);
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("put_PRO_BaoCaoTienDoNghienCuuCustom", e);
+                    result = e.Message;
+                }
+            }
+            return result;
+        }
     }
 }

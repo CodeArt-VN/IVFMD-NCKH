@@ -10,7 +10,12 @@ APIList.FILE_Import={
 	},
 };
 
-
+APIList.FILE_Export = {
+    BaoCaoTienDoNghienCuu: {
+        method: "GET",
+        url: function () { return appSetting.apiDomain("CUS/FILE/BaoCaoTienDoNghienCuu") }
+    },
+};
 
 
 

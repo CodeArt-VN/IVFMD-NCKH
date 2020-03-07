@@ -1,21 +1,23 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TongHopBaoCaoTienDoNghienCuuPage } from './tong-hop-bao-cao-tien-do-nghien-cuu';
+import { ThietLapTemplatePage } from './thiet-lap-template';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { FileUploadModule } from 'ng2-file-upload';
 @NgModule({
   declarations: [
-        TongHopBaoCaoTienDoNghienCuuPage,
+        ThietLapTemplatePage,
   ],
   imports: [
       NgxDatatableModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      IonicPageModule.forChild(TongHopBaoCaoTienDoNghienCuuPage)
+      IonicPageModule.forChild(ThietLapTemplatePage),
+      FileUploadModule
   ],
   exports: [
-      TongHopBaoCaoTienDoNghienCuuPage
+      ThietLapTemplatePage
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class TongHopBaoCaoTienDoNghienCuuPageModule {}
+export class ThietLapTemplatePageModule {}

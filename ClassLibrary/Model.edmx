@@ -927,6 +927,7 @@
           <Property Name="MaSoHDDD" Type="nvarchar" MaxLength="200" />
           <Property Name="FileUpload" Type="nvarchar" MaxLength="4000" />
           <Property Name="IDHinhThucXetDuyet" Type="int" />
+          <Property Name="IDTinhTrangNghienCuu" Type="int" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -2676,6 +2677,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu">
+          <End Role="tbl_SYS_Var" Type="Self.tbl_SYS_Var" Multiplicity="0..1" />
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SYS_Var">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_DeTai">
+              <PropertyRef Name="IDTinhTrangNghienCuu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai">
           <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="1" />
           <End Role="tbl_PRO_DonXinDanhGiaDaoDuc" Type="Self.tbl_PRO_DonXinDanhGiaDaoDuc" Multiplicity="*" />
@@ -3385,6 +3398,10 @@
             <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu" Association="Self.FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu">
+            <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_DonXinDanhGiaDaoDuc" EntitySet="tbl_PRO_DonXinDanhGiaDaoDuc" />
@@ -3832,6 +3849,10 @@
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_WHinhThucXetDuyet" Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WHinhThucXetDuyet">
+            <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu" Association="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu">
             <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
           </AssociationSet>
@@ -4987,6 +5008,7 @@
           <Property Name="MaSoHDDD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="FileUpload" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="IDHinhThucXetDuyet" Type="Int32" />
+          <Property Name="IDTinhTrangNghienCuu" Type="Int32" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_AE" Relationship="AppModel.FK_tbl_PRO_AE_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_AE" />
@@ -5000,6 +5022,7 @@
           <NavigationProperty Name="tbl_SYS_Var3" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HRCO" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
           <NavigationProperty Name="tbl_SYS_Var4" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_NghiemThu" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
           <NavigationProperty Name="tbl_SYS_Var5" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WHinhThucXetDuyet" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
+          <NavigationProperty Name="tbl_SYS_Var6" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu" FromRole="tbl_PRO_DeTai" ToRole="tbl_SYS_Var" />
           <NavigationProperty Name="tbl_PRO_DonXinDanhGiaDaoDuc" Relationship="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinDanhGiaDaoDuc" />
           <NavigationProperty Name="tbl_PRO_DonXinNghiemThu" Relationship="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinNghiemThu" />
           <NavigationProperty Name="tbl_PRO_DonXinXetDuyet" Relationship="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinXetDuyet" />
@@ -5938,6 +5961,7 @@
           <NavigationProperty Name="tbl_PRO_DeTai3" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_HRCO" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_DeTai4" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_TrangThai_NghiemThu" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_DeTai5" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WHinhThucXetDuyet" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
+          <NavigationProperty Name="tbl_PRO_DeTai6" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_SYS_Var" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_HoiNghiHoiThao" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_SYS_VarHinhThucDangKy" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao_DangKyDeTai1" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_SYS_VarTrangThai" FromRole="tbl_SYS_Var" ToRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" />
@@ -6808,6 +6832,18 @@
             </Principal>
             <Dependent Role="tbl_PRO_DeTai">
               <PropertyRef Name="IDHinhThucXetDuyet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_DeTai_tbl_SYS_Var_WWTinhTrangNghienCuu">
+          <End Type="AppModel.tbl_SYS_Var" Role="tbl_SYS_Var" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SYS_Var">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_DeTai">
+              <PropertyRef Name="IDTinhTrangNghienCuu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8155,6 +8191,7 @@
           <EntitySetMapping Name="tbl_PRO_DeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_DeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_DeTai">
+                <ScalarProperty Name="IDTinhTrangNghienCuu" ColumnName="IDTinhTrangNghienCuu" />
                 <ScalarProperty Name="IDHinhThucXetDuyet" ColumnName="IDHinhThucXetDuyet" />
                 <ScalarProperty Name="FileUpload" ColumnName="FileUpload" />
                 <ScalarProperty Name="MaSoHDDD" ColumnName="MaSoHDDD" />

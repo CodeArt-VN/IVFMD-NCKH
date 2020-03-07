@@ -339,8 +339,50 @@ namespace API.Controllers.DOC
 
         #endregion
 
+        #region BaoCaoTienDoNghienCuu
+        [Route("BaoCaoTienDoNghienCuu")]
+        public HttpResponseMessage Get_BaoCaoTienDoNghienCuu()
+        {
+            string fileurl = "";
+            var package = GetTemplateWorkbook("DS-BaoCaoTienDoNghienCuu.xlsx", "DS-BaoCaoTienDoNghienCuu-" + DateTime.Now.ToString("HHmmss") + ".xlsx", out fileurl);
 
+            ExcelWorkbook workBook = package.Workbook;
+            if (workBook != null)
+            {
+                var ws = workBook.Worksheets.FirstOrDefault(); //Worksheets["DS"];
+                var data = BS_PRO_BaoCaoTienDoNghienCuu.get_PRO_BaoCaoTienDoNghienCuuTheoDeTaiChiTiet(db, QueryStrings);
 
+                int rowid = 3;
+                foreach (var item in data)
+                {
+                    int col = 2;
+                    ws.Cells[rowid, col].Value = item.Sort; col++;
+                    ws.Cells[rowid, col].Value = item.TenDeTai; col++;
+                    ws.Cells[rowid, col].Value = item.ChuNhiemDeTai; col++;
+                    ws.Cells[rowid, col].Value = item.NCVChinh; col++;
+                    ws.Cells[rowid, col].Value = item.SoNCT; col++;
+                    ws.Cells[rowid, col].Value = item.NgayDuyetNghienCuu; col++;
+                    ws.Cells[rowid, col].Value = item.ThoiGianTienHanh; col++;
+                    ws.Cells[rowid, col].Value = item.CompletePercent; col++;
+                    ws.Cells[rowid, col].Value = item.SoLanDaBaoCao; col++;
+                    ws.Cells[rowid, col].Value = item.CoMau; col++;
+                    ws.Cells[rowid, col].Value = item.SoCaThuThapHopLe; col++;
+                    ws.Cells[rowid, col].Value = item.TienDoThuNhanMau; col++;
+                    ws.Cells[rowid, col].Value = item.KhoKhan; col++;
+                    ws.Cells[rowid, col].Value = item.TinhTrangNghienCuuHienTai; col++;
+                    ws.Cells[rowid, col].Value = item.TinhTrangNghienCuu; col++;
+                    ws.Cells[rowid, col].Value = item.CreatedDate.ToString("dd/MM/yyy HH:mm:ss"); col++;
+                    ws.Cells[rowid, col].Value = item.CreatedBy; col++;
+
+                    rowid++;
+                }
+
+                package.Save();
+            }
+
+            return downloadFile(fileurl);
+        }
+        #endregion
     }
 
 

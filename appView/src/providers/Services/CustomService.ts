@@ -360,6 +360,19 @@ export class PRO_BaoCaoTienDoNghienCuuCustomProvider extends exService {
                 });
         });
     }
+    getTheoDeTai(query=null) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoTienDoNghienCuu.getTheoDeTai;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), query).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()
@@ -903,6 +916,72 @@ export class CAT_ThietLapThoiGianBaoCaoNSKHProvider extends exService {
     saveCustom(item) {
         let that = this.commonService;
         let apiPath = APIList.CAT_ThietLapThoiGianBaoCaoNSKH.postItem;
+        return new Promise((resolve, reject) => {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then((data) => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        });
+    }
+}
+
+@Injectable()
+export class CAT_ThietLapThoiGianBaoCaoTDNCProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_ThietLapThoiGianBaoCaoTDNC, SearchConfig.getSearchFields('CAT_ThietLapThoiGianBaoCaoTDNC'), commonService);
+    }
+    get() {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapThoiGianBaoCaoTDNC.get;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    saveCustom(item) {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapThoiGianBaoCaoTDNC.postItem;
+        return new Promise((resolve, reject) => {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then((data) => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        });
+    }
+}
+
+@Injectable()
+export class CAT_ThietLapTemplateProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_ThietLapTemplate, SearchConfig.getSearchFields('CAT_ThietLapTemplate'), commonService);
+    }
+    get() {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapTemplate.get;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    saveCustom(item) {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapTemplate.postItem;
         return new Promise((resolve, reject) => {
             that.connect(apiPath.method, apiPath.url(), item).toPromise()
                 .then((data) => {

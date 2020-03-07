@@ -19,15 +19,31 @@ a{
     opacity: 0.8;
 }
 
-*[tooltip]{
+.c-label-bold {
+    color: red;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: inline-block;
+    width: calc(100% - 0px);
+    text-align: left;
+    vertical-align: top;
+}
+
+.icon-ios-danger.split {
+    color: #ed2947 !important
+}
+
+*[tooltip] {
     &:hover {
         // cursor: help;
         &:after {
             opacity: 1;
-            
         }
     }
-    &:after{
+
+    &:after {
         content: attr(tooltip);
         transition: opacity 0.3s linear;
         opacity: 0;
@@ -41,7 +57,6 @@ a{
         z-index: 3;
         font-size: 1.4rem;
         border: solid 1px #ffa53b;
-        
     }
 }
 

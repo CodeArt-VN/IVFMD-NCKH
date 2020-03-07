@@ -921,6 +921,28 @@ export var APIListBase = {
             url: function () { return appSetting.apiDomain("CAT/ThietLapThoiGianBaoCaoNSKH") }
         },
     },
+
+    CAT_ThietLapThoiGianBaoCaoTDNC: {
+        get: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapThoiGianBaoCaoTDNC") }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapThoiGianBaoCaoTDNC") }
+        },
+    },
+
+    CAT_ThietLapTemplate: {
+        get: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapTemplate") }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapTemplate") }
+        },
+    },
     
     CAT_Site:{
         getList:{
@@ -1237,6 +1259,10 @@ export var APIListBase = {
         getListAll: {
             method: "GET",
             url: function () { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/get_PRO_BaoCaoTienDoNghienCuuAll") }
+        },
+        getTheoDeTai: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoTienDoNghienCuu/get_PRO_BaoCaoTienDoNghienCuuTheoDeTai") }
         }
     },
 

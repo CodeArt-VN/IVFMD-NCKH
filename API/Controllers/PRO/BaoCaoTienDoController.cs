@@ -29,6 +29,12 @@ namespace API.Controllers.PRO
             return BS_PRO_BaoCaoTienDoNghienCuu.get_PRO_BaoCaoTienDoNghienCuuByDeTai(db, deTaiId, QueryStrings);
         }
 
+        [Route("get_PRO_BaoCaoTienDoNghienCuuTheoDeTai")]
+        public List<DTO_PRO_BaoCaoTienDoNghienCuu_DeTai> GetTheoDeTai()
+        {
+            return BS_PRO_BaoCaoTienDoNghienCuu.get_PRO_BaoCaoTienDoNghienCuuTheoDeTai(db, QueryStrings);
+        }
+
         [Route("get_PRO_BaoCaoTienDoNghienCuuAll")]
         public IQueryable<DTO_PRO_BaoCaoTienDoNghienCuu> GetAll()
         {
@@ -62,12 +68,12 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
 
-            bool result = BS_PRO_BaoCaoTienDoNghienCuu.put_PRO_BaoCaoTienDoNghienCuu(db, id, tbl_PRO_BaoCaoTienDoNghienCuu, Username);
+            string result = BS_PRO_BaoCaoTienDoNghienCuu.put_PRO_BaoCaoTienDoNghienCuuCustom(db, id, tbl_PRO_BaoCaoTienDoNghienCuu, Username);
 
-            if (result)
+            if (string.IsNullOrEmpty(result))
                 return StatusCode(HttpStatusCode.NoContent);
             else
-                return NotFound();
+                return BadRequest(result);
         }
 
         [Route("")]
