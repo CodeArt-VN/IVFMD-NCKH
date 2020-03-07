@@ -50,7 +50,7 @@ namespace API
             var pdfHeader = HeaderHTMLtoPDF(html.Replace("[[HTML]]", headerHtml));
             var pdfFooter = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml));
             setting.PdfPageSize = new SizeF(PdfPageSize.A4.Width, PdfPageSize.A4.Height - pdfHeader.Height - pdfFooter.Height);
-
+            
             htmlConverter.ConverterSettings = setting;
             //Convert to PDF
             PdfDocument docBody = htmlConverter.Convert(html.Replace("[[HTML]]", bodyHtml), string.Empty);
@@ -94,15 +94,21 @@ namespace API
 
         private static IHtmlConverterSettings CreateConverterSetting(bool setPageSize = false, float height = 0)
         {
-            var settings = new WebKitConverterSettings();
+            var setting = new WebKitConverterSettings();
             if (setPageSize)
             {
-                settings.PdfPageSize = new System.Drawing.SizeF(PdfPageSize.A4.Width, height);
-                settings.Orientation = PdfPageOrientation.Landscape;
+                setting.PdfPageSize = new System.Drawing.SizeF(PdfPageSize.A4.Width, height);
+                setting.Orientation = PdfPageOrientation.Landscape;
             }
-            settings.WebKitPath = QtBinariesPath;
-            settings.WebKitViewPort = new System.Drawing.Size(1024, 0);
-            return settings;
+            setting.EnableRepeatTableHeader = true;
+            setting.EnableRepeatTableFooter = true;
+            setting.EnableHyperLink = true;
+            setting.SplitTextLines = false;
+            setting.SplitImages = false;
+            setting.MediaType = MediaType.Print;
+            setting.WebKitPath = QtBinariesPath;
+            setting.WebKitViewPort = new System.Drawing.Size(1024, 0);
+            return setting;
         }
 
         private static PdfPageTemplateElement HeaderHTMLtoPDF(string htmlString)
