@@ -233,6 +233,22 @@
                 </p>
                 <div conf='{"name":"ListNgoaiNgu","add":true,"resizeable":false, "props": ["NgoaiNgu","NgheTot","NgheKha","NgheTB","NoiTot","NoiKha","NoiTB","VietTot","VietKha","VietTB","DocTot","DocKha","DocTB"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table class="nckh-table resize-grid" style="width:100%;" border="1">
+                        <colgroup>
+                            <col width="30" />
+                            <col width="100" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                            <col width="30" />
+                        </colgroup>
                         <thead>
                             <tr class="table-header">
                                 <td rowspan="2">TT</td>
@@ -313,10 +329,10 @@
                 <div conf='{"name":"ListQuaTrinhDaoTao","add":true,"resizeable":true, "props": ["Bac","ThoiGian","NoiDaoTao","ChuyenNganh","TenLuanAnTotNghiep"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
-                            <col width="100" />
-                            <col width="100" />
-                            <col width="100" />
-                            <col width="100" />
+                            <col width="90" />
+                            <col width="80" />
+                            <col width="90" />
+                            <col width="110" />
                             <col />
                         </colgroup>
                         <thead>
@@ -373,11 +389,11 @@
                     <table class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="90" />
+                            <col width="100" />
+                            <col width="90" />
+                            <col width="120" />
+                            <col width="100" />
                             <col />
                         </colgroup>
                         <thead>
@@ -803,19 +819,19 @@
                         <div style="display:inline-block;min-width:65px">
                             <p class="box">
                                 <span class="box-title">Ngày </span>
-                                <span contenteditable="true" style="text-indent:34px;" class="text-center"></span>
+                                <span contenteditable="true" style="text-indent:34px;" class="text-center" data-bind="editableHTML: NgayKy_Ngay"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:72px">
                             <p class="box">
                                 <span class="box-title">tháng</span>
-                                <span contenteditable="true" style="text-indent:38px;"></span>
+                                <span contenteditable="true" style="text-indent:38px;" data-bind="editableHTML: NgayKy_Thang"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:60px">
                             <p class="box">
                                 <span class="box-title">năm</span>
-                                <span contenteditable="true" style="text-indent:35px;"></span>
+                                <span contenteditable="true" style="text-indent:35px;" data-bind="editableHTML: NgayKy_Nam"></span>
                             </p>
                         </div>
                     </div>

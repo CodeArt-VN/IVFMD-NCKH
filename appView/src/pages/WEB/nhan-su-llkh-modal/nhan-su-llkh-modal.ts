@@ -254,7 +254,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
             self.ListTruongDaiHoc = ko.observableArray(ko.utils.arrayMap(item.ListTruongDaiHoc || [{}, {}, {}], function (nn) {
                 return {
                     ThoiGian: ko.observable(nn.ThoiGian || ""),
-                    TenTruong: ko.observable(nn.TenTTNC || ""),
+                    TenTruong: ko.observable(nn.TenTruong || ""),
                     NoiDungThamGia: ko.observable(nn.NoiDungThamGia || "")
                 };
             }));
@@ -280,10 +280,10 @@ export class NhanSuLLKHModalPage extends DetailPage {
             
             self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
 
-            self.savedJson = ko.observable("");
-            self.save = function () {
-                self.savedJson(JSON.stringify(ko.toJS(self || ""), null, 2));
-            };
+            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay || "");
+            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang || "");
+            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam || "");
+            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy || "");
 
             self.getItem = function () {
                 return ko.toJS(self);
