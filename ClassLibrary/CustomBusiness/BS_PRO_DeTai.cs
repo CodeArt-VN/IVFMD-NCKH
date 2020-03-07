@@ -1054,7 +1054,9 @@ namespace BaseBusiness
                 TenTiengViet = s.TenTiengViet,
                 TenTiengAnh = s.TenTiengAnh,
                 NCVChinh = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
-                ChuNhiemDeTai = s.IDChuNhiem > 0 ? s.tbl_CUS_HRM_STAFF_NhanSu1.Name : ""
+                ChuNhiemDeTai = s.IDChuNhiem > 0 ? s.tbl_CUS_HRM_STAFF_NhanSu1.Name : "",
+                MaSoHDDD = s.MaSoHDDD,
+                MaSoProtocalID = s.MaSoProtocalID
             });
 
         }

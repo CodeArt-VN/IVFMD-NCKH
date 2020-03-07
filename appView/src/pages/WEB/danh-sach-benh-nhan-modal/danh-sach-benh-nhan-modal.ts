@@ -3,22 +3,20 @@ import { ViewController, IonicPage, NavController, NavParams, Events, LoadingCon
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable'
-import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider } from '../../../providers/Services/Services';
-import { Sys_VarProvider, PRO_NCVKhacCustomProvider } from '../../../providers/Services/CustomService';
+import { PRO_BenhNhanCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
-import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
-import { DateAdapter } from "@angular/material";
+import { DeTaiBenhNhanModalPage } from '../de-tai-benh-nhan-modal/de-tai-benh-nhan-modal';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
 
-@IonicPage({ name: 'page-de-tai-modal', priority: 'high', defaultHistory: ['page-de-tai'] })
+@IonicPage({ name: 'page-danh-sach-benh-nhan-modal', priority: 'high', defaultHistory: ['page-danh-sach-benh-nhan'] })
 @Component({
-    selector: 'de-tai-modal',
-    templateUrl: 'de-tai-modal.html',
+    selector: 'danh-sach-benh-nhan-modal',
+    templateUrl: 'danh-sach-benh-nhan-modal.html',
 })
-export class DeTaiModalPage extends DetailPage {
+export class DanhSachBenhNhanModalPage extends DetailPage {
     tab = '1';
     staffs = [];
     typeOfTopics = [];
@@ -32,45 +30,24 @@ export class DeTaiModalPage extends DetailPage {
     @ViewChild(DatatableComponent) table: DatatableComponent;
 
     constructor(
-        public currentProvider: PRO_DeTaiProvider,
-        public staffProvider: HRM_STAFF_NhanSuProvider,
-        public sysVarProvider: Sys_VarProvider,
-        public ncvKhacProvider: PRO_NCVKhacCustomProvider,
+        public currentProvider: PRO_BenhNhanCustomProvider,
         public viewCtrl: ViewController,
         public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
-        private dateAdapter: DateAdapter<Date>
     ) {
 
-        super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
-        this.dateAdapter.setLocale('vi');   
+        super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);   
         this.pageName = "page-de-tai";
-        this.events.unsubscribe('app:Close-page-de-tai-modal');
-        this.events.subscribe('app:Close-page-de-tai-modal', () => {
+        this.events.unsubscribe('app:Close-page-danh-sach-benh-nhan-modal');
+        this.events.subscribe('app:Close-page-danh-sach-benh-nhan-modal', () => {
             this.dismiss();
-        });
-        this.formGroup = formBuilder.group({
-            TenTiengViet: ['', Validators.compose([Validators.required])],
-            TenTiengAnh: ['', Validators.compose([Validators.required])],
-            SoNCT: [''],
-            MaSoProtocalID: [''],
-            MaSoHDDD: [''],
-            GhiChu: [''],
-            IDChuNhiem: ['', Validators.compose([Validators.required])],
-            myDate: [Date],
         });
     }
 
     preLoadData() {
-        Promise.all([
-            this.staffProvider.read(),
-            this.sysVarProvider.getByTypeOfVar(1),
-            this.ncvKhacProvider.getByDeTai(this.id)
-        ])
-            .then(values => {
-                this.staffs = values[0]['data'];
-                this.typeOfTopics = values[1]['data'];
-                this.lstNCVKhac = [...values[2]['data']];
+            this.currentProvider.getByDeTai(this.id)
+            .then(value => {
+                this.lstBenhNhan = [...value['data']];
                 super.preLoadData();
             })
     }
@@ -83,36 +60,32 @@ export class DeTaiModalPage extends DetailPage {
         this.viewCtrl.dismiss(data);
     }
 
-    //#region NCV Khác
-    refreshNCV() {
-        this.lstNCVSelected = [];
-        this.ncvKhacProvider.getByDeTai(this.id).then(value => {
-            this.lstNCVKhac = [...value['data']];
-            debugger
-            this.table.recalculate();
+    //#region BenhNhan
+    refreshBN() {
+        this.lstBNSelected = [];
+        this.currentProvider.getByDeTai(this.id).then(value => {
+            this.lstBenhNhan = [...value['data']];
         });
     }
 
-    addNCV() {
-        var that = this;
+    addBN(isNew) {
         let item = {
             ID: 0,
             
         };
-        let modal = this.modalCtrl.create(NcvKhacModalPage, { 'id': item.ID, 'idDeTai': this.id });
-
+        let modal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': isNew });
         modal.onDidDismiss(data => {
-            that.refreshNCV();
+            this.refreshBN();
         });
         modal.present();
     }
 
-    deleteNCV() {
+    deleteBN() {
         this.showActionMore = false;
-        var count = this.lstNCVSelected.length;
+        var count = this.lstBNSelected.length;
         let title = 'Xóa ' + count + ' dòng';
-        if (count == 1 && this.lstNCVSelected[0].Name) {
-            title = 'Xóa [' + this.lstNCVSelected[0].Name + ']';
+        if (count == 1 && this.lstBNSelected[0].Name) {
+            title = 'Xóa [' + this.lstBNSelected[0].Name + ']';
         }
         else if (count == 1) {
             title = 'Xóa bỏ';
@@ -131,12 +104,13 @@ export class DeTaiModalPage extends DetailPage {
                 {
                     text: 'Đồng ý xóa',
                     handler: () => {
-                        var seletedItems = [...this.lstNCVSelected];
+                        debugger
+                        var seletedItems = [...this.lstBNSelected];
                         var doneCount = 0;
 
                         for (var i = 0; i < seletedItems.length; i++) {
                             var ite = seletedItems[i];
-                            this.ncvKhacProvider.delete(ite).then(data => {
+                            this.currentProvider.delete(ite).then(data => {
                                 doneCount++;
                                 if (doneCount == count) {
                                     let toast = this.toastCtrl.create({
@@ -144,7 +118,7 @@ export class DeTaiModalPage extends DetailPage {
                                         duration: GlobalData.UserData.Setting.ToastMessageDelay
                                     });
                                     toast.present();
-                                    this.refreshNCV();
+                                    this.refreshBN();
                                 }
 
                             });
@@ -156,14 +130,13 @@ export class DeTaiModalPage extends DetailPage {
         confirm.present();
     }
 
-    onSelectNCV({ selected }) {
-        this.lstNCVSelected.splice(0, this.lstNCVSelected.length);
-        this.lstNCVSelected.push(...selected);
+    onSelectBN({ selected }) {
+        this.lstBNSelected.splice(0, this.lstBNSelected.length);
+        this.lstBNSelected.push(...selected);
     }
-    openDetailNCV(item) {
-        let myModal = this.modalCtrl.create(NcvKhacModalPage, { 'id': item.ID, 'idDeTai': this.id });
+    openDetailBN(item) {
+        let myModal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id });
         myModal.present();
     }
-    //#endregion NCV Khác
-
+    //#endregion BenhNhan
 }

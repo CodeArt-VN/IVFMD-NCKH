@@ -15,9 +15,6 @@
 
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
         <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7 && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDDD')">HĐĐĐ Duyệt</button>
-
-        <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
-        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDKH == 13  && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDKH')">HĐKH Duyệt</button>
     </div>
 </ion-header>
 <ion-content>
@@ -107,6 +104,20 @@
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Danh sách bệnh nhân</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="openBNModal()">Xem</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

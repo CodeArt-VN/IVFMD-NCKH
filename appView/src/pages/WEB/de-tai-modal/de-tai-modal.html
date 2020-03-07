@@ -6,9 +6,6 @@
         <ion-segment-button value="2">
             Nghiên cứu viên khác
         </ion-segment-button>
-        <ion-segment-button value="3">
-            Bệnh nhân
-        </ion-segment-button>
     </ion-segment>
     <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
@@ -20,24 +17,6 @@
         <div *ngSwitchCase="'1'">
             <form [formGroup]="formGroup">
                 <div padding></div>
-                <div class="c-control">
-                    <label class="c-label" for="MaSo">Mã số
-                    <span
-                        *ngIf="!formGroup.controls.MaSo.valid && !formGroup.controls.MaSo.pending && (formGroup.controls.MaSo.dirty || submitAttempt)"
-                        ion-text color="danger">(*)</span>
-                </label>
-                    <input class="c-input" id="MaSo" [(ngModel)]="item.MaSo" formControlName="MaSo" type="text">
-                </div>
-
-                <div class="c-control">
-                    <label class="c-label" for="DeTai">Tên đề tài
-                    <span
-                        *ngIf="!formGroup.controls.DeTai.valid && !formGroup.controls.DeTai.pending && (formGroup.controls.DeTai.dirty || submitAttempt)"
-                        ion-text color="danger">(*)</span>
-                </label>
-                    <input class="c-input" id="DeTai" [(ngModel)]="item.DeTai" formControlName="DeTai" type="text">
-                </div>
-
                 <div class="c-control">
                     <label class="c-label" for="TenTiengViet">Tên tiếng Việt
                     <span
@@ -78,27 +57,16 @@
                 </div>
 
                 <div class="c-control">
-                    <label class="c-label" for="IDPhanLoaiDeTai">Loại đề tài
-                    <span
-                        *ngIf="!formGroup.controls.IDPhanLoaiDeTai.valid && !formGroup.controls.IDPhanLoaiDeTai.pending && (formGroup.controls.IDPhanLoaiDeTai.dirty || submitAttempt)"
-                        ion-text color="danger">(*)</span>
+                    <label class="c-label" for="MaSoHDDD">Mã số HĐĐĐ
                 </label>
-
-                    <select class="c-input c-dropdown" [(ngModel)]="item.IDPhanLoaiDeTai" formControlName="IDPhanLoaiDeTai">
-                    <option *ngFor="let t of typeOfTopics" [value]="t.ID">{{t.ValueOfVar}}</option>
-                </select>
+                    <input [disabled]="item.IDTrangThai_HDDD<8" class="c-input" id="MaSoHDDD" [(ngModel)]="item.MaSoHDDD" formControlName="MaSoHDDD" type="text">
                 </div>
 
                 <div class="c-control">
-                    <label class="c-label" for="GhiChu">Mô tả
-                    <span
-                        *ngIf="!formGroup.controls.GhiChu.valid && !formGroup.controls.GhiChu.pending && (formGroup.controls.GhiChu.dirty || submitAttempt)"
-                        ion-text color="danger">(*)</span>
+                    <label class="c-label" for="MaSoProtocalID">Mã số ProtocalID
                 </label>
-                    <textarea rows="3" class="c-input" id="GhiChu" [(ngModel)]="item.GhiChu" formControlName="GhiChu" type="textarea"></textarea>
-
+                    <input class="c-input" id="MaSoProtocalID" [(ngModel)]="item.MaSoProtocalID" formControlName="MaSoProtocalID" type="text">
                 </div>
-
                 <!--<div class="c-control">
                     <label class="c-label" for="GhiChu">Ngày
                         <span
@@ -162,44 +130,6 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Chức danh" prop="ChucDanh"></ngx-datatable-column>
                         <ngx-datatable-column name="Chức vụ" prop="ChucVu"></ngx-datatable-column>
-                    </ngx-datatable>
-                </ion-col>
-            </ion-row>
-        </div>
-        <div *ngSwitchCase="'3'">
-            <div class="tools">
-                <button color="primary" ion-button icon-only clear (click)="refreshBN()">
-                          <ion-icon name="refresh"></ion-icon>
-                      </button>
-
-                <button color="success" ion-button icon-only clear (click)="addBN(0)">
-                          <ion-icon name="ios-search"></ion-icon>
-                      </button>
-
-                <button color="success" ion-button icon-only clear (click)="addBN(1)">
-                        <ion-icon name="ios-add-circle"></ion-icon>
-                    </button>
-                <span class="split" *ngIf="lstBNSelected.length"></span>
-
-                <button ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="openDetailBN(lstBNSelected[0])">
-                    <ion-icon name="ios-create"></ion-icon>
-                </button>
-                <button color="danger" ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="deleteBN()">
-                    <ion-icon name="ios-trash"></ion-icon>
-                </button>
-            </div>
-            <ion-row>
-                <ion-col class="doc-main">
-                    <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected"
-                        [selectionType]="'single'" (select)='onSelectBN($event)'>
-
-                        <ngx-datatable-column name="Họ tên" prop="TenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
-                            <ng-template let-i="row" ngx-datatable-cell-template>
-                                <a (click)="openDetailBN(i)">
-                                    {{i.TenBenhNhan}}
-                                </a>
-                            </ng-template>
-                        </ngx-datatable-column>
                     </ngx-datatable>
                 </ion-col>
             </ion-row>

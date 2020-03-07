@@ -20,6 +20,7 @@ import { SAEModalPage } from '../sae-modal/sae-modal';
 import { BangKiemXXDDModalPage } from '../bang-kiem-xxdd-modal/bang-kiem-xxdd-modal';
 import { ChonBenhNhanModalPage } from '../chon-benh-nhan-modal/chon-benh-nhan-modal';
 import { ListSelectModalPage } from '../list-select-modal/list-select-modal';
+import { DanhSachBenhNhanModalPage } from '../danh-sach-benh-nhan-modal/danh-sach-benh-nhan-modal';
 
 import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
 
@@ -105,7 +106,7 @@ export class DeTaiDetailPage extends BasePage {
 
         this.slideListByType = [
             { type: 0, index: 0, title: 'Hội đồng nội bộ', shortTitle: 'Hội đồng nội bộ' },
-            { type: 0, index: 1, title: 'Hội đồng Đạo đức, Hội đồng Khoa học', shortTitle: 'Hội đồng ĐĐ, KH' },
+            { type: 0, index: 1, title: 'Hội đồng Đạo đức', shortTitle: 'Hội đồng Đạo đức' },
             { type: 0, index: 2, title: 'Đăng ký Clinical Trial', shortTitle: 'Đăng ký Clinical Trial' },
             { type: 0, index: 3, title: 'Thu nhận bệnh nhân', shortTitle: 'Thu nhận bệnh nhân' },
             { type: 0, index: 4, title: 'Nghiệm thu', shortTitle: 'Nghiệm thu' }
@@ -424,6 +425,11 @@ export class DeTaiDetailPage extends BasePage {
             });
         })
     };
+
+    openBNModal() {
+      let myModal = this.modalCtrl.create(DanhSachBenhNhanModalPage, { 'id': this.id });
+      myModal.present();
+    }
 
     upload() {
 

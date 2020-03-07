@@ -1,0 +1,41 @@
+<ion-header>
+  <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
+      <ion-icon name="close" color="ivf1"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+  <div class="tools">
+      <button color="primary" ion-button icon-only clear (click)="refreshBN()">
+                  <ion-icon name="refresh"></ion-icon>
+              </button>
+
+      <button color="success" ion-button icon-only clear (click)="addBN()">
+                  <ion-icon name="ios-add-circle"></ion-icon>
+              </button>
+
+      <span class="split" *ngIf="lstBNSelected.length"></span>
+
+      <button ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="openDetailBN(lstBNSelected[0])">
+          <ion-icon name="ios-create"></ion-icon>
+      </button>
+      <button color="danger" ion-button icon-only clear *ngIf="lstBNSelected.length" (click)="deleteBN()">
+          <ion-icon name="ios-trash"></ion-icon>
+      </button>
+  </div>
+  <ion-row>
+      <ion-col class="doc-main">
+          <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstBN" [selected]="lstBNSelected"
+              [selectionType]="'single'" (select)='onSelectBN($event)'>
+
+              <ngx-datatable-column name="Họ tên" prop="TenBenhNhan" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      <a (click)="openDetailNCV(i)">
+                          {{i.TenBenhNhan}}
+                      </a>
+                  </ng-template>
+              </ngx-datatable-column>
+          </ngx-datatable>
+      </ion-col>
+  </ion-row>
+</ion-content>
