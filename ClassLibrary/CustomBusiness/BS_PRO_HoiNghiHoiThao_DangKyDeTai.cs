@@ -476,6 +476,8 @@ namespace BaseBusiness
         public static List<DTO_PRO_HoiNghiHoiThao_DangKyDeTai> getExcel_PRO_HoiNghiHoiThao_DangKyDeTaiTheoHoiNghi(AppEntities db, Dictionary<string, string> QueryStrings)
         {
             var query = db.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Where(c => c.IDTrangThai != -(int)SYSVarType.TrangThai_HNHT_ChoGui).AsQueryable();
+            var queryHNHT = db.tbl_PRO_HoiNghiHoiThao.Where(c => c.IsDeleted == false).AsQueryable();
+            List<DTO_PRO_HoiNghiHoiThao_DangKyDeTai> result = new List<DTO_PRO_HoiNghiHoiThao_DangKyDeTai>();
             //Query IDHoiNghiHoiThao (int)
             if (QueryStrings.Any(d => d.Key == "IDHoiNghiHoiThao"))
             {
@@ -485,7 +487,10 @@ namespace BaseBusiness
                     if (int.TryParse(item, out int i))
                         IDs.Add(i);
                 if (IDs.Count > 0)
+                {
                     query = query.Where(d => IDs.Contains(d.IDHoiNghiHoiThao));
+                    queryHNHT = queryHNHT.Where(d => IDs.Contains(d.ID));
+                }
             }
             else
             {
@@ -497,6 +502,7 @@ namespace BaseBusiness
 
                         DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
                         query = query.Where(c => c.tbl_PRO_HoiNghiHoiThao.ThoiGian >= dt);
+                        queryHNHT = queryHNHT.Where(c => c.ThoiGian >= dt);
                     }
                     catch { }
                 }
@@ -508,10 +514,33 @@ namespace BaseBusiness
                     {
                         DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
                         query = query.Where(c => c.tbl_PRO_HoiNghiHoiThao.ThoiGian <= dt);
+                        queryHNHT = queryHNHT.Where(c => c.ThoiGian <= dt);
                     }
                     catch { }
                 }
             }
+
+            var dataHoiNghi = queryHNHT.Select(c => new
+            {
+                c.ID,
+                TenHoiNghi = c.TenHoiNghi,
+                DiaDiem = c.DiaDiem,
+                ThoiGian = c.ThoiGian.Value,
+                ThoiGianHetHan = c.ThoiGianHetHan,
+                c.CreatedDate,
+                TongSoNguoiDangKy = c.tbl_PRO_HoiNghiHoiThao_DangKy.Count(),
+                TongSoDeTaiDangKy = c.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count(d => d.IDTrangThai != -(int)SYSVarType.TrangThai_HNHT_ChoGui)
+            }).ToList();
+
+            var lstHoiNghiID = dataHoiNghi.Select(c => c.ID).ToList();
+            var dataDangKy = db.tbl_PRO_HoiNghiHoiThao_DangKy.Where(c => lstHoiNghiID.Contains(c.IDHoiNghiHoiThao)).Select(c => new
+            {
+                c.ID,
+                c.IDHoiNghiHoiThao,
+                c.IDNhanVien,
+                c.tbl_CUS_HRM_STAFF_NhanSu.Name,
+                c.CreatedDate
+            }).Distinct().ToList();
 
             var data = query
             .Select(s => new DTO_PRO_HoiNghiHoiThao_DangKyDeTai()
@@ -541,24 +570,44 @@ namespace BaseBusiness
                 UploadBaiFulltext = !string.IsNullOrEmpty(s.BaiFulltext) ? "Đã up" : "Chưa up",
             }).ToList();
 
-            var lstHoiNghiID = data.Select(c => c.IDHoiNghiHoiThao).Distinct().ToList();
-            var lstHoiNghi = db.tbl_PRO_HoiNghiHoiThao.Where(c => lstHoiNghiID.Contains(c.ID)).Select(c => new
+            foreach (var hoinghi in dataHoiNghi.OrderBy(c => c.ThoiGian))
             {
-                c.ID,
-                TongSoNguoiDangKy = c.tbl_PRO_HoiNghiHoiThao_DangKy.Count(),
-                TongSoDeTaiDangKy = c.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count(d => d.IDTrangThai != -(int)SYSVarType.TrangThai_HNHT_ChoGui)
-            }).ToList();
-
-            foreach (var item in data)
-            {
-                var hoinghi = lstHoiNghi.FirstOrDefault(c => c.ID == item.IDHoiNghiHoiThao);
-                if (hoinghi != null)
+                int count = 0;
+                DTO_PRO_HoiNghiHoiThao_DangKyDeTai obj = new DTO_PRO_HoiNghiHoiThao_DangKyDeTai()
                 {
-                    item.TongSoDeTaiDangKy = hoinghi.TongSoDeTaiDangKy;
-                    item.TongSoNguoiDangKy = hoinghi.TongSoNguoiDangKy;
+                    TenHoiNghi = hoinghi.TenHoiNghi,
+                    DiaDiem = hoinghi.DiaDiem,
+                    ThoiGian = hoinghi.ThoiGian,
+                    ThoiGianHetHan = hoinghi.ThoiGianHetHan,
+                    CreatedDate = hoinghi.CreatedDate,
+                    TongSoDeTaiDangKy = hoinghi.TongSoDeTaiDangKy,
+                    TongSoNguoiDangKy = hoinghi.TongSoNguoiDangKy,
+                };
+
+                foreach (var itemDangKy in dataDangKy.Where(c => c.IDHoiNghiHoiThao == hoinghi.ID).OrderBy(c => c.Name))
+                {
+                    count++;
+                    int countDeTai = 0;
+                    foreach (var item in data.Where(c => c.IDDangKy == itemDangKy.ID))
+                    {
+                        countDeTai++;
+                        item.TongSoDeTaiDangKy = hoinghi.TongSoDeTaiDangKy;
+                        item.TongSoNguoiDangKy = hoinghi.TongSoNguoiDangKy;
+                        result.Add(item);
+                    }
+                    if (countDeTai == 0)
+                    {
+                        obj.TenNCV = itemDangKy.Name;
+                        obj.CreatedDate = itemDangKy.CreatedDate;
+                        result.Add(obj);
+                    }
                 }
+
+                if (count == 0)
+                    result.Add(obj);
             }
-            return data;
+
+            return result;
         }
 
     }

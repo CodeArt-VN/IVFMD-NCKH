@@ -452,7 +452,7 @@ namespace API.Controllers.DOC
                     ws.Cells[rowid, col].Value = item.TenDeTai; col++;
                     ws.Cells[rowid, col].Value = item.HinhThucDangKy; col++;
                     ws.Cells[rowid, col].Value = item.TrangThai; col++;
-                    ws.Cells[rowid, col].Value = item.CreatedDate.ToString("dd/MM/yyy HH:mm:ss"); col++;
+                    ws.Cells[rowid, col].Value = !string.IsNullOrEmpty(item.TenNCV) ? item.CreatedDate.ToString("dd/MM/yyy HH:mm:ss") : ""; col++;
 
                     rowid++;
                     sort++;
