@@ -136,6 +136,8 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                CoTheDangKy = s.ThoiGianHetHan < DateTime.Now,
+                ChoPhepDangKy = s.ThoiGianHetHan < DateTime.Now ? "Đăng ký đề tài" : "Đã hết hạn"
             }).OrderBy(c => c.ThoiGianHetHan);
 
             return query;
