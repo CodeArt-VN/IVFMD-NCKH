@@ -35,8 +35,8 @@
         TrangThai_HNHT_DaDuyet = -33,
 
         HinhThucXetDuyet = 7,
-        HinhThucXetDuyet_RutGon = -38,
-        HinhThucXetDuyet_DayDu = -39,
+        HinhThucXetDuyet_RutGon = -37,
+        HinhThucXetDuyet_DayDu = -38,
 
         TinhTrangNghienCuu = 8,
         TinhTrangNghienCuu_DangNhanMau = -41,

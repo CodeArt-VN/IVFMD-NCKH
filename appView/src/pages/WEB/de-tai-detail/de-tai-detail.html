@@ -11,13 +11,10 @@
     </div>
     <div class="emptyzone header-button">
         <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light" (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
-        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHRCO')">HRCO Duyệt</button>
+        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light" (click)="updateSatusHRCO()">HRCO Duyệt</button>
 
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light" (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
         <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7 && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDDD')">HĐĐĐ Duyệt</button>
-
-        <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDKH > 12" ion-button block color="light" (click)="updateSatus('SendHDKH')">{{ statusHDKH }}</button>
-        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDKH == 13  && canApprove" ion-button block color="light" (click)="updateSatus('ApprovedHDKH')">HĐKH Duyệt</button>
     </div>
 </ion-header>
 <ion-content>
@@ -39,6 +36,22 @@
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>File Upload</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="downloadFileUpload()">Tải file xuống</button>
+                                <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
+                                <button *ngIf="item.FileUpload == null || item.FileUpload == ''" block ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -110,6 +123,20 @@
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Danh sách bệnh nhân</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="openBNModal()">Xem</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-slide>
@@ -138,4 +165,7 @@
             </ion-grid>
         </ion-slide>
     </ion-slides>
+
+    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+               [uploader]="uploader" />
 </ion-content>

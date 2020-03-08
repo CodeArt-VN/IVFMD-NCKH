@@ -28,6 +28,7 @@ namespace BaseBusiness
                 ID = s.ID,
                 IDDeTai = s.IDDeTai,
                 IDBenhNhan = s.IDBenhNhan,
+                MaBenhNhan = s.tbl_CUS_HRM_BenhNhan.MaBenhNhan,
                 TenBenhNhan = s.tbl_CUS_HRM_BenhNhan.HoTen,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,

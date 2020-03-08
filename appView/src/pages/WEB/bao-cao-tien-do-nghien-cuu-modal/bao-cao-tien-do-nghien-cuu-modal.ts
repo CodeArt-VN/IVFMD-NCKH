@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
-import { PRO_BaoCaoTienDoNghienCuuCustomProvider, } from '../../../providers/Services/CustomService';
+import { PRO_BaoCaoTienDoNghienCuuCustomProvider, Sys_VarProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -15,8 +15,11 @@ import 'jqueryui';
 export class BaoCaoTienDoNghienCuuModalPage extends DetailPage {
     idDeTai: any;
     model: any;
+    tinhTrangs = [];
+
     constructor(
         public currentProvider: PRO_BaoCaoTienDoNghienCuuCustomProvider,
+        public sysVarProvider: Sys_VarProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -31,11 +34,20 @@ export class BaoCaoTienDoNghienCuuModalPage extends DetailPage {
             SoCaThuThapHopLe: ['', Validators.compose([Validators.required])],
             TienDoThuNhanMau: ['', Validators.compose([Validators.required])],
             KhoKhan: [''],
+            IDTinhTrangNghienCuu: ['', Validators.compose([Validators.required])]
         });
         this.idDeTai = navParams.get('idDeTai');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
         }
+    }
+
+    preLoadData() {
+        this.sysVarProvider.getByTypeOfVar(8)
+        .then(values => {
+            this.tinhTrangs = values['data'];
+            super.preLoadData();
+        })
     }
 
     loadData() {

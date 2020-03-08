@@ -60,11 +60,11 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_DeTai);
         }
 
-        [Route("updateStatus_PRO_DeTai/{id:int}/{actionCode}")]
+        [Route("updateStatus_PRO_DeTai/{id:int}/{actionCode}/{typeId:int}")]
         [ResponseType(typeof(DTO_PRO_DeTai))]
-        public IHttpActionResult UpdateStatus(int id, string actionCode)
+        public IHttpActionResult UpdateStatus(int id, string actionCode, int typeId)
         {
-            var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, Username);
+            var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, typeId, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
             DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
@@ -161,6 +161,13 @@ namespace API.Controllers.PRO
             var path = System.IO.Path.Combine(exportPath, DateTime.Now.Ticks.ToString() + ".pdf");
             var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.firstPageHeader);
             return Ok(path);
+        }
+
+        [Route("uploadFile")]
+        public IHttpActionResult UploadFile(DTO_PRO_DeTai item)
+        {
+            BS_PRO_DeTai.uploadFile(db, item.ID, item.FileUpload, Username);
+            return Ok();
         }
     }
 }
