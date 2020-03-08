@@ -995,7 +995,7 @@ export var APIListBase = {
         },
         updateStatus:{
             method: "POST",
-            url: function(id, actionCode){return appSetting.apiDomain("PRO/DeTai/updateStatus_PRO_DeTai/") + id + "/" + actionCode} 
+            url: function(id, actionCode, typeId){return appSetting.apiDomain("PRO/DeTai/updateStatus_PRO_DeTai/") + id + "/" + actionCode + "/" + typeId} 
         },
         updateNCT: {
             method: "POST",
@@ -1004,7 +1004,11 @@ export var APIListBase = {
         print: {
             method: "POST",
             url: function(){return appSetting.apiDomain("PRO/DeTai/print")}
-        }
+        },
+        uploadFile: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DeTai/uploadFile/")}
+        },
     },
 
     PRO_BaoCaoNangSuatKhoaHoc: {

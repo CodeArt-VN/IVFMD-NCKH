@@ -56,13 +56,13 @@
                 </select>
                 </div>
 
-                <div class="c-control">
+                <div class="c-control" *ngIf="item.IDTrangThai_HRCO==20">
                     <label class="c-label" for="MaSoHDDD">Mã số HĐĐĐ
                 </label>
-                    <input [disabled]="item.IDTrangThai_HDDD<8" class="c-input" id="MaSoHDDD" [(ngModel)]="item.MaSoHDDD" formControlName="MaSoHDDD" type="text">
+                    <input class="c-input" id="MaSoHDDD" [(ngModel)]="item.MaSoHDDD" formControlName="MaSoHDDD" type="text">
                 </div>
 
-                <div class="c-control">
+                <div class="c-control" *ngIf="item.IDTrangThai_HRCO==20">
                     <label class="c-label" for="MaSoProtocalID">Mã số ProtocalID
                 </label>
                     <input class="c-input" id="MaSoProtocalID" [(ngModel)]="item.MaSoProtocalID" formControlName="MaSoProtocalID" type="text">

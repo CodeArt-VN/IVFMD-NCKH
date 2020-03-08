@@ -1,0 +1,30 @@
+<ion-header>
+  <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+    <ion-icon name="close" color="ivf1"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup">
+    <div padding></div>
+    <div class="c-control">
+      <label class="c-label" for="IDHinhThuc">Hình thức xét duyệt
+        <span
+          *ngIf="!formGroup.controls.IDHinhThuc.valid && !formGroup.controls.IDHinhThuc.pending && (formGroup.controls.IDHinhThuc.dirty || submitAttempt)"
+          ion-text color="danger">(*)</span>
+      </label>
+
+      <select class="c-input c-dropdown" [(ngModel)]="IDHinhThuc" formControlName="IDHinhThuc">
+        <option *ngFor="let t of hinhThucs" [value]="t.ID">{{t.ValueOfVar}}</option>
+      </select>
+    </div>
+
+    <div class="c-control">
+      <label class="c-label" for=""></label>
+
+      <button ion-button float-right (click)="updateSatus()" [disabled]="!formGroup.dirty">
+        Duyệt
+      </button>
+    </div>
+  </form>
+</ion-content>

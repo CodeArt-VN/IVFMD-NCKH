@@ -600,11 +600,11 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
 				});
 		});
 	}
-	updateStatus(deTaiId, actionCode) {
+	updateStatus(deTaiId, actionCode, typeId) {
 		let that = this.commonService;
 		let apiPath = APIList.PRO_DeTai.updateStatus;
 		return new Promise(function (resolve, reject) {
-			that.connect(apiPath.method, apiPath.url(deTaiId, actionCode), null).toPromise()
+			that.connect(apiPath.method, apiPath.url(deTaiId, actionCode, typeId), null).toPromise()
 				.then(data => {
 					resolve(data);
 				})
@@ -637,7 +637,21 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
 					reject(err);
 				})
 		});
-	}
+    }
+    
+    uploadFile(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DeTai.uploadFile;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()

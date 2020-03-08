@@ -5,23 +5,17 @@ import { AccountServiceProvider } from '../../../providers/CORE/account-service'
 import { ListPage } from '../../list-page';
 import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 import { DeTaiModalPage } from '../de-tai-modal/de-tai-modal';
-import { DeTaiDetailPage } from '../de-tai-detail/de-tai-detail';
-import { SysnopsisPage } from '../sysnopsis/sysnopsis';
-import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
-import { MauPhanTichDuLieuModalPage } from '../mau-phan-tich-du-lieu-modal/mau-phan-tich-du-lieu-modal';
-import { DonXinXetDuyetModalPage } from '../don-xin-xet-duyet-modal/don-xin-xet-duyet-modal';
-import { DonXinDanhGiaDaoDucModalPage } from '../don-xin-danh-gia-dao-duc-modal/don-xin-danh-gia-dao-duc-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
+import { CAT_ThietLapTemplateProvider } from '../../../providers/Services/CustomService'
 
-@IonicPage({ name: 'page-de-tai', segment: 'de-tai', priority: 'high' }) 
+@IonicPage({ name: 'page-de-tai', segment: 'de-tai', priority: 'high' })
 @Component({ selector: 'page-de-tai', templateUrl: 'de-tai.html' })
 export class DeTaiPage extends ListPage {
-    
-
+    templateUrl = '';
     FormGroups = [];
     constructor(
         public currentProvider: PRO_DeTaiProvider,
-
+        public thietLapProvider: CAT_ThietLapTemplateProvider,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -33,11 +27,12 @@ export class DeTaiPage extends ListPage {
         public accountService: AccountServiceProvider
     ) {
         super('page-de-tai', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
-        
+
+
     }
-    
-    preLoadData(){
-        
+
+    preLoadData() {
+
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
         super.preLoadData();
     }
@@ -67,8 +62,26 @@ export class DeTaiPage extends ListPage {
     add() {
         let item = {
             ID: 0,
-            
+
         };
         this.openDetail(item);
+    }
+
+    downloadTemplate() {
+        if (this.templateUrl == '') {
+            this.thietLapProvider.get().then((value: any) => {
+                try {
+                    if (value.Template.MauTrinhBayPPT)
+                        this.templateUrl = value.Template.MauTrinhBayPPT;
+                    this.download(value.Template.MauTrinhBayPPT);
+                } catch (error) {
+
+                }
+            }).catch((data) => {
+            });;
+        }
+        else {
+            this.download(this.templateUrl);
+        }
     }
 }
