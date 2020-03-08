@@ -453,19 +453,37 @@ export class DeTaiDetailPage extends BasePage {
   };
 
   updateNCT() {
-    this.loadingMessage('Lưu dữ liệu...').then(() => {
-      this.currentProvider.updateNCT(this.id, this.item.SoNCT).then((savedItem: any) => {
-        if (this.loading) this.loading.dismiss();
-        //this.events.publish('app:Update' + this.pageName);
-        //console.log('publish => app:Update ' + this.pageName);
-        this.refreshData();
-        this.toastMessage('Đã cập nhật!');
-      }).catch(err => {
-        console.log(err);
-        if (this.loading) this.loading.dismiss();
-        this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
-      });
-    })
+
+    let confirm = this.alertCtrl.create({
+      title: "Xác nhận",
+      message: 'Số NCT chỉ được nhập một lần duy nhất, bạn có chắc muốn lưu thông tin này??',
+      buttons: [
+          {
+              text: 'Thoát',
+              handler: () => {
+              }
+          },
+          {
+              text: 'Đồng ý',
+              handler: () => {
+                this.loadingMessage('Lưu dữ liệu...').then(() => {
+                  this.currentProvider.updateNCT(this.id, this.item.SoNCT).then((savedItem: any) => {
+                    if (this.loading) this.loading.dismiss();
+                    //this.events.publish('app:Update' + this.pageName);
+                    //console.log('publish => app:Update ' + this.pageName);
+                    this.refreshData();
+                    this.toastMessage('Đã cập nhật!');
+                  }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                  });
+                })
+              }
+          }
+      ]
+    });
+    confirm.present();
   };
 
   openBNModal() {

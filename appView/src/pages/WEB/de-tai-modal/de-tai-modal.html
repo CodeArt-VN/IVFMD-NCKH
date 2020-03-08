@@ -36,15 +36,6 @@
                 </div>
 
                 <div class="c-control">
-                    <label class="c-label" for="SoNCT">Số NCT
-                    <span
-                        *ngIf="!formGroup.controls.SoNCT.valid && !formGroup.controls.SoNCT.pending && (formGroup.controls.SoNCT.dirty || submitAttempt)"
-                        ion-text color="danger">(*)</span>
-                </label>
-                    <input class="c-input" id="SoNCT" [(ngModel)]="item.SoNCT" formControlName="SoNCT" type="text">
-                </div>
-
-                <div class="c-control">
                     <label class="c-label" for="IDChuNhiem">Chủ nhiệm
                     <span
                         *ngIf="!formGroup.controls.IDChuNhiem.valid && !formGroup.controls.IDChuNhiem.pending && (formGroup.controls.IDChuNhiem.dirty || submitAttempt)"
@@ -63,7 +54,7 @@
                 </div>
 
                 <div class="c-control" *ngIf="item.IDTrangThai_HRCO==20">
-                    <label class="c-label" for="MaSoProtocalID">Mã số ProtocalID
+                    <label class="c-label" for="MaSoProtocalID">Mã số Protocal ID
                 </label>
                     <input class="c-input" id="MaSoProtocalID" [(ngModel)]="item.MaSoProtocalID" formControlName="MaSoProtocalID" type="text">
                 </div>
