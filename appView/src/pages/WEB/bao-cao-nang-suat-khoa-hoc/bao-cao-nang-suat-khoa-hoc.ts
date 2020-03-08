@@ -5,11 +5,29 @@ import { AccountServiceProvider } from '../../../providers/CORE/account-service'
 import { ListPage } from '../../list-page';
 import { PRO_BaoCaoNangSuatKhoaHocCustomProvider } from '../../../providers/Services/CustomService';
 import { BaoCaoNangSuatKhoaHocModalPage } from '../bao-cao-nang-suat-khoa-hoc-modal/bao-cao-nang-suat-khoa-hoc-modal';
+import { DateAdapter } from "@angular/material";
 @IonicPage({ name: 'page-bao-cao-nang-suat-khoa-hoc', segment: 'bao-cao-nang-suat-khoa-hoc', priority: 'high' }) 
 @Component({ selector: 'page-bao-cao-nang-suat-khoa-hoc', templateUrl: 'bao-cao-nang-suat-khoa-hoc.html' })
 export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     FormGroups = [];
     canApprove = false;
+    statusList = [
+        { 'ID': 1, 'Code': 'ChuaDuyet', 'ValueOfVar': 'Chưa duyệt', 'Selected': false },
+        { 'ID': 2, 'Code': 'DaDuyet', 'ValueOfVar': 'Đã duyệt', 'Selected': false },
+    ];
+    showDatePicks = false;
+    showStatus = false;
+    timeQuery: any = {
+        DateFrom: null,
+        DateTo: null,
+    };
+    lang = {
+        months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+        days: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+        today: 'Hôm nay',
+        clear: 'Xóa',
+        close: 'Đóng',
+    };
     constructor(
         public currentProvider: PRO_BaoCaoNangSuatKhoaHocCustomProvider,
 
@@ -24,12 +42,46 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
         public accountService: AccountServiceProvider
     ) {
         super('page-bao-cao-nang-suat-khoa-hoc', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
+        this.query.ListStatusID = "";
+        this.query.DateFrom = "";
+        this.query.DateTo = "";
     }
     
     preLoadData(){
         this.canApprove = this.isUserCanUse('page-bao-cao-nang-suat-khoa-hoc-hrco');
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
         super.preLoadData();
+    }
+
+    filterByTime() {
+        this.showDatePicks = false;
+        this.query.DateFrom = this.timeQuery.DateFrom;
+        this.query.DateTo = this.timeQuery.DateTo;
+        this.loadData();
+    }
+
+    clearFilterByTime() {
+        this.showDatePicks = false;
+        this.query.DateFrom = '';
+        this.query.DateTo = '';
+        this.timeQuery.DateFrom = null;
+        this.timeQuery.DateTo = null;
+        this.loadData();
+    }
+
+    filterByStatus() {
+        this.showStatus = false;
+        this.query.ListStatusID = this.statusList.filter(c => c.Selected == true).map(d => d.ID).join();
+        this.loadData();
+    }
+
+    clearFilterByStatus() {
+        this.showStatus = false;
+        this.query.ListStatusID = '';
+        this.statusList.forEach((i) => {
+            i.Selected = false;
+        });
+        this.loadData();
     }
 
     isUserCanUse(functionCode) {

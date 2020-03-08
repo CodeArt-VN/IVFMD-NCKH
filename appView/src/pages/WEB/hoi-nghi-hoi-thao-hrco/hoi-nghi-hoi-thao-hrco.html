@@ -6,21 +6,26 @@
     </div>
     <div class="path">
         <div class="filter-block" (click)="showDatePicks = !showDatePicks">
-            <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Thời gian">
+            <input style="width: 165px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Thời gian tiến hành">
             <ion-icon [color]="(query.DateFrom == '' && query.DateTo == '')? 'ivf1':'danger'" class="split" name="ios-funnel"></ion-icon>
-        </div>
-        <div class="filter-block" (click)="showStatus = !showStatus">
-            <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Tình trạng">
-            <ion-icon [color]="query.ListStatusID != ''? 'danger':'ivf1'" class="split" name="ios-funnel"></ion-icon>
         </div>
     </div>
     <div class="tools">
+
         <button color="primary" ion-button icon-only clear (click)="refresh()">
             <ion-icon name="refresh"></ion-icon>
         </button>
 
-        <button color="ivf1" ion-button icon-only clear (click)="export()">
-            <ion-icon name="cloud-download"></ion-icon>
+        <button color="success" ion-button icon-only clear (click)="add()">
+            <ion-icon name="ios-add-circle"></ion-icon>
+        </button>
+
+        <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
+            <ion-icon name="ios-create"></ion-icon>
+        </button>
+
+        <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
+            <ion-icon name="ios-trash"></ion-icon>
         </button>
     </div>
 
@@ -30,6 +35,7 @@
 
 <ion-content>
     <ion-row>
+
         <ion-col class="doc-menu">
             <div class="root-items" *ngFor="let i of FormGroups">
                 <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
@@ -41,9 +47,7 @@
             </div>
         </ion-col>
 
-
         <ion-col class="doc-main">
-
             <div [ngClass]="showDatePicks ? '' : 'hideDatePickers'" style="position: absolute; z-index: 100; width: 432px; padding: 16px 0 10px 10px; border-radius: 0 0 5px 5px; background: white; box-shadow: 3px 3px 10px 0px #007cc56e;">
                 <ion-grid>
                     <ion-row responsive-sm>
@@ -77,61 +81,47 @@
                 </ion-grid>
             </div>
 
-            <div [ngClass]="showStatus ? '' : 'hideStatus'" style="position: absolute; z-index: 100; width: 160px; left:110px; padding: 10px 0 10px 10px; border-radius: 0 0 5px 5px; background: white; box-shadow: 3px 3px 10px 0px #007cc56e;">
-                <ion-grid>
-                    <ion-row *ngFor="let t of statusList" style="margin-bottom:2px">
-                        <label style="word-wrap:break-word" [for]="t.Code"> <input type="checkbox" [id]="t.Code" [(ngModel)]="t.Selected"> {{t.ValueOfVar}}</label>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col col-12 padding-right>
-                            <div class="c-control">
-                                <button small ion-button float-right (click)="filterByStatus()">
-                                    Lọc
-                                </button>
-                                <button small color="warning" ion-button float-right (click)="clearFilterByStatus()">
-                                    Bỏ lọc
-                                </button>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-            </div>
-
-            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstData"
+            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items" [selected]="selected"
                            [selectionType]="'single'" (select)='onSelect($event)'>
-
-                <ngx-datatable-column name="Tên đề tài" prop="TenDeTai" [width]="250" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetail(i)">
-                            {{i.TenDeTai}}
+                            Chi tiết
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>
-                <ngx-datatable-column name="Nghiên cứu viên chính" prop="NCVChinh" [width]="180"></ngx-datatable-column>
-                <ngx-datatable-column name="Số NCT" prop="SoNCT" [width]="100"></ngx-datatable-column>
-                <ngx-datatable-column name="Ngày duyệt NC" prop="NgayDuyetNghienCuu" [width]="170" [maxWidth]="170" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="Tên hội nghị" prop="TenHoiNghi"></ngx-datatable-column>
+                <ngx-datatable-column name="Địa điểm" prop="DiaDiem"></ngx-datatable-column>
+                <ngx-datatable-column name="Thời gian tiến hành" prop="ThoiGian" [width]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.NgayDuyetNghienCuu}}
+                        {{i.ThoiGianText}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="TG tiến hành" prop="ThoiGianTienHanh" [width]="130" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="Hết hạn đăng ký" prop="ThoiGianHetHan" [width]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.ThoiGianTienHanh}}
+                        {{i.ThoiGianHetHanText}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Tiến độ (%)" prop="CompletePercent" [width]="200" [maxWidth]="200" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="Số người đăng ký" prop="TongSoNguoiDangKy" [width]="160" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.CompletePercent}}
+                        <a (click)="openNguoiDangKy(i)">
+                            {{i.TongSoNguoiDangKy}}
+                        </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Số lần báo cáo" prop="SoLanDaBaoCao" [width]="120"></ngx-datatable-column>
-                <ngx-datatable-column name="Ngày báo cáo" prop="LastReportDate" [width]="150" [maxWidth]="150">
+                <ngx-datatable-column name="Số đề tài đăng ký" prop="TongSoDeTaiDangKy" [width]="160" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.LastReportDateText}}
+                        <a (click)="openDeTai(i)">
+                            {{i.TongSoDeTaiDangKy}}
+                        </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Người báo cáo" prop="LastReportBy" [width]="150"></ngx-datatable-column>
+                <ngx-datatable-column name="Người tạo" prop="CreatedBy"></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày tạo" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.CreatedDateText}}
+                    </ng-template>
+                </ngx-datatable-column>
             </ngx-datatable>
         </ion-col>
     </ion-row>

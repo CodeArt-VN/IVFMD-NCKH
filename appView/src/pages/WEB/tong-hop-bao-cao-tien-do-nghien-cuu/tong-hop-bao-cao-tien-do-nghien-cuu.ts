@@ -55,7 +55,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         this.query.ListStatusID = "";
         this.query.DateFrom = "";
         this.query.DateTo = "";
-        this.query.StatusID = "-1";
     }
 
     loadData() {
@@ -77,77 +76,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
     }
 
     preLoadData() {
-        //let a = TinyDatePicker('.c-date-picker1', {
-        //    mode: 'dp-below',
-        //    min: '1/1/2018',
-        //    max: '31/12/2030',
-        //    lang: this.lang,
-        //    format(date) {
-        //        //return date.toLocaleDateString();
-        //        let m = moment(date, "DD/MM/YYYY");
-        //        return m.format('DD/MM/YYYY');
-
-        //    },
-        //    parse(str) {
-        //        let date = moment(str, "DD/MM/YYYY");
-
-        //        if (date.isValid()) {
-        //            return date.toDate();
-        //        }
-        //        else {
-        //            return new Date();
-        //        }
-
-        //    },
-        //})
-        //    .on('select', (_, dp) => {
-        //        let text = this.commonService.dateFormat(dp.state.selectedDate, 'yyyy-mm-dd');
-        //        this.timeQuery.DateFrom = text;
-        //    });
-
-        //let b = TinyDatePicker('.c-date-picker2', {
-        //    mode: 'dp-below',
-        //    min: '1/1/2018',
-        //    max: '31/12/2030',
-        //    lang: this.lang,
-        //    format(date) {
-        //        //return date.toLocaleDateString();
-        //        let m = moment(date, "DD/MM/YYYY");
-        //        return m.format('DD/MM/YYYY');
-        //    },
-        //    parse(str) {
-        //        let date = moment(str, "DD/MM/YYYY");
-
-        //        if (date.isValid()) {
-        //            return date.toDate();
-        //        }
-        //        else {
-        //            return new Date();
-        //        }
-        //    },
-        //})
-        //    .on('select', (_, dp) => {
-        //        let text = this.commonService.dateFormat(dp.state.selectedDate, 'yyyy-mm-dd');
-        //        this.timeQuery.DateTo = text + ' 23:59:59';
-        //    });
-
-
-        //Promise.all([
-        //    this.serviceRoleProvider.read(),
-        //    this.branchesProvider.read(),
-        //    this.bookingSourcesProvider.read(),
-        //    this.bookingStatusProvider.read(),
-        //    this.staffProvider.read({ Type: 4 }),// 1: BS hội chẩn; 2: BS mổ; 3: BS dự trù; 4 BS cộng tác
-        //    this.staffProvider.read({ ChoPhepDatHen: true, SortBy: 'FirstName' }),
-        //]).then(values => {
-        //    this.serviceRoleList = values[0]['data'];
-        //    this.branchList = values[1]['data'];
-        //    this.sourceList = values[2]['data'];
-        //    this.statusList = values[3]['data'];
-        //    this.partnerList = values[4]['data'];
-        //    this.staffList = values[5]['data'];
-        //    super.preLoadData();
-        //});
 
         this.statusList.forEach((i) => {
             i.Selected = true;
@@ -163,7 +91,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         this.showDatePicks = false;
         this.query.DateFrom = this.timeQuery.DateFrom;
         this.query.DateTo = this.timeQuery.DateTo;
-        debugger
         this.loadData();
     }
 

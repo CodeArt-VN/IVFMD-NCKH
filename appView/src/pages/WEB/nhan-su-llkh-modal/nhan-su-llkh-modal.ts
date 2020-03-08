@@ -100,7 +100,6 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
             self.NamPhongHocHam = ko.observable(item.NamPhongHocHam || "");
             self.HocHam = ko.observable(item.HocHam || "");
-            self.HocVi = ko.observable(item.HocVi || "");
             self.HocViThacSy = ko.observable(item.HocViThacSy || "");
             self.NamHocViThacSy = ko.observable(item.NamHocViThacSy || "");
             self.HocViTienSy = ko.observable(item.HocViTienSy || "");

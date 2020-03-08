@@ -285,6 +285,8 @@ export class ListPage extends BasePage {
             apiPath = APIList.FILE_Import.BangGiaTheoKhach;
         } else if (this.pageName == 'page-tong-hop-bao-cao-tien-do-nghien-cuu') {
             apiPath = APIList.FILE_Export.BaoCaoTienDoNghienCuu;
+        } else if (this.pageName == 'page-bao-cao-nang-suat-khoa-hoc') {
+            apiPath = APIList.FILE_Export.BaoCaoNangSuatKhoaHoc;
         }
 
 

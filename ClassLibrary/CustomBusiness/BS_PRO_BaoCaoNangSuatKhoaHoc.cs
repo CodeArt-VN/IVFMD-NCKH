@@ -24,8 +24,47 @@ namespace BaseBusiness
             }
             else query = query.Where(c => false);
 
+            List<int> ListStatusID = new List<int>();
             //Query keyword
+            if (QueryStrings.Any(d => d.Key == "ListStatusID") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ListStatusID").Value;
+                try
+                {
+                    ListStatusID = keyword.Split(',').Select(int.Parse).ToList();
+                    if (ListStatusID.Count > 0 && ListStatusID.Count == 1)
+                    {
+                        if (ListStatusID.Contains(1))
+                            query = query.Where(c => c.IsApproved == false);
+                        if (ListStatusID.Contains(2))
+                            query = query.Where(c => c.IsApproved == true);
+                    }
+                }
+                catch { }
+            }
 
+            if (QueryStrings.Any(d => d.Key == "DateFrom") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value.Replace("\\", "");
+                try
+                {
+
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
+                    query = query.Where(c => c.NgayBaoCao >= dt);
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateTo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value.Replace("\\", "");
+                try
+                {
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
+                    query = query.Where(c => c.NgayBaoCao <= dt);
+                }
+                catch { }
+            }
 
 
             //Query ID (int)
@@ -189,7 +228,8 @@ namespace BaseBusiness
                 NCVChinh = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
                 IsApproved = s.IsApproved,
                 ApprovedDate = s.ApprovedDate,
-                TrangThaiDuyet = s.IsApproved ? "Đã duyệt" : "Chưa duyệt"
+                TrangThaiDuyet = s.IsApproved ? "Đã duyệt" : "Chưa duyệt",
+                GhiChuKinhPhi = s.tbl_CAT_KinhPhi.GhiChu,
             });
         }
 

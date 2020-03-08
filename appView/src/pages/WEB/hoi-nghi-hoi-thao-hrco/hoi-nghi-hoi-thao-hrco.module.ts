@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { BaoCaoNangSuatKhoaHocPage } from './bao-cao-nang-suat-khoa-hoc';
+import { HoiNghiHoiThaoHRCOPage } from './hoi-nghi-hoi-thao-hrco';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FileUploadModule } from 'ng2-file-upload';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 @NgModule({
   declarations: [
-        BaoCaoNangSuatKhoaHocPage,
+        HoiNghiHoiThaoHRCOPage,
   ],
   imports: [
       NgxDatatableModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      IonicPageModule.forChild(BaoCaoNangSuatKhoaHocPage)
+      IonicPageModule.forChild(HoiNghiHoiThaoHRCOPage), FileUploadModule
   ],
   exports: [
-      BaoCaoNangSuatKhoaHocPage
+      HoiNghiHoiThaoHRCOPage
   ]
 })
-export class BaoCaoNangSuatKhoaHocPageModule {}
+export class HoiNghiHoiThaoHRCOPageModule {}

@@ -69,6 +69,11 @@ namespace ClassLibrary
         public string NgayKy_Thang { get; set; }
         public string NgayKy_Nam { get; set; }
         public string NgayKy_ChuKy { get; set; }
+        public string NamPhongHocHam { get; set; }
+        public string HocViThacSy { get; set; }
+        public string NamHocViThacSy { get; set; }
+        public string HocViTienSy { get; set; }
+        public string NamHocViTienSy { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
@@ -131,6 +136,11 @@ namespace DTOModel
 		public string NgayKy_Thang { get; set; }
 		public string NgayKy_Nam { get; set; }
 		public string NgayKy_ChuKy { get; set; }
+		public string NamPhongHocHam { get; set; }
+		public string HocViThacSy { get; set; }
+		public string NamHocViThacSy { get; set; }
+		public string HocViTienSy { get; set; }
+		public string NamHocViTienSy { get; set; }
 	}
 }
 
@@ -206,7 +216,12 @@ namespace BaseBusiness
 				NgayKy_Ngay = s.NgayKy_Ngay,							
 				NgayKy_Thang = s.NgayKy_Thang,							
 				NgayKy_Nam = s.NgayKy_Nam,							
-				NgayKy_ChuKy = s.NgayKy_ChuKy,					
+				NgayKy_ChuKy = s.NgayKy_ChuKy,							
+				NamPhongHocHam = s.NamPhongHocHam,							
+				HocViThacSy = s.HocViThacSy,							
+				NamHocViThacSy = s.NamHocViThacSy,							
+				HocViTienSy = s.HocViTienSy,							
+				NamHocViTienSy = s.NamHocViTienSy,					
 			});
                               
         }
@@ -270,7 +285,12 @@ namespace BaseBusiness
 					NgayKy_Ngay = dbResult.NgayKy_Ngay,							
 					NgayKy_Thang = dbResult.NgayKy_Thang,							
 					NgayKy_Nam = dbResult.NgayKy_Nam,							
-					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,
+					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,							
+					NamPhongHocHam = dbResult.NamPhongHocHam,							
+					HocViThacSy = dbResult.HocViThacSy,							
+					NamHocViThacSy = dbResult.NamHocViThacSy,							
+					HocViTienSy = dbResult.HocViTienSy,							
+					NamHocViTienSy = dbResult.NamHocViTienSy,
 				};
 			}
 			else
@@ -671,6 +691,41 @@ namespace BaseBusiness
                 query = query.Where(d=>d.NgayKy_ChuKy == keyword);
             }
 
+			//Query NamPhongHocHam (string)
+			if (QueryStrings.Any(d => d.Key == "NamPhongHocHam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NamPhongHocHam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NamPhongHocHam").Value;
+                query = query.Where(d=>d.NamPhongHocHam == keyword);
+            }
+
+			//Query HocViThacSy (string)
+			if (QueryStrings.Any(d => d.Key == "HocViThacSy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "HocViThacSy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "HocViThacSy").Value;
+                query = query.Where(d=>d.HocViThacSy == keyword);
+            }
+
+			//Query NamHocViThacSy (string)
+			if (QueryStrings.Any(d => d.Key == "NamHocViThacSy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NamHocViThacSy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NamHocViThacSy").Value;
+                query = query.Where(d=>d.NamHocViThacSy == keyword);
+            }
+
+			//Query HocViTienSy (string)
+			if (QueryStrings.Any(d => d.Key == "HocViTienSy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "HocViTienSy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "HocViTienSy").Value;
+                query = query.Where(d=>d.HocViTienSy == keyword);
+            }
+
+			//Query NamHocViTienSy (string)
+			if (QueryStrings.Any(d => d.Key == "NamHocViTienSy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NamHocViTienSy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NamHocViTienSy").Value;
+                query = query.Where(d=>d.NamHocViTienSy == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -739,7 +794,12 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.NamPhongHocHam = item.NamPhongHocHam;							
+				dbitem.HocViThacSy = item.HocViThacSy;							
+				dbitem.NamHocViThacSy = item.NamHocViThacSy;							
+				dbitem.HocViTienSy = item.HocViTienSy;							
+				dbitem.NamHocViTienSy = item.NamHocViTienSy;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -814,7 +874,12 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.NamPhongHocHam = item.NamPhongHocHam;							
+				dbitem.HocViThacSy = item.HocViThacSy;							
+				dbitem.NamHocViThacSy = item.NamHocViThacSy;							
+				dbitem.HocViTienSy = item.HocViTienSy;							
+				dbitem.NamHocViTienSy = item.NamHocViTienSy;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

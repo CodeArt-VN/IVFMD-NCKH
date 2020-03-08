@@ -32,7 +32,7 @@ export class ListSelectModalPage extends DetailPage {
   ) {
 
     super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
-    this.pageName = "page-tags";
+    this.pageName = "page-de-tai";
     this.events.unsubscribe('app:Close-page-list-select-modal');
     this.events.subscribe('app:Close-page-list-select-modal', () => {
       this.dismiss();

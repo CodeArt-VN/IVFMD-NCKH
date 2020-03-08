@@ -387,6 +387,11 @@
           <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
           <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
           <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NamPhongHocHam" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HocViThacSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NamHocViThacSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HocViTienSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NamHocViTienSy" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -1164,6 +1169,11 @@
           <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
           <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
           <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NamPhongHocHam" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HocViThacSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NamHocViThacSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HocViTienSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NamHocViTienSy" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="tbl_PRO_MauPhanTichDuLieu">
           <Key>
@@ -4428,6 +4438,11 @@
           <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -5291,6 +5306,11 @@
           <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_LLKH" ToRole="tbl_PRO_DeTai" />
+          <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_MauPhanTichDuLieu">
           <Key>
@@ -7606,6 +7626,11 @@
           <EntitySetMapping Name="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_HRM_STAFF_NhanSu_LLKH">
               <MappingFragment StoreEntitySet="tbl_CUS_HRM_STAFF_NhanSu_LLKH">
+                <ScalarProperty Name="NamHocViTienSy" ColumnName="NamHocViTienSy" />
+                <ScalarProperty Name="HocViTienSy" ColumnName="HocViTienSy" />
+                <ScalarProperty Name="NamHocViThacSy" ColumnName="NamHocViThacSy" />
+                <ScalarProperty Name="HocViThacSy" ColumnName="HocViThacSy" />
+                <ScalarProperty Name="NamPhongHocHam" ColumnName="NamPhongHocHam" />
                 <ScalarProperty Name="NgayKy_ChuKy" ColumnName="NgayKy_ChuKy" />
                 <ScalarProperty Name="NgayKy_Nam" ColumnName="NgayKy_Nam" />
                 <ScalarProperty Name="NgayKy_Thang" ColumnName="NgayKy_Thang" />
@@ -8408,6 +8433,11 @@
           <EntitySetMapping Name="tbl_PRO_LLKH">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_LLKH">
               <MappingFragment StoreEntitySet="tbl_PRO_LLKH">
+                <ScalarProperty Name="NamHocViTienSy" ColumnName="NamHocViTienSy" />
+                <ScalarProperty Name="HocViTienSy" ColumnName="HocViTienSy" />
+                <ScalarProperty Name="NamHocViThacSy" ColumnName="NamHocViThacSy" />
+                <ScalarProperty Name="HocViThacSy" ColumnName="HocViThacSy" />
+                <ScalarProperty Name="NamPhongHocHam" ColumnName="NamPhongHocHam" />
                 <ScalarProperty Name="NgayKy_ChuKy" ColumnName="NgayKy_ChuKy" />
                 <ScalarProperty Name="NgayKy_Nam" ColumnName="NgayKy_Nam" />
                 <ScalarProperty Name="NgayKy_Thang" ColumnName="NgayKy_Thang" />

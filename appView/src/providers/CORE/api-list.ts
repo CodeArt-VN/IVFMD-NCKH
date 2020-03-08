@@ -1072,6 +1072,49 @@ export var APIListBase = {
             url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThao/uploadFullText_PRO_HoiNghiHoiThao/")}
         },
     },
+
+    PRO_HoiNghiHoiThaoDangKy: {
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/") + id }
+        },
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/") }
+        },
+        getListByHoiNghi: {
+            method: "GET",
+            url: function (idHoiNghi) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/get_PRO_HoiNghiHoiThaoDangKyTheoHoiNghi/") + idHoiNghi }
+        },
+        getListChuaDangKy: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/get_PRO_HoiNghiHoiThaoChuaDangKy/") }
+        },
+        getListDeTaiByHoiNghi: {
+            method: "GET",
+            url: function (idHoiNghi) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/get_PRO_HoiNghiHoiThaoDangKyDeTaiTheoHoiNghi/") + idHoiNghi }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/") + id }
+        },
+        uploadAbstract: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/uploadAbstract_PRO_HoiNghiHoiThaoDangKy/") }
+        },
+        uploadFullText: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/uploadFullText_PRO_HoiNghiHoiThaoDangKy/") }
+        },
+    },
     
     SYS_Var:{
         getList:{

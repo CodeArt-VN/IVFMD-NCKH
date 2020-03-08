@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable'
-import { PRO_BaoCaoNangSuatKhoaHocProvider } from '../../../providers/Services/Services';
+import { PRO_BaoCaoNangSuatKhoaHocCustomProvider } from '../../../providers/Services/CustomService';
 import { CAT_KinhPhiProvider } from '../../../providers/Services/Services';
 import { CAT_NhomProvider } from '../../../providers/Services/Services';
 import { CAT_SiteProvider } from '../../../providers/Services/Services';
@@ -23,7 +23,7 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
     nhoms = [];
     canApprove = false;
     constructor(
-        public currentProvider: PRO_BaoCaoNangSuatKhoaHocProvider,
+        public currentProvider: PRO_BaoCaoNangSuatKhoaHocCustomProvider,
         public kinhphiProvider: CAT_KinhPhiProvider,
         public nhomProvider: CAT_NhomProvider,
         public siteProvider: CAT_SiteProvider,
@@ -64,6 +64,21 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
                 this.nhoms = values[2]['data'];
                 super.preLoadData();
             })
+    }
+
+    updateStatus(action) {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.updateStatus(this.item.ID, action).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
     }
 
     loadedData() {
