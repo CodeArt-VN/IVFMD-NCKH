@@ -10,16 +10,16 @@
         <a class="active">Hội nghị, hội thảo</a>
     </div>
     <div class="tools">
-        <button ion-button icon-only clear (click)="add()">
-            Đăng ký
-        </button>
-
         <button color="primary" ion-button icon-only clear (click)="refresh()">
             <ion-icon name="refresh"></ion-icon>
         </button>
 
         <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
             <ion-icon name="ios-trash"></ion-icon>
+        </button>
+
+        <button color="success" ion-button small (click)="add()">
+            Đăng ký hội nghị
         </button>
     </div>
 
@@ -44,8 +44,8 @@
                            [selectionType]="'single'" (select)='onSelect($event)'>
                 <ngx-datatable-column name="" prop="" [width]="130" [maxWidth]="130" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="openDetail(i)">
-                            Đăng ký đề tài
+                        <a (click)="resgister(i)" [ngClass]="i.CoTheDangKy ? '' : 'text-ios-danger'">
+                            {{i.ChoPhepDangKy}}
                         </a>
                     </ng-template>
                 </ngx-datatable-column>

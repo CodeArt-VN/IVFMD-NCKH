@@ -103,7 +103,7 @@ namespace BaseBusiness
 
         public static IQueryable<DTO_PRO_HoiNghiHoiThao_DangKy> get_PRO_HoiNghiHoiThao_DangKyTheoNCV(AppEntities db, Dictionary<string, string> QueryStrings, int StaffID)
         {
-            var query = db.tbl_PRO_HoiNghiHoiThao_DangKy.Where(c => c.IDNhanVien == StaffID).AsQueryable();
+            var query = db.tbl_PRO_HoiNghiHoiThao_DangKy.Where(c => c.IDNhanVien == StaffID && c.tbl_PRO_HoiNghiHoiThao.IsDeleted == false).AsQueryable();
 
             return query
             .Select(s => new DTO_PRO_HoiNghiHoiThao_DangKy()
@@ -117,7 +117,9 @@ namespace BaseBusiness
                 ThoiGianHetHan = s.tbl_PRO_HoiNghiHoiThao.ThoiGianHetHan,
                 SoDeTaiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count(d => d.IDDangKy == s.ID),
                 CreatedBy = s.CreatedBy,
-                CreatedDate = s.CreatedDate
+                CreatedDate = s.CreatedDate,
+                CoTheDangKy = s.tbl_PRO_HoiNghiHoiThao.ThoiGianHetHan >= DateTime.Now,
+                ChoPhepDangKy = s.tbl_PRO_HoiNghiHoiThao.ThoiGianHetHan >= DateTime.Now ? "Đăng ký đề tài" : "Đã hết hạn"
             });
         }
 
@@ -136,8 +138,8 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
-                CoTheDangKy = s.ThoiGianHetHan < DateTime.Now,
-                ChoPhepDangKy = s.ThoiGianHetHan < DateTime.Now ? "Đăng ký đề tài" : "Đã hết hạn"
+                CoTheDangKy = s.ThoiGianHetHan >= DateTime.Now,
+                ChoPhepDangKy = s.ThoiGianHetHan >= DateTime.Now ? "Đăng ký" : "Đã hết hạn"
             }).OrderBy(c => c.ThoiGianHetHan);
 
             return query;

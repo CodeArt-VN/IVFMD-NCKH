@@ -19,6 +19,10 @@ APIList.FILE_Export = {
         method: "GET",
         url: function () { return appSetting.apiDomain("CUS/FILE/BaoCaoNangSuatKhoaHoc") }
     },
+    HoiNghiHoiThao: {
+        method: "GET",
+        url: function () { return appSetting.apiDomain("CUS/FILE/HoiNghiHoiThao") }
+    },
 };
 
 

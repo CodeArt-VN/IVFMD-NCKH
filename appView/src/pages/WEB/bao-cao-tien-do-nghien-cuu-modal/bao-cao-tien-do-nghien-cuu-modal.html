@@ -46,14 +46,14 @@
 
         <div class="c-control" *ngIf="item.ID==0">
             <label class="c-label" for=""></label>
-            <button ion-button float-right (click)="saveChange()">
+            <button ion-button float-right *ngIf="!isView" (click)="saveChange()">
                 Lưu
-            </button>
+            </button> 
         </div>
         <div class="c-control" *ngIf="item.ID!=0">
             <label class="c-label" for=""></label>
 
-            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+            <button ion-button float-right (click)="saveChange()" *ngIf="!isView" [disabled]="!formGroup.dirty">
                 Lưu
             </button>
             <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">

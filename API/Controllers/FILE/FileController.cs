@@ -423,6 +423,47 @@ namespace API.Controllers.DOC
             return downloadFile(fileurl);
         }
         #endregion
+
+        #region HoiNghiHoiThao
+        [Route("HoiNghiHoiThao")]
+        public HttpResponseMessage Get_HoiNghiHoiThao()
+        {
+            string fileurl = "";
+            var package = GetTemplateWorkbook("DS-BaoCaoHoiNghiHoiThao.xlsx", "DS-BaoCaoHoiNghiHoiThao.xlsx-" + DateTime.Now.ToString("HHmmss") + ".xlsx", out fileurl);
+            ExcelWorkbook workBook = package.Workbook;
+            if (workBook != null)
+            {
+                var ws = workBook.Worksheets.FirstOrDefault(); //Worksheets["DS"];
+                var data = BS_PRO_HoiNghiHoiThao_DangKyDeTai.getExcel_PRO_HoiNghiHoiThao_DangKyDeTaiTheoHoiNghi(db, QueryStrings);
+
+                int rowid = 3;
+                int sort = 1;
+                foreach (var item in data)
+                {
+                    int col = 2;
+                    ws.Cells[rowid, col].Value = sort; col++;
+                    ws.Cells[rowid, col].Value = item.TenHoiNghi; col++;
+                    ws.Cells[rowid, col].Value = item.DiaDiem; col++;
+                    ws.Cells[rowid, col].Value = item.ThoiGian.ToString("dd/MM/yyy HH:mm:ss"); col++;
+                    ws.Cells[rowid, col].Value = item.ThoiGianHetHan.Value.ToString("dd/MM/yyy HH:mm:ss"); col++;
+                    ws.Cells[rowid, col].Value = item.TongSoNguoiDangKy; col++;
+                    ws.Cells[rowid, col].Value = item.TongSoDeTaiDangKy; col++;
+                    ws.Cells[rowid, col].Value = item.TenNCV; col++;
+                    ws.Cells[rowid, col].Value = item.TenDeTai; col++;
+                    ws.Cells[rowid, col].Value = item.HinhThucDangKy; col++;
+                    ws.Cells[rowid, col].Value = item.TrangThai; col++;
+                    ws.Cells[rowid, col].Value = item.CreatedDate.ToString("dd/MM/yyy HH:mm:ss"); col++;
+
+                    rowid++;
+                    sort++;
+                }
+
+                package.Save();
+            }
+
+            return downloadFile(fileurl);
+        }
+        #endregion
     }
 
 

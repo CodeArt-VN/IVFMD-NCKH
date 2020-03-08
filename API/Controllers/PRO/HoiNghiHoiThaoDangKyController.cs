@@ -45,6 +45,12 @@ namespace API.Controllers.PRO
             return BS_PRO_HoiNghiHoiThao_DangKyDeTai.get_PRO_HoiNghiHoiThao_DangKyDeTaiTheoHoiNghi(db, QueryStrings, idHoiNghi);
         }
 
+        [Route("get_PRO_HoiNghiHoiThaoDangKyDeTaiTheoDangKy/{idDangKy:int}")]
+        public IQueryable<DTO_PRO_HoiNghiHoiThao_DangKyDeTai> GetDeTaiByDangKy(int idDangKy)
+        {
+            return BS_PRO_HoiNghiHoiThao_DangKyDeTai.get_PRO_HoiNghiHoiThao_DangKyDeTaiTheoDangKy(db, QueryStrings, idDangKy);
+        }
+
         [Route("{id:int}", Name = "get_PRO_HoiNghiHoiThaoDangKy")]
         [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao_DangKy))]
         public IHttpActionResult Get(int id)
@@ -78,34 +84,6 @@ namespace API.Controllers.PRO
                 return StatusCode(HttpStatusCode.NoContent);
             else
                 return NotFound();
-        }
-
-        [Route("uploadAbstract_PRO_HoiNghiHoiThaoDangKy")]
-        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao_DangKy))]
-        public IHttpActionResult UploadAbstract(DTO_PRO_HoiNghiHoiThao_DangKy item)
-        {
-            //BS_PRO_HoiNghiHoiThao_DangKy.uploadAbstract_PRO_HoiNghiHoiThaoDangKy(db, item.ID, item.BaiAbstract, Username);
-            //var res = BS_PRO_HoiNghiHoiThao_DangKy.get_PRO_HoiNghiHoiThaoDangKy(db, item.ID);
-            //if (res == null)
-            //{
-            //    return NotFound();
-            //}
-            //return Ok(res);
-            return null;
-        }
-
-        [Route("uploadFullText_PRO_HoiNghiHoiThaoDangKy")]
-        [ResponseType(typeof(DTO_PRO_HoiNghiHoiThao_DangKy))]
-        public IHttpActionResult UploadFullText(DTO_PRO_HoiNghiHoiThao_DangKy item)
-        {
-            //BS_PRO_HoiNghiHoiThao_DangKy.uploadFullText_PRO_HoiNghiHoiThaoDangKy(db, item.ID, item.BaiFulltext, Username);
-            //var res = BS_PRO_HoiNghiHoiThao_DangKy.get_PRO_HoiNghiHoiThaoDangKy(db, item.ID);
-            //if (res == null)
-            //{
-            //    return NotFound();
-            //}
-            //return Ok(res);
-            return null;
         }
 
         [Route("")]

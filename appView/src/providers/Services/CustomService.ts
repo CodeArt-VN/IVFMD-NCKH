@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider, PRO_BaoCaoNangSuatKhoaHocProvider, PRO_HoiNghiHoiThaoProvider, PRO_HoiNghiHoiThaoDangKyProvider } from '../Services/Services';
+import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider, PRO_BaoCaoNangSuatKhoaHocProvider, PRO_HoiNghiHoiThaoProvider, PRO_HoiNghiHoiThaoDangKyProvider, PRO_HoiNghiHoiThaoDangKyDeTaiProvider } from '../Services/Services';
 import { CommonServiceProvider } from '../CORE/common-service';
 import { APIList } from '../CORE/global-variable';
 import { SearchConfig } from './SearchConfig';
@@ -770,11 +770,70 @@ export class PRO_HoiNghiHoiThaoDangKyCustomProvider extends PRO_HoiNghiHoiThaoDa
                 });
         });
     }
+    getListDeTaiByDangKy(idDangKy) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.getListDeTaiByDangKy;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDangKy), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
     getListChuaDangKy() {
         let that = this.commonService;
         let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.getListChuaDangKy;
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_HoiNghiHoiThaoDangKyDeTaiCustomProvider extends PRO_HoiNghiHoiThaoDangKyDeTaiProvider {
+    constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+    updateStatus(id, actionCode) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKyDeTai.updateStatus;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(id, actionCode), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    uploadAbstract(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKyDeTai.uploadAbstract;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    uploadFullText(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKyDeTai.uploadFullText;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
                 .then(data => {
                     resolve(data);
                 })

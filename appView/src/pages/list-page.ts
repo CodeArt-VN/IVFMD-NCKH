@@ -232,6 +232,18 @@ export class ListPage extends BasePage {
         })
     }
 
+    exportCustomQuery(query) {
+        this.showActionMore = false;
+        let apiPath = this.getAPIPathByPageName(this.pageName);
+        this.commonService.download(apiPath, query).then((response: any) => {
+            // var contentDispositionHeader = response.headers.get('Content-Disposition');
+            // var name = contentDispositionHeader.split(';')[1].trim().split('=')[1];
+            this.downloadURLContent(appSetting.mainService.base + response._body);
+        }).catch(err => {
+
+        })
+    }
+
     download(url){
          this.downloadURLContent( appSetting.mainService.base + url);
     }
@@ -287,6 +299,8 @@ export class ListPage extends BasePage {
             apiPath = APIList.FILE_Export.BaoCaoTienDoNghienCuu;
         } else if (this.pageName == 'page-bao-cao-nang-suat-khoa-hoc') {
             apiPath = APIList.FILE_Export.BaoCaoNangSuatKhoaHoc;
+        } else if (this.pageName == 'page-hoi-nghi-hoi-thao-hrco') {
+            apiPath = APIList.FILE_Export.HoiNghiHoiThao;
         }
 
 
@@ -295,26 +309,6 @@ export class ListPage extends BasePage {
         return apiPath;
     }
 
-    private downloadContent(name, data) {
-        var pom = document.createElement('a');
-        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-        pom.setAttribute('download', name);
-        pom.style.display = 'none';
-        document.body.appendChild(pom);
-        pom.click();
-        document.body.removeChild(pom);
-    }
-
-    private downloadURLContent(url) {
-        var pom = document.createElement('a');
-        pom.setAttribute('target', '_blank');
-        pom.setAttribute('href', url);
-        //pom.setAttribute('target', '_blank');
-        pom.style.display = 'none';
-        document.body.appendChild(pom);
-        pom.click();
-        document.body.removeChild(pom);
-    }
 
     onPage(event) {
 

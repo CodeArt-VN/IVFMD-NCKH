@@ -1,0 +1,48 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="TenDeTai">
+                Tên đề tài
+                <span *ngIf="!formGroup.controls.TenDeTai.valid && !formGroup.controls.TenDeTai.pending && (formGroup.controls.TenDeTai.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="TenDeTai" [(ngModel)]="item.TenDeTai" formControlName="TenDeTai" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="IDHinhThucDangKy">
+                Hình thức đăng ký
+                <span *ngIf="!formGroup.controls.IDHinhThucDangKy.valid && !formGroup.controls.IDHinhThucDangKy.pending && (formGroup.controls.IDHinhThucDangKy.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDHinhThucDangKy" formControlName="IDHinhThucDangKy">
+                <option *ngFor="let t of hinhThucDangKyList" [value]="t.ID">{{t.ValueOfVar}}</option>
+            </select>
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

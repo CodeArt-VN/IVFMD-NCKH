@@ -9,6 +9,14 @@
         <button color="primary" ion-button icon-only clear (click)="preLoadData()">
             <ion-icon name="refresh"></ion-icon>
         </button>
+
+        <button style="margin-top:12px" color="success" ion-button small (click)="action('Approved')">
+            Duyệt
+        </button>
+
+        <button style="margin-top:12px" color="danger" ion-button small (click)="action('UnApproved')">
+            Hủy duyệt
+        </button>
     </ion-row>
 </ion-header>
 
@@ -16,11 +24,12 @@
     <ion-row>
         <ion-col class="doc-main">
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow"
-                           [selectionType]="'single'">
+                           [selectionType]="'single'" (select)='onSelect($event)'>
 
                 <ngx-datatable-column name="Người đăng ký" prop="TenNCV" [width]="200"></ngx-datatable-column>
                 <ngx-datatable-column name="Đề tài đăng ký" prop="TenDeTai"></ngx-datatable-column>
                 <ngx-datatable-column name="Hình thức đăng ký" prop="HinhThucDangKy" [width]="150"></ngx-datatable-column>
+                <ngx-datatable-column name="Trạng thái" prop="TrangThai" [width]="150"></ngx-datatable-column>
                 <ngx-datatable-column name="Ngày đăng ký" prop="CreatedDate" [width]="150" [maxWidth]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         {{i.CreatedDateText}}

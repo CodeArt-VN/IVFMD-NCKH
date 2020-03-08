@@ -87,6 +87,21 @@ export class HoiNghiHoiThaoHRCOPage extends ListPage {
         myModal.present(); 
     }
 
+    exportOnly(item) {
+        let query = {
+            IDHoiNghiHoiThao: item.ID 
+        };
+        this.exportCustomQuery(query);
+    }
+
+    exportAll() {
+        let query = {
+            DateFrom: this.query.DateFrom,
+            DateTo: this.query.DateTo,
+        };
+        this.exportCustomQuery(query);
+    }
+
     add() {
         let item = {
             ID: 0,

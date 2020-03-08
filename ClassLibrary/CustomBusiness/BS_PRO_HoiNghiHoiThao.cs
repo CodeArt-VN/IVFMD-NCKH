@@ -198,7 +198,7 @@ namespace BaseBusiness
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
                 TongSoNguoiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKy.Count(),
-                TongSoDeTaiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count()
+                TongSoDeTaiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count(c=> c.IDTrangThai != -(int)SYSVarType.TrangThai_HNHT_ChoGui)
             });
         }
 

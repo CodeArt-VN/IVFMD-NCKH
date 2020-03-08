@@ -19,8 +19,8 @@
                            [selectionType]="'single'">
                 <ngx-datatable-column name="" prop="" [width]="110" [maxWidth]="110" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="resgister(i)">
-                            Đăng ký
+                        <a (click)="resgister(i)"  [ngClass]="i.CoTheDangKy ? '' : 'text-ios-danger'">
+                            {{i.ChoPhepDangKy}}
                         </a>
                     </ng-template>
                 </ngx-datatable-column>

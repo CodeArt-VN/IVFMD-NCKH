@@ -259,5 +259,27 @@ export class BasePage {
     }
 
 
+    downloadContent(name, data) {
+        var pom = document.createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+        pom.setAttribute('download', name);
+        pom.style.display = 'none';
+        document.body.appendChild(pom);
+        pom.click();
+        document.body.removeChild(pom);
+    }
+
+    downloadURLContent(url) {
+        var pom = document.createElement('a');
+        pom.setAttribute('target', '_blank');
+        pom.setAttribute('href', url);
+        //pom.setAttribute('target', '_blank');
+        pom.style.display = 'none';
+        document.body.appendChild(pom);
+        pom.click();
+        document.body.removeChild(pom);
+    }
+
+
 
 }

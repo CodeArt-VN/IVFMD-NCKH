@@ -5,6 +5,7 @@ import { AccountServiceProvider } from '../../../providers/CORE/account-service'
 import { ListPage } from '../../list-page';
 import { PRO_HoiNghiHoiThaoDangKyCustomProvider } from '../../../providers/Services/CustomService';
 import { HoiNghiHoiThaoModalPage } from '../hoi-nghi-hoi-thao-modal/hoi-nghi-hoi-thao-modal';
+import { HoiNghiHoiThaoDangKyDeTaiModalPage } from '../hoi-nghi-hoi-thao-dang-ky-de-tai-modal/hoi-nghi-hoi-thao-dang-ky-de-tai-modal';
 @IonicPage({ name: 'page-hoi-nghi-hoi-thao', segment: 'hoi-nghi-hoi-thao', priority: 'high' }) 
 @Component({ selector: 'page-hoi-nghi-hoi-thao', templateUrl: 'hoi-nghi-hoi-thao.html' })
 export class HoiNghiHoiThaoPage extends ListPage {
@@ -42,6 +43,11 @@ export class HoiNghiHoiThaoPage extends ListPage {
             i.ThoiGianHetHanText = this.commonService.dateFormat(i.ThoiGianHetHan, 'dd/mm/yy hh:MM');
             i.CreatedDateText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');
         })
+    }
+
+    resgister(item) {
+        let myModal = this.modalCtrl.create(HoiNghiHoiThaoDangKyDeTaiModalPage, { 'idDangKy': item.ID, 'itemData': item });
+        myModal.present();
     }
 
     add() {

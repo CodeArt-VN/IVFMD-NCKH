@@ -8,7 +8,7 @@ import { TongHopBaoCaoTienDoNghienCuuModalPage } from '../tong-hop-bao-cao-tien-
 import * as moment from 'moment';
 import TinyDatePicker from 'tiny-date-picker';
 import { DateAdapter } from "@angular/material";
-
+import { TienDoNghienCuuModalPage } from '../tien-do-nghien-cuu-modal/tien-do-nghien-cuu-modal';
 @IonicPage({ name: 'page-tong-hop-bao-cao-tien-do-nghien-cuu', segment: 'tong-hop-bao-cao-tien-do-nghien-cuu', priority: 'high' }) 
 @Component({ selector: 'page-tong-hop-bao-cao-tien-do-nghien-cuu', templateUrl: 'tong-hop-bao-cao-tien-do-nghien-cuu.html' })
 export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
@@ -76,7 +76,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
     }
 
     preLoadData() {
-
         this.statusList.forEach((i) => {
             i.Selected = true;
             if (i.ID == 45) i.Selected = false;
@@ -119,9 +118,7 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
     }
 
     openDetail(item) {
-        //let myModal = this.modalCtrl.create(TongHopBaoCaoTienDoNghienCuuModalPage, {
-        //    'id': item.ID, 'idDeTai': item.IDDeTai
-        //});
-        //myModal.present();
+        let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': item.IDDeTai, 'isView': true });
+        myModal.present(); 
     }
 }

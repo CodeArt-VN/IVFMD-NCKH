@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-row>
+        <h2>&nbsp;&nbsp; Danh sách đề tài đã đăng ký</h2>
+        <button class="close-btn" style="height: 25px; width: 25px; right: 11px; top:15px" ion-button clear icon-only large (click)="dismiss()">
+            <ion-icon name="close" color="ivf1"></ion-icon>
+        </button>
+    </ion-row>
+    <ion-row>
+        <button color="primary" ion-button icon-only clear (click)="preLoadData()">
+            <ion-icon name="refresh"></ion-icon>
+        </button>
+
+        <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
+            <ion-icon name="ios-trash"></ion-icon>
+        </button>
+
+        <button style="margin-top:12px" color="success" ion-button small (click)="add()">
+            Thêm đề tài
+        </button>
+
+        <button style="margin-top:12px" ion-button small (click)="action('SendApproved')">
+            Gửi duyệt
+        </button>
+    </ion-row>
+</ion-header>
+
+<ion-content>
+    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+           [uploader]="uploader" />
+
+    <ion-row>
+        <ion-col class="doc-main">
+            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow"
+                           [selectionType]="'single'" (select)='onSelect($event)'>
+                <ngx-datatable-column name="Tên đề tài" prop="TenDeTai" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="openDetailDeTai(i)">
+                            {{i.TenDeTai}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Hình thức đăng ký" prop="HinhThucDangKy"></ngx-datatable-column>
+                <ngx-datatable-column name="Trạng thái" prop="TrangThai" [width]="150"></ngx-datatable-column>
+                <ngx-datatable-column name="Upload bài Abstract" prop="UploadBaiAbstract">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="downloadBaiAbstract(i)">
+                            {{i.UploadBaiAbstract}}
+                        </a>&nbsp;
+                        <a (click)="uploadBaiAbstractClick(i)">
+                            <ion-icon name="cloud-upload"></ion-icon>
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Upload bài FullText" prop="UploadBaiFulltext">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="donwloadBaiFullText(i)">
+                            {{i.UploadBaiFulltext}}
+                        </a>&nbsp;
+                        <a (click)="uploadBaiFullTextClick(i)">
+                            <ion-icon name="cloud-upload"></ion-icon>
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Ngày đăng ký" prop="CreatedDate" [width]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.CreatedDateText}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Chỉnh sửa lần cuối" prop="ModifiedDate" [width]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.ModifiedDateText}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </ion-col>
+    </ion-row>
+</ion-content>

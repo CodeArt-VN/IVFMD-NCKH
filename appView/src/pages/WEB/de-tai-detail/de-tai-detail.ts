@@ -510,16 +510,6 @@ export class DeTaiDetailPage extends BasePage {
   download(url){
     this.downloadURLContent( appSetting.mainService.base + url);
   }
-  private downloadURLContent(url) {
-    var pom = document.createElement('a');
-    pom.setAttribute('target', '_blank');
-    pom.setAttribute('href', url);
-    //pom.setAttribute('target', '_blank');
-    pom.style.display = 'none';
-    document.body.appendChild(pom);
-    pom.click();
-    document.body.removeChild(pom);
-  }
 
   downloadFileUpload() {
     if (this.item.FileUpload)

@@ -431,6 +431,8 @@ namespace BaseBusiness
                 SoCaThuThapHopLe = s.SoCaThuThapHopLe,
                 TienDoThuNhanMau = s.TienDoThuNhanMau,
                 KhoKhan = s.KhoKhan,
+                IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
+                TinhTrangNghienCuu =  s.IDTinhTrangNghienCuu > 0 ? s.tbl_SYS_Var.ValueOfVar : "",
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,

@@ -18,6 +18,7 @@ import 'jqueryui';
 })
 export class TienDoNghienCuuModalPage extends DetailPage {
     idDeTai: any;
+    isView: any;
     paramValue: any;
     lstData: any[] = [];
     lstSelected: any[] = [];
@@ -38,8 +39,12 @@ export class TienDoNghienCuuModalPage extends DetailPage {
             this.dismiss();
         });
         this.idDeTai = navParams.get('idDeTai');
+        this.isView = navParams.get('isView');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
+        }
+        if (!this.isView) {
+            this.isView = false;
         }
     }
 
@@ -112,7 +117,6 @@ export class TienDoNghienCuuModalPage extends DetailPage {
                 {
                     text: 'Đồng ý xóa',
                     handler: () => {
-                        debugger
                         var seletedItems = [...this.lstSelected];
                         var doneCount = 0;
 
@@ -144,10 +148,12 @@ export class TienDoNghienCuuModalPage extends DetailPage {
     }
     openDetail(item) {
         let myModal = this.modalCtrl.create(BaoCaoTienDoNghienCuuModalPage, {
-          'id': item.ID, 'idDeTai': this.idDeTai });
-          
+            'id': item.ID, 'idDeTai': this.idDeTai, 
+        });
+
         myModal.onDidDismiss(data => {
-          this.refresh();
+            if (!this.isView)
+                this.refresh();
         });
         myModal.present();
     }

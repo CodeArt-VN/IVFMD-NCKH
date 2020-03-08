@@ -44,37 +44,39 @@ export class HoiNghiHoiThaoModalPage extends DetailPage {
     }
 
     resgister(item) {
-        let confirm = this.alertCtrl.create({
-            title: "Xác nhận đăng ký",
-            message: 'Bạn chắc muốn đăng ký tham gia Hội nghị này?',
-            buttons: [
-                {
-                    text: 'Hủy',
-                    handler: () => {
+        if (item.CoTheDangKy == true) {
+            let confirm = this.alertCtrl.create({
+                title: "Xác nhận đăng ký",
+                message: 'Bạn chắc muốn đăng ký tham gia Hội nghị này?',
+                buttons: [
+                    {
+                        text: 'Hủy',
+                        handler: () => {
 
+                        }
+                    },
+                    {
+                        text: 'Đồng ý',
+                        handler: () => {
+                            let obj = { IDHoiNghiHoiThao: item.ID };
+                            this.currentProvider.save(obj).then((savedItem: any) => {
+                                if (this.loading) this.loading.dismiss();
+                                this.events.publish('app:Update' + this.pageName);
+                                console.log('publish => app:Update ' + this.pageName);
+                                this.preLoadData();
+                                this.toastMessage('Đăng ký thành công!');
+                                this.savedChange();
+                            }).catch(err => {
+                                console.log(err);
+                                if (this.loading) this.loading.dismiss();
+                                this.savedChange();
+                            });
+                        }
                     }
-                },
-                {
-                    text: 'Đồng ý',
-                    handler: () => {
-                        let obj = { IDHoiNghiHoiThao: item.ID };
-                        this.currentProvider.save(obj).then((savedItem: any) => {
-                            if (this.loading) this.loading.dismiss();
-                            this.events.publish('app:Update' + this.pageName);
-                            console.log('publish => app:Update ' + this.pageName);
-                            this.preLoadData();
-                            this.toastMessage('Đăng ký thành công!');
-                            this.savedChange();
-                        }).catch(err => {
-                            console.log(err);
-                            if (this.loading) this.loading.dismiss();
-                            this.savedChange();
-                        });
-                    }
-                }
-            ]
-        });
-        confirm.present();
+                ]
+            });
+            confirm.present();
+        }
     }
 
     loadData() {

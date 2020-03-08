@@ -12,9 +12,15 @@
         <a class="active">Đề tài</a>
     </div>
     <div class="tools">
-
         <button color="primary" ion-button icon-only clear (click)="refresh()">
             <ion-icon name="refresh"></ion-icon>
+        </button>
+
+        <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
+            <ion-icon name="ios-create"></ion-icon>
+        </button>
+        <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
+            <ion-icon name="ios-trash"></ion-icon>
         </button>
 
         <button ion-button small (click)="downloadTemplate()">
@@ -23,15 +29,6 @@
 
         <button color="success" ion-button small (click)="add()">
             Thêm mới đề tài
-        </button>
-
-        <span class="split" *ngIf="selected.length"></span>
-
-        <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
-            <ion-icon name="ios-create"></ion-icon>
-        </button>
-        <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
-            <ion-icon name="ios-trash"></ion-icon>
         </button>
     </div>
 

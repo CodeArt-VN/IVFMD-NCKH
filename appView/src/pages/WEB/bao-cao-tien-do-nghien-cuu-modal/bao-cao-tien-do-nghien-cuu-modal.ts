@@ -16,7 +16,7 @@ export class BaoCaoTienDoNghienCuuModalPage extends DetailPage {
     idDeTai: any;
     model: any;
     tinhTrangs = [];
-
+    isView: any;
     constructor(
         public currentProvider: PRO_BaoCaoTienDoNghienCuuCustomProvider,
         public sysVarProvider: Sys_VarProvider,
@@ -37,8 +37,12 @@ export class BaoCaoTienDoNghienCuuModalPage extends DetailPage {
             IDTinhTrangNghienCuu: ['', Validators.compose([Validators.required])]
         });
         this.idDeTai = navParams.get('idDeTai');
+        this.isView = navParams.get('isView');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
+        }
+        if (!this.isView) {
+            this.isView = false;
         }
     }
 

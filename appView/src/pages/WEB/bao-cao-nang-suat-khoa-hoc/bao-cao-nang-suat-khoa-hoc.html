@@ -15,13 +15,8 @@
         </div>
     </div>
     <div class="tools">
-
         <button color="primary" ion-button icon-only clear (click)="refresh()">
             <ion-icon name="refresh"></ion-icon>
-        </button>
-
-        <button color="ivf1" ion-button icon-only clear (click)="export()">
-            <ion-icon name="cloud-download"></ion-icon>
         </button>
 
         <button color="success" *ngIf="!canApprove" ion-button icon-only clear (click)="add()">
@@ -34,6 +29,10 @@
 
         <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
             <ion-icon name="ios-trash"></ion-icon>
+        </button>
+
+        <button ion-button small (click)="export()">
+            Xuất excel
         </button>
     </div>
 

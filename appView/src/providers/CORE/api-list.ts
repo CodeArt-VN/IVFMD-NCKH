@@ -1094,6 +1094,10 @@ export var APIListBase = {
             method: "GET",
             url: function (idHoiNghi) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/get_PRO_HoiNghiHoiThaoDangKyDeTaiTheoHoiNghi/") + idHoiNghi }
         },
+        getListDeTaiByDangKy: {
+            method: "GET",
+            url: function (idDangKy) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/get_PRO_HoiNghiHoiThaoDangKyDeTaiTheoDangKy/") + idDangKy }
+        },
         putItem: {
             method: "PUT",
             url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/") + id }
@@ -1113,6 +1117,41 @@ export var APIListBase = {
         uploadFullText: {
             method: "POST",
             url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKy/uploadFullText_PRO_HoiNghiHoiThaoDangKy/") }
+        },
+    },
+
+    PRO_HoiNghiHoiThaoDangKyDeTai: {
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/") + id }
+        },
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/") }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/") + id }
+        },
+        uploadAbstract: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/uploadAbstract_PRO_HoiNghiHoiThaoDangKyDeTai/") }
+        },
+        uploadFullText: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/uploadFullText_PRO_HoiNghiHoiThaoDangKyDeTai/") }
+        },
+        updateStatus: {
+            method: "POST",
+            url: function (id, actionCode) { return appSetting.apiDomain("PRO/HoiNghiHoiThaoDangKyDeTai/updateStatus_PRO_HoiNghiHoiThaoDangKyDeTai/") + id + "/" + actionCode }
         },
     },
     

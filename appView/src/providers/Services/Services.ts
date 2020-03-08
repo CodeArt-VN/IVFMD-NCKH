@@ -431,6 +431,13 @@ export class PRO_HoiNghiHoiThaoDangKyProvider extends exService {
 }
 
 @Injectable()
+export class PRO_HoiNghiHoiThaoDangKyDeTaiProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_HoiNghiHoiThaoDangKyDeTai, SearchConfig.getSearchFields('PRO_HoiNghiHoiThaoDangKyDeTai'), commonService);
+    }
+}
+
+@Injectable()
 export class PRO_ThuyetMinhDeTai extends exService {
 	constructor(public commonService: CommonServiceProvider) {
 		super(APIList.PRO_ThuyetMinhDeTai, SearchConfig.getSearchFields('PRO_ThuyetMinhDeTai'), commonService);

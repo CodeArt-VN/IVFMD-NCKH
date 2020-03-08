@@ -2,7 +2,7 @@ import { NavController, NavParams, Events, LoadingController, ToastController, A
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AccountServiceProvider } from '../providers/CORE/account-service';
 import { CommonServiceProvider } from '../providers/CORE/common-service';
-
+import { appSetting } from '../providers/CORE/api-list';
 import { BasePage } from './base-page';
 
 export class DetailPage extends BasePage {
@@ -153,5 +153,7 @@ export class DetailPage extends BasePage {
         this.formGroup.markAsDirty();
     }
 
-    
+    download(url) {
+        this.downloadURLContent(appSetting.mainService.base + url);
+    }
 }
