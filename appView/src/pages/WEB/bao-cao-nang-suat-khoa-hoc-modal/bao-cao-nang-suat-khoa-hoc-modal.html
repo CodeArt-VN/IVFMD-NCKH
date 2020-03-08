@@ -91,6 +91,12 @@
             <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
                 Lưu
             </button>
+            <button ion-button float-right (click)="updateStatus('Approved')" *ngIf="canApprove && !item.IsApproved">
+                Duyệt
+            </button>
+            <button ion-button float-right (click)="updateStatus('UnApproved')" *ngIf="canApprove && item.IsApproved">
+                Hủy duyệt
+            </button>
             <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
                 Hủy thay đổi
             </button>

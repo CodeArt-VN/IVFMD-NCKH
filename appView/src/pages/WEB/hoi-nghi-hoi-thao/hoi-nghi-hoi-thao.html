@@ -10,31 +10,12 @@
         <a class="active">Hội nghị, hội thảo</a>
     </div>
     <div class="tools">
+        <button ion-button icon-only clear (click)="add()">
+            Đăng ký
+        </button>
 
         <button color="primary" ion-button icon-only clear (click)="refresh()">
             <ion-icon name="refresh"></ion-icon>
-        </button>
-
-        <button color="success" ion-button icon-only clear (click)="add()">
-            <ion-icon name="ios-add-circle"></ion-icon>
-        </button>
-
-        <span class="split" *ngIf="selected.length"></span>
-
-        <button ion-button icon-only clear *ngIf="selected.length && !canApprove" (click)="action(selected[0],'SendApproved')">
-            <ion-icon name="send"></ion-icon>
-        </button>
-
-        <button ion-button icon-only clear *ngIf="selected.length && canApprove" (click)="action(selected[0],'Approved')">
-            <ion-icon name="checkmark-circle"></ion-icon>
-        </button>
-
-        <button ion-button icon-only clear *ngIf="selected.length && canApprove" (click)="action(selected[0],'UnApproved')">
-            <ion-icon name="checkmark-circle-outline"></ion-icon>
-        </button>
-
-        <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
-            <ion-icon name="ios-create"></ion-icon>
         </button>
 
         <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
@@ -43,12 +24,10 @@
     </div>
 
     <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
-
 </ion-header>
 
 <ion-content>
     <ion-row>
-
         <ion-col class="doc-menu">
             <div class="root-items" *ngFor="let i of FormGroups">
                 <a *ngFor="let t of i.FormMenu" [class]="pageName==t.Code? 'active': ''" (click)="setPage(t.Code)">
@@ -60,57 +39,30 @@
             </div>
         </ion-col>
 
-        <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
-               [uploader]="uploader" />
-
         <ion-col class="doc-main">
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items" [selected]="selected"
                            [selectionType]="'single'" (select)='onSelect($event)'>
-                <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="" prop="" [width]="130" [maxWidth]="130" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetail(i)">
-                            Chi tiết
+                            Đăng ký đề tài
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Tên hội nghị" prop="TenHoiNghi"></ngx-datatable-column>
-                <ngx-datatable-column name="Thời gian" prop="ThoiGian" [width]="150" [maxWidth]="150">
+                <ngx-datatable-column name="Địa điểm" prop="DiaDiem"></ngx-datatable-column>
+                <ngx-datatable-column name="Số đề tài đã đăng ký" [width]="170" [maxWidth]="170" prop="SoDeTaiDangKy"></ngx-datatable-column>
+                <ngx-datatable-column name="Thời gian tiến hành" prop="ThoiGian" [width]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         {{i.ThoiGianText}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Địa điểm" prop="DiaDiem"></ngx-datatable-column>
-                <ngx-datatable-column name="Báo cáo viên" prop="NCVChinh"></ngx-datatable-column>
-                <ngx-datatable-column name="Trạng thái" prop="TrangThai"></ngx-datatable-column>
-                <ngx-datatable-column name="CV Hosrem" prop="UploadCVHosrem">
+                <ngx-datatable-column name="Hết hạn đăng ký" prop="ThoiGianHetHan" [width]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="downloadCVHosrem(i)">
-                            {{i.UploadCVHosrem}}
-                        </a>
+                        {{i.ThoiGianHetHanText}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Upload bài Abstract" prop="UploadBaiAbstract">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="downloadBaiAbstract(i)">
-                            {{i.UploadBaiAbstract}}
-                        </a>&nbsp;
-                        <a (click)="uploadBaiAbstractClick(i)">
-                            <ion-icon name="cloud-upload"></ion-icon>
-                        </a>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Upload bài FullText" prop="UploadBaiFulltext">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="donwloadBaiFullText(i)">
-                            {{i.UploadBaiFulltext}}
-                        </a>&nbsp;
-                        <a (click)="uploadBaiFullTextClick(i)">
-                            <ion-icon name="cloud-upload"></ion-icon>
-                        </a>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Người tạo" prop="CreatedBy"></ngx-datatable-column>
-                <ngx-datatable-column name="Ngày tạo" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                <ngx-datatable-column name="Ngày đăng ký" prop="CreatedDate" [width]="150" [maxWidth]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         {{i.CreatedDateText}}
                     </ng-template>

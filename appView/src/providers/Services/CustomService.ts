@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider, PRO_BaoCaoNangSuatKhoaHocProvider, PRO_HoiNghiHoiThaoProvider } from '../Services/Services';
+import { exService, PRO_NCVKhacProvider, PRO_BenhNhanProvider, PRO_DeTaiProvider, PRO_BaoCaoNangSuatKhoaHocProvider, PRO_HoiNghiHoiThaoProvider, PRO_HoiNghiHoiThaoDangKyProvider } from '../Services/Services';
 import { CommonServiceProvider } from '../CORE/common-service';
 import { APIList } from '../CORE/global-variable';
 import { SearchConfig } from './SearchConfig';
@@ -676,6 +676,91 @@ export class PRO_HoiNghiHoiThaoCustomProvider extends PRO_HoiNghiHoiThaoProvider
         let apiPath = APIList.PRO_HoiNghiHoiThao.uploadFullText;
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
+export class PRO_HoiNghiHoiThaoDangKyCustomProvider extends PRO_HoiNghiHoiThaoDangKyProvider {
+    constructor(public commonService: CommonServiceProvider) {
+        super(commonService);
+    }
+    updateStatus(id, actionCode) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.updateStatus;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(id, actionCode), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    uploadAbstract(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.uploadAbstract;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    uploadFullText(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.uploadFullText;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    getListByHoiNghi(idHoiNghi) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.getListByHoiNghi;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idHoiNghi), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    getListDeTaiByHoiNghi(idHoiNghi) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.getListDeTaiByHoiNghi;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idHoiNghi), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+    getListChuaDangKy() {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoiNghiHoiThaoDangKy.getListChuaDangKy;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })

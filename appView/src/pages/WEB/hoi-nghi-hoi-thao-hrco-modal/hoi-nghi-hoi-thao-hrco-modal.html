@@ -1,0 +1,75 @@
+<ion-header>
+    <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="TenHoiNghi">
+                Tên hội nghị, hội thảo
+                <span *ngIf="!formGroup.controls.TenHoiNghi.valid && !formGroup.controls.TenHoiNghi.pending && (formGroup.controls.TenHoiNghi.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="TenHoiNghi" [(ngModel)]="item.TenHoiNghi" formControlName="TenHoiNghi" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="DiaDiem">
+                Địa điểm
+                <span *ngIf="!formGroup.controls.DiaDiem.valid && !formGroup.controls.DiaDiem.pending && (formGroup.controls.DiaDiem.dirty || submitAttempt)"></span>
+            </label>
+            <input class="c-input" id="DiaDiem" [(ngModel)]="item.DiaDiem" formControlName="DiaDiem" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="ThoiGian">
+                Thời gian tiến hành
+                <span *ngIf="!formGroup.controls.ThoiGian.valid && !formGroup.controls.ThoiGian.pending && (formGroup.controls.ThoiGian.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input matInput [matDatepicker]="ThoiGian" [(ngModel)]="item.ThoiGian" formControlName="ThoiGian" class="c-input" style="width: calc(100% - 50px);">
+            <mat-datepicker-toggle matSuffix [for]="ThoiGian"></mat-datepicker-toggle>
+            <mat-datepicker #ThoiGian></mat-datepicker>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="ThoiGianHetHan">
+                Thời gian hết hạn đăng ký
+                <span *ngIf="!formGroup.controls.ThoiGianHetHan.valid && !formGroup.controls.ThoiGianHetHan.pending && (formGroup.controls.ThoiGianHetHan.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input matInput [matDatepicker]="ThoiGianHetHan" [(ngModel)]="item.ThoiGianHetHan" formControlName="ThoiGianHetHan" class="c-input" style="width: calc(100% - 50px);">
+            <mat-datepicker-toggle matSuffix [for]="ThoiGianHetHan"></mat-datepicker-toggle>
+            <mat-datepicker #ThoiGianHetHan></mat-datepicker>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="IsDisabled">
+                Ẩn
+                <span *ngIf="!formGroup.controls.IsDisabled.valid && !formGroup.controls.IsDisabled.pending && (formGroup.controls.IsDisabled.dirty || submitAttempt)"
+                      ion-text></span>
+            </label>
+            <input id="IsDisabled" [(ngModel)]="item.IsDisabled" formControlName="IsDisabled" type="checkbox">
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

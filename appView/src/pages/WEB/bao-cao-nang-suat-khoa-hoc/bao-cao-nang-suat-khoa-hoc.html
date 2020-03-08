@@ -5,9 +5,14 @@
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
     <div class="path">
-        <a (click)="openDefaultPage()">Home</a>
-        <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
-        <a class="active">Báo cáo năng suất khoa học</a>
+        <div class="filter-block" (click)="showDatePicks = !showDatePicks">
+            <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Thời gian">
+            <ion-icon [color]="(query.DateFrom == '' && query.DateTo == '')? 'ivf1':'danger'" class="split" name="ios-funnel"></ion-icon>
+        </div>
+        <div class="filter-block" (click)="showStatus = !showStatus">
+            <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Tình trạng">
+            <ion-icon [color]="query.ListStatusID != ''? 'danger':'ivf1'" class="split" name="ios-funnel"></ion-icon>
+        </div>
     </div>
     <div class="tools">
 
@@ -15,18 +20,12 @@
             <ion-icon name="refresh"></ion-icon>
         </button>
 
+        <button color="ivf1" ion-button icon-only clear (click)="export()">
+            <ion-icon name="cloud-download"></ion-icon>
+        </button>
+
         <button color="success" *ngIf="!canApprove" ion-button icon-only clear (click)="add()">
             <ion-icon name="ios-add-circle"></ion-icon>
-        </button>
-
-        <span class="split" *ngIf="selected.length"></span>
-
-        <button ion-button icon-only clear *ngIf="selected.length && canApprove" (click)="approve(selected[0])">
-            <ion-icon name="checkmark-circle"></ion-icon>
-        </button>
-
-        <button ion-button icon-only clear *ngIf="selected.length && canApprove" (click)="unApprove(selected[0])">
-            <ion-icon name="checkmark-circle-outline"></ion-icon>
         </button>
 
         <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
@@ -58,6 +57,60 @@
 
 
         <ion-col class="doc-main">
+            <div [ngClass]="showDatePicks ? '' : 'hideDatePickers'" style="position: absolute; z-index: 100; width: 432px; padding: 16px 0 10px 10px; border-radius: 0 0 5px 5px; background: white; box-shadow: 3px 3px 10px 0px #007cc56e;">
+                <ion-grid>
+                    <ion-row responsive-sm>
+                        <ion-col col-12 col-sm-6 padding-right>
+                            <div class="c-control">
+                                <label class="c-label" for="TuNgay">Từ ngày</label>
+                                <input matInput [matDatepicker]="TuNgay" [(ngModel)]="timeQuery.DateFrom" class="c-input" style="width: 141px;" placeholder="DD/MM/YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="TuNgay"></mat-datepicker-toggle>
+                                <mat-datepicker #TuNgay></mat-datepicker>
+                            </div>
+                        </ion-col>
+                        <ion-col col-12 col-sm-6 padding-right>
+                            <div class="c-control">
+                                <label class="c-label" for="DenNgay">Đến ngày</label>
+                                <input matInput [matDatepicker]="DenNgay" [(ngModel)]="timeQuery.DateTo" class="c-input" style="width: 141px;" placeholder="DD/MM/YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="DenNgay"></mat-datepicker-toggle>
+                                <mat-datepicker #DenNgay></mat-datepicker>
+                            </div>
+                        </ion-col>
+                        <ion-col col-12 padding-right>
+                            <div class="c-control">
+                                <button small ion-button float-right (click)="filterByTime()">
+                                    Lọc
+                                </button>
+                                <button small color="warning" ion-button float-right (click)="clearFilterByTime()">
+                                    Bỏ lọc
+                                </button>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+            <div [ngClass]="showStatus ? '' : 'hideStatus'" style="position: absolute; z-index: 100; width: 160px; left:110px; padding: 10px 0 10px 10px; border-radius: 0 0 5px 5px; background: white; box-shadow: 3px 3px 10px 0px #007cc56e;">
+                <ion-grid>
+                    <ion-row *ngFor="let t of statusList" style="margin-bottom:2px">
+                        <label style="word-wrap:break-word" [for]="t.Code"> <input type="checkbox" [id]="t.Code" [(ngModel)]="t.Selected"> {{t.ValueOfVar}}</label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-12 padding-right>
+                            <div class="c-control">
+                                <button small ion-button float-right (click)="filterByStatus()">
+                                    Lọc
+                                </button>
+                                <button small color="warning" ion-button float-right (click)="clearFilterByStatus()">
+                                    Bỏ lọc
+                                </button>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items" [selected]="selected"
                            [selectionType]="'single'" (select)='onSelect($event)'>
                 <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
@@ -75,6 +128,7 @@
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Tạp chí hội nghị, hội thảo" prop="TapChiHoiNghi" [width]="190"></ngx-datatable-column>
                 <ngx-datatable-column name="Sản phẩm khoa học" prop="TenKinhPhi"></ngx-datatable-column>
+                <ngx-datatable-column name="Ghi chú" prop="GhiChuKinhPhi"></ngx-datatable-column>
                 <ngx-datatable-column name="Kinh phí" prop="KinhPhi"></ngx-datatable-column>
                 <ngx-datatable-column name="Trạng thái" prop="TrangThaiDuyet"></ngx-datatable-column>
                 <ngx-datatable-column name="Người tạo" prop="CreatedBy"></ngx-datatable-column>

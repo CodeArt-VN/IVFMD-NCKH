@@ -9,5 +9,7 @@
         public string NCVChinh { get; set; }
         public string TrangThaiDuyet { get; set; }
         public string Error { get; set; }
+        public string GhiChuKinhPhi { get; set; }
+        public int Sort { get; set; }
     }
 }

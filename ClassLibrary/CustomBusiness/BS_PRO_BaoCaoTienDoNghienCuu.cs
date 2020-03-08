@@ -137,8 +137,8 @@ namespace BaseBusiness
                 var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value.Replace("\\", "");
                 try
                 {
-                    DateTime dt = Convert.ToDateTime(keyword);
-                    //DateTime dt = DateTime.ParseExact(keyword, "yyyy-MM-ddTHH:mm:ss.fffZ", System.Globalization.CultureInfo.InvariantCulture);
+
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
                     query = query.Where(c => c.CreatedDate >= dt);
                 }
                 catch { }
@@ -149,7 +149,7 @@ namespace BaseBusiness
                 var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value.Replace("\\", "");
                 try
                 {
-                    DateTime dt = Convert.ToDateTime(keyword);
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
                     query = query.Where(c => c.CreatedDate <= dt);
                 }
                 catch { }

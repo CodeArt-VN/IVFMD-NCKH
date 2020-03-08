@@ -60,6 +60,8 @@
     <Compile Include="CustomBusiness\BS_CUS_DOC_Folder.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKy.cs" />
     <Compile Include="CustomBusiness\BS_SYS_Config.cs" />
     <Compile Include="CustomBusiness\BS_PRO_AE.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao.cs" />
@@ -95,6 +97,8 @@
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
     <Compile Include="CustomDTO\DTO_PRO_AE.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKy.cs" />
     <Compile Include="CustomDTO\DTO_SYS_Config.cs" />
     <Compile Include="CustomDTO\DTO_SYS_Config_ThoiGianBaoCaoNSKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BaoCaoTienDoNghienCuu.cs" />
