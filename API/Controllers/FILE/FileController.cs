@@ -383,6 +383,46 @@ namespace API.Controllers.DOC
             return downloadFile(fileurl);
         }
         #endregion
+
+        #region BaoCaoNangSuatKhoaHoc
+        [Route("BaoCaoNangSuatKhoaHoc")]
+        public HttpResponseMessage Get_BaoCaoNangSuatKhoaHoc()
+        {
+            string fileurl = "";
+            var package = GetTemplateWorkbook("DS-BaoCaoNangSuatKhoaHoc.xlsx", "DS-BaoCaoNangSuatKhoaHoc-" + DateTime.Now.ToString("HHmmss") + ".xlsx", out fileurl);
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            ExcelWorkbook workBook = package.Workbook;
+            if (workBook != null)
+            {
+                var ws = workBook.Worksheets.FirstOrDefault(); //Worksheets["DS"];
+                var data = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocCustom(db, user.StaffID, QueryStrings);
+
+                int rowid = 3;
+                int sort = 1;
+                foreach (var item in data)
+                {
+                    int col = 2;
+                    ws.Cells[rowid, col].Value = sort; col++;
+                    ws.Cells[rowid, col].Value = item.TenDeTai; col++;
+                    ws.Cells[rowid, col].Value = item.NgayBaoCao.ToString("dd/MM/yyy"); col++;
+                    ws.Cells[rowid, col].Value = item.TapChiHoiNghi; col++;
+                    ws.Cells[rowid, col].Value = item.TenKinhPhi; col++;
+                    ws.Cells[rowid, col].Value = item.GhiChuKinhPhi; col++;
+                    ws.Cells[rowid, col].Value = item.KinhPhi; col++;
+                    ws.Cells[rowid, col].Value = item.TrangThaiDuyet; col++;
+                    ws.Cells[rowid, col].Value = item.CreatedBy; col++;
+                    ws.Cells[rowid, col].Value = item.CreatedDate.ToString("dd/MM/yyy HH:mm:ss"); col++;
+
+                    rowid++;
+                    sort++;
+                }
+
+                package.Save();
+            }
+
+            return downloadFile(fileurl);
+        }
+        #endregion
     }
 
 

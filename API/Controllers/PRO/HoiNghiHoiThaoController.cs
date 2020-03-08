@@ -52,11 +52,8 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            if (user.StaffID <= 0)
-                return BadRequest("Chưa tạo nhân sự cho tài khoản");
 
-            bool res = BS_PRO_HoiNghiHoiThao.putCustom_PRO_HoiNghiHoiThao(db, id, tbl_PRO_HoiNghiHoiThao, Username);
+            bool res = BS_PRO_HoiNghiHoiThao.put_PRO_HoiNghiHoiThaoCustom(db, id, tbl_PRO_HoiNghiHoiThao, Username);
 
             if (res)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -98,13 +95,9 @@ namespace API.Controllers.PRO
             {
                 return BadRequest(ModelState);
             }
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-            if (user.StaffID <= 0)
-                return BadRequest("Tài khoản chưa tạo nhân sự, không thể tạo mới");
 
             tbl_PRO_HoiNghiHoiThao.IDTrangThai = -(int)SYSVarType.TrangThai_HNHT_ChoGui;
-            tbl_PRO_HoiNghiHoiThao.IDNhanVien = user.StaffID;
-            DTO_PRO_HoiNghiHoiThao result = BS_PRO_HoiNghiHoiThao.postCustom_PRO_HoiNghiHoiThao(db, tbl_PRO_HoiNghiHoiThao, Username);
+            DTO_PRO_HoiNghiHoiThao result = BS_PRO_HoiNghiHoiThao.post_PRO_HoiNghiHoiThaoCustom(db, tbl_PRO_HoiNghiHoiThao, Username);
 
             if (result != null)
             {

@@ -1,6 +1,6 @@
 <ion-header>
     <ion-row>
-        <h2>&nbsp;&nbsp; Danh sách Hội nghị, hội thảo đăng ký</h2>
+        <h2>&nbsp;&nbsp; Danh sách người đăng ký</h2>
         <button class="close-btn" style="height: 25px; width: 25px; right: 11px; top:15px" ion-button clear icon-only large (click)="dismiss()">
             <ion-icon name="close" color="ivf1"></ion-icon>
         </button>
@@ -17,23 +17,17 @@
         <ion-col class="doc-main">
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow"
                            [selectionType]="'single'">
-                <ngx-datatable-column name="" prop="" [width]="110" [maxWidth]="110" headerClass="name" cellClass="name">
+
+                <ngx-datatable-column name="Người đăng ký" prop="TenNCV" [width]="200" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="resgister(i)">
-                            Đăng ký
+                        <a (click)="openDeTaiDangKy(i)">
+                            {{i.TenNCV}}
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Tên hội nghị" prop="TenHoiNghi"></ngx-datatable-column>
-                <ngx-datatable-column name="Địa điểm" prop="DiaDiem"></ngx-datatable-column>
-                <ngx-datatable-column name="Thời gian tiến hành" prop="ThoiGian" [width]="150">
+                <ngx-datatable-column name="Ngày đăng ký" prop="CreatedDate" [width]="150" [maxWidth]="150">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.ThoiGianText}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Hết hạn đăng ký" prop="ThoiGianHetHan" [width]="150">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.ThoiGianHetHanText}}
+                        {{i.CreatedDateText}}
                     </ng-template>
                 </ngx-datatable-column>
             </ngx-datatable>

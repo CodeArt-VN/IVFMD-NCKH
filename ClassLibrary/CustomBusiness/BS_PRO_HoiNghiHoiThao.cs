@@ -13,19 +13,31 @@ namespace BaseBusiness
     {
         public static IQueryable<DTO_PRO_HoiNghiHoiThao> get_PRO_HoiNghiHoiThaoCustom(AppEntities db, int StaffID, Dictionary<string, string> QueryStrings)
         {
-            var query = db.tbl_PRO_HoiNghiHoiThao.AsQueryable();
-
-            query = query.Where(d => d.IsDeleted == false);
-            var staff = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == StaffID);
-            if (staff != null)
-            {
-                if (staff.IsHRCO != true)
-                    query = query.Where(c => c.IDNhanVien == staff.ID);
-            }
-            else query = query.Where(c => false);
+            var query = db.tbl_PRO_HoiNghiHoiThao.Where(d => d.IsDeleted == false);
 
             //Query keyword
+            if (QueryStrings.Any(d => d.Key == "DateFrom") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateFrom").Value.Replace("\\", "");
+                try
+                {
 
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
+                    query = query.Where(c => c.ThoiGian >= dt);
+                }
+                catch { }
+            }
+
+            if (QueryStrings.Any(d => d.Key == "DateTo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "DateTo").Value.Replace("\\", "");
+                try
+                {
+                    DateTime dt = Newtonsoft.Json.JsonConvert.DeserializeObject<DateTime>(keyword).ToLocalTime();
+                    query = query.Where(c => c.ThoiGian <= dt);
+                }
+                catch { }
+            }
 
 
             //Query ID (int)
@@ -153,6 +165,12 @@ namespace BaseBusiness
                 query = query.Where(d => d.ModifiedBy == keyword);
             }
 
+            //Query ThoiGianHetHan (Nullable<System.DateTime>)
+            if (QueryStrings.Any(d => d.Key == "ThoiGianHetHanFrom") && QueryStrings.Any(d => d.Key == "ThoiGianHetHanTo"))
+                if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanTo").Value, out DateTime toDate))
+                    query = query.Where(d => fromDate <= d.ThoiGianHetHan && d.ThoiGianHetHan <= toDate);
+
+
 
             return toDTOCustom(query);
         }
@@ -165,6 +183,7 @@ namespace BaseBusiness
                 ID = s.ID,
                 IDNhanVien = s.IDNhanVien,
                 ThoiGian = s.ThoiGian,
+                ThoiGianHetHan = s.ThoiGianHetHan,
                 DiaDiem = s.DiaDiem,
                 TenHoiNghi = s.TenHoiNghi,
                 CVBaoCaoVien = s.CVBaoCaoVien,
@@ -178,22 +197,19 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
-                NCVChinh = s.tbl_CUS_HRM_STAFF_NhanSu.Name,
-                TrangThai = s.tbl_SYS_Var.ValueOfVar,
-                UploadCVBaoCaoVien = !string.IsNullOrEmpty(s.CVBaoCaoVien) ? "Đã up" : "Chưa up",
-                UploadCVHosrem = s.tbl_CUS_HRM_STAFF_NhanSu.tbl_CUS_HRM_STAFF_NhanSu_HOSREM.Count > 0 ? "Đã có" : "Chưa cập nhật",
-                UploadBaiAbstract = !string.IsNullOrEmpty(s.BaiAbstract) ? "Đã up" : "Chưa up",
-                UploadBaiFulltext = !string.IsNullOrEmpty(s.BaiFulltext) ? "Đã up" : "Chưa up",
+                TongSoNguoiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKy.Count(),
+                TongSoDeTaiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count()
             });
         }
 
-        public static bool putCustom_PRO_HoiNghiHoiThao(AppEntities db, int ID, DTO_PRO_HoiNghiHoiThao item, string Username)
+        public static bool put_PRO_HoiNghiHoiThaoCustom(AppEntities db, int ID, DTO_PRO_HoiNghiHoiThao item, string Username)
         {
             bool result = false;
             var dbitem = db.tbl_PRO_HoiNghiHoiThao.Find(ID);
             if (dbitem != null)
             {
                 dbitem.ThoiGian = item.ThoiGian;
+                dbitem.ThoiGianHetHan = item.ThoiGianHetHan;
                 dbitem.DiaDiem = item.DiaDiem;
                 dbitem.TenHoiNghi = item.TenHoiNghi;
                 dbitem.IsDisabled = item.IsDisabled;
@@ -212,7 +228,7 @@ namespace BaseBusiness
                 }
                 catch (DbEntityValidationException e)
                 {
-                    errorLog.logMessage("putCustom_PRO_HoiNghiHoiThao", e);
+                    errorLog.logMessage("put_PRO_HoiNghiHoiThaoCustom", e);
                     result = false;
                 }
             }
@@ -273,14 +289,14 @@ namespace BaseBusiness
             return result;
         }
 
-
-        public static DTO_PRO_HoiNghiHoiThao postCustom_PRO_HoiNghiHoiThao(AppEntities db, DTO_PRO_HoiNghiHoiThao item, string Username)
+        public static DTO_PRO_HoiNghiHoiThao post_PRO_HoiNghiHoiThaoCustom(AppEntities db, DTO_PRO_HoiNghiHoiThao item, string Username)
         {
             tbl_PRO_HoiNghiHoiThao dbitem = new tbl_PRO_HoiNghiHoiThao();
             if (item != null)
             {
                 dbitem.IDNhanVien = item.IDNhanVien;
                 dbitem.ThoiGian = item.ThoiGian;
+                dbitem.ThoiGianHetHan = item.ThoiGianHetHan;
                 dbitem.DiaDiem = item.DiaDiem;
                 dbitem.TenHoiNghi = item.TenHoiNghi;
                 dbitem.CVBaoCaoVien = item.CVBaoCaoVien;
@@ -314,13 +330,12 @@ namespace BaseBusiness
                 }
                 catch (DbEntityValidationException e)
                 {
-                    errorLog.logMessage("postCustom_PRO_HoiNghiHoiThao", e);
+                    errorLog.logMessage("post_PRO_HoiNghiHoiThaoCustom", e);
                     item = null;
                 }
             }
             return item;
         }
-
 
         public static string updateStatus_PRO_HoiNghiHoiThao(AppEntities db, int ID, string ActionCode, string Username)
         {
