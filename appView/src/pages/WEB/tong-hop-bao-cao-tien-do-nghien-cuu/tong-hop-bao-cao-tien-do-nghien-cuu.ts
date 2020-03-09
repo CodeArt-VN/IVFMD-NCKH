@@ -62,6 +62,7 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         this.currentProvider.getTheoDeTai(this.query).then((result: any) => {
             this.lstData = [...result];
             this.lstData.forEach((i) => {
+                i.CompletePercent = this.getRandomIntInclusive(10, 100);
                 i.LastReportDateText = this.commonService.dateFormat(i.LastReportDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
             })
             this.lastKeyword = this.keyword;
@@ -73,6 +74,12 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
             this.gridConfig.totalRows = 0;
             this.loadedData();
         });
+    }
+
+    getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
     }
 
     preLoadData() {

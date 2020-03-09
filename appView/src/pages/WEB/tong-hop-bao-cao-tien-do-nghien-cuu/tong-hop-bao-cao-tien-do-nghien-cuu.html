@@ -120,9 +120,13 @@
                         {{i.ThoiGianTienHanh}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Tiến độ (%)" prop="CompletePercent" [width]="200" [maxWidth]="200" headerClass="name" cellClass="name">
+                <ngx-datatable-column name="Tiến độ (%)" prop="CompletePercent" [width]="240" [maxWidth]="240" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        {{i.CompletePercent}}
+                        <div class="w3-container" style="height: 100%;padding: 10px 0px;">
+                            <div class="w3-light-grey">
+                                <div class="w3-container w3-green w3-center" [ngStyle]="{'width': i.CompletePercent + '%'}">&nbsp;{{i.CompletePercent}}%</div>
+                            </div>
+                        </div>
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Số lần báo cáo" prop="SoLanDaBaoCao" [width]="120"></ngx-datatable-column>

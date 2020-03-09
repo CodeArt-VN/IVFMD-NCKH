@@ -11,6 +11,36 @@ page-tong-hop-bao-cao-tien-do-nghien-cuu {
         vertical-align: middle;
     }
 
+    .datatable-body-cell-label {
+        height: 100%;
+    }
+
+    .w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
+        color: #000 !important;
+        height: 100%;
+        border-radius: 3px;
+        background-color: #f1f1f1 !important
+    }
+
+    .w3-cell-row:before, .w3-cell-row:after, .w3-clear:after, .w3-clear:before, .w3-bar:before, .w3-bar:after {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .w3-panel {
+        margin-top: 16px;
+        margin-bottom: 16px
+    }
+
+    .w3-green, .w3-hover-green:hover {
+        color: #fff !important;
+        line-height: 30px;
+        height: 100%;
+        border-radius: 3px;
+        background-color: #4CAF50 !important
+    }
+
     .path {
         white-space: nowrap;
         line-height: 32px !important;
