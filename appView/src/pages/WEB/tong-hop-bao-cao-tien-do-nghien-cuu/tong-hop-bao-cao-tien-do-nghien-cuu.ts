@@ -62,7 +62,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         this.currentProvider.getTheoDeTai(this.query).then((result: any) => {
             this.lstData = [...result];
             this.lstData.forEach((i) => {
-                i.CompletePercent = this.getRandomIntInclusive(10, 100);
                 i.LastReportDateText = this.commonService.dateFormat(i.LastReportDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
             })
             this.lastKeyword = this.keyword;
