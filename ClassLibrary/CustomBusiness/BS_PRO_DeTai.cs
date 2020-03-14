@@ -22,7 +22,7 @@ namespace BaseBusiness
                 dbitem.IDTrangThai_HDKH = -(int)SYSVarType.TrangThai_HDKH_ChoGui;
                 dbitem.IDTrangThai_HRCO = -(int)SYSVarType.TrangThai_HRCO_ChoGui;
                 dbitem.IDTrangThai_NghiemThu = -(int)SYSVarType.TrangThai_NghiemThu_ChoGui;
-
+                dbitem.IDPhanLoaiDeTai = -(int)SYSVarType.PhanLoaiDeTai_NghienCuu;
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
                 db.tbl_PRO_DeTai.Add(dbitem);
@@ -31,7 +31,6 @@ namespace BaseBusiness
             {
                 dbitem.IDChuNhiem = item.IDChuNhiem;
                 dbitem.IDHRCO = item.IDHRCO;
-                dbitem.IDPhanLoaiDeTai = item.IDPhanLoaiDeTai;
                 dbitem.DeTai = item.DeTai;
                 dbitem.GhiChu = item.GhiChu;
                 dbitem.SoNCT = item.SoNCT;
