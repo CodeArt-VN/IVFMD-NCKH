@@ -33,6 +33,15 @@
     top: 0mm;
     width: 100%;
     background: #fff; }
+  .nckh-form-template .page {
+    position: relative;
+    min-height: 9.69in;
+    margin: 0 1in;
+    page-break-after: always; }
+    .nckh-form-template .page.cover-page {
+      min-height: 9.69in; }
+  .nckh-form-template .page-break {
+    display: none !important; }
   .nckh-form-template .inline {
     display: inline-block;
     width: 100%; }

@@ -56,6 +56,21 @@
         background: #fff;
     }
 
+    .page {
+        position: relative;
+        min-height: 9.69in;
+        margin: 0 1in;
+        page-break-after: always;
+
+        &.cover-page {
+            min-height: 9.69in;
+        }
+    }
+
+    .page-break {
+        display: none !important;
+    }
+
     .inline {
         display: inline-block;
         width: 100%;

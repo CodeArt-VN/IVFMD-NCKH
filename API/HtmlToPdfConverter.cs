@@ -108,17 +108,17 @@ namespace API
             setting.SplitImages = false;
             setting.MediaType = MediaType.Print;
             setting.WebKitPath = HttpContext.Current.Server.MapPath("/" + QtBinariesPath);
-            setting.WebKitViewPort = new System.Drawing.Size(1024, 0);
+            setting.WebKitViewPort = new System.Drawing.Size(800, 0);
             return setting;
         }
 
         private static PdfPageTemplateElement HeaderHTMLtoPDF(string htmlString)
         {
             var htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            htmlConverter.ConverterSettings = CreateConverterSetting(true, 50);
+            htmlConverter.ConverterSettings = CreateConverterSetting(true, 75);
             //Convert Html to PDF
             PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
-            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
+            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 75);
             PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
             header.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
             return header;
@@ -127,10 +127,10 @@ namespace API
         private static PdfPageTemplateElement FooterHTMLtoPDF(string htmlString)
         {
             HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.WebKit);
-            htmlConverter.ConverterSettings = CreateConverterSetting(true, 50);
+            htmlConverter.ConverterSettings = CreateConverterSetting(true, 75);
             //Convert Html to PDF
             PdfDocument document = htmlConverter.Convert(htmlString, string.Empty);
-            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 50);
+            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, document.Pages[0].GetClientSize().Width, 75);
             PdfPageTemplateElement footer = new PdfPageTemplateElement(bounds);
             footer.Graphics.DrawPdfTemplate(document.Pages[0].CreateTemplate(), bounds.Location, bounds.Size);
             return footer;

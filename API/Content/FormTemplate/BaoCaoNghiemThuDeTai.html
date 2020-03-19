@@ -1,403 +1,351 @@
-﻿<html lang="vi">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>24-BÁO CÁO NGHIỆM THU ĐỀ TÀI KH&CN</title>
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/knockout-3.2.0.js"></script>
-    <script type="text/javascript" src="js/nckh.js"></script>
-    <style>
-        .form-template-header .nckh-form-template {
-            min-height: 1in
-        }
-
-        .form-template-footer .nckh-form-template {
-            min-height: 1in
-        }
-
-        .form-template-body .page {
-            position: relative;
-            min-height: 9.69in;
-        }
-    </style>
-</head>
-<body style="font-family: 'Times New Roman', Times, serif">
-    <div id="frmBaoCaoNghiemThuDeTai" class="">
-        <div class="form-template-header">
-            <div class="nckh-form-template nckh-form-09 font-size-12" style="min-width: 8.27in;max-width: 8.27in;padding: 0;">
-                <div class="page-header">
-                    <table style="position:relative; width: 100%;top: 30px;border-bottom: 0px solid black;font-size: 12pt;">
-                        <tr>
-                            <td style="width:.5in;"></td>
-                            <td style="width:50px;">
-                                <span style="border: none; display: inline-block; overflow: hidden; width: 50px; height: 50px">
-                                    <img src="https://lh3.googleusercontent.com/cvw0iThL4G9Tk9VkCPbJ2uPMCEhcX_x8U_us5jHrYnlZH3WD1Bel1NiyAUQRDuHWRj9ugbq8WqF-Yz3oo_KvlzJBJrUiOrX8qhp1jUKHtOrJUjcIGn-B1kxagdKmoZ_1fzCCIpg" width="50" height="50" style="margin-left: 0px; margin-top: 0px;" />
-                                </span>
-                            </td>
-                            <td class="text-bold" style="vertical-align: bottom;"><div style="margin-bottom: 5px;">Bệnh viện Mỹ Đức</div></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+﻿<div class="form-template-header first-page-only">
+    <div class="nckh-form-template nckh-form-09 font-size-12">
+        <div class="page-header">
+            <table style="position:relative; width: 100%;top: 30px;border-bottom: 0px solid black;font-size: 12pt;">
+                <tr>
+                    <td style="width:.5in;"></td>
+                    <td style="width:50px;">
+                        <span style="border: none; display: inline-block; overflow: hidden; width: 50px; height: 50px">
+                            <img src="https://lh3.googleusercontent.com/cvw0iThL4G9Tk9VkCPbJ2uPMCEhcX_x8U_us5jHrYnlZH3WD1Bel1NiyAUQRDuHWRj9ugbq8WqF-Yz3oo_KvlzJBJrUiOrX8qhp1jUKHtOrJUjcIGn-B1kxagdKmoZ_1fzCCIpg" width="50" height="50" style="margin-left: 0px; margin-top: 0px;" />
+                        </span>
+                    </td>
+                    <td class="text-bold" style="vertical-align: bottom;"><div style="margin-bottom: 5px;">Bệnh viện Mỹ Đức</div></td>
+                </tr>
+            </table>
         </div>
-        <div class="form-template-body">
-            <div class="nckh-form-template nckh-form-09 font-size-13">
-                <div class="page">
-                    <br />
-                    <div class="inline text-center text-bold" style="padding-top:2em;font-size: 15pt;">
-                        <p style="margin: 6px;">
-                            BÁO CÁO NGHIỆM THU ĐỀ TÀI KH&CN
-                        </p>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div class="block">
-                        <p class="box">
-                            <span class="box-title">TÊN ĐỀ TÀI</span>
-                            <span contenteditable="true" style="text-indent:98px;" data-bind="editableHTML: TenDeTai"></span>
-                        </p>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div class="block">
-                        <table class="nckh-table resize-grid" style="width:100%;" border="0">
-                            <thead>
-                                <tr>
-                                    <th style="width: 40%;"></th>
-                                    <th style="width: 60%;text-align:left">Chủ nhiệm đề tài</th>
-                                </tr>
-                            </thead>
-                            <tbody style="width:100%;">
-                                <tr>
-                                    <td></td>
-                                    <td contenteditable="true" data-bind="editableHTML: ChuNhiemDeTai"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="block text-center text-bold" style="position: absolute;width: 100%;bottom: 10pt;">
-                        <div>
-                            THÀNH PHỐ HỒ CHÍ MINH
-                        </div>
-                        <div>
-                            THÁNG
-                            <span contenteditable="true" data-bind="editableHTML: ThoiGian_Thang" style="min-width:8px;display:inline-block;"></span>
-                            NĂM
-                            <span contenteditable="true" data-bind="editableHTML: ThoiGian_Nam" style="min-width:30px;display:inline-block;"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:2em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            DANH SÁCH CÁN BỘ THAM GIA THỰC HIỆN ĐỀ TÀI
-                        </p>
-                    </div>
-                    <div conf='{"name":"ListCanBo","add":true,"resizeable":true,"props": ["HocHamHoTen","ChiuTrachNhiem","DienThoai","Email"]}' class="ptable pconf" style="width:100%;position:relative;">
-                        <table class="nckh-table resize-grid" style="width:100%;" border="1">
-                            <colgroup>
-                                <col width="30" />
-                                <col width="300" />
-                                <col width="130" />
-                                <col width="130" />
-                                <col width="250" />
-                            </colgroup>
-                            <thead>
-                                <tr class="table-header">
-                                    <td>TT</td>
-                                    <td>
-                                        Học hàm, học vị,<br />Họ và tên
-                                    </td>
-                                    <td>Chịu trách nhiệm</td>
-                                    <td>Điện thoại</td>
-                                    <td>Email</td>
-                                </tr>
-                            </thead>
-                            <tbody style="width:100%;" data-bind="foreach: ListCanBo">
-                                <tr data-bind="attr: { index: $index, removable: true }">
-                                    <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                    <td contenteditable="true" data-bind="editableHTML: HocHamHoTen"></td>
-                                    <td contenteditable="true" data-bind="editableHTML: ChiuTrachNhiem"></td>
-                                    <td contenteditable="true" data-bind="editableHTML: DienThoai"></td>
-                                    <td contenteditable="true" data-bind="editableHTML: Email"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            TÓM TẮT
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_TomTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            ABSTRACT
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Abstract" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            LỜI CẢM ƠN
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_LoiCamOn" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            MỤC LỤC
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_MucLuc" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            DANH MỤC CÁC CHỮ VIẾT TẮT
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_CacChuVietTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            DANH MỤC CÁC BẢNG
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_DanhMucCacBang" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            MỤC TIÊU
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_MucTieu" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            CHƯƠNG 1.	TỔNG QUAN TÀI LIỆU
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Chuong1" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            CHƯƠNG 2.	VẬT LIỆU – PHƯƠNG PHÁP
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Chuong2" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            CHƯƠNG 3.	KẾT QUẢ
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Chuong3" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            CHƯƠNG 4.	BÀN LUẬN
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Chuong4" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            CHƯƠNG 5.	KẾT LUẬN
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_Chuong5" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-                <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
-                    <br />
-                    <hr />
-                    ngắt trang ở đây
-                    <hr />
-                    <br />
-                </div>
-                <div class="page">
-                    <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
-                        <p style="margin: 6px;">
-                            TÀI LIỆU THAM KHẢO
-                        </p>
-                    </div>
-                    <p class="box">
-                        <span contenteditable="true" data-bind="editableHTML: JSON_TaiLieuThamKhao" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="form-template-footer">
-            <div class="nckh-form-template nckh-form-09 font-size-13">
-                <div class="page-footer">
-                    <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
-                        <tr>
-                            <td style="vertical-align:middle" class="text-center">
-                                <span class="print-hidden">1</span>
-                                <span class="uiview-hidden">[[Page]]</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
     </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            nckh.koHandlers.editableHTML(ko);
-            var BaoCaoNghiemThuDeTaiModel = function (item) {
-                var self = this;
-                self.ID = item.ID;
-                self.IDDetai = item.IDDetai;
-
-
-
-                self.savedJson = ko.observable("");
-                self.save = function () {
-                    self.savedJson(JSON.stringify(ko.toJS(self), null, 2));
-                };
-            }
-            var model = new BaoCaoNghiemThuDeTaiModel({});
-            ko.applyBindings(model, document.getElementById("frmBaoCaoNghiemThuDeTai"));
-            nckh.domHelper.init();
-        })
-    </script>
-</body>
-</html>
+</div>
+<div class="form-template-body">
+    <div class="nckh-form-template nckh-form-09 font-size-13">
+        <div class="page cover-page">
+            <br />
+            <div class="inline text-center text-bold" style="padding-top:2em;font-size: 15pt;">
+                <p style="margin: 6px;">
+                    BÁO CÁO NGHIỆM THU ĐỀ TÀI KH&CN
+                </p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="block">
+                <p class="box">
+                    <span class="box-title">TÊN ĐỀ TÀI</span>
+                    <span contenteditable="true" style="text-indent:98px;" data-bind="editableHTML: TenDeTai"></span>
+                </p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="block">
+                <table class="nckh-table resize-grid" style="width:100%;" border="0">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;"></th>
+                            <th style="width: 60%;text-align:left">Chủ nhiệm đề tài</th>
+                        </tr>
+                    </thead>
+                    <tbody style="width:100%;">
+                        <tr>
+                            <td></td>
+                            <td contenteditable="true" data-bind="editableHTML: ChuNhiemDeTai"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="block text-center text-bold" style="position: absolute;width: 100%;bottom: 10pt;">
+                <div>
+                    THÀNH PHỐ HỒ CHÍ MINH
+                </div>
+                <div>
+                    THÁNG
+                    <span contenteditable="true" data-bind="editableHTML: ThoiGian_Thang" style="min-width:8px;display:inline-block;"></span>
+                    NĂM
+                    <span contenteditable="true" data-bind="editableHTML: ThoiGian_Nam" style="min-width:30px;display:inline-block;"></span>
+                </div>
+            </div>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:2em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    DANH SÁCH CÁN BỘ THAM GIA THỰC HIỆN ĐỀ TÀI
+                </p>
+            </div>
+            <div conf='{"name":"ListCanBo","add":true,"resizeable":true,"props": ["HocHamHoTen","ChiuTrachNhiem","DienThoai","Email"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <table class="nckh-table resize-grid" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="30" />
+                        <col width="300" />
+                        <col width="130" />
+                        <col width="130" />
+                        <col width="250" />
+                    </colgroup>
+                    <thead>
+                        <tr class="table-header">
+                            <td>TT</td>
+                            <td>
+                                Học hàm, học vị,<br />Họ và tên
+                            </td>
+                            <td>Chịu trách nhiệm</td>
+                            <td>Điện thoại</td>
+                            <td>Email</td>
+                        </tr>
+                    </thead>
+                    <tbody style="width:100%;" data-bind="foreach: ListCanBo">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                            <td contenteditable="true" data-bind="editableHTML: HocHamHoTen"></td>
+                            <td contenteditable="true" data-bind="editableHTML: ChiuTrachNhiem"></td>
+                            <td contenteditable="true" data-bind="editableHTML: DienThoai"></td>
+                            <td contenteditable="true" data-bind="editableHTML: Email"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    TÓM TẮT
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_TomTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    ABSTRACT
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Abstract" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    LỜI CẢM ƠN
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_LoiCamOn" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    MỤC LỤC
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_MucLuc" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    DANH MỤC CÁC CHỮ VIẾT TẮT
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_CacChuVietTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    DANH MỤC CÁC BẢNG
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_DanhMucCacBang" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    MỤC TIÊU
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_MucTieu" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    CHƯƠNG 1.	TỔNG QUAN TÀI LIỆU
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Chuong1" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    CHƯƠNG 2.	VẬT LIỆU – PHƯƠNG PHÁP
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Chuong2" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    CHƯƠNG 3.	KẾT QUẢ
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Chuong3" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    CHƯƠNG 4.	BÀN LUẬN
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Chuong4" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    CHƯƠNG 5.	KẾT LUẬN
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_Chuong5" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+        <div class="page-break" style="text-align: center;opacity: .2;font-style:italic;">
+            <br />
+            <hr />
+            ngắt trang ở đây
+            <hr />
+            <br />
+        </div>
+        <div class="page">
+            <div class="inline text-center text-bold" style="padding-bottom:1em;font-size: 16pt;">
+                <p style="margin: 6px;">
+                    TÀI LIỆU THAM KHẢO
+                </p>
+            </div>
+            <p class="box">
+                <span contenteditable="true" data-bind="editableHTML: JSON_TaiLieuThamKhao" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="form-template-footer">
+    <div class="nckh-form-template nckh-form-09 font-size-13">
+        <div class="page-footer">
+            <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
+                <tr>
+                    <td style="vertical-align:middle" class="text-center">
+                        <span class="print-hidden">1</span>
+                        <span class="uiview-hidden">[[Page]]</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

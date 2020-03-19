@@ -265,6 +265,7 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                firstPageHeader: true,
                 htmlContent: $("#frmBaoCaoNghiemThuDeTai .form-template-body").html(),
                 htmlFooter: $("#frmBaoCaoNghiemThuDeTai .form-template-footer").html(),
                 htmlHeader: $("#frmBaoCaoNghiemThuDeTai .form-template-header").html()

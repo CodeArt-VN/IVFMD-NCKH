@@ -104,6 +104,12 @@
         }
     }
 
+    .page {
+        position: relative;
+        min-height: 9.69in;
+        page-break-after: always;
+    }
+    
     .box-inline {
         display: table;
         width: 100%;
