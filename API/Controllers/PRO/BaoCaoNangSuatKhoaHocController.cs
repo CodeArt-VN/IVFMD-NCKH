@@ -30,7 +30,7 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_BaoCaoNangSuatKhoaHoc))]
         public IHttpActionResult Get(int id)
         {
-            DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHoc(db, id);
+            DTO_PRO_BaoCaoNangSuatKhoaHoc tbl_PRO_BaoCaoNangSuatKhoaHoc = BS_PRO_BaoCaoNangSuatKhoaHoc.get_PRO_BaoCaoNangSuatKhoaHocByID(db, id);
             if (tbl_PRO_BaoCaoNangSuatKhoaHoc == null)
             {
                 return NotFound();

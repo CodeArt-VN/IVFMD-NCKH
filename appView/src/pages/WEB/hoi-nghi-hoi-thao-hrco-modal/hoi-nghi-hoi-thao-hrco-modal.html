@@ -47,6 +47,18 @@
         </div>
 
         <div class="c-control">
+            <label class="c-label" for="IDSite">
+                Site
+                <span *ngIf="!formGroup.controls.IDSite.valid && !formGroup.controls.IDSite.pending && (formGroup.controls.IDSite.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDSite" formControlName="IDSite">
+                <option *ngFor="let t of sites" [value]="t.ID">{{t.Name}}</option>
+            </select>
+        </div>
+
+        <div class="c-control">
             <label class="c-label" for="IsDisabled">
                 Ẩn
                 <span *ngIf="!formGroup.controls.IsDisabled.valid && !formGroup.controls.IsDisabled.pending && (formGroup.controls.IsDisabled.dirty || submitAttempt)"

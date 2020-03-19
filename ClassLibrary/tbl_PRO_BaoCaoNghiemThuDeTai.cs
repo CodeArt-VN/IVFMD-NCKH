@@ -42,6 +42,7 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string BaiFulltext { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -77,6 +78,7 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string BaiFulltext { get; set; }
 	}
 }
 
@@ -125,7 +127,8 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				BaiFulltext = s.BaiFulltext,					
 			});
                               
         }
@@ -162,7 +165,8 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					BaiFulltext = dbResult.BaiFulltext,
 				};
 			}
 			else
@@ -376,6 +380,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query BaiFulltext (string)
+			if (QueryStrings.Any(d => d.Key == "BaiFulltext") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "BaiFulltext").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "BaiFulltext").Value;
+                query = query.Where(d=>d.BaiFulltext == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -417,7 +428,8 @@ namespace BaseBusiness
 				dbitem.JSON_TaiLieuThamKhao = item.JSON_TaiLieuThamKhao;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.BaiFulltext = item.BaiFulltext;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -465,7 +477,8 @@ namespace BaseBusiness
 				dbitem.JSON_TaiLieuThamKhao = item.JSON_TaiLieuThamKhao;							
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.BaiFulltext = item.BaiFulltext;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

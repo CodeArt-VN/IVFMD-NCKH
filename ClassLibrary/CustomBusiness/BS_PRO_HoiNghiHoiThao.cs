@@ -197,6 +197,8 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                IDSite = s.IDSite,
+                SiteName = s.tbl_CAT_Site.Name,
                 TongSoNguoiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKy.Count(),
                 TongSoDeTaiDangKy = s.tbl_PRO_HoiNghiHoiThao_DangKyDeTai.Count(c=> c.IDTrangThai != -(int)SYSVarType.TrangThai_HNHT_ChoGui)
             });
@@ -212,6 +214,7 @@ namespace BaseBusiness
                 dbitem.ThoiGianHetHan = item.ThoiGianHetHan;
                 dbitem.DiaDiem = item.DiaDiem;
                 dbitem.TenHoiNghi = item.TenHoiNghi;
+                dbitem.IDSite = item.IDSite;
                 dbitem.IsDisabled = item.IsDisabled;
                 dbitem.IsDeleted = item.IsDeleted;
 
@@ -299,6 +302,7 @@ namespace BaseBusiness
                 dbitem.ThoiGianHetHan = item.ThoiGianHetHan;
                 dbitem.DiaDiem = item.DiaDiem;
                 dbitem.TenHoiNghi = item.TenHoiNghi;
+                dbitem.IDSite = item.IDSite;
                 dbitem.CVBaoCaoVien = item.CVBaoCaoVien;
                 dbitem.IDTrangThai = item.IDTrangThai;
                 dbitem.IsDisabled = item.IsDisabled;

@@ -19,6 +19,7 @@ namespace ClassLibrary
         public tbl_CAT_Site()
         {
             this.tbl_PRO_BaoCaoNangSuatKhoaHoc = new HashSet<tbl_PRO_BaoCaoNangSuatKhoaHoc>();
+            this.tbl_PRO_HoiNghiHoiThao = new HashSet<tbl_PRO_HoiNghiHoiThao>();
         }
     
         public int ID { get; set; }
@@ -34,6 +35,8 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_BaoCaoNangSuatKhoaHoc> tbl_PRO_BaoCaoNangSuatKhoaHoc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoiNghiHoiThao> tbl_PRO_HoiNghiHoiThao { get; set; }
     }
 }
 namespace DTOModel

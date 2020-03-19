@@ -60,6 +60,7 @@
     <Compile Include="CustomBusiness\BS_CUS_DOC_Folder.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_BaoCaoNghiemThuDeTai.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKy.cs" />
     <Compile Include="CustomBusiness\BS_SYS_Config.cs" />

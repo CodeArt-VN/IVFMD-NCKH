@@ -1674,6 +1674,40 @@ export var APIListBase = {
             url: function(){return appSetting.apiDomain("PRO/SAE/save_PRO_SAE")}
         },
     },
+    PRO_BaoCaoNghiemThuDeTai: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/") + id }
+        },
+        getItemCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/get_PRO_BaoCaoNghiemThuDeTai/") + idDeTai  }
+        },
+        saveCustom: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/save_PRO_BaoCaoNghiemThuDeTai") }
+        },
+        uploadFullText: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/uploadFullText_PRO_BaoCaoNghiemThuDeTai/") }
+        },
+    },
     PRO_ThuyetMinhDeTai: {
         getList: {
             method: "GET",

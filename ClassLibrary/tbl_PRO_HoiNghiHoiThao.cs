@@ -39,6 +39,8 @@ namespace ClassLibrary
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ThoiGianHetHan { get; set; }
+        public int IDSite { get; set; }
+        public virtual tbl_CAT_Site tbl_CAT_Site { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_HoiNghiHoiThao_DangKy> tbl_PRO_HoiNghiHoiThao_DangKy { get; set; }
@@ -69,6 +71,7 @@ namespace DTOModel
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
 		public Nullable<System.DateTime> ThoiGianHetHan { get; set; }
+		public int IDSite { get; set; }
 	}
 }
 
@@ -107,7 +110,8 @@ namespace BaseBusiness
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
 				ModifiedBy = s.ModifiedBy,							
-				ThoiGianHetHan = s.ThoiGianHetHan,					
+				ThoiGianHetHan = s.ThoiGianHetHan,							
+				IDSite = s.IDSite,					
 			});
                               
         }
@@ -134,7 +138,8 @@ namespace BaseBusiness
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
 					ModifiedBy = dbResult.ModifiedBy,							
-					ThoiGianHetHan = dbResult.ThoiGianHetHan,
+					ThoiGianHetHan = dbResult.ThoiGianHetHan,							
+					IDSite = dbResult.IDSite,
 				};
 			}
 			else
@@ -279,6 +284,18 @@ namespace BaseBusiness
                 if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGianHetHanTo").Value, out DateTime toDate))
                     query = query.Where(d => fromDate <= d.ThoiGianHetHan && d.ThoiGianHetHan <= toDate);
 
+			//Query IDSite (int)
+			if (QueryStrings.Any(d => d.Key == "IDSite"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDSite").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDSite));
+            }
+
 
 			return toDTO(query);
 
@@ -310,7 +327,8 @@ namespace BaseBusiness
 				dbitem.IDTrangThai = item.IDTrangThai;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;                
+				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;							
+				dbitem.IDSite = item.IDSite;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -348,7 +366,8 @@ namespace BaseBusiness
 				dbitem.IDTrangThai = item.IDTrangThai;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;                
+				dbitem.ThoiGianHetHan = item.ThoiGianHetHan;							
+				dbitem.IDSite = item.IDSite;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

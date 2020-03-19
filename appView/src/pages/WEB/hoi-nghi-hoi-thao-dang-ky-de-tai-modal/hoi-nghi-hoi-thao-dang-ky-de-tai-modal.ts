@@ -101,6 +101,7 @@ export class HoiNghiHoiThaoDangKyDeTaiModalPage extends DetailPage {
     downloadBaiAbstract(item) {
         if (item.BaiAbstract)
             this.download(item.BaiAbstract);
+        else this.toastMessage('Chưa up file, không thể down!');
     }
 
     uploadBaiAbstractClick(item) {
@@ -128,6 +129,7 @@ export class HoiNghiHoiThaoDangKyDeTaiModalPage extends DetailPage {
     donwloadBaiFullText(item) {
         if (item.BaiFulltext)
             this.download(item.BaiFulltext);
+        else this.toastMessage('Chưa up file, không thể down!');
     }
 
     uploadBaiFullTextClick(item) {

@@ -87,6 +87,18 @@ export class HoiNghiHoiThaoDanhSachDeTaiModalPage extends DetailPage {
         confirm.present();
     }
 
+    downloadBaiAbstract(item) {
+        if (item.BaiAbstract)
+            this.download(item.BaiAbstract);
+        else this.toastMessage('Chưa up file, không thể down!');
+    }
+
+    donwloadBaiFullText(item) {
+        if (item.BaiFulltext)
+            this.download(item.BaiFulltext);
+        else this.toastMessage('Chưa up file, không thể down!');
+    }
+
     loadData() {
     }
 

@@ -349,6 +349,7 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSu_LLKHController.cs" />
     <Compile Include="Controllers\HRM\STAFF_NhanSu_SYLLController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
+    <Compile Include="Controllers\PRO\BaoCaoNghiemThuDeTaiController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoDangKyDeTaiController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoDangKyController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoController.cs" />
@@ -399,6 +400,7 @@
     <Content Include="Content\ej2\material.css" />
     <Content Include="Content\FormTemplate\AE.html" />
     <Content Include="Content\FormTemplate\BangKiemLuaChonQuyTrinhXXDD.html" />
+    <Content Include="Content\FormTemplate\BaoCaoNghiemThuDeTai.html" />
     <Content Include="Content\FormTemplate\DonXinNghiemThu.html" />
     <Content Include="Content\FormTemplate\DonXinDanhGiaDaoDuc.html" />
     <Content Include="Content\FormTemplate\DonXinXetDuyet.html" />

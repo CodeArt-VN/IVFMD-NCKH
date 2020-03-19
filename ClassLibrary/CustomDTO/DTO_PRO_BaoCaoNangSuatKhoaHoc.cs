@@ -10,6 +10,7 @@
         public string TrangThaiDuyet { get; set; }
         public string Error { get; set; }
         public string GhiChuKinhPhi { get; set; }
+        public bool IsKinhPhiManual { get; set; }
         public int Sort { get; set; }
     }
 }

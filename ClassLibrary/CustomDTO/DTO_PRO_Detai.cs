@@ -17,6 +17,7 @@ namespace DTOModel
         public string ActionCode { get; set; }
         public string NCVChinh { get; set; }
         public string ChuNhiemDeTai { get; set; }
+        public string BaiFullTextNghiemThu { get; set; }
     }
 
     public class DTO_PRO_DeTai_TrangThai

@@ -202,6 +202,46 @@ namespace BaseBusiness
             return toDTOCustom(query);
         }
 
+        public static DTO_PRO_BaoCaoNangSuatKhoaHoc get_PRO_BaoCaoNangSuatKhoaHocByID(AppEntities db, int id)
+        {
+            var dbResult = db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Find(id);
+
+            return toDTOItem(dbResult);
+        }
+
+        public static DTO_PRO_BaoCaoNangSuatKhoaHoc toDTOItem(tbl_PRO_BaoCaoNangSuatKhoaHoc dbResult)
+        {
+            if (dbResult != null)
+            {
+                return new DTO_PRO_BaoCaoNangSuatKhoaHoc()
+                {
+                    ID = dbResult.ID,
+                    IDDeTai = dbResult.IDDeTai,
+                    IDNhom = dbResult.IDNhom,
+                    IDSite = dbResult.IDSite,
+                    TenDeTai = dbResult.TenDeTai,
+                    NgayBaoCao = dbResult.NgayBaoCao,
+                    TapChiHoiNghi = dbResult.TapChiHoiNghi,
+                    IsDisabled = dbResult.IsDisabled,
+                    IsDeleted = dbResult.IsDeleted,
+                    CreatedDate = dbResult.CreatedDate,
+                    CreatedBy = dbResult.CreatedBy,
+                    ModifiedDate = dbResult.ModifiedDate,
+                    ModifiedBy = dbResult.ModifiedBy,
+                    IDKinhPhi = dbResult.IDKinhPhi,
+                    KinhPhi = dbResult.KinhPhi,
+                    IDNCV = dbResult.IDNCV,
+                    IsApproved = dbResult.IsApproved,
+                    ApprovedDate = dbResult.ApprovedDate,
+                    GhiChuKinhPhi = dbResult.tbl_CAT_KinhPhi.GhiChu,
+                    IsKinhPhiManual = dbResult.tbl_CAT_KinhPhi.IsManual ?? false
+                };
+            }
+            else
+                return null;
+        }
+
+
         public static IQueryable<DTO_PRO_BaoCaoNangSuatKhoaHoc> toDTOCustom(IQueryable<tbl_PRO_BaoCaoNangSuatKhoaHoc> query)
         {
             return query

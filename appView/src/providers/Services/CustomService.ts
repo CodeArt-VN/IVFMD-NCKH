@@ -1000,6 +1000,53 @@ export class PRO_SAECustomProvider extends exService {
 }
 
 @Injectable()
+export class PRO_BaoCaoNghiemThuDeTaiCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_BaoCaoNghiemThuDeTai, SearchConfig.getSearchFields('PRO_BaoCaoNghiemThuDeTai'), commonService);
+    }
+    getItemCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoNghiemThuDeTai.getItemCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    saveCustom(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoNghiemThuDeTai.saveCustom;
+        return new Promise((resolve, reject) => {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then((data) => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        });
+    }
+
+    uploadFullText(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoNghiemThuDeTai.uploadFullText;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
 export class PRO_ThuyetMinhDeTaiCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_ThuyetMinhDeTai, SearchConfig.getSearchFields('PRO_ThuyetMinhDeTai'), commonService);

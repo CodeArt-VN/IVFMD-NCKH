@@ -13,7 +13,7 @@ namespace API
 {
     public static class NckhHtmlToPdfConverter
     {
-        private static readonly string QtBinariesPath = @"../../QtBinaries";
+        private static readonly string QtBinariesPath = @"QtBinaries";
         private static readonly string cssPath = "~/content/style/nckh-form-template.min.css";
         private static readonly string emptyLayoutPath = "~/content/formtemplate/EmptyLayout.html";
 
@@ -68,7 +68,7 @@ namespace API
                 if (i == 0)
                 {
                     section.Template.Top = pdfHeader;
-                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml.Replace("[[Page]]", "1").Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
+                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml?.Replace("[[Page]]", "1")?.Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace API
                     {
                         section.Template.Top = HeaderHTMLtoPDF(html.Replace("[[HTML]]", headerHtml));
                     }
-                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml.Replace("[[Page]]", (i + 1).ToString()).Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
+                    section.Template.Bottom = FooterHTMLtoPDF(html.Replace("[[HTML]]", footerHtml?.Replace("[[Page]]", (i + 1).ToString())?.Replace("[[TotalPage]]", pdfLoadedDocument.Pages.Count.ToString())));
                 }
                 graphics.DrawPdfTemplate(template, new PointF(0, pdfHeader.Height), new SizeF(page.Size.Width, page.Size.Height - pdfHeader.Height - pdfFooter.Height));
             }
@@ -89,6 +89,7 @@ namespace API
             document.Save(filePath);
             document.Close();
             stream.Dispose();
+            filePath = filePath.Replace("~", "");
             return filePath;
         }
 
@@ -106,7 +107,7 @@ namespace API
             setting.SplitTextLines = false;
             setting.SplitImages = false;
             setting.MediaType = MediaType.Print;
-            setting.WebKitPath = QtBinariesPath;
+            setting.WebKitPath = HttpContext.Current.Server.MapPath("/" + QtBinariesPath);
             setting.WebKitViewPort = new System.Drawing.Size(1024, 0);
             return setting;
         }

@@ -1,0 +1,272 @@
+<ion-header class="fixed-button">
+    <button class="close-btn" ion-button float-right (click)="dismiss()">
+        <ion-icon name="close" color="ivf1"></ion-icon>
+    </button>
+    <button ion-button float-right (click)="saveChange()">
+        Lưu
+    </button>
+    <button color="warning" ion-button float-right (click)="cancel()">
+        Hủy thay đổi
+    </button>
+</ion-header>
+<ion-content style="background-color: #eaeaea;">
+    <br />
+    <div class="nckh-form-wrapper">
+        <div class="form-template-body">
+            <div class="nckh-form-template nckh-form-08 font-size-12">
+                <br />
+                <div class="c-control">
+                    <label class="c-label">
+                        I. THÔNG TIN CHUNG
+                    </label>
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        1. Họ và tên
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.HoTen" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        2. Ngày sinh
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.NgaySinh" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        3. Nam/nữ
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.GioiTinh" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        4. Nơi đang công tác
+                    </label>
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Trường/viện
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.TruongVien" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Phòng/ Khoa
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.PhongKhoa" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Chức vụ
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.ChucVu" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        5. Số CMND
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.CMND" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Ngày cấp
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.CMND_NgayCap" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Nơi cấp
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.CMND_NoiCap" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        6. Học vị
+                    </label>
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Thạc sỹ
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.HocViThacSy" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Năm đạt
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.NamHocViThacSy" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Tiến sỹ
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.HocViTienSy" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Năm đạt
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.NamHocViTienSy" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        7. Học hàm
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.HocHam" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Ngày phong
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.NamPhongHocHam" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        8. Liên lạc
+                    </label>
+                    <table class="nckh-table resize-grid" style="width:100%;" border="1">
+                        <colgroup>
+                            <col width="30" class="text-center" />
+                            <col width="120" />
+                            <col width="320" />
+                            <col />
+                        </colgroup>
+                        <thead>
+                            <tr class="table-header">
+                                <td class="text-center">TT</td>
+                                <td></td>
+                                <td>Cơ quan</td>
+                                <td>Cá nhân</td>
+                            </tr>
+                        </thead>
+                        <tbody style="width:100%;">
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>Địa chỉ</td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.DiaChi_CoQuan" type="text"></td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.DiaChi_CaNhan" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">2</td>
+                                <td>Điện thoại/fax</td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.DienThoai_CoQuan" type="text"></td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.DienThoai_CaNhan" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">3</td>
+                                <td>Email</td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.Email_CoQuan" type="text"></td>
+                                <td><input class="c-input no-border" [(ngModel)]="item.Email_CaNhan" type="text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        9. Thông tin tài khoản cá nhân
+                    </label>
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Mã số thuế cá nhân
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.TaiKhoan_MST" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Số tài khoản
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.TaiKhoan_STK" type="text">
+                </div>
+                <div class="c-control">
+                    <label class="c-label normal">
+                        Tại ngân hàng
+                    </label>
+                    <input class="c-input" [(ngModel)]="item.TaiKhoan_NganHang" type="text">
+                </div>
+                <br />
+                <div class="c-control">
+                    <label class="c-label normal">
+                        10. Trình độ ngoại ngữ
+                    </label>
+                    <button ion-button float-right (click)="tableAdd('ListNgoaiNgu')">
+                        Thêm
+                    </button>
+                    <button ion-button float-right (click)="tableDelete('ListNgoaiNgu')">
+                        Xóa
+                    </button>
+                    <div class="ptable pconf" style="width:100%;position:relative;">
+                        <table class="nckh-table resize-grid" style="width:100%;" border="1">
+                            <colgroup>
+                                <col width="30" />
+                                <col width="100" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                                <col width="30" />
+                            </colgroup>
+                            <thead>
+                                <tr class="table-header">
+                                    <td rowspan="2">TT</td>
+                                    <td rowspan="2">Tên ngoại ngữ</td>
+                                    <td colspan="3">Nghe</td>
+                                    <td colspan="3">Nói</td>
+                                    <td colspan="3">Viết</td>
+                                    <td colspan="3">Đọc hiểu tài liệu</td>
+                                </tr>
+                                <tr class="table-header" style="font-weight:normal">
+                                    <td>Tốt</td>
+                                    <td>Khá</td>
+                                    <td>TB</td>
+                                    <td>Tốt</td>
+                                    <td>Khá</td>
+                                    <td>TB</td>
+                                    <td>Tốt</td>
+                                    <td>Khá</td>
+                                    <td>TB</td>
+                                    <td>Tốt</td>
+                                    <td>Khá</td>
+                                    <td>TB</td>
+                                </tr>
+                            </thead>
+                            <tbody style="width:100%;" data-bind="foreach: ListNgoaiNgu">
+                                <tr *ngFor="let t of item.ListNgoaiNgu; let i = index" [attr.data-index]="i">
+                                    <td class="text-center"><input class="c-input no-border" type="text" value="{{i + 1}}" disabled></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NgoaiNgu" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NgheTot" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NgheKha" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NgheTB" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NoiTot" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NoiKha" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.NoiTB" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.VietTot" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.VietKha" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.VietTB" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.DocTot" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.DocKha" type="text"></td>
+                                    <td><input class="c-input no-border" [(ngModel)]="t.DocTB" type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

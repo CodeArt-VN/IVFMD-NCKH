@@ -5,6 +5,7 @@ import { AccountServiceProvider } from '../../../providers/CORE/account-service'
 import { GlobalData } from '../../../providers/CORE/global-variable'
 import { PRO_HoiNghiHoiThaoProvider } from '../../../providers/Services/Services';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
+import { CAT_SiteProvider } from '../../../providers/Services/Services';
 import { DateAdapter } from "@angular/material";
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
@@ -15,11 +16,10 @@ import 'jqueryui';
     templateUrl: 'hoi-nghi-hoi-thao-hrco-modal.html',
 })
 export class HoiNghiHoiThaoHRCOModalPage extends DetailPage {
-    kinhphis = [];
     sites = [];
-    nhoms = [];
     constructor(
         public currentProvider: PRO_HoiNghiHoiThaoProvider,
+        public siteProvider: CAT_SiteProvider,
         public viewCtrl: ViewController,
         public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
@@ -38,8 +38,19 @@ export class HoiNghiHoiThaoHRCOModalPage extends DetailPage {
             TenHoiNghi: ['', Validators.compose([Validators.required])],
             ThoiGian: [Date],
             ThoiGianHetHan: [Date],
-            IsDisabled: ''
+            IsDisabled: '',
+            IDSite: ['', Validators.compose([Validators.required])],
         });
+    }
+
+    preLoadData() {
+        Promise.all([
+            this.siteProvider.read(),
+        ])
+            .then(values => {
+                this.sites = values[0]['data'];
+                super.preLoadData();
+            })
     }
 
     loadedData() {

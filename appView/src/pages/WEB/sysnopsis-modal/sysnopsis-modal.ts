@@ -133,6 +133,7 @@ export class SysnopsisModalPage extends DetailPage {
             };
             this.deTaiCustomProvider.print(itemPrint).then((res: any) => {
                 if (this.loading) this.loading.dismiss();
+                if (res) this.download(res);
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

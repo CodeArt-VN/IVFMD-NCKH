@@ -863,6 +863,7 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="BaiFulltext" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -1067,6 +1068,7 @@
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGianHetHan" Type="datetime" />
+          <Property Name="IDSite" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_PRO_HoiNghiHoiThao_DangKy">
           <Key>
@@ -2807,6 +2809,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site">
+          <End Role="tbl_CAT_Site" Type="Self.tbl_CAT_Site" Multiplicity="1" />
+          <End Role="tbl_PRO_HoiNghiHoiThao" Type="Self.tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
+              <PropertyRef Name="IDSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
           <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="0..1" />
           <End Role="tbl_PRO_HoiNghiHoiThao" Type="Self.tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
@@ -3448,6 +3462,10 @@
             <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
             <End Role="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" EntitySet="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site" Association="Self.FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site">
+            <End Role="tbl_CAT_Site" EntitySet="tbl_CAT_Site" />
+            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
@@ -3633,6 +3651,10 @@
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site">
             <End Role="tbl_CAT_Site" EntitySet="tbl_CAT_Site" />
             <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site" Association="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site">
+            <End Role="tbl_CAT_Site" EntitySet="tbl_CAT_Site" />
+            <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_Tags_tbl_CAT_Tags" Association="AppModel.FK_tbl_PRO_Tags_tbl_CAT_Tags">
             <End Role="tbl_CAT_Tags" EntitySet="tbl_CAT_Tags" />
@@ -4085,6 +4107,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Site" FromRole="tbl_CAT_Site" ToRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
+          <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site" FromRole="tbl_CAT_Site" ToRole="tbl_PRO_HoiNghiHoiThao" />
         </EntityType>
         <EntityType Name="tbl_CAT_Tags">
           <Key>
@@ -4437,12 +4460,12 @@
           <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
           <Key>
@@ -4949,6 +4972,7 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
@@ -5189,6 +5213,8 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianHetHan" Type="DateTime" Precision="3" />
+          <Property Name="IDSite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_CAT_Site" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_CAT_Site" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao_DangKy" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKy_tbl_PRO_HoiNghiHoiThao" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_PRO_HoiNghiHoiThao_DangKy" />
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_PRO_HoiNghiHoiThao" FromRole="tbl_PRO_HoiNghiHoiThao" ToRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" />
@@ -5304,13 +5330,13 @@
           <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_LLKH" ToRole="tbl_PRO_DeTai" />
           <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_LLKH" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_MauPhanTichDuLieu">
           <Key>
@@ -6167,6 +6193,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbl_PRO_BaoCaoNangSuatKhoaHoc">
+              <PropertyRef Name="IDSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HoiNghiHoiThao_tbl_CAT_Site">
+          <End Type="AppModel.tbl_CAT_Site" Role="tbl_CAT_Site" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HoiNghiHoiThao" Role="tbl_PRO_HoiNghiHoiThao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoiNghiHoiThao">
               <PropertyRef Name="IDSite" />
             </Dependent>
           </ReferentialConstraint>
@@ -8143,6 +8181,7 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoNghiemThuDeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNghiemThuDeTai">
+                <ScalarProperty Name="BaiFulltext" ColumnName="BaiFulltext" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -8364,6 +8403,7 @@
           <EntitySetMapping Name="tbl_PRO_HoiNghiHoiThao">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_HoiNghiHoiThao">
               <MappingFragment StoreEntitySet="tbl_PRO_HoiNghiHoiThao">
+                <ScalarProperty Name="IDSite" ColumnName="IDSite" />
                 <ScalarProperty Name="ThoiGianHetHan" ColumnName="ThoiGianHetHan" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />

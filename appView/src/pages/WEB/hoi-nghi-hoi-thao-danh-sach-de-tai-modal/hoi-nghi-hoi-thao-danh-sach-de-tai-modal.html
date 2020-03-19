@@ -35,6 +35,20 @@
                         {{i.CreatedDateText}}
                     </ng-template>
                 </ngx-datatable-column>
+                <ngx-datatable-column name="Bài Abstract" prop="UploadBaiAbstract">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="downloadBaiAbstract(i)">
+                            {{i.UploadBaiAbstract}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Bài FullText" prop="UploadBaiFulltext">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="donwloadBaiFullText(i)">
+                            {{i.UploadBaiFulltext}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
             </ngx-datatable>
         </ion-col>
     </ion-row>

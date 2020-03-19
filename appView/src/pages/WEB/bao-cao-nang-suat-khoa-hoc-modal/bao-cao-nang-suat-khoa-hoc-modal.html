@@ -66,12 +66,19 @@
                       ion-text color="danger">(*)</span>
             </label>
 
-            <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi">
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDKinhPhi" formControlName="IDKinhPhi" (change)="onChangeKinhPhi($event)">
                 <option *ngFor="let t of kinhphis" [value]="t.ID">{{t.Name}}</option>
             </select>
         </div>
 
-        <div class="c-control" *ngIf="canApprove">
+        <div class="c-control" *ngIf="item.IsKinhPhiManual">
+            <label class="c-label" for="GhiChuKinhPhi">
+                Ghi chú
+            </label>
+            <input class="c-input" id="GhiChuKinhPhi" [(ngModel)]="item.GhiChuKinhPhi" formControlName="GhiChuKinhPhi" type="text" disabled>
+        </div>
+
+        <div class="c-control" *ngIf="canApprove && item.IsKinhPhiManual">
             <label class="c-label" for="KinhPhi">
                 Kinh phí
                 <span *ngIf="!formGroup.controls.KinhPhi.valid && !formGroup.controls.KinhPhi.pending && (formGroup.controls.KinhPhi.dirty || submitAttempt)"></span>

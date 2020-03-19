@@ -257,7 +257,42 @@
             }
         }
     }
+
+    .c-input {
+        font-size: 12pt;
+        border: 1px solid #dadada;
+        padding: 5px 10px;
+        background-color: #ffffff;
+
+        &.no-border {
+            border: none;
+            padding: 5px;
+        }
+    }
+
+    .c-control {
+        margin-bottom: 5px !important;
+
+        &.tab-1 {
+            margin-left: 10px;
+        }
+
+        .c-label.normal {
+            color: #000000;
+        }
+    }
+
+    [input]:disabled {
+        background-color: #ffffff;
+    }
+
+    .button-ios {
+        padding: 2px 5px;
+        font-size: 15px;
+        height: 30px;
+    }
 }
+
 
 @media print {
     .nckh-form-template {
