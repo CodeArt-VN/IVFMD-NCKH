@@ -39,7 +39,6 @@ export class SysnopsisModalPage extends DetailPage {
 
     loadData() {
         this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
-            //this.commonService.copyPropertiesValue(ite, this.item);
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -50,7 +49,6 @@ export class SysnopsisModalPage extends DetailPage {
 
     loadDataReset() {
         this.currentProvider.getItemCustom(this.idDeTai, true).then((ite) => {
-            //this.commonService.copyPropertiesValue(ite, this.item);
             this.item = ite;
             this.loadedData();
         }).catch((data) => {

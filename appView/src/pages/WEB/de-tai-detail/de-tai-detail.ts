@@ -50,6 +50,7 @@ export class DeTaiDetailPage extends BasePage {
     listForm2 = [];
     listForm4 = [];
     listForm5 = [];
+    isCanInputNCT = true;
 
     pageIndex: number = 0;
     pageTitle = '';
@@ -203,6 +204,8 @@ export class DeTaiDetailPage extends BasePage {
                     this.goToStep(0, null);
                 }, 300);
                 this.loadedData();
+                if (this.item.ID > 0 && this.item.SoNCT && this.item.SoNCT.length > 0)
+                    this.isCanInputNCT = false;
             }).catch((err) => {
                 this.loadedData();
             });
@@ -571,7 +574,7 @@ export class DeTaiDetailPage extends BasePage {
                             }).catch(err => {
                                 console.log(err);
                                 if (this.loading) this.loading.dismiss();
-                                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
                             });
                         })
                     }

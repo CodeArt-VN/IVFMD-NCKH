@@ -70,6 +70,11 @@ namespace BaseBusiness
                 NgayKy_Thang = s.NgayKy_Thang,
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_ChuKy = s.NgayKy_ChuKy,
+                NamPhongHocHam = s.NamPhongHocHam,
+                HocViThacSy = s.HocViThacSy,
+                NamHocViThacSy = s.NamHocViThacSy,
+                HocViTienSy = s.HocViTienSy,
+                NamHocViTienSy = s.NamHocViTienSy,
             }).FirstOrDefault();
 
             if (query == null)
@@ -206,6 +211,15 @@ namespace BaseBusiness
             dbitem.ChuyenNganh = item.ChuyenNganh;
             dbitem.HuongNghienCuu = item.HuongNghienCuu;
             dbitem.HoatDongKhac = item.HoatDongKhac;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
+            dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
+            dbitem.NamPhongHocHam = item.NamPhongHocHam;
+            dbitem.HocViThacSy = item.HocViThacSy;
+            dbitem.NamHocViThacSy = item.NamHocViThacSy;
+            dbitem.HocViTienSy = item.HocViTienSy;
+            dbitem.NamHocViTienSy = item.NamHocViTienSy;
             if (item.ListNgoaiNgu != null)
             {
                 dbitem.JSON_NgoaiNgu = JsonConvert.SerializeObject(item.ListNgoaiNgu);

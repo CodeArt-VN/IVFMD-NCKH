@@ -42,7 +42,9 @@ namespace BaseBusiness
                 NgayKy_ChuKy = s.NgayKy_ChuKy,
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_Ngay = s.NgayKy_Ngay,
-                NgayKy_Thang = s.NgayKy_Thang
+                NgayKy_Thang = s.NgayKy_Thang,
+                JSON_HocVi = s.JSON_HocVi,
+                DienThoaiNhaRieng = s.DienThoaiNhaRieng,
             }).FirstOrDefault();
 
             if (query == null)
@@ -108,7 +110,7 @@ namespace BaseBusiness
             dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
             dbitem.NgayKy_Thang = item.NgayKy_Thang;
             dbitem.NgayKy_Nam = item.NgayKy_Nam;
-
+            dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;
             if (item.ListKinhNghiem != null)
             {
                 dbitem.JSON_KinhNghiem = JsonConvert.SerializeObject(item.ListKinhNghiem);
