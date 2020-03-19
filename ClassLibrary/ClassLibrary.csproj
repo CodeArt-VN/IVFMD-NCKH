@@ -63,6 +63,7 @@
     <Compile Include="CustomBusiness\BS_PRO_BaoCaoNghiemThuDeTai.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao_DangKy.cs" />
+    <Compile Include="CustomBusiness\BS_PRO_BangKhaiNhanSu.cs" />
     <Compile Include="CustomBusiness\BS_SYS_Config.cs" />
     <Compile Include="CustomBusiness\BS_PRO_AE.cs" />
     <Compile Include="CustomBusiness\BS_PRO_HoiNghiHoiThao.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="CustomDTO\DTO_PRO_AE.cs" />
     <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKy.cs" />
+    <Compile Include="CustomDTO\DTO_PRO_BangKhaiNhanSu.cs" />
     <Compile Include="CustomDTO\DTO_SYS_Config.cs" />
     <Compile Include="CustomDTO\DTO_SYS_Config_ThoiGianBaoCaoNSKH.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BaoCaoTienDoNghienCuu.cs" />
@@ -233,6 +235,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_AE.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PRO_BangKhaiNhanSu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.cs">

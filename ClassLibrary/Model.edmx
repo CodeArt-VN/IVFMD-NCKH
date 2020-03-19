@@ -714,6 +714,49 @@
           <Property Name="TienHanhSAE1_Co" Type="bit" />
           <Property Name="TienHanhSAE1_Khong" Type="bit" />
         </EntityType>
+        <EntityType Name="tbl_PRO_BangKhaiNhanSu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDeTai" Type="int" Nullable="false" />
+          <Property Name="YTuong_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="YTuong_ChiPhi" Type="money" />
+          <Property Name="PhuongPhap_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PhuongPhap_ChiPhi" Type="money" />
+          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="QuyTrinhNhanMau_ChiPhi" Type="money" />
+          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ThucHienNhanMau_ChiPhi" Type="money" />
+          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NhapDuLieuVaoPM_ChiPhi" Type="money" />
+          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="VietBaiBaoCaoTiengViet_ChiPhi" Type="money" />
+          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="VietBaiBaoCaoTiengAnh_ChiPhi" Type="money" />
+          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ReviewTinhKhaThi_ChiPhi" Type="money" />
+          <Property Name="XayDungPhanMem_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungPhanMem_ChiPhi" Type="money" />
+          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungKeHoachPhanTich_ChiPhi" Type="money" />
+          <Property Name="LamSachSoLieu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="LamSachSoLieu_ChiPhi" Type="money" />
+          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PhanTichSoLieu_ChiPhi" Type="money" />
+          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungKeHoachDieuPhoi_ChiPhi" Type="money" />
+          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ChuanBiHoSoGiayTo_ChiPhi" Type="money" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_ChiPhi" Type="money" />
+          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="QuanLyDieuHanhChung_ChiPhi" Type="money" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
           <Key>
             <PropertyRef Name="ID" />
@@ -2437,6 +2480,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai">
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="1" />
+          <End Role="tbl_PRO_BangKhaiNhanSu" Type="Self.tbl_PRO_BangKhaiNhanSu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BangKhaiNhanSu">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai">
           <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="1" />
           <End Role="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Type="Self.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Multiplicity="*" />
@@ -3128,6 +3183,7 @@
           <EntitySet Name="tbl_PAR_Partner" EntityType="Self.tbl_PAR_Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PAR_ThongTinSanPham" EntityType="Self.tbl_PAR_ThongTinSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_AE" EntityType="Self.tbl_PRO_AE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRO_BangKhaiNhanSu" EntityType="Self.tbl_PRO_BangKhaiNhanSu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" EntityType="Self.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntityType="Self.tbl_PRO_BaoCaoNangSuatKhoaHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_BaoCaoNghiemThuDeTai" EntityType="Self.tbl_PRO_BaoCaoNghiemThuDeTai" Schema="dbo" store:Type="Tables" />
@@ -3337,6 +3393,10 @@
           <AssociationSet Name="FK_tbl_PRO_AE_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_AE_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_AE" EntitySet="tbl_PRO_AE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_BangKhaiNhanSu" EntitySet="tbl_PRO_BangKhaiNhanSu" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
@@ -4023,6 +4083,11 @@
           <AssociationSet Name="FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha" Association="AppModel.FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha">
             <End Role="tbl_WEB_DanhMuc" EntitySet="tbl_WEB_DanhMuc" />
             <End Role="tbl_WEB_DanhMuc1" EntitySet="tbl_WEB_DanhMuc" />
+          </AssociationSet>
+          <EntitySet Name="tbl_PRO_BangKhaiNhanSu" EntityType="AppModel.tbl_PRO_BangKhaiNhanSu" />
+          <AssociationSet Name="FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_BangKhaiNhanSu" EntitySet="tbl_PRO_BangKhaiNhanSu" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_CAT_BangGiaKinhPhi">
@@ -5076,6 +5141,7 @@
           <NavigationProperty Name="tbl_PRO_Tags" Relationship="AppModel.FK_tbl_PRO_Tags_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_Tags" />
           <NavigationProperty Name="tbl_PRO_ThuyetMinhDeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_ThuyetMinhDeTai" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log" Relationship="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_TrangThai_Log" />
+          <NavigationProperty Name="tbl_PRO_BangKhaiNhanSu" Relationship="AppModel.FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BangKhaiNhanSu" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -7313,6 +7379,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_PRO_BangKhaiNhanSu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
+          <Property Name="YTuong_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="YTuong_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PhuongPhap_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PhuongPhap_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="QuyTrinhNhanMau_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ThucHienNhanMau_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NhapDuLieuVaoPM_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="VietBaiBaoCaoTiengViet_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="VietBaiBaoCaoTiengAnh_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewTinhKhaThi_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="XayDungPhanMem_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungPhanMem_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungKeHoachPhanTich_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LamSachSoLieu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="LamSachSoLieu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PhanTichSoLieu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungKeHoachDieuPhoi_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ChuanBiHoSoGiayTo_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="QuanLyDieuHanhChung_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKhaiNhanSu" ToRole="tbl_PRO_DeTai" />
+        </EntityType>
+        <Association Name="FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_BangKhaiNhanSu" Role="tbl_PRO_BangKhaiNhanSu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_BangKhaiNhanSu">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9299,6 +9421,50 @@
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_BangKhaiNhanSu">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_BangKhaiNhanSu">
+              <MappingFragment StoreEntitySet="tbl_PRO_BangKhaiNhanSu">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="QuanLyDieuHanhChung_ChiPhi" ColumnName="QuanLyDieuHanhChung_ChiPhi" />
+                <ScalarProperty Name="QuanLyDieuHanhChung_NguoiThucHien" ColumnName="QuanLyDieuHanhChung_NguoiThucHien" />
+                <ScalarProperty Name="DieuPhoiHoatDongNghienCuu_ChiPhi" ColumnName="DieuPhoiHoatDongNghienCuu_ChiPhi" />
+                <ScalarProperty Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" ColumnName="DieuPhoiHoatDongNghienCuu_NguoiThucHien" />
+                <ScalarProperty Name="ChuanBiHoSoGiayTo_ChiPhi" ColumnName="ChuanBiHoSoGiayTo_ChiPhi" />
+                <ScalarProperty Name="ChuanBiHoSoGiayTo_NguoiThucHien" ColumnName="ChuanBiHoSoGiayTo_NguoiThucHien" />
+                <ScalarProperty Name="XayDungKeHoachDieuPhoi_ChiPhi" ColumnName="XayDungKeHoachDieuPhoi_ChiPhi" />
+                <ScalarProperty Name="XayDungKeHoachDieuPhoi_NguoiThucHien" ColumnName="XayDungKeHoachDieuPhoi_NguoiThucHien" />
+                <ScalarProperty Name="PhanTichSoLieu_ChiPhi" ColumnName="PhanTichSoLieu_ChiPhi" />
+                <ScalarProperty Name="PhanTichSoLieu_NguoiThucHien" ColumnName="PhanTichSoLieu_NguoiThucHien" />
+                <ScalarProperty Name="LamSachSoLieu_ChiPhi" ColumnName="LamSachSoLieu_ChiPhi" />
+                <ScalarProperty Name="LamSachSoLieu_NguoiThucHien" ColumnName="LamSachSoLieu_NguoiThucHien" />
+                <ScalarProperty Name="XayDungKeHoachPhanTich_ChiPhi" ColumnName="XayDungKeHoachPhanTich_ChiPhi" />
+                <ScalarProperty Name="XayDungKeHoachPhanTich_NguoiThucHien" ColumnName="XayDungKeHoachPhanTich_NguoiThucHien" />
+                <ScalarProperty Name="XayDungPhanMem_ChiPhi" ColumnName="XayDungPhanMem_ChiPhi" />
+                <ScalarProperty Name="XayDungPhanMem_NguoiThucHien" ColumnName="XayDungPhanMem_NguoiThucHien" />
+                <ScalarProperty Name="ReviewTinhKhaThi_ChiPhi" ColumnName="ReviewTinhKhaThi_ChiPhi" />
+                <ScalarProperty Name="ReviewTinhKhaThi_NguoiThucHien" ColumnName="ReviewTinhKhaThi_NguoiThucHien" />
+                <ScalarProperty Name="VietBaiBaoCaoTiengAnh_ChiPhi" ColumnName="VietBaiBaoCaoTiengAnh_ChiPhi" />
+                <ScalarProperty Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" ColumnName="VietBaiBaoCaoTiengAnh_NguoiThucHien" />
+                <ScalarProperty Name="VietBaiBaoCaoTiengViet_ChiPhi" ColumnName="VietBaiBaoCaoTiengViet_ChiPhi" />
+                <ScalarProperty Name="VietBaiBaoCaoTiengViet_NguoiThucHien" ColumnName="VietBaiBaoCaoTiengViet_NguoiThucHien" />
+                <ScalarProperty Name="NhapDuLieuVaoPM_ChiPhi" ColumnName="NhapDuLieuVaoPM_ChiPhi" />
+                <ScalarProperty Name="NhapDuLieuVaoPM_NguoiThucHien" ColumnName="NhapDuLieuVaoPM_NguoiThucHien" />
+                <ScalarProperty Name="ThucHienNhanMau_ChiPhi" ColumnName="ThucHienNhanMau_ChiPhi" />
+                <ScalarProperty Name="ThucHienNhanMau_NguoiThucHien" ColumnName="ThucHienNhanMau_NguoiThucHien" />
+                <ScalarProperty Name="QuyTrinhNhanMau_ChiPhi" ColumnName="QuyTrinhNhanMau_ChiPhi" />
+                <ScalarProperty Name="QuyTrinhNhanMau_NguoiThucHien" ColumnName="QuyTrinhNhanMau_NguoiThucHien" />
+                <ScalarProperty Name="PhuongPhap_ChiPhi" ColumnName="PhuongPhap_ChiPhi" />
+                <ScalarProperty Name="PhuongPhap_NguoiThucHien" ColumnName="PhuongPhap_NguoiThucHien" />
+                <ScalarProperty Name="YTuong_ChiPhi" ColumnName="YTuong_ChiPhi" />
+                <ScalarProperty Name="YTuong_NguoiThucHien" ColumnName="YTuong_NguoiThucHien" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

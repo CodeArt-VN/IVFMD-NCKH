@@ -93,5 +93,6 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
+        public virtual DbSet<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
     }
 }

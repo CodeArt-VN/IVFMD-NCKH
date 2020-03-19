@@ -360,6 +360,7 @@
     <Compile Include="Controllers\PRO\BaoCaoNangSuatKhoaHocController.cs" />
     <Compile Include="Controllers\PRO\DonXinNghiemThuController.cs" />
     <Compile Include="Controllers\PRO\DonXinDanhGiaDaoDucController.cs" />
+    <Compile Include="Controllers\PRO\BangKhaiNhanSuController.cs" />
     <Compile Include="Controllers\PRO\PhieuXemXetDaoDucController.cs" />
     <Compile Include="Controllers\PRO\SAEController.cs" />
     <Compile Include="Controllers\PRO\SYLLController.cs" />
@@ -413,6 +414,7 @@
     <Content Include="Content\FormTemplate\EmptyLayout.html" />
     <Content Include="Content\FormTemplate\SAE.html" />
     <Content Include="Content\FormTemplate\Sysnopsis.html" />
+    <Content Include="Content\FormTemplate\BangKhaiNhanSu.html" />
     <Content Include="Content\FormTemplate\ThuyetMinhDeTai.html" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
