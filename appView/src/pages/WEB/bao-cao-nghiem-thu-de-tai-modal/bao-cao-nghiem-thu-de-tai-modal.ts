@@ -90,7 +90,7 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
         item.HTML = $("#frmBaoCaoNghiemThuDeTai").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.save(item).then((savedItem: any) => {
+            this.currentProvider.saveCustom(item).then((savedItem: any) => {
                 this.item.ID = savedItem.ID;
                 this.model.ID = savedItem.ID;
                 if (this.loading) this.loading.dismiss();
