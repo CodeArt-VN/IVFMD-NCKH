@@ -45,7 +45,7 @@ namespace API.Controllers.PRO
             if (tbl_PRO_BaoCaoNghiemThuDeTai.ID == 0)
             {
                 string html = "";
-                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai.html")))
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai.html")))
                 {
                     html = r.ReadToEnd();
                 }
@@ -70,7 +70,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_BaoCaoNghiemThuDeTai.put_PRO_BaoCaoNghiemThuDeTai(db, id, tbl_PRO_BaoCaoNghiemThuDeTai, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -87,9 +87,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_BaoCaoNghiemThuDeTai result = BS_PRO_BaoCaoNghiemThuDeTai.post_PRO_BaoCaoNghiemThuDeTai(db, tbl_PRO_BaoCaoNghiemThuDeTai, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_BaoCaoNghiemThuDeTai", new { id = result.ID }, result);
             }
@@ -100,17 +100,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_BaoCaoNghiemThuDeTai))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_BaoCaoNghiemThuDeTai.check_PRO_BaoCaoNghiemThuDeTai_Exists(db, id); 
+            bool check = BS_PRO_BaoCaoNghiemThuDeTai.check_PRO_BaoCaoNghiemThuDeTai_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_BaoCaoNghiemThuDeTai.delete_PRO_BaoCaoNghiemThuDeTai(db, id, Username); 
+            bool result = BS_PRO_BaoCaoNghiemThuDeTai.delete_PRO_BaoCaoNghiemThuDeTai(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 

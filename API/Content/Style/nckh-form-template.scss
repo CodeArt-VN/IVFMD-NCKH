@@ -1,8 +1,9 @@
 .nckh-form-template {
     background-color: #fff;
-    min-width: 8.27in;
-    max-width: 8.27in;
+    min-width: 6.27in;
+    max-width: 6.27in;
     margin: auto;
+    padding: 0 1in;
     font-family: 'Times New Roman', Times, serif;
     font-size: 13pt;
     box-shadow: none;
@@ -46,7 +47,7 @@
         background: #fff;
 
         .print-hidden {
-            visibility: collapse;
+            display: none;
         }
     }
 
@@ -54,6 +55,24 @@
         top: 0mm;
         width: 100%;
         background: #fff;
+    }
+
+    .page {
+        position: relative;
+        min-height: 9.6in;
+        page-break-after: always;
+
+        &:last-child {
+            page-break-after: avoid;
+        }
+
+        &.cover-page {
+            min-height: 9.6in;
+        }
+    }
+
+    .page-break {
+        display: none !important;
     }
 
     .inline {

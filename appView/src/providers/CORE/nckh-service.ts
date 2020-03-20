@@ -21,6 +21,27 @@ export class NCKHServiceProvider {
                 });
             }
         };
+        ko.bindingHandlers.checkedHtml = {
+            init: function (element, valueAccessor) {
+                var $element = $(element);
+                var initialValue = ko.utils.unwrapObservable(valueAccessor());
+                if (initialValue) {
+                    $element.attr("checked", initialValue)
+                } else {
+                    $element.removeAttr("checked")
+                }
+                $element.on('change', function () {
+                    if (this.checked) {
+                        $element.attr("checked", this.checked)
+                    } else {
+                        $element.removeAttr("checked")
+                    }
+                    var observable = valueAccessor();
+                    observable(this.checked);
+                });
+            }
+        };
+        
 
         // eventHandlers
         $(".ptable,.pblock").on("click", ".clone", function (e) {

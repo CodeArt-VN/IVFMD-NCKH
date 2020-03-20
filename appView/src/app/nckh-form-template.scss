@@ -38,11 +38,11 @@
         background: #fff;
 
         .print-hidden {
-            visibility: visible;
+            display: none;
         }
 
         .uiview-hidden {
-            visibility: collapse;
+            display: none;
         }
     }
 
@@ -102,6 +102,12 @@
         &:hover {
             box-shadow: 0px 0px 2px #44a9eb;
         }
+    }
+
+    .page {
+        position: relative;
+        min-height: 9.69in;
+        page-break-after: always;
     }
 
     .box-inline {
