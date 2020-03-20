@@ -112,6 +112,8 @@ export class HosremModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmHosrem .form-template-header").height(),
+                pxFooter: $("#frmHosrem .form-template-footer").height(),
                 htmlContent: $("#frmHosrem .form-template-body").html(),
                 htmlFooter: $("#frmHosrem .form-template-footer").html(),
                 htmlHeader: $("#frmHosrem .form-template-header").html()

@@ -22,7 +22,7 @@ namespace BaseBusiness
                     IDDeTai = s.IDDeTai,
                     IDBenhNhan = s.IDBenhNhan,
                     MaSo = s.MaSo,
-                    MaSoBenhNhan = s.MaSoBenhNhan,
+                    MaSoBenhNhan = s.tbl_CUS_HRM_BenhNhan.MaBenhNhan,
                     TenBienCo = s.TenBienCo,
                     NgayKhoiPhat_Ngay = s.NgayKhoiPhat_Ngay,
                     NgayKhoiPhat_Thang = s.NgayKhoiPhat_Thang,
@@ -107,10 +107,13 @@ namespace BaseBusiness
             }
             else
             {
+                var objBN = db.tbl_CUS_HRM_BenhNhan.FirstOrDefault(c => c.ID == idBenhNhan);
+
                 query = new DTO_PRO_AE
                 {
                     IDDeTai = deTaiId,
-                    IDBenhNhan = idBenhNhan
+                    IDBenhNhan = idBenhNhan,
+                    MaSoBenhNhan = objBN != null ? objBN.MaBenhNhan : "________"
                 };
             }
 

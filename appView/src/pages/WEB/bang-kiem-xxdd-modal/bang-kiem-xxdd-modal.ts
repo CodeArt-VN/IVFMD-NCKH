@@ -164,6 +164,8 @@ export class BangKiemXXDDModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmBangKiemXXDD .form-template-header").height(),
+                pxFooter: $("#frmBangKiemXXDD .form-template-footer").height(),
                 htmlContent: $("#frmBangKiemXXDD .form-template-body").html(),
                 htmlFooter: $("#frmBangKiemXXDD .form-template-footer").html(),
                 htmlHeader: $("#frmBangKiemXXDD .form-template-header").html()

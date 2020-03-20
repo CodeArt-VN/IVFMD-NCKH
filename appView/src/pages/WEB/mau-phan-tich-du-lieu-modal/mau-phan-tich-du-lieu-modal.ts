@@ -159,6 +159,8 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmMauPhanTichDuLieu .form-template-header").height(),
+                pxFooter: $("#frmMauPhanTichDuLieu .form-template-footer").height(),
                 htmlContent: $("#frmMauPhanTichDuLieu .form-template-body").html(),
                 htmlFooter: $("#frmMauPhanTichDuLieu .form-template-footer").html(),
                 htmlHeader: $("#frmMauPhanTichDuLieu .form-template-header").html()
