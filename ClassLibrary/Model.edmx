@@ -977,6 +977,7 @@
           <Property Name="FileUpload" Type="nvarchar" MaxLength="4000" />
           <Property Name="IDHinhThucXetDuyet" Type="int" />
           <Property Name="IDTinhTrangNghienCuu" Type="int" />
+          <Property Name="FileChapThuan" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -5142,6 +5143,7 @@
           <NavigationProperty Name="tbl_PRO_ThuyetMinhDeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_ThuyetMinhDeTai" />
           <NavigationProperty Name="tbl_PRO_TrangThai_Log" Relationship="AppModel.FK_tbl_PRO_TrangThai_Log_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_TrangThai_Log" />
           <NavigationProperty Name="tbl_PRO_BangKhaiNhanSu" Relationship="AppModel.FK_tbl_PRO_BangKhaiNhanSu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_BangKhaiNhanSu" />
+          <Property Name="FileChapThuan" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -8377,6 +8379,7 @@
           <EntitySetMapping Name="tbl_PRO_DeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_DeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_DeTai">
+                <ScalarProperty Name="FileChapThuan" ColumnName="FileChapThuan" />
                 <ScalarProperty Name="IDTinhTrangNghienCuu" ColumnName="IDTinhTrangNghienCuu" />
                 <ScalarProperty Name="IDHinhThucXetDuyet" ColumnName="IDHinhThucXetDuyet" />
                 <ScalarProperty Name="FileUpload" ColumnName="FileUpload" />

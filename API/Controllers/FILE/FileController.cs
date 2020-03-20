@@ -139,6 +139,79 @@ namespace API.Controllers.DOC
             return CreatedAtRoute("", new { id = 0 }, code + ".jpg");
         }
 
+        [Route("FileUpload/{id:int}")]
+        public IHttpActionResult Post_FileUpload(int id)
+        {
+            var httpRequest = System.Web.HttpContext.Current.Request;
+            if (httpRequest.Files.Count < 1)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_CUS_DOC_File result = null;
+            DTO_CUS_DOC_File item = new DTO_CUS_DOC_File();
+
+            foreach (string file in httpRequest.Files)
+            {
+                var postedFile = httpRequest.Files[file];
+
+                string uploadPath = "/Uploads/NCKH/" + DateTime.Today.ToString("yyyy/MM/dd").Replace("-", "/");
+
+
+                string oldName = System.IO.Path.GetFileName(postedFile.FileName);
+                string ext = oldName.Substring(oldName.LastIndexOf('.') + 1).ToLower();
+
+                var g = Guid.NewGuid();
+                string fileid = g.ToString();
+                string fileName = "" + fileid + "." + oldName;
+
+                string mapPath = System.Web.HttpContext.Current.Server.MapPath("~/");
+                string strDirectoryPath = mapPath + uploadPath;
+                string strFilePath = strDirectoryPath + "/" + fileName;
+
+                System.IO.FileInfo existingFile = new System.IO.FileInfo(strFilePath);
+
+                if (!System.IO.Directory.Exists(strDirectoryPath))
+                    System.IO.Directory.CreateDirectory(strDirectoryPath);
+                if (existingFile.Exists)
+                {
+                    existingFile.Delete();
+                    existingFile = new System.IO.FileInfo(strFilePath);
+                }
+
+                postedFile.SaveAs(strFilePath);
+
+
+                if (id == 0)
+                {
+                    item.Name = "";
+                    item.Code = uploadPath + "/" + fileName;
+                    item.IsDeleted = true;
+                    item.Path = uploadPath + "/" + fileName;
+                    item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
+                    item.FileSize = new System.IO.FileInfo(strFilePath).Length;
+
+                    result = BS_CUS_DOC_File.post_CUS_DOC_File(db, PartnerID, item, Username, true);
+                }
+                else
+                {
+                    item.ID = id;
+                    item.Code = uploadPath + "/" + fileName;
+                    item.Path = uploadPath + "/" + fileName;
+                    item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
+                    item.FileSize = new System.IO.FileInfo(strFilePath).Length;
+
+                    result = item;
+                }
+            }
+
+
+            if (result != null)
+            {
+                return CreatedAtRoute("get_CUS_DOC_File", new { id = result.ID }, result);
+            }
+            return Conflict();
+        }
 
         #region NhanSu
 

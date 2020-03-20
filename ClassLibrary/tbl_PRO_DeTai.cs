@@ -67,6 +67,7 @@ namespace ClassLibrary
         public string FileUpload { get; set; }
         public Nullable<int> IDHinhThucXetDuyet { get; set; }
         public Nullable<int> IDTinhTrangNghienCuu { get; set; }
+        public string FileChapThuan { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -150,6 +151,7 @@ namespace DTOModel
 		public string FileUpload { get; set; }
 		public Nullable<int> IDHinhThucXetDuyet { get; set; }
 		public Nullable<int> IDTinhTrangNghienCuu { get; set; }
+		public string FileChapThuan { get; set; }
 	}
 }
 
@@ -198,7 +200,8 @@ namespace BaseBusiness
 				MaSoHDDD = s.MaSoHDDD,							
 				FileUpload = s.FileUpload,							
 				IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,							
-				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,					
+				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,							
+				FileChapThuan = s.FileChapThuan,					
 			});
                               
         }
@@ -235,7 +238,8 @@ namespace BaseBusiness
 					MaSoHDDD = dbResult.MaSoHDDD,							
 					FileUpload = dbResult.FileUpload,							
 					IDHinhThucXetDuyet = dbResult.IDHinhThucXetDuyet,							
-					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,
+					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,							
+					FileChapThuan = dbResult.FileChapThuan,
 				};
 			}
 			else
@@ -505,6 +509,13 @@ namespace BaseBusiness
                     query = query.Where(d => IDs.Contains(d.IDTinhTrangNghienCuu));
             }
 
+			//Query FileChapThuan (string)
+			if (QueryStrings.Any(d => d.Key == "FileChapThuan") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FileChapThuan").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FileChapThuan").Value;
+                query = query.Where(d=>d.FileChapThuan == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -548,7 +559,8 @@ namespace BaseBusiness
 				dbitem.MaSoHDDD = item.MaSoHDDD;							
 				dbitem.FileUpload = item.FileUpload;							
 				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;							
-				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
+				dbitem.FileChapThuan = item.FileChapThuan;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -596,7 +608,8 @@ namespace BaseBusiness
 				dbitem.MaSoHDDD = item.MaSoHDDD;							
 				dbitem.FileUpload = item.FileUpload;							
 				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;							
-				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
+				dbitem.FileChapThuan = item.FileChapThuan;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
