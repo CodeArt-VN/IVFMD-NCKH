@@ -26,7 +26,7 @@ export class HoiNghiHoiThaoDangKyDeTaiModalPage extends DetailPage {
     @ViewChild('importfile') importfile: any;
     FormGroups = [];
     canApprove = false;
-    UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload');
+    UploadAPI = appSetting.apiDomain('CUS/File/FileUpload');
     hasBaseDropZoneOver = false;
     File = "";
     FileSize = 0;
@@ -63,7 +63,7 @@ export class HoiNghiHoiThaoDangKyDeTaiModalPage extends DetailPage {
         }
 
         this.uploader.onBeforeUploadItem = (item) => {
-            this.UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload/' + 0 + '?IDPartner=' + 1);
+            this.UploadAPI = appSetting.apiDomain('CUS/File/FileUpload/' + 0 + '?IDPartner=' + 1);
             item.url = this.UploadAPI;
         }
         this.uploader.onSuccessItem = (item, response, status: number, headers) => {

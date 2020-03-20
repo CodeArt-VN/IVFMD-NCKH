@@ -4,6 +4,11 @@
     <div class="search">
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
+    <div class="partner">
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
+        </select>
+    </div>
     <div class="path">
         <div class="filter-block" (click)="showDatePicks = !showDatePicks">
             <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Thời gian">

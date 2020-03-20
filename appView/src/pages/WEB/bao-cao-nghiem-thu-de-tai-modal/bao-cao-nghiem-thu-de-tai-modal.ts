@@ -87,6 +87,7 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
 
     saveChange() {
         let item = this.model.getItem();
+        item.IDDetai = this.idDeTai;
         item.HTML = $("#frmBaoCaoNghiemThuDeTai").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {

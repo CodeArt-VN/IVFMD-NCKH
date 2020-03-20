@@ -46,28 +46,57 @@
                                 <ion-card-title>
                                     <a>File trình bày PowerPoint</a>
                                 </ion-card-title>
-                                <p class="summary">
+                                <p class="summary" *ngIf="item.FileUpload != null && item.FileUpload != ''">
+                                    Đã up file
+                                </p>
+                                <p class="summary" *ngIf="item.FileUpload == null || item.FileUpload == ''">
+                                    Chưa up file
                                 </p>
                                 <div padding></div>
-                                <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
-                                <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="downloadFileUpload()">Tải file xuống</button>
-                                <button *ngIf="item.FileUpload == null || item.FileUpload == ''" block ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
+                                    <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: calc(50% - 10px);" ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
+                                    <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: calc(50% - 10px);" ion-button (click)="downloadFileUpload()">Tải file xuống</button>
+                                    <button *ngIf="item.FileUpload == null || item.FileUpload == ''" block ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-col>
 
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>File chấp thuận</a>
+                        <ion-col col-md-4>
+                            <ion-card color="white" no-margin class="news">
+                                <ion-card-content>
+                                    <span style="font-size:13px">
+                                        Mã số Protocal ID
+                                    </span>
+                                    <div class="c-control" style="margin-bottom:5px">
+                                        <input class="c-input" type="text" [(ngModel)]="item.MaSoProtocalID" />
+                                    </div>
+                                    <span style="font-size:13px">
+                                        Mã số HĐĐĐ
+                                    </span>
+                                    <div class="c-control" style="margin-bottom:5px">
+                                        <input class="c-input" type="text" [(ngModel)]="item.MaSoHDDD" />
+                                    </div>
+                                    <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove">CẬP NHẬT</button>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-col>
+
+                        <ion-col col-md-4>
+                            <ion-card color="white" no-margin class="news">
+                                <ion-card-content>
+                                    <ion-card-title>
+                                        <a>File chấp thuận</a>
                                 </ion-card-title>
-                                <p class="summary">
+                                <p class="summary" *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''">
+                                    Đã up file
+                                </p>
+                                <p class="summary" *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''">
+                                    Chưa up file
                                 </p>
                                 <div padding></div>
-                                <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''" style="width: 120px;" ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
-                                <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''" style="width: 120px;" ion-button (click)="downloadChapThuanUpload()">Tải file xuống</button>
-                                <button *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''" block ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                <button *ngIf="canApprove && item.FileChapThuan != null && item.FileChapThuan != ''" style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                <button *ngIf="canApprove && item.FileChapThuan != null && item.FileChapThuan != ''" style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">Tải file xuống</button>
+                                <button *ngIf="canApprove && (item.FileChapThuan == null || item.FileChapThuan == '')" block ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                <button *ngIf="!canApprove" [disabled]="item.FileChapThuan == null || item.FileChapThuan == ''" ion-button block (click)="downloadChapThuan()">Tải file xuống</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -100,14 +129,14 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-3>
+                    <ion-col col-md-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Số NCT</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    Hướng dẫn đăng ký NCT
+                                    <a (click)="openNCT()">Hướng dẫn đăng ký NCT</a>
                                 </p>
                                 <div class="c-control">
                                     <input class="c-input" type="text" [(ngModel)]="item.SoNCT" />
@@ -115,7 +144,6 @@
                                 <button ion-button block (click)="updateNCT()" [disabled]="isCanInputNCT == false">CẬP NHẬT</button>
                             </ion-card-content>
                         </ion-card>
-
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -172,9 +200,27 @@
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block (click)="openDetailModal(i.Index)">TẠO MỚI</button>
-                                <button *ngIf="i.TrangThaiCode === 'File' && item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''" style="width: 120px;" ion-button (click)="uploadBaiNghiemThuClick()">Tải file lên</button>
-                                <button *ngIf="i.TrangThaiCode === 'File' && item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''" style="width: 120px;" ion-button (click)="downloadBaiNghiemThu()">Tải file xuống</button>
-                                <button *ngIf="i.TrangThaiCode === 'File' && (item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == '')" block ion-button (click)="uploadBaiNghiemThuClick()">Tải file lên</button>
+                               
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>File bài Fulltext</a>
+                                </ion-card-title>
+                                <p class="summary" *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''">
+                                    Đã up file
+                                </p>
+                                <p class="summary" *ngIf="item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == ''">
+                                    Chưa up file
+                                </p>
+                                <div padding></div>
+                                <button *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''" style="width: calc(50% - 10px);" ion-button (click)="uploadBaiNghiemThuClick()">Tải file lên</button>
+                                <button *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''" style="width: calc(50% - 10px);" ion-button (click)="downloadBaiNghiemThu()">Tải file xuống</button>
+                                <button *ngIf="(item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == '')" block ion-button (click)="uploadBaiNghiemThuClick()">Tải file lên</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

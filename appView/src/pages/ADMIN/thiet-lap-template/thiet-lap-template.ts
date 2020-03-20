@@ -12,7 +12,7 @@ import { appSetting } from '../../../providers/CORE/api-list';
 export class ThietLapTemplatePage extends ListPage {
     @ViewChild('importfile') importfile: any;
     FormGroups = [];
-    UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload');
+    UploadAPI = appSetting.apiDomain('CUS/File/FileUpload');
     hasBaseDropZoneOver = false;
     File = "";
     FileSize = 0;
@@ -47,7 +47,7 @@ export class ThietLapTemplatePage extends ListPage {
     ) {
         super('page-thiet-lap-template', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
         this.uploader.onBeforeUploadItem = (item) => {
-            this.UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload/' + 0 + '?IDPartner=' + 1);
+            this.UploadAPI = appSetting.apiDomain('CUS/File/FileUpload/' + 0 + '?IDPartner=' + 1);
             item.url = this.UploadAPI;
         }
         this.uploader.onSuccessItem = (item, response, status: number, headers) => {

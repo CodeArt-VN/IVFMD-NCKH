@@ -16,7 +16,7 @@ namespace BaseBusiness
         {
             DTO_PRO_BaoCaoNghiemThuDeTai query = null;
 
-            query = db.tbl_PRO_BaoCaoNghiemThuDeTai.Where(d => d.IDDeTai == idDeTai).Select(s => new DTO_PRO_BaoCaoNghiemThuDeTai
+            query = db.tbl_PRO_BaoCaoNghiemThuDeTai.Where(d => d.IDDeTai == idDeTai && d.IsDeleted == false).Select(s => new DTO_PRO_BaoCaoNghiemThuDeTai
             {
                 ID = s.ID,
                 IDDeTai = s.IDDeTai,
@@ -68,6 +68,10 @@ namespace BaseBusiness
             {
                 query.ListCanBo = JsonConvert.DeserializeObject<List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo>>(query.JSON_DanhSachThamGia);
             }
+            else
+            {
+                query.ListCanBo = new List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo>() { new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo(), new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo() };
+            }
             if (!string.IsNullOrWhiteSpace(query.JSON_TomTat))
             {
             }
@@ -110,15 +114,12 @@ namespace BaseBusiness
             if (!string.IsNullOrWhiteSpace(query.JSON_TaiLieuThamKhao))
             {
             }
-
-            query.ListCanBo = new List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo>() { new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo(), new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo() };
-
             return query;
         }
 
         public static DTO_PRO_BaoCaoNghiemThuDeTai save_PRO_BaoCaoNghiemThuDeTai(AppEntities db, DTO_PRO_BaoCaoNghiemThuDeTai item, string Username)
         {
-            var dbitem = db.tbl_PRO_BaoCaoNghiemThuDeTai.Find(item.ID);
+            var dbitem = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == item.IDDeTai && c.IsDeleted == false);
             if (dbitem == null)
             {
                 dbitem = new tbl_PRO_BaoCaoNghiemThuDeTai();

@@ -90,6 +90,21 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_DeTai);
         }
 
+        [Route("updateMaSo_PRO_DeTai")]
+        [ResponseType(typeof(DTO_PRO_DeTai))]
+        public IHttpActionResult UpdateMaSo(DTO_PRO_DeTai tbl_PRO_DeTai)
+        {
+            var result = BS_PRO_DeTai.updateMaSo_PRO_DeTai(db, tbl_PRO_DeTai, Username);
+            if (!string.IsNullOrEmpty(result))
+                return BadRequest(result);
+            DTO_PRO_DeTai item = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, tbl_PRO_DeTai.ID);
+            if (tbl_PRO_DeTai == null)
+            {
+                return NotFound();
+            }
+            return Ok(tbl_PRO_DeTai);
+        }
+
         [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, DTO_PRO_DeTai tbl_PRO_DeTai)
@@ -157,7 +172,7 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai_PrinterData))]
         public IHttpActionResult Print(DTO_PRO_DeTai_PrinterData item)
         {
-            var exportPath = ConfigurationManager.AppSettings["PdfExportPath"] ?? @"~/PDFFiles/";
+            var exportPath = ConfigurationManager.AppSettings["PdfExportPath"] ?? @"/PDFFiles/";
             var path = System.IO.Path.Combine(exportPath, DateTime.Now.Ticks.ToString() + ".pdf");
             var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.pxHeader, item.pxFooter, item.firstPageHeader);
             return Ok(path);
@@ -167,6 +182,13 @@ namespace API.Controllers.PRO
         public IHttpActionResult UploadFile(DTO_PRO_DeTai item)
         {
             BS_PRO_DeTai.uploadFile(db, item.ID, item.FileUpload, Username);
+            return Ok();
+        }
+
+        [Route("uploadFileChapThuan")]
+        public IHttpActionResult UploadFileChapThuan(DTO_PRO_DeTai item)
+        {
+            BS_PRO_DeTai.uploadFileChapThuan(db, item.ID, item.FileChapThuan, Username);
             return Ok();
         }
     }

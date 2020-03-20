@@ -1,4 +1,4 @@
-import { ViewChild } from '@angular/core';
+﻿import { ViewChild } from '@angular/core';
 import { NavController, NavParams, Events, Content, LoadingController, ToastController, AlertController, PopoverController } from 'ionic-angular';
 import { GlobalData } from '../providers/CORE/global-variable'
 import { AccountServiceProvider } from '../providers/CORE/account-service';
@@ -230,6 +230,23 @@ export class BasePage {
                 reject();
             }
         });
+    }
+
+    getModules() {
+        let modules = [];
+        let isNCKH = this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View').length ? true : false;
+        let isSOPs = this.userprofile.MenuItems.filter(d => d.Code == 'SOPs').length ? true : false;
+        let isAdmin = this.userprofile.MenuItems.filter(d => d.Code == 'Admin-PAR').length ? true : false;
+        if (isNCKH) {
+            modules.push({ Module: "NCKH-View", Name: 'Nghiên cứu khoa học', Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
+        }
+        if (isSOPs) {
+            modules.push({ Module: "SOPs", Name: 'Thư viện điện tử', Code: this.userprofile.MenuItems.filter(d => d.Code == 'SOPs')[0].FormMenu[0].Code });
+        }
+        if (isAdmin) {
+            modules.push({ Module: "Admin-PAR", Name: 'Quản trị hệ thống', Code: this.userprofile.MenuItems.filter(d => d.Code == 'Admin-PAR')[0].FormMenu[0].Code });
+        } 
+        return modules;
     }
 
     popover(ev: UIEvent, popoverCtrl) {

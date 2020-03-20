@@ -113,7 +113,8 @@ namespace BaseBusiness
                 MaSoProtocalID = s.MaSoProtocalID,
                 IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,
                 IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
-                BaiFullTextNghiemThu = ""
+                BaiFullTextNghiemThu = "",
+                FileChapThuan = s.FileChapThuan
             }).FirstOrDefault();
 
             if (query != null)
@@ -187,10 +188,10 @@ namespace BaseBusiness
                 var nghiemthu = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == ID && c.IsDeleted == false && !string.IsNullOrEmpty(c.BaiFulltext));
                 if (nghiemthu != null)
                 {
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã up", TrangThaiCode = "File" });
+                    //query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã up", TrangThaiCode = "File" });
                     query.BaiFullTextNghiemThu = nghiemthu.BaiFulltext;
                 }
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa up", TrangThaiCode = "File" });
+                //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa up", TrangThaiCode = "File" });
 
                 if (db.tbl_PRO_BangKhaiNhanSu.Any(c => c.IDDeTai == ID))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 17, Type = 4, Name = "Bảng khai chi tiết nhân sự", Description = "Bảng khai chi tiết nhân sự tham gia nghiên cứu", FormCode = "tbl_PRO_BangKhaiNhanSu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
@@ -591,6 +592,22 @@ namespace BaseBusiness
                 if (!string.IsNullOrEmpty(dbitem.SoNCT))
                     return "Số NCT chỉ được nhập 1 lần duy nhất!";
                 dbitem.SoNCT = NCT;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+            }
+
+            return string.Empty;
+        }
+
+        public static string updateMaSo_PRO_DeTai(AppEntities db, DTO_PRO_DeTai item, string Username)
+        {
+            tbl_PRO_DeTai dbitem = db.tbl_PRO_DeTai.Find(item.ID);
+
+            if (dbitem != null)
+            {
+                dbitem.MaSoHDDD = item.MaSoHDDD;
+                dbitem.MaSoProtocalID = item.MaSoProtocalID;
                 dbitem.ModifiedBy = Username;
                 dbitem.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -1107,11 +1124,39 @@ namespace BaseBusiness
                 }
                 catch (DbEntityValidationException e)
                 {
-                    errorLog.logMessage("uploadDeTai", e);
+                    errorLog.logMessage("uploadFile", e);
                     result = false;
                 }
             }
             return result;
         }
+
+        public static bool uploadFileChapThuan(AppEntities db, int ID, string path, string Username)
+        {
+            bool result = false;
+            var dbitem = db.tbl_PRO_DeTai.Find(ID);
+            if (dbitem != null)
+            {
+                dbitem.FileChapThuan = path;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DeTai", DateTime.Now, Username);
+
+                    result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("uploadFileChapThuan", e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
     }
 }

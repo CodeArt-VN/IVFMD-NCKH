@@ -64,7 +64,7 @@ export class DeTaiDetailPage extends BasePage {
     //
     @ViewChild('importfile') importfile: any;
     CurrentFile = "";
-    UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload');
+    UploadAPI = appSetting.apiDomain('CUS/File/FileUpload');
     hasBaseDropZoneOver = false;
     File = "";
     FileSize = 0;
@@ -107,18 +107,21 @@ export class DeTaiDetailPage extends BasePage {
         this.pageIndex = 0;
 
         this.uploader.onBeforeUploadItem = (item) => {
-            this.UploadAPI = appSetting.apiDomain('CUS/DOC/File/FileUpload/' + 0 + '?IDPartner=' + 1);
+            this.UploadAPI = appSetting.apiDomain('CUS/File/FileUpload/' + 0 + '?IDPartner=' + 1);
             item.url = this.UploadAPI;
         }
         this.uploader.onSuccessItem = (item, response, status: number, headers) => {
             if (status == 201 && response) {
                 let data = JSON.parse(response);
                 this.uploader.clearQueue();
-                if (this.CurrentFile == "DeTai") {
+                if (this.CurrentFile == "FilePPT") {
                     this.uploadDeTai(data.Path);
                 }
                 if (this.CurrentFile == "BaiNghiemThu") {
                     this.uploadBaiNghiemThu(data.Path);
+                }
+                if (this.CurrentFile == "FileChapThuan") {
+                    this.uploadChapThuan(data.Path);
                 }
             }
         }
@@ -198,14 +201,14 @@ export class DeTaiDetailPage extends BasePage {
         if (this.id) {
             this.currentProvider.getItemCustom(this.id).then((ite: any) => {
                 this.item = ite;
-
                 this.mockupData();
                 setTimeout(() => {
                     this.goToStep(0, null);
                 }, 300);
                 this.loadedData();
-                if (this.item.ID > 0 && this.item.SoNCT && this.item.SoNCT.length > 0)
+                if (this.item.ID > 0 && this.item.SoNCT && this.item.SoNCT.length > 0) {
                     this.isCanInputNCT = false;
+                }
             }).catch((err) => {
                 this.loadedData();
             });
@@ -569,6 +572,42 @@ export class DeTaiDetailPage extends BasePage {
                                 if (this.loading) this.loading.dismiss();
                                 //this.events.publish('app:Update' + this.pageName);
                                 //console.log('publish => app:Update ' + this.pageName);
+                                if (this.item.SoNCT && this.item.SoNCT.length > 0) {
+                                    this.isCanInputNCT = false;
+                                }
+                                this.refreshData();
+                                this.toastMessage('Đã cập nhật!');
+                            }).catch(err => {
+                                console.log(err);
+                                if (this.loading) this.loading.dismiss();
+                                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                            });
+                        })
+                    }
+                }
+            ]
+        });
+        confirm.present();
+    };
+
+    updateMaSo() {
+        let confirm = this.alertCtrl.create({
+            title: "Xác nhận",
+            message: 'Bạn có chắc muốn lưu thông tin này??',
+            buttons: [
+                {
+                    text: 'Thoát',
+                    handler: () => {
+                    }
+                },
+                {
+                    text: 'Đồng ý',
+                    handler: () => {
+                        this.loadingMessage('Lưu dữ liệu...').then(() => {
+                            this.currentProvider.updateMaSo(this.item).then((savedItem: any) => {
+                                if (this.loading) this.loading.dismiss();
+                                //this.events.publish('app:Update' + this.pageName);
+                                //console.log('publish => app:Update ' + this.pageName);
                                 this.refreshData();
                                 this.toastMessage('Đã cập nhật!');
                             }).catch(err => {
@@ -603,7 +642,7 @@ export class DeTaiDetailPage extends BasePage {
     }
 
     uploadDeTaiClick() {
-        this.CurrentFile = "DeTai";
+        this.CurrentFile = "FilePPT";
         this.showActionMore = false;
         this.importfile.nativeElement.value = "";
         this.importfile.nativeElement.click();
@@ -624,6 +663,32 @@ export class DeTaiDetailPage extends BasePage {
         })
     }
 
+    uploadChapThuanClick() {
+        this.CurrentFile = "FileChapThuan";
+        this.showActionMore = false;
+        this.importfile.nativeElement.value = "";
+        this.importfile.nativeElement.click();
+    }
+
+    uploadChapThuan(path) {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.currentProvider.uploadFileChapThuan({ ID: this.id, FileChapThuan: path }).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.refreshData();
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
+    }
+
+    openNCT() {
+        window.open("https://register.clinicaltrials.gov/", '_blank');
+    }
+
     download(url) {
         this.downloadURLContent(appSetting.mainService.base + url);
     }
@@ -631,6 +696,11 @@ export class DeTaiDetailPage extends BasePage {
     downloadFileUpload() {
         if (this.item.FileUpload)
             this.download(this.item.FileUpload);
+    }
+
+    downloadChapThuan() {
+        if (this.item.FileChapThuan)
+            this.download(this.item.FileChapThuan); 
     }
 
     updateSatusHRCO() {

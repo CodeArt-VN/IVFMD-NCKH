@@ -625,7 +625,20 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
                     reject(err);
                 });
         });
-	}
+    }
+    updateMaSo(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DeTai.updateMaSo;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 	print(item) {
 		let that = this.commonService;
         let apiPath = APIList.PRO_DeTai.print;
@@ -642,6 +655,20 @@ export class PRO_DeTaiCustomProvider extends PRO_DeTaiProvider{
     uploadFile(item) {
         let that = this.commonService;
         let apiPath = APIList.PRO_DeTai.uploadFile;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    uploadFileChapThuan(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_DeTai.uploadFileChapThuan;
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(), item).toPromise()
                 .then(data => {

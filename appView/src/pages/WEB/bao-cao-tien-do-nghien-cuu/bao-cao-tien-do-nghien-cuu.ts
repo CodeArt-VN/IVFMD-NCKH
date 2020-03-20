@@ -13,6 +13,8 @@ export class BaoCaoTienDoNghienCuuPage extends ListPage {
     paramValue: any;
     model: any;
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "NCKH-View";
     lstData = [];
     constructor(
         public currentProvider: PRO_BaoCaoTienDoNghienCuuCustomProvider,
@@ -43,6 +45,18 @@ export class BaoCaoTienDoNghienCuuPage extends ListPage {
         }
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
+        super.preLoadData();
+    } 
+
     loadData() {
         this.gridConfig.page++;
         this.currentProvider.getListCustom(this.idDeTai).then((result: any) => {
@@ -59,11 +73,6 @@ export class BaoCaoTienDoNghienCuuPage extends ListPage {
             this.gridConfig.totalRows = 0;
             this.loadedData();
         });
-    }
-    
-    preLoadData(){
-        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
-        super.preLoadData();
     }
 
     openDetail(item) {

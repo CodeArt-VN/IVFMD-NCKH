@@ -1,10 +1,15 @@
 <ion-header *ngIf="userprofile">
 
     <a (click)="openDefaultPage()" class="logo"
-        [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+       [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
     <div class="search">
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)">
         </ion-searchbar>
+    </div>
+    <div class="partner">
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
+        </select>
     </div>
     <div class="path">
         <a (click)="openDefaultPage()">Home</a>
@@ -33,7 +38,7 @@
     </div>
 
     <div class="background"
-        [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}">
+         [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}">
     </div>
 
 </ion-header>
@@ -74,7 +79,7 @@
                     </ng-template>
                 </ngx-datatable-column>
                 <ngx-datatable-column name="Số NCT" prop="SoNCT"></ngx-datatable-column>
-                <ngx-datatable-column name="Mã số ProtocalID" prop="MaSoProtocalID"></ngx-datatable-column>
+                <ngx-datatable-column name="Mã số Protocol ID" prop="MaSoProtocalID"></ngx-datatable-column>
                 <ngx-datatable-column name="Mã số HĐĐĐ" prop="MaSoHDDD"></ngx-datatable-column>
                 <ngx-datatable-column name="NCV Chính" prop="NCVChinh"></ngx-datatable-column>
                 <ngx-datatable-column name="Chủ nhiệm đề tài" prop="ChuNhiemDeTai"></ngx-datatable-column>

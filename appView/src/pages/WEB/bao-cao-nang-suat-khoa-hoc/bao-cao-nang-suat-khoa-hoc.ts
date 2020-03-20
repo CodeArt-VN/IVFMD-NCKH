@@ -10,6 +10,8 @@ import { DateAdapter } from "@angular/material";
 @Component({ selector: 'page-bao-cao-nang-suat-khoa-hoc', templateUrl: 'bao-cao-nang-suat-khoa-hoc.html' })
 export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "NCKH-View";
     canApprove = false;
     statusList = [
         { 'ID': 1, 'Code': 'ChuaDuyet', 'ValueOfVar': 'Chưa duyệt', 'Selected': false },
@@ -46,10 +48,17 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
         this.query.DateFrom = "";
         this.query.DateTo = "";
     }
-    
-    preLoadData(){
+
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
         this.canApprove = this.isUserCanUse('page-bao-cao-nang-suat-khoa-hoc-hrco');
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

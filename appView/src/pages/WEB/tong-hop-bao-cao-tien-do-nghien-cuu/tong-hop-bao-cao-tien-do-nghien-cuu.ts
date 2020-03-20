@@ -16,6 +16,8 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
     paramValue: any;
     model: any;
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "NCKH-View";
     lstData = [];
     statusList = [
         { 'ID': 41, 'Code': 'TinhTrangNghienCuu_DangNhanMau', 'ValueOfVar': 'Đang nhận mẫu', 'Selected': false },
@@ -57,6 +59,24 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         this.query.DateTo = "";
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
+        this.statusList.forEach((i) => {
+            i.Selected = true;
+            if (i.ID == 45) i.Selected = false;
+        });
+
+        this.query.ListStatusID = this.statusList.filter(c => c.Selected == true).map(d => d.ID).join();
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
+        super.preLoadData();
+    }
+
     loadData() {
         this.gridConfig.page++;
         this.currentProvider.getTheoDeTai(this.query).then((result: any) => {
@@ -79,17 +99,6 @@ export class TongHopBaoCaoTienDoNghienCuuPage extends ListPage {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
-    }
-
-    preLoadData() {
-        this.statusList.forEach((i) => {
-            i.Selected = true;
-            if (i.ID == 45) i.Selected = false;
-        });
-
-        this.query.ListStatusID = this.statusList.filter(c => c.Selected == true).map(d => d.ID).join();
-        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
-        super.preLoadData();
     }
 
     filterByTime() {

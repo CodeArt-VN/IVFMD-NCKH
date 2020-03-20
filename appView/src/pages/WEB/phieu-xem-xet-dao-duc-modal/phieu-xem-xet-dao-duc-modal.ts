@@ -231,6 +231,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
 
     saveChange() {
         let item = this.model.getItem();
+        item.IDDetai = this.idDeTai;
         item.HTML = $("#frmPhieuXemXetDaoDuc").html();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {

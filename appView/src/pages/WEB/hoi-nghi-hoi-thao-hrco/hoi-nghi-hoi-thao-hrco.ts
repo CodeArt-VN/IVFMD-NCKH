@@ -12,6 +12,8 @@ import { HoiNghiHoiThaoDanhSachDeTaiModalPage } from '../hoi-nghi-hoi-thao-danh-
 @Component({ selector: 'page-hoi-nghi-hoi-thao-hrco', templateUrl: 'hoi-nghi-hoi-thao-hrco.html' })
 export class HoiNghiHoiThaoHRCOPage extends ListPage {
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "NCKH-View";
     canApprove = true;
     showDatePicks = false;
     timeQuery: any = {
@@ -43,8 +45,15 @@ export class HoiNghiHoiThaoHRCOPage extends ListPage {
         this.query.DateTo = "";
     }
     
-    preLoadData(){
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

@@ -4,6 +4,11 @@
     <div class="search">
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
+    <div class="partner">
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
+        </select>
+    </div>
     <div class="path">
         <a (click)="openDefaultPage()">Home</a>
         <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
@@ -12,21 +17,21 @@
     <div class="tools">
 
         <button color="primary" ion-button icon-only clear (click)="refresh()">
-          <ion-icon name="refresh"></ion-icon>
-      </button>
+            <ion-icon name="refresh"></ion-icon>
+        </button>
 
         <button color="success" ion-button icon-only clear (click)="add()">
-          <ion-icon name="ios-add-circle"></ion-icon>
-      </button>
+            <ion-icon name="ios-add-circle"></ion-icon>
+        </button>
 
         <span class="split" *ngIf="selected.length"></span>
 
         <button ion-button icon-only clear *ngIf="selected.length" (click)="openDetail(selected[0])">
-          <ion-icon name="ios-create"></ion-icon>
-      </button>
+            <ion-icon name="ios-create"></ion-icon>
+        </button>
         <button color="danger" ion-button icon-only clear *ngIf="selected.length" (click)="delete()">
-          <ion-icon name="ios-trash"></ion-icon>
-      </button>
+            <ion-icon name="ios-trash"></ion-icon>
+        </button>
     </div>
 
     <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>

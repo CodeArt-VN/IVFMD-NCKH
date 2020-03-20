@@ -13,6 +13,8 @@ import { CAT_ThietLapTemplateProvider } from '../../../providers/Services/Custom
 export class DeTaiPage extends ListPage {
     templateUrl = '';
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "NCKH-View";
     constructor(
         public currentProvider: PRO_DeTaiProvider,
         public thietLapProvider: CAT_ThietLapTemplateProvider,
@@ -31,9 +33,15 @@ export class DeTaiPage extends ListPage {
 
     }
 
-    preLoadData() {
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
 
+    preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

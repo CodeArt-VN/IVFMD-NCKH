@@ -11,6 +11,8 @@ import { HoiNghiHoiThaoDangKyDeTaiModalPage } from '../hoi-nghi-hoi-thao-dang-ky
 export class HoiNghiHoiThaoPage extends ListPage {
     FormGroups = [];
     canApprove = false;
+    Modules = [];
+    CurrentModule = "NCKH-View";
     constructor(
         public currentProvider: PRO_HoiNghiHoiThaoDangKyCustomProvider,
         private cdr: ChangeDetectorRef,
@@ -27,8 +29,15 @@ export class HoiNghiHoiThaoPage extends ListPage {
         super('page-hoi-nghi-hoi-thao', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
     }
     
-    preLoadData(){
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

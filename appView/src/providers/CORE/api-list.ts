@@ -8,8 +8,8 @@
 
 export var appSetting = {
 	mainService: {
-        //base: "http://nckh.appcenter.vn/",
-        base: "http://localhost:54009/",
+        base: "http://nckh.appcenter.vn/",
+        //base: "http://localhost:54009/",
 		api: "api/",
 	},
 	apiDomain:function(api){
@@ -1001,6 +1001,10 @@ export var APIListBase = {
             method: "POST",
             url: function (id, soNCT) { return appSetting.apiDomain("PRO/DeTai/updateNCT_PRO_DeTai/") + id + "/" + soNCT }
         },
+        updateMaSo: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DeTai/updateMaSo_PRO_DeTai/") }
+        },
         print: {
             method: "POST",
             url: function(){return appSetting.apiDomain("PRO/DeTai/print")}
@@ -1008,6 +1012,10 @@ export var APIListBase = {
         uploadFile: {
             method: "POST",
             url: function () { return appSetting.apiDomain("PRO/DeTai/uploadFile/")}
+        },
+        uploadFileChapThuan: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/DeTai/uploadFileChapThuan/") }
         },
     },
 
