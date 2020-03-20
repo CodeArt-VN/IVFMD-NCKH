@@ -44,7 +44,7 @@
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>File Upload</a>
+                                    <a>File trình bày PowerPoint</a>
                                 </ion-card-title>
                                 <p class="summary">
                                 </p>
@@ -52,6 +52,22 @@
                                 <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
                                 <button *ngIf="item.FileUpload != null && item.FileUpload != ''" style="width: 120px;" ion-button (click)="downloadFileUpload()">Tải file xuống</button>
                                 <button *ngIf="item.FileUpload == null || item.FileUpload == ''" block ion-button (click)="uploadDeTaiClick()">Tải file lên</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>File chấp thuận</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''" style="width: 120px;" ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''" style="width: 120px;" ion-button (click)="downloadChapThuanUpload()">Tải file xuống</button>
+                                <button *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''" block ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
