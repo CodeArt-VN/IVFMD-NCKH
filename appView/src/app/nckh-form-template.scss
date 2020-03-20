@@ -38,11 +38,11 @@
         background: #fff;
 
         .print-hidden {
-            visibility: visible;
+            display: none;
         }
 
         .uiview-hidden {
-            visibility: collapse;
+            display: none;
         }
     }
 
@@ -109,7 +109,7 @@
         min-height: 9.69in;
         page-break-after: always;
     }
-    
+
     .box-inline {
         display: table;
         width: 100%;

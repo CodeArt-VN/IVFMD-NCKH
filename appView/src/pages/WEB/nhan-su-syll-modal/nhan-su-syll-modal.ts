@@ -182,6 +182,8 @@ export class NhanSuSYLLModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmNhanSuSYLL .form-template-header").height(),
+                pxFooter: $("#frmNhanSuSYLL .form-template-footer").height(),
                 htmlContent: $("#frmNhanSuSYLL .form-template-body").html(),
                 htmlFooter: $("#frmNhanSuSYLL .form-template-footer").html(),
                 htmlHeader: $("#frmNhanSuSYLL .form-template-header").html()

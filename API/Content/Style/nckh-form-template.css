@@ -1,8 +1,9 @@
 ﻿.nckh-form-template {
   background-color: #fff;
-  min-width: 8.27in;
-  max-width: 8.27in;
+  min-width: 6.27in;
+  max-width: 6.27in;
   margin: auto;
+  padding: 0 1in;
   font-family: 'Times New Roman', Times, serif;
   font-size: 13pt;
   box-shadow: none; }
@@ -28,18 +29,19 @@
     width: 100%;
     background: #fff; }
     .nckh-form-template .page-footer .print-hidden {
-      visibility: collapse; }
+      display: none; }
   .nckh-form-template .page-header {
     top: 0mm;
     width: 100%;
     background: #fff; }
   .nckh-form-template .page {
     position: relative;
-    min-height: 9.69in;
-    margin: 0 1in;
+    min-height: 9.6in;
     page-break-after: always; }
+    .nckh-form-template .page:last-child {
+      page-break-after: avoid; }
     .nckh-form-template .page.cover-page {
-      min-height: 9.69in; }
+      min-height: 9.6in; }
   .nckh-form-template .page-break {
     display: none !important; }
   .nckh-form-template .inline {

@@ -66,7 +66,7 @@
                     <tr style="border-top: 1px solid black;">
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: NghienCuuDuocTaiTro" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: NghienCuuDuocTaiTro" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Nghiên cứu được tài trợ
                                 </span>
@@ -74,7 +74,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: NghienCuuHocVienSauDaiHoc" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: NghienCuuHocVienSauDaiHoc" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Nghiên cứu của học viên sau đại học
                                 </span>
@@ -82,7 +82,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: NghienCuuCuaSinhVienDaiHoc" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: NghienCuuCuaSinhVienDaiHoc" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Nghiên cứu của sinh viên đại học
                                 </span>
@@ -92,7 +92,7 @@
                     <tr>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: XinPhepTapThe" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: XinPhepTapThe" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Xin phép tập thể
                                 </span>
@@ -100,7 +100,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: DonXinTaiCapPhep" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: DonXinTaiCapPhep" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Đơn xin tái cấp phép
                                 </span>
@@ -108,7 +108,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: SoGiayPhepCu" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: SoGiayPhepCu" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Số giấy phép cũ
                                 </span>
@@ -118,7 +118,7 @@
                     <tr style="border-bottom: 1px solid black;">
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: KhongThuocNghienCuuNao" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: KhongThuocNghienCuuNao" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Không thuộc nghiên cứu nào ở trên
                                 </span>
@@ -283,16 +283,16 @@
                         <tr>
                             <td contenteditable="true" data-bind="editableHTML: CoQuan"></td>
                             <td style="padding-top:6px;padding-bottom:6px;">
-                                <input type="checkbox" data-bind="checked: DuocCapPhep" />
+                                <input type="checkbox" data-bind="checkedHtml: DuocCapPhep" />
                                 Đã được cấp phép
                                 <br />
-                                <input type="checkbox" data-bind="checked: ChoCapPhep" />
+                                <input type="checkbox" data-bind="checkedHtml: ChoCapPhep" />
                                 Đã nộp đơn và đang chờ cấp phép
                                 <br />
-                                <input type="checkbox" data-bind="checked: ChuaXinPhep" />
+                                <input type="checkbox" data-bind="checkedHtml: ChuaXinPhep" />
                                 Chưa xin phép/Không có HĐĐĐ
                                 <br />
-                                <input type="checkbox" data-bind="checked: GhiChuKhac" />
+                                <input type="checkbox" data-bind="checkedHtml: GhiChuKhac" />
                                 Ghi chú khác
                             </td>
                         </tr>
@@ -322,7 +322,7 @@
                     <tr style="border-top: 1px solid black;">
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_TreEm" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_TreEm" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Trẻ em, vị thành niên, người trẻ tuổi.
                                 </span>
@@ -330,7 +330,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_NguoiTonThuongThanKinh" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_NguoiTonThuongThanKinh" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Người có tổn thương thần kinh hoặc thiểu năng trí tuệ.
                                 </span>
@@ -338,7 +338,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_NguoiCanChamSocYTe" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_NguoiCanChamSocYTe" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Người thường xuyên cần đến chăm sóc y tế.
                                 </span>
@@ -348,7 +348,7 @@
                     <tr>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_NguoiQuanHeLeThuoc" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_NguoiQuanHeLeThuoc" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Người có quan hệ lệ thuộc hoặc không bình đẳng.
                                 </span>
@@ -356,7 +356,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_CacTapTheNhomNguoi" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_CacTapTheNhomNguoi" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Các tập thể/nhóm người.
                                 </span>
@@ -364,7 +364,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_NguoiDanToc" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_NguoiDanToc" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Người dân tộc thiểu số
                                 </span>
@@ -374,7 +374,7 @@
                     <tr>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_PhongXa" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_PhongXa" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Phóng xạ, chất ion hóa.
                                 </span>
@@ -382,7 +382,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_CoTroGiupKiThuat" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_CoTroGiupKiThuat" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Công nghệ sinh sản có trợ giúp kĩ thuật.
                                 </span>
@@ -390,7 +390,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_ThuNghiemLamSang" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_ThuNghiemLamSang" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Thử nghiệm lâm sàng.
                                 </span>
@@ -400,7 +400,7 @@
                     <tr>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_PhacDoDieuTri" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_PhacDoDieuTri" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Phác đồ điều trị hoặc thủ thuật y tế mới.
                                 </span>
@@ -408,7 +408,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_NghienCuuDichTeHoc" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_NghienCuuDichTeHoc" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Nghiên cứu dịch tễ học
                                 </span>
@@ -416,7 +416,7 @@
                         </td>
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_SuDungMauMoNguoi" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_SuDungMauMoNguoi" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Sử dụng mẫu mô, chất dịch người.
                                 </span>
@@ -426,7 +426,7 @@
                     <tr style="border-bottom: 1px solid black;">
                         <td>
                             <div style="position: relative;">
-                                <input type="checkbox" data-bind="checked: QuyChe_GienNguoi" style="position: absolute;z-index:99;" />
+                                <input type="checkbox" data-bind="checkedHtml: QuyChe_GienNguoi" style="position: absolute;z-index:99;" />
                                 <span style="position: relative;padding-left: 25px;display: block;">
                                     Gien người.
                                 </span>
@@ -561,19 +561,19 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" data-bind="checked: NguyCoTiemTang_NhomNghienCuu" />
+                                <input type="checkbox" data-bind="checkedHtml: NguyCoTiemTang_NhomNghienCuu" />
                                 Nhóm nghiên cứu
                             </td>
                             <td>
-                                <input type="checkbox" data-bind="checked: NguyCoTiemTang_NguoiThamGia" />
+                                <input type="checkbox" data-bind="checkedHtml: NguyCoTiemTang_NguoiThamGia" />
                                 Người tham gia
                             </td>
                             <td>
-                                <input type="checkbox" data-bind="checked: NguyCoTiemTang_CongDongCuaTruong" />
+                                <input type="checkbox" data-bind="checkedHtml: NguyCoTiemTang_CongDongCuaTruong" />
                                 Cộng đồng của trường
                             </td>
                             <td>
-                                <input type="checkbox" data-bind="checked: NguyCoTiemTang_CongDongLonHon" />
+                                <input type="checkbox" data-bind="checkedHtml: NguyCoTiemTang_CongDongLonHon" />
                                 Cộng đồng lớn hơn
                             </td>
                         </tr>
@@ -939,7 +939,7 @@
                                 </p>
                             </td>
                             <td style="vertical-align:middle;">
-                                <input type="checkbox" data-bind="checked: QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon" />
+                                <input type="checkbox" data-bind="checkedHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon" />
                                 Đã có sự chấp thuận của bộ môn
                             </td>
                         </tr>
@@ -984,7 +984,7 @@
                                 </p>
                             </td>
                             <td style="vertical-align:middle;">
-                                <input type="checkbox" data-bind="checked: QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon" />
+                                <input type="checkbox" data-bind="checkedHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon" />
                                 Đã có sự chấp thuận của bộ môn
                             </td>
                         </tr>
@@ -1407,7 +1407,7 @@
                             Một Hội đồng khoa học trong hoặc ngoài Bệnh viện Mỹ Đức (ví dụ: Hội đồng chấm thi/bảo vệ đề cương Tiến sĩ, Thạc sĩ), các chuyên gia độc lập theo yêu cầu của cơ quan tài trợ...
                         </td>
                         <td style="border-left:none;border-bottom:none;border-top:none;padding: 5px">
-                            <input type="checkbox" data-bind="checked: YKienTruongKhoa_XemXetBoiHDKH" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienTruongKhoa_XemXetBoiHDKH" />
                         </td>
                     </tr>
                     <tr>
@@ -1415,7 +1415,7 @@
                             Cấp/cá nhân có thẩm quyền xét duyệt
                         </td>
                         <td style="border-left:none;border-bottom:none;border-top:none;padding: 5px">
-                            <input type="checkbox" data-bind="checked: YKienTruongKhoa_XemXetBoiCapCaNhan" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienTruongKhoa_XemXetBoiCapCaNhan" />
                         </td>
                     </tr>
                     <tr>
@@ -1423,7 +1423,7 @@
                             Khoa/phòng theo quy trình chuyên môn
                         </td>
                         <td style="border-left:none;border-bottom:none;border-top:none;padding: 5px">
-                            <input type="checkbox" data-bind="checked: YKienTruongKhoa_XemXetBoiKhoaPhong" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienTruongKhoa_XemXetBoiKhoaPhong" />
                         </td>
                     </tr>
                 </tbody>
@@ -1440,12 +1440,12 @@
                             Tôi cho rằng NCYSH này cần được chuyên gia độc lập xem xét về tính khoa học của nghiên cứu
                         </td>
                         <td style="border-left:none;border-bottom:none;border-top:none;padding: 5px">
-                            <input type="checkbox" data-bind="checked: YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap" /> CÓ
+                            <input type="checkbox" data-bind="checkedHtml: YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap" /> CÓ
                         </td>
                     </tr>
                     <tr>
                         <td style="border-left:none;border-bottom:none;border-top:none;padding: 5px">
-                            <input type="checkbox" data-bind="checked: YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap" /> KHÔNG
+                            <input type="checkbox" data-bind="checkedHtml: YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap" /> KHÔNG
                         </td>
                     </tr>
                 </tbody>
@@ -1522,8 +1522,8 @@
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 11pt;">
                 <tr>
                     <td colspan="2" style="vertical-align:bottom" class="text-center">
-                        <span class="print-hidden">Trang 1/10</span>
-                        <span class="uiview-hidden">Trang [[Page]]/[[TotalPage]]</span>
+                        <div class="print-hidden">Trang 1/10</div>
+                        <div class="uiview-hidden">Trang [[Page]]/[[TotalPage]]</div>
                     </td>
                 </tr>
                 <tr>

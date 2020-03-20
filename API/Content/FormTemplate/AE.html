@@ -93,7 +93,7 @@
                         <br />
                         <span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Gio">|__|__|</span>:<span contenteditable="true" data-bind="editableHTML: NgayKetThuc_Phut">|__|__|</span> (giờ - phút)
                         <br />
-                        <input type="checkbox" data-bind="checked: NgayKhoiPhat_DangTiepDien" /> Đang tiếp diễn
+                        <input type="checkbox" data-bind="checkedHtml: NgayKhoiPhat_DangTiepDien" /> Đang tiếp diễn
                     </td>
                 </tr>
                 <tr>
@@ -101,9 +101,9 @@
                         4.	Phân độ nặng
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: PhanDoNang_Nghe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: PhanDoNang_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: PhanDoNang_Nang" /> Nặng
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_Nghe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_Nang" /> Nặng
                     </td>
                 </tr>
                 <tr>
@@ -111,9 +111,9 @@
                         5.	Có yêu cầu điều trị
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: CanDieuTri_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: CanDieuTri_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: CanDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
+                        <input type="checkbox" data-bind="checkedHtml: CanDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
                     </td>
                 </tr>
                 <tr>
@@ -121,8 +121,8 @@
                         6.	Hành động đưa ra với thuốc nghiên cứu
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
                     </td>
                 </tr>
                 <tr>
@@ -130,8 +130,8 @@
                         7.	Hành động đưa ra với thuốc dùng kèm (NIMP)
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
                     </td>
                 </tr>
                 <tr>
@@ -139,9 +139,9 @@
                         8.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc nghiên cứu
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: LyDoThuocNghienCuu_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocNghienCuu_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: LyDoThuocNghienCuu_Co" /> Có
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocNghienCuu_Co" /> Có
                     </td>
                 </tr>
                 <tr>
@@ -149,9 +149,9 @@
                         9.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc dùng kèm (NIMP)
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: LyDoThuocDungKem_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocDungKem_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: LyDoThuocDungKem_Co" /> Có
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocDungKem_Co" /> Có
                     </td>
                 </tr>
                 <tr>
@@ -159,18 +159,18 @@
                         10.	Kết quả
                     </td>
                     <td style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: KetQua_HoiPhucKhongDiChung" /> Hồi phục không có di chứng
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_HoiPhucKhongDiChung" /> Hồi phục không có di chứng
                         <br />
-                        <input type="checkbox" data-bind="checked: KetQua_CoDiChung" /> Hồi phục có di chứng
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_CoDiChung" /> Hồi phục có di chứng
                         <br />
-                        <input type="checkbox" data-bind="checked: KetQua_DangHoiPhuc" /> Đang hồi phục
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_DangHoiPhuc" /> Đang hồi phục
                         <br />
-                        <input type="checkbox" data-bind="checked: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
                         <br />
-                        <input type="checkbox" data-bind="checked: KetQua_TuVong" /> Tử vong, ngày tử vong:
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" /> Tử vong, ngày tử vong:
                         <span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Nam">|__|__|__|__|</span>
                         <br />
-                        <input type="checkbox" data-bind="checked: KetQua_KhongBiet" /> Không biết
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_KhongBiet" /> Không biết
                     </td>
                 </tr>
                 <tr>
@@ -178,22 +178,22 @@
                         11.	Nghiêm trọng?
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: NghiemTrong_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NghiemTrong_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NghiemTrong_Co" /> Có, chọn lý do:
+                        <input type="checkbox" data-bind="checkedHtml: NghiemTrong_Co" /> Có, chọn lý do:
                         <br />
                         <div style="margin-left:20px;">
-                            <input type="checkbox" data-bind="checked: NghiemTrong_TuVong" /> Tử vong
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_TuVong" /> Tử vong
                             <br />
-                            <input type="checkbox" data-bind="checked: NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
                             <br />
-                            <input type="checkbox" data-bind="checked: NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
                             <br />
-                            <input type="checkbox" data-bind="checked: NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
                             <br />
-                            <input type="checkbox" data-bind="checked: NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
                             <br />
-                            <input type="checkbox" data-bind="checked: NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
                         </div>
                     </td>
                 </tr>
@@ -202,9 +202,9 @@
                         12.	AE này co tiến triển thành SAE không?
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: TienHanhSAE1_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: TienHanhSAE1_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: TienHanhSAE1_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
+                        <input type="checkbox" data-bind="checkedHtml: TienHanhSAE1_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
                     </td>
                 </tr>
             </tbody>
@@ -262,9 +262,9 @@
                         14.	Độ nặng của AE
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: NT_DoNangAE_Nhe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: NT_DoNangAE_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: NT_DoNangAE_Nang" /> Nặng
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_Nhe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_Nang" /> Nặng
                     </td>
                 </tr>
                 <tr>
@@ -272,9 +272,9 @@
                         15.	Có yêu cầu điều trị
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: NT_YeuCauDieuTri_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NT_YeuCauDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
                     </td>
                 </tr>
                 <tr>
@@ -282,8 +282,8 @@
                         16.	Hành động đưa ra với thuốc nghiên cứu
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: NT_HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: NT_HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
                     </td>
                 </tr>
                 <tr>
@@ -291,8 +291,8 @@
                         17.	Hành động đưa ra với thuốc dùng kèm (NIMP)
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: NT_HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: NT_HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
                     </td>
                 </tr>
                 <tr>
@@ -300,9 +300,9 @@
                         18.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc nghiên cứu
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: NT_LyDoThuocNghienCuu_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocNghienCuu_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NT_LyDoThuocNghienCuu_Co" /> Có
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocNghienCuu_Co" /> Có
                     </td>
                 </tr>
                 <tr>
@@ -310,9 +310,9 @@
                         19.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc dùng kèm (NIMP)
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: NT_LyDoThuocDungKem_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocDungKem_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NT_LyDoThuocDungKem_Co" /> Có
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocDungKem_Co" /> Có
                     </td>
                 </tr>
                 <tr>
@@ -320,22 +320,22 @@
                         20.	Nghiêm trọng?
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: NT_NghiemTrong_Khong" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_Khong" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NT_NghiemTrong_Co" /> Có, chọn lý do:
+                        <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_Co" /> Có, chọn lý do:
                         <br />
                         <div style="margin-left:20px;">
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_TuVong" /> Tử vong
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_TuVong" /> Tử vong
                             <br />
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
                             <br />
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
                             <br />
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
                             <br />
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
                             <br />
-                            <input type="checkbox" data-bind="checked: NT_NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
                         </div>
                     </td>
                 </tr>
@@ -344,9 +344,9 @@
                         12.	AE này co tiến triển thành SAE không?
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
-                        <input type="checkbox" data-bind="checked: NT_YeuCauDieuTri_Co" /> Không
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Co" /> Không
                         <br />
-                        <input type="checkbox" data-bind="checked: NT_YeuCauDieuTri_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
                     </td>
                 </tr>
             </tbody>
@@ -388,8 +388,7 @@
         <div class="page-footer" style="height:0.8in">
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
                 <tr>
-                    <td style="vertical-align:middle" class="text-center">
-                    </td>
+                    <td style="vertical-align:middle" class="text-center"></td>
                 </tr>
             </table>
         </div>

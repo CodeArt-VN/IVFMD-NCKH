@@ -159,7 +159,7 @@ namespace API.Controllers.PRO
         {
             var exportPath = ConfigurationManager.AppSettings["PdfExportPath"] ?? @"~/PDFFiles/";
             var path = System.IO.Path.Combine(exportPath, DateTime.Now.Ticks.ToString() + ".pdf");
-            var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.firstPageHeader);
+            var pp = NckhHtmlToPdfConverter.HtmlToPdf(System.Web.Hosting.HostingEnvironment.MapPath(path), item.htmlContent, item.htmlHeader, item.htmlFooter, item.pxHeader, item.pxFooter, item.firstPageHeader);
             return Ok(path);
         }
 

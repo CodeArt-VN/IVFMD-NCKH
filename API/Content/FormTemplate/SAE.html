@@ -42,10 +42,10 @@
                         Loại báo cáo:
                     </td>
                     <td style="vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: BaoCaoLanDau" /> Báo cáo lần đầu
+                        <input type="checkbox" data-bind="checkedHtml: BaoCaoLanDau" /> Báo cáo lần đầu
                     </td>
                     <td style="vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: BaoCaoBoSung" /> Báo cáo bổ sung
+                        <input type="checkbox" data-bind="checkedHtml: BaoCaoBoSung" /> Báo cáo bổ sung
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: TuVong" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: TuVong" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tử vong
                             </span>
@@ -64,7 +64,7 @@
                     </td>
                     <td colspan="2">
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: DeDoaTinhMang" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: DeDoaTinhMang" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Đe dọa tính mạng
                             </span>
@@ -74,7 +74,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: NhapVien" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: NhapVien" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Nhập viện/kéo dài thời gian nằm viện
                             </span>
@@ -82,7 +82,7 @@
                     </td>
                     <td colspan="2">
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: TanTat" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: TanTat" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tàn tật/thương tật vĩnh viễn/nặng nề
                             </span>
@@ -92,7 +92,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: DiTatBamSinh" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: DiTatBamSinh" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Dị tật bẩm sinh/dị dạng thai nhi
                             </span>
@@ -100,7 +100,7 @@
                     </td>
                     <td colspan="2">
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YeuCanCanThiepYKhoa" style="position: absolute;z-index:99;" />
+                            <input type="checkbox" data-bind="checkedHtml: YeuCanCanThiepYKhoa" style="position: absolute;z-index:99;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Yêu cầu can thiệp y khoa để ngăn chặn một trong các tình huống trên hoặc được đánh giá
                                 có ý nghĩa về mặt y khoa bởi nghiên cứu viên hoặc nghiên cứu viên chính
@@ -133,13 +133,13 @@
                         Thiết kế nghiên cứu
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: ThietKeNghienCuu_NhanMo" />Nhãn mở
+                        <input type="checkbox" data-bind="checkedHtml: ThietKeNghienCuu_NhanMo" />Nhãn mở
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: ThietKeNghienCuu_MuDon" />Mù đơn
+                        <input type="checkbox" data-bind="checkedHtml: ThietKeNghienCuu_MuDon" />Mù đơn
                     </td>
                     <td>
-                        <input type="checkbox" data-bind="checked: ThietKeNghienCuu_MuDoi" />Mù đôi
+                        <input type="checkbox" data-bind="checkedHtml: ThietKeNghienCuu_MuDoi" />Mù đôi
                     </td>
                 </tr>
                 <tr>
@@ -148,13 +148,13 @@
                         SAE có dẫn đến mở mù không?
                     </td>
                     <td style="vertical-align:middle">
-                        <input type="checkbox" data-bind="checked: MoMu_Co" />Có
+                        <input type="checkbox" data-bind="checkedHtml: MoMu_Co" />Có
                     </td>
                     <td style="vertical-align:middle">
-                        <input type="checkbox" data-bind="checked: MoMu_Khong" />Không
+                        <input type="checkbox" data-bind="checkedHtml: MoMu_Khong" />Không
                     </td>
                     <td style="vertical-align:middle">
-                        <input type="checkbox" data-bind="checked: MoMu_KhongCoThongTin" />Không có thông tin
+                        <input type="checkbox" data-bind="checkedHtml: MoMu_KhongCoThongTin" />Không có thông tin
                     </td>
                 </tr>
                 <tr>
@@ -202,7 +202,7 @@
                         Thời điểm kết thúc SAE (hoặc đánh dấu vào ô <i>“Đang tiếp diễn”</i> nếu SAE đang tiếp diễn)
                     </td>
                     <td colspan="3" contenteditable="true" data-bind="editableHTML: ThoiDiemKetThuc" style="padding: 0 6px;vertical-align:middle;">
-                        .............................................................<input type="checkbox" data-bind="checked: DangTiepDien" /> Đang tiếp diễn
+                        .............................................................<input type="checkbox" data-bind="checkedHtml: DangTiepDien" /> Đang tiếp diễn
                     </td>
                 </tr>
                 <tr>
@@ -286,7 +286,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_HoiPhucKhongDiChung" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_HoiPhucKhongDiChung" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Hồi phục không để lại di chứng
                             </span>
@@ -294,7 +294,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_DangHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_DangHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Đang hồi phục
                             </span>
@@ -302,7 +302,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_TuVong" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tử vong (ngày tử vong:…………………)
                             </span>
@@ -312,7 +312,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_HoiPhucCoDiChung" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_HoiPhucCoDiChung" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Hồi phục nhưng có để lại di chứng
                             </span>
@@ -320,7 +320,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_ChuaHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaHoiPhuc" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Chưa hồi phục
                             </span>
@@ -328,7 +328,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: KetQua_KhongCoThongTin" style="position: absolute;z-index:99;height:100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_KhongCoThongTin" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Không có thông tin
                             </span>
@@ -370,8 +370,8 @@
                         Giới tính
                     </td>
                     <td style="padding: 0 6px;vertical-align:middle;">
-                        <input type="checkbox" data-bind="checked: NguoiThamGia_GioiTinh_Nam" />Nam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" data-bind="checked: NguoiThamGia_GioiTinh_Nu" />Nữ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NguoiThamGia_GioiTinh_Nam" />Nam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NguoiThamGia_GioiTinh_Nu" />Nữ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Với nữ: <input type="checkbox" />Đang mang thai (tuần thứ <span contenteditable="true">………</span>)
                     </td>
                 </tr>
@@ -743,7 +743,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_TiepTucThamGia" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_NguoiThamGia_TiepTucThamGia" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tiếp tục tham gia <br />nghiên cứu
                             </span>
@@ -751,7 +751,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_TamNgungThamGia" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_NguoiThamGia_TamNgungThamGia" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tạm ngừng tham gia <br />nghiên cứu
                             </span>
@@ -759,7 +759,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_NguoiThamGia_RutKhoiNghienCuu" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_NguoiThamGia_RutKhoiNghienCuu" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Rút khỏi <br />nghiên cứu
                             </span>
@@ -774,7 +774,7 @@
                 <tr>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_TiepTucTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_DeXuatNghienCuu_TiepTucTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tiếp tục triển khai <br />nghiên cứu
                             </span>
@@ -782,7 +782,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Tạm ngừng triển khai <br />nghiên cứu
                             </span>
@@ -790,7 +790,7 @@
                     </td>
                     <td>
                         <div style="position: relative;">
-                            <input type="checkbox" data-bind="checked: YKienHDDD_DeXuatNghienCuu_NgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
+                            <input type="checkbox" data-bind="checkedHtml: YKienHDDD_DeXuatNghienCuu_NgungTrienKhai" style="position: absolute;z-index:99;height: 100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Ngừng triển khai <br />nghiên cứu
                             </span>
@@ -918,8 +918,8 @@
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
                 <tr>
                     <td style="vertical-align:middle;text-align:right;">
-                        <span class="print-hidden">Trang 1</span>
-                        <span class="uiview-hidden">Trang [[Page]]</span>
+                        <div class="print-hidden">Trang 1</div>
+                        <div class="uiview-hidden">Trang [[Page]]</div>
                     </td>
                 </tr>
             </table>
