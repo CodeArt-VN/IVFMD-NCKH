@@ -154,6 +154,7 @@ export class DetailPage extends BasePage {
     }
 
     download(url) {
+        debugger
         url = url.replace("~", "");
         this.downloadURLContent(appSetting.mainService.base + url);
     }

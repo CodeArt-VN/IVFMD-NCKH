@@ -191,6 +191,11 @@ namespace BaseBusiness
                     query.BaiFullTextNghiemThu = nghiemthu.BaiFulltext;
                 }
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa up", TrangThaiCode = "File" });
+
+                if (db.tbl_PRO_BangKhaiNhanSu.Any(c => c.IDDeTai == ID))
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 17, Type = 4, Name = "Bảng khai chi tiết nhân sự", Description = "Bảng khai chi tiết nhân sự tham gia nghiên cứu", FormCode = "tbl_PRO_BangKhaiNhanSu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 17, Type = 4, Name = "Bảng khai chi tiết nhân sự", Description = "Bảng khai chi tiết nhân sự tham gia nghiên cứu", FormCode = "tbl_PRO_BangKhaiNhanSu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+
             }
             return query;
         }

@@ -96,7 +96,7 @@
                                 <div class="c-control">
                                     <input class="c-input" type="text" [(ngModel)]="item.SoNCT" />
                                 </div>
-                                <button ion-button block (click)="updateNCT()">CẬP NHẬT</button>
+                                <button ion-button block (click)="updateNCT()" [disabled]="isCanInputNCT == false">CẬP NHẬT</button>
                             </ion-card-content>
                         </ion-card>
 

@@ -49,12 +49,26 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
-            if (tbl_PRO_ThuyetMinhDeTai == null)
+            if (tbl_PRO_ThuyetMinhDeTai == null || tbl_PRO_ThuyetMinhDeTai.ID == 0)
             {
-                tbl_PRO_ThuyetMinhDeTai = new DTO_PRO_ThuyetMinhDeTai
+                var tbl_PRO_ThuyetMinhDeTaiNew = new DTO_PRO_ThuyetMinhDeTai
                 {
                     IDDeTai = idDeTai,
                     HTML = html,
+                    A1_TenTiengViet = tbl_PRO_ThuyetMinhDeTai.A1_TenTiengViet,
+                    A1_TenTiengAnh = tbl_PRO_ThuyetMinhDeTai.A1_TenTiengAnh,
+                    A6_HoTen = tbl_PRO_ThuyetMinhDeTai.A6_HoTen,
+                    A6_NgaySinh = tbl_PRO_ThuyetMinhDeTai.A6_NgaySinh,
+                    A6_GioiTinh = tbl_PRO_ThuyetMinhDeTai.A6_GioiTinh,
+                    A6_CMND = tbl_PRO_ThuyetMinhDeTai.A6_CMND,
+                    A6_NgayCap = tbl_PRO_ThuyetMinhDeTai.A6_NgayCap,
+                    A6_NoiCap = tbl_PRO_ThuyetMinhDeTai.A6_NoiCap,
+                    A6_MST = tbl_PRO_ThuyetMinhDeTai.A6_MST,
+                    A6_STK = tbl_PRO_ThuyetMinhDeTai.A6_STK,
+                    A6_NganHang = tbl_PRO_ThuyetMinhDeTai.A6_NganHang,
+                    A6_DiaChiCoQuan = tbl_PRO_ThuyetMinhDeTai.A6_DiaChiCoQuan,
+                    A6_DienThoai = tbl_PRO_ThuyetMinhDeTai.A6_DienThoai,
+                    A6_Email = tbl_PRO_ThuyetMinhDeTai.A6_Email,
                     ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu(),
                     ListNhanLucNghienCuu = new List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(),
                     ListGioiThieuChuyenGia = new List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia>(),
@@ -124,6 +138,8 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     }
                 };
+
+                return Ok(tbl_PRO_ThuyetMinhDeTaiNew);
             }
             else
             {

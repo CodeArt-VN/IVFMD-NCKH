@@ -88,8 +88,8 @@ export class DeTaiModalPage extends DetailPage {
         this.lstNCVSelected = [];
         this.ncvKhacProvider.getByDeTai(this.id).then(value => {
             this.lstNCVKhac = [...value['data']];
-            debugger
-            this.table.recalculate();
+            //debugger
+            //this.table.recalculate();
         });
     }
 

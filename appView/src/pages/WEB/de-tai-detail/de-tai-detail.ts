@@ -21,7 +21,7 @@ import { BangKiemXXDDModalPage } from '../bang-kiem-xxdd-modal/bang-kiem-xxdd-mo
 import { ChonBenhNhanModalPage } from '../chon-benh-nhan-modal/chon-benh-nhan-modal';
 import { ListSelectModalPage } from '../list-select-modal/list-select-modal';
 import { DanhSachBenhNhanModalPage } from '../danh-sach-benh-nhan-modal/danh-sach-benh-nhan-modal';
-
+import { BangKhaiNhanSuModalPage } from '../bang-khai-nhan-su-modal/bang-khai-nhan-su-modal';
 import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
 import { TienDoNghienCuuModalPage } from '../tien-do-nghien-cuu-modal/tien-do-nghien-cuu-modal';
 import { BaoCaoNghiemThuDeTaiModalPage } from '../bao-cao-nghiem-thu-de-tai-modal/bao-cao-nghiem-thu-de-tai-modal';
@@ -50,6 +50,7 @@ export class DeTaiDetailPage extends BasePage {
     listForm2 = [];
     listForm4 = [];
     listForm5 = [];
+    isCanInputNCT = true;
 
     pageIndex: number = 0;
     pageTitle = '';
@@ -203,6 +204,8 @@ export class DeTaiDetailPage extends BasePage {
                     this.goToStep(0, null);
                 }, 300);
                 this.loadedData();
+                if (this.item.ID > 0 && this.item.SoNCT && this.item.SoNCT.length > 0)
+                    this.isCanInputNCT = false;
             }).catch((err) => {
                 this.loadedData();
             });
@@ -418,6 +421,9 @@ export class DeTaiDetailPage extends BasePage {
             case 15:
                 page = BaoCaoNghiemThuDeTaiModalPage;
                 break;
+            case 17:
+                page = BangKhaiNhanSuModalPage;
+                break;
         }
         if (type == 12 || type == 13) {
             let myModal = this.modalCtrl.create(page, param);
@@ -568,7 +574,7 @@ export class DeTaiDetailPage extends BasePage {
                             }).catch(err => {
                                 console.log(err);
                                 if (this.loading) this.loading.dismiss();
-                                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
                             });
                         })
                     }

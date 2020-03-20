@@ -37,6 +37,7 @@ namespace ClassLibrary
             this.tbl_PRO_Tags = new HashSet<tbl_PRO_Tags>();
             this.tbl_PRO_ThuyetMinhDeTai = new HashSet<tbl_PRO_ThuyetMinhDeTai>();
             this.tbl_PRO_TrangThai_Log = new HashSet<tbl_PRO_TrangThai_Log>();
+            this.tbl_PRO_BangKhaiNhanSu = new HashSet<tbl_PRO_BangKhaiNhanSu>();
         }
     
         public int ID { get; set; }
@@ -113,6 +114,8 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_ThuyetMinhDeTai> tbl_PRO_ThuyetMinhDeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
     }
 }
 namespace DTOModel

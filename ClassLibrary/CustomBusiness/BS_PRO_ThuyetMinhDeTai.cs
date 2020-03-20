@@ -103,6 +103,38 @@ namespace BaseBusiness
 				B52_CNDT_NgayKy_ChuKy = s.B52_CNDT_NgayKy_ChuKy,
 			}).FirstOrDefault();
 
+            if (query == null)
+            {
+                query = new DTO_PRO_ThuyetMinhDeTai
+                {
+                    IDDeTai = deTaiId
+                };
+
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == deTaiId);
+                if (detai != null)
+                {
+                    query.A1_TenTiengViet = detai.TenTiengViet;
+                    query.A1_TenTiengAnh = detai.TenTiengAnh;
+
+                    var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == deTaiId && c.IDNhanSu == detai.IDChuNhiem && c.IsDeleted == false);
+                    if (chunhiem != null)
+                    {
+                        query.A6_HoTen = (!string.IsNullOrEmpty(chunhiem.HocHam) ? chunhiem.HocHam + " " : "") + (!string.IsNullOrEmpty(chunhiem.HocViThacSy) ? chunhiem.HocViThacSy + " " : "") + (!string.IsNullOrEmpty(chunhiem.HocViTienSy) ? chunhiem.HocViTienSy + " " : "") + chunhiem.HoTen;
+                        query.A6_NgaySinh = chunhiem.NgaySinh;
+                        query.A6_GioiTinh = chunhiem.GioiTinh;
+                        query.A6_CMND = chunhiem.CMND;
+                        query.A6_NgayCap = chunhiem.CMND_NgayCap;
+                        query.A6_NoiCap = chunhiem.CMND_NoiCap;
+                        query.A6_MST = chunhiem.TaiKhoan_MST;
+                        query.A6_STK = chunhiem.TaiKhoan_STK;
+                        query.A6_NganHang = chunhiem.TaiKhoan_NganHang;
+                        query.A6_DiaChiCoQuan = chunhiem.DiaChi_CoQuan;
+                        query.A6_DienThoai = chunhiem.DienThoai_CaNhan;
+                        query.A6_Email = chunhiem.Email_CaNhan;
+                    }
+                }
+            }
+
             return query;
         }
     }

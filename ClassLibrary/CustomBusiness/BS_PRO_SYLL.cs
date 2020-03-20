@@ -41,6 +41,11 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                NgayKy_ChuKy = s.NgayKy_ChuKy,
+                NgayKy_Nam = s.NgayKy_Nam,
+                NgayKy_Ngay = s.NgayKy_Ngay,
+                NgayKy_Thang = s.NgayKy_Thang,
+                JSON_HocVi = s.JSON_HocVi,
             }).FirstOrDefault();
 
             if (query == null)
@@ -75,7 +80,8 @@ namespace BaseBusiness
                     NgayKy_ChuKy = s.NgayKy_ChuKy,
                     NgayKy_Nam = s.NgayKy_Nam,
                     NgayKy_Ngay = s.NgayKy_Ngay,
-                    NgayKy_Thang = s.NgayKy_Thang
+                    NgayKy_Thang = s.NgayKy_Thang,
+                    JSON_HocVi = s.JSON_HocVi,
                 }).FirstOrDefault();
             }
 
