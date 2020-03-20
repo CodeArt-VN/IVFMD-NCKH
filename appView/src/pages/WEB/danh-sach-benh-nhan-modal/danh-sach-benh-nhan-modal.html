@@ -34,7 +34,7 @@
                 [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected" [selectionType]="'single'"
                 (select)='onSelectBN($event)'>
 
-                <ngx-datatable-column name="Mã bệnh nhân" prop="MaBenhNhan" [width]="150" [maxWidth]="150" headerClass="name"
+                <ngx-datatable-column name="Mã số đối tượng" prop="MaBenhNhan" [width]="150" [maxWidth]="150" headerClass="name"
                     cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetailNCV(i)">
@@ -42,7 +42,6 @@
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Họ tên" prop="TenBenhNhan"></ngx-datatable-column>
 
             </ngx-datatable>
         </ion-col>

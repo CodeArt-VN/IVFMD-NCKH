@@ -265,6 +265,8 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmThuyetMinhDeTai .form-template-header").height(),
+                pxFooter: $("#frmThuyetMinhDeTai .form-template-footer").height(),
                 htmlContent: $("#frmThuyetMinhDeTai .form-template-body").html(),
                 htmlFooter: $("#frmThuyetMinhDeTai .form-template-footer").html(),
                 htmlHeader: $("#frmThuyetMinhDeTai .form-template-header").html()

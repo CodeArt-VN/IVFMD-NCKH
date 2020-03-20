@@ -47,7 +47,7 @@ namespace BaseBusiness
             {
                 tbl_CUS_HRM_BenhNhan dbitem1 = new tbl_CUS_HRM_BenhNhan();
                 dbitem1.MaBenhNhan = item.MaBenhNhan;
-                dbitem1.HoTen = item.TenBenhNhan;
+                dbitem1.HoTen = item.MaBenhNhan;
                 dbitem1.GioiTinh = item.GioiTinh;
                 dbitem1.IsDisabled = item.IsDisabled;
                 dbitem1.IsDeleted = item.IsDeleted;

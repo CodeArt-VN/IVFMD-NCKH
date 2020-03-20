@@ -193,6 +193,8 @@ export class SAEModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmSAE .form-template-header").height(),
+                pxFooter: $("#frmSAE .form-template-footer").height(),
                 htmlContent: $("#frmSAE .form-template-body").html(),
                 htmlFooter: $("#frmSAE .form-template-footer").html(),
                 htmlHeader: $("#frmSAE .form-template-header").html()

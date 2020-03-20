@@ -125,6 +125,8 @@ export class SysnopsisModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmSynopsis .form-template-header").height(),
+                pxFooter: $("#frmSynopsis .form-template-footer").height(),
                 htmlContent: $("#frmSynopsis .form-template-body").html(),
                 htmlFooter: $("#frmSynopsis .form-template-footer").html(),
                 htmlHeader: $("#frmSynopsis .form-template-header").html()

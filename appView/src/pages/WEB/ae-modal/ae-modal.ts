@@ -199,6 +199,8 @@ export class AEModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmAE .form-template-header").height(),
+                pxFooter: $("#frmAE .form-template-footer").height(),
                 htmlContent: $("#frmAE .form-template-body").html(),
                 htmlFooter: $("#frmAE .form-template-footer").html(),
                 htmlHeader: $("#frmAE .form-template-header").html()

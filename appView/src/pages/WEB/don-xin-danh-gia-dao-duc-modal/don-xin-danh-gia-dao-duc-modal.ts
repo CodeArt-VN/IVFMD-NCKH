@@ -123,6 +123,8 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmDonXinDanhGiaDaoDuc .form-template-header").height(),
+                pxFooter: $("#frmDonXinDanhGiaDaoDuc .form-template-footer").height(),
                 htmlContent: $("#frmDonXinDanhGiaDaoDuc .form-template-body").html(),
                 htmlFooter: $("#frmDonXinDanhGiaDaoDuc .form-template-footer").html(),
                 htmlHeader: $("#frmDonXinDanhGiaDaoDuc .form-template-header").html()
