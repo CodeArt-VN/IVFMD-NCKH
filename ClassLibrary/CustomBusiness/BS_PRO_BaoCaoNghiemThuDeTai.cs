@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using DTOModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -48,9 +49,9 @@ namespace BaseBusiness
                     BaiFulltext = s.BaiFulltext,
                 }).FirstOrDefault();
 
-                //Edit
                 if (!string.IsNullOrWhiteSpace(query.JSON_DanhSachThamGia))
                 {
+                    query.ListCanBo = JsonConvert.DeserializeObject<List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo>>(query.JSON_DanhSachThamGia);
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_TomTat))
                 {
@@ -110,10 +111,7 @@ namespace BaseBusiness
                     query.ChuNhiemDeTai = detai.tbl_CUS_HRM_STAFF_NhanSu1 != null ? detai.tbl_CUS_HRM_STAFF_NhanSu1.Name : "";
                 }
 
-                //query.ListCanThiepThuocThuLamSan = new List<DTO_PRO_BaoCaoNghiemThuDeTai_CanThiepThuocThuLamSan>() { new DTO_PRO_BaoCaoNghiemThuDeTai_CanThiepThuocThuLamSan() };
-                //query.ListDanhGiaNCV = new List<DTO_PRO_BaoCaoNghiemThuDeTai_DanhGiaNCV>() { new DTO_PRO_BaoCaoNghiemThuDeTai_DanhGiaNCV() };
-                //query.ListThuocSuDungDongThoi = new List<DTO_PRO_BaoCaoNghiemThuDeTai_ThuocSuDungDongThoi>() { new DTO_PRO_BaoCaoNghiemThuDeTai_ThuocSuDungDongThoi() };
-                //query.ListThuocThuLamSan = new List<DTO_PRO_BaoCaoNghiemThuDeTai_ThuocThuLamSan>() { new DTO_PRO_BaoCaoNghiemThuDeTai_ThuocThuLamSan() };
+                query.ListCanBo = new List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo>() { new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo(), new DTO_PRO_BaoCaoNghiemThuDeTai_CanBo() };
             }
 
             return query;
@@ -135,33 +133,28 @@ namespace BaseBusiness
             dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;
             dbitem.BaiFulltext = item.BaiFulltext;
 
-            //if (item.ListThuocThuLamSan != null)
-            //{
-            //    dbitem.JSON_ThuocThuLamSang = JsonConvert.SerializeObject(item.ListThuocThuLamSan);
-            //}
-            //else
-            //    dbitem.JSON_ThuocThuLamSang = string.Empty;
+            dbitem.JSON_TomTat = item.JSON_TomTat;
+            dbitem.JSON_Abstract = item.JSON_Abstract;
+            dbitem.JSON_LoiCamOn = item.JSON_LoiCamOn;
+            dbitem.JSON_MucLuc = item.JSON_MucLuc;
+            dbitem.JSON_CacChuVietTat = item.JSON_CacChuVietTat;
+            dbitem.JSON_DanhMucCacBang = item.JSON_DanhMucCacBang;
+            dbitem.JSON_MucTieu = item.JSON_MucTieu;
+            dbitem.JSON_Chuong1 = item.JSON_Chuong1;
+            dbitem.JSON_Chuong2 = item.JSON_Chuong2;
+            dbitem.JSON_VatLieuPhuongPhap = item.JSON_VatLieuPhuongPhap;
+            dbitem.JSON_Chuong3 = item.JSON_Chuong3;
+            dbitem.JSON_Chuong4 = item.JSON_Chuong4;
+            dbitem.JSON_Chuong5 = item.JSON_Chuong5;
+            dbitem.JSON_KetLuan = item.JSON_KetLuan;
+            dbitem.JSON_TaiLieuThamKhao = item.JSON_TaiLieuThamKhao;
 
-            //if (item.ListCanThiepThuocThuLamSan != null)
-            //{
-            //    dbitem.JSON_CanThiepThuocThuLamSang = JsonConvert.SerializeObject(item.ListCanThiepThuocThuLamSan);
-            //}
-            //else
-            //    dbitem.JSON_CanThiepThuocThuLamSang = string.Empty;
-
-            //if (item.ListThuocSuDungDongThoi != null)
-            //{
-            //    dbitem.JSON_ThuocSuDungDongThoi = JsonConvert.SerializeObject(item.ListThuocSuDungDongThoi);
-            //}
-            //else
-            //    dbitem.JSON_ThuocSuDungDongThoi = string.Empty;
-
-            //if (item.ListDanhGiaNCV != null)
-            //{
-            //    dbitem.JSON_DanhGiaNCV = JsonConvert.SerializeObject(item.ListDanhGiaNCV);
-            //}
-            //else
-            //    dbitem.JSON_DanhGiaNCV = string.Empty;
+            if (item.ListCanBo != null)
+            {
+                dbitem.JSON_DanhSachThamGia = JsonConvert.SerializeObject(item.ListCanBo);
+            }
+            else
+                dbitem.JSON_DanhSachThamGia = string.Empty;
 
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;

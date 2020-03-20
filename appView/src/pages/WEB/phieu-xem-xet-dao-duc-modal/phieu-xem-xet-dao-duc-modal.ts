@@ -254,6 +254,8 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmPhieuXemXetDaoDuc .form-template-header").height(),
+                pxFooter: $("#frmPhieuXemXetDaoDuc .form-template-footer").height(),
                 htmlContent: $("#frmPhieuXemXetDaoDuc .form-template-body").html(),
                 htmlFooter: $("#frmPhieuXemXetDaoDuc .form-template-footer").html(),
                 htmlHeader: $("#frmPhieuXemXetDaoDuc .form-template-header").html()

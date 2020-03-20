@@ -334,6 +334,8 @@ export class NhanSuLLKHModalPage extends DetailPage {
                 id: this.id,
                 type: 0,
                 firstPageHeader: true,
+                pxHeader: $("#frmNhanSuLLKH .form-template-header").height(),
+                pxFooter: $("#frmNhanSuLLKH .form-template-footer").height(),
                 htmlContent: $("#frmNhanSuLLKH .form-template-body").html(),
                 htmlFooter: $("#frmNhanSuLLKH .form-template-footer").html(),
                 htmlHeader: $("#frmNhanSuLLKH .form-template-header").html()

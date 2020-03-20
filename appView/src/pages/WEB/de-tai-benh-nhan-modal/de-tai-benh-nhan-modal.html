@@ -20,21 +20,12 @@
         </div>
 
         <div class="c-control" *ngIf="isNew==1">
-            <label class="c-label" for="MaBenhNhan">Mã bệnh nhân
+            <label class="c-label" for="MaBenhNhan">Mã số đối tượng
           <span
               *ngIf="!formGroup.controls.MaBenhNhan.valid && !formGroup.controls.MaBenhNhan.pending && (formGroup.controls.MaBenhNhan.dirty || submitAttempt)"
               ion-text color="danger">(*)</span>
         </label>
             <input class="c-input" id="MaBenhNhan" [(ngModel)]="item.MaBenhNhan" formControlName="MaBenhNhan" type="text">
-        </div>
-
-        <div class="c-control" *ngIf="isNew==1">
-            <label class="c-label" for="TenBenhNhan">Tên bệnh nhân
-          <span
-              *ngIf="!formGroup.controls.TenBenhNhan.valid && !formGroup.controls.TenBenhNhan.pending && (formGroup.controls.TenBenhNhan.dirty || submitAttempt)"
-              ion-text color="danger">(*)</span>
-        </label>
-            <input class="c-input" id="TenBenhNhan" [(ngModel)]="item.TenBenhNhan" formControlName="TenBenhNhan" type="text">
         </div>
 
         <div class="c-control" *ngIf="isNew==1">

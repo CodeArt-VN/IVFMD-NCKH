@@ -220,6 +220,8 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
             var itemPrint = {
                 id: this.id,
                 type: 0,
+                pxHeader: $("#frmBangKhaiNhanSu .form-template-header").height(),
+                pxFooter: $("#frmBangKhaiNhanSu .form-template-footer").height(),
                 htmlContent: $("#frmBangKhaiNhanSu .form-template-body").html(),
                 htmlFooter: $("#frmBangKhaiNhanSu .form-template-footer").html(),
                 htmlHeader: $("#frmBangKhaiNhanSu .form-template-header").html()
