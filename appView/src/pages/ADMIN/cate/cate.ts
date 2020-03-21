@@ -14,7 +14,8 @@ export class CatePage extends ListPage {
     
 
     FormGroups = [];
-
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     constructor(
         public currentProvider: WEB_DanhMucProvider,
 
