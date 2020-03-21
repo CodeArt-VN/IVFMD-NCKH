@@ -1,4 +1,6 @@
 .nckh-form-template {
+    padding: 0 1in;
+
     &.font-size-14, .font-size-14 {
         font-size: 14pt;
     }
@@ -108,6 +110,12 @@
         position: relative;
         min-height: 9.69in;
         page-break-after: always;
+    }
+
+    .cell-inline {
+        .input-inline {
+            display: inline-block;
+        }
     }
 
     .box-inline {

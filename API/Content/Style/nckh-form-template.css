@@ -1,7 +1,5 @@
 ﻿.nckh-form-template {
   background-color: #fff;
-  min-width: 6.27in;
-  max-width: 6.27in;
   margin: auto;
   padding: 0 1in;
   font-family: 'Times New Roman', Times, serif;
@@ -69,6 +67,8 @@
     margin-bottom: 5px; }
   .nckh-form-template .prow:hover {
     box-shadow: none; }
+  .nckh-form-template .cell-inline .input-inline {
+    display: inline-block; }
   .nckh-form-template .box-inline {
     display: table;
     width: 100%;

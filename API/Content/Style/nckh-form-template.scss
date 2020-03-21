@@ -1,7 +1,5 @@
 .nckh-form-template {
     background-color: #fff;
-    min-width: 6.27in;
-    max-width: 6.27in;
     margin: auto;
     padding: 0 1in;
     font-family: 'Times New Roman', Times, serif;
@@ -124,6 +122,12 @@
     .prow {
         &:hover {
             box-shadow: none;
+        }
+    }
+
+    .cell-inline {
+        .input-inline {
+            display: inline-block;
         }
     }
 
