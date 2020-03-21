@@ -14,7 +14,8 @@ export class RolePage extends ListPage {
     
 
     FormGroups = [];
-
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     constructor(
         public currentProvider: SYS_RoleProvider,
 
@@ -32,9 +33,15 @@ export class RolePage extends ListPage {
         
     }
     
-    preLoadData(){
-        
-        this.FormGroups = this.userprofile.MenuItems.filter(d=>d.AppID==3);
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

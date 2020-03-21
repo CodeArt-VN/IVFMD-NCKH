@@ -13,7 +13,7 @@ import { HoiNghiHoiThaoDanhSachDeTaiModalPage } from '../hoi-nghi-hoi-thao-danh-
 export class HoiNghiHoiThaoHRCOPage extends ListPage {
     FormGroups = [];
     Modules = [];
-    CurrentModule = "NCKH-View";
+    CurrentModule = "HNHT";
     canApprove = true;
     showDatePicks = false;
     timeQuery: any = {
@@ -52,7 +52,7 @@ export class HoiNghiHoiThaoHRCOPage extends ListPage {
     }
 
     preLoadData() {
-        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 7);
         this.Modules = this.getModules();
         super.preLoadData();
     }

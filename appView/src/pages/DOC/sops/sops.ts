@@ -43,6 +43,9 @@ export class SopsPage extends ListPage {
     canDeleteFolder = false;
     canDeleteFile = false;
 
+    FormGroups = [];
+    Modules = [];
+    CurrentModule = "SOPs"; 
 
     constructor(
         public folderProvider: DOC_FolderProvider,
@@ -83,8 +86,15 @@ export class SopsPage extends ListPage {
 
     }
 
-    preLoadData() {
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
 
+    preLoadData() {
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         this.folderPath = [];
         this.folderid = null;
         this.selected = [];

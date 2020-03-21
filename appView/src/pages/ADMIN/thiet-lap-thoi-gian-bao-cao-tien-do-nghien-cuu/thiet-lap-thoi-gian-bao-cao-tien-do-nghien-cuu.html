@@ -1,21 +1,26 @@
 <ion-header *ngIf="userprofile">
 
-  <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
-  <div class="search">
-      <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
-  </div>
-  <div class="path">
-      <a (click)="openDefaultPage()">Home</a>
-      <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
-      <a class="active">Thiết lập thời gian báo cáo Tiến độ nghiên cứu</a>
-  </div>
-  <div class="tools">
-      <button color="success" ion-button icon-only clear (click)="saveCustom()">
-          <ion-icon name="checkmark-circle"></ion-icon>
-      </button>
-  </div>
+    <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+    <div class="search">
+        <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
+    </div>
+    <div class="partner">
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
+        </select>
+    </div>
+    <div class="path">
+        <a (click)="openDefaultPage()">Home</a>
+        <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
+        <a class="active">Thiết lập thời gian báo cáo Tiến độ nghiên cứu</a>
+    </div>
+    <div class="tools">
+        <button color="success" ion-button icon-only clear (click)="saveCustom()">
+            <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+    </div>
 
-  <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
+    <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
 
 </ion-header>
 

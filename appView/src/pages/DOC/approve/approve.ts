@@ -41,6 +41,9 @@ export class ApprovePage extends ListPage {
     canViewSops = false;
     canDownload = false;
 
+    FormGroups = [];
+    Modules = [];
+    CurrentModule = "SOPs";
 
     constructor(
         public folderProvider: DOC_FolderProvider,
@@ -74,7 +77,16 @@ export class ApprovePage extends ListPage {
         });
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
     preLoadData() {
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
+
         this.folderPath = [];
         this.folderid = null;
         this.selected = [];

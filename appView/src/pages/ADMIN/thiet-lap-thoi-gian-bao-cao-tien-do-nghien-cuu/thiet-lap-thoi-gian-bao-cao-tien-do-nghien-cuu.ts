@@ -9,6 +9,8 @@ import { CAT_ThietLapThoiGianBaoCaoTDNCProvider } from '../../../providers/Servi
 @Component({ selector: 'page-thiet-lap-thoi-gian-bao-cao-tien-do-nghien-cuu', templateUrl: 'thiet-lap-thoi-gian-bao-cao-tien-do-nghien-cuu.html' })
 export class ThietLapThoiGianBaoCaoTDNCPage extends ListPage {
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     item = {
         ThoiGianBaoCaoTDNC:
         {
@@ -34,8 +36,15 @@ export class ThietLapThoiGianBaoCaoTDNCPage extends ListPage {
         super('page-thiet-lap-thoi-gian-bao-cao-tien-do-nghien-cuu', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
     preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

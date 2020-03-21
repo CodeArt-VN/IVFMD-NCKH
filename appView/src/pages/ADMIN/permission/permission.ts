@@ -14,7 +14,8 @@ export class PermissionPage extends ListPage {
     selectedRoles: any[] = [];
     selectedAll = false;
     changedList = [];
-
+    Modules = [];
+    CurrentModule = "Admin-PAR"; 
     constructor(
         public currentProvider: SYS_PermissionListProvider,
         public roleProvider: SYS_RoleProvider,
@@ -31,6 +32,12 @@ export class PermissionPage extends ListPage {
     ) {
         super('page-permission', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
 
+    }
+
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
     }
 
     preLoadData() {

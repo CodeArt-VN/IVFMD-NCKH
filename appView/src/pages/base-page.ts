@@ -235,10 +235,14 @@ export class BasePage {
     getModules() {
         let modules = [];
         let isNCKH = this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View').length ? true : false;
+        let isHNHT = this.userprofile.MenuItems.filter(d => d.Code == 'HNHT').length ? true : false;
         let isSOPs = this.userprofile.MenuItems.filter(d => d.Code == 'SOPs').length ? true : false;
         let isAdmin = this.userprofile.MenuItems.filter(d => d.Code == 'Admin-PAR').length ? true : false;
         if (isNCKH) {
             modules.push({ Module: "NCKH-View", Name: 'Nghiên cứu khoa học', Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
+        }
+        if (isHNHT) {
+            modules.push({ Module: "HNHT", Name: 'Hội nghị, hội thảo', Code: this.userprofile.MenuItems.filter(d => d.Code == 'HNHT')[0].FormMenu[0].Code });
         }
         if (isSOPs) {
             modules.push({ Module: "SOPs", Name: 'Thư viện điện tử', Code: this.userprofile.MenuItems.filter(d => d.Code == 'SOPs')[0].FormMenu[0].Code });
