@@ -12,6 +12,8 @@ import { appSetting } from '../../../providers/CORE/api-list';
 export class ThietLapTemplatePage extends ListPage {
     @ViewChild('importfile') importfile: any;
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     UploadAPI = appSetting.apiDomain('CUS/File/FileUpload');
     hasBaseDropZoneOver = false;
     File = "";
@@ -62,8 +64,15 @@ export class ThietLapTemplatePage extends ListPage {
         }
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
     preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

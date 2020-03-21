@@ -5,8 +5,8 @@
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
     <div class="partner">
-        <select [attr.disabled]="userprofile.Partners.length >1 ? null : ''" [(ngModel)]="query.IDPartner" (change)="changePartner()">
-            <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
         </select>
     </div>
     <div class="path">
@@ -21,20 +21,20 @@
         <span class="split"></span>
 
 
-    
+
 
 
         <button color="primary" ion-button icon-only clear *ngIf="selected.length && ((selected[0].Extension == 'folder' && canManageFolder) || (selected[0].Extension != 'folder' && canManageFile))"
-            (click)="editItem(selected[0])">
+                (click)="editItem(selected[0])">
             <ion-icon name="ios-create"></ion-icon>
         </button>
         <a color="primary" ion-button icon-only clear *ngIf="selected.length && (selected[0].FileTypeIcon == 'fa-file-word-o') && canEditFile" target="_blank" [href]="apiDomain+'/Home/DocumentEditor?token='+ token +'&id='+selected[0].ID+'&partner='+query.IDPartner">
             <ion-icon name="ios-paper-outline"></ion-icon>
         </a>
 
-        
+
         <button color="danger" ion-button icon-only clear *ngIf="selected.length && ((selected[0].Extension == 'folder' && canManageFolder) || (selected[0].Extension != 'folder' && canManageFile))"
-            (click)="deleteItem(selected[0])">
+                (click)="deleteItem(selected[0])">
             <ion-icon name="ios-trash"></ion-icon>
         </button>
         <button (click)="download( selected[0].Path );" color="primary" ion-button icon-only clear *ngIf="selected.length && (selected[0].Extension != 'folder' && canDownload)">

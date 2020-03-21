@@ -12,7 +12,7 @@ export class HoiNghiHoiThaoPage extends ListPage {
     FormGroups = [];
     canApprove = false;
     Modules = [];
-    CurrentModule = "NCKH-View";
+    CurrentModule = "HNHT";
     constructor(
         public currentProvider: PRO_HoiNghiHoiThaoDangKyCustomProvider,
         private cdr: ChangeDetectorRef,
@@ -36,7 +36,7 @@ export class HoiNghiHoiThaoPage extends ListPage {
     }
 
     preLoadData() {
-        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 7);
         this.Modules = this.getModules();
         super.preLoadData();
     }

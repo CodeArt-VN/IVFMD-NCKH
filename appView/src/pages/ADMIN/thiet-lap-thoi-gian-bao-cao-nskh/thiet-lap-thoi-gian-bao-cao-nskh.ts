@@ -10,6 +10,8 @@ import { DateAdapter } from "@angular/material";
 @Component({ selector: 'page-thiet-lap-thoi-gian-bao-cao-nskh', templateUrl: 'thiet-lap-thoi-gian-bao-cao-nskh.html' })
 export class ThietLapThoiGianBaoCaoNSKHPage extends ListPage {
     FormGroups = [];
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     item = {
         ThoiGianBaoCaoNSKH: {
             NgayBatDau: null,
@@ -34,8 +36,15 @@ export class ThietLapThoiGianBaoCaoNSKHPage extends ListPage {
         this.dateAdapter.setLocale('vi');  
     }
 
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
     preLoadData() {
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

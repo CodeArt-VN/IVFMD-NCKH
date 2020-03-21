@@ -5,8 +5,8 @@
         <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
     </div>
     <div class="partner">
-        <select [attr.disabled]="userprofile.Partners.length >1 ? null : ''" [(ngModel)]="query.IDPartner" (change)="changePartner()">
-            <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
         </select>
     </div>
     <div class="path">
@@ -23,7 +23,7 @@
         <button color="success" ion-button icon-only clear (click)="add()">
             <ion-icon name="ios-add-circle"></ion-icon>
         </button>
-        
+
 
         <span class="split" *ngIf="selected.length"></span>
 

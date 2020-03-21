@@ -9,6 +9,11 @@
             <option *ngFor="let t of userprofile.Partners" [value]="t.ID">{{t.Name}}</option>
         </select>
     </div>
+    <div class="partner">
+        <select [attr.disabled]="Modules.length >1 ? null : ''" [(ngModel)]="CurrentModule" (change)="changeModule()">
+            <option *ngFor="let t of Modules" [value]="t.Module">{{t.Name}}</option>
+        </select>
+    </div>
     <div class="path">
         <a (click)="openDefaultPage()">Home</a>
         <ion-icon class="split" name="ios-arrow-forward"></ion-icon>

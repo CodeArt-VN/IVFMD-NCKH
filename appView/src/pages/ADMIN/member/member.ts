@@ -14,7 +14,8 @@ export class MemberPage extends ListPage {
     
 
     FormGroups = [];
-
+    Modules = [];
+    CurrentModule = "Admin-PAR";
     constructor(
         public currentProvider: ACCOUNT_ApplicationUserProvider,
 
@@ -31,6 +32,17 @@ export class MemberPage extends ListPage {
         super('page-member', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
         
         
+    }
+
+    changeModule() {
+        if (this.CurrentModule) {
+            this.navCtrl.setRoot(this.Modules.filter(d => d.Module == this.CurrentModule)[0].Code);
+        }
+    }
+
+    preLoadData() {
+        this.Modules = this.getModules();
+        super.preLoadData();
     }
 
 

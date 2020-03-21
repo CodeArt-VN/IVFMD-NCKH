@@ -82,7 +82,6 @@ export class NhanSuLLKHInputModalPage extends DetailPage {
     };
 
     tableAdd(Prop) {
-        debugger
         switch (Prop) {
             case "ListNgoaiNgu":
                 this.item.ListNgoaiNgu.push({ NgoaiNgu: '', NgheTot: '', NgheKha: '', NgheTB: '', NoiTot: '', NoiKha: '', NoiTB: '', VietTot: '', VietKha: '', VietTB: '', DocTot: '', DocKha: '', DocTB:'' });
@@ -95,7 +94,12 @@ export class NhanSuLLKHInputModalPage extends DetailPage {
             case "ListNgoaiNgu":
                 var anchorNode = window.getSelection().anchorNode;
                 if (anchorNode) {
-                    debugger
+                    try {
+                        var tr = $(anchorNode).closest('tr');
+                        if (tr && tr.attr('data-index') != "") {
+                            this.item.ListNgoaiNgu.splice(tr.attr('data-index'), 1);
+                        }
+                    } catch (e) {}
                 }
                 break;
         }
