@@ -101,6 +101,7 @@ namespace ClassLibrary
         public string B52_CNDT_NgayKy_Thang { get; set; }
         public string B52_CNDT_NgayKy_Nam { get; set; }
         public string B52_CNDT_NgayKy_ChuKy { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -195,6 +196,7 @@ namespace DTOModel
 		public string B52_CNDT_NgayKy_Thang { get; set; }
 		public string B52_CNDT_NgayKy_Nam { get; set; }
 		public string B52_CNDT_NgayKy_ChuKy { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -302,7 +304,8 @@ namespace BaseBusiness
 				B52_CNDT_NgayKy_Ngay = s.B52_CNDT_NgayKy_Ngay,							
 				B52_CNDT_NgayKy_Thang = s.B52_CNDT_NgayKy_Thang,							
 				B52_CNDT_NgayKy_Nam = s.B52_CNDT_NgayKy_Nam,							
-				B52_CNDT_NgayKy_ChuKy = s.B52_CNDT_NgayKy_ChuKy,					
+				B52_CNDT_NgayKy_ChuKy = s.B52_CNDT_NgayKy_ChuKy,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -398,7 +401,8 @@ namespace BaseBusiness
 					B52_CNDT_NgayKy_Ngay = dbResult.B52_CNDT_NgayKy_Ngay,							
 					B52_CNDT_NgayKy_Thang = dbResult.B52_CNDT_NgayKy_Thang,							
 					B52_CNDT_NgayKy_Nam = dbResult.B52_CNDT_NgayKy_Nam,							
-					B52_CNDT_NgayKy_ChuKy = dbResult.B52_CNDT_NgayKy_ChuKy,
+					B52_CNDT_NgayKy_ChuKy = dbResult.B52_CNDT_NgayKy_ChuKy,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -1030,6 +1034,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.B52_CNDT_NgayKy_ChuKy == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1130,7 +1141,8 @@ namespace BaseBusiness
 				dbitem.B52_CNDT_NgayKy_Ngay = item.B52_CNDT_NgayKy_Ngay;							
 				dbitem.B52_CNDT_NgayKy_Thang = item.B52_CNDT_NgayKy_Thang;							
 				dbitem.B52_CNDT_NgayKy_Nam = item.B52_CNDT_NgayKy_Nam;							
-				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;                
+				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1237,7 +1249,8 @@ namespace BaseBusiness
 				dbitem.B52_CNDT_NgayKy_Ngay = item.B52_CNDT_NgayKy_Ngay;							
 				dbitem.B52_CNDT_NgayKy_Thang = item.B52_CNDT_NgayKy_Thang;							
 				dbitem.B52_CNDT_NgayKy_Nam = item.B52_CNDT_NgayKy_Nam;							
-				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;                
+				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

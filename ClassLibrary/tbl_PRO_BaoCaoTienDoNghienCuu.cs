@@ -34,6 +34,7 @@ namespace ClassLibrary
         public string ThoiGianTienHanh { get; set; }
         public string CoMau { get; set; }
         public Nullable<int> IDTinhTrangNghienCuu { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
         public virtual tbl_SYS_Var tbl_SYS_Var { get; set; }
     }
@@ -62,6 +63,7 @@ namespace DTOModel
 		public string ThoiGianTienHanh { get; set; }
 		public string CoMau { get; set; }
 		public Nullable<int> IDTinhTrangNghienCuu { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -102,7 +104,8 @@ namespace BaseBusiness
 				SoNCT = s.SoNCT,							
 				ThoiGianTienHanh = s.ThoiGianTienHanh,							
 				CoMau = s.CoMau,							
-				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,					
+				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -131,7 +134,8 @@ namespace BaseBusiness
 					SoNCT = dbResult.SoNCT,							
 					ThoiGianTienHanh = dbResult.ThoiGianTienHanh,							
 					CoMau = dbResult.CoMau,							
-					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,
+					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -294,6 +298,13 @@ namespace BaseBusiness
                     query = query.Where(d => IDs.Contains(d.IDTinhTrangNghienCuu));
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -327,7 +338,8 @@ namespace BaseBusiness
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
 				dbitem.CoMau = item.CoMau;							
-				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -367,7 +379,8 @@ namespace BaseBusiness
 				dbitem.SoNCT = item.SoNCT;							
 				dbitem.ThoiGianTienHanh = item.ThoiGianTienHanh;							
 				dbitem.CoMau = item.CoMau;							
-				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;                
+				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

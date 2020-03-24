@@ -43,6 +43,7 @@ namespace ClassLibrary
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public string BaiFulltext { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -79,6 +80,7 @@ namespace DTOModel
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
 		public string BaiFulltext { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -128,7 +130,8 @@ namespace BaseBusiness
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
 				ModifiedBy = s.ModifiedBy,							
-				BaiFulltext = s.BaiFulltext,					
+				BaiFulltext = s.BaiFulltext,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -166,7 +169,8 @@ namespace BaseBusiness
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
 					ModifiedBy = dbResult.ModifiedBy,							
-					BaiFulltext = dbResult.BaiFulltext,
+					BaiFulltext = dbResult.BaiFulltext,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -387,6 +391,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.BaiFulltext == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -429,7 +440,8 @@ namespace BaseBusiness
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.BaiFulltext = item.BaiFulltext;                
+				dbitem.BaiFulltext = item.BaiFulltext;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -478,7 +490,8 @@ namespace BaseBusiness
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.BaiFulltext = item.BaiFulltext;                
+				dbitem.BaiFulltext = item.BaiFulltext;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

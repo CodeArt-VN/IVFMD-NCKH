@@ -49,6 +49,7 @@ namespace ClassLibrary
         public string NgayKy_Thang { get; set; }
         public string NgayKy_Nam { get; set; }
         public string NgayKy_ChuKy { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -91,6 +92,7 @@ namespace DTOModel
 		public string NgayKy_Thang { get; set; }
 		public string NgayKy_Nam { get; set; }
 		public string NgayKy_ChuKy { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -146,7 +148,8 @@ namespace BaseBusiness
 				NgayKy_Ngay = s.NgayKy_Ngay,							
 				NgayKy_Thang = s.NgayKy_Thang,							
 				NgayKy_Nam = s.NgayKy_Nam,							
-				NgayKy_ChuKy = s.NgayKy_ChuKy,					
+				NgayKy_ChuKy = s.NgayKy_ChuKy,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -190,7 +193,8 @@ namespace BaseBusiness
 					NgayKy_Ngay = dbResult.NgayKy_Ngay,							
 					NgayKy_Thang = dbResult.NgayKy_Thang,							
 					NgayKy_Nam = dbResult.NgayKy_Nam,							
-					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,
+					NgayKy_ChuKy = dbResult.NgayKy_ChuKy,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -459,6 +463,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.NgayKy_ChuKy == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -507,7 +518,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -562,7 +574,8 @@ namespace BaseBusiness
 				dbitem.NgayKy_Ngay = item.NgayKy_Ngay;							
 				dbitem.NgayKy_Thang = item.NgayKy_Thang;							
 				dbitem.NgayKy_Nam = item.NgayKy_Nam;							
-				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;                
+				dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

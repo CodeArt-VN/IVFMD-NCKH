@@ -33,6 +33,7 @@ namespace ClassLibrary
         public int IDNCV { get; set; }
         public bool IsApproved { get; set; }
         public Nullable<System.DateTime> ApprovedDate { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_CAT_KinhPhi tbl_CAT_KinhPhi { get; set; }
         public virtual tbl_CAT_Nhom tbl_CAT_Nhom { get; set; }
         public virtual tbl_CAT_Site tbl_CAT_Site { get; set; }
@@ -62,6 +63,7 @@ namespace DTOModel
 		public int IDNCV { get; set; }
 		public bool IsApproved { get; set; }
 		public Nullable<System.DateTime> ApprovedDate { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -101,7 +103,8 @@ namespace BaseBusiness
 				KinhPhi = s.KinhPhi,							
 				IDNCV = s.IDNCV,							
 				IsApproved = s.IsApproved,							
-				ApprovedDate = s.ApprovedDate,					
+				ApprovedDate = s.ApprovedDate,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -129,7 +132,8 @@ namespace BaseBusiness
 					KinhPhi = dbResult.KinhPhi,							
 					IDNCV = dbResult.IDNCV,							
 					IsApproved = dbResult.IsApproved,							
-					ApprovedDate = dbResult.ApprovedDate,
+					ApprovedDate = dbResult.ApprovedDate,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -299,6 +303,13 @@ namespace BaseBusiness
                 if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ApprovedDateFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ApprovedDateTo").Value, out DateTime toDate))
                     query = query.Where(d => fromDate <= d.ApprovedDate && d.ApprovedDate <= toDate);
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -331,7 +342,8 @@ namespace BaseBusiness
 				dbitem.KinhPhi = item.KinhPhi;							
 				dbitem.IDNCV = item.IDNCV;							
 				dbitem.IsApproved = item.IsApproved;							
-				dbitem.ApprovedDate = item.ApprovedDate;                
+				dbitem.ApprovedDate = item.ApprovedDate;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -370,7 +382,8 @@ namespace BaseBusiness
 				dbitem.KinhPhi = item.KinhPhi;							
 				dbitem.IDNCV = item.IDNCV;							
 				dbitem.IsApproved = item.IsApproved;							
-				dbitem.ApprovedDate = item.ApprovedDate;                
+				dbitem.ApprovedDate = item.ApprovedDate;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

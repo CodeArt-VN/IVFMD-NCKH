@@ -74,6 +74,7 @@ namespace ClassLibrary
         public string NamHocViThacSy { get; set; }
         public string HocViTienSy { get; set; }
         public string NamHocViTienSy { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
@@ -142,6 +143,7 @@ namespace DTOModel
 		public string NamHocViThacSy { get; set; }
 		public string HocViTienSy { get; set; }
 		public string NamHocViTienSy { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -222,7 +224,8 @@ namespace BaseBusiness
 				HocViThacSy = s.HocViThacSy,							
 				NamHocViThacSy = s.NamHocViThacSy,							
 				HocViTienSy = s.HocViTienSy,							
-				NamHocViTienSy = s.NamHocViTienSy,					
+				NamHocViTienSy = s.NamHocViTienSy,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -291,7 +294,8 @@ namespace BaseBusiness
 					HocViThacSy = dbResult.HocViThacSy,							
 					NamHocViThacSy = dbResult.NamHocViThacSy,							
 					HocViTienSy = dbResult.HocViTienSy,							
-					NamHocViTienSy = dbResult.NamHocViTienSy,
+					NamHocViTienSy = dbResult.NamHocViTienSy,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -732,6 +736,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.NamHocViTienSy == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -805,7 +816,8 @@ namespace BaseBusiness
 				dbitem.HocViThacSy = item.HocViThacSy;							
 				dbitem.NamHocViThacSy = item.NamHocViThacSy;							
 				dbitem.HocViTienSy = item.HocViTienSy;							
-				dbitem.NamHocViTienSy = item.NamHocViTienSy;                
+				dbitem.NamHocViTienSy = item.NamHocViTienSy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -885,7 +897,8 @@ namespace BaseBusiness
 				dbitem.HocViThacSy = item.HocViThacSy;							
 				dbitem.NamHocViThacSy = item.NamHocViThacSy;							
 				dbitem.HocViTienSy = item.HocViTienSy;							
-				dbitem.NamHocViTienSy = item.NamHocViTienSy;                
+				dbitem.NamHocViTienSy = item.NamHocViTienSy;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

@@ -31,6 +31,7 @@ namespace ClassLibrary
         public bool IsDisabled { get; set; }
         public bool IsDeleted { get; set; }
         public string JSON_QuaTrinhDaoTao { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
     }
 }
@@ -55,6 +56,7 @@ namespace DTOModel
 		public bool IsDisabled { get; set; }
 		public bool IsDeleted { get; set; }
 		public string JSON_QuaTrinhDaoTao { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -92,7 +94,8 @@ namespace BaseBusiness
 				ModifiedBy = s.ModifiedBy,							
 				IsDisabled = s.IsDisabled,							
 				IsDeleted = s.IsDeleted,							
-				JSON_QuaTrinhDaoTao = s.JSON_QuaTrinhDaoTao,					
+				JSON_QuaTrinhDaoTao = s.JSON_QuaTrinhDaoTao,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -118,7 +121,8 @@ namespace BaseBusiness
 					ModifiedBy = dbResult.ModifiedBy,							
 					IsDisabled = dbResult.IsDisabled,							
 					IsDeleted = dbResult.IsDeleted,							
-					JSON_QuaTrinhDaoTao = dbResult.JSON_QuaTrinhDaoTao,
+					JSON_QuaTrinhDaoTao = dbResult.JSON_QuaTrinhDaoTao,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -253,6 +257,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.JSON_QuaTrinhDaoTao == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -283,7 +294,8 @@ namespace BaseBusiness
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;                
+				dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -320,7 +332,8 @@ namespace BaseBusiness
 				dbitem.HTML = item.HTML;							
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
-				dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;                
+				dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

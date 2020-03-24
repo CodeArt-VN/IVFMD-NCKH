@@ -53,6 +53,7 @@ namespace ClassLibrary
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -99,6 +100,7 @@ namespace DTOModel
 		public string CreatedBy { get; set; }
 		public Nullable<System.DateTime> ModifiedDate { get; set; }
 		public string ModifiedBy { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -158,7 +160,8 @@ namespace BaseBusiness
 				CreatedDate = s.CreatedDate,							
 				CreatedBy = s.CreatedBy,							
 				ModifiedDate = s.ModifiedDate,							
-				ModifiedBy = s.ModifiedBy,					
+				ModifiedBy = s.ModifiedBy,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -206,7 +209,8 @@ namespace BaseBusiness
 					CreatedDate = dbResult.CreatedDate,							
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedDate = dbResult.ModifiedDate,							
-					ModifiedBy = dbResult.ModifiedBy,
+					ModifiedBy = dbResult.ModifiedBy,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -461,6 +465,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ModifiedBy == keyword);
             }
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -513,7 +524,8 @@ namespace BaseBusiness
 				dbitem.DieuPhoiHoatDongNghienCuu_NguoiThucHien = item.DieuPhoiHoatDongNghienCuu_NguoiThucHien;							
 				dbitem.DieuPhoiHoatDongNghienCuu_ChiPhi = item.DieuPhoiHoatDongNghienCuu_ChiPhi;							
 				dbitem.QuanLyDieuHanhChung_NguoiThucHien = item.QuanLyDieuHanhChung_NguoiThucHien;							
-				dbitem.QuanLyDieuHanhChung_ChiPhi = item.QuanLyDieuHanhChung_ChiPhi;                
+				dbitem.QuanLyDieuHanhChung_ChiPhi = item.QuanLyDieuHanhChung_ChiPhi;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -572,7 +584,8 @@ namespace BaseBusiness
 				dbitem.DieuPhoiHoatDongNghienCuu_NguoiThucHien = item.DieuPhoiHoatDongNghienCuu_NguoiThucHien;							
 				dbitem.DieuPhoiHoatDongNghienCuu_ChiPhi = item.DieuPhoiHoatDongNghienCuu_ChiPhi;							
 				dbitem.QuanLyDieuHanhChung_NguoiThucHien = item.QuanLyDieuHanhChung_NguoiThucHien;							
-				dbitem.QuanLyDieuHanhChung_ChiPhi = item.QuanLyDieuHanhChung_ChiPhi;                
+				dbitem.QuanLyDieuHanhChung_ChiPhi = item.QuanLyDieuHanhChung_ChiPhi;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
