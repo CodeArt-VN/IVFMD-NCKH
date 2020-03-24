@@ -65,67 +65,13 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
-            self.DacDiemNen = ko.observable({
-                TuoiVo: item.DacDiemNen.TuoiVo,
-                BMI: item.DacDiemNen.BMI,
-                AMHVo: item.DacDiemNen.AMHVo,
-                AFC: item.DacDiemNen.AFC,
-                ThoiGianVoSinh: item.DacDiemNen.ThoiGianVoSinh,
-                SoChuKyChocHut: item.DacDiemNen.SoChuKyChocHut,
-                LoaiVoSinh: item.DacDiemNen.LoaiVoSinh,
-                ChiDinhTTTON: item.DacDiemNen.ChiDinhTTTON,
-            });
-            self.KichThichBuongTrung = ko.observable({
-                E2NgayTrigger: item.KichThichBuongTrung.E2NgayTrigger,
-                P4NgayTrigger: item.KichThichBuongTrung.P4NgayTrigger,
-                ThoiGianKTBT: item.KichThichBuongTrung.ThoiGianKTBT,
-                LieuDauFSH: item.KichThichBuongTrung.LieuDauFSH,
-                TongLieuFSH: item.KichThichBuongTrung.TongLieuFSH,
-                SoTrungChocHut: item.KichThichBuongTrung.SoTrungChocHut,
-            });
-            self.LaBo = ko.observable({
-                SoTrungICSI: item.LaBo.SoTrungICSI,
-                SoTrungThuTinh: item.LaBo.SoTrungThuTinh,
-                TyLe2PN: item.LaBo.TyLe2PN,
-                TyLeTaoPhoi: item.LaBo.TyLeTaoPhoi,
-                SoPhoi: item.LaBo.SoPhoi,
-                SoPhoiL1L2: item.LaBo.SoPhoiL1L2,
-            });
-            self.ChuKyChuyenPhoi = ko.observable({
-                SoPhoiChuyenTB: item.ChuKyChuyenPhoi.SoPhoiChuyenTB,
-                SoPhoiTotChuyenTB: item.ChuKyChuyenPhoi.SoPhoiTotChuyenTB,
-                NMTC: item.ChuKyChuyenPhoi.NMTC
-            });
-            self.KetQuaThai = ko.observable({
-                TyLeBeTaDuong: item.KetQuaThai.TyLeBeTaDuong,
-                TyLeThaiLamSang: item.KetQuaThai.TyLeThaiLamSang,
-                TyLeLamTo: item.KetQuaThai.TyLeLamTo,
-                TyLeDaThai2Thai: item.KetQuaThai.TyLeDaThai2Thai,
-                TyLeDaThai3Thai: item.KetQuaThai.TyLeDaThai3Thai,
-                TyLeSayThaiDuoi12W: item.KetQuaThai.TyLeSayThaiDuoi12W,
-                TyLeThaiDienTien12W: item.KetQuaThai.TyLeThaiDienTien12W,
-                TyLeSayThai1224W: item.KetQuaThai.TyLeSayThai1224W,
-                TyLeThaiDienTien24W: item.KetQuaThai.TyLeThaiDienTien24W,
-                TyLeSayThaiTren24W: item.KetQuaThai.TyLeSayThaiTren24W,
-                TyLeSinhSong: item.KetQuaThai.TyLeSinhSong,
-                TyLeSinhDoi: item.KetQuaThai.TyLeSinhDoi,
-                LoaiThaiSinh: item.KetQuaThai.LoaiThaiSinh,
-                SinhThuong: item.KetQuaThai.SinhThuong,
-                SinhMo: item.KetQuaThai.SinhMo,
-                TuanThaiSinh: item.KetQuaThai.TuanThaiSinh,
-                CanNangTre: item.KetQuaThai.CanNangTre,
-                QuaKichBuongTrung: item.KetQuaThai.QuaKichBuongTrung,
-                BienChungSanKhoa: item.KetQuaThai.BienChungSanKhoa,
-                CaoHuyetApThaiKy: item.KetQuaThai.CaoHuyetApThaiKy,
-                TieuDuongThaiKy: item.KetQuaThai.TieuDuongThaiKy,
-            });
-            self.BienSoKhac = ko.observable({
-                Dong1: ko.observable(item.BienSoKhac.Dong1),
-                Dong2: ko.observable(item.BienSoKhac.Dong2),
-                Dong3: ko.observable(item.BienSoKhac.Dong3),
-                Dong4: ko.observable(item.BienSoKhac.Dong4)
-            });
-
+            that.nckhProvider.copyPropertiesValue(item, self);
+            //that.nckhProvider.copyPropertiesValue(item.DacDiemNen, self.DacDiemNen);
+            //that.nckhProvider.copyPropertiesValue(item.KichThichBuongTrung, self.KichThichBuongTrung);
+            //that.nckhProvider.copyPropertiesValue(item.LaBo, self.LaBo);
+            //that.nckhProvider.copyPropertiesValue(item.ChuKyChuyenPhoi, self.ChuKyChuyenPhoi);
+            //that.nckhProvider.copyPropertiesValue(item.KetQuaThai, self.KetQuaThai);
+            //that.nckhProvider.copyPropertiesValue(item.BienSoKhac, self.BienSoKhac);
             self.getItem = function () {
                 return ko.toJS(self);
             };
