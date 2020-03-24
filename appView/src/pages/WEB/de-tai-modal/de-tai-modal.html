@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-    <div [ngSwitch]="tab">
+    <div [ngSwitch]="tab"  style="height: 100%">
         <div *ngSwitchCase="'1'">
             <form [formGroup]="formGroup">
                 <div padding></div>
@@ -88,7 +88,7 @@
                 </div>
             </form>
         </div>
-        <div *ngSwitchCase="'2'">
+        <div *ngSwitchCase="'2'" style="height: 100%">
             <div class="tools">
                 <button color="primary" ion-button icon-only clear (click)="refreshNCV()">
                           <ion-icon name="refresh"></ion-icon>
@@ -107,7 +107,7 @@
                     <ion-icon name="ios-trash"></ion-icon>
                 </button>
             </div>
-            <ion-row>
+            <ion-row style="height: calc(100% - 53px)">
                 <ion-col class="doc-main">
                     <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected"
                         [selectionType]="'single'" (select)='onSelectNCV($event)'>
