@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
+import { Operator } from 'rxjs/Operator';
 
 @Injectable()
 export class NCKHServiceProvider {
@@ -15,7 +16,7 @@ export class NCKHServiceProvider {
                 var $element = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
                 $element.html(initialValue);
-                $element.on('keyup', function () {
+                $element.on('input', function (e) {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
@@ -37,11 +38,14 @@ export class NCKHServiceProvider {
                         $element.removeAttr("checked")
                     }
                     var observable = valueAccessor();
-                    observable(this.checked);
+                    if (observable instanceof Function) {
+                        observable(this.checked);
+                    } else {
+                        valueAccessor(this.checked);
+                    }
                 });
             }
         };
-        
 
         // eventHandlers
         $(".ptable,.pblock").on("click", ".clone", function (e) {
@@ -323,10 +327,32 @@ export class NCKHServiceProvider {
             };
         }));
     }
+    typeof(val, instance: Function, type: string) {
+        if (type == "object")
+            return val instanceof instance && typeof val == type;
+        else
+            return val instanceof instance || typeof val == type;
+    }
     copyPropertiesValue(fromItem, toItem) {
         for (let x in fromItem) {
-            if (x != '_isChecked' && (typeof fromItem[x] == "string" || fromItem[x] == undefined || fromItem[x] == null)) {
-                toItem[x] = ko.observable(fromItem[x] || "");
+            if (x != '_isChecked') {
+                if (this.typeof(fromItem[x], Boolean, 'boolean')) {
+                    toItem[x] = ko.observable(fromItem[x] || false);
+                } else if (this.typeof(fromItem[x], Number, 'number')) {
+                    toItem[x] = ko.observable(fromItem[x] || 0);
+                } else if (this.typeof(fromItem[x], String, 'string')) {
+                    toItem[x] = ko.observable(fromItem[x] || "");
+                } else if (this.typeof(fromItem[x], Date, 'object')) {
+                    toItem[x] = ko.observable(fromItem[x] || new Date());
+                } else if (fromItem[x] instanceof Array) {
+                    toItem[x] = ko.observable([]);
+                } else if (fromItem[x] instanceof Object) {
+                    var obj = {};
+                    this.copyPropertiesValue(fromItem[x], obj);
+                    toItem[x] = ko.observable(obj);
+                } else if (fromItem[x] == undefined || fromItem[x] == null) {
+                    toItem[x] = ko.observable("");
+                }
             }
         }
     }

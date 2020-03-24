@@ -35,14 +35,14 @@ export class DetailPage extends BasePage {
         }
         this._uid = navParams.get('_uid');
         this.item = navParams.get('item');
-        if(!this.item){
+        if (!this.item) {
             this.item = {}
         }
         this.formGroup = formBuilder.group({});
     }
 
     loadData() {
-        if(this.id){
+        if (this.id) {
             this.currentProvider.getAnItem(this.id, this._uid).then((ite) => {
                 this.commonService.copyPropertiesValue(ite, this.item);
                 super.loadData();
@@ -51,7 +51,7 @@ export class DetailPage extends BasePage {
                 super.loadData();
             });
         }
-        else{
+        else {
             this.item.ID = 0;
             super.loadData();
         }
@@ -89,7 +89,7 @@ export class DetailPage extends BasePage {
         }
     }
 
-    savedChange(){
+    savedChange() {
         this.formGroup.markAsPristine();
     }
 
@@ -101,8 +101,8 @@ export class DetailPage extends BasePage {
         if (this.canDelete) {
             this.showActionMore = false;
             let confirm = this.alertCtrl.create({
-                title: 'Xóa ' + (this.item.Code? ' '+this.item.Code : ''),
-                message: 'Bạn chắc muốn xóa' + (this.item.Name? ' '+this.item.Name : '') + '?',
+                title: 'Xóa ' + (this.item.Code ? ' ' + this.item.Code : ''),
+                message: 'Bạn chắc muốn xóa' + (this.item.Name ? ' ' + this.item.Name : '') + '?',
                 buttons: [
                     {
                         text: 'Không',
@@ -118,10 +118,10 @@ export class DetailPage extends BasePage {
                             this.currentProvider.delete(this.item).then(() => {
                                 this.toastMessage('Đã xóa xong!');
                                 this.events.publish('app:Update' + this.pageName);
-                                if(this.pageName.indexOf('-modal')){
+                                if (this.pageName.indexOf('-modal')) {
                                     this.events.publish('app:Close-' + this.pageName);
                                 }
-                                else{
+                                else {
                                     this.goBack();
                                 }
                                 this.deleted();
@@ -136,7 +136,7 @@ export class DetailPage extends BasePage {
         }
     }
 
-    deleted(){
+    deleted() {
 
     }
 
@@ -154,7 +154,6 @@ export class DetailPage extends BasePage {
     }
 
     download(url) {
-        debugger
         url = url.replace("~", "");
         this.downloadURLContent(appSetting.mainService.base + url);
     }
