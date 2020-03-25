@@ -231,7 +231,7 @@ namespace BaseBusiness
                 }
             }
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
