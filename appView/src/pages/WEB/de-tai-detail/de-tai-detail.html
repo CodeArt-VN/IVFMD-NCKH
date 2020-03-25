@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="emptyzone header-button">
-        <button *ngIf="pageIndex==0" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
+        <button *ngIf="pageIndex==0 && (!canApprove || (canApprove && item.IDTrangThai_HRCO != 19))" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
             (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
         <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light"
             (click)="updateSatusHRCO()">HRCO Duyệt</button>
