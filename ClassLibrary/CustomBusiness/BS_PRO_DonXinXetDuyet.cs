@@ -35,6 +35,7 @@ namespace BaseBusiness
                 GiayToKhac = s.GiayToKhac,
                 GhiChuGiayToKha = s.GhiChuGiayToKha,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 NgayKy_ChuKy = s.NgayKy_ChuKy,
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_Ngay = s.NgayKy_Ngay,

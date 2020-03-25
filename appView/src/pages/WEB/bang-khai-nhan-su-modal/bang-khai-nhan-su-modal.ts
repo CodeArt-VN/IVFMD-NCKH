@@ -60,7 +60,7 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmBangKhaiNhanSu");
         let id = this.item.ID;
         var that = this;
-        this.nckhProvider.init();
+        this.nckhProvider.init(this.item.FormConfig);
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
@@ -163,6 +163,7 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
         }
 
         item.HTML = $("#frmBangKhaiNhanSu").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {

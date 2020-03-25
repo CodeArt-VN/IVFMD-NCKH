@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public partial class DTO_CUS_HRM_STAFF_NhanSu_HOSREM : DTO_PRO_FORMBASE
+    public partial class DTO_CUS_HRM_STAFF_NhanSu_HOSREM
     {
         public List<string> ListDonViCongTac { get; set; }
         public List<string> ListHoatDongKhac { get; set; }

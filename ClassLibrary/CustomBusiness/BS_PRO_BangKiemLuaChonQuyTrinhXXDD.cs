@@ -77,6 +77,7 @@ namespace BaseBusiness
                 YKienHDDD_CanDuocHoiDongXemXet = s.YKienHDDD_CanDuocHoiDongXemXet,
                 YKienHDDD_NhanXet = s.YKienHDDD_NhanXet,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
@@ -124,7 +125,6 @@ namespace BaseBusiness
                 }
             }
 
-            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -229,7 +229,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_NCVKhac = string.Empty;
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

@@ -68,6 +68,7 @@ namespace BaseBusiness
                 LoiIchTiemTang_DongGopKhoaHoc = s.LoiIchTiemTang_DongGopKhoaHoc,
                 LoiIchTiemTang_SoSanh = s.LoiIchTiemTang_SoSanh,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,

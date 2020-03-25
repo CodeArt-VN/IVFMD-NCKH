@@ -26,6 +26,7 @@ namespace BaseBusiness
                 JSON_KinhNghiemLamViec = s.JSON_KinhNghiemLamViec,
                 JSON_QuaTrinhDaoTao = s.JSON_QuaTrinhDaoTao,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDeleted = s.IsDeleted,
                 IsDisabled = s.IsDisabled,
                 CreatedDate = s.CreatedDate,
@@ -98,7 +99,6 @@ namespace BaseBusiness
                 }
             }
 
-            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -157,7 +157,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_BaiDangTapChi = string.Empty;
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

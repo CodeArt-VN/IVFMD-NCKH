@@ -60,18 +60,12 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmMauPhanTichDuLieu");
         let id = this.item.ID;
         var that = this;
-        this.nckhProvider.init();
+        this.nckhProvider.init(this.item.FormConfig);
 
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
             that.nckhProvider.copyPropertiesValue(item, self);
-            //that.nckhProvider.copyPropertiesValue(item.DacDiemNen, self.DacDiemNen);
-            //that.nckhProvider.copyPropertiesValue(item.KichThichBuongTrung, self.KichThichBuongTrung);
-            //that.nckhProvider.copyPropertiesValue(item.LaBo, self.LaBo);
-            //that.nckhProvider.copyPropertiesValue(item.ChuKyChuyenPhoi, self.ChuKyChuyenPhoi);
-            //that.nckhProvider.copyPropertiesValue(item.KetQuaThai, self.KetQuaThai);
-            //that.nckhProvider.copyPropertiesValue(item.BienSoKhac, self.BienSoKhac);
             self.getItem = function () {
                 return ko.toJS(self);
             };
@@ -83,6 +77,7 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
     saveChange() {
         let item = this.model.getItem();
         item.HTML = $("#frmMauPhanTichDuLieu").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {

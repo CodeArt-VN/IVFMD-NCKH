@@ -35,6 +35,7 @@ namespace BaseBusiness
                 JSON_TrinhDoChuyenMon = s.JSON_TrinhDoChuyenMon,
                 JSON_KinhNghiem = s.JSON_KinhNghiem,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
@@ -71,6 +72,7 @@ namespace BaseBusiness
                     JSON_TrinhDoChuyenMon = s.JSON_TrinhDoChuyenMon,
                     JSON_KinhNghiem = s.JSON_KinhNghiem,
                     HTML = s.HTML,
+                    FormConfig = s.FormConfig,
                     IsDisabled = s.IsDisabled,
                     IsDeleted = s.IsDeleted,
                     CreatedDate = s.CreatedDate,
@@ -118,7 +120,6 @@ namespace BaseBusiness
                 }
             }
 
-            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -167,7 +168,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_TrinhDoChuyenMon = string.Empty;
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

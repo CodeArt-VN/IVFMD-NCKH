@@ -100,7 +100,6 @@
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
     <Compile Include="CustomDTO\DTO_PRO_AE.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BaoCaoNghiemThuDeTai.cs" />
-    <Compile Include="CustomDTO\DTO_PRO_FORMBASE.cs" />
     <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKyDeTai.cs" />
     <Compile Include="CustomDTO\DTO_PRO_HoiNghiHoiThao_DangKy.cs" />
     <Compile Include="CustomDTO\DTO_PRO_BangKhaiNhanSu.cs" />

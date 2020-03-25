@@ -89,7 +89,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmNhanSuSYLL");
         let id = this.item.ID;
         var that = this;
-        this.nckhProvider.init();
+        this.nckhProvider.init(this.item.FormConfig);
 
         var ObjModel = function (item) {
             var self = this;
@@ -144,6 +144,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
     saveChange() {
         let item = this.model.getItem();
         item.HTML = $("#frmNhanSuSYLL").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             if (this.idDeTai > 0) {

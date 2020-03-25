@@ -85,6 +85,7 @@ namespace BaseBusiness
                     NguoiBaoCao_DienThoai = s.NguoiBaoCao_DienThoai,
                     NguoiBaoCao_Email = s.NguoiBaoCao_Email,
                     HTML = s.HTML,
+                    FormConfig = s.FormConfig,
                     IsDisabled = s.IsDisabled,
                     IsDeleted = s.IsDeleted,
                     CreatedDate = s.CreatedDate,
@@ -126,7 +127,6 @@ namespace BaseBusiness
                 query.ListThuocThuLamSan = new List<DTO_PRO_SAE_ThuocThuLamSan>() { new DTO_PRO_SAE_ThuocThuLamSan() };
             }
 
-            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -230,7 +230,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_DanhGiaNCV = string.Empty;
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

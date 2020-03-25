@@ -60,7 +60,8 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmDonXinDanhGiaDaoDuc");
         let id = this.item.ID;
         var that = this;
-        this.nckhProvider.init();
+        this.nckhProvider.init(this.item.FormConfig);
+
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
@@ -101,6 +102,7 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
     saveChange() {
         let item = this.model.getItem();
         item.HTML = $("#frmDonXinDanhGiaDaoDuc").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {

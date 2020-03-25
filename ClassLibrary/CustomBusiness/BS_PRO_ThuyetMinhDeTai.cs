@@ -84,6 +84,7 @@ namespace BaseBusiness
 				PhuLuc_JSON_KhoanCongLaoDong = s.PhuLuc_JSON_KhoanCongLaoDong,
 				PhuLuc_JSON_NguyenVatLieu = s.PhuLuc_JSON_NguyenVatLieu,
 				HTML = s.HTML,
+				FormConfig = s.FormConfig,
 				IsDisabled = s.IsDisabled,
 				IsDeleted = s.IsDeleted,
 				CreatedDate = s.CreatedDate,

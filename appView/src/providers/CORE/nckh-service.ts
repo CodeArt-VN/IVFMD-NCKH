@@ -7,7 +7,7 @@ import { Operator } from 'rxjs/Operator';
 export class NCKHServiceProvider {
     constructor() {
     }
-    init() {
+    init(configs) {
         var me = this;
 
         // bindingHandlers
@@ -231,15 +231,24 @@ export class NCKHServiceProvider {
                 group_controls = pblock.find(".group_controls");
             group_controls.detach();
         });
+        var config = {
+            tables: {}
+        };
+        try {
+            config = JSON.parse(configs);
+        } catch (e) {
+        }
 
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
         if (wrapper != null) {
             var tables = wrapper.getElementsByClassName('resize-grid');
             for (var i = 0; i < tables.length; i++) {
-                resizableGrid(tables[i]);
+                var name = tables[i].getAttribute("name");
+                var conf = config && config.tables && config.tables[name];
+                resizableGrid(tables[i], conf);
             }
 
-            function resizableGrid(table) {
+            function resizableGrid(table, conf) {
                 var row = table.getElementsByTagName('tr')[0],
                     cols = row ? row.children : undefined;
                 if (!cols) return;
@@ -247,6 +256,12 @@ export class NCKHServiceProvider {
                 for (var i = 0; i < cols.length; i++) {
                     var div = createDiv(2440);
                     cols[i].appendChild(div);
+                    if (conf != null) {
+                        try {
+                            cols[i].style.width = conf.HeaderWidths[i];
+                        } catch (e) {
+                        }
+                    }                    
                     cols[i].style.position = 'relative';
                     setListeners(div);
                 }
@@ -437,5 +452,36 @@ export class NCKHServiceProvider {
         } catch (e) {
             console.error(e);
         }
+    }
+    applyConfigs() {
+
+    }
+    getConfigs() {
+        var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
+        var data = {
+            tables: {}
+        };
+        if (wrapper != null) {
+            var tables = wrapper.getElementsByClassName('resize-grid');
+            for (var i = 0; i < tables.length; i++) {
+                var name = tables[i].getAttribute("name");
+                data.tables[name] = getTableConfig(tables[i]);
+            }
+            function getTableConfig(table) {
+                var headerWidths = [];
+                var row = table.getElementsByTagName('tr')[0],
+                    cols = row ? row.children : undefined;
+                if (!cols) return {
+                    HeaderWidths: headerWidths
+                };
+                for (var i = 0; i < cols.length; i++) {
+                    headerWidths[i] = cols[i].style.width;
+                }
+                return {
+                    HeaderWidths: headerWidths
+                }
+            }
+        }
+        return JSON.stringify(data);
     }
 }

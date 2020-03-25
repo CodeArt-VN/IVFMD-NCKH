@@ -60,6 +60,7 @@ namespace BaseBusiness
                 JSON_ThongTinKhac_HiepHoiKhoaHoc = s.JSON_ThongTinKhac_HiepHoiKhoaHoc,
                 JSON_ThongTinKhac_TruongDaiHoc = s.JSON_ThongTinKhac_TruongDaiHoc,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 NgayKy_Ngay = s.NgayKy_Ngay,
                 NgayKy_Thang = s.NgayKy_Thang,
                 NgayKy_Nam = s.NgayKy_Nam,
@@ -125,6 +126,7 @@ namespace BaseBusiness
                     JSON_ThongTinKhac_HiepHoiKhoaHoc = s.JSON_ThongTinKhac_HiepHoiKhoaHoc,
                     JSON_ThongTinKhac_TruongDaiHoc = s.JSON_ThongTinKhac_TruongDaiHoc,
                     HTML = s.HTML,
+                    FormConfig = s.FormConfig,
                     IsDisabled = s.IsDisabled,
                     IsDeleted = s.IsDeleted,
                     CreatedDate = s.CreatedDate,
@@ -231,7 +233,6 @@ namespace BaseBusiness
                 }
             }
 
-            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -381,7 +382,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_ThongTinKhac_TruongDaiHoc = string.Empty;
 
-            dbitem.FormConfig = item.StringifyConfigs();
+            dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

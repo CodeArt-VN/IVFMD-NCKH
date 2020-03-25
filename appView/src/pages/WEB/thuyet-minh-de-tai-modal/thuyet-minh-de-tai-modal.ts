@@ -60,7 +60,8 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         $(this.item.HTML).appendTo("#frmThuyetMinhDeTai");
         let id = this.item.ID;
         var that = this;
-        this.nckhProvider.init();
+        this.nckhProvider.init(this.item.FormConfig);
+
         let ObjModel = function (item) {
             var self = this;
             that.commonService.copyPropertiesValue(item, self);
@@ -243,6 +244,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
     saveChange() {
         let item = this.model.getItem();
         item.HTML = $("#frmThuyetMinhDeTai").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {

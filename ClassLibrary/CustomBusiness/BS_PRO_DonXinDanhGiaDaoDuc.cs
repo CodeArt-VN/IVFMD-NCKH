@@ -39,6 +39,7 @@ namespace BaseBusiness
                 GiayToKhac = s.GiayToKhac,
                 GhiChuGiayToKhac = s.GhiChuGiayToKhac,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,

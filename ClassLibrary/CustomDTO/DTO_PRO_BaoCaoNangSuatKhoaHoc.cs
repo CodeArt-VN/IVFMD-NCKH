@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public partial class DTO_PRO_BaoCaoNangSuatKhoaHoc : DTO_PRO_FORMBASE
+    public partial class DTO_PRO_BaoCaoNangSuatKhoaHoc
     {
         public string TenSite { get; set; }
         public string TenNhom { get; set; }

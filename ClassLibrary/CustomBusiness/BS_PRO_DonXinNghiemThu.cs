@@ -38,6 +38,7 @@ namespace BaseBusiness
                 BangGiaiNganKinhPhi = s.BangGiaiNganKinhPhi,
                 BaiDangBao = s.BaiDangBao,
                 HTML = s.HTML,
+                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
