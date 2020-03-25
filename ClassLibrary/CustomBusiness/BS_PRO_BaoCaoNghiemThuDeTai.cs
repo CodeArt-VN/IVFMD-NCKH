@@ -114,6 +114,8 @@ namespace BaseBusiness
             if (!string.IsNullOrWhiteSpace(query.JSON_TaiLieuThamKhao))
             {
             }
+
+            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -156,6 +158,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_DanhSachThamGia = string.Empty;
 
+            dbitem.FormConfig = item.StringifyConfigs();
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

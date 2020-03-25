@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOModel
 {
-    public partial class DTO_CUS_HRM_STAFF_NhanSu_SYLL
+    public partial class DTO_CUS_HRM_STAFF_NhanSu_SYLL : DTO_PRO_FORMBASE
     {
         public List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon> ListTrinhDoChuyenMon { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem> ListKinhNghiem { get; set; }

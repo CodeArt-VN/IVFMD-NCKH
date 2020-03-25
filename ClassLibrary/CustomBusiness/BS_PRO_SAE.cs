@@ -126,6 +126,7 @@ namespace BaseBusiness
                 query.ListThuocThuLamSan = new List<DTO_PRO_SAE_ThuocThuLamSan>() { new DTO_PRO_SAE_ThuocThuLamSan() };
             }
 
+            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -229,6 +230,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_DanhGiaNCV = string.Empty;
 
+            dbitem.FormConfig = item.StringifyConfigs();
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

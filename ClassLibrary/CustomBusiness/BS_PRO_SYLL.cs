@@ -118,6 +118,7 @@ namespace BaseBusiness
                 }
             }
 
+            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -165,7 +166,8 @@ namespace BaseBusiness
             }
             else
                 dbitem.JSON_TrinhDoChuyenMon = string.Empty;
-            
+
+            dbitem.FormConfig = item.StringifyConfigs();
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOModel
 {
-    public partial class DTO_PRO_PhieuXemXetDaoDuc
+    public partial class DTO_PRO_PhieuXemXetDaoDuc : DTO_PRO_FORMBASE
     {
         public List<DTO_PRO_PhieuXemXetDaoDuc_ChuKy> CanKet_ListChuKy { get; set; }
         public List<DTO_PRO_PhieuXemXetDaoDuc_NCV> ListNCV { get; set; }

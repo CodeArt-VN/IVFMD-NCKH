@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTOModel
 {
-    public partial class DTO_PRO_ThuyetMinhDeTai
+    public partial class DTO_PRO_ThuyetMinhDeTai : DTO_PRO_FORMBASE
     {
         public DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu ChuNhiemDeTai { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu> ListNhanLucNghienCuu { get; set; }

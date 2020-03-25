@@ -98,6 +98,7 @@ namespace BaseBusiness
                 }
             }
 
+            query.ParseConfigs(query.FormConfig);
             return query;
         }
 
@@ -119,9 +120,6 @@ namespace BaseBusiness
             dbitem.JSON_HoatDongKhac = item.JSON_HoatDongKhac;
             dbitem.JSON_KinhNghiemLamViec = item.JSON_KinhNghiemLamViec;
             dbitem.JSON_BaiDangTapChi = item.JSON_BaiDangTapChi;
-            dbitem.HTML = item.HTML;
-            dbitem.IsDisabled = item.IsDisabled;
-            dbitem.IsDeleted = item.IsDeleted;
             dbitem.JSON_QuaTrinhDaoTao = item.JSON_QuaTrinhDaoTao;
 
             if (item.ListDonViCongTac != null)
@@ -159,6 +157,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_BaiDangTapChi = string.Empty;
 
+            dbitem.FormConfig = item.StringifyConfigs();
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;

@@ -231,6 +231,7 @@ namespace BaseBusiness
                 }
             }
 
+            dbitem.FormConfig = item.StringifyConfigs();
             return query;
         }
 
@@ -288,91 +289,91 @@ namespace BaseBusiness
             }
             else
                 dbitem.JSON_NgoaiNgu = string.Empty;
-            
+
             if (item.ListThoiGianCongTac != null)
             {
                 dbitem.JSON_ThoiGianCongTac = JsonConvert.SerializeObject(item.ListThoiGianCongTac);
             }
             else
                 dbitem.JSON_ThoiGianCongTac = string.Empty;
-            
+
             if (item.ListQuaTrinhDaoTao != null)
             {
                 dbitem.JSON_QuaTrinhDaoTao = JsonConvert.SerializeObject(item.ListQuaTrinhDaoTao);
             }
             else
                 dbitem.JSON_QuaTrinhDaoTao = string.Empty;
-            
+
             if (item.ListDeTai != null)
             {
                 dbitem.JSON_DeTai = JsonConvert.SerializeObject(item.ListDeTai);
             }
             else
                 dbitem.JSON_DeTai = string.Empty;
-            
+
             if (item.ListHuongDan != null)
             {
                 dbitem.JSON_HuongDan = JsonConvert.SerializeObject(item.ListHuongDan);
             }
             else
                 dbitem.JSON_HuongDan = string.Empty;
-            
+
             if (item.ListSachQuocTe != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_SachQuocTe = JsonConvert.SerializeObject(item.ListSachQuocTe);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_SachQuocTe = string.Empty;
-            
+
             if (item.ListSachTrongNuoc != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_SachTrongNuoc = JsonConvert.SerializeObject(item.ListSachTrongNuoc);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_SachTrongNuoc = string.Empty;
-            
+
             if (item.ListTapChiQuocTe != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_TapChiQuocTe = JsonConvert.SerializeObject(item.ListTapChiQuocTe);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_TapChiQuocTe = string.Empty;
-            
+
             if (item.ListTapChiTrongNuoc != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_TapChiTrongNuoc = JsonConvert.SerializeObject(item.ListTapChiTrongNuoc);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_TapChiTrongNuoc = string.Empty;
-            
+
             if (item.ListHoiNghiQuocTe != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_HoiNghiQuocTe = JsonConvert.SerializeObject(item.ListHoiNghiQuocTe);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_HoiNghiQuocTe = string.Empty;
-            
+
             if (item.ListHoiNghiTrongNuoc != null)
             {
                 dbitem.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc = JsonConvert.SerializeObject(item.ListHoiNghiTrongNuoc);
             }
             else
                 dbitem.JSON_CongTrinhDaCongBo_HoiNghiTrongNuoc = string.Empty;
-            
+
             if (item.ListGiaiThuong != null)
             {
                 dbitem.JSON_GiaiThuong = JsonConvert.SerializeObject(item.ListGiaiThuong);
             }
             else
                 dbitem.JSON_GiaiThuong = string.Empty;
-            
+
             if (item.ListHiepHoiKhoaHoc != null)
             {
                 dbitem.JSON_ThongTinKhac_HiepHoiKhoaHoc = JsonConvert.SerializeObject(item.ListHiepHoiKhoaHoc);
             }
             else
                 dbitem.JSON_ThongTinKhac_HiepHoiKhoaHoc = string.Empty;
-            
+
             if (item.ListTruongDaiHoc != null)
             {
                 dbitem.JSON_ThongTinKhac_TruongDaiHoc = JsonConvert.SerializeObject(item.ListTruongDaiHoc);
@@ -380,6 +381,7 @@ namespace BaseBusiness
             else
                 dbitem.JSON_ThongTinKhac_TruongDaiHoc = string.Empty;
 
+            dbitem.FormConfig = item.StringifyConfigs();
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;
