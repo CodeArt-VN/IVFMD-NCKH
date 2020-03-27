@@ -55,6 +55,7 @@ namespace ClassLibrary
         public virtual DbSet<tbl_PAR_Partner> tbl_PAR_Partner { get; set; }
         public virtual DbSet<tbl_PAR_ThongTinSanPham> tbl_PAR_ThongTinSanPham { get; set; }
         public virtual DbSet<tbl_PRO_AE> tbl_PRO_AE { get; set; }
+        public virtual DbSet<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
         public virtual DbSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
         public virtual DbSet<tbl_PRO_BaoCaoNangSuatKhoaHoc> tbl_PRO_BaoCaoNangSuatKhoaHoc { get; set; }
         public virtual DbSet<tbl_PRO_BaoCaoNghiemThuDeTai> tbl_PRO_BaoCaoNghiemThuDeTai { get; set; }
@@ -93,6 +94,5 @@ namespace ClassLibrary
         public virtual DbSet<tbl_WEB_BaiViet_Tag> tbl_WEB_BaiViet_Tag { get; set; }
         public virtual DbSet<tbl_WEB_DanhMuc> tbl_WEB_DanhMuc { get; set; }
         public virtual DbSet<tbl_WEB_Tag> tbl_WEB_Tag { get; set; }
-        public virtual DbSet<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
     }
 }

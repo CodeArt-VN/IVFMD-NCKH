@@ -19,6 +19,7 @@ namespace ClassLibrary
         public tbl_PRO_DeTai()
         {
             this.tbl_PRO_AE = new HashSet<tbl_PRO_AE>();
+            this.tbl_PRO_BangKhaiNhanSu = new HashSet<tbl_PRO_BangKhaiNhanSu>();
             this.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD = new HashSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD>();
             this.tbl_PRO_BaoCaoNghiemThuDeTai = new HashSet<tbl_PRO_BaoCaoNghiemThuDeTai>();
             this.tbl_PRO_BaoCaoTienDoNghienCuu = new HashSet<tbl_PRO_BaoCaoTienDoNghienCuu>();
@@ -37,7 +38,6 @@ namespace ClassLibrary
             this.tbl_PRO_Tags = new HashSet<tbl_PRO_Tags>();
             this.tbl_PRO_ThuyetMinhDeTai = new HashSet<tbl_PRO_ThuyetMinhDeTai>();
             this.tbl_PRO_TrangThai_Log = new HashSet<tbl_PRO_TrangThai_Log>();
-            this.tbl_PRO_BangKhaiNhanSu = new HashSet<tbl_PRO_BangKhaiNhanSu>();
         }
     
         public int ID { get; set; }
@@ -68,10 +68,15 @@ namespace ClassLibrary
         public Nullable<int> IDHinhThucXetDuyet { get; set; }
         public Nullable<int> IDTinhTrangNghienCuu { get; set; }
         public string FileChapThuan { get; set; }
+        public Nullable<bool> IsDisabledHRCO { get; set; }
+        public Nullable<bool> IsDisabledHDDD { get; set; }
+        public string FileQuyetDinhNghiemThu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_AE> tbl_PRO_AE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD> tbl_PRO_BangKiemLuaChonQuyTrinhXXDD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -115,8 +120,6 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_ThuyetMinhDeTai> tbl_PRO_ThuyetMinhDeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_TrangThai_Log> tbl_PRO_TrangThai_Log { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PRO_BangKhaiNhanSu> tbl_PRO_BangKhaiNhanSu { get; set; }
     }
 }
 namespace DTOModel
@@ -152,6 +155,9 @@ namespace DTOModel
 		public Nullable<int> IDHinhThucXetDuyet { get; set; }
 		public Nullable<int> IDTinhTrangNghienCuu { get; set; }
 		public string FileChapThuan { get; set; }
+		public Nullable<bool> IsDisabledHRCO { get; set; }
+		public Nullable<bool> IsDisabledHDDD { get; set; }
+		public string FileQuyetDinhNghiemThu { get; set; }
 	}
 }
 
@@ -201,7 +207,10 @@ namespace BaseBusiness
 				FileUpload = s.FileUpload,							
 				IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,							
 				IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,							
-				FileChapThuan = s.FileChapThuan,					
+				FileChapThuan = s.FileChapThuan,							
+				IsDisabledHRCO = s.IsDisabledHRCO,							
+				IsDisabledHDDD = s.IsDisabledHDDD,							
+				FileQuyetDinhNghiemThu = s.FileQuyetDinhNghiemThu,					
 			});
                               
         }
@@ -239,7 +248,10 @@ namespace BaseBusiness
 					FileUpload = dbResult.FileUpload,							
 					IDHinhThucXetDuyet = dbResult.IDHinhThucXetDuyet,							
 					IDTinhTrangNghienCuu = dbResult.IDTinhTrangNghienCuu,							
-					FileChapThuan = dbResult.FileChapThuan,
+					FileChapThuan = dbResult.FileChapThuan,							
+					IsDisabledHRCO = dbResult.IsDisabledHRCO,							
+					IsDisabledHDDD = dbResult.IsDisabledHDDD,							
+					FileQuyetDinhNghiemThu = dbResult.FileQuyetDinhNghiemThu,
 				};
 			}
 			else
@@ -516,6 +528,17 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FileChapThuan == keyword);
             }
 
+			//Query IsDisabledHRCO (Nullable<bool>)
+
+			//Query IsDisabledHDDD (Nullable<bool>)
+
+			//Query FileQuyetDinhNghiemThu (string)
+			if (QueryStrings.Any(d => d.Key == "FileQuyetDinhNghiemThu") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FileQuyetDinhNghiemThu").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FileQuyetDinhNghiemThu").Value;
+                query = query.Where(d=>d.FileQuyetDinhNghiemThu == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -560,7 +583,10 @@ namespace BaseBusiness
 				dbitem.FileUpload = item.FileUpload;							
 				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;							
 				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
-				dbitem.FileChapThuan = item.FileChapThuan;                
+				dbitem.FileChapThuan = item.FileChapThuan;							
+				dbitem.IsDisabledHRCO = item.IsDisabledHRCO;							
+				dbitem.IsDisabledHDDD = item.IsDisabledHDDD;							
+				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -609,7 +635,10 @@ namespace BaseBusiness
 				dbitem.FileUpload = item.FileUpload;							
 				dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;							
 				dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;							
-				dbitem.FileChapThuan = item.FileChapThuan;                
+				dbitem.FileChapThuan = item.FileChapThuan;							
+				dbitem.IsDisabledHRCO = item.IsDisabledHRCO;							
+				dbitem.IsDisabledHDDD = item.IsDisabledHDDD;							
+				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

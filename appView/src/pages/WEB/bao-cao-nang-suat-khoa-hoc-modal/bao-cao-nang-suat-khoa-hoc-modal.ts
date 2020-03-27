@@ -83,9 +83,12 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
     }
 
     loadedData() {
+        if (this.item.ID == 0)
+            this.item.IsKinhPhiManual = false;
     }
 
     onChangeKinhPhi(e) {
+        debugger
         this.item.GhiChuKinhPhi = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'GhiChu', '');
         this.item.IsKinhPhiManual = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'IsManual', '');
     }

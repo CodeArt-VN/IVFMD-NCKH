@@ -108,6 +108,7 @@ namespace ClassLibrary
         public Nullable<bool> KetQua_TuVong { get; set; }
         public Nullable<bool> TienHanhSAE1_Co { get; set; }
         public Nullable<bool> TienHanhSAE1_Khong { get; set; }
+        public string FormConfig { get; set; }
         public virtual tbl_CUS_HRM_BenhNhan tbl_CUS_HRM_BenhNhan { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
@@ -210,6 +211,7 @@ namespace DTOModel
 		public Nullable<bool> KetQua_TuVong { get; set; }
 		public Nullable<bool> TienHanhSAE1_Co { get; set; }
 		public Nullable<bool> TienHanhSAE1_Khong { get; set; }
+		public string FormConfig { get; set; }
 	}
 }
 
@@ -324,7 +326,8 @@ namespace BaseBusiness
 				NgayKetThuc_Phut = s.NgayKetThuc_Phut,							
 				KetQua_TuVong = s.KetQua_TuVong,							
 				TienHanhSAE1_Co = s.TienHanhSAE1_Co,							
-				TienHanhSAE1_Khong = s.TienHanhSAE1_Khong,					
+				TienHanhSAE1_Khong = s.TienHanhSAE1_Khong,							
+				FormConfig = s.FormConfig,					
 			});
                               
         }
@@ -427,7 +430,8 @@ namespace BaseBusiness
 					NgayKetThuc_Phut = dbResult.NgayKetThuc_Phut,							
 					KetQua_TuVong = dbResult.KetQua_TuVong,							
 					TienHanhSAE1_Co = dbResult.TienHanhSAE1_Co,							
-					TienHanhSAE1_Khong = dbResult.TienHanhSAE1_Khong,
+					TienHanhSAE1_Khong = dbResult.TienHanhSAE1_Khong,							
+					FormConfig = dbResult.FormConfig,
 				};
 			}
 			else
@@ -1141,6 +1145,13 @@ namespace BaseBusiness
 
 			//Query TienHanhSAE1_Khong (Nullable<bool>)
 
+			//Query FormConfig (string)
+			if (QueryStrings.Any(d => d.Key == "FormConfig") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FormConfig").Value;
+                query = query.Where(d=>d.FormConfig == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1248,7 +1259,8 @@ namespace BaseBusiness
 				dbitem.NgayKetThuc_Phut = item.NgayKetThuc_Phut;							
 				dbitem.KetQua_TuVong = item.KetQua_TuVong;							
 				dbitem.TienHanhSAE1_Co = item.TienHanhSAE1_Co;							
-				dbitem.TienHanhSAE1_Khong = item.TienHanhSAE1_Khong;                
+				dbitem.TienHanhSAE1_Khong = item.TienHanhSAE1_Khong;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1362,7 +1374,8 @@ namespace BaseBusiness
 				dbitem.NgayKetThuc_Phut = item.NgayKetThuc_Phut;							
 				dbitem.KetQua_TuVong = item.KetQua_TuVong;							
 				dbitem.TienHanhSAE1_Co = item.TienHanhSAE1_Co;							
-				dbitem.TienHanhSAE1_Khong = item.TienHanhSAE1_Khong;                
+				dbitem.TienHanhSAE1_Khong = item.TienHanhSAE1_Khong;							
+				dbitem.FormConfig = item.FormConfig;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

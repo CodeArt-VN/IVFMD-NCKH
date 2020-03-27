@@ -94,6 +94,25 @@ namespace BaseBusiness
                     IDDeTai = idDeTai
                 };
 
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == idDeTai);
+                if (detai != null)
+                {
+                    query.PhanHai_TenNCYSH = detai.TenTiengViet;
+                    var syll = db.tbl_PRO_SYLL.FirstOrDefault(c => c.IDDetai == idDeTai && c.IDNhanSu == detai.IDNCV && c.IsDeleted == false);
+                    if (syll != null)
+                    {
+                        query.PhanHai_NCVChinh_HoTen = syll.HoTen;
+                        query.PhanHai_NCVChinh_Email = syll.Email;
+                        query.PhanHai_NCVChinh_DienThoai = syll.Mobile;
+                        query.PhanHai_NCVChinh_DiaChiLienHe = syll.DiaChi;
+                        query.PhanHai_NCVChinh_BenhVien = syll.CoQuanLamViec;
+                    }
+
+                    var hddd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
+                    if (hddd != null)
+                        query.PhanBon_C1_NoiNhanMau = hddd.DiaDiemNghienCuu;
+                }
+
                 query.NCVKhac = new List<DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac>() { new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac() };
                 query.PhanBa_A = new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_PhanBaA();
                 query.PhanBa_B = new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_PhanBaB();

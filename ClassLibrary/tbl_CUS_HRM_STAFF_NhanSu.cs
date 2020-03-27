@@ -54,6 +54,7 @@ namespace ClassLibrary
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
         public Nullable<bool> IsHRCO { get; set; }
+        public Nullable<bool> IsCNDT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CAT_HRCOConfig> tbl_CAT_HRCOConfig { get; set; }
         public virtual tbl_CUS_HRM_LIST_BoPhan tbl_CUS_HRM_LIST_BoPhan { get; set; }
@@ -112,6 +113,7 @@ namespace DTOModel
 		public string SoDienThoai { get; set; }
 		public string DiaChi { get; set; }
 		public Nullable<bool> IsHRCO { get; set; }
+		public Nullable<bool> IsCNDT { get; set; }
 	}
 }
 
@@ -154,7 +156,8 @@ namespace BaseBusiness
 				Email = s.Email,							
 				SoDienThoai = s.SoDienThoai,							
 				DiaChi = s.DiaChi,							
-				IsHRCO = s.IsHRCO,					
+				IsHRCO = s.IsHRCO,							
+				IsCNDT = s.IsCNDT,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -185,7 +188,8 @@ namespace BaseBusiness
 					Email = dbResult.Email,							
 					SoDienThoai = dbResult.SoDienThoai,							
 					DiaChi = dbResult.DiaChi,							
-					IsHRCO = dbResult.IsHRCO,
+					IsHRCO = dbResult.IsHRCO,							
+					IsCNDT = dbResult.IsCNDT,
 				};
 			}
 			else
@@ -374,6 +378,8 @@ namespace BaseBusiness
 
 			//Query IsHRCO (Nullable<bool>)
 
+			//Query IsCNDT (Nullable<bool>)
+
 
 			return toDTO(query);
 
@@ -420,7 +426,8 @@ namespace BaseBusiness
 				dbitem.Email = item.Email;							
 				dbitem.SoDienThoai = item.SoDienThoai;							
 				dbitem.DiaChi = item.DiaChi;							
-				dbitem.IsHRCO = item.IsHRCO;                
+				dbitem.IsHRCO = item.IsHRCO;							
+				dbitem.IsCNDT = item.IsCNDT;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -462,7 +469,8 @@ namespace BaseBusiness
 				dbitem.Email = item.Email;							
 				dbitem.SoDienThoai = item.SoDienThoai;							
 				dbitem.DiaChi = item.DiaChi;							
-				dbitem.IsHRCO = item.IsHRCO;                
+				dbitem.IsHRCO = item.IsHRCO;							
+				dbitem.IsCNDT = item.IsCNDT;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

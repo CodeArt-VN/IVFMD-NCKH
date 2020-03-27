@@ -102,6 +102,17 @@ namespace ClassLibrary
         public string B52_CNDT_NgayKy_Nam { get; set; }
         public string B52_CNDT_NgayKy_ChuKy { get; set; }
         public string FormConfig { get; set; }
+        public string A8_JSON_CoQuanPhoiHopThucHien { get; set; }
+        public string B3221_TieuChuanNhan { get; set; }
+        public string B3221_TieuChuanLoai { get; set; }
+        public string B52_CoQuanChuTri_Ngay { get; set; }
+        public string B52_CoQuanChuTri_Thang { get; set; }
+        public string B52_CoQuanChuTri_Nam { get; set; }
+        public string B52_ChuNhiemDeTai_Ngay { get; set; }
+        public string B52_ChuNhiemDeTai_Thang { get; set; }
+        public string B52_ChuNhiemDeTai_Nam { get; set; }
+        public string A0_NgayNhanHoSo { get; set; }
+        public string A0_MaSoDeTai { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -197,6 +208,17 @@ namespace DTOModel
 		public string B52_CNDT_NgayKy_Nam { get; set; }
 		public string B52_CNDT_NgayKy_ChuKy { get; set; }
 		public string FormConfig { get; set; }
+		public string A8_JSON_CoQuanPhoiHopThucHien { get; set; }
+		public string B3221_TieuChuanNhan { get; set; }
+		public string B3221_TieuChuanLoai { get; set; }
+		public string B52_CoQuanChuTri_Ngay { get; set; }
+		public string B52_CoQuanChuTri_Thang { get; set; }
+		public string B52_CoQuanChuTri_Nam { get; set; }
+		public string B52_ChuNhiemDeTai_Ngay { get; set; }
+		public string B52_ChuNhiemDeTai_Thang { get; set; }
+		public string B52_ChuNhiemDeTai_Nam { get; set; }
+		public string A0_NgayNhanHoSo { get; set; }
+		public string A0_MaSoDeTai { get; set; }
 	}
 }
 
@@ -305,7 +327,18 @@ namespace BaseBusiness
 				B52_CNDT_NgayKy_Thang = s.B52_CNDT_NgayKy_Thang,							
 				B52_CNDT_NgayKy_Nam = s.B52_CNDT_NgayKy_Nam,							
 				B52_CNDT_NgayKy_ChuKy = s.B52_CNDT_NgayKy_ChuKy,							
-				FormConfig = s.FormConfig,					
+				FormConfig = s.FormConfig,							
+				A8_JSON_CoQuanPhoiHopThucHien = s.A8_JSON_CoQuanPhoiHopThucHien,							
+				B3221_TieuChuanNhan = s.B3221_TieuChuanNhan,							
+				B3221_TieuChuanLoai = s.B3221_TieuChuanLoai,							
+				B52_CoQuanChuTri_Ngay = s.B52_CoQuanChuTri_Ngay,							
+				B52_CoQuanChuTri_Thang = s.B52_CoQuanChuTri_Thang,							
+				B52_CoQuanChuTri_Nam = s.B52_CoQuanChuTri_Nam,							
+				B52_ChuNhiemDeTai_Ngay = s.B52_ChuNhiemDeTai_Ngay,							
+				B52_ChuNhiemDeTai_Thang = s.B52_ChuNhiemDeTai_Thang,							
+				B52_ChuNhiemDeTai_Nam = s.B52_ChuNhiemDeTai_Nam,							
+				A0_NgayNhanHoSo = s.A0_NgayNhanHoSo,							
+				A0_MaSoDeTai = s.A0_MaSoDeTai,					
 			});
                               
         }
@@ -402,7 +435,18 @@ namespace BaseBusiness
 					B52_CNDT_NgayKy_Thang = dbResult.B52_CNDT_NgayKy_Thang,							
 					B52_CNDT_NgayKy_Nam = dbResult.B52_CNDT_NgayKy_Nam,							
 					B52_CNDT_NgayKy_ChuKy = dbResult.B52_CNDT_NgayKy_ChuKy,							
-					FormConfig = dbResult.FormConfig,
+					FormConfig = dbResult.FormConfig,							
+					A8_JSON_CoQuanPhoiHopThucHien = dbResult.A8_JSON_CoQuanPhoiHopThucHien,							
+					B3221_TieuChuanNhan = dbResult.B3221_TieuChuanNhan,							
+					B3221_TieuChuanLoai = dbResult.B3221_TieuChuanLoai,							
+					B52_CoQuanChuTri_Ngay = dbResult.B52_CoQuanChuTri_Ngay,							
+					B52_CoQuanChuTri_Thang = dbResult.B52_CoQuanChuTri_Thang,							
+					B52_CoQuanChuTri_Nam = dbResult.B52_CoQuanChuTri_Nam,							
+					B52_ChuNhiemDeTai_Ngay = dbResult.B52_ChuNhiemDeTai_Ngay,							
+					B52_ChuNhiemDeTai_Thang = dbResult.B52_ChuNhiemDeTai_Thang,							
+					B52_ChuNhiemDeTai_Nam = dbResult.B52_ChuNhiemDeTai_Nam,							
+					A0_NgayNhanHoSo = dbResult.A0_NgayNhanHoSo,							
+					A0_MaSoDeTai = dbResult.A0_MaSoDeTai,
 				};
 			}
 			else
@@ -1041,6 +1085,83 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FormConfig == keyword);
             }
 
+			//Query A8_JSON_CoQuanPhoiHopThucHien (string)
+			if (QueryStrings.Any(d => d.Key == "A8_JSON_CoQuanPhoiHopThucHien") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "A8_JSON_CoQuanPhoiHopThucHien").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "A8_JSON_CoQuanPhoiHopThucHien").Value;
+                query = query.Where(d=>d.A8_JSON_CoQuanPhoiHopThucHien == keyword);
+            }
+
+			//Query B3221_TieuChuanNhan (string)
+			if (QueryStrings.Any(d => d.Key == "B3221_TieuChuanNhan") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B3221_TieuChuanNhan").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B3221_TieuChuanNhan").Value;
+                query = query.Where(d=>d.B3221_TieuChuanNhan == keyword);
+            }
+
+			//Query B3221_TieuChuanLoai (string)
+			if (QueryStrings.Any(d => d.Key == "B3221_TieuChuanLoai") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B3221_TieuChuanLoai").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B3221_TieuChuanLoai").Value;
+                query = query.Where(d=>d.B3221_TieuChuanLoai == keyword);
+            }
+
+			//Query B52_CoQuanChuTri_Ngay (string)
+			if (QueryStrings.Any(d => d.Key == "B52_CoQuanChuTri_Ngay") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Ngay").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Ngay").Value;
+                query = query.Where(d=>d.B52_CoQuanChuTri_Ngay == keyword);
+            }
+
+			//Query B52_CoQuanChuTri_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "B52_CoQuanChuTri_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Thang").Value;
+                query = query.Where(d=>d.B52_CoQuanChuTri_Thang == keyword);
+            }
+
+			//Query B52_CoQuanChuTri_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "B52_CoQuanChuTri_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_CoQuanChuTri_Nam").Value;
+                query = query.Where(d=>d.B52_CoQuanChuTri_Nam == keyword);
+            }
+
+			//Query B52_ChuNhiemDeTai_Ngay (string)
+			if (QueryStrings.Any(d => d.Key == "B52_ChuNhiemDeTai_Ngay") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Ngay").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Ngay").Value;
+                query = query.Where(d=>d.B52_ChuNhiemDeTai_Ngay == keyword);
+            }
+
+			//Query B52_ChuNhiemDeTai_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "B52_ChuNhiemDeTai_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Thang").Value;
+                query = query.Where(d=>d.B52_ChuNhiemDeTai_Thang == keyword);
+            }
+
+			//Query B52_ChuNhiemDeTai_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "B52_ChuNhiemDeTai_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "B52_ChuNhiemDeTai_Nam").Value;
+                query = query.Where(d=>d.B52_ChuNhiemDeTai_Nam == keyword);
+            }
+
+			//Query A0_NgayNhanHoSo (string)
+			if (QueryStrings.Any(d => d.Key == "A0_NgayNhanHoSo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "A0_NgayNhanHoSo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "A0_NgayNhanHoSo").Value;
+                query = query.Where(d=>d.A0_NgayNhanHoSo == keyword);
+            }
+
+			//Query A0_MaSoDeTai (string)
+			if (QueryStrings.Any(d => d.Key == "A0_MaSoDeTai") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "A0_MaSoDeTai").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "A0_MaSoDeTai").Value;
+                query = query.Where(d=>d.A0_MaSoDeTai == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1142,7 +1263,18 @@ namespace BaseBusiness
 				dbitem.B52_CNDT_NgayKy_Thang = item.B52_CNDT_NgayKy_Thang;							
 				dbitem.B52_CNDT_NgayKy_Nam = item.B52_CNDT_NgayKy_Nam;							
 				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.A8_JSON_CoQuanPhoiHopThucHien = item.A8_JSON_CoQuanPhoiHopThucHien;							
+				dbitem.B3221_TieuChuanNhan = item.B3221_TieuChuanNhan;							
+				dbitem.B3221_TieuChuanLoai = item.B3221_TieuChuanLoai;							
+				dbitem.B52_CoQuanChuTri_Ngay = item.B52_CoQuanChuTri_Ngay;							
+				dbitem.B52_CoQuanChuTri_Thang = item.B52_CoQuanChuTri_Thang;							
+				dbitem.B52_CoQuanChuTri_Nam = item.B52_CoQuanChuTri_Nam;							
+				dbitem.B52_ChuNhiemDeTai_Ngay = item.B52_ChuNhiemDeTai_Ngay;							
+				dbitem.B52_ChuNhiemDeTai_Thang = item.B52_ChuNhiemDeTai_Thang;							
+				dbitem.B52_ChuNhiemDeTai_Nam = item.B52_ChuNhiemDeTai_Nam;							
+				dbitem.A0_NgayNhanHoSo = item.A0_NgayNhanHoSo;							
+				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1250,7 +1382,18 @@ namespace BaseBusiness
 				dbitem.B52_CNDT_NgayKy_Thang = item.B52_CNDT_NgayKy_Thang;							
 				dbitem.B52_CNDT_NgayKy_Nam = item.B52_CNDT_NgayKy_Nam;							
 				dbitem.B52_CNDT_NgayKy_ChuKy = item.B52_CNDT_NgayKy_ChuKy;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.A8_JSON_CoQuanPhoiHopThucHien = item.A8_JSON_CoQuanPhoiHopThucHien;							
+				dbitem.B3221_TieuChuanNhan = item.B3221_TieuChuanNhan;							
+				dbitem.B3221_TieuChuanLoai = item.B3221_TieuChuanLoai;							
+				dbitem.B52_CoQuanChuTri_Ngay = item.B52_CoQuanChuTri_Ngay;							
+				dbitem.B52_CoQuanChuTri_Thang = item.B52_CoQuanChuTri_Thang;							
+				dbitem.B52_CoQuanChuTri_Nam = item.B52_CoQuanChuTri_Nam;							
+				dbitem.B52_ChuNhiemDeTai_Ngay = item.B52_ChuNhiemDeTai_Ngay;							
+				dbitem.B52_ChuNhiemDeTai_Thang = item.B52_ChuNhiemDeTai_Thang;							
+				dbitem.B52_ChuNhiemDeTai_Nam = item.B52_ChuNhiemDeTai_Nam;							
+				dbitem.A0_NgayNhanHoSo = item.A0_NgayNhanHoSo;							
+				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

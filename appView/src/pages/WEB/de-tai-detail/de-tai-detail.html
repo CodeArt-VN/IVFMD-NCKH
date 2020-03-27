@@ -178,6 +178,20 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Danh sách bệnh nhân</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button ion-button block (click)="openBNModal()">Xem</button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
                     <ion-col col-md-4 *ngFor="let i of listForm4">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
@@ -189,23 +203,13 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                    (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    CẬP NHẬT
+                                </button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                    (click)="openDetailModal(i.Index)">TẠO MỚI</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>Danh sách bệnh nhân</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="openBNModal()">Xem</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    TẠO MỚI
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

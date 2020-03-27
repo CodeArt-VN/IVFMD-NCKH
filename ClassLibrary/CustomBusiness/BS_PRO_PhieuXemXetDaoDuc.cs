@@ -85,6 +85,17 @@ namespace BaseBusiness
                     IDDeTai = idDeTai
                 };
 
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == idDeTai);
+                if (detai != null)
+                {
+                    query.TenNCSYH = detai.TenTiengViet;
+                    var dgdd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
+                    if (dgdd != null)
+                    {
+                        query.DonViChuTri = dgdd.TenDonViChuTri + "<br>Địa chỉ: " + dgdd.DiaChiDonVi + "<br>Điện thoại:" + dgdd.DienThoaiDonVi;
+                    }
+                }
+
                 query.ListCoQuan = new List<DTO_PRO_PhieuXemXetDaoDuc_CoQuan>() { new DTO_PRO_PhieuXemXetDaoDuc_CoQuan() };
                 query.ListNCV = new List<DTO_PRO_PhieuXemXetDaoDuc_NCV>() { new DTO_PRO_PhieuXemXetDaoDuc_NCV() };
             }

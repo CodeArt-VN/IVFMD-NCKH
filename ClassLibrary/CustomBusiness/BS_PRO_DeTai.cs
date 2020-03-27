@@ -163,10 +163,7 @@ namespace BaseBusiness
                         query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                     else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 }
-                if (db.tbl_PRO_BaoCaoTienDoNghienCuu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 11, Type = 3, Name = "Tiến độ nghiên cứu", Description = "Báo cáo tiến độ nghiên cứu", FormCode = "tbl_PRO_BaoCaoTienDoNghienCuu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 11, Type = 3, Name = "Tiến độ nghiên cứu", Description = "Báo cáo tiến độ nghiên cứu", FormCode = "tbl_PRO_BaoCaoTienDoNghienCuu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
-
+                
                 if (db.tbl_PRO_AE.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 12, Type = 3, Name = "Báo cáo AE", Description = "Báo cáo AE", FormCode = "tbl_PRO_AE", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 12, Type = 3, Name = "Báo cáo AE", Description = "Báo cáo AE", FormCode = "tbl_PRO_AE", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
@@ -174,6 +171,10 @@ namespace BaseBusiness
                 if (db.tbl_PRO_SAE.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 13, Type = 3, Name = "Báo cáo SAE", Description = "Báo cáo SAE", FormCode = "tbl_PRO_SAE", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 13, Type = 3, Name = "Báo cáo SAE", Description = "Báo cáo SAE", FormCode = "tbl_PRO_SAE", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+
+                if (db.tbl_PRO_BaoCaoTienDoNghienCuu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
+                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 11, Type = 3, Name = "Tiến độ nghiên cứu", Description = "Báo cáo tiến độ nghiên cứu", FormCode = "tbl_PRO_BaoCaoTienDoNghienCuu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 11, Type = 3, Name = "Tiến độ nghiên cứu", Description = "Báo cáo tiến độ nghiên cứu", FormCode = "tbl_PRO_BaoCaoTienDoNghienCuu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (query.IDHinhThucXetDuyet == -(int)SYSVarType.HinhThucXetDuyet_RutGon)
                 {

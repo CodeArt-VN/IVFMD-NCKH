@@ -27,7 +27,7 @@ export class DeTaiBenhNhanModalPage extends DetailPage {
     ) {
         
         super(null, null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
-        this.pageName = "page-tags";
+        this.pageName = "page-de-tai";
         this.events.unsubscribe('app:Close-page-de-tai-benh-nhan-modal');
         this.events.subscribe('app:Close-page-de-tai-benh-nhan-modal', () => {
             this.dismiss();
