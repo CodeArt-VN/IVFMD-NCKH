@@ -75,21 +75,8 @@ export class SysnopsisModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
-            self.StudyTitle = ko.observable(item.StudyTitle);
-            self.Investigators = ko.observable(item.Investigators);
-            self.BackgroundAims = ko.observable(item.BackgroundAims);
-            self.Objectives = ko.observable(item.Objectives);
-            self.StudyDesign = ko.observable(item.StudyDesign);
-            self.StudyPopulation = ko.observable(item.StudyPopulation);
-            self.Endpoint = ko.observable(item.Endpoint);
-            self.PrimaryEndpoint = ko.observable(item.PrimaryEndpoint);
-            self.SecondaryEndpoint = ko.observable(item.SecondaryEndpoint);
-            self.MainEligibilityCriteria = ko.observable(item.MainEligibilityCriteria);
-            self.InclusionCriteria = ko.observable(item.InclusionCriteria);
-            self.ExclusionCriteria = ko.observable(item.ExclusionCriteria);
-            self.DataAnalysis = ko.observable(item.DataAnalysis);
-            self.References = ko.observable(item.References);
+
+            that.nckhProvider.copyPropertiesValue(item, self);
 
             self.getItem = function () {
                 return ko.toJS(self);

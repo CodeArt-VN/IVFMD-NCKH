@@ -64,8 +64,9 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
+
             that.nckhProvider.copyPropertiesValue(item, self);
+
             self.getItem = function () {
                 return ko.toJS(self);
             };

@@ -66,8 +66,9 @@ export class HosremModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
+
             that.nckhProvider.copyPropertiesValue(item, self);
+
             self.ListDonViCongTac = that.nckhProvider.observableSimpleArray(item.ListDonViCongTac, ["- ", "- "]);
             self.ListQuaTrinhDaoTao = that.nckhProvider.observableSimpleArray(item.ListQuaTrinhDaoTao, ["- ", "- "]);
             self.ListHoatDongKhac = that.nckhProvider.observableSimpleArray(item.ListHoatDongKhac, ["- ", "- "]);

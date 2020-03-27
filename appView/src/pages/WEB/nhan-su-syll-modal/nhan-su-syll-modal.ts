@@ -93,29 +93,9 @@ export class NhanSuSYLLModalPage extends DetailPage {
 
         var ObjModel = function (item) {
             var self = this;
-            self.ID = item.ID;
-            self.IDNhanSu = item.IDNhanSu;
-            self.IDDetai = item.IDDetai;
 
+            that.nckhProvider.copyPropertiesValue(item, self);
             
-            self.HoTen = ko.observable(item.HoTen || "");
-            self.GioiTinh = ko.observable(item.GioiTinh || "");
-            self.NgaySinh = ko.observable(item.NgaySinh || "");
-            self.DiaChi = ko.observable(item.DiaChi || "");
-            self.DienThoaiCQ = ko.observable(item.DienThoaiCQ || "");
-            self.Mobile = ko.observable(item.Mobile || "");
-            self.Email = ko.observable(item.Email || "");
-            self.ChucVu = ko.observable(item.ChucVu || "");
-            self.CoQuanLamViec = ko.observable(item.CoQuanLamViec || "");
-            self.ThuTruongCoQuan = ko.observable(item.ThuTruongCoQuan || "");
-            self.DienThoaiThuTruong = ko.observable(item.DienThoaiThuTruong || "");
-            self.DiaChiCoQuan = ko.observable(item.DiaChiCoQuan || "");
-            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay || "");
-            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang || "");
-            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam || "");
-            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy || "");
-            self.DienThoaiNhaRieng = ko.observable(item.DienThoaiNhaRieng || "");
-           
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
                     HocVi: ko.observable(nn.HocVi || ""),

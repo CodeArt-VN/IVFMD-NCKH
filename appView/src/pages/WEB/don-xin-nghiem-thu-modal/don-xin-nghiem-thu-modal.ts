@@ -64,32 +64,9 @@ export class DonXinNghiemThuModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
-            self.HoTenChuNhiem = ko.observable(item.HoTenChuNhiem);
-            self.DonVi = ko.observable(item.DonVi);
-            self.DiaChi = ko.observable(item.DiaChi);
-            self.DienThoai = ko.observable(item.DienThoai);
-            self.TenDeTai = ko.observable(item.TenDeTai);
-            self.TenDonViChuTri = ko.observable(item.TenDonViChuTri);
-            self.DiaChiDonVi = ko.observable(item.DiaChiDonVi);
-            self.DienThoaiDonVi = ko.observable(item.DienThoaiDonVi);
-            self.DiaDiemNghienCuu = ko.observable(item.DiaDiemNghienCuu);
-            self.ThoiGianNghienCuu = ko.observable(item.ThoiGianNghienCuu);
-            self.TuNgay = ko.observable(item.TuNgay);
-            self.DenNgay = ko.observable(item.DenNgay);
-            self.BaoCaoTomTat = ko.observable(item.BaoCaoTomTat);
-            self.BaoCaoTongKet = ko.observable(item.BaoCaoTongKet);
-            self.ThuyetMinhDeTai = ko.observable(item.ThuyetMinhDeTai);
-            self.QuyetDinhChapThuanHDDD = ko.observable(item.QuyetDinhChapThuanHDDD);
-            self.QuyetDinhGiaoNhiemVu = ko.observable(item.QuyetDinhGiaoNhiemVu);
-            self.HopDongThucHienDeTai = ko.observable(item.HopDongThucHienDeTai);
-            self.BangGiaiNganKinhPhi = ko.observable(item.BangGiaiNganKinhPhi);
-            self.BaiDangBao = ko.observable(item.BaiDangBao);
-            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay);
-            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang);
-            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam);
-            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy);
-            
+
+            that.nckhProvider.copyPropertiesValue(item, self); 
+
             self.getItem = function () {
                 return ko.toJS(self);
             };

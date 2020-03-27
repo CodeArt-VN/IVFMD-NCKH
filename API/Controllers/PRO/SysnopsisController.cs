@@ -42,20 +42,20 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai, bool? isReset = false)
         {
             DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_SysnopsisByDeTai(db, idDeTai);
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis.html")))
+            {
+                html = r.ReadToEnd();
+            }
             if (tbl_PRO_Sysnopsis == null || isReset == true)
             {
-                string html = "";
-                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis.html")))
-                {
-                    html = r.ReadToEnd();
-                }
                 if (tbl_PRO_Sysnopsis == null)
                     tbl_PRO_Sysnopsis = new DTO_PRO_Sysnopsis
                     {
                         IDDeTai = idDeTai
                     };
-                tbl_PRO_Sysnopsis.HTML = html;
             }
+            tbl_PRO_Sysnopsis.HTML = html;
 
             return Ok(tbl_PRO_Sysnopsis);
         }
