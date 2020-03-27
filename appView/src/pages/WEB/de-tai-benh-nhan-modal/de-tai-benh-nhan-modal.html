@@ -8,14 +8,14 @@
     <form [formGroup]="formGroup">
         <div padding></div>
         <div class="c-control" *ngIf="isNew==0">
-            <label class="c-label" for="IDBenhNhan">Bệnh nhân
+            <label class="c-label" for="IDBenhNhan">Mã số đối tượng
         <span
             *ngIf="!formGroup.controls.IDBenhNhan.valid && !formGroup.controls.IDBenhNhan.pending && (formGroup.controls.IDBenhNhan.dirty || submitAttempt)"
             ion-text color="danger">(*)</span>
     </label>
 
             <select class="c-input c-dropdown" [(ngModel)]="item.IDBenhNhan" formControlName="IDBenhNhan">
-        <option *ngFor="let t of benhNhans" [value]="t.ID">{{t.HoTen}}</option>
+        <option *ngFor="let t of benhNhans" [value]="t.ID">{{t.MaBenhNhan}}</option>
     </select>
         </div>
 

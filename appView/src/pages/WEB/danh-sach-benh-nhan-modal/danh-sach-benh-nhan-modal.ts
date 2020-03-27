@@ -135,7 +135,10 @@ export class DanhSachBenhNhanModalPage extends DetailPage {
         this.lstBNSelected.push(...selected);
     }
     openDetailBN(item) {
-        let myModal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id });
+        let myModal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': 0 });
+        myModal.onDidDismiss(data => {
+            this.refreshBN();
+        });
         myModal.present();
     }
     //#endregion BenhNhan

@@ -34,10 +34,10 @@
                 [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected" [selectionType]="'single'"
                 (select)='onSelectBN($event)'>
 
-                <ngx-datatable-column name="Mã số đối tượng" prop="MaBenhNhan" [width]="150" [maxWidth]="150" headerClass="name"
+                <ngx-datatable-column name="Mã số đối tượng" prop="MaBenhNhan" [width]="250" [maxWidth]="250" headerClass="name"
                     cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="openDetailNCV(i)">
+                        <a (click)="openDetailBN(i)">
                             {{i.MaBenhNhan}}
                         </a>
                     </ng-template>
