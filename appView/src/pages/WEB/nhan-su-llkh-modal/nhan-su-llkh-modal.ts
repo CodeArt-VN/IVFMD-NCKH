@@ -87,45 +87,8 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
         var ObjModel = function (item) {
             var self = this;
-            self.ID = item.ID;
-            self.IDNhanSu = item.IDNhanSu;
-            self.IDDetai = item.IDDetai;
-            self.DienThoai_CaNhan = ko.observable(item.DienThoai_CaNhan || "");
-            self.DienThoai_CoQuan = ko.observable(item.DienThoai_CoQuan || "");
-            self.DiaChi_CoQuan = ko.observable(item.DiaChi_CoQuan || "");
-            self.DiaChi_CaNhan = ko.observable(item.DiaChi_CaNhan || "");
-            self.Email_CoQuan = ko.observable(item.Email_CoQuan || "");
-            self.Email_CaNhan = ko.observable(item.Email_CaNhan || "");
 
-            self.NamPhongHocHam = ko.observable(item.NamPhongHocHam || "");
-            self.HocHam = ko.observable(item.HocHam || "");
-            self.HocViThacSy = ko.observable(item.HocViThacSy || "");
-            self.NamHocViThacSy = ko.observable(item.NamHocViThacSy || "");
-            self.HocViTienSy = ko.observable(item.HocViTienSy || "");
-            self.NamHocViTienSy = ko.observable(item.NamHocViTienSy || "");
-
-            
-            self.TaiKhoan_MST = ko.observable(item.TaiKhoan_MST || "");
-            self.TaiKhoan_STK = ko.observable(item.TaiKhoan_STK || "");
-            self.TaiKhoan_NganHang = ko.observable(item.TaiKhoan_NganHang || "");
-
-
-            self.CMND = ko.observable(item.CMND || "");
-            self.CMND_NoiCap = ko.observable(item.CMND_NoiCap || "");
-            self.CMND_NgayCap = ko.observable(item.CMND_NgayCap || "");
-
-            self.ChucVu = ko.observable(item.ChucVu || "");
-            self.PhongKhoa = ko.observable(item.PhongKhoa || "");
-            self.TruongVien = ko.observable(item.TruongVien || "");
-
-            self.GioiTinh = ko.observable(item.GioiTinh || "");
-            self.NgaySinh = ko.observable(item.NgaySinh || "");
-            self.HoTen = ko.observable(item.HoTen || item.HoTen || "");
-            self.LinhVuc = ko.observable(item.LinhVuc || "");
-            self.ChuyenNganh = ko.observable(item.ChuyenNganh || "");
-            self.HuongNghienCuu = ko.observable(item.HuongNghienCuu || "");
-
-            self.NgoaiNgu = ko.observableArray([]);
+            that.nckhProvider.copyPropertiesValue(item, self);
 
             self.ListThoiGianCongTac = ko.observableArray(ko.utils.arrayMap(item.ListThoiGianCongTac || [{}, {}, {}], function (nn) {
                 return {
@@ -276,13 +239,6 @@ export class NhanSuLLKHModalPage extends DetailPage {
                 };
             }));
             
-            self.HoatDongKhac = ko.observable(item.HoatDongKhac || "");
-
-            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay || "");
-            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang || "");
-            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam || "");
-            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy || "");
-
             self.getItem = function () {
                 return ko.toJS(self);
             };

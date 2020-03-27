@@ -65,66 +65,8 @@ export class BangKiemXXDDModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
-            self.MaSo = ko.observable(item.MaSo);
-            self.PhanHai_TenNCYSH = ko.observable(item.PhanHai_TenNCYSH);
-            self.PhanHai_NCVChinh_HoTen = ko.observable(item.PhanHai_NCVChinh_HoTen);
-            self.PhanHai_NCVChinh_KhoaPhong = ko.observable(item.PhanHai_NCVChinh_KhoaPhong);
-            self.PhanHai_NCVChinh_BenhVien = ko.observable(item.PhanHai_NCVChinh_BenhVien);
-            self.PhanHai_NCVChinh_DienThoai = ko.observable(item.PhanHai_NCVChinh_DienThoai);
-            self.PhanHai_NCVChinh_Email = ko.observable(item.PhanHai_NCVChinh_Email);
-            self.PhanHai_NCVChinh_DiaChiLienHe = ko.observable(item.PhanHai_NCVChinh_DiaChiLienHe);
-            self.PhanHai_NGS_HoTen = ko.observable(item.PhanHai_NGS_HoTen);
-            self.PhanHai_NGS_NoiLamViec = ko.observable(item.PhanHai_NGS_NoiLamViec);
-            self.PhanHai_NGS_DienThoai = ko.observable(item.PhanHai_NGS_DienThoai);
-            self.PhanHai_NGS_Email = ko.observable(item.PhanHai_NGS_Email);
-            self.PhanBon_C1_MoTaQuyTrinh = ko.observable(item.PhanBon_C1_MoTaQuyTrinh);
-            self.PhanBon_C1_NoiNhanMau = ko.observable(item.PhanBon_C1_NoiNhanMau);
-            self.PhanBon_C1_DanSoChonMau = ko.observable(item.PhanBon_C1_DanSoChonMau);
-            self.PhanBon_C1_CoMauNghienCuu = ko.observable(item.PhanBon_C1_CoMauNghienCuu);
-            self.PhanBon_C1_TieuChuanNhanVao = ko.observable(item.PhanBon_C1_TieuChuanNhanVao);
-            self.PhanBon_C1_TieuChuanLoaiRa = ko.observable(item.PhanBon_C1_TieuChuanLoaiRa);
-            self.PhanBon_C2_MoTaQuyTrinh = ko.observable(item.PhanBon_C2_MoTaQuyTrinh);
-            self.PhanBon_C2_CachTienHanh = ko.observable(item.PhanBon_C2_CachTienHanh);
-            self.PhanBon_C3_MoTaQuyTrinh = ko.observable(item.PhanBon_C3_MoTaQuyTrinh);
 
-            self.ThoiGianTienHanh_Ngay = ko.observable(item.ThoiGianTienHanh_Ngay);
-            self.ThoiGianTienHanh_Thang = ko.observable(item.ThoiGianTienHanh_Thang);
-            self.ThoiGianTienHanh_Nam = ko.observable(item.ThoiGianTienHanh_Nam);
-            self.ThoiGianTienHanhDenNgay_Ngay = ko.observable(item.ThoiGianTienHanhDenNgay_Ngay);
-            self.ThoiGianTienHanhDenNgay_Thang = ko.observable(item.ThoiGianTienHanhDenNgay_Thang);
-            self.ThoiGianTienHanhDenNgay_Nam = ko.observable(item.ThoiGianTienHanhDenNgay_Nam);
-
-            self.ThoiGianThuThap_Ngay = ko.observable(item.ThoiGianThuThap_Ngay);
-            self.ThoiGianThuThap_Thang = ko.observable(item.ThoiGianThuThap_Thang);
-            self.ThoiGianThuThap_Nam = ko.observable(item.ThoiGianThuThap_Nam);
-            self.ThoiGianThuThapDenNgay_Ngay = ko.observable(item.ThoiGianThuThapDenNgay_Ngay);
-            self.ThoiGianThuThapDenNgay_Thang = ko.observable(item.ThoiGianThuThapDenNgay_Thang);
-            self.ThoiGianThuThapDenNgay_Nam = ko.observable(item.ThoiGianThuThapDenNgay_Nam);
-
-            self.ThoiGianNghienCuu_Ngay = ko.observable(item.ThoiGianNghienCuu_Ngay);
-            self.ThoiGianNghienCuu_Thang = ko.observable(item.ThoiGianNghienCuu_Thang);
-            self.ThoiGianNghienCuu_Nam = ko.observable(item.ThoiGianNghienCuu_Nam);
-            self.ThoiGianNghienCuuDenNgay_Ngay = ko.observable(item.ThoiGianNghienCuuDenNgay_Ngay);
-            self.ThoiGianNghienCuuDenNgay_Thang = ko.observable(item.ThoiGianNghienCuuDenNgay_Thang);
-            self.ThoiGianNghienCuuDenNgay_Nam = ko.observable(item.ThoiGianNghienCuuDenNgay_Nam);
-
-
-            self.PhanSau_NCYSH_HoTen = ko.observable(item.PhanSau_NCYSH_HoTen);
-            self.PhanSau_NCYSH_NgayThangNam = ko.observable(item.PhanSau_NCYSH_NgayThangNam);
-            self.PhanSau_NGS_HoTen = ko.observable(item.PhanSau_NGS_HoTen);
-            self.PhanSau_NGS_NgayThangNam = ko.observable(item.PhanSau_NGS_NgayThangNam);
-            self.PhanSau_TruongKhoa_HoTen = ko.observable(item.PhanSau_TruongKhoa_HoTen);
-            self.PhanSau_TruongKhoa_ChucVu = ko.observable(item.PhanSau_TruongKhoa_ChucVu);
-            self.PhanSau_TruongKhoa_NgayThangNam = ko.observable(item.PhanSau_TruongKhoa_NgayThangNam);
-            self.YKienHDDD_NhanXet = ko.observable(item.YKienHDDD_NhanXet);
-            self.YKienHDDD_So = ko.observable(item.YKienHDDD_So);
-            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay);
-            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang);
-            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam);
-            self.MoTaNCYSH = ko.observable({
-                ThongTin: ko.observable(item.MoTaNCYSH.ThongTin),
-            });
+            that.nckhProvider.copyPropertiesValue(item, self);
 
             self.NCVKhac = ko.observableArray(ko.utils.arrayMap(item.NCVKhac || [{}], function (nn) {
                 return {

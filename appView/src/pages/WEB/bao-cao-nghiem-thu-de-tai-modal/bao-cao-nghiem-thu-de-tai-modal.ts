@@ -64,10 +64,8 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.nckhProvider.copyPropertiesValue(item, self);
 
-            self.ThoiGian_Nam = ko.observable(item.ThoiGian_Nam || "");
-            self.ThoiGian_Thang = ko.observable(item.ThoiGian_Thang || "");
+            that.nckhProvider.copyPropertiesValue(item, self);
 
             self.ListCanBo = ko.observableArray(ko.utils.arrayMap(item.ListCanBo || [{}, {}, {}, {}], function (cb) {
                 return {

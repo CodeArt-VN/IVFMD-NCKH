@@ -64,33 +64,9 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
-            self.HoTenChuNhiem = ko.observable(item.HoTenChuNhiem);
-            self.DonVi = ko.observable(item.DonVi);
-            self.DiaChi = ko.observable(item.DiaChi);
-            self.DienThoai = ko.observable(item.DienThoai);
-            self.TenDeTai = ko.observable(item.TenDeTai);
-            self.TenDonViChuTri = ko.observable(item.TenDonViChuTri);
-            self.DiaChiDonVi = ko.observable(item.DiaChiDonVi);
-            self.DienThoaiDonVi = ko.observable(item.DienThoaiDonVi);
-            self.DiaDiemNghienCuu = ko.observable(item.DiaDiemNghienCuu);
-            self.ThoiGianNghienCuu = ko.observable(item.ThoiGianNghienCuu);
-            self.TuNgay = ko.observable(item.TuNgay);
-            self.DenNgay = ko.observable(item.DenNgay);
-            self.BangKiemLuaChon = ko.observable(item.BangKiemLuaChon);
-            self.PhieuThongTinXemXet = ko.observable(item.PhieuThongTinXemXet);
-            self.DeCuongNCYSH = ko.observable(item.DeCuongNCYSH);
-            self.CacBangCauHoi = ko.observable(item.CacBangCauHoi);
-            self.MauPhieuChapThuanTinhNguyen = ko.observable(item.MauPhieuChapThuanTinhNguyen);
-            self.TrangThongTinGioiThieu = ko.observable(item.TrangThongTinGioiThieu);
-            self.SYLLChuNhiem = ko.observable(item.SYLLChuNhiem);
-            self.GiayToKhac = ko.observable(item.GiayToKhac);
-            self.GhiChuGiayToKha = ko.observable(item.GhiChuGiayToKha);
-            self.NgayKy_Ngay = ko.observable(item.NgayKy_Ngay);
-            self.NgayKy_Thang = ko.observable(item.NgayKy_Thang);
-            self.NgayKy_Nam = ko.observable(item.NgayKy_Nam);
-            self.NgayKy_ChuKy = ko.observable(item.NgayKy_ChuKy);
-            
+
+            that.nckhProvider.copyPropertiesValue(item, self);
+                        
             self.getItem = function () {
                 return ko.toJS(self);
             };

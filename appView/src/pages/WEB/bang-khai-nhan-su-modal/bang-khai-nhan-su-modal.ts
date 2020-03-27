@@ -63,7 +63,8 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
         this.nckhProvider.init(this.item.FormConfig);
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
+            that.nckhProvider.copyPropertiesValue(item, self);
+
             self.filter = function (arr, prop, ko, val) {
                 console.log(val)
                 var data = arr().filter(function (v) {
@@ -81,39 +82,6 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
                 return ab;
             }
             
-            self.YTuong_NguoiThucHien = ko.observable(item.YTuong_NguoiThucHien);
-            self.YTuong_ChiPhi = ko.observable(item.YTuong_ChiPhi);
-            self.PhuongPhap_NguoiThucHien = ko.observable(item.PhuongPhap_NguoiThucHien);
-            self.PhuongPhap_ChiPhi = ko.observable(item.PhuongPhap_ChiPhi);
-            self.QuyTrinhNhanMau_NguoiThucHien = ko.observable(item.QuyTrinhNhanMau_NguoiThucHien);
-            self.QuyTrinhNhanMau_ChiPhi = ko.observable(item.QuyTrinhNhanMau_ChiPhi);
-            self.ThucHienNhanMau_NguoiThucHien = ko.observable(item.ThucHienNhanMau_NguoiThucHien);
-            self.ThucHienNhanMau_ChiPhi = ko.observable(item.ThucHienNhanMau_ChiPhi);
-            self.NhapDuLieuVaoPM_NguoiThucHien = ko.observable(item.NhapDuLieuVaoPM_NguoiThucHien);
-            self.NhapDuLieuVaoPM_ChiPhi = ko.observable(item.NhapDuLieuVaoPM_ChiPhi);
-            self.VietBaiBaoCaoTiengViet_NguoiThucHien = ko.observable(item.VietBaiBaoCaoTiengViet_NguoiThucHien);
-            self.VietBaiBaoCaoTiengViet_ChiPhi = ko.observable(item.VietBaiBaoCaoTiengViet_ChiPhi);
-            self.VietBaiBaoCaoTiengAnh_NguoiThucHien = ko.observable(item.VietBaiBaoCaoTiengAnh_NguoiThucHien);
-            self.VietBaiBaoCaoTiengAnh_ChiPhi = ko.observable(item.VietBaiBaoCaoTiengAnh_ChiPhi);
-            self.ReviewTinhKhaThi_NguoiThucHien = ko.observable(item.ReviewTinhKhaThi_NguoiThucHien);
-            self.ReviewTinhKhaThi_ChiPhi = ko.observable(item.ReviewTinhKhaThi_ChiPhi);
-            self.XayDungPhanMem_NguoiThucHien = ko.observable(item.XayDungPhanMem_NguoiThucHien);
-            self.XayDungPhanMem_ChiPhi = ko.observable(item.XayDungPhanMem_ChiPhi);
-            self.XayDungKeHoachPhanTich_NguoiThucHien = ko.observable(item.XayDungKeHoachPhanTich_NguoiThucHien);
-            self.XayDungKeHoachPhanTich_ChiPhi = ko.observable(item.XayDungKeHoachPhanTich_ChiPhi);
-            self.LamSachSoLieu_NguoiThucHien = ko.observable(item.LamSachSoLieu_NguoiThucHien);
-            self.LamSachSoLieu_ChiPhi = ko.observable(item.LamSachSoLieu_ChiPhi);
-            self.PhanTichSoLieu_NguoiThucHien = ko.observable(item.PhanTichSoLieu_NguoiThucHien);
-            self.PhanTichSoLieu_ChiPhi = ko.observable(item.PhanTichSoLieu_ChiPhi);
-            self.XayDungKeHoachDieuPhoi_NguoiThucHien = ko.observable(item.XayDungKeHoachDieuPhoi_NguoiThucHien);
-            self.XayDungKeHoachDieuPhoi_ChiPhi = ko.observable(item.XayDungKeHoachDieuPhoi_ChiPhi);
-            self.ChuanBiHoSoGiayTo_NguoiThucHien = ko.observable(item.ChuanBiHoSoGiayTo_NguoiThucHien);
-            self.ChuanBiHoSoGiayTo_ChiPhi = ko.observable(item.ChuanBiHoSoGiayTo_ChiPhi);
-            self.DieuPhoiHoatDongNghienCuu_NguoiThucHien = ko.observable(item.DieuPhoiHoatDongNghienCuu_NguoiThucHien);
-            self.DieuPhoiHoatDongNghienCuu_ChiPhi = ko.observable(item.DieuPhoiHoatDongNghienCuu_ChiPhi);
-            self.QuanLyDieuHanhChung_NguoiThucHien = ko.observable(item.QuanLyDieuHanhChung_NguoiThucHien);
-            self.QuanLyDieuHanhChung_ChiPhi = ko.observable(item.QuanLyDieuHanhChung_ChiPhi);
-
             self.getItem = function () {
                 return ko.toJS(self);
             };

@@ -80,37 +80,9 @@ export class SAEModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-            that.commonService.copyPropertiesValue(item, self);
 
-            self.MaSo = ko.observable(item.MaSo);
-            self.TenNghienCuu = ko.observable(item.TenNghienCuu);
-            self.NhaTaiTro = ko.observable(item.NhaTaiTro);
-            self.HoTenNCV = ko.observable(item.HoTenNCV);
-            self.DiemNghienCuu = ko.observable(item.DiemNghienCuu);
-            self.ThoiDiemNhanThongTin = ko.observable(item.ThoiDiemNhanThongTin);
-            self.ThoiDiemXuatHien = ko.observable(item.ThoiDiemXuatHien);
-            self.ThoiDiemKetThuc = ko.observable(item.ThoiDiemKetThuc);
-            self.TenSAE = ko.observable(item.TenSAE);
-            self.TenNguoiThuThuoc = ko.observable(item.TenNguoiThuThuoc);
-            self.MaSoNguoiThuThuoc = ko.observable(item.MaSoNguoiThuThuoc);
-            self.MoTaDienBien = ko.observable(item.MoTaDienBien);
-            self.KetQua_TuVong_Ngay = ko.observable(item.KetQua_TuVong_Ngay);
-            self.NguoiThamGia_NgaySinh = ko.observable(item.NguoiThamGia_NgaySinh);
-            self.NguoiThamGia_Tuoi = ko.observable(item.NguoiThamGia_Tuoi);
-            self.NguoiThamGia_GioiTinh_Nu_TuanMangThai = ko.observable(item.NguoiThamGia_GioiTinh_Nu_TuanMangThai);
-            self.NguoiThamGia_CanNang = ko.observable(item.NguoiThamGia_CanNang);
-            self.NguoiThamGia_TienSuYKhoa = ko.observable(item.NguoiThamGia_TienSuYKhoa);
-            self.LyDoDanhGia = ko.observable(item.LyDoDanhGia);
-            self.LyDoDanhGia_SoLuong = ko.observable(item.LyDoDanhGia_SoLuong);
-            self.LyDoDanhGia_SoLuongNghienCuuKhac = ko.observable(item.LyDoDanhGia_SoLuongNghienCuuKhac);
-            self.YKienHDDD_DeXuatKhac = ko.observable(item.YKienHDDD_DeXuatKhac);
-            self.NguoiBaoCao_ChuKy = ko.observable(item.NguoiBaoCao_ChuKy);
-            self.NguoiBaoCao_NgayKy = ko.observable(item.NguoiBaoCao_NgayKy);
-            self.NguoiBaoCao_HoTen = ko.observable(item.NguoiBaoCao_HoTen);
-            self.NguoiBaoCao_ChucVu = ko.observable(item.NguoiBaoCao_ChucVu);
-            self.NguoiBaoCao_DienThoai = ko.observable(item.NguoiBaoCao_DienThoai);
-            self.NguoiBaoCao_Email = ko.observable(item.NguoiBaoCao_Email);
-            
+            that.nckhProvider.copyPropertiesValue(item, self);
+
             self.ListThuocThuLamSan = ko.observableArray(ko.utils.arrayMap(item.ListThuocThuLamSan || [{}, {}, {}, {}, {}, {}, {}], function (nn) {
                 return {
                     STT: ko.observable(nn.STT || ""),
