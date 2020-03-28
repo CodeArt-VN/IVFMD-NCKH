@@ -13,7 +13,8 @@
         </div>
     </div>
     <div class="emptyzone header-button">
-        <button *ngIf="pageIndex==0 && (!canApprove || (canApprove && item.IDTrangThai_HRCO != 19))" [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
+        <button *ngIf="pageIndex==0 && (!canApprove || (canApprove && item.IDTrangThai_HRCO != 19))"
+            [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
             (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
         <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light"
             (click)="updateSatusHRCO()">HRCO Duyệt</button>
@@ -82,7 +83,8 @@
             <ion-grid>
                 <ion-row class="center-row">
                     <ion-col col-md-4 *ngFor="let i of listForm2">
-                        <ion-card color="white" no-margin class="news">
+                        <ion-card color="white"
+                            no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
                                     <a (click)="openDetailInputModal(i.Index)">{{i.Name}}</a>
@@ -91,10 +93,15 @@
                                     {{i.Description}}
                                 </p>
                                 <div padding></div>
-                                <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
+
+
+                                <button *ngIf="i.TrangThaiCode === 'Update' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
                                     (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
-                                <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
+                                <button *ngIf="i.TrangThaiCode === 'New' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
                                     (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+
+                                <button *ngIf="i.Index == 4 || i.Index == 5 || i.Index == 6 || i.Index == 7" ion-button block
+                                    (click)="openDetailModal(i.Index)">XEM</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -203,11 +210,11 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                    (click)="openDetailModal(i.Index)">
                                     CẬP NHẬT
                                 </button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                    (click)="openDetailModal(i.Index)">
                                     TẠO MỚI
                                 </button>
                             </ion-card-content>

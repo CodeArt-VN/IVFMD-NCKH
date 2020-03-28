@@ -284,6 +284,27 @@ export class NhanSuLLKHModalPage extends DetailPage {
         })
     };
 
+    updateFromHRM() {
+        let item = this.model.getItem();
+        item.HTML = $("#frmNhanSuLLKH").html();
+        item.FormConfig = this.nckhProvider.getConfigs();
+        console.log(item);
+        this.loadingMessage('Cập nhật dữ liệu...').then(() => {
+            this.proLLKHProvider.update(item).then((savedItem: any) => {
+                this.item.ID = savedItem.ID;
+                this.model.ID = savedItem.ID;
+                if (this.loading) this.loading.dismiss();
+                this.events.publish('app:Update' + this.pageName);
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật xong!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
+    };
+
     print() {
         this.loadingMessage('Lấy dữ liệu in...').then(() => {
             var itemPrint = {

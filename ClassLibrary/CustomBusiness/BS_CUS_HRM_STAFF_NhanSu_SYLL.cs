@@ -56,14 +56,19 @@ namespace BaseBusiness
                     IDNhanSu = nhanSuId
                 };
 
-                var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
-                if (objNhanSu != null)
+                var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == nhanSuId);
+                if (objLL != null)
                 {
-                    query.HoTen = objNhanSu.Name;
-                    query.Email = objNhanSu.Email;
-                    query.DiaChi = objNhanSu.DiaChi;
-                    query.Mobile = objNhanSu.SoDienThoai;
+                    query.HoTen = objLL.HoTen;
+                    query.NgaySinh = objLL.NgaySinh;
+                    query.Email = objLL.Email_CaNhan;
+                    query.DiaChi = objLL.DiaChi_CaNhan;
+                    query.Mobile = objLL.DienThoai_CaNhan;
+                    query.GioiTinh = objLL.GioiTinh;
+                    query.ChucVu = objLL.ChucVu;
+                    query.DiaChiCoQuan = objLL.DiaChi_CoQuan;
                 }
+
                 query.ListKinhNghiem = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem() };
                 query.ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>() { new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon() };
             }

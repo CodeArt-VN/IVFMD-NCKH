@@ -26,6 +26,81 @@ namespace BaseBusiness
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
                 db.tbl_PRO_DeTai.Add(dbitem);
+
+                //Tạo mới 
+                //SYLL CNDT
+                //LLKH CNDT
+                //SYLL NCV
+                //LLKH NCV
+                using (CopyHelper helperCopy = new CopyHelper())
+                {
+                    //SYLL_CN
+                    if (item.IDChuNhiem > 0)
+                    {
+                        var objHRM_SYLL_CN = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == item.IDChuNhiem.Value);
+                        tbl_PRO_SYLL objSYLL_CN = new tbl_PRO_SYLL();
+                        if (objHRM_SYLL_CN != null)
+                        {
+                            helperCopy.Copy(objHRM_SYLL_CN, objSYLL_CN);
+                            objSYLL_CN.ID = 0;
+                        }
+
+                        objSYLL_CN.IDNhanSu = item.IDChuNhiem.Value;
+                        objSYLL_CN.tbl_PRO_DeTai = dbitem;
+                        objSYLL_CN.CreatedBy = Username;
+                        objSYLL_CN.CreatedDate = DateTime.Now;
+                        objSYLL_CN.IsDisabled = item.IsDisabled;
+                        objSYLL_CN.IsDeleted = item.IsDeleted;
+                        db.tbl_PRO_SYLL.Add(objSYLL_CN);
+
+                        //LLKH_CN
+                        var objHRM_LLKH_CN = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == item.IDChuNhiem.Value);
+                        tbl_PRO_LLKH objLLKH_CN = new tbl_PRO_LLKH();
+                        if (objHRM_LLKH_CN != null)
+                        {
+                            helperCopy.Copy(objHRM_LLKH_CN, objLLKH_CN);
+                            objLLKH_CN.ID = 0;
+                        }
+                        objLLKH_CN.IDNhanSu = item.IDChuNhiem.Value;
+                        objLLKH_CN.tbl_PRO_DeTai = dbitem;
+                        objLLKH_CN.CreatedBy = Username;
+                        objLLKH_CN.CreatedDate = DateTime.Now;
+                        objLLKH_CN.IsDisabled = item.IsDisabled;
+                        objLLKH_CN.IsDeleted = item.IsDeleted;
+                        db.tbl_PRO_LLKH.Add(objLLKH_CN);
+                    }
+                    //SYLL_NCV
+                    var objHRM_SYLL_NCV = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == StaffID);
+                    tbl_PRO_SYLL objSYLL_NCV = new tbl_PRO_SYLL();
+                    if (objHRM_SYLL_NCV != null)
+                    {
+                        helperCopy.Copy(objHRM_SYLL_NCV, objSYLL_NCV);
+                        objSYLL_NCV.ID = 0;
+                    }
+                    objSYLL_NCV.IDNhanSu = item.IDNCV;
+                    objSYLL_NCV.IDDetai = dbitem.ID;
+                    objSYLL_NCV.CreatedBy = Username;
+                    objSYLL_NCV.CreatedDate = DateTime.Now;
+                    objSYLL_NCV.IsDisabled = item.IsDisabled;
+                    objSYLL_NCV.IsDeleted = item.IsDeleted;
+                    db.tbl_PRO_SYLL.Add(objSYLL_NCV);
+
+                    //LLKH_NCV
+                    var objHRM_LLKH_NCV = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == StaffID);
+                    tbl_PRO_LLKH objLLKH_NCV = new tbl_PRO_LLKH();
+                    if (objHRM_LLKH_NCV != null)
+                    {
+                        helperCopy.Copy(objHRM_LLKH_NCV, objLLKH_NCV);
+                        objLLKH_NCV.ID = 0;
+                    }
+                    objLLKH_NCV.IDNhanSu = item.IDNCV;
+                    objLLKH_NCV.tbl_PRO_DeTai = dbitem;
+                    objLLKH_NCV.CreatedBy = Username;
+                    objLLKH_NCV.CreatedDate = DateTime.Now;
+                    objLLKH_NCV.IsDisabled = item.IsDisabled;
+                    objLLKH_NCV.IsDeleted = item.IsDeleted;
+                    db.tbl_PRO_LLKH.Add(objLLKH_NCV);
+                }
             }
             if (item != null)
             {

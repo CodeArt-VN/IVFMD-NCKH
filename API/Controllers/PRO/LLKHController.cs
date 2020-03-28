@@ -131,5 +131,24 @@ namespace API.Controllers.PRO
             }
             return BadRequest();
         }
+
+        [Route("update_PRO_LLKH")]
+        [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_LLKH))]
+        public IHttpActionResult Update(DTO_PRO_LLKH tbl_PRO_LLKH)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_PRO_LLKH result = BS_PRO_LLKH.update_PRO_LLKH(db, tbl_PRO_LLKH, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

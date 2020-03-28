@@ -2,11 +2,14 @@
     <button class="close-btn" ion-button float-right (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
-    <button ion-button float-right (click)="saveChange()">
-        Lưu
-    </button>
     <button ion-button float-right (click)="print()">
         In
+    </button>
+    <button *ngIf="idDeTai == -1" ion-button float-right (click)="saveChange()">
+        Lưu
+    </button>
+    <button *ngIf="idDeTai > 0" ion-button float-right (click)="updateFromHRM()">
+        Cập nhật
     </button>
     <button color="warning" ion-button float-right (click)="cancel()">
         Hủy thay đổi
