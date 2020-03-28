@@ -67,8 +67,11 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
-
+            tbl_PRO_PhieuXemXetDaoDuc.JSON_CacCoQuan = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_PhieuXemXetDaoDuc.ListCoQuan);
+            tbl_PRO_PhieuXemXetDaoDuc.JSON_CacNCV = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_PhieuXemXetDaoDuc.ListNCV);
+            tbl_PRO_PhieuXemXetDaoDuc.JSON_ChuKy = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_PhieuXemXetDaoDuc.CanKet_ListChuKy);
             bool result = BS_PRO_PhieuXemXetDaoDuc.put_PRO_PhieuXemXetDaoDuc(db, id, tbl_PRO_PhieuXemXetDaoDuc, Username);
+            
 
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
@@ -86,7 +89,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_PhieuXemXetDaoDuc result = BS_PRO_PhieuXemXetDaoDuc.post_PRO_PhieuXemXetDaoDuc(db, tbl_PRO_PhieuXemXetDaoDuc, Username);
-
+            result.JSON_CacCoQuan = Newtonsoft.Json.JsonConvert.SerializeObject(result.ListCoQuan);
+            result.JSON_CacNCV = Newtonsoft.Json.JsonConvert.SerializeObject(result.ListNCV);
+            result.JSON_ChuKy = Newtonsoft.Json.JsonConvert.SerializeObject(result.CanKet_ListChuKy);
 
             if (result != null)
             {

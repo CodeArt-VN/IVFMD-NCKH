@@ -40,7 +40,7 @@ namespace BaseBusiness
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_Ngay = s.NgayKy_Ngay,
                 NgayKy_Thang = s.NgayKy_Thang,
-                IsDisabled = s.IsDisabled,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,

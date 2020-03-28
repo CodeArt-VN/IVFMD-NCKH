@@ -268,6 +268,10 @@ export var APIListBase = {
             method: "GET",
             url: function(){return appSetting.apiDomain("CUS/HRM/STAFF/NhanSu")}  
         },
+        getListChuNhiem: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CUS/HRM/STAFF/NhanSu/NhanSuChuNhiem") }
+        },
         getItem:{
             method: "GET",
             url: function(id){return appSetting.apiDomain("CUS/HRM/STAFF/NhanSu/") + id} 

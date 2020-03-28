@@ -69,7 +69,12 @@ namespace API.Controllers.PRO
                     A6_DiaChiCoQuan = tbl_PRO_ThuyetMinhDeTai.A6_DiaChiCoQuan,
                     A6_DienThoai = tbl_PRO_ThuyetMinhDeTai.A6_DienThoai,
                     A6_Email = tbl_PRO_ThuyetMinhDeTai.A6_Email,
-                    ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu(),
+                    A4_ThoiGianThucHien = tbl_PRO_ThuyetMinhDeTai.A4_ThoiGianThucHien,
+                    A7_TenCoQuan = tbl_PRO_ThuyetMinhDeTai.A7_TenCoQuan,
+                    A7_DiaChi = tbl_PRO_ThuyetMinhDeTai.A7_DiaChi,
+                    A7_DienThoai = tbl_PRO_ThuyetMinhDeTai.A7_DienThoai,
+                    ChuNhiemDeTai = tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai,
+                    IsDisabled = tbl_PRO_ThuyetMinhDeTai.IsDisabled,
                     ListNhanLucNghienCuu = new List<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(),
                     ListGioiThieuChuyenGia = new List<DTO_PRO_ThuyetMinhDeTai_GioiThieuChuyenGia>(),
                     ListBienSo = new List<DTO_PRO_ThuyetMinhDeTai_CacBienSoCanThuThap>()
@@ -224,9 +229,12 @@ namespace API.Controllers.PRO
             tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac);
 
             bool result = BS_PRO_ThuyetMinhDeTai.put_PRO_ThuyetMinhDeTai(db, id, tbl_PRO_ThuyetMinhDeTai, Username);
-
             if (result)
+            {
+                BS_HelperReference.PRO_ThuyetMinhDeTai_Update(db, tbl_PRO_ThuyetMinhDeTai.IDDeTai);
                 return StatusCode(HttpStatusCode.NoContent);
+
+            }
             else
                 return NotFound();
         }
@@ -253,9 +261,9 @@ namespace API.Controllers.PRO
             tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac);
 
             DTO_PRO_ThuyetMinhDeTai result = BS_PRO_ThuyetMinhDeTai.post_PRO_ThuyetMinhDeTai(db, tbl_PRO_ThuyetMinhDeTai, Username);
-
             if (result != null)
             {
+                BS_HelperReference.PRO_ThuyetMinhDeTai_Update(db, tbl_PRO_ThuyetMinhDeTai.IDDeTai);
                 return CreatedAtRoute("get_PRO_ThuyetMinhDeTai", new { id = result.ID }, result);
             }
             return Conflict();

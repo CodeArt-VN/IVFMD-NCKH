@@ -30,7 +30,7 @@ namespace API.Controllers.HRM
 		[Route("")]
         public IQueryable<DTO_CUS_HRM_STAFF_NhanSu> Get()
         {
-            var result = BS_CUS_HRM_STAFF_NhanSu.get_CUS_HRM_STAFF_NhanSu(db, PartnerID, QueryStrings, true).ToList();
+            var result = BS_CUS_HRM_STAFF_NhanSu.get_CUS_HRM_STAFF_NhanSu(db, PartnerID, QueryStrings, false).ToList();
             if (result != null)
             {
                 var context = new ApplicationDbContext();
@@ -51,6 +51,13 @@ namespace API.Controllers.HRM
                     
                 }
             }
+            return result.AsQueryable();
+        }
+
+        [Route("NhanSuChuNhiem")]
+        public IQueryable<DTO_CUS_HRM_STAFF_NhanSu> GetNhanSuChuNhiem()
+        {
+            var result = BS_CUS_HRM_STAFF_NhanSu.get_CUS_HRM_STAFF_NhanSu(db, PartnerID, QueryStrings, true).ToList();
             return result.AsQueryable();
         }
 

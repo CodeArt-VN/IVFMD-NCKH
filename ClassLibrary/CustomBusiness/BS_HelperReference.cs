@@ -124,6 +124,15 @@ namespace BaseBusiness
                     tmdt.A6_DiaChiCoQuan = llkh.DiaChi_CoQuan;
                     tmdt.A6_DienThoai = llkh.DienThoai_CaNhan;
                     tmdt.A6_Email = llkh.Email_CaNhan;
+
+                    try
+                    {
+                        var chunhiem = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(tmdt.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai);
+                        chunhiem.HoTen = tmdt.A6_HoTen;
+                        chunhiem.DonVi = llkh.TruongVien;
+                    }
+                    catch { }
+
                 }
 
                 db.SaveChanges();
@@ -132,13 +141,22 @@ namespace BaseBusiness
 
         public static void PRO_DonXinDanhGiaDaoDuc_Update(AppEntities db, int IDDeTai)
         {
-            var dgdd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
-            if (dgdd != null)
+            var dxdg = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+            if (dxdg != null)
             {
                 var xxdd = db.tbl_PRO_PhieuXemXetDaoDuc.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
                 if (xxdd != null)
                 {
-                    xxdd.DonViChuTri = dgdd.TenDonViChuTri + "<br>Địa chỉ: " + dgdd.DiaChiDonVi + "<br>Điện thoại:" + dgdd.DienThoaiDonVi;
+                    xxdd.DonViChuTri = dxdg.TenDonViChuTri + "<br>Địa chỉ: " + dxdg.DiaChiDonVi + "<br>Điện thoại:" + dxdg.DienThoaiDonVi;
+                }
+
+                var tmdt = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+                if (tmdt != null)
+                {
+                    tmdt.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<br>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay;
+                    tmdt.A7_TenCoQuan = dxdg.TenDonViChuTri;
+                    tmdt.A7_DiaChi = dxdg.DiaChiDonVi;
+                    tmdt.A7_DienThoai = dxdg.DienThoaiDonVi;
                 }
 
                 db.SaveChanges();

@@ -79,12 +79,17 @@ namespace BaseBusiness
                 return null;
         }
 
-        public static IQueryable<DTO_CUS_HRM_STAFF_NhanSu> get_CUS_HRM_STAFF_NhanSu(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings, bool Custom)
+        public static IQueryable<DTO_CUS_HRM_STAFF_NhanSu> get_CUS_HRM_STAFF_NhanSu(AppEntities db, int PartnerID, Dictionary<string, string> QueryStrings, bool isChuNhiem)
         {
 
 
             var query = db.tbl_CUS_HRM_STAFF_NhanSu
             .Where(d => d.IsDeleted == false && d.IDPartner == PartnerID);
+
+            if (isChuNhiem)
+            {
+                query = query.Where(c => c.IsCNDT == true).OrderBy(c => c.Name);
+            }
 
 
             //Query keyword
@@ -262,7 +267,7 @@ namespace BaseBusiness
 
         }
 
-        public static DTO_CUS_HRM_STAFF_NhanSu get_CUS_HRM_STAFF_NhanSu(AppEntities db, int PartnerID, int id, bool Custom)
+        public static DTO_CUS_HRM_STAFF_NhanSu get_CUS_HRM_STAFF_NhanSu(AppEntities db, int PartnerID, int id, bool isChuNhiem)
         {
             var dbResult = db.tbl_CUS_HRM_STAFF_NhanSu.Find(id);
 

@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomBusiness\BS_HelperReference.cs" />
     <Compile Include="CustomBusiness\BS_CUS_DOC_File.cs" />
     <Compile Include="CustomBusiness\BS_CUS_DOC_Folder.cs" />
     <Compile Include="CustomBusiness\BS_CUS_HRM_STAFF_NhanSu.cs" />

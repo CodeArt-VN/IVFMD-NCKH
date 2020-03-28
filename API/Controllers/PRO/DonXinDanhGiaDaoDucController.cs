@@ -72,7 +72,10 @@ namespace API.Controllers.PRO
             bool result = BS_PRO_DonXinDanhGiaDaoDuc.put_PRO_DonXinDanhGiaDaoDuc(db, id, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
             
             if (result)
+            {
+                BS_HelperReference.PRO_DonXinDanhGiaDaoDuc_Update(db, tbl_PRO_DonXinDanhGiaDaoDuc.IDDeTai);
                 return StatusCode(HttpStatusCode.NoContent);
+            }
             else
                 return NotFound();
         }
@@ -91,6 +94,7 @@ namespace API.Controllers.PRO
 
 			if (result != null)
             {
+                BS_HelperReference.PRO_DonXinDanhGiaDaoDuc_Update(db, tbl_PRO_DonXinDanhGiaDaoDuc.IDDeTai);
                 return CreatedAtRoute("get_PRO_DonXinDanhGiaDaoDuc", new { id = result.ID }, result);
             }
             return Conflict();

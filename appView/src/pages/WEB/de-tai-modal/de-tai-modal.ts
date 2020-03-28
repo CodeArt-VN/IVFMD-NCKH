@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable'
 import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider } from '../../../providers/Services/Services';
-import { Sys_VarProvider, PRO_NCVKhacCustomProvider } from '../../../providers/Services/CustomService';
+import { Sys_VarProvider, PRO_NCVKhacCustomProvider, HRM_STAFF_NhanSuCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
 import { DateAdapter } from "@angular/material";
@@ -33,7 +33,7 @@ export class DeTaiModalPage extends DetailPage {
 
     constructor(
         public currentProvider: PRO_DeTaiProvider,
-        public staffProvider: HRM_STAFF_NhanSuProvider,
+        public staffProvider: HRM_STAFF_NhanSuCustomProvider,
         public sysVarProvider: Sys_VarProvider,
         public ncvKhacProvider: PRO_NCVKhacCustomProvider,
         public viewCtrl: ViewController,
@@ -63,12 +63,12 @@ export class DeTaiModalPage extends DetailPage {
 
     preLoadData() {
         Promise.all([
-            this.staffProvider.read(),
+            this.staffProvider.getListChuNhiem(),
             this.sysVarProvider.getByTypeOfVar(1),
             this.ncvKhacProvider.getByDeTai(this.id)
         ])
             .then(values => {
-                this.staffs = values[0]['data'];
+                this.staffs = values;
                 this.typeOfTopics = values[1]['data'];
                 this.lstNCVKhac = [...values[2]['data']];
                 super.preLoadData();

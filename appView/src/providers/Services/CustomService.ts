@@ -1257,6 +1257,26 @@ export class CAT_ThietLapTemplateProvider extends exService {
         });
     }
 }
+
+@Injectable()
+export class HRM_STAFF_NhanSuCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.HRM_STAFF_NhanSu, SearchConfig.getSearchFields('HRM_STAFF_NhanSu'), commonService);
+    }
+    getListChuNhiem() {
+        let that = this.commonService;
+        let apiPath = APIList.HRM_STAFF_NhanSu.getListChuNhiem;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
 // @Injectable()
 // export class HRM_LIST_ChucDanh_EX extends HRM_LIST_ChucDanhProvider {
 //     constructor(public commonService: CommonServiceProvider) {

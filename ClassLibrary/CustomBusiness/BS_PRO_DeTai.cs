@@ -56,7 +56,7 @@ namespace BaseBusiness
 
                     BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_PRO_DeTai", DateTime.Now, Username);
 
-
+                    BS_HelperReference.PRO_DeTai_Update(db, dbitem.ID);
 
                     item.ID = dbitem.ID;
 
@@ -78,9 +78,16 @@ namespace BaseBusiness
             return item;
         }
 
-        public static DTO_PRO_DeTai get_PRO_DeTaiCustom(AppEntities db, int ID)
+        public static DTO_PRO_DeTai get_PRO_DeTaiCustom(AppEntities db, int ID, int StaffID)
         {
-            var query = db.tbl_PRO_DeTai.Where(d => d.ID == ID && d.IsDeleted == false).Select(s => new DTO_PRO_DeTai
+            var queryData = db.tbl_PRO_DeTai.Where(c => c.IsDeleted == false && c.ID == ID);
+            var staff = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == StaffID);
+            if (staff != null)
+            {
+                if (staff.tbl_CUS_SYS_Role == null || staff.tbl_CUS_SYS_Role.Code != "ADMIN")
+                    queryData = queryData.Where(c => c.IDNCV == staff.ID || c.IDChuNhiem == staff.ID || (c.tbl_PRO_NCVKhac.Count > 0 && c.tbl_PRO_NCVKhac.Any(d => d.IDNCV == staff.ID)));
+            }
+            var query = queryData.Select(s => new DTO_PRO_DeTai
             {
                 ID = s.ID,
                 IDPartner = s.IDPartner,
@@ -114,7 +121,9 @@ namespace BaseBusiness
                 IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,
                 IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
                 BaiFullTextNghiemThu = "",
-                FileChapThuan = s.FileChapThuan
+                FileChapThuan = s.FileChapThuan,
+                IsDisabledHDDD = s.IsDisabledHDDD,
+                IsDisabledHRCO = s.IsDisabledHRCO,
             }).FirstOrDefault();
 
             if (query != null)
@@ -212,7 +221,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHRCO")
                 {
-                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
@@ -286,6 +295,9 @@ namespace BaseBusiness
                         if (typeId > 0)
                             dbitem.IDHinhThucXetDuyet = typeId;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
+
+                        dbitem.IsDisabledHRCO = true;
+
                         db.SaveChanges();
                     }
                     else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
@@ -307,6 +319,8 @@ namespace BaseBusiness
                         dbitem.IDTrangThai_HRCO = -(int)SYSVarType.TrangThai_HRCO_ChoGui;
                         dbitem.IDHinhThucXetDuyet = null;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HRCO;
+
+                        dbitem.IsDisabledHRCO = false;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
@@ -320,7 +334,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHDDD")
                 {
-                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
@@ -375,6 +389,7 @@ namespace BaseBusiness
                         dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_DaDuyet;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
+                        dbitem.IsDisabledHDDD = true;
                         db.SaveChanges();
                     }
                     else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
@@ -396,6 +411,7 @@ namespace BaseBusiness
                         dbitem.IDTrangThai_HDDD = -(int)SYSVarType.TrangThai_HDDD_ChoGui;
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
+                        dbitem.IsDisabledHDDD = false;
                         db.SaveChanges();
                     }
                     else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
@@ -408,7 +424,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendHDKH")
                 {
-                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
@@ -496,7 +512,7 @@ namespace BaseBusiness
                 #region Gửi Duyệt
                 if (ActionCode == "SendNghiemThu")
                 {
-                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IsHRCO == true) == 0)
+                    if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
                         return "Chưa thiết lập nhân sự ban HRCO";
 
                     if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
@@ -576,6 +592,58 @@ namespace BaseBusiness
                     }
                     else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
                     else return "Đề tài đã được hủy duyệt trước đó";
+                }
+                #endregion
+                #endregion
+
+                #region Khóa dữ liệu HRCO
+                #region Khóa
+                if (ActionCode == "DisableHRCO")
+                {
+                    if (dbitem.IsDisabledHRCO != true)
+                    {
+                        dbitem.IsDisabledHRCO = true;
+                        db.SaveChanges();
+                    }
+                    else return "Đã khóa trước đó";
+                }
+                #endregion
+
+                #region Mở khóa
+                if (ActionCode == "EnableHRCO")
+                {
+                    if (dbitem.IsDisabledHRCO == true)
+                    {
+                        dbitem.IsDisabledHRCO = false;
+                        db.SaveChanges();
+                    }
+                    else return "Đã mở khóa trước đó";
+                }
+                #endregion
+                #endregion
+
+                #region Khóa dữ liệu HDDD
+                #region Khóa
+                if (ActionCode == "DisableHDDD")
+                {
+                    if (dbitem.IsDisabledHDDD != true)
+                    {
+                        dbitem.IsDisabledHDDD = true;
+                        db.SaveChanges();
+                    }
+                    else return "Đã khóa trước đó";
+                }
+                #endregion
+
+                #region Mở khóa
+                if (ActionCode == "EnableHDDD")
+                {
+                    if (dbitem.IsDisabledHDDD == true)
+                    {
+                        dbitem.IsDisabledHDDD = false;
+                        db.SaveChanges();
+                    }
+                    else return "Đã mở khóa trước đó";
                 }
                 #endregion
                 #endregion
@@ -844,7 +912,7 @@ namespace BaseBusiness
             var staff = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == StaffID);
             if (staff != null)
             {
-                if (staff.IsHRCO != true)
+                if (staff.tbl_CUS_SYS_Role == null || staff.tbl_CUS_SYS_Role.Code != "ADMIN")
                     query = query.Where(c => c.IDNCV == staff.ID || c.IDChuNhiem == staff.ID || (c.tbl_PRO_NCVKhac.Count > 0 && c.tbl_PRO_NCVKhac.Any(d => d.IDNCV == staff.ID)));
             }
             else query = query.Where(c => false);

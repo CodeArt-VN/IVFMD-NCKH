@@ -96,7 +96,7 @@ namespace BaseBusiness
                 PhuLuc_JSON_NguyenVatLieu = s.PhuLuc_JSON_NguyenVatLieu,
                 HTML = s.HTML,
                 FormConfig = s.FormConfig,
-                IsDisabled = s.IsDisabled,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
@@ -143,7 +143,59 @@ namespace BaseBusiness
                         query.A6_DiaChiCoQuan = chunhiem.DiaChi_CoQuan;
                         query.A6_DienThoai = chunhiem.DienThoai_CaNhan;
                         query.A6_Email = chunhiem.Email_CaNhan;
+
+                        query.ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu();
+                        query.ChuNhiemDeTai.HoTen = query.A6_HoTen;
+                        query.ChuNhiemDeTai.DonVi = chunhiem.TruongVien;
                     }
+
+                    var dxdg = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == deTaiId && c.IsDeleted == false);
+                    if (dxdg != null)
+                    {
+                        query.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<br>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay;
+                        query.A7_TenCoQuan = dxdg.TenDonViChuTri;
+                        query.A7_DiaChi = dxdg.DiaChiDonVi;
+                        query.A7_DienThoai = dxdg.DienThoaiDonVi;
+                    }
+
+                    if (string.IsNullOrEmpty(query.A1_TenTiengViet))
+                        query.A1_TenTiengViet = "(Đề tài chưa nhập tên Tiếng Việt)";
+                    if (string.IsNullOrEmpty(query.A1_TenTiengAnh))
+                        query.A1_TenTiengAnh = "(Đề tài chưa nhập tên Tiếng Anh)";
+                    if (string.IsNullOrEmpty(query.A6_HoTen))
+                        query.A6_HoTen = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_NgaySinh))
+                        query.A6_NgaySinh = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_GioiTinh))
+                        query.A6_GioiTinh = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_CMND))
+                        query.A6_CMND = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_NgayCap))
+                        query.A6_NgayCap = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_NoiCap))
+                        query.A6_NoiCap = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_MST))
+                        query.A6_MST = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_STK))
+                        query.A6_STK = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_NganHang))
+                        query.A6_NganHang = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_DiaChiCoQuan))
+                        query.A6_DiaChiCoQuan = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A6_Email))
+                        query.A6_Email = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.ChuNhiemDeTai.HoTen))
+                        query.ChuNhiemDeTai.HoTen = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.ChuNhiemDeTai.DonVi))
+                        query.ChuNhiemDeTai.DonVi = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A4_ThoiGianThucHien))
+                        query.A4_ThoiGianThucHien = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A7_TenCoQuan))
+                        query.A7_TenCoQuan = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A7_DiaChi))
+                        query.A7_DiaChi = "(LLKH của chủ nhiệm chưa nhập)";
+                    if (string.IsNullOrEmpty(query.A7_DienThoai))
+                        query.A7_DienThoai = "(LLKH của chủ nhiệm chưa nhập)";
                 }
             }
 

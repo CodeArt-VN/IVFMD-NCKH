@@ -69,29 +69,29 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
 
             self.ListNCV = ko.observableArray(ko.utils.arrayMap(item.ListNCV || [{}, {}, {}], function (nn) {
                 return {
-                    HoTen: ko.observable(nn.ThoiGian || ""),
-                    ChucDanh: ko.observable(nn.TenHiepHoi || ""),
-                    ChucVu: ko.observable(nn.ChucDanh || "")
+                    HoTen: ko.observable(nn.HoTen || ""),
+                    ChucDanh: ko.observable(nn.ChucDanh || ""),
+                    ChucVu: ko.observable(nn.ChucVu || "")
                 };
             }));
 
             self.ListCoQuan = ko.observableArray(ko.utils.arrayMap(item.ListCoQuan || [{}, {}, {}, {}, {}], function (nn) {
                 return {
-                    CoQuan: ko.observable(nn.ThoiGian || ""),
-                    DuocCapPhep: ko.observable(nn.TenHiepHoi || false),
-                    ChoCapPhep: ko.observable(nn.ChucDanh || false),
-                    ChuaXinPhep: ko.observable(nn.ChucDanh || false),
-                    GhiChuKhac: ko.observable(nn.ChucDanh || false)
+                    CoQuan: ko.observable(nn.CoQuan || ""),
+                    DuocCapPhep: ko.observable(nn.DuocCapPhep || false),
+                    ChoCapPhep: ko.observable(nn.ChoCapPhep || false),
+                    ChuaXinPhep: ko.observable(nn.ChuaXinPhep || false),
+                    GhiChuKhac: ko.observable(nn.GhiChuKhac || false)
                 };
             }));
 
             self.CanKet_ListChuKy = ko.observableArray(ko.utils.arrayMap(item.CanKet_ListChuKy || [{}, {}, {}, {}, {}], function (nn) {
                 return {
-                    BoMon: ko.observable(nn.ThoiGian || ""),
-                    NgayKy: ko.observable(nn.TenHiepHoi || ""),
-                    ThangKy: ko.observable(nn.ChucDanh || ""),
-                    NamKy: ko.observable(nn.ChucDanh || ""),
-                    HoTenVaChucDanh: ko.observable(nn.ChucDanh || "")
+                    BoMon: ko.observable(nn.BoMon || ""),
+                    NgayKy: ko.observable(nn.NgayKy || ""),
+                    ThangKy: ko.observable(nn.ThangKy || ""),
+                    NamKy: ko.observable(nn.NamKy || ""),
+                    HoTenVaChucDanh: ko.observable(nn.HoTenVaChucDanh || "")
                 };
             }));
 

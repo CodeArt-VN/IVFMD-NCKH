@@ -150,6 +150,11 @@ namespace ClassLibrary
         public string YKienTruongKhoa_HoTenVaChucDanh { get; set; }
         public string JSON_ChuKy { get; set; }
         public string FormConfig { get; set; }
+        public Nullable<bool> QuyChe_CoTroGiupKiThuat { get; set; }
+        public string NguyCoTiemTang_SucKhoeVaTinhAnToan { get; set; }
+        public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
+        public string NguyCoTiemTang_ThaoTacGen { get; set; }
+        public Nullable<bool> JSON_CanKet_ListChuKy { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -293,6 +298,11 @@ namespace DTOModel
 		public string YKienTruongKhoa_HoTenVaChucDanh { get; set; }
 		public string JSON_ChuKy { get; set; }
 		public string FormConfig { get; set; }
+		public Nullable<bool> QuyChe_CoTroGiupKiThuat { get; set; }
+		public string NguyCoTiemTang_SucKhoeVaTinhAnToan { get; set; }
+		public string NguyCoTiemTang_CacVanDeAnToanSinhHoc { get; set; }
+		public string NguyCoTiemTang_ThaoTacGen { get; set; }
+		public Nullable<bool> JSON_CanKet_ListChuKy { get; set; }
 	}
 }
 
@@ -449,7 +459,12 @@ namespace BaseBusiness
 				YKienTruongKhoa_NamKy = s.YKienTruongKhoa_NamKy,							
 				YKienTruongKhoa_HoTenVaChucDanh = s.YKienTruongKhoa_HoTenVaChucDanh,							
 				JSON_ChuKy = s.JSON_ChuKy,							
-				FormConfig = s.FormConfig,					
+				FormConfig = s.FormConfig,							
+				QuyChe_CoTroGiupKiThuat = s.QuyChe_CoTroGiupKiThuat,							
+				NguyCoTiemTang_SucKhoeVaTinhAnToan = s.NguyCoTiemTang_SucKhoeVaTinhAnToan,							
+				NguyCoTiemTang_CacVanDeAnToanSinhHoc = s.NguyCoTiemTang_CacVanDeAnToanSinhHoc,							
+				NguyCoTiemTang_ThaoTacGen = s.NguyCoTiemTang_ThaoTacGen,							
+				JSON_CanKet_ListChuKy = s.JSON_CanKet_ListChuKy,					
 			});
                               
         }
@@ -594,7 +609,12 @@ namespace BaseBusiness
 					YKienTruongKhoa_NamKy = dbResult.YKienTruongKhoa_NamKy,							
 					YKienTruongKhoa_HoTenVaChucDanh = dbResult.YKienTruongKhoa_HoTenVaChucDanh,							
 					JSON_ChuKy = dbResult.JSON_ChuKy,							
-					FormConfig = dbResult.FormConfig,
+					FormConfig = dbResult.FormConfig,							
+					QuyChe_CoTroGiupKiThuat = dbResult.QuyChe_CoTroGiupKiThuat,							
+					NguyCoTiemTang_SucKhoeVaTinhAnToan = dbResult.NguyCoTiemTang_SucKhoeVaTinhAnToan,							
+					NguyCoTiemTang_CacVanDeAnToanSinhHoc = dbResult.NguyCoTiemTang_CacVanDeAnToanSinhHoc,							
+					NguyCoTiemTang_ThaoTacGen = dbResult.NguyCoTiemTang_ThaoTacGen,							
+					JSON_CanKet_ListChuKy = dbResult.JSON_CanKet_ListChuKy,
 				};
 			}
 			else
@@ -1585,6 +1605,31 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FormConfig == keyword);
             }
 
+			//Query QuyChe_CoTroGiupKiThuat (Nullable<bool>)
+
+			//Query NguyCoTiemTang_SucKhoeVaTinhAnToan (string)
+			if (QueryStrings.Any(d => d.Key == "NguyCoTiemTang_SucKhoeVaTinhAnToan") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_SucKhoeVaTinhAnToan").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_SucKhoeVaTinhAnToan").Value;
+                query = query.Where(d=>d.NguyCoTiemTang_SucKhoeVaTinhAnToan == keyword);
+            }
+
+			//Query NguyCoTiemTang_CacVanDeAnToanSinhHoc (string)
+			if (QueryStrings.Any(d => d.Key == "NguyCoTiemTang_CacVanDeAnToanSinhHoc") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_CacVanDeAnToanSinhHoc").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_CacVanDeAnToanSinhHoc").Value;
+                query = query.Where(d=>d.NguyCoTiemTang_CacVanDeAnToanSinhHoc == keyword);
+            }
+
+			//Query NguyCoTiemTang_ThaoTacGen (string)
+			if (QueryStrings.Any(d => d.Key == "NguyCoTiemTang_ThaoTacGen") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_ThaoTacGen").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "NguyCoTiemTang_ThaoTacGen").Value;
+                query = query.Where(d=>d.NguyCoTiemTang_ThaoTacGen == keyword);
+            }
+
+			//Query JSON_CanKet_ListChuKy (Nullable<bool>)
+
 
 			return toDTO(query);
 
@@ -1734,7 +1779,12 @@ namespace BaseBusiness
 				dbitem.YKienTruongKhoa_NamKy = item.YKienTruongKhoa_NamKy;							
 				dbitem.YKienTruongKhoa_HoTenVaChucDanh = item.YKienTruongKhoa_HoTenVaChucDanh;							
 				dbitem.JSON_ChuKy = item.JSON_ChuKy;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.QuyChe_CoTroGiupKiThuat = item.QuyChe_CoTroGiupKiThuat;							
+				dbitem.NguyCoTiemTang_SucKhoeVaTinhAnToan = item.NguyCoTiemTang_SucKhoeVaTinhAnToan;							
+				dbitem.NguyCoTiemTang_CacVanDeAnToanSinhHoc = item.NguyCoTiemTang_CacVanDeAnToanSinhHoc;							
+				dbitem.NguyCoTiemTang_ThaoTacGen = item.NguyCoTiemTang_ThaoTacGen;							
+				dbitem.JSON_CanKet_ListChuKy = item.JSON_CanKet_ListChuKy;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1890,7 +1940,12 @@ namespace BaseBusiness
 				dbitem.YKienTruongKhoa_NamKy = item.YKienTruongKhoa_NamKy;							
 				dbitem.YKienTruongKhoa_HoTenVaChucDanh = item.YKienTruongKhoa_HoTenVaChucDanh;							
 				dbitem.JSON_ChuKy = item.JSON_ChuKy;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.QuyChe_CoTroGiupKiThuat = item.QuyChe_CoTroGiupKiThuat;							
+				dbitem.NguyCoTiemTang_SucKhoeVaTinhAnToan = item.NguyCoTiemTang_SucKhoeVaTinhAnToan;							
+				dbitem.NguyCoTiemTang_CacVanDeAnToanSinhHoc = item.NguyCoTiemTang_CacVanDeAnToanSinhHoc;							
+				dbitem.NguyCoTiemTang_ThaoTacGen = item.NguyCoTiemTang_ThaoTacGen;							
+				dbitem.JSON_CanKet_ListChuKy = item.JSON_CanKet_ListChuKy;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

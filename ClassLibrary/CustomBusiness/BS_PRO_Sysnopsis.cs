@@ -33,7 +33,7 @@ namespace BaseBusiness
                 References = s.References,
                 HTML = s.HTML,
                 FormConfig = s.FormConfig,
-                IsDisabled = s.IsDisabled,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHRCO ?? false,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,

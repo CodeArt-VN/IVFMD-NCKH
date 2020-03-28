@@ -68,13 +68,92 @@ namespace BaseBusiness
                 LoiIchTiemTang_DongGopKhoaHoc = s.LoiIchTiemTang_DongGopKhoaHoc,
                 LoiIchTiemTang_SoSanh = s.LoiIchTiemTang_SoSanh,
                 HTML = s.HTML,
-                FormConfig = s.FormConfig,
-                IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                NguoiThamGiaNghienCuu_DuKien = s.NguoiThamGiaNghienCuu_DuKien,
+                NguoiThamGiaNghienCuu_CachXacDinh = s.NguoiThamGiaNghienCuu_CachXacDinh,
+                NguoiThamGiaNghienCuu_TreViThanhNien = s.NguoiThamGiaNghienCuu_TreViThanhNien,
+                NguoiThamGiaNghienCuu_ThieuNangTriTue = s.NguoiThamGiaNghienCuu_ThieuNangTriTue,
+                NguoiThamGiaNghienCuu_CoQuanHeLeThuoc = s.NguoiThamGiaNghienCuu_CoQuanHeLeThuoc,
+                NguoiThamGiaNghienCuu_MoiQuanHeSanCo = s.NguoiThamGiaNghienCuu_MoiQuanHeSanCo,
+                NguoiThamGiaNghienCuu_RaoCanNgonNgu = s.NguoiThamGiaNghienCuu_RaoCanNgonNgu,
+                NguoiThamGiaNghienCuu_SangTuyen = s.NguoiThamGiaNghienCuu_SangTuyen,
+                NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung = s.NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung,
+                NguoiThamGiaNghienCuu_DanTocThieuSo = s.NguoiThamGiaNghienCuu_DanTocThieuSo,
+                NguoiThamGiaNghienCuu_ThamGiaTapThe = s.NguoiThamGiaNghienCuu_ThamGiaTapThe,
+                NguoiThamGiaNghienCuu_ChiTraKhuyenKhich = s.NguoiThamGiaNghienCuu_ChiTraKhuyenKhich,
+                NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung = s.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung,
+                NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat = s.NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat,
+                QuyTrinhXinChapThuanTinhNguyen = s.QuyTrinhXinChapThuanTinhNguyen,
+                QuanLyDLVaBaoMat_ThuThapTrucTiep = s.QuanLyDLVaBaoMat_ThuThapTrucTiep,
+                QuanLyDLVaBaoMat_TiepCanThongTinCaNhan = s.QuanLyDLVaBaoMat_TiepCanThongTinCaNhan,
+                QuanLyDLVaBaoMat_GhiLaiDL = s.QuanLyDLVaBaoMat_GhiLaiDL,
+                QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam = s.QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam,
+                QuanLyDLVaBaoMat_BaoMatThongTin = s.QuanLyDLVaBaoMat_BaoMatThongTin,
+                QuanLyDLVaBaoMat_LuuTruDLTrongXNam = s.QuanLyDLVaBaoMat_LuuTruDLTrongXNam,
+                QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat = s.QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat,
+                QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan = s.QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan,
+                QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru = s.QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru,
+                QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon = s.QuanLyDLVaBaoMat_DLBaoCaoKetQua_ChapThuanCuaBoMon,
+                QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat = s.QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat,
+                QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan = s.QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan,
+                QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru = s.QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru,
+                QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon = s.QuanLyDLVaBaoMat_DLTrongNghienCuu_ChapThuanCuaBoMon,
+                QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru = s.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru,
+                QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo = s.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo,
+                QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat = s.QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat,
+                ThoiGianThucHien_ThuNghiem_NgayBatDau = s.ThoiGianThucHien_ThuNghiem_NgayBatDau,
+                ThoiGianThucHien_ThuNghiem_NgayKetThuc = s.ThoiGianThucHien_ThuNghiem_NgayKetThuc,
+                ThoiGianThucHien_ThuNghiem_ThangBatDau = s.ThoiGianThucHien_ThuNghiem_ThangBatDau,
+                ThoiGianThucHien_ThuNghiem_ThangKetThuc = s.ThoiGianThucHien_ThuNghiem_ThangKetThuc,
+                ThoiGianThucHien_ThuNghiem_NamBatDau = s.ThoiGianThucHien_ThuNghiem_NamBatDau,
+                ThoiGianThucHien_ThuNghiem_NamKetThuc = s.ThoiGianThucHien_ThuNghiem_NamKetThuc,
+                ThoiGianThucHien_ThuThapDL_NgayBatDau = s.ThoiGianThucHien_ThuThapDL_NgayBatDau,
+                ThoiGianThucHien_ThuThapDL_NgayKetThuc = s.ThoiGianThucHien_ThuThapDL_NgayKetThuc,
+                ThoiGianThucHien_ThuThapDL_ThangBatDau = s.ThoiGianThucHien_ThuThapDL_ThangBatDau,
+                ThoiGianThucHien_ThuThapDL_ThangKetThuc = s.ThoiGianThucHien_ThuThapDL_ThangKetThuc,
+                ThoiGianThucHien_ThuThapDL_NamBatDau = s.ThoiGianThucHien_ThuThapDL_NamBatDau,
+                ThoiGianThucHien_ThuThapDL_NamKetThuc = s.ThoiGianThucHien_ThuThapDL_NamKetThuc,
+                ThoiGianThucHien_TongThoiGian_NgayBatDau = s.ThoiGianThucHien_TongThoiGian_NgayBatDau,
+                ThoiGianThucHien_TongThoiGian_NgayKetThuc = s.ThoiGianThucHien_TongThoiGian_NgayKetThuc,
+                ThoiGianThucHien_TongThoiGian_ThangBatDau = s.ThoiGianThucHien_TongThoiGian_ThangBatDau,
+                ThoiGianThucHien_TongThoiGian_ThangKetThuc = s.ThoiGianThucHien_TongThoiGian_ThangKetThuc,
+                ThoiGianThucHien_TongThoiGian_NamBatDau = s.ThoiGianThucHien_TongThoiGian_NamBatDau,
+                ThoiGianThucHien_TongThoiGian_NamKetThuc = s.ThoiGianThucHien_TongThoiGian_NamKetThuc,
+                MauThuanLoiIch_NghienCuuTheoYeuCau = s.MauThuanLoiIch_NghienCuuTheoYeuCau,
+                MauThuanLoiIch_PhuThuocTaiChinh = s.MauThuanLoiIch_PhuThuocTaiChinh,
+                MauThuanLoiIch_LoiIchTaiChinh = s.MauThuanLoiIch_LoiIchTaiChinh,
+                CanNhacDaoDucKhac = s.CanNhacDaoDucKhac,
+                TongQuanTaiLieuKeHoachPhuongPhap = s.TongQuanTaiLieuKeHoachPhuongPhap,
+                CanKet_TenNCYSH = s.CanKet_TenNCYSH,
+                YKienNguoiHuongDan_TenNCYSH = s.YKienNguoiHuongDan_TenNCYSH,
+                YKienNguoiHuongDan_NhanXet = s.YKienNguoiHuongDan_NhanXet,
+                YKienNguoiHuongDan_BoMon = s.YKienNguoiHuongDan_BoMon,
+                YKienNguoiHuongDan_NgayKy = s.YKienNguoiHuongDan_NgayKy,
+                YKienNguoiHuongDan_ThangKy = s.YKienNguoiHuongDan_ThangKy,
+                YKienNguoiHuongDan_NamKy = s.YKienNguoiHuongDan_NamKy,
+                YKienNguoiHuongDan_HoTenVaChucDanh = s.YKienNguoiHuongDan_HoTenVaChucDanh,
+                YKienTruongKhoa_XemXetBoiHDKH = s.YKienTruongKhoa_XemXetBoiHDKH,
+                YKienTruongKhoa_XemXetBoiCapCaNhan = s.YKienTruongKhoa_XemXetBoiCapCaNhan,
+                YKienTruongKhoa_XemXetBoiKhoaPhong = s.YKienTruongKhoa_XemXetBoiKhoaPhong,
+                YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap = s.YKienTruongKhoa_CanXemXetBoiChuyenGiaDocLap,
+                YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap = s.YKienTruongKhoa_KhongXemXetBoiChuyenGiaDocLap,
+                YKienTruongKhoa_NhanXet = s.YKienTruongKhoa_NhanXet,
+                YKienTruongKhoa_BoMon = s.YKienTruongKhoa_BoMon,
+                YKienTruongKhoa_NgayKy = s.YKienTruongKhoa_NgayKy,
+                YKienTruongKhoa_ThangKy = s.YKienTruongKhoa_ThangKy,
+                YKienTruongKhoa_NamKy = s.YKienTruongKhoa_NamKy,
+                YKienTruongKhoa_HoTenVaChucDanh = s.YKienTruongKhoa_HoTenVaChucDanh,
+                JSON_ChuKy = s.JSON_ChuKy,
+                FormConfig = s.FormConfig,
+                QuyChe_CoTroGiupKiThuat = s.QuyChe_CoTroGiupKiThuat,
+                NguyCoTiemTang_SucKhoeVaTinhAnToan = s.NguyCoTiemTang_SucKhoeVaTinhAnToan,
+                NguyCoTiemTang_CacVanDeAnToanSinhHoc = s.NguyCoTiemTang_CacVanDeAnToanSinhHoc,
+                NguyCoTiemTang_ThaoTacGen = s.NguyCoTiemTang_ThaoTacGen,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
             }).FirstOrDefault();
 
             if (query == null)
@@ -98,6 +177,7 @@ namespace BaseBusiness
 
                 query.ListCoQuan = new List<DTO_PRO_PhieuXemXetDaoDuc_CoQuan>() { new DTO_PRO_PhieuXemXetDaoDuc_CoQuan() };
                 query.ListNCV = new List<DTO_PRO_PhieuXemXetDaoDuc_NCV>() { new DTO_PRO_PhieuXemXetDaoDuc_NCV() };
+                query.CanKet_ListChuKy = new List<DTO_PRO_PhieuXemXetDaoDuc_ChuKy>() { new DTO_PRO_PhieuXemXetDaoDuc_ChuKy() };
             }
             else
             {
@@ -109,6 +189,10 @@ namespace BaseBusiness
                 if (!string.IsNullOrWhiteSpace(query.JSON_CacNCV))
                 {
                     query.ListNCV = JsonConvert.DeserializeObject<List<DTO_PRO_PhieuXemXetDaoDuc_NCV>>(query.JSON_CacNCV);
+                }
+                if (!string.IsNullOrWhiteSpace(query.JSON_ChuKy))
+                {
+                    query.CanKet_ListChuKy = JsonConvert.DeserializeObject<List<DTO_PRO_PhieuXemXetDaoDuc_ChuKy>>(query.JSON_ChuKy);
                 }
             }
 

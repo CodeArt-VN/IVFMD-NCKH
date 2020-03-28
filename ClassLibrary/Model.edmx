@@ -1419,6 +1419,11 @@
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="nvarchar(max)" />
           <Property Name="JSON_ChuKy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
+          <Property Name="QuyChe_CoTroGiupKiThuat" Type="bit" />
+          <Property Name="NguyCoTiemTang_SucKhoeVaTinhAnToan" Type="nvarchar(max)" />
+          <Property Name="NguyCoTiemTang_CacVanDeAnToanSinhHoc" Type="nvarchar(max)" />
+          <Property Name="NguyCoTiemTang_ThaoTacGen" Type="nvarchar(max)" />
+          <Property Name="JSON_CanKet_ListChuKy" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
           <Key>
@@ -5128,9 +5133,9 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
           <Property Name="ThoiGian_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGian_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -5687,6 +5692,11 @@
           <Property Name="YKienTruongKhoa_HoTenVaChucDanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuyChe_CoTroGiupKiThuat" Type="Boolean" />
+          <Property Name="NguyCoTiemTang_SucKhoeVaTinhAnToan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguyCoTiemTang_CacVanDeAnToanSinhHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguyCoTiemTang_ThaoTacGen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JSON_CanKet_ListChuKy" Type="Boolean" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_PhieuXemXetDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_PhieuXemXetDaoDuc" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_SAE">
@@ -8840,6 +8850,11 @@
           <EntitySetMapping Name="tbl_PRO_PhieuXemXetDaoDuc">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_PhieuXemXetDaoDuc">
               <MappingFragment StoreEntitySet="tbl_PRO_PhieuXemXetDaoDuc">
+                <ScalarProperty Name="JSON_CanKet_ListChuKy" ColumnName="JSON_CanKet_ListChuKy" />
+                <ScalarProperty Name="NguyCoTiemTang_ThaoTacGen" ColumnName="NguyCoTiemTang_ThaoTacGen" />
+                <ScalarProperty Name="NguyCoTiemTang_CacVanDeAnToanSinhHoc" ColumnName="NguyCoTiemTang_CacVanDeAnToanSinhHoc" />
+                <ScalarProperty Name="NguyCoTiemTang_SucKhoeVaTinhAnToan" ColumnName="NguyCoTiemTang_SucKhoeVaTinhAnToan" />
+                <ScalarProperty Name="QuyChe_CoTroGiupKiThuat" ColumnName="QuyChe_CoTroGiupKiThuat" />
                 <ScalarProperty Name="FormConfig" ColumnName="FormConfig" />
                 <ScalarProperty Name="JSON_ChuKy" ColumnName="JSON_ChuKy" />
                 <ScalarProperty Name="YKienTruongKhoa_HoTenVaChucDanh" ColumnName="YKienTruongKhoa_HoTenVaChucDanh" />

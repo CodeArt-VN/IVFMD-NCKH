@@ -51,7 +51,9 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult GetCustom(int id)
         {
-            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id, user.StaffID);
             if (tbl_PRO_DeTai == null)
             {
                 return NotFound();
@@ -64,10 +66,11 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult UpdateStatus(int id, string actionCode, int typeId)
         {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, typeId, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
-            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id, user.StaffID);
             if (tbl_PRO_DeTai == null)
             {
                 return NotFound();
@@ -79,10 +82,11 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult UpdateNCT(int id, string soNCT)
         {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             var result = BS_PRO_DeTai.updateNCT_PRO_DeTai(db, id, soNCT, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
-            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id);
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id, user.StaffID);
             if (tbl_PRO_DeTai == null)
             {
                 return NotFound();
@@ -94,10 +98,11 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult UpdateMaSo(DTO_PRO_DeTai tbl_PRO_DeTai)
         {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             var result = BS_PRO_DeTai.updateMaSo_PRO_DeTai(db, tbl_PRO_DeTai, Username);
             if (!string.IsNullOrEmpty(result))
                 return BadRequest(result);
-            DTO_PRO_DeTai item = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, tbl_PRO_DeTai.ID);
+            DTO_PRO_DeTai item = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, tbl_PRO_DeTai.ID, user.StaffID);
             if (tbl_PRO_DeTai == null)
             {
                 return NotFound();

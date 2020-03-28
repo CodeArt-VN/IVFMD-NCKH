@@ -77,13 +77,36 @@ namespace BaseBusiness
                 YKienHDDD_CanDuocHoiDongXemXet = s.YKienHDDD_CanDuocHoiDongXemXet,
                 YKienHDDD_NhanXet = s.YKienHDDD_NhanXet,
                 HTML = s.HTML,
-                FormConfig = s.FormConfig,
-                IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                YKienHDDD_So = s.YKienHDDD_So,
+                NgayKy_Ngay = s.NgayKy_Ngay,
+                NgayKy_Thang = s.NgayKy_Thang,
+                NgayKy_Nam = s.NgayKy_Nam,
+                PhanSau_NCYSH_KhongThuocPhamVi_Co = s.PhanSau_NCYSH_KhongThuocPhamVi_Co,
+                PhanSau_NCYSH_KhongThuocPhamVi_Khong = s.PhanSau_NCYSH_KhongThuocPhamVi_Khong,
+                PhanSau_NCYSH_GuiThongBao_KHTH_Co = s.PhanSau_NCYSH_GuiThongBao_KHTH_Co,
+                PhanSau_NCYSH_GuiThongBao_KHTH_Khong = s.PhanSau_NCYSH_GuiThongBao_KHTH_Khong,
+                PhanSau_NCYSH_GuiThongBao_TCKT_Co = s.PhanSau_NCYSH_GuiThongBao_TCKT_Co,
+                PhanSau_NCYSH_GuiThongBao_TCKT_Khong = s.PhanSau_NCYSH_GuiThongBao_TCKT_Khong,
+                PhanSau_NGS_KhongThuocPhamVi_Co = s.PhanSau_NGS_KhongThuocPhamVi_Co,
+                PhanSau_NGS_KhongThuocPhamVi_Khong = s.PhanSau_NGS_KhongThuocPhamVi_Khong,
+                PhanSau_TruongKhoa_KhongThuocPhamVi_Co = s.PhanSau_TruongKhoa_KhongThuocPhamVi_Co,
+                PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = s.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong,
+                ThoiGianTienHanhDenNgay_Ngay = s.ThoiGianTienHanhDenNgay_Ngay,
+                ThoiGianTienHanhDenNgay_Thang = s.ThoiGianTienHanhDenNgay_Thang,
+                ThoiGianTienHanhDenNgay_Nam = s.ThoiGianTienHanhDenNgay_Nam,
+                ThoiGianThuThapDenNgay_Ngay = s.ThoiGianThuThapDenNgay_Ngay,
+                ThoiGianThuThapDenNgay_Thang = s.ThoiGianThuThapDenNgay_Thang,
+                ThoiGianThuThapDenNgay_Nam = s.ThoiGianThuThapDenNgay_Nam,
+                ThoiGianNghienCuuDenNgay_Ngay = s.ThoiGianNghienCuuDenNgay_Ngay,
+                ThoiGianNghienCuuDenNgay_Thang = s.ThoiGianNghienCuuDenNgay_Thang,
+                ThoiGianNghienCuuDenNgay_Nam = s.ThoiGianNghienCuuDenNgay_Nam,
+                FormConfig = s.FormConfig,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
             }).FirstOrDefault();
 
             if (query == null)
@@ -126,6 +149,25 @@ namespace BaseBusiness
                         query.PhanBon_C1_TieuChuanNhanVao = thuyetminh.B3221_TieuChuanNhan;
                         query.PhanBon_C1_TieuChuanLoaiRa = thuyetminh.B3221_TieuChuanLoai;
                     }
+
+                    if (string.IsNullOrEmpty(query.PhanHai_TenNCYSH))
+                        query.PhanHai_TenNCYSH = "(Đề tài chưa nhập tên Tiếng Việt)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_HoTen))
+                        query.PhanHai_NCVChinh_HoTen = "(SYLL chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_Email))
+                        query.PhanHai_NCVChinh_Email = "(SYLL chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DienThoai))
+                        query.PhanHai_NCVChinh_DienThoai = "(SYLL chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DiaChiLienHe))
+                        query.PhanHai_NCVChinh_DiaChiLienHe = "(SYLL chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_BenhVien))
+                        query.PhanHai_NCVChinh_BenhVien = "(SYLL chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_KhoaPhong))
+                        query.PhanHai_NCVChinh_KhoaPhong = "(LLKH chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanNhanVao))
+                        query.PhanBon_C1_TieuChuanNhanVao = "(Thuyết minh đề tài chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanLoaiRa))
+                        query.PhanBon_C1_TieuChuanLoaiRa = "(Thuyết minh đề tài chưa nhập)";
                 }
 
                 query.NCVKhac = new List<DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac>() { new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac() };
