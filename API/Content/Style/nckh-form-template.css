@@ -142,6 +142,8 @@
           vertical-align: top; }
           .nckh-form-template table.nckh-table tbody tr td[contenteditable="true"] {
             padding: 6px; }
+          .nckh-form-template table.nckh-table tbody tr td[contenteditable="false"] {
+            height: 26px; }
     .nckh-form-template table.nckh-table.td-padding-0 tbody tr > td {
       padding: 0; }
     .nckh-form-template table.nckh-table.table-inside-table {
