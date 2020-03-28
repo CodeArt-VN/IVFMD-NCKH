@@ -88,7 +88,6 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
     }
 
     onChangeKinhPhi(e) {
-        debugger
         this.item.GhiChuKinhPhi = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'GhiChu', '');
         this.item.IsKinhPhiManual = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'IsManual', '');
     }

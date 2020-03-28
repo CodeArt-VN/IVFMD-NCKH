@@ -1727,6 +1727,10 @@ export var APIListBase = {
             method: "POST",
             url: function (id, path) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/uploadFullText_PRO_BaoCaoNghiemThuDeTai/") }
         },
+        uploadFileBaoCaoTongHop: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/uploadFileBaoCaoTongHop_PRO_BaoCaoNghiemThuDeTai/") }
+        },
     },
     PRO_ThuyetMinhDeTai: {
         getList: {

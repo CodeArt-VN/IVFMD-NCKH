@@ -168,6 +168,7 @@ namespace BaseBusiness
                 var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == idDeTai);
                 if (detai != null)
                 {
+                    query.IsDisabled = detai.IsDisabledHDDD ?? false;
                     query.TenNCSYH = detai.TenTiengViet;
                     var dgdd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
                     if (dgdd != null)

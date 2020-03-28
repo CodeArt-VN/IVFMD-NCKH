@@ -8,6 +8,18 @@
     <form [formGroup]="formGroup">
         <div padding></div>
         <div class="c-control">
+            <label class="c-label" for="IDTinhTrangNghienCuu">
+                Tình trạng
+                <span *ngIf="!formGroup.controls.IDTinhTrangNghienCuu.valid && !formGroup.controls.IDTinhTrangNghienCuu.pending && (formGroup.controls.IDTinhTrangNghienCuu.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.IDTinhTrangNghienCuu" formControlName="IDTinhTrangNghienCuu">
+                <option *ngFor="let t of tinhTrangs" [value]="t.ID">{{t.ValueOfVar}}</option>
+            </select>
+        </div>
+
+        <div class="c-control">
             <label class="c-label" for="SoCaThuThapHopLe">
                 Số ca thu thập hợp lệ
                 <span *ngIf="!formGroup.controls.SoCaThuThapHopLe.valid && !formGroup.controls.SoCaThuThapHopLe.pending && (formGroup.controls.SoCaThuThapHopLe.dirty || submitAttempt)"
@@ -32,23 +44,11 @@
             <textarea rows="3" class="c-input" id="KhoKhan" [(ngModel)]="item.KhoKhan" formControlName="KhoKhan" type="textarea"></textarea>
         </div>
 
-        <div class="c-control">
-            <label class="c-label" for="IDTinhTrangNghienCuu">Tình trạng
-              <span
-                *ngIf="!formGroup.controls.IDTinhTrangNghienCuu.valid && !formGroup.controls.IDTinhTrangNghienCuu.pending && (formGroup.controls.IDTinhTrangNghienCuu.dirty || submitAttempt)"
-                ion-text color="danger">(*)</span>
-            </label>
-      
-            <select class="c-input c-dropdown" [(ngModel)]="item.IDTinhTrangNghienCuu" formControlName="IDTinhTrangNghienCuu">
-              <option *ngFor="let t of tinhTrangs" [value]="t.ID">{{t.ValueOfVar}}</option>
-            </select>
-          </div>
-
         <div class="c-control" *ngIf="item.ID==0">
             <label class="c-label" for=""></label>
             <button ion-button float-right *ngIf="!isView" (click)="saveChange()">
                 Lưu
-            </button> 
+            </button>
         </div>
         <div class="c-control" *ngIf="item.ID!=0">
             <label class="c-label" for=""></label>

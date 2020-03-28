@@ -129,6 +129,9 @@ export class DeTaiDetailPage extends BasePage {
                 if (this.CurrentFile == "FileChapThuan") {
                     this.uploadChapThuan(data.Path);
                 }
+                if (this.CurrentFile == "FileBaoCaoTongHop") {
+                    this.uploadFileBaoCaoTongHop(data.Path); 
+                }
             }
         }
     }
@@ -366,6 +369,25 @@ export class DeTaiDetailPage extends BasePage {
                 this.listForm2 = this.item.ListFormStatus.filter((c) => { return c.Type == 1 });
                 this.listForm4 = this.item.ListFormStatus.filter((c) => { return c.Type == 3 });
                 this.listForm5 = this.item.ListFormStatus.filter((c) => { return c.Type == 4 });
+                if (this.item.IDTrangThai_HRCO == 19) {
+                    this.statusHRCO = 'Đang chờ HRCO duyệt ';
+                }
+                else if (this.item.IDTrangThai_HRCO == 20) {
+                    this.statusHRCO = 'HRCO đã duyệt ';
+                }
+                if (this.item.IDTrangThai_HDDD == 7) {
+                    this.statusHDDD = 'Đang chờ HĐĐĐ duyệt ';
+                }
+                else if (this.item.IDTrangThai_HRCO == 8) {
+                    this.statusHDDD = 'HĐĐĐ đã duyệt';
+                }
+
+                if (this.item.IDTrangThai_HDKH == 13) {
+                    this.statusHDKH = 'Đang chờ HĐKH duyệt ';
+                }
+                else if (this.item.IDTrangThai_HRCO == 14) {
+                    this.statusHRCO = 'HĐKH đã duyệt';
+                }
                 if (this.loading) this.loading.dismiss();
             });
         });
@@ -744,6 +766,33 @@ export class DeTaiDetailPage extends BasePage {
             this.download(this.item.BaiFullTextNghiemThu);
     }
 
+    uploadFileBaoCaoTongHopClick() {
+        this.CurrentFile = "FileBaoCaoTongHop";
+        this.showActionMore = false;
+        this.importfile.nativeElement.value = "";
+        this.importfile.nativeElement.click();
+    }
+
+    uploadFileBaoCaoTongHop(path) {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.baoCaoNghiemThuProvider.uploadFileBaoCaoTongHop({ ID: this.id, FileBaoCaoTongHop: path }).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.refreshData();
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+            });
+        })
+    }
+
+    downloadFileBaoCaoTongHop() {
+        if (this.item.FileBaoCaoTongHop)
+            this.download(this.item.FileBaoCaoTongHop);
+    }
+
     downloadTemplate() {
         if (this.templateUrl == '') {
             this.thietLapProvider.get().then((value: any) => {
@@ -752,6 +801,27 @@ export class DeTaiDetailPage extends BasePage {
                     {
                         this.templateUrl = value.Template.MauTrinhBayPPT;
                         this.download(value.Template.MauTrinhBayPPT);
+                    }
+                    else
+                        this.toastMessage('Không có file mẫu.');
+                } catch (error) {
+                    this.toastMessage('Không có file mẫu.');
+                }
+            }).catch((data) => {
+            });;
+        }
+        else {
+            this.download(this.templateUrl);
+        }
+    }
+
+    downloadTemplateBaoCaoTongHop() {
+        if (this.templateUrl == '') {
+            this.thietLapProvider.get().then((value: any) => {
+                try {
+                    if (value.Template.MauBaoCaoTongHop) {
+                        this.templateUrl = value.Template.MauBaoCaoTongHop;
+                        this.download(value.Template.MauBaoCaoTongHop);
                     }
                     else
                         this.toastMessage('Không có file mẫu.');

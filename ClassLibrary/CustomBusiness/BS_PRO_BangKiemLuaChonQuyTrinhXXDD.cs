@@ -120,6 +120,7 @@ namespace BaseBusiness
                 var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == idDeTai);
                 if (detai != null)
                 {
+                    query.IsDisabled = detai.IsDisabledHDDD ?? false;
                     query.PhanHai_TenNCYSH = detai.TenTiengViet;
                     var syll = db.tbl_PRO_SYLL.FirstOrDefault(c => c.IDDetai == idDeTai && c.IDNhanSu == detai.IDNCV && c.IsDeleted == false);
                     if (syll != null)
@@ -140,14 +141,16 @@ namespace BaseBusiness
                     var hddd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
                     if (hddd != null)
                     {
-                        query.PhanBon_C1_NoiNhanMau = "Địa điểm: " + hddd.DiaDiemNghienCuu + "<br>" + "Thời gian: " + hddd.ThoiGianNghienCuu + " tháng. Từ" + hddd.TuNgay + " đến tháng " + hddd.DenNgay;
+                        query.PhanBon_C1_NoiNhanMau = "<br>Địa điểm: " + hddd.DiaDiemNghienCuu + "<br>" + "Thời gian: " + hddd.ThoiGianNghienCuu + " tháng. Từ " + hddd.TuNgay + " đến tháng " + hddd.DenNgay;
                     }
 
                     var thuyetminh = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
                     if (thuyetminh != null)
                     {
-                        query.PhanBon_C1_TieuChuanNhanVao = thuyetminh.B3221_TieuChuanNhan;
-                        query.PhanBon_C1_TieuChuanLoaiRa = thuyetminh.B3221_TieuChuanLoai;
+                        query.PhanBon_C1_TieuChuanNhanVao = "<br>" + thuyetminh.B3221_TieuChuanNhan;
+                        query.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
+                        query.PhanBon_C1_TieuChuanNhanVao = query.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
+                        query.PhanBon_C1_TieuChuanLoaiRa = query.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
                     }
 
                     if (string.IsNullOrEmpty(query.PhanHai_TenNCYSH))
@@ -165,9 +168,11 @@ namespace BaseBusiness
                     if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_KhoaPhong))
                         query.PhanHai_NCVChinh_KhoaPhong = "(LLKH chưa nhập)";
                     if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanNhanVao))
-                        query.PhanBon_C1_TieuChuanNhanVao = "(Thuyết minh đề tài chưa nhập)";
+                        query.PhanBon_C1_TieuChuanNhanVao = "<br>" + "(Thuyết minh đề tài chưa nhập)";
                     if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanLoaiRa))
-                        query.PhanBon_C1_TieuChuanLoaiRa = "(Thuyết minh đề tài chưa nhập)";
+                        query.PhanBon_C1_TieuChuanLoaiRa = "<br>" + "(Thuyết minh đề tài chưa nhập)";
+                    if (string.IsNullOrEmpty(query.PhanBon_C1_NoiNhanMau))
+                        query.PhanBon_C1_NoiNhanMau = "<br>" + "(Đơn xin đánh giá chưa nhập)";
                 }
 
                 query.NCVKhac = new List<DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac>() { new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac() };

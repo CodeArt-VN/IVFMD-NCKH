@@ -11,7 +11,7 @@ import { DateAdapter } from "@angular/material";
 export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     FormGroups = [];
     Modules = [];
-    CurrentModule = "NCKH-View";
+    CurrentModule = "NSKH";
     canApprove = false;
     statusList = [
         { 'ID': 1, 'Code': 'ChuaDuyet', 'ValueOfVar': 'Chưa duyệt', 'Selected': false },
@@ -57,7 +57,7 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
 
     preLoadData() {
         this.canApprove = this.isUserCanUse('page-bao-cao-nang-suat-khoa-hoc-hrco');
-        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 8);
         this.Modules = this.getModules();
         super.preLoadData();
     }

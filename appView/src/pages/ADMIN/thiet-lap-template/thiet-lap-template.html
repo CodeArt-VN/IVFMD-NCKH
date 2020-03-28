@@ -15,9 +15,9 @@
         <a class="active">Thiết lập Template</a>
     </div>
     <div class="tools">
-        <button color="success" ion-button icon-only clear (click)="saveCustom()">
+        <!--<button color="success" ion-button icon-only clear (click)="saveCustom()">
             <ion-icon name="checkmark-circle"></ion-icon>
-        </button>
+        </button>-->
     </div>
 
     <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
@@ -43,18 +43,44 @@
         <ion-col class="doc-main">
             <ion-grid>
                 <ion-row responsive-sm>
-                    <ion-col col-6 col-sm-6 padding-right>
+                    <ion-col col-4 col-sm-4 padding-right>
                         <div class="c-control">
                             <label class="c-label" for="MauTrinhBayPPT">Mẫu trình bày Power Point</label>
-
                         </div>
                     </ion-col>
-                    <ion-col col-6 col-sm-6 padding-right>
-                        <a (click)="downloadMauTrinhBayPPT()">
-                            Download
-                        </a>&nbsp;
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && item.Template.MauTrinhBayPPT">
+                        Đã up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && !item.Template.MauTrinhBayPPT">
+                        Chưa up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right>
                         <a (click)="uploadMauTrinhBayPPT()">
-                            Upload
+                            Tải file lên
+                        </a>&nbsp;
+                        <a (click)="downloadMauTrinhBayPPT()">
+                            Tải file xuống
+                        </a>
+                    </ion-col>
+                </ion-row>
+                <ion-row responsive-sm>
+                    <ion-col col-4 col-sm-4 padding-right>
+                        <div class="c-control">
+                            <label class="c-label" for="MauBaoCaoTongHop">Mẫu báo cáo tổng hợp</label>
+                        </div>
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && item.Template.MauBaoCaoTongHop">
+                        Đã up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && !item.Template.MauBaoCaoTongHop">
+                        Chưa up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right>
+                        <a (click)="uploadMauBaoCaoTongHop()">
+                            Tải file lên
+                        </a>&nbsp;
+                        <a (click)="downloadMauBaoCaoTongHop()">
+                            Tải file xuống
                         </a>
                     </ion-col>
                 </ion-row>

@@ -270,11 +270,12 @@ namespace BaseBusiness
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
-                var nghiemthu = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == ID && c.IsDeleted == false && !string.IsNullOrEmpty(c.BaiFulltext));
+                var nghiemthu = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == ID && c.IsDeleted == false);
                 if (nghiemthu != null)
                 {
                     //query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã up", TrangThaiCode = "File" });
                     query.BaiFullTextNghiemThu = nghiemthu.BaiFulltext;
+                    query.FileBaoCaoTongHop = nghiemthu.FileBaoCaoTongHop;
                 }
                 //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa up", TrangThaiCode = "File" });
 

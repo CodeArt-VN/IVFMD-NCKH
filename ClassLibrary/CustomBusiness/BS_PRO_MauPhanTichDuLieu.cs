@@ -64,6 +64,24 @@ namespace BaseBusiness
 
                 return item;
             }
+            else
+            {
+                DTO_PRO_MauPhanTichDuLieu item = new DTO_PRO_MauPhanTichDuLieu
+                {
+                    IDDeTai = deTaiId,
+                    KetQuaThai = new DTO_PRO_MauPhanTichDuLieu_KetQuaThai(),
+                    DacDiemNen = new DTO_PRO_MauPhanTichDuLieu_DacDiemNen(),
+                    KichThichBuongTrung = new DTO_PRO_MauPhanTichDuLieu_KichThichBuongTrung(),
+                    LaBo = new DTO_PRO_MauPhanTichDuLieu_LaBo(),
+                    ChuKyChuyenPhoi = new DTO_PRO_MauPhanTichDuLieu_ChuKyChuyenPhoi(),
+                    BienSoKhac = new DTO_PRO_MauPhanTichDuLieu_BienSoKhac()
+                };
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == deTaiId);
+                if (detai != null)
+                    item.IsDisabled = detai.IsDisabledHRCO ?? false;
+
+                return item;
+            }
             return null;
         }
     }

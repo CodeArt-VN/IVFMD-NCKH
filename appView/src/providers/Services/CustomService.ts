@@ -1097,6 +1097,21 @@ export class PRO_BaoCaoNghiemThuDeTaiCustomProvider extends exService {
                 });
         });
     }
+
+
+    uploadFileBaoCaoTongHop(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_BaoCaoNghiemThuDeTai.uploadFileBaoCaoTongHop;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()

@@ -20,5 +20,6 @@
     public partial class DTO_SYS_Config_Template
     {
         public string MauTrinhBayPPT { get; set; }
+        public string MauBaoCaoTongHop { get; set; }
     }
 }
