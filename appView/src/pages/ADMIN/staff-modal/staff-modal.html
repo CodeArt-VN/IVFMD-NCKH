@@ -101,12 +101,12 @@
                         <input class="c-input" id="Email" [(ngModel)]="item.Email" formControlName="Email" type="text" [attr.disabled]="isViewProfile ? '' : null">
                     </div>
                     <div class="c-control">
-                        <label class="c-label" for="HRCO">
-                            HRCO
-                            <span *ngIf="!formGroup.controls.IsHRCO.valid && !formGroup.controls.IsHRCO.pending && (formGroup.controls.IsHRCO.dirty || submitAttempt)"
+                        <label class="c-label" for="CNDT">
+                            Chủ nhiệm
+                            <span *ngIf="!formGroup.controls.IsCNDT.valid && !formGroup.controls.IsCNDT.pending && (formGroup.controls.IsCNDT.dirty || submitAttempt)"
                                   ion-text></span>
                         </label>
-                        <input id="IsHRCO" [(ngModel)]="item.IsHRCO" formControlName="IsHRCO" type="checkbox" [attr.disabled]="isViewProfile ? '' : null">
+                        <input id="IsCNDT" [(ngModel)]="item.IsCNDT" formControlName="IsCNDT" type="checkbox" [attr.disabled]="isViewProfile ? '' : null">
                     </div>
                     <div class="c-control">
                         <label class="c-label" for="IDRole">

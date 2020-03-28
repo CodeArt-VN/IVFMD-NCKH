@@ -66,6 +66,7 @@ export class StaffModalPage extends DetailPage {
             SoDienThoai: [''],
             DiaChi: [''],
             IDRole: [''],
+            IsCNDT: false,
             IsHRCO: false
         });
 
@@ -150,6 +151,7 @@ export class StaffModalPage extends DetailPage {
             this.userAccount.StaffID = this.item.ID;
             this.userAccount.PartnerID = this.item.IDPartner;
             this.userAccount.IsHRCO = this.item.IsHRCO;
+            this.userAccount.IsCNDT = this.item.IsCNDT;
             this.urserProvider.save(this.userAccount).then(() => {
                 super.saveChange();
             })
@@ -282,6 +284,7 @@ export class StaffModalPage extends DetailPage {
                 this.userAccount.PartnerID = this.item.IDPartner;
                 this.userAccount.UserName = this.newPassword;
                 this.userAccount.IsHRCO = this.item.IsHRCO;
+                this.userAccount.IsCNDT = this.item.IsCNDT;
                 this.urserProvider.save(this.userAccount)
                     .then(() => {
                         this.toastMessage('Đã tạo tài khoản cho nhân sự ' + this.item.Name);

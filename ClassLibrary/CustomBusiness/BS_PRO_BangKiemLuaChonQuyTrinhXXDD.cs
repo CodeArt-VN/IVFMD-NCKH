@@ -108,9 +108,24 @@ namespace BaseBusiness
                         query.PhanHai_NCVChinh_BenhVien = syll.CoQuanLamViec;
                     }
 
+                    var llkh = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == idDeTai && c.IDNhanSu == detai.IDNCV && c.IsDeleted == false);
+                    if (llkh != null)
+                    {
+                        query.PhanHai_NCVChinh_KhoaPhong = llkh.PhongKhoa;
+                    }
+
                     var hddd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
                     if (hddd != null)
-                        query.PhanBon_C1_NoiNhanMau = hddd.DiaDiemNghienCuu;
+                    {
+                        query.PhanBon_C1_NoiNhanMau = "Địa điểm: " + hddd.DiaDiemNghienCuu + "<br>" + "Thời gian: " + hddd.ThoiGianNghienCuu + " tháng. Từ" + hddd.TuNgay + " đến tháng " + hddd.DenNgay;
+                    }
+
+                    var thuyetminh = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == idDeTai && c.IsDeleted == false);
+                    if (thuyetminh != null)
+                    {
+                        query.PhanBon_C1_TieuChuanNhanVao = thuyetminh.B3221_TieuChuanNhan;
+                        query.PhanBon_C1_TieuChuanLoaiRa = thuyetminh.B3221_TieuChuanLoai;
+                    }
                 }
 
                 query.NCVKhac = new List<DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac>() { new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac() };
