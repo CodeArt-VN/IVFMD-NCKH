@@ -525,7 +525,7 @@ export class NCKHServiceProvider {
             } else if (bind.startsWith("checkedHtml")) {
                 var field = bind.split(":")[1].trim();
                 if (excepts.indexOf(field) == -1)
-                    $(o).attr("readonly", "true");
+                    $(o).attr("disabled", "disabled");
             }
         })
         return div.children();
