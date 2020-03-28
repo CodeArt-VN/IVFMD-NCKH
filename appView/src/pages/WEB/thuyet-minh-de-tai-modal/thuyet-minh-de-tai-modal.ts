@@ -89,6 +89,16 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
                 SoThangLamViec: ko.observable(item.ChuNhiemDeTai.SoThangLamViec || ""),
             })
 
+
+            self.ListCoQuanPhoiHop = ko.observableArray(ko.utils.arrayMap(item.ListCoQuanPhoiHop || [{  }], function (nn) {
+                return {
+                    TenCoQuan: ko.observable(nn.TenCoQuan || ""),
+                    HoTenThuTruong: ko.observable(nn.HoTenThuTruong || ""),
+                    DienThoai: ko.observable(nn.DienThoai || ""),
+                    DiaChi: ko.observable(nn.DiaChi || ""),
+                };
+            }));
+
             self.ListNhanLucNghienCuu = ko.observableArray(ko.utils.arrayMap(item.ListNhanLucNghienCuu || [{}, {}, {}, {}], function (nn) {
                 return {
                     TT: ko.observable(nn.TT || ""),
