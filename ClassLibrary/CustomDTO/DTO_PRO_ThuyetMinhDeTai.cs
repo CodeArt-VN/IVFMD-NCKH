@@ -18,6 +18,7 @@ namespace DTOModel
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiNguyenVatLieu { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiThietBi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiKhac { get; set; }
+        public List<DTO_PRO_ThuyetMinhDeTai_DonVi> ListCoQuanPhoiHop { get; set; }
     }
 
     public class DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien
@@ -44,6 +45,14 @@ namespace DTOModel
         public string ThoiGianThucHien { get; set; }
         public string DuKienKetQua { get; set; }
         public string NguoiThucHien { get; set; }
+    }
+
+    public class DTO_PRO_ThuyetMinhDeTai_DonVi
+    {
+        public string TenCoQuan { get; set; }
+        public string HoTenThuTruong { get; set; }
+        public string DienThoai { get; set; }
+        public string DiaChi { get; set; }
     }
 
     public class DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu

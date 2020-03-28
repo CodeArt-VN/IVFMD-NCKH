@@ -136,6 +136,10 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3HDKH),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DuPhong),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
+                    },
+                    ListCoQuanPhoiHop = new List<DTO_PRO_ThuyetMinhDeTai_DonVi>()
+                    {
+                        new DTO_PRO_ThuyetMinhDeTai_DonVi()
                     }
                 };
 
@@ -144,6 +148,10 @@ namespace API.Controllers.PRO
             else
             {
                 tbl_PRO_ThuyetMinhDeTai.HTML = html;
+                if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien))
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListCoQuanPhoiHop = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_DonVi>>(tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien);
+                }
                 if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai))
                 {
                     tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai = JsonConvert.DeserializeObject<DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu>(tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai);
@@ -202,7 +210,8 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
-
+            
+            tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListCoQuanPhoiHop);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);
@@ -231,6 +240,7 @@ namespace API.Controllers.PRO
                 return BadRequest(ModelState);
             }
 
+            tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListCoQuanPhoiHop);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);
             tbl_PRO_ThuyetMinhDeTai.B2_JSON_GioiThieuChuyenGia = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListGioiThieuChuyenGia);

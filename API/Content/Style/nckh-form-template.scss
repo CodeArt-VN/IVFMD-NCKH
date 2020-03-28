@@ -134,6 +134,7 @@
     .box-inline {
         display: table;
         width: 100%;
+        min-height: 26px;
         margin: 0 0 3px 0;
 
         > * {
@@ -160,6 +161,7 @@
     .box {
         display: table;
         width: 100%;
+        min-height: 26px;
         margin: 0 0 3px 0;
 
         .box-title {
