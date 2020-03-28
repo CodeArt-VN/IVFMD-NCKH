@@ -53,9 +53,10 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                FormConfig = s.FormConfig,
             }).FirstOrDefault();
 
-            if(query == null)
+            if (query == null)
             {
                 query = new DTO_PRO_BangKhaiNhanSu
                 {

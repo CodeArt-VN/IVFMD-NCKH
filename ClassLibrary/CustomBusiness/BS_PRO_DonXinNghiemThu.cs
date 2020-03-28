@@ -38,13 +38,17 @@ namespace BaseBusiness
                 BangGiaiNganKinhPhi = s.BangGiaiNganKinhPhi,
                 BaiDangBao = s.BaiDangBao,
                 HTML = s.HTML,
-                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                NgayKy_Ngay = s.NgayKy_Ngay,
+                NgayKy_Thang = s.NgayKy_Thang,
+                NgayKy_Nam = s.NgayKy_Nam,
+                NgayKy_ChuKy = s.NgayKy_ChuKy,
+                FormConfig = s.FormConfig,
             }).FirstOrDefault();
 
             if (query == null)

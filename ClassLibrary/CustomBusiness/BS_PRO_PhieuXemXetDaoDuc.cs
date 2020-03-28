@@ -68,6 +68,7 @@ namespace BaseBusiness
                 LoiIchTiemTang_DongGopKhoaHoc = s.LoiIchTiemTang_DongGopKhoaHoc,
                 LoiIchTiemTang_SoSanh = s.LoiIchTiemTang_SoSanh,
                 HTML = s.HTML,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
@@ -153,7 +154,7 @@ namespace BaseBusiness
                 NguyCoTiemTang_SucKhoeVaTinhAnToan = s.NguyCoTiemTang_SucKhoeVaTinhAnToan,
                 NguyCoTiemTang_CacVanDeAnToanSinhHoc = s.NguyCoTiemTang_CacVanDeAnToanSinhHoc,
                 NguyCoTiemTang_ThaoTacGen = s.NguyCoTiemTang_ThaoTacGen,
-                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
+                JSON_CanKet_ListChuKy = s.JSON_CanKet_ListChuKy,
             }).FirstOrDefault();
 
             if (query == null)

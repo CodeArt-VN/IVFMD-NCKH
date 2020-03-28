@@ -103,6 +103,15 @@ namespace BaseBusiness
                     CreatedBy = s.CreatedBy,
                     ModifiedDate = s.ModifiedDate,
                     ModifiedBy = s.ModifiedBy,
+                    NgayKetThuc_Ngay = s.NgayKetThuc_Ngay,
+                    NgayKetThuc_Thang = s.NgayKetThuc_Thang,
+                    NgayKetThuc_Nam = s.NgayKetThuc_Nam,
+                    NgayKetThuc_Gio = s.NgayKetThuc_Gio,
+                    NgayKetThuc_Phut = s.NgayKetThuc_Phut,
+                    KetQua_TuVong = s.KetQua_TuVong,
+                    TienHanhSAE1_Co = s.TienHanhSAE1_Co,
+                    TienHanhSAE1_Khong = s.TienHanhSAE1_Khong,
+                    FormConfig = s.FormConfig,
                 }).FirstOrDefault();
             }
             else

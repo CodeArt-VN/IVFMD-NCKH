@@ -183,9 +183,15 @@
                         <br />
                         <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
                         <br />
-                        <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" /> Tử vong, ngày tử vong:
-                        <span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Nam">|__|__|__|__|</span>
-                        <br />
+                        <div class="cell-inline">
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" />
+                            Tử vong, ngày tử vong:
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Ngay">|__|__|</div>
+                            /
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Thang">|__|__|</div>
+                            /
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Nam">|__|__|</div>
+                        </div>
                         <input type="checkbox" data-bind="checkedHtml: KetQua_KhongBiet" /> Không biết
                     </td>
                 </tr>

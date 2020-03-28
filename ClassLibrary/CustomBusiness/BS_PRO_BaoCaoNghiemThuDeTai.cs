@@ -39,7 +39,6 @@ namespace BaseBusiness
                 JSON_KetLuan = s.JSON_KetLuan,
                 JSON_TaiLieuThamKhao = s.JSON_TaiLieuThamKhao,
                 HTML = s.HTML,
-                FormConfig = s.FormConfig,
                 IsDisabled = s.IsDisabled,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
@@ -47,6 +46,9 @@ namespace BaseBusiness
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
                 BaiFulltext = s.BaiFulltext,
+                FormConfig = s.FormConfig,
+                ThoiGian_Thang = s.ThoiGian_Thang,
+                ThoiGian_Nam = s.ThoiGian_Nam,
             }).FirstOrDefault();
 
             if (query == null)
@@ -159,6 +161,8 @@ namespace BaseBusiness
                 dbitem.JSON_DanhSachThamGia = string.Empty;
 
             dbitem.FormConfig = item.FormConfig;
+            dbitem.ThoiGian_Nam = item.ThoiGian_Nam;
+            dbitem.ThoiGian_Thang = item.ThoiGian_Thang;
             dbitem.HTML = item.HTML;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;
