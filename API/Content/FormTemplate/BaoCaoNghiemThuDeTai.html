@@ -30,7 +30,7 @@
             <div class="block">
                 <p class="box">
                     <span class="box-title">TÊN ĐỀ TÀI</span>
-                    <span contenteditable="false" style="text-indent:98px;" data-bind="editableHTML: TenDeTai"></span>
+                    <span contenteditable="false" style="text-indent:98px;" data-bind="editableHtml: TenDeTai"></span>
                 </p>
             </div>
             <br />
@@ -49,7 +49,7 @@
                     <tbody style="width:100%;">
                         <tr>
                             <td></td>
-                            <td contenteditable="false" data-bind="editableHTML: ChuNhiemDeTai"></td>
+                            <td contenteditable="false" data-bind="editableHtml: ChuNhiemDeTai"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,9 +60,9 @@
                 </div>
                 <div>
                     THÁNG
-                    <span contenteditable="true" data-bind="editableHTML: ThoiGian_Thang" style="min-width:8px;display:inline-block;"></span>
+                    <span contenteditable="true" data-bind="editableHtml: ThoiGian_Thang" style="min-width:8px;display:inline-block;"></span>
                     NĂM
-                    <span contenteditable="true" data-bind="editableHTML: ThoiGian_Nam" style="min-width:30px;display:inline-block;"></span>
+                    <span contenteditable="true" data-bind="editableHtml: ThoiGian_Nam" style="min-width:30px;display:inline-block;"></span>
                 </div>
             </div>
         </div>
@@ -102,10 +102,10 @@
                     <tbody style="width:100%;" data-bind="foreach: ListCanBo">
                         <tr data-bind="attr: { index: $index, removable: true }">
                             <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                            <td contenteditable="true" data-bind="editableHTML: HocHamHoTen"></td>
-                            <td contenteditable="true" data-bind="editableHTML: ChiuTrachNhiem"></td>
-                            <td contenteditable="true" data-bind="editableHTML: DienThoai"></td>
-                            <td contenteditable="true" data-bind="editableHTML: Email"></td>
+                            <td contenteditable="true" data-bind="editableHtml: HocHamHoTen"></td>
+                            <td contenteditable="true" data-bind="editableHtml: ChiuTrachNhiem"></td>
+                            <td contenteditable="true" data-bind="editableHtml: DienThoai"></td>
+                            <td contenteditable="true" data-bind="editableHtml: Email"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -125,7 +125,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_TomTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_TomTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -142,7 +142,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Abstract" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Abstract" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -159,7 +159,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_LoiCamOn" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_LoiCamOn" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -176,7 +176,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_MucLuc" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_MucLuc" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -193,7 +193,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_CacChuVietTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_CacChuVietTat" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -210,7 +210,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_DanhMucCacBang" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_DanhMucCacBang" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -227,7 +227,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_MucTieu" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_MucTieu" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -244,7 +244,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Chuong1" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Chuong1" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -261,7 +261,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Chuong2" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Chuong2" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -278,7 +278,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Chuong3" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Chuong3" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -295,7 +295,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Chuong4" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Chuong4" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -312,7 +312,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_Chuong5" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_Chuong5" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
         <div class="page-break" style="text-align: center;opacity: .4;font-style:italic;">
@@ -329,7 +329,7 @@
                 </p>
             </div>
             <div class="box">
-                <div contenteditable="true" data-bind="editableHTML: JSON_TaiLieuThamKhao" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHTML: Email"></div>
+                <div contenteditable="true" data-bind="editableHtml: JSON_TaiLieuThamKhao" style="text-indent: 0;min-height: 8.69in;display: block;" data-bind="editableHtml: Email"></div>
             </div>
         </div>
     </div>

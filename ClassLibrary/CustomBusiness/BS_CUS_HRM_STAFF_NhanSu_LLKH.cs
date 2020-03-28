@@ -88,7 +88,11 @@ namespace BaseBusiness
 
                 var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
                 if (objNhanSu != null)
+                {
                     query.HoTen = objNhanSu.Name;
+                    query.DiaChi_CaNhan = objNhanSu.DiaChi;
+                    query.DienThoai_CaNhan = objNhanSu.SoDienThoai;
+                }
 
                 query.ListNgoaiNgu = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu() };
                 query.ListThoiGianCongTac = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThoiGianCongTac { } };

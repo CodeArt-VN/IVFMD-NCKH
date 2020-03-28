@@ -94,6 +94,7 @@
     <Compile Include="CustomBusiness\BS_SYS_Var.cs" />
     <Compile Include="CustomBusiness\BS_WEB_BaiViet.cs" />
     <Compile Include="CustomBusiness\errorLog.cs" />
+    <Compile Include="CustomBusiness\HelperCopy.cs" />
     <Compile Include="CustomBusiness\OrderedQueryable.cs" />
     <Compile Include="CustomDTO\DTO_APP_Form.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File.cs" />

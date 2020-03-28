@@ -43,7 +43,7 @@
                         <td>
                             <p class="box">
                                 <span class="box-title"></span>
-                                <span contenteditable="true" data-bind="editableHTML: MaSoBenhNhan">
+                                <span contenteditable="true" data-bind="editableHtml: MaSoBenhNhan">
                                     _________________
                                 </span>
                             </p>
@@ -52,7 +52,7 @@
                         <td style="text-align:right;">
                             <p class="box">
                                 <span class="box-title"></span>
-                                <span contenteditable="true" data-bind="editableHTML: MaSo">|_______|</span>
+                                <span contenteditable="true" data-bind="editableHtml: MaSo">|_______|</span>
                             </p>
                         </td>
                     </tr>
@@ -70,7 +70,7 @@
                     <td colspan="2" style="vertical-align:middle;">
                         <p class="box" style="margin:0;">
                             <span class="box-title">1.<i>	Tên biến cố bất lợi:</i></span>
-                            <span contenteditable="true" style="text-indent:156px;" data-bind="editableHTML: TenBienCo"><br /><br /><br /><br /></span>
+                            <span contenteditable="true" style="text-indent:156px;" data-bind="editableHtml: TenBienCo"><br /><br /><br /><br /></span>
                         </p>
                     </td>
                 </tr>
@@ -79,16 +79,16 @@
                         2.	Ngày khởi phát
                     </td>
                     <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKhoiPhat_Ngay">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Ngay">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKhoiPhat_Thang">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Thang">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKhoiPhat_Nam">|__|__|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Nam">|__|__|__|__|</div>
                         (ngày/tháng/năm)
                         <br />
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKhoiPhat_Gio">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Gio">|__|__|</div>
                         :
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKhoiPhat_Phut">|__|__|</div> 
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Phut">|__|__|</div> 
                         (giờ - phút)
                     </td>
                 </tr>
@@ -97,16 +97,16 @@
                         3.	Ngày kết thúc
                     </td>
                     <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKetThuc_Ngay">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Ngay">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKetThuc_Thang">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Thang">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKetThuc_Nam">|__|__|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Nam">|__|__|__|__|</div>
                         (ngày/tháng/năm)
                         <br />
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKetThuc_Gio">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Gio">|__|__|</div>
                         :
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHTML: NgayKetThuc_Phut">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Phut">|__|__|</div>
                         (giờ - phút)
                         <br />
                         <input type="checkbox" data-bind="checkedHtml: NgayKhoiPhat_DangTiepDien" /> Đang tiếp diễn
@@ -184,7 +184,7 @@
                         <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
                         <br />
                         <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" /> Tử vong, ngày tử vong:
-                        <span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHTML: KetQua_TuVong_Nam">|__|__|__|__|</span>
+                        <span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Ngay">|__|__|</span>/<span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Thang">|__|__|</span>/<span contenteditable="true" data-bind="editableHtml: KetQua_TuVong_Nam">|__|__|__|__|</span>
                         <br />
                         <input type="checkbox" data-bind="checkedHtml: KetQua_KhongBiet" /> Không biết
                     </td>
@@ -236,17 +236,17 @@
                 </td>
             </tr>
             <tr>
-                <td contenteditable="true" data-bind="editableHTML: HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHtml: HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                     <br />
                     _______________________________________
                 </td>
                 <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
                     <br />
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NgayBaoCao_Ngay">|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Ngay">|__|__|</div>
                     /
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NgayBaoCao_Thang">|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Thang">|__|__|</div>
                     /
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NgayBaoCao_Nam">|__|__|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Nam">|__|__|__|__|</div>
                 </td>
             </tr>
         </table>
@@ -270,16 +270,16 @@
                         Ngày/Giờ tăng độ nặng, trở nên nghiêm trọng
                     </td>
                     <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayGioTangDoNang_Ngay">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Ngay">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayGioTangDoNang_Thang">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Thang">|__|__|</div>
                         /
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayGioTangDoNang_Nam">|__|__|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Nam">|__|__|__|__|</div>
                         (ngày – tháng – năm)
                         <br />
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayGioTangDoNang_Gio">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Gio">|__|__|</div>
                         :
-                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayGioTangDoNang_Phut">|__|__|</div>
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Phut">|__|__|</div>
                         (giờ - phút)
                         <br />
                         Nếu không rõ giờ, ghi N/A
@@ -390,17 +390,17 @@
                 </td>
             </tr>
             <tr>
-                <td contenteditable="true" data-bind="editableHTML: NT_HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                <td contenteditable="true" data-bind="editableHtml: NT_HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
                     <br />
                     _______________________________________
                 </td>
                 <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
                     <br />
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayBaoCao_Ngay">|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Ngay">|__|__|</div>
                     /
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayBaoCao_Thang">|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Thang">|__|__|</div>
                     /
-                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHTML: NT_NgayBaoCao_Nam">|__|__|__|__|</div>
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Nam">|__|__|__|__|</div>
                 </td>
             </tr>
         </table>
@@ -409,7 +409,7 @@
             <div>
                 21. Ghi chú (cập nhật thông tin biến cố bất lợi, mô tả chi tiết)
             </div>
-            <div contenteditable="true" style="line-height:1.8em" data-bind="editableHTML: NT_GhiChu">
+            <div contenteditable="true" style="line-height:1.8em" data-bind="editableHtml: NT_GhiChu">
                 .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
             </div>
         </div>

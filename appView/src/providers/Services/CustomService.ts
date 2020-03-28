@@ -513,6 +513,19 @@ export class PRO_LLKHCustomProvider extends exService {
 					reject(err);
 				})
 		});
+    }
+    
+    update(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_LLKH.update;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
 	}
 }
 
@@ -571,6 +584,19 @@ export class PRO_SYLLCustomProvider extends exService {
 	saveCustom(item) {
 		let that = this.commonService;
         let apiPath = APIList.PRO_SYLL.saveCustom;
+		return new Promise((resolve, reject) => {
+			that.connect(apiPath.method, apiPath.url(), item).toPromise()
+				.then((data) => {
+					resolve(data);
+				}).catch(err => {
+					reject(err);
+				})
+		});
+    }
+    
+    update(item) {
+		let that = this.commonService;
+        let apiPath = APIList.PRO_SYLL.update;
 		return new Promise((resolve, reject) => {
 			that.connect(apiPath.method, apiPath.url(), item).toPromise()
 				.then((data) => {

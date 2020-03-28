@@ -143,5 +143,24 @@ namespace API.Controllers.PRO
             }
             return BadRequest();
         }
+
+        [Route("update_PRO_SYLL")]
+        [ResponseType(typeof(DTO_PRO_SYLL))]
+        public IHttpActionResult Update(DTO_PRO_SYLL tbl_PRO_SYLL)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            DTO_PRO_SYLL result = BS_PRO_SYLL.update_PRO_SYLL(db, tbl_PRO_SYLL, Username);
+
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

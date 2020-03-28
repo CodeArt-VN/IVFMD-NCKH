@@ -249,6 +249,10 @@
                     &[contenteditable="true"] {
                         padding: 6px;
                     }
+
+                    &[contenteditable="false"] {
+                        height: 26px;
+                    }
                 }
             }
         }

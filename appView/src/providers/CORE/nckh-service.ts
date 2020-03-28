@@ -11,7 +11,7 @@ export class NCKHServiceProvider {
         var me = this;
 
         // bindingHandlers
-        ko.bindingHandlers.editableHTML = {
+        ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor) {
                 var $element = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
@@ -453,8 +453,36 @@ export class NCKHServiceProvider {
             console.error(e);
         }
     }
-    applyConfigs() {
-
+    checkDate(day: any, month: any, year: any) {
+        let isNull = function (val: any) {
+            return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
+        }
+        let isInt = function (val: string) {
+            if (val.startsWith("0"))
+                val = val.substr(1);
+            return Number.parseInt(val).toString() == val;
+        }
+        let getIntValue = function (val: string): number {
+            if (val.startsWith("0"))
+                val = val.substr(1);
+            return Number.parseInt(val);
+        }
+        let inRange = function (val: string, min: Number, max: Number) {
+            return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
+        }
+        if (isNull(day) && isNull(month) && isNull(year))
+            return true;
+        var isValid = isInt(day.toString()) && inRange(day, 1, 31)
+            && isInt(month.toString()) && inRange(month, 1, 12)
+            && isInt(year.toString()) && inRange(year, 2000, 2100);
+        if (isValid) {
+            var d = getIntValue(day.toString());
+            var m = getIntValue(month.toString()) - 1;
+            var y = getIntValue(year.toString());
+            var date = new Date(y, m, d);
+            isValid = date.getFullYear() == y && date.getMonth() == m && date.getDate() == d;
+        }
+        return isValid;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
@@ -483,5 +511,23 @@ export class NCKHServiceProvider {
             }
         }
         return JSON.stringify(data);
+    }
+    disableContenteditable(html:string, excepts: string[]) {
+        var div = $("<div>" + html + "</div>");
+        var contents = div.find('[data-bind]');
+        $.each(contents, (i, o) => {
+            var bind = $(o).attr("data-bind");
+            var contenteditable = $(o).attr("contenteditable");
+            if (bind.startsWith("editableHtml") && contenteditable == "true") {
+                var field = bind.split(":")[1].trim();
+                if (excepts.indexOf(field) == -1)
+                    $(o).attr("contenteditable", "false");
+            } else if (bind.startsWith("checkedHtml")) {
+                var field = bind.split(":")[1].trim();
+                if (excepts.indexOf(field) == -1)
+                    $(o).attr("disabled", "disabled");
+            }
+        })
+        return div.children();
     }
 }

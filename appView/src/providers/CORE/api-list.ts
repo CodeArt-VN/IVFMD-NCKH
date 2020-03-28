@@ -1505,6 +1505,10 @@ export var APIListBase = {
             method: "POST",
             url: function(){return appSetting.apiDomain("PRO/LLKH/save_PRO_LLKH")}
         },
+        update:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/LLKH/update_PRO_LLKH")}
+        },
     },
     STAFF_NhanSu_SYLL:{
         getList:{
@@ -1564,6 +1568,10 @@ export var APIListBase = {
         saveCustom:{
             method: "POST",
             url: function(){return appSetting.apiDomain("PRO/SYLL/save_PRO_SYLL")}
+        },
+        update:{
+            method: "POST",
+            url: function(){return appSetting.apiDomain("PRO/SYLL/update_PRO_SYLL")}
         },
     },
     PRO_XemXetDD:{

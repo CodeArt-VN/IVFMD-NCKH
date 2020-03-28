@@ -203,5 +203,43 @@ namespace BaseBusiness
                 return null;
             }
         }
+
+        public static DTO_PRO_SYLL update_PRO_SYLL(AppEntities db, DTO_PRO_SYLL item, string Username)
+        {
+            var dbitem = db.tbl_PRO_SYLL.Find(item.ID);
+            var objHRM_SYLL = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == item.IDNhanSu);
+            if (objHRM_SYLL != null)
+            {
+                CopyHelper copyHelper = new CopyHelper();
+                copyHelper.Copy(objHRM_SYLL, dbitem);
+            }
+            dbitem.ID = item.ID;
+            dbitem.IDDetai = item.IDDetai;
+            dbitem.IDNhanSu = item.IDNhanSu;
+            dbitem.IsDisabled = item.IsDisabled;
+            dbitem.IsDeleted = item.IsDeleted;
+
+            dbitem.ModifiedBy = Username;
+            dbitem.ModifiedDate = DateTime.Now;
+
+            try
+            {
+                db.SaveChanges();
+
+                BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_SYLL", DateTime.Now, Username);
+                item.ID = dbitem.ID;
+                item.CreatedBy = dbitem.CreatedBy;
+                item.CreatedDate = dbitem.CreatedDate;
+
+                item.ModifiedBy = dbitem.ModifiedBy;
+                item.ModifiedDate = dbitem.ModifiedDate;
+                return item;
+            }
+            catch (DbEntityValidationException e)
+            {
+                errorLog.logMessage("save_PRO_SYLL", e);
+                return null;
+            }
+        }
     }
 }
