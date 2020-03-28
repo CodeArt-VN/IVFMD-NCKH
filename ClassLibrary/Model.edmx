@@ -916,6 +916,8 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="BaiFulltext" Type="nvarchar" MaxLength="4000" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
+          <Property Name="ThoiGian_Thang" Type="nvarchar" MaxLength="200" />
+          <Property Name="ThoiGian_Nam" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -5127,6 +5129,8 @@
           <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
+          <Property Name="ThoiGian_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGian_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -8425,6 +8429,8 @@
           <EntitySetMapping Name="tbl_PRO_BaoCaoNghiemThuDeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BaoCaoNghiemThuDeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_BaoCaoNghiemThuDeTai">
+                <ScalarProperty Name="ThoiGian_Nam" ColumnName="ThoiGian_Nam" />
+                <ScalarProperty Name="ThoiGian_Thang" ColumnName="ThoiGian_Thang" />
                 <ScalarProperty Name="FormConfig" ColumnName="FormConfig" />
                 <ScalarProperty Name="BaiFulltext" ColumnName="BaiFulltext" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />

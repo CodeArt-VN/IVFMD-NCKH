@@ -44,6 +44,8 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         public string BaiFulltext { get; set; }
         public string FormConfig { get; set; }
+        public string ThoiGian_Thang { get; set; }
+        public string ThoiGian_Nam { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -81,6 +83,8 @@ namespace DTOModel
 		public string ModifiedBy { get; set; }
 		public string BaiFulltext { get; set; }
 		public string FormConfig { get; set; }
+		public string ThoiGian_Thang { get; set; }
+		public string ThoiGian_Nam { get; set; }
 	}
 }
 
@@ -131,7 +135,9 @@ namespace BaseBusiness
 				ModifiedDate = s.ModifiedDate,							
 				ModifiedBy = s.ModifiedBy,							
 				BaiFulltext = s.BaiFulltext,							
-				FormConfig = s.FormConfig,					
+				FormConfig = s.FormConfig,							
+				ThoiGian_Thang = s.ThoiGian_Thang,							
+				ThoiGian_Nam = s.ThoiGian_Nam,					
 			});
                               
         }
@@ -170,7 +176,9 @@ namespace BaseBusiness
 					ModifiedDate = dbResult.ModifiedDate,							
 					ModifiedBy = dbResult.ModifiedBy,							
 					BaiFulltext = dbResult.BaiFulltext,							
-					FormConfig = dbResult.FormConfig,
+					FormConfig = dbResult.FormConfig,							
+					ThoiGian_Thang = dbResult.ThoiGian_Thang,							
+					ThoiGian_Nam = dbResult.ThoiGian_Nam,
 				};
 			}
 			else
@@ -398,6 +406,20 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FormConfig == keyword);
             }
 
+			//Query ThoiGian_Thang (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGian_Thang") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGian_Thang").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGian_Thang").Value;
+                query = query.Where(d=>d.ThoiGian_Thang == keyword);
+            }
+
+			//Query ThoiGian_Nam (string)
+			if (QueryStrings.Any(d => d.Key == "ThoiGian_Nam") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ThoiGian_Nam").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ThoiGian_Nam").Value;
+                query = query.Where(d=>d.ThoiGian_Nam == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -441,7 +463,9 @@ namespace BaseBusiness
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.BaiFulltext = item.BaiFulltext;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.ThoiGian_Thang = item.ThoiGian_Thang;							
+				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -491,7 +515,9 @@ namespace BaseBusiness
 				dbitem.IsDisabled = item.IsDisabled;							
 				dbitem.IsDeleted = item.IsDeleted;							
 				dbitem.BaiFulltext = item.BaiFulltext;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.ThoiGian_Thang = item.ThoiGian_Thang;							
+				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

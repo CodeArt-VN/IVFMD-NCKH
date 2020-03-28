@@ -39,7 +39,8 @@ namespace BaseBusiness
                 SoDienThoai = s.SoDienThoai,
                 DiaChi = s.DiaChi,
                 RoleName = s.IDRole.HasValue ? s.tbl_CUS_SYS_Role.Name: "",
-                IsHRCO = s.IsHRCO
+                IsHRCO = s.IsHRCO,
+                IsCNDT = s.IsCNDT
             }).OrderBy(o => o.Sort);
         }
 
@@ -70,7 +71,8 @@ namespace BaseBusiness
                     SoDienThoai = dbResult.SoDienThoai,
                     DiaChi = dbResult.DiaChi,
                     RoleName = dbResult.IDRole.HasValue ? dbResult.tbl_CUS_SYS_Role.Name : "",
-                    IsHRCO = dbResult.IsHRCO
+                    IsHRCO = dbResult.IsHRCO,
+                    IsCNDT = dbResult.IsCNDT
                 };
             }
             else
