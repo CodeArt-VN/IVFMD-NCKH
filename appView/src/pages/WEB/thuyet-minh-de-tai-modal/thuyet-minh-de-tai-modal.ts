@@ -196,6 +196,9 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         item.HTML = $("#frmThuyetMinhDeTai").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
+
+        //var valid = this.nckhProvider.checkDate(12, 13, 2020);
+
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {
                 this.item.ID = savedItem.ID;

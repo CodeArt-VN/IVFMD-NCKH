@@ -453,8 +453,36 @@ export class NCKHServiceProvider {
             console.error(e);
         }
     }
-    applyConfigs() {
-
+    checkDate(day: any, month: any, year: any) {
+        let isNull = function (val: any) {
+            return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
+        }
+        let isInt = function (val: string) {
+            if (val.startsWith("0"))
+                val = val.substr(1);
+            return Number.parseInt(val).toString() == val;
+        }
+        let getIntValue = function (val: string): number {
+            if (val.startsWith("0"))
+                val = val.substr(1);
+            return Number.parseInt(val);
+        }
+        let inRange = function (val: string, min: Number, max: Number) {
+            return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
+        }
+        if (isNull(day) && isNull(month) && isNull(year))
+            return true;
+        var isValid = isInt(day.toString()) && inRange(day, 1, 31)
+            && isInt(month.toString()) && inRange(month, 1, 12)
+            && isInt(year.toString()) && inRange(year, 2000, 2100);
+        if (isValid) {
+            var d = getIntValue(day.toString());
+            var m = getIntValue(month.toString()) - 1;
+            var y = getIntValue(year.toString());
+            var date = new Date(y, m, d);
+            isValid = date.getFullYear() == y && date.getMonth() == m && date.getDate() == d;
+        }
+        return isValid;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
