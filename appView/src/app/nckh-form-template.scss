@@ -243,6 +243,10 @@
                         padding: 6px;
                     }
 
+                    &[contenteditable="false"] {
+                        height: 26px;
+                    }
+
                     .box:last-child {
                         margin-bottom: 0;
                     }

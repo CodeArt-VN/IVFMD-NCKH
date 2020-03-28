@@ -11,7 +11,7 @@ export class NCKHServiceProvider {
         var me = this;
 
         // bindingHandlers
-        ko.bindingHandlers.editableHTML = {
+        ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor) {
                 var $element = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
@@ -511,5 +511,23 @@ export class NCKHServiceProvider {
             }
         }
         return JSON.stringify(data);
+    }
+    disableContenteditable(html:string, excepts: string[]) {
+        var div = $("<div>" + html + "</div>");
+        var contents = div.find('[data-bind]');
+        $.each(contents, (i, o) => {
+            var bind = $(o).attr("data-bind");
+            var contenteditable = $(o).attr("contenteditable");
+            if (bind.startsWith("editableHtml") && contenteditable == "true") {
+                var field = bind.split(":")[1].trim();
+                if (excepts.indexOf(field) == -1)
+                    $(o).attr("contenteditable", "false");
+            } else if (bind.startsWith("checkedHtml")) {
+                var field = bind.split(":")[1].trim();
+                if (excepts.indexOf(field) == -1)
+                    $(o).attr("disabled", "disabled");
+            }
+        })
+        return div.children();
     }
 }
