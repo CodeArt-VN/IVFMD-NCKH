@@ -72,6 +72,7 @@
   .nckh-form-template .box-inline {
     display: table;
     width: 100%;
+    min-height: 26px;
     margin: 0 0 3px 0; }
     .nckh-form-template .box-inline > * {
       display: inline-block;
@@ -88,6 +89,7 @@
   .nckh-form-template .box {
     display: table;
     width: 100%;
+    min-height: 26px;
     margin: 0 0 3px 0; }
     .nckh-form-template .box .box-title {
       position: absolute; }

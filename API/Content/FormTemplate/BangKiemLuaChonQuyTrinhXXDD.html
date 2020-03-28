@@ -101,7 +101,7 @@
                             </div>
                         </td>
                         <td style="vertical-align: top;padding:0;">
-                            <p contenteditable="true" data-bind="editableHTML: PhanHai_TenNCYSH" style="border: 1px solid black;line-height: 1.5em;margin:0;padding:3px;">
+                            <p contenteditable="false" data-bind="editableHTML: PhanHai_TenNCYSH" style="border: 1px solid black;line-height: 1.5em;margin:0;padding:3px;">
                                 ..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
                             </p>
                         </td>
@@ -117,13 +117,13 @@
                 <tbody style="width:100%;">
                     <tr>
                         <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;" rowspan="2"><b>Nghiên cứu viên chính</b></td>
-                        <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHTML: PhanHai_NCVChinh_HoTen"></td>
+                        <td style="border: 1px solid black;" contenteditable="false" data-bind="editableHTML: PhanHai_NCVChinh_HoTen"></td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid black;">
                             <p class="box" style="margin:0;">
                                 <span class="box-title">Khoa/phòng</span>
-                                <span contenteditable="true" style="text-indent: 84px;" data-bind="editableHTML: PhanHai_NCVChinh_KhoaPhong"></span>
+                                <span contenteditable="false" style="text-indent: 84px;" data-bind="editableHTML: PhanHai_NCVChinh_KhoaPhong"></span>
                             </p>
                         </td>
                     </tr>
@@ -132,7 +132,7 @@
                         <td style="border: 1px solid black;">
                             <p class="box" style="margin:0;">
                                 <span class="box-title">Bệnh viện</span>
-                                <span contenteditable="true" style="text-indent: 69px;" data-bind="editableHTML: PhanHai_NCVChinh_BenhVien"></span>
+                                <span contenteditable="false" style="text-indent: 69px;" data-bind="editableHTML: PhanHai_NCVChinh_BenhVien"></span>
                             </p>
                         </td>
                     </tr>
@@ -141,7 +141,7 @@
                         <td style="border: 1px solid black;">
                             <p class="box" style="margin:0;">
                                 <span class="box-title">Điện thoại</span>
-                                <span contenteditable="true" style="text-indent: 71px;" data-bind="editableHTML: PhanHai_NCVChinh_DienThoai"></span>
+                                <span contenteditable="false" style="text-indent: 71px;" data-bind="editableHTML: PhanHai_NCVChinh_DienThoai"></span>
                             </p>
                         </td>
                     </tr>
@@ -150,7 +150,7 @@
                         <td style="border: 1px solid black;">
                             <p class="box" style="margin:0;">
                                 <span class="box-title">Email</span>
-                                <span contenteditable="true" style="text-indent: 41px;" data-bind="editableHTML: PhanHai_NCVChinh_Email"></span>
+                                <span contenteditable="false" style="text-indent: 41px;" data-bind="editableHTML: PhanHai_NCVChinh_Email"></span>
                             </p>
                         </td>
                     </tr>
@@ -159,7 +159,7 @@
                         <td style="border: 1px solid black;">
                             <p class="box" style="margin:0;">
                                 <span class="box-title">Địa chỉ liên hệ</span>
-                                <span contenteditable="true" style="text-indent: 98px;" data-bind="editableHTML: PhanHai_NCVChinh_DiaChiLienHe"></span>
+                                <span contenteditable="false" style="text-indent: 98px;" data-bind="editableHTML: PhanHai_NCVChinh_DiaChiLienHe"></span>
                             </p>
                         </td>
                     </tr>
@@ -426,6 +426,8 @@
             </p>
             <p class="box">
                 <span class="box-title">Nơi nhận mẫu: </span>
+            </p>
+            <p class="box">
                 <span contenteditable="true" style="text-indent: 98px;" data-bind="editableHTML: PhanBon_C1_NoiNhanMau"></span>
             </p>
             <p class="box">
@@ -438,10 +440,14 @@
             </p>
             <p class="box">
                 <span class="box-title">Tiêu chuẩn nhận vào: </span>
+            </p>
+            <p class="box">
                 <span contenteditable="true" style="text-indent: 150px;" data-bind="editableHTML: PhanBon_C1_TieuChuanNhanVao"></span>
             </p>
             <p class="box">
                 <span class="box-title">Tiêu chuẩn loại ra: </span>
+            </p>
+            <p class="box">
                 <span contenteditable="true" style="text-indent: 132px;" data-bind="editableHTML: PhanBon_C1_TieuChuanLoaiRa"></span>
             </p>
             <p class="box">
