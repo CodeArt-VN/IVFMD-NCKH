@@ -50,6 +50,7 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
             IDNhom: ['', Validators.compose([Validators.required])],
             NgayBaoCao: [Date],
             GhiChuKinhPhi: '',
+            IsKinhPhiManual: false
         });
     }
 
@@ -90,6 +91,8 @@ export class BaoCaoNangSuatKhoaHocModalPage extends DetailPage {
     onChangeKinhPhi(e) {
         this.item.GhiChuKinhPhi = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'GhiChu', '');
         this.item.IsKinhPhiManual = this.getAttrib(this.item.IDKinhPhi, this.kinhphis, 'IsManual', '');
+        if (this.item.IsKinhPhiManual == null)
+            this.item.IsKinhPhiManual = false; 
     }
 
     dismiss() {
