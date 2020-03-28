@@ -6,7 +6,6 @@ import { ListPage } from '../../list-page';
 import { PRO_DeTaiProvider } from '../../../providers/Services/Services';
 import { DeTaiModalPage } from '../de-tai-modal/de-tai-modal';
 import { DonXinNghiemThuModalPage } from '../don-xin-nghiem-thu-modal/don-xin-nghiem-thu-modal';
-import { CAT_ThietLapTemplateProvider } from '../../../providers/Services/CustomService'
 
 @IonicPage({ name: 'page-de-tai', segment: 'de-tai', priority: 'high' })
 @Component({ selector: 'page-de-tai', templateUrl: 'de-tai.html' })
@@ -17,7 +16,6 @@ export class DeTaiPage extends ListPage {
     CurrentModule = "NCKH-View";
     constructor(
         public currentProvider: PRO_DeTaiProvider,
-        public thietLapProvider: CAT_ThietLapTemplateProvider,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -73,23 +71,5 @@ export class DeTaiPage extends ListPage {
 
         };
         this.openDetail(item);
-    }
-
-    downloadTemplate() {
-        if (this.templateUrl == '') {
-            this.thietLapProvider.get().then((value: any) => {
-                try {
-                    if (value.Template.MauTrinhBayPPT)
-                        this.templateUrl = value.Template.MauTrinhBayPPT;
-                    this.download(value.Template.MauTrinhBayPPT);
-                } catch (error) {
-
-                }
-            }).catch((data) => {
-            });;
-        }
-        else {
-            this.download(this.templateUrl);
-        }
     }
 }

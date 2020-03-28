@@ -29,6 +29,8 @@ import { FileUploader, FileDropDirective, FileSelectDirective } from 'ng2-file-u
 import { appSetting } from '../../../providers/CORE/api-list';
 import { DuyetHrcoModalPage } from '../duyet-hrco-modal/duyet-hrco-modal'
 import { debounce } from 'ionic-angular/umd/util/util';
+import { CAT_ThietLapTemplateProvider } from '../../../providers/Services/CustomService'
+
 /**
  * Generated class for the DeTaiDetailPage page.
  *
@@ -77,9 +79,13 @@ export class DeTaiDetailPage extends BasePage {
         queueLimit: 1,
         allowedFileType: ['doc', 'xls', 'ppt', 'pdf', 'image', 'video']
     });
+
+    //File mẫu
+    templateUrl = '';
     constructor(
         public currentProvider: PRO_DeTaiCustomProvider,
         public baoCaoNghiemThuProvider: PRO_BaoCaoNghiemThuDeTaiCustomProvider,
+        public thietLapProvider: CAT_ThietLapTemplateProvider,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -737,4 +743,33 @@ export class DeTaiDetailPage extends BasePage {
         if (this.item.BaiFullTextNghiemThu)
             this.download(this.item.BaiFullTextNghiemThu);
     }
+
+    downloadTemplate() {
+        if (this.templateUrl == '') {
+            this.thietLapProvider.get().then((value: any) => {
+                try {
+                    if (value.Template.MauTrinhBayPPT)
+                    {
+                        this.templateUrl = value.Template.MauTrinhBayPPT;
+                        this.download(value.Template.MauTrinhBayPPT);
+                    }
+                    else
+                        this.toastMessage('Không có file mẫu.');
+                } catch (error) {
+                    this.toastMessage('Không có file mẫu.');
+                }
+            }).catch((data) => {
+            });;
+        }
+        else {
+            this.download(this.templateUrl);
+        }
+    }
+
+    //#region File chấp thuận 
+    downloadFileChapThuan() {
+        if (this.item.FileChapThuan)
+            this.download(this.item.FileChapThuan);
+    }
+    //#endregion
 }
