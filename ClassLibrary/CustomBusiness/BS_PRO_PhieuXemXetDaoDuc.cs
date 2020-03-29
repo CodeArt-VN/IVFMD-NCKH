@@ -178,7 +178,8 @@ namespace BaseBusiness
                 }
 
                 query.ListCoQuan = new List<DTO_PRO_PhieuXemXetDaoDuc_CoQuan>() { new DTO_PRO_PhieuXemXetDaoDuc_CoQuan() };
-                query.ListNCV = new List<DTO_PRO_PhieuXemXetDaoDuc_NCV>() { new DTO_PRO_PhieuXemXetDaoDuc_NCV() };
+                query.NCVChinh = new DTO_PRO_PhieuXemXetDaoDuc_NCV();
+                query.ListNCV = new List<DTO_PRO_PhieuXemXetDaoDuc_NCV>() { new DTO_PRO_PhieuXemXetDaoDuc_NCV(), new DTO_PRO_PhieuXemXetDaoDuc_NCV() };
                 query.CanKet_ListChuKy = new List<DTO_PRO_PhieuXemXetDaoDuc_ChuKy>() { new DTO_PRO_PhieuXemXetDaoDuc_ChuKy() };
             }
             else
@@ -191,6 +192,11 @@ namespace BaseBusiness
                 if (!string.IsNullOrWhiteSpace(query.JSON_CacNCV))
                 {
                     query.ListNCV = JsonConvert.DeserializeObject<List<DTO_PRO_PhieuXemXetDaoDuc_NCV>>(query.JSON_CacNCV);
+                    if (query.ListNCV.Count > 1)
+                    {
+                        query.NCVChinh = query.ListNCV.FirstOrDefault();
+                        query.ListNCV.RemoveAt(0);
+                    }
                 }
                 if (!string.IsNullOrWhiteSpace(query.JSON_ChuKy))
                 {

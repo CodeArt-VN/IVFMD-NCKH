@@ -150,46 +150,46 @@
                     Các nghiên cứu viên
                 </b>
             </div>
-            <table name="CacNghienCuuVien" class="nckh-table resize-grid" style="width:100%;margin-top:5px;" border="1">
-                <colgroup>
-                    <col width="180" />
-                    <col width="180" />
-                    <col />
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>Họ tên</th>
-                        <th>Chức danh</th>
-                        <th>Chức vụ, nơi công tác</th>
-                    </tr>
-                </thead>
-                <tbody style="width:100%;">
-                    <tr>
-                        <td contenteditable="true">
-                            Nghiên cứu viên chính
-                            <br />
-                            <br />
-                            <br />
-                        </td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                    <tr>
-                        <td contenteditable="true">
-                            Các nghiên cứu viên khác
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                        </td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div conf='{"name":"ListNCV","add":true,"resizeable":true, "props": ["HoTen","ChucDanh","ChucVu"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <table name="ListNCV" class="nckh-table resize-grid" style="width:100%;" border="1">
+                    <colgroup>
+                        <col width="180" />
+                        <col width="180" />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <tr class="table-header">
+                            <th>Họ tên</th>
+                            <th>Chức danh</th>
+                            <th>Chức vụ, nơi công tác</th>
+                        </tr>
+                    </thead>
+                    <tbody style="width:100%;">
+                        <tr  style="border-bottom: 0;border-top: 0;">
+                            <td style="padding: 6px;">Nghiên cứu viên chính</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr style="border-bottom: 0;border-top: 0;">
+                            <td contenteditable="true" data-bind="editableHtml: NCVChinh().HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHtml: NCVChinh().ChucDanh"></td>
+                            <td contenteditable="true" data-bind="editableHtml: NCVChinh().ChucVu"></td>
+                        </tr>
+                        <tr style="border-top: 1px solid #808080; border-bottom: 0;">
+                            <td style="padding: 6px;">Các nghiên cứu viên khác</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <!-- ko foreach: ListNCV -->
+                        <tr data-bind="attr: { index: $index, removable: true }" style="border-bottom: 0;border-top: 0;">
+                            <td contenteditable="true" data-bind="editableHtml: HoTen"></td>
+                            <td contenteditable="true" data-bind="editableHtml: ChucDanh"></td>
+                            <td contenteditable="true" data-bind="editableHtml: ChucVu"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
         </div>
         <br />
         <div>
