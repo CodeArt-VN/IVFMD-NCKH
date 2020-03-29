@@ -240,26 +240,27 @@ namespace BaseBusiness
                     query.ChucVu = objLL.ChucVu;
                     query.DiaChiCoQuan = objLL.DiaChi_CoQuan;
                     query.CoQuanLamViec = "Bệnh viện Mỹ Đức";
+                    query.DienThoaiCQ = objLL.DienThoai_CoQuan;
 
-                    if (!string.IsNullOrEmpty(query.HoTen))
+                    if (string.IsNullOrEmpty(query.HoTen))
                         query.HoTen = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.NgaySinh))
+                    if (string.IsNullOrEmpty(query.NgaySinh))
                         query.NgaySinh = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.Email))
+                    if (string.IsNullOrEmpty(query.Email))
                         query.Email = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.DiaChi))
+                    if (string.IsNullOrEmpty(query.DiaChi))
                         query.DiaChi = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.Mobile))
+                    if (string.IsNullOrEmpty(query.Mobile))
                         query.Mobile = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.ChucVu))
+                    if (string.IsNullOrEmpty(query.ChucVu))
                         query.ChucVu = "(LLKH chưa có thông tin)";
-                    if (!string.IsNullOrEmpty(query.DiaChiCoQuan))
+                    if (string.IsNullOrEmpty(query.DiaChiCoQuan))
                         query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
 
                     try
                     {
                         var ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
-                        if (!string.IsNullOrEmpty(objLL.HocViThacSy))
+                        if (string.IsNullOrEmpty(objLL.HocViThacSy))
                         {
                             ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
                             {
@@ -267,7 +268,7 @@ namespace BaseBusiness
                                 NamNhanBang = objLL.NamHocViThacSy
                             });
                         }
-                        if (!string.IsNullOrEmpty(objLL.HocViTienSy))
+                        if (string.IsNullOrEmpty(objLL.HocViTienSy))
                         {
                             ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
                             {
@@ -275,7 +276,7 @@ namespace BaseBusiness
                                 NamNhanBang = objLL.NamHocViTienSy
                             });
                         }
-                        if (!string.IsNullOrEmpty(objLL.HocHam))
+                        if (string.IsNullOrEmpty(objLL.HocHam))
                         {
                             ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
                             {

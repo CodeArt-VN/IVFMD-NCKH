@@ -232,13 +232,19 @@ export class BasePage {
         });
     }
 
-    getModules() {
+    getModules(isNotHome = false) {
         let modules = [];
+        let isDefault = this.userprofile.MenuItems.filter(d => d.Code == 'Home').length ? true : false;
+        if (isNotHome)
+            isDefault = false;
         let isNCKH = this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View').length ? true : false;
         let isNSKH = this.userprofile.MenuItems.filter(d => d.Code == 'NSKH').length ? true : false;
         let isHNHT = this.userprofile.MenuItems.filter(d => d.Code == 'HNHT').length ? true : false;
         let isSOPs = this.userprofile.MenuItems.filter(d => d.Code == 'SOPs').length ? true : false;
         let isAdmin = this.userprofile.MenuItems.filter(d => d.Code == 'Admin-PAR').length ? true : false;
+        if (isDefault) {
+            modules.push({ Module: "Home", Name: 'Home', Code: this.userprofile.MenuItems.filter(d => d.Code == 'Home')[0].FormMenu[0].Code });
+        }
         if (isNCKH) {
             modules.push({ Module: "NCKH-View", Name: 'Nghiên cứu khoa học', Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
         }

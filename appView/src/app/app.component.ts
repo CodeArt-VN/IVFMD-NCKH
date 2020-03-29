@@ -329,7 +329,6 @@ export class MyApp {
 
     openDefaultPage() {
         //console.log('openDefaultPage', this.userMenuItems, this.userMenuItems[0].Forms[0]);
-        debugger
         if (this.userMenuItems) {
             this.openPage(this.userMenuItems[0].Forms[0]);
         } else {

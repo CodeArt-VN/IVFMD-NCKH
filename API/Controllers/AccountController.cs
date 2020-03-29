@@ -90,10 +90,10 @@ namespace API.Controllers
                 }
             }
             
-            if (result.Roles.SYSRoles.Count == 0 && result.Roles.CUSRoles.Count == 0)
-            {
-                result.Roles.SYSRoles.Add("GUEST");
-            }
+            //if (result.Roles.SYSRoles.Count == 0 && result.Roles.CUSRoles.Count == 0)
+            //{
+            //    result.Roles.SYSRoles.Add("GUEST");
+            //}
 
             if (QueryStrings.Any(d => d.Key == "GetMenu"))
             {
@@ -122,7 +122,44 @@ namespace API.Controllers
                     
                 }
             }
-            
+
+            //if (result.MenuItems == null)
+            //    result.MenuItems = new List<DTO_APP_FormGroup>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                if (result.MenuItems != null && result.MenuItems.Count > 0)
+                {
+                    result.MenuItems.Insert(0, new DTO_APP_FormGroup
+                    {
+                        ID = 0,
+                        AppID = 0,
+                        Code = "Home",
+                        AppName = "Home",
+                        FormMenu = new List<DTO_APP_Form>
+                {
+                    new DTO_APP_Form
+                    {
+                        ID = 0,
+                        Code = "page-default",
+                        Name = "Home",
+                        IsHiddenMenu = true
+                    }
+                },
+                        Forms = new List<DTO_APP_Form>
+                {
+                    new DTO_APP_Form
+                    {
+                        ID = 0,
+                        Code = "page-default",
+                        Name = "Home",
+                        IsHiddenMenu = true
+                    }
+                }
+                    });
+                }
+            }
+
             return result;
         }
         
