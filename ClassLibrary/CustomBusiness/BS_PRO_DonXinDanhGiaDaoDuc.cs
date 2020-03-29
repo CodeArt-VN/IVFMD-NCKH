@@ -40,7 +40,7 @@ namespace BaseBusiness
                 GhiChuGiayToKhac = s.GhiChuGiayToKhac,
                 HTML = s.HTML,
                 FormConfig = s.FormConfig,
-                IsDisabled = s.IsDisabled,
+                IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
                 IsDeleted = s.IsDeleted,
                 CreatedDate = s.CreatedDate,
                 CreatedBy = s.CreatedBy,
@@ -62,7 +62,7 @@ namespace BaseBusiness
                 if (detai != null)
                 {
                     query.TenDeTai = detai.TenTiengViet;
-
+                    query.IsDisabled = detai.IsDisabledHDDD ?? false;
                     var chunhiem = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == detai.IDChuNhiem);
                     if (chunhiem != null)
                     {

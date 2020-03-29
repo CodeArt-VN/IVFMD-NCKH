@@ -42,15 +42,13 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai)
         {
             DTO_PRO_DonXinNghiemThu tbl_PRO_DonXinNghiemThu = BS_PRO_DonXinNghiemThu.get_PRO_DonXinNghiemThuByDeTai(db, idDeTai);
-            if (tbl_PRO_DonXinNghiemThu.ID == 0)
+
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinNghiemThu.html")))
             {
-                string html = "";
-                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinNghiemThu.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-                tbl_PRO_DonXinNghiemThu.HTML = html;
+                html = r.ReadToEnd();
             }
+            tbl_PRO_DonXinNghiemThu.HTML = html;
 
             return Ok(tbl_PRO_DonXinNghiemThu);
         }

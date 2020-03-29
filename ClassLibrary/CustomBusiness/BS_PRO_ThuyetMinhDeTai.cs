@@ -122,12 +122,14 @@ namespace BaseBusiness
                     IDDeTai = deTaiId
                 };
 
+                query.ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu();
+
                 var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == deTaiId);
                 if (detai != null)
                 {
                     query.A1_TenTiengViet = detai.TenTiengViet;
                     query.A1_TenTiengAnh = detai.TenTiengAnh;
-
+                    query.IsDisabled = detai.IsDisabledHDDD ?? false;
                     var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == deTaiId && c.IDNhanSu == detai.IDChuNhiem && c.IsDeleted == false);
                     if (chunhiem != null)
                     {
@@ -144,7 +146,6 @@ namespace BaseBusiness
                         query.A6_DienThoai = chunhiem.DienThoai_CaNhan;
                         query.A6_Email = chunhiem.Email_CaNhan;
 
-                        query.ChuNhiemDeTai = new DTO_PRO_ThuyetMinhDeTai_NhanLucNghienCuu();
                         query.ChuNhiemDeTai.HoTen = query.A6_HoTen;
                         query.ChuNhiemDeTai.DonVi = chunhiem.TruongVien;
                     }
@@ -152,7 +153,7 @@ namespace BaseBusiness
                     var dxdg = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == deTaiId && c.IsDeleted == false);
                     if (dxdg != null)
                     {
-                        query.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<br>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay;
+                        query.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
                         query.A7_TenCoQuan = dxdg.TenDonViChuTri;
                         query.A7_DiaChi = dxdg.DiaChiDonVi;
                         query.A7_DienThoai = dxdg.DienThoaiDonVi;

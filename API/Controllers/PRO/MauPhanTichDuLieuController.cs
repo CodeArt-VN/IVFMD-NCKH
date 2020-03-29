@@ -42,27 +42,13 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai)
         {
             DTO_PRO_MauPhanTichDuLieu tbl_PRO_MauPhanTichDuLieu = BS_PRO_MauPhanTichDuLieu.get_PRO_MauPhanTichDuLieuByDeTai(db, idDeTai);
-            if (tbl_PRO_MauPhanTichDuLieu == null)
+
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu.html")))
             {
-                string html = "";
-                using(System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-
-                tbl_PRO_MauPhanTichDuLieu = new DTO_PRO_MauPhanTichDuLieu
-                {
-                    IDDeTai = idDeTai,
-                    HTML = html,
-                    KetQuaThai = new DTO_PRO_MauPhanTichDuLieu_KetQuaThai(),
-                    DacDiemNen = new DTO_PRO_MauPhanTichDuLieu_DacDiemNen(),
-                    KichThichBuongTrung = new DTO_PRO_MauPhanTichDuLieu_KichThichBuongTrung(),
-                    LaBo = new DTO_PRO_MauPhanTichDuLieu_LaBo(),
-                    ChuKyChuyenPhoi = new DTO_PRO_MauPhanTichDuLieu_ChuKyChuyenPhoi(),
-                    BienSoKhac = new DTO_PRO_MauPhanTichDuLieu_BienSoKhac()
-                };
+                html = r.ReadToEnd();
             }
-
+            tbl_PRO_MauPhanTichDuLieu.HTML = html;
             return Ok(tbl_PRO_MauPhanTichDuLieu);
         }
 

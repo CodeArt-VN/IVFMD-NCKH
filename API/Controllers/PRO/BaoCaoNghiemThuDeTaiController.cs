@@ -144,5 +144,18 @@ namespace API.Controllers.PRO
             }
             return Ok(res);
         }
+
+        [Route("uploadFileBaoCaoTongHop_PRO_BaoCaoNghiemThuDeTai")]
+        [ResponseType(typeof(DTO_PRO_BaoCaoNghiemThuDeTai))]
+        public IHttpActionResult UploadFileBaoCaoTongHop(DTO_PRO_BaoCaoNghiemThuDeTai item)
+        {
+            BS_PRO_BaoCaoNghiemThuDeTai.uploadFileBaoCaoTongHop_PRO_BaoCaoNghiemThuDeTai(db, item.ID, item.FileBaoCaoTongHop, Username);
+            var res = BS_PRO_BaoCaoNghiemThuDeTai.get_PRO_BaoCaoNghiemThuDeTaiCustom(db, item.ID);
+            if (res == null)
+            {
+                return NotFound();
+            }
+            return Ok(res);
+        }
     }
 }

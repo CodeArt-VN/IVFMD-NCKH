@@ -24,7 +24,8 @@ export class ThietLapTemplatePage extends ListPage {
     CurrentFile = "";
     item = {
         Template: {
-            MauTrinhBayPPT: ''
+            MauTrinhBayPPT: '',
+            MauBaoCaoTongHop: ''
         }
     };
     uploader: FileUploader = new FileUploader({
@@ -58,7 +59,13 @@ export class ThietLapTemplatePage extends ListPage {
                 this.uploader.clearQueue();
                 if (this.CurrentFile == "MauTrinhBayPPT") {
                     this.item.Template.MauTrinhBayPPT = data.Path;
-                    this.toastMessage('Upload thành công, vui lòng nhấn "Lưu" để cập nhật!');
+                    this.saveCustom();
+                    //this.toastMessage('Upload thành công, vui lòng nhấn "Lưu" để cập nhật!');
+                }
+                if (this.CurrentFile == "MauBaoCaoTongHop") {
+                    this.item.Template.MauBaoCaoTongHop = data.Path;
+                    this.saveCustom();
+                    //this.toastMessage('Upload thành công, vui lòng nhấn "Lưu" để cập nhật!');
                 }
             }
         }
@@ -106,6 +113,19 @@ export class ThietLapTemplatePage extends ListPage {
 
     uploadMauTrinhBayPPT() {
         this.CurrentFile = "MauTrinhBayPPT";
+        this.showActionMore = false;
+        this.importfile.nativeElement.value = "";
+        this.importfile.nativeElement.click();
+    }
+
+    downloadMauBaoCaoTongHop() {
+        if (this.item.Template.MauBaoCaoTongHop)
+            this.download(this.item.Template.MauBaoCaoTongHop);
+        else this.toastMessage('Chưa có file, không thể tải!');
+    }
+
+    uploadMauBaoCaoTongHop() {
+        this.CurrentFile = "MauBaoCaoTongHop";
         this.showActionMore = false;
         this.importfile.nativeElement.value = "";
         this.importfile.nativeElement.click();

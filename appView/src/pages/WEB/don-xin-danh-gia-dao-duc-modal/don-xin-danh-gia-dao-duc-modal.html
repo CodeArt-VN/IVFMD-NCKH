@@ -2,7 +2,7 @@
     <button class="close-btn" ion-button float-right (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
-    <button ion-button float-right (click)="saveChange()">
+    <button ion-button float-right (click)="saveChange()" *ngIf="item.IsDisabled == false">
         Lưu
     </button>
     <button ion-button float-right (click)="print()">

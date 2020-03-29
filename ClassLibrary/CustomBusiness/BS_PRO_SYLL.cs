@@ -226,6 +226,13 @@ namespace BaseBusiness
             {
                 db.SaveChanges();
 
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == dbitem.IDDetai);
+                if (detai != null)
+                {
+                    if (detai.IDNCV == dbitem.IDNhanSu)
+                        BS_HelperReference.PRO_SYLL_NCV_Update(db, dbitem.IDDetai, dbitem.IDNhanSu);
+                }
+
                 BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_SYLL", DateTime.Now, Username);
                 item.ID = dbitem.ID;
                 item.CreatedBy = dbitem.CreatedBy;

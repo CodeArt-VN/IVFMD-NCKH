@@ -335,6 +335,8 @@ namespace BaseBusiness
             {
                 db.SaveChanges();
 
+                BS_HelperReference.STAFF_LLKH_Update(db, dbitem.IDNhanSu);
+
                 BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", DateTime.Now, Username);
                 item.ID = dbitem.ID;
                 item.CreatedBy = dbitem.CreatedBy;

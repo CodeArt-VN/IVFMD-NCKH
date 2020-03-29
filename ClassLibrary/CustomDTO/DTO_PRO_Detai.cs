@@ -18,6 +18,7 @@ namespace DTOModel
         public string NCVChinh { get; set; }
         public string ChuNhiemDeTai { get; set; }
         public string BaiFullTextNghiemThu { get; set; }
+        public string FileBaoCaoTongHop { get; set; }
     }
 
     public class DTO_PRO_DeTai_TrangThai

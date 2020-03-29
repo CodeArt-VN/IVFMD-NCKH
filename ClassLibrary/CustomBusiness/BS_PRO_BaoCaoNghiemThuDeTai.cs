@@ -201,6 +201,13 @@ namespace BaseBusiness
                 dbitem.CreatedBy = Username;
                 dbitem.IDDeTai = ID;
                 db.tbl_PRO_BaoCaoNghiemThuDeTai.Add(dbitem);
+
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == ID);
+                if (detai != null)
+                {
+                    dbitem.TenDeTai = detai.TenTiengViet;
+                    dbitem.ChuNhiemDeTai = detai.tbl_CUS_HRM_STAFF_NhanSu1 != null ? detai.tbl_CUS_HRM_STAFF_NhanSu1.Name : "";
+                }
             }
             else
             {
@@ -226,5 +233,50 @@ namespace BaseBusiness
 
             return result;
         }
+
+        public static bool uploadFileBaoCaoTongHop_PRO_BaoCaoNghiemThuDeTai(AppEntities db, int ID, string path, string Username)
+        {
+            bool result = false;
+            var dbitem = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == ID);
+            if (dbitem == null)
+            {
+                dbitem = new tbl_PRO_BaoCaoNghiemThuDeTai();
+                dbitem.CreatedDate = DateTime.Now;
+                dbitem.CreatedBy = Username;
+                dbitem.IDDeTai = ID;
+                db.tbl_PRO_BaoCaoNghiemThuDeTai.Add(dbitem);
+
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == ID);
+                if (detai != null)
+                {
+                    dbitem.TenDeTai = detai.TenTiengViet;
+                    dbitem.ChuNhiemDeTai = detai.tbl_CUS_HRM_STAFF_NhanSu1 != null ? detai.tbl_CUS_HRM_STAFF_NhanSu1.Name : "";
+                }
+            }
+            else
+            {
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+            }
+
+            dbitem.FileBaoCaoTongHop = path;
+
+            try
+            {
+                db.SaveChanges();
+
+                BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BaoCaoNghiemThuDeTai", DateTime.Now, Username);
+
+                result = true;
+            }
+            catch (DbEntityValidationException e)
+            {
+                errorLog.logMessage("uploadFileBaoCaoTongHop_PRO_BaoCaoNghiemThuDeTai", e);
+                result = false;
+            }
+
+            return result;
+        }
+
     }
 }

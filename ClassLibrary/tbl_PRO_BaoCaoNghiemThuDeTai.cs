@@ -46,6 +46,7 @@ namespace ClassLibrary
         public string FormConfig { get; set; }
         public string ThoiGian_Thang { get; set; }
         public string ThoiGian_Nam { get; set; }
+        public string FileBaoCaoTongHop { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -85,6 +86,7 @@ namespace DTOModel
 		public string FormConfig { get; set; }
 		public string ThoiGian_Thang { get; set; }
 		public string ThoiGian_Nam { get; set; }
+		public string FileBaoCaoTongHop { get; set; }
 	}
 }
 
@@ -137,7 +139,8 @@ namespace BaseBusiness
 				BaiFulltext = s.BaiFulltext,							
 				FormConfig = s.FormConfig,							
 				ThoiGian_Thang = s.ThoiGian_Thang,							
-				ThoiGian_Nam = s.ThoiGian_Nam,					
+				ThoiGian_Nam = s.ThoiGian_Nam,							
+				FileBaoCaoTongHop = s.FileBaoCaoTongHop,					
 			});
                               
         }
@@ -178,7 +181,8 @@ namespace BaseBusiness
 					BaiFulltext = dbResult.BaiFulltext,							
 					FormConfig = dbResult.FormConfig,							
 					ThoiGian_Thang = dbResult.ThoiGian_Thang,							
-					ThoiGian_Nam = dbResult.ThoiGian_Nam,
+					ThoiGian_Nam = dbResult.ThoiGian_Nam,							
+					FileBaoCaoTongHop = dbResult.FileBaoCaoTongHop,
 				};
 			}
 			else
@@ -420,6 +424,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.ThoiGian_Nam == keyword);
             }
 
+			//Query FileBaoCaoTongHop (string)
+			if (QueryStrings.Any(d => d.Key == "FileBaoCaoTongHop") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FileBaoCaoTongHop").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FileBaoCaoTongHop").Value;
+                query = query.Where(d=>d.FileBaoCaoTongHop == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -465,7 +476,8 @@ namespace BaseBusiness
 				dbitem.BaiFulltext = item.BaiFulltext;							
 				dbitem.FormConfig = item.FormConfig;							
 				dbitem.ThoiGian_Thang = item.ThoiGian_Thang;							
-				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;                
+				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;							
+				dbitem.FileBaoCaoTongHop = item.FileBaoCaoTongHop;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -517,7 +529,8 @@ namespace BaseBusiness
 				dbitem.BaiFulltext = item.BaiFulltext;							
 				dbitem.FormConfig = item.FormConfig;							
 				dbitem.ThoiGian_Thang = item.ThoiGian_Thang;							
-				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;                
+				dbitem.ThoiGian_Nam = item.ThoiGian_Nam;							
+				dbitem.FileBaoCaoTongHop = item.FileBaoCaoTongHop;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

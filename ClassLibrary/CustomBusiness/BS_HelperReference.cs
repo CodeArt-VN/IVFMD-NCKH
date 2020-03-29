@@ -150,10 +150,16 @@ namespace BaseBusiness
                     xxdd.DonViChuTri = dxdg.TenDonViChuTri + "<br>Địa chỉ: " + dxdg.DiaChiDonVi + "<br>Điện thoại:" + dxdg.DienThoaiDonVi;
                 }
 
+                var bangkiem = db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+                if (bangkiem != null)
+                {
+                    bangkiem.PhanBon_C1_NoiNhanMau = "<br>Địa điểm: " + dxdg.DiaDiemNghienCuu + "<br>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ " + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay;
+                }
+
                 var tmdt = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
                 if (tmdt != null)
                 {
-                    tmdt.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<br>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay;
+                    tmdt.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
                     tmdt.A7_TenCoQuan = dxdg.TenDonViChuTri;
                     tmdt.A7_DiaChi = dxdg.DiaChiDonVi;
                     tmdt.A7_DienThoai = dxdg.DienThoaiDonVi;
@@ -196,11 +202,101 @@ namespace BaseBusiness
                                 if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.PhanTichSoLieuCuoiCung)
                                     bkns.PhanTichSoLieu_NguoiThucHien = item.NguoiThucHien;
                             }
-                            db.SaveChanges();
+                            
                         }
                     }
                     catch { }
                 }
+
+                var bangkiem = db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+                if (bangkiem != null)
+                {
+                    bangkiem.PhanBon_C1_TieuChuanNhanVao = "<br>" + thuyetminh.B3221_TieuChuanNhan;
+                    bangkiem.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
+                    bangkiem.PhanBon_C1_TieuChuanNhanVao = bangkiem.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
+                    bangkiem.PhanBon_C1_TieuChuanLoaiRa = bangkiem.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
+                }
+
+
+
+                db.SaveChanges();
+            }
+        }
+
+        public static void STAFF_LLKH_Update(AppEntities db, int IDNhanSu)
+        {
+            var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+            if (objLL != null)
+            {
+                var query = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+                if (query != null)
+                {
+                    query.HoTen = objLL.HoTen;
+                    query.NgaySinh = objLL.NgaySinh;
+                    query.Email = objLL.Email_CaNhan;
+                    query.DiaChi = objLL.DiaChi_CaNhan;
+                    query.Mobile = objLL.DienThoai_CaNhan;
+                    query.GioiTinh = objLL.GioiTinh;
+                    query.ChucVu = objLL.ChucVu;
+                    query.DiaChiCoQuan = objLL.DiaChi_CoQuan;
+                    query.CoQuanLamViec = "Bệnh viện Mỹ Đức";
+
+                    if (!string.IsNullOrEmpty(query.HoTen))
+                        query.HoTen = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.NgaySinh))
+                        query.NgaySinh = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.Email))
+                        query.Email = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.DiaChi))
+                        query.DiaChi = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.Mobile))
+                        query.Mobile = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.ChucVu))
+                        query.ChucVu = "(LLKH chưa có thông tin)";
+                    if (!string.IsNullOrEmpty(query.DiaChiCoQuan))
+                        query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
+
+                    try
+                    {
+                        var ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                        if (!string.IsNullOrEmpty(objLL.HocViThacSy))
+                        {
+                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                            {
+                                HocVi = objLL.HocViThacSy,
+                                NamNhanBang = objLL.NamHocViThacSy
+                            });
+                        }
+                        if (!string.IsNullOrEmpty(objLL.HocViTienSy))
+                        {
+                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                            {
+                                HocVi = objLL.HocViTienSy,
+                                NamNhanBang = objLL.NamHocViTienSy
+                            });
+                        }
+                        if (!string.IsNullOrEmpty(objLL.HocHam))
+                        {
+                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                            {
+                                HocVi = objLL.HocHam,
+                                NamNhanBang = objLL.NamPhongHocHam
+                            });
+                        }
+                        if (ListTrinhDoChuyenMon.Count == 0)
+                        {
+                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                            {
+                                HocVi = "(LLKH chưa có thông tin)",
+                                NamNhanBang = "(LLKH chưa có thông tin)"
+                            });
+                        }
+                        query.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);
+                    }
+                    catch { }
+                }
+
+                db.SaveChanges();
             }
         }
     }

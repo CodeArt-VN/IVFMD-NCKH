@@ -8,21 +8,46 @@
     <div class="emptyzone" style="height:300px">
         <div class="swiper-pagination">
             <span class="swiper-pagination-bullet" [ngClass]="{'swiper-pagination-bullet-active': pageIndex==i.index}"
-                (click)="goToStep(i.index)" *ngFor="let i of slideListByType">{{i.index + 1}} <span
-                    class="title">{{i.shortTitle}}</span></span>
+                  (click)="goToStep(i.index)" *ngFor="let i of slideListByType">
+                {{i.index + 1}} <span class="title">{{i.shortTitle}}</span>
+            </span>
         </div>
     </div>
     <div class="emptyzone header-button">
         <button *ngIf="pageIndex==0 && (!canApprove || (canApprove && item.IDTrangThai_HRCO != 19))"
-            [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
-            (click)="updateSatus('SendHRCO')">{{ statusHRCO }}</button>
+                [disabled]="item.IDTrangThai_HRCO > 18" ion-button block color="light"
+                (click)="updateSatus('SendHRCO')">
+            {{ statusHRCO }}
+        </button>
         <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 19 && canApprove" ion-button block color="light"
-            (click)="updateSatusHRCO()">HRCO Duyệt</button>
+                (click)="updateSatusHRCO()">
+            HRCO Duyệt
+        </button>
+        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 20 && item.IsDisabledHRCO == false && canApprove" ion-button block color="light"
+                (click)="updateSatus('DisableHRCO')">
+            Khóa dữ liệu
+        </button>
+        <button *ngIf="pageIndex==0 && item.IDTrangThai_HRCO == 20 && item.IsDisabledHRCO == true && canApprove" ion-button block color="light"
+                (click)="updateSatus('EnableHRCO')">
+            Mở khóa dữ liệu
+        </button>
 
         <button *ngIf="pageIndex==1" [disabled]="item.IDTrangThai_HDDD > 6" ion-button block color="light"
-            (click)="updateSatus('SendHDDD')">{{ statusHDDD }}</button>
+                (click)="updateSatus('SendHDDD')">
+            {{ statusHDDD }}
+        </button>
         <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 7 && canApprove" ion-button block color="light"
-            (click)="updateSatus('ApprovedHDDD')">HĐĐĐ Duyệt</button>
+                (click)="updateSatus('ApprovedHDDD')">
+            HĐĐĐ Duyệt
+        </button>
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 8 && item.IsDisabledHDDD == false && canApprove" ion-button block color="light"
+                (click)="updateSatus('DisableHDDD')">
+            Khóa dữ liệu
+        </button>
+        <button *ngIf="pageIndex==1 && item.IDTrangThai_HDDD == 8 && item.IsDisabledHDDD == true && canApprove" ion-button block color="light"
+                (click)="updateSatus('EnableHDDD')">
+            Mở khóa dữ liệu
+        </button>
     </div>
 </ion-header>
 <ion-content>
@@ -57,36 +82,30 @@
                                 <ion-card-title>
                                     <a>File trình bày PowerPoint</a>
                                 </ion-card-title>
-                                <p class="summary" *ngIf="item.FileUpload != null && item.FileUpload != ''">
+                                <p class="summary">
+                                    <a (click)="downloadTemplate()">Tải file mẫu</a>
+                                </p>
+                                <!--<p class="summary" *ngIf="item.FileUpload != null && item.FileUpload != ''">
                                     Đã up file
                                 </p>
                                 <p class="summary" *ngIf="item.FileUpload == null || item.FileUpload == ''">
                                     Chưa up file
-                                </p>
+                                </p>-->
                                 <div padding></div>
                                 <button *ngIf="item.FileUpload != null && item.FileUpload != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="uploadDeTaiClick()">Tải file
-                                    lên</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="uploadDeTaiClick()">
+                                    Tải file
+                                    lên
+                                </button>
                                 <button *ngIf="item.FileUpload != null && item.FileUpload != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="downloadFileUpload()">Tải file
-                                    xuống</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadFileUpload()">
+                                    Tải file
+                                    xuống
+                                </button>
                                 <button *ngIf="item.FileUpload == null || item.FileUpload == ''" block ion-button
-                                    (click)="uploadDeTaiClick()">Tải file lên</button>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-
-                    <ion-col col-md-4>
-                        <ion-card color="white" no-margin class="news">
-                            <ion-card-content>
-                                <ion-card-title>
-                                    <a>File mẫu</a>
-                                </ion-card-title>
-                                <p class="summary">
-                                    File mẫu
-                                </p>
-                                <div padding></div>
-                                <button ion-button block (click)="downloadTemplate()">Tải file xuống</button>
+                                        (click)="uploadDeTaiClick()">
+                                    Tải file lên
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -136,7 +155,7 @@
                                 <div class="c-control" style="margin-bottom:5px">
                                     <input class="c-input" type="text" [(ngModel)]="item.MaSoHDDD" />
                                 </div>
-                                <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove">CẬP
+                                <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove || item.IsDisabledHDDD">CẬP
                                     NHẬT</button>
                             </ion-card-content>
                         </ion-card>
@@ -156,13 +175,13 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="canApprove && item.FileChapThuan != null && item.FileChapThuan != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()">Tải
+                                    style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()" [disabled]="item.IsDisabledHDDD">Tải
                                     file lên</button>
                                 <button *ngIf="canApprove && item.FileChapThuan != null && item.FileChapThuan != ''"
                                     style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">Tải file
                                     xuống</button>
                                 <button *ngIf="canApprove && (item.FileChapThuan == null || item.FileChapThuan == '')"
-                                    block ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                    block ion-button (click)="uploadChapThuanClick()" [disabled]="item.IsDisabledHDDD">Tải file lên</button>
                                 <button *ngIf="!canApprove"
                                     [disabled]="item.FileChapThuan == null || item.FileChapThuan == ''" ion-button block
                                     (click)="downloadChapThuan()">Tải file xuống</button>
@@ -253,9 +272,13 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                    (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    CẬP NHẬT
+                                </button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                    (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    TẠO MỚI
+                                </button>
 
                             </ion-card-content>
                         </ion-card>
@@ -268,22 +291,62 @@
                                     <a>File bài Fulltext</a>
                                 </ion-card-title>
                                 <p class="summary"
-                                    *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''">
+                                   *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''">
                                     Đã up file
                                 </p>
                                 <p class="summary"
-                                    *ngIf="item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == ''">
+                                   *ngIf="item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == ''">
                                     Chưa up file
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="uploadBaiNghiemThuClick()">Tải
-                                    file lên</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="uploadBaiNghiemThuClick()">
+                                    Tải
+                                    file lên
+                                </button>
                                 <button *ngIf="item.BaiFullTextNghiemThu != null && item.BaiFullTextNghiemThu != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="downloadBaiNghiemThu()">Tải
-                                    file xuống</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadBaiNghiemThu()">
+                                    Tải
+                                    file xuống
+                                </button>
                                 <button *ngIf="(item.BaiFullTextNghiemThu == null || item.BaiFullTextNghiemThu == '')"
-                                    block ion-button (click)="uploadBaiNghiemThuClick()">Tải file lên</button>
+                                        block ion-button (click)="uploadBaiNghiemThuClick()">
+                                    Tải file lên
+                                </button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>File báo cáo tổng hợp</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    <a (click)="downloadTemplateBaoCaoTongHop()">Tải file mẫu</a>
+                                </p>
+                                <!--<p class="summary"
+                                   *ngIf="item.FileBaoCaoTongHop != null && item.FileBaoCaoTongHop != ''">
+                                    Đã up file
+                                </p>
+                                <p class="summary"
+                                   *ngIf="item.FileBaoCaoTongHop == null || item.FileBaoCaoTongHop == ''">
+                                    Chưa up file
+                                </p>-->
+                                <div padding></div>
+                                <button *ngIf="item.FileBaoCaoTongHop != null && item.FileBaoCaoTongHop != ''"
+                                        style="width: calc(50% - 10px);" ion-button (click)="uploadFileBaoCaoTongHopClick()">
+                                    Tải file lên
+                                </button>
+                                <button *ngIf="item.FileBaoCaoTongHop != null && item.FileBaoCaoTongHop != ''"
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadFileBaoCaoTongHop()">
+                                    Tải file xuống
+                                </button>
+                                <button *ngIf="(item.FileBaoCaoTongHop == null || item.FileBaoCaoTongHop == '')"
+                                        block ion-button (click)="uploadFileBaoCaoTongHopClick()">
+                                    Tải file lên
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -295,22 +358,28 @@
                                     <a>File chấp thuận</a>
                                 </ion-card-title>
                                 <p class="summary"
-                                    *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''">
+                                   *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''">
                                     Đã up file
                                 </p>
                                 <p class="summary"
-                                    *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''">
+                                   *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''">
                                     Chưa up file
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()">Tải
-                                    file lên</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()">
+                                    Tải
+                                    file lên
+                                </button>
                                 <button *ngIf="item.FileChapThuan != null && item.FileChapThuan != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">Tải
-                                    file xuống</button>
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">
+                                    Tải
+                                    file xuống
+                                </button>
                                 <button *ngIf="(item.FileChapThuan == null || item.FileChapThuan == '')"
-                                    block ion-button (click)="uploadChapThuanClick()">Tải file lên</button>
+                                        block ion-button (click)="uploadChapThuanClick()">
+                                    Tải file lên
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
