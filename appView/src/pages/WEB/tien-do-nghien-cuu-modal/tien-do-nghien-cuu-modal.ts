@@ -55,7 +55,7 @@ export class TienDoNghienCuuModalPage extends DetailPage {
             i.NgayTaoText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
         });
         super.preLoadData();
-      }).catch((data) => {
+      }).catch((data) => { 
           this.lstData = [];
           super.preLoadData();
       });

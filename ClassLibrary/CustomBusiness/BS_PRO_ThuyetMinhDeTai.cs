@@ -153,7 +153,7 @@ namespace BaseBusiness
                     var dxdg = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == deTaiId && c.IsDeleted == false);
                     if (dxdg != null)
                     {
-                        query.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
+                        query.A4_ThoiGianThucHien = "Địa điểm: " + (!string.IsNullOrEmpty(dxdg.DiaDiemNghienCuu) ? dxdg.DiaDiemNghienCuu.Replace("<br>", "<div>") : "") + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ " + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
                         query.A7_TenCoQuan = dxdg.TenDonViChuTri;
                         query.A7_DiaChi = dxdg.DiaChiDonVi;
                         query.A7_DienThoai = dxdg.DienThoaiDonVi;

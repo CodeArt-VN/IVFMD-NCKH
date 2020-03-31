@@ -1613,7 +1613,7 @@
           <Property Name="A6_DiaChiCoQuan" Type="nvarchar" MaxLength="200" />
           <Property Name="A6_DienThoai" Type="nvarchar" MaxLength="200" />
           <Property Name="A6_Email" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_TomTatHoatDong" Type="nvarchar" MaxLength="500" />
+          <Property Name="A6_TomTatHoatDong" Type="nvarchar(max)" />
           <Property Name="A7_TenCoQuan" Type="nvarchar" MaxLength="200" />
           <Property Name="A7_HoTenThuTruong" Type="nvarchar" MaxLength="200" />
           <Property Name="A7_DienThoai" Type="nvarchar" MaxLength="200" />
@@ -5895,7 +5895,7 @@
           <Property Name="A6_DiaChiCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="A6_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="A6_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_TomTatHoatDong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="A6_TomTatHoatDong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A7_TenCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="A7_HoTenThuTruong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="A7_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />

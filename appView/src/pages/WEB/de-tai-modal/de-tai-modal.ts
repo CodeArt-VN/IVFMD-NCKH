@@ -20,7 +20,7 @@ import 'jqueryui';
 export class DeTaiModalPage extends DetailPage {
     myDatePicker: any = {};
     tab = '1';
-    staffs = [];
+    staffs: any[] = [];
     typeOfTopics = [];
     lstBenhNhan: any[] = [];
     lstBNSelected: any[] = [];
@@ -68,7 +68,8 @@ export class DeTaiModalPage extends DetailPage {
             this.ncvKhacProvider.getByDeTai(this.id)
         ])
             .then(values => {
-                this.staffs = values;
+                debugger 
+                this.staffs = values[0]['data'];
                 this.typeOfTopics = values[1]['data'];
                 this.lstNCVKhac = [...values[2]['data']];
                 super.preLoadData();

@@ -30,18 +30,19 @@
     <ion-row>
         <ion-col class="doc-main">
             <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable"
-                [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true"
-                [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected" [selectionType]="'single'"
-                (select)='onSelectBN($event)'>
+                           [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true"
+                           [scrollbarH]="true" [rows]="lstBenhNhan" [selected]="lstBNSelected" [selectionType]="'single'"
+                           (select)='onSelectBN($event)'>
 
                 <ngx-datatable-column name="Mã số đối tượng" prop="MaBenhNhan" [width]="250" [maxWidth]="250" headerClass="name"
-                    cellClass="name">
+                                      cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <a (click)="openDetailBN(i)">
                             {{i.MaBenhNhan}}
                         </a>
                     </ng-template>
                 </ngx-datatable-column>
+                <!--<ngx-datatable-column name="Họ tên" prop="TenBenhNhan"></ngx-datatable-column>--> 
 
             </ngx-datatable>
         </ion-col>

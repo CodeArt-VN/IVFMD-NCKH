@@ -77,8 +77,8 @@ namespace BaseBusiness
                         helperCopy.Copy(objHRM_SYLL_NCV, objSYLL_NCV);
                         objSYLL_NCV.ID = 0;
                     }
-                    objSYLL_NCV.IDNhanSu = item.IDNCV;
-                    objSYLL_NCV.IDDetai = dbitem.ID;
+                    objSYLL_NCV.IDNhanSu = dbitem.IDNCV;
+                    objSYLL_NCV.tbl_PRO_DeTai = dbitem;
                     objSYLL_NCV.CreatedBy = Username;
                     objSYLL_NCV.CreatedDate = DateTime.Now;
                     objSYLL_NCV.IsDisabled = item.IsDisabled;

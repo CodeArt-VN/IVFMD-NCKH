@@ -1310,7 +1310,7 @@ export class HRM_STAFF_NhanSuCustomProvider extends exService {
         return new Promise(function (resolve, reject) {
             that.connect(apiPath.method, apiPath.url(), null).toPromise()
                 .then(data => {
-                    resolve(data);
+                    resolve({ count: data.length, data: data });
                 })
                 .catch(err => {
                     reject(err);

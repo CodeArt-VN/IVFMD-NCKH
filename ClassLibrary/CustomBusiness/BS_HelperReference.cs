@@ -159,7 +159,7 @@ namespace BaseBusiness
                 var tmdt = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
                 if (tmdt != null)
                 {
-                    tmdt.A4_ThoiGianThucHien = "Địa điểm: " + dxdg.DiaDiemNghienCuu + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ" + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
+                    tmdt.A4_ThoiGianThucHien = "Địa điểm: " + (!string.IsNullOrEmpty(dxdg.DiaDiemNghienCuu) ? dxdg.DiaDiemNghienCuu.Replace("<br>", "<div>") : "") + "<div>" + "Thời gian: " + dxdg.ThoiGianNghienCuu + " tháng. Từ " + dxdg.TuNgay + " đến tháng " + dxdg.DenNgay + "</div>";
                     tmdt.A7_TenCoQuan = dxdg.TenDonViChuTri;
                     tmdt.A7_DiaChi = dxdg.DiaChiDonVi;
                     tmdt.A7_DienThoai = dxdg.DienThoaiDonVi;

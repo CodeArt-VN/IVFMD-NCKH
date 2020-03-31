@@ -51,13 +51,19 @@ export class ListSelectModalPage extends DetailPage {
     if (this.type == 1) {
       this.lstFormSelected = [];
       this.currentProvider.getListByDeTai(this.idDeTai).then(value => {
-        this.lstForm = [...value['data']];
+          this.lstForm = [...value['data']];
+          this.lstForm.forEach((i) => {
+              i.NgayTaoText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
+          }); 
       });
     }
     else {
       this.lstFormSelected = [];
       this.proSAECustomProvider.getListByDeTai(this.idDeTai).then(value => {
-        this.lstForm = [...value['data']];
+          this.lstForm = [...value['data']];
+          this.lstForm.forEach((i) => {
+              i.NgayTaoText = this.commonService.dateFormat(i.CreatedDate, 'dd/mm/yy hh:MM');// tempDate.getDate() + '/' + (tempDate.getMonth() + 1.0) +'/' + tempDate.getFullYear();
+          });
       });
     }
   }

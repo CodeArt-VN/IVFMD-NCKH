@@ -266,7 +266,9 @@ namespace BaseBusiness
                 IDDeTai = s.IDDeTai,
                 IDBenhNhan = s.IDBenhNhan,
                 MaSo = s.MaSo,
-                HoTenBenhNhan = s.tbl_CUS_HRM_BenhNhan.HoTen
+                HoTenBenhNhan = s.tbl_CUS_HRM_BenhNhan.HoTen,
+                CreatedBy = s.CreatedBy,
+                CreatedDate = s.CreatedDate
             });
 
             return query;
