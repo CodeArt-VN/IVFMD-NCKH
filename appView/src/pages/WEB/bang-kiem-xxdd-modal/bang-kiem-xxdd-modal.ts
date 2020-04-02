@@ -87,20 +87,42 @@ export class BangKiemXXDDModalPage extends DetailPage {
         item.HTML = $("#frmBangKiemXXDD").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
-        this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.saveCustom(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
-        })
+
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(item.PhanHai_NGS_DienThoai))
+            errors.push('Điện thoại người giám sát/hướng dẫn không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.ThoiGianTienHanh_Ngay, item.ThoiGianTienHanh_Thang, item.ThoiGianTienHanh_Nam))
+            errors.push('Thời gian bắt đầu tiến hành thử nghiệm của nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.ThoiGianTienHanhDenNgay_Ngay, item.ThoiGianTienHanhDenNgay_Thang, item.ThoiGianTienHanhDenNgay_Nam))
+            errors.push('Thời gian kết thúc tiến hành thử nghiệm của nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThap_Thang, item.ThoiGianThuThap_Nam))
+            errors.push('Thời gian bắt đầu thu thập số liệu của nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThapDenNgay_Thang, item.ThoiGianThuThapDenNgay_Nam))
+            errors.push('Thời gian kết thúc thu thập số liệu của nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuu_Thang, item.ThoiGianNghienCuu_Nam))
+            errors.push('Bắt đầu toàn bộ quỹ thời gian nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuuDenNgay_Thang, item.ThoiGianNghienCuuDenNgay_Nam))
+            errors.push('Kết thúc toàn bộ quỹ thời gian nghiên cứu không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
+            errors.push('Ngày ký của chủ tịch hội đồng đạo đức không hợp lệ.');
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Lưu dữ liệu...').then(() => {
+                this.currentProvider.saveCustom(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            })
     };
 
     print() {

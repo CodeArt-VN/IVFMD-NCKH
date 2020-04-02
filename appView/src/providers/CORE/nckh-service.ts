@@ -469,6 +469,9 @@ export class NCKHServiceProvider {
     inRange = function (val: string, min: Number, max: Number) {
         return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
     }
+    checkDateTime(day: any, month: any, year: any, hour: any, minute: any, second: any) {
+        return this.checkDate(day, month, year) && this.checkTime(hour, minute, second);
+    }
     checkDate(day: any, month: any, year: any) {
         if (this.isNull(day) && this.isNull(month) && this.isNull(year))
             return true;
@@ -497,9 +500,18 @@ export class NCKHServiceProvider {
     isPhoneNumber(val: any) {
         if (this.isNull(val))
             return true;
-        if (val.toString().length < 7 || val.toString().length > 11)
-            return false;
+        var phone = val.toString();
 
+        if (phone.length < 7 || phone.length > 11)
+            return false;
+        var res = true;
+        for (var i = 0; i < phone.length; i++) {
+            if (Number.parseInt(phone[i]) !== phone[i]) {
+                res = false;
+                break;
+            }
+        }
+        return res;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
