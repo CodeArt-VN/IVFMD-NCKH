@@ -453,36 +453,53 @@ export class NCKHServiceProvider {
             console.error(e);
         }
     }
+    isNull(val: any) {
+        return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
+    }
+    isInt(val: string) {
+        if (val.startsWith("0"))
+            val = val.substr(1);
+        return Number.parseInt(val).toString() == val;
+    }
+    getIntValue(val: string): number {
+        if (val.startsWith("0"))
+            val = val.substr(1);
+        return Number.parseInt(val);
+    }
+    inRange = function (val: string, min: Number, max: Number) {
+        return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
+    }
     checkDate(day: any, month: any, year: any) {
-        let isNull = function (val: any) {
-            return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
-        }
-        let isInt = function (val: string) {
-            if (val.startsWith("0"))
-                val = val.substr(1);
-            return Number.parseInt(val).toString() == val;
-        }
-        let getIntValue = function (val: string): number {
-            if (val.startsWith("0"))
-                val = val.substr(1);
-            return Number.parseInt(val);
-        }
-        let inRange = function (val: string, min: Number, max: Number) {
-            return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
-        }
-        if (isNull(day) && isNull(month) && isNull(year))
+        if (this.isNull(day) && this.isNull(month) && this.isNull(year))
             return true;
-        var isValid = isInt(day.toString()) && inRange(day, 1, 31)
-            && isInt(month.toString()) && inRange(month, 1, 12)
-            && isInt(year.toString()) && inRange(year, 2000, 2100);
+        var isValid = this.isInt(day.toString()) && this.inRange(day, 1, 31)
+            && this.isInt(month.toString()) && this.inRange(month, 1, 12)
+            && this.isInt(year.toString()) && this.inRange(year, 2000, 2100);
         if (isValid) {
-            var d = getIntValue(day.toString());
-            var m = getIntValue(month.toString()) - 1;
-            var y = getIntValue(year.toString());
+            var d = this.getIntValue(day.toString());
+            var m = this.getIntValue(month.toString()) - 1;
+            var y = this.getIntValue(year.toString());
             var date = new Date(y, m, d);
             isValid = date.getFullYear() == y && date.getMonth() == m && date.getDate() == d;
         }
         return isValid;
+    }
+    checkTime(hour: any, minute: any, second: any) {
+        if (this.isNull(hour) && this.isNull(minute) && this.isNull(second))
+            return true;
+        if (this.isNull(second))
+            second = 0;
+        var isValid = this.isInt(hour.toString()) && this.inRange(hour, 0, 23)
+            && this.isInt(minute.toString()) && this.inRange(minute, 0, 59)
+            && this.isInt(second.toString()) && this.inRange(second, 0, 59);
+        return isValid;
+    }
+    isPhoneNumber(val: any) {
+        if (this.isNull(val))
+            return true;
+        if (val.toString().length < 7 || val.toString().length > 11)
+            return false;
+
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
