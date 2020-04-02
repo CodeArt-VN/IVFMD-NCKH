@@ -501,12 +501,11 @@ export class NCKHServiceProvider {
         if (this.isNull(val))
             return true;
         var phone = val.toString();
-
         if (phone.length < 7 || phone.length > 11)
             return false;
         var res = true;
         for (var i = 0; i < phone.length; i++) {
-            if (Number.parseInt(phone[i]) !== phone[i]) {
+            if (Number.parseInt(phone[i]).toString() !== phone[i]) {
                 res = false;
                 break;
             }
