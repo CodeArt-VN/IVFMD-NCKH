@@ -193,6 +193,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
 
     saveChange() {
         let item = this.model.getItem();
+        var that = this;
         item.HTML = $("#frmThuyetMinhDeTai").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
@@ -203,13 +204,14 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         if (!this.nckhProvider.isPhoneNumber(item.A7_DienThoai))
             errors.push('Điện thoại cơ quan chủ trì không hợp lệ.');
         $.each(item.ListCoQuanPhoiHop, function (i, o) {
-            if (!this.nckhProvider.isPhoneNumber(o.DienThoai))
+            if (!that.nckhProvider.isPhoneNumber(o.DienThoai))
                 errors.push('Điện thoại cơ quan phối hợp thực hiện ' + o.TenCoQuan + ' không hợp lệ.');
         })
-        $.each(item.ListGioiThieuChuyenGia, function (i, o) {
-            if (!this.nckhProvider.isPhoneNumber(o.DienThoai))
-                errors.push('Điện thoại chuyên gia ' + o.HoTen + ' không hợp lệ.');
-        })
+        //// Có cả email nên chưa validate
+        //$.each(item.ListGioiThieuChuyenGia, function (i, o) {
+        //    if (!that.nckhProvider.isPhoneNumber(o.DienThoai))
+        //        errors.push('Điện thoại chuyên gia ' + o.HoTen + ' không hợp lệ.');
+        //})
 
         if (errors.length > 0)
             this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
