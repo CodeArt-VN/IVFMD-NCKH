@@ -186,6 +186,15 @@
         &:hover, &:focus {
             outline: 1px dashed #44a9eb;
         }
+
+        /*> p:first-child, > div:first-child {
+            margin-top: 0;
+        }*/
+
+        >p, > div {
+            margin-bottom: .6rem;
+            margin-top: .6rem;
+        }
     }
 
     table.nckh-table {
@@ -316,7 +325,7 @@
         padding: 2px 5px;
         font-size: 15px;
         height: 30px;
-        z-index:9999;
+        z-index: 9999;
     }
 }
 

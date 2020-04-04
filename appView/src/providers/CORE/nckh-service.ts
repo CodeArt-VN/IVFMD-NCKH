@@ -20,6 +20,51 @@ export class NCKHServiceProvider {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
+                $element.on('paste', function (e) {
+                    e.preventDefault();
+                    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
+                    var $result = $('<div></div>').append($(text));
+
+                    $result.children('style').remove();
+                    $result.children('meta').remove()
+                    $result.children('link').remove();
+                    $result.find('o\\:p').remove();
+
+                    $result.contents().each(function () {
+                        if (this.nodeType === Node.COMMENT_NODE) {
+                            $(this).remove();
+                        }
+                    });
+                    $result.find('pre').replaceWith(function () {
+                        return $("<p>").html(this.innerHTML);
+                    });
+
+                    $.each($($result).find("*"), function (idx, val) {
+                        var $item = $(val);
+                        if (val.innerText == "")
+                            $item.remove();
+                        else if ($item.length > 0) {
+                            var saveStyle = {
+                                'font-style': $item.css('font-style'),
+                                'font-weight': $item.css('font-weight')
+                            };
+                            $item.contents().each(function () {
+                                if (this.nodeType === Node.COMMENT_NODE) {
+                                    $(this).remove();
+                                }
+                            });
+                            $item.removeAttr('style')
+                                .removeAttr('lang')
+                                .removeClass()
+                                .removeAttr('class')
+                                .css(saveStyle);
+                        }
+                    });
+                    $($element).html($result.html());
+
+                    var observable = valueAccessor();
+                    observable($element.html());
+                });
             }
         };
         ko.bindingHandlers.checkedHtml = {
