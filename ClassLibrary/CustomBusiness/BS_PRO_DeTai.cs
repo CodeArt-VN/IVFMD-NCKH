@@ -11,6 +11,29 @@ namespace BaseBusiness
 {
     public static partial class BS_PRO_DeTai
     {
+        public static DTO_PRO_DeTai get_PRO_DeTaiByID(AppEntities db, int PartnerID, int id)
+        {
+            var dbResult = db.tbl_PRO_DeTai.Find(id);
+
+            if (dbResult == null || dbResult.IDPartner != PartnerID)
+                return null;
+            else
+            {
+                var detai = toDTO(dbResult);
+                if (detai != null)
+                {
+                    detai.Tags = db.tbl_PRO_Tags.Where(c => c.IDDeTai == id).Select(c => new DTO_PRO_DeTai_Tag
+                    {
+                        ID = c.IDTag,
+                        TenTag = c.tbl_CAT_Tags.TenTag
+                    }).ToList();
+                }
+                return detai;
+            }
+
+
+        }
+
         public static DTO_PRO_DeTai save_PRO_DeTai(AppEntities db, int PartnerID, int ID, int StaffID, DTO_PRO_DeTai item, string Username)
         {
             tbl_PRO_DeTai dbitem = db.tbl_PRO_DeTai.Find(ID);
@@ -150,6 +173,29 @@ namespace BaseBusiness
                     item = null;
                 }
             }
+
+            #region Tags
+            foreach (var itemTag in db.tbl_PRO_Tags.Where(c => c.IDDeTai == dbitem.ID))
+            {
+                db.tbl_PRO_Tags.Remove(itemTag);
+            }
+            if (item.Tags != null && item.Tags.Count > 0 && dbitem.ID > 0)
+            {
+                foreach (var itemTag in item.Tags)
+                {
+                    tbl_PRO_Tags tag = new tbl_PRO_Tags
+                    {
+                        CreatedBy = Username,
+                        CreatedDate = DateTime.Now,
+                        IDDeTai = dbitem.ID,
+                        IDTag = itemTag.ID,
+                    };
+                    db.tbl_PRO_Tags.Add(tag);
+                }
+                db.SaveChanges();
+            }
+            #endregion
+
             return item;
         }
 
@@ -197,12 +243,18 @@ namespace BaseBusiness
                 IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
                 BaiFullTextNghiemThu = "",
                 FileChapThuan = s.FileChapThuan,
-                IsDisabledHDDD = s.IsDisabledHDDD,
-                IsDisabledHRCO = s.IsDisabledHRCO,
+                IsDisabledHDDD = s.IsDisabledHDDD ?? false,
+                IsDisabledHRCO = s.IsDisabledHRCO ?? false,
             }).FirstOrDefault();
 
             if (query != null)
             {
+                query.Tags = db.tbl_PRO_Tags.Where(c => c.IDDeTai == query.ID).Select(c => new DTO_PRO_DeTai_Tag
+                {
+                    ID = c.IDTag,
+                    TenTag = c.tbl_CAT_Tags.TenTag
+                }).ToList();
+
                 query.ListFormStatus = new List<DTO_PRO_DeTai_TrangThai>();
 
                 if (db.tbl_PRO_Sysnopsis.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
@@ -266,9 +318,9 @@ namespace BaseBusiness
                         query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm lựa chọn quy trình XXĐĐ rút gọn", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                     else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 14, Type = 1, Name = "Bảng kiểm lựa chọn quy trình XXĐĐ rút gọn", Description = "Bảng kiểm lựa chọn quy trình xem xét đạo đức rút gọn", FormCode = "tbl_PRO_BangKiemLuaChonQuyTrinhXXDD", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 }
-                if (db.tbl_PRO_BaoCaoNghiemThuDeTai.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                //if (db.tbl_PRO_BaoCaoNghiemThuDeTai.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
+                //    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 15, Type = 4, Name = "Báo cáo tổng hợp", Description = "Báo cáo tổng hợp", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 var nghiemthu = db.tbl_PRO_BaoCaoNghiemThuDeTai.FirstOrDefault(c => c.IDDeTai == ID && c.IsDeleted == false);
                 if (nghiemthu != null)

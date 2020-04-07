@@ -58,7 +58,12 @@ export class BangKiemXXDDModalPage extends DetailPage {
 
     bindData() {
         $("#frmBangKiemXXDD").empty();
-        $(this.item.HTML).appendTo("#frmBangKiemXXDD");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmBangKiemXXDD");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmBangKiemXXDD");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);

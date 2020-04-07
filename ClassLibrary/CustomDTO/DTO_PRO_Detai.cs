@@ -19,6 +19,13 @@ namespace DTOModel
         public string ChuNhiemDeTai { get; set; }
         public string BaiFullTextNghiemThu { get; set; }
         public string FileBaoCaoTongHop { get; set; }
+        public List<DTO_PRO_DeTai_Tag> Tags { get; set; }
+    }
+
+    public class DTO_PRO_DeTai_Tag
+    {
+        public int ID { get; set; }
+        public string TenTag { get; set; }
     }
 
     public class DTO_PRO_DeTai_TrangThai

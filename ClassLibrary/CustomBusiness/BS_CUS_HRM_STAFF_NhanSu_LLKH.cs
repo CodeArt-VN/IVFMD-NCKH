@@ -335,7 +335,19 @@ namespace BaseBusiness
             {
                 db.SaveChanges();
 
-                BS_HelperReference.STAFF_LLKH_Update(db, dbitem.IDNhanSu);
+                var syll = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == dbitem.IDNhanSu);
+                if (syll == null)
+                {
+                    var objSYLL = BS_CUS_HRM_STAFF_NhanSu_SYLL.get_CUS_HRM_STAFF_NhanSu_SYLLByNhanSu(db, dbitem.IDNhanSu);
+                    if (objSYLL.ID == 0)
+                    {
+                        BS_CUS_HRM_STAFF_NhanSu_SYLL.save_CUS_HRM_STAFF_NhanSu_SYLL(db, objSYLL, Username);
+                    }
+                }
+                else
+                {
+                    BS_HelperReference.STAFF_LLKH_Update(db, dbitem.IDNhanSu);
+                }
 
                 BS_CUS_Version.update_CUS_Version(db, null, "DTO_CUS_HRM_STAFF_NhanSu_LLKH", DateTime.Now, Username);
                 item.ID = dbitem.ID;

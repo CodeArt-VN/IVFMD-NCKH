@@ -33,6 +33,14 @@ namespace BaseBusiness
                 if (dgdd != null)
                 {
                     dgdd.TenDeTai = detai.TenTiengViet;
+
+                    var chunhiem = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == detai.IDChuNhiem);
+                    if (chunhiem != null)
+                    {
+                        dgdd.HoTenChuNhiem = chunhiem.Name;
+                        dgdd.DiaChi = chunhiem.DiaChi;
+                        dgdd.DienThoai = chunhiem.SoDienThoai;
+                    }
                 }
 
                 var dxnt = db.tbl_PRO_DonXinNghiemThu.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
@@ -241,21 +249,21 @@ namespace BaseBusiness
                     query.DiaChiCoQuan = objLL.DiaChi_CoQuan;
                     query.CoQuanLamViec = "Bệnh viện Mỹ Đức";
                     query.DienThoaiCQ = objLL.DienThoai_CoQuan;
+                    //if (string.IsNullOrEmpty(query.HoTen))
+                    //    query.HoTen = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.NgaySinh))
+                    //    query.NgaySinh = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.Email))
+                    //    query.Email = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.DiaChi))
+                    //    query.DiaChi = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.Mobile))
+                    //    query.Mobile = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.ChucVu))
+                    //    query.ChucVu = "(LLKH chưa có thông tin)";
+                    //if (string.IsNullOrEmpty(query.DiaChiCoQuan))
+                    //    query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
 
-                    if (string.IsNullOrEmpty(query.HoTen))
-                        query.HoTen = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.NgaySinh))
-                        query.NgaySinh = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.Email))
-                        query.Email = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.DiaChi))
-                        query.DiaChi = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.Mobile))
-                        query.Mobile = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.ChucVu))
-                        query.ChucVu = "(LLKH chưa có thông tin)";
-                    if (string.IsNullOrEmpty(query.DiaChiCoQuan))
-                        query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
 
                     try
                     {
@@ -288,8 +296,10 @@ namespace BaseBusiness
                         {
                             ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
                             {
-                                HocVi = "(LLKH chưa có thông tin)",
-                                NamNhanBang = "(LLKH chưa có thông tin)"
+                                //HocVi = "(LLKH chưa có thông tin)",
+                                //NamNhanBang = "(LLKH chưa có thông tin)",
+                                HocVi = "",
+                                NamNhanBang = ""
                             });
                         }
                         query.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);

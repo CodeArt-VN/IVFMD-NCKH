@@ -47,14 +47,6 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
-            if (tbl_PRO_Sysnopsis == null || isReset == true)
-            {
-                if (tbl_PRO_Sysnopsis == null)
-                    tbl_PRO_Sysnopsis = new DTO_PRO_Sysnopsis
-                    {
-                        IDDeTai = idDeTai
-                    };
-            }
             tbl_PRO_Sysnopsis.HTML = html;
 
             return Ok(tbl_PRO_Sysnopsis);

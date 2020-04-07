@@ -68,10 +68,16 @@ export class SysnopsisModalPage extends DetailPage {
 
     bindData() {
         $("#frmSynopsis").empty();
-        $(this.item.HTML).appendTo("#frmSynopsis");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmSynopsis");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmSynopsis");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
+        
 
         let ObjModel = function (item) {
             var self = this;

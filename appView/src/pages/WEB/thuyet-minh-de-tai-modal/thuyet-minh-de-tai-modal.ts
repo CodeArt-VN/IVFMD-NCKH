@@ -57,7 +57,13 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
 
     bindData() {
         $("#frmThuyetMinhDeTai").empty();
-        $(this.item.HTML).appendTo("#frmThuyetMinhDeTai");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmThuyetMinhDeTai");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmThuyetMinhDeTai");
+        }
+        
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);

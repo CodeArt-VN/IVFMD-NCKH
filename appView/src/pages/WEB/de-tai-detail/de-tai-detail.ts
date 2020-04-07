@@ -146,15 +146,15 @@ export class DeTaiDetailPage extends BasePage {
         if (this.item.IDTrangThai_HDDD == 7) {
             this.statusHDDD = 'Đang chờ HĐĐĐ duyệt ';
         }
-        else if (this.item.IDTrangThai_HRCO == 8) {
+        else if (this.item.IDTrangThai_HDDD == 8) {
             this.statusHDDD = 'HĐĐĐ đã duyệt';
         }
 
         if (this.item.IDTrangThai_HDKH == 13) {
             this.statusHDKH = 'Đang chờ HĐKH duyệt ';
         }
-        else if (this.item.IDTrangThai_HRCO == 14) {
-            this.statusHRCO = 'HĐKH đã duyệt';
+        else if (this.item.IDTrangThai_HDKH == 14) {
+            this.statusHDKH = 'HĐKH đã duyệt';
         }
 
         this.slideListByType = [
@@ -178,8 +178,8 @@ export class DeTaiDetailPage extends BasePage {
             slidesPerColumn: 1,
             // allowSlidePrev:false,
             //allowSlideNext: false,
-            // noSwipingClass: 'no-swipe',
-            // noSwiping: true,
+            noSwipingClass: 'no-swipe',
+            noSwiping: true,
             allowTouchMove: false,
             // pagination: {
             //   el: '.swiper-pagination',
@@ -460,23 +460,29 @@ export class DeTaiDetailPage extends BasePage {
             let myModal = this.modalCtrl.create(page, param);
             myModal.onDidDismiss(data => {
                 this.refreshData();
+                this.slides.lockSwipes(false);
             });
             myModal.present();
+            this.slides.lockSwipes(true);
         }
         else if (type != 11) {
             if (page != null) {
                 let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
                 myModal.onDidDismiss(data => {
                     this.refreshData();
+                    this.slides.lockSwipes(false);
                 });
                 myModal.present();
+                this.slides.lockSwipes(true);
             }
         } else if (type == 11) {
             let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': this.id });
             myModal.onDidDismiss(data => {
                 this.refreshData();
+                this.slides.lockSwipes(false);
             });
             myModal.present();
+            this.slides.lockSwipes(true);
             //this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
             //return false;
         }

@@ -38,7 +38,7 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DeTai))]
         public IHttpActionResult Get(int id)
         {
-            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTai(db, PartnerID, id);
+            DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiByID(db, PartnerID, id);
             if (tbl_PRO_DeTai == null)
             {
                 return NotFound();

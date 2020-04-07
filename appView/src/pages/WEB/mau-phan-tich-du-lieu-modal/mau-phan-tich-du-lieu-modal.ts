@@ -57,7 +57,12 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
 
     bindData() {
         $("#frmMauPhanTichDuLieu").empty();
-        $(this.item.HTML).appendTo("#frmMauPhanTichDuLieu");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmMauPhanTichDuLieu");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmMauPhanTichDuLieu");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);

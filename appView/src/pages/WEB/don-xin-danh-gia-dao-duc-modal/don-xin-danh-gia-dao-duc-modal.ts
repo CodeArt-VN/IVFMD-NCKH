@@ -57,7 +57,12 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
 
     bindData() {
         $("#frmDonXinDanhGiaDaoDuc").empty();
-        $(this.item.HTML).appendTo("#frmDonXinDanhGiaDaoDuc");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmDonXinDanhGiaDaoDuc");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmDonXinDanhGiaDaoDuc");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
