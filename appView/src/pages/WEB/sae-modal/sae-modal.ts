@@ -146,19 +146,25 @@ export class SAEModalPage extends DetailPage {
         item.HTML = $("#frmSAE").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
-        this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.saveCustom(item).then((savedItem: any) => {
-                this.item.ID = this.id = this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
-        })
+
+        var errors = [];
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Lưu dữ liệu...').then(() => {
+                this.currentProvider.saveCustom(item).then((savedItem: any) => {
+                    this.item.ID = this.id = this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            })
     };
 
     print() {

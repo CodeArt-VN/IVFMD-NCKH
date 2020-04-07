@@ -65,7 +65,7 @@ export class DonXinNghiemThuModalPage extends DetailPage {
         let ObjModel = function (item) {
             var self = this;
 
-            that.nckhProvider.copyPropertiesValue(item, self); 
+            that.nckhProvider.copyPropertiesValue(item, self);
 
             self.getItem = function () {
                 return ko.toJS(self);
@@ -80,20 +80,30 @@ export class DonXinNghiemThuModalPage extends DetailPage {
         item.HTML = $("#frmDonXinNghiemThu").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
-        this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.save(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
-        })
+
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoai))
+            errors.push('Điện thoại đơn vị chủ trì đề tài không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
+            errors.push('Ngày ký không hợp lệ.');
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Lưu dữ liệu...').then(() => {
+                this.currentProvider.save(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            })
     };
 
     print() {

@@ -96,19 +96,39 @@ export class AEModalPage extends DetailPage {
         item.HTML = $("#frmAE").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
-        this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.save(item).then((savedItem: any) => {
-                this.item.ID = this.id = this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
-        })
+
+        var errors = [];
+        if (!this.nckhProvider.checkDateTime(item.NgayKhoiPhat_Ngay, item.NgayKhoiPhat_Thang, item.NgayKhoiPhat_Nam,
+            item.NgayKhoiPhat_Gio, item.NgayKhoiPhat_Phut, null))
+            errors.push('Ngày khởi phát không hợp lệ.');
+        if (!this.nckhProvider.checkDateTime(item.NgayKetThuc_Ngay, item.NgayKetThuc_Thang, item.NgayKetThuc_Nam,
+            item.NgayKetThuc_Gio, item.NgayKetThuc_Phut, null))
+            errors.push('Ngày kết thúc không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.KetQua_TuVong_Ngay, item.KetQua_TuVong_Thang, item.KetQua_TuVong_Nam))
+            errors.push('Ngày tử vong không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NgayBaoCao_Ngay, item.NgayBaoCao_Thang, item.NgayBaoCao_Nam))
+            errors.push('Ngày báo cáo không hợp lệ.');
+        if (!this.nckhProvider.checkDateTime(item.NT_NgayGioTangDoNang_Ngay, item.NT_NgayGioTangDoNang_Thang, item.NT_NgayGioTangDoNang_Nam,
+            item.NT_NgayGioTangDoNang_Gio, item.NT_NgayGioTangDoNang_Phut, null))
+            errors.push('Ngày/Giờ tăng độ nặng, trở nên nghiêm trọng không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NT_NgayBaoCao_Ngay, item.NT_NgayBaoCao_Thang, item.NT_NgayBaoCao_Nam))
+            errors.push('Ngày báo cáo (nghiêm trọng) không hợp lệ.');
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Lưu dữ liệu...').then(() => {
+                this.currentProvider.save(item).then((savedItem: any) => {
+                    this.item.ID = this.id = this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            })
     };
 
     print() {

@@ -20,6 +20,51 @@ export class NCKHServiceProvider {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
+                $element.on('paste', function (e) {
+                    e.preventDefault();
+                    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
+                    var $result = $('<div></div>').append($(text));
+
+                    $result.children('style').remove();
+                    $result.children('meta').remove()
+                    $result.children('link').remove();
+                    $result.find('o\\:p').remove();
+
+                    $result.contents().each(function () {
+                        if (this.nodeType === Node.COMMENT_NODE) {
+                            $(this).remove();
+                        }
+                    });
+                    $result.find('pre').replaceWith(function () {
+                        return $("<p>").html(this.innerHTML);
+                    });
+
+                    $.each($($result).find("*"), function (idx, val) {
+                        var $item = $(val);
+                        if (val.innerText == "")
+                            $item.remove();
+                        else if ($item.length > 0) {
+                            var saveStyle = {
+                                'font-style': $item.css('font-style'),
+                                'font-weight': $item.css('font-weight')
+                            };
+                            $item.contents().each(function () {
+                                if (this.nodeType === Node.COMMENT_NODE) {
+                                    $(this).remove();
+                                }
+                            });
+                            $item.removeAttr('style')
+                                .removeAttr('lang')
+                                .removeClass()
+                                .removeAttr('class')
+                                .css(saveStyle);
+                        }
+                    });
+                    $($element).html($result.html());
+
+                    var observable = valueAccessor();
+                    observable($element.html());
+                });
             }
         };
         ko.bindingHandlers.checkedHtml = {
@@ -453,36 +498,64 @@ export class NCKHServiceProvider {
             console.error(e);
         }
     }
+    isNull(val: any) {
+        return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
+    }
+    isInt(val: string) {
+        if (val.startsWith("0"))
+            val = val.substr(1);
+        return Number.parseInt(val).toString() == val;
+    }
+    getIntValue(val: string): number {
+        if (val.startsWith("0"))
+            val = val.substr(1);
+        return Number.parseInt(val);
+    }
+    inRange = function (val: string, min: Number, max: Number) {
+        return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
+    }
+    checkDateTime(day: any, month: any, year: any, hour: any, minute: any, second: any) {
+        return this.checkDate(day, month, year) && this.checkTime(hour, minute, second);
+    }
     checkDate(day: any, month: any, year: any) {
-        let isNull = function (val: any) {
-            return val == null || val == undefined || val == '' || val.length == 0 || val == Infinity || val == NaN;
-        }
-        let isInt = function (val: string) {
-            if (val.startsWith("0"))
-                val = val.substr(1);
-            return Number.parseInt(val).toString() == val;
-        }
-        let getIntValue = function (val: string): number {
-            if (val.startsWith("0"))
-                val = val.substr(1);
-            return Number.parseInt(val);
-        }
-        let inRange = function (val: string, min: Number, max: Number) {
-            return Number.parseInt(val) >= min && Number.parseInt(val) <= max;
-        }
-        if (isNull(day) && isNull(month) && isNull(year))
+        if (this.isNull(day) && this.isNull(month) && this.isNull(year))
             return true;
-        var isValid = isInt(day.toString()) && inRange(day, 1, 31)
-            && isInt(month.toString()) && inRange(month, 1, 12)
-            && isInt(year.toString()) && inRange(year, 2000, 2100);
+        var isValid = this.isInt(day.toString()) && this.inRange(day, 1, 31)
+            && this.isInt(month.toString()) && this.inRange(month, 1, 12)
+            && this.isInt(year.toString()) && this.inRange(year, 2000, 2100);
         if (isValid) {
-            var d = getIntValue(day.toString());
-            var m = getIntValue(month.toString()) - 1;
-            var y = getIntValue(year.toString());
+            var d = this.getIntValue(day.toString());
+            var m = this.getIntValue(month.toString()) - 1;
+            var y = this.getIntValue(year.toString());
             var date = new Date(y, m, d);
             isValid = date.getFullYear() == y && date.getMonth() == m && date.getDate() == d;
         }
         return isValid;
+    }
+    checkTime(hour: any, minute: any, second: any) {
+        if (this.isNull(hour) && this.isNull(minute) && this.isNull(second))
+            return true;
+        if (this.isNull(second))
+            second = 0;
+        var isValid = this.isInt(hour.toString()) && this.inRange(hour, 0, 23)
+            && this.isInt(minute.toString()) && this.inRange(minute, 0, 59)
+            && this.isInt(second.toString()) && this.inRange(second, 0, 59);
+        return isValid;
+    }
+    isPhoneNumber(val: any) {
+        if (this.isNull(val))
+            return true;
+        var phone = val.toString();
+        if (phone.length < 7 || phone.length > 11)
+            return false;
+        var res = true;
+        for (var i = 0; i < phone.length; i++) {
+            if (Number.parseInt(phone[i]).toString() !== phone[i]) {
+                res = false;
+                break;
+            }
+        }
+        return res;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];

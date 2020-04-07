@@ -95,7 +95,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
             var self = this;
 
             that.nckhProvider.copyPropertiesValue(item, self);
-            
+
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
                     HocVi: ko.observable(nn.HocVi || ""),
@@ -162,20 +162,36 @@ export class NhanSuSYLLModalPage extends DetailPage {
         item.HTML = $("#frmNhanSuSYLL").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
-        this.loadingMessage('Cập nhật dữ liệu...').then(() => {
-            this.proSYLLProvider.update(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã cập nhật xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
-            });
-        })
+
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoaiCQ))
+            errors.push('Điện thoại cơ quan không hợp lệ.');
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoaiNhaRieng))
+            errors.push('Điện thoại NR không hợp lệ.');
+        if (!this.nckhProvider.isPhoneNumber(item.Mobile))
+            errors.push('Điện thoại cá nhân (Mobile) không hợp lệ.');
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoaiThuTruong))
+            errors.push('Điện thoại người Lãnh đạo cơ quan không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
+            errors.push('Ngày ký không hợp lệ.');
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Cập nhật dữ liệu...').then(() => {
+                this.proSYLLProvider.update(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã cập nhật xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
+                });
+            })
     };
     print() {
         this.loadingMessage('Lấy dữ liệu in...').then(() => {

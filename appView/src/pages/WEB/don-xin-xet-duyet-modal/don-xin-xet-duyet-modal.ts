@@ -80,6 +80,18 @@ export class DonXinXetDuyetModalPage extends DetailPage {
         item.HTML = $("#frmDonXinXetDuyet").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
+
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoai))
+            errors.push('Điện thoại chủ nhiệm đề tài không hợp lệ.');
+        if (!this.nckhProvider.isPhoneNumber(item.DienThoaiDonVi))
+            errors.push('Điện thoại đơn vị chủ trì đề tài không hợp lệ.');
+        if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
+            errors.push('Ngày ký không hợp lệ.');
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
         this.loadingMessage('Lưu dữ liệu...').then(() => {
             this.currentProvider.save(item).then((savedItem: any) => {
                 this.item.ID = savedItem.ID;

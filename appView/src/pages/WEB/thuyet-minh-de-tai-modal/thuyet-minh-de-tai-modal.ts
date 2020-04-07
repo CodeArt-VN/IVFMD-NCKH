@@ -96,7 +96,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
             })
 
 
-            self.ListCoQuanPhoiHop = ko.observableArray(ko.utils.arrayMap(item.ListCoQuanPhoiHop || [{  }], function (nn) {
+            self.ListCoQuanPhoiHop = ko.observableArray(ko.utils.arrayMap(item.ListCoQuanPhoiHop || [{}], function (nn) {
                 return {
                     TenCoQuan: ko.observable(nn.TenCoQuan || ""),
                     HoTenThuTruong: ko.observable(nn.HoTenThuTruong || ""),
@@ -199,26 +199,43 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
 
     saveChange() {
         let item = this.model.getItem();
+        var that = this;
         item.HTML = $("#frmThuyetMinhDeTai").html();
         item.FormConfig = this.nckhProvider.getConfigs();
         console.log(item);
 
-        //var valid = this.nckhProvider.checkDate(12, 13, 2020);
-
-        this.loadingMessage('Lưu dữ liệu...').then(() => {
-            this.currentProvider.save(item).then((savedItem: any) => {
-                this.item.ID = savedItem.ID;
-                this.model.ID = savedItem.ID;
-                if (this.loading) this.loading.dismiss();
-                this.events.publish('app:Update' + this.pageName);
-                console.log('publish => app:Update ' + this.pageName);
-                this.toastMessage('Đã lưu xong!');
-            }).catch(err => {
-                console.log(err);
-                if (this.loading) this.loading.dismiss();
-                this.toastMessage('Không lưu được, \nvui lòng thử lại.');
-            });
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(item.A6_DienThoai))
+            errors.push('Điện thoại chủ nhiệm không hợp lệ.');
+        if (!this.nckhProvider.isPhoneNumber(item.A7_DienThoai))
+            errors.push('Điện thoại cơ quan chủ trì không hợp lệ.');
+        $.each(item.ListCoQuanPhoiHop, function (i, o) {
+            if (!that.nckhProvider.isPhoneNumber(o.DienThoai))
+                errors.push('Điện thoại cơ quan phối hợp thực hiện ' + o.TenCoQuan + ' không hợp lệ.');
         })
+        //// Có cả email nên chưa validate
+        //$.each(item.ListGioiThieuChuyenGia, function (i, o) {
+        //    if (!that.nckhProvider.isPhoneNumber(o.DienThoai))
+        //        errors.push('Điện thoại chuyên gia ' + o.HoTen + ' không hợp lệ.');
+        //})
+
+        if (errors.length > 0)
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+        else
+            this.loadingMessage('Lưu dữ liệu...').then(() => {
+                this.currentProvider.save(item).then((savedItem: any) => {
+                    this.item.ID = savedItem.ID;
+                    this.model.ID = savedItem.ID;
+                    if (this.loading) this.loading.dismiss();
+                    this.events.publish('app:Update' + this.pageName);
+                    console.log('publish => app:Update ' + this.pageName);
+                    this.toastMessage('Đã lưu xong!');
+                }).catch(err => {
+                    console.log(err);
+                    if (this.loading) this.loading.dismiss();
+                    this.toastMessage('Không lưu được, \nvui lòng thử lại.');
+                });
+            })
     };
 
     print() {
