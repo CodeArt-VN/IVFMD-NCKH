@@ -63,8 +63,11 @@ export class AEModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmAE')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmAE')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

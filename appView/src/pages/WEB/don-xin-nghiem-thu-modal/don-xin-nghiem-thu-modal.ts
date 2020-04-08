@@ -47,8 +47,11 @@ export class DonXinNghiemThuModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmDonXinNghiemThu')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmDonXinNghiemThu')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

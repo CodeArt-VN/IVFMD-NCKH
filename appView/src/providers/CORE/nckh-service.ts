@@ -552,6 +552,9 @@ export class NCKHServiceProvider {
             val = val.substr(1);
         return Number.parseInt(val).toString() == val;
     }
+    isInt0(val: string) {
+        return Number.parseInt(val).toString() == val;
+    }
     getIntValue(val: string): number {
         if (val.startsWith("0"))
             val = val.substr(1);
@@ -586,14 +589,14 @@ export class NCKHServiceProvider {
         }
         return isValid;
     }
-    checkTime(hour: any, minute: any, second: any) {
+    checkTime(hour: any, minute: any, second: any) { 
         if (this.isNull(hour) && this.isNull(minute) && this.isNull(second))
             return true;
         if (this.isNull(second))
             second = 0;
         var isValid = this.isInt(hour.toString()) && this.inRange(hour, 0, 23)
             && this.isInt(minute.toString()) && this.inRange(minute, 0, 59)
-            && this.isInt(second.toString()) && this.inRange(second, 0, 59);
+            && this.isInt0(second.toString()) && this.inRange(second, 0, 59);
         return isValid;
     }
     isPhoneNumber(val: any) {

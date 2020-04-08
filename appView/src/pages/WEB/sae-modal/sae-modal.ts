@@ -63,8 +63,11 @@ export class SAEModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmSAE')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmSAE')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

@@ -86,7 +86,12 @@ export class NhanSuSYLLModalPage extends DetailPage {
 
     bindData() {
         $("#frmNhanSuSYLL").empty();
-        $(this.item.HTML).appendTo("#frmNhanSuSYLL");
+        if (this.idDeTai && this.idDeTai > 0) {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmNhanSuSYLL");
+        } else {
+            $(this.item.HTML).appendTo("#frmNhanSuSYLL");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);

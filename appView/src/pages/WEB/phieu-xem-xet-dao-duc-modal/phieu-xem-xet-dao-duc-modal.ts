@@ -47,8 +47,11 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmPhieuXemXetDaoDuc')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmPhieuXemXetDaoDuc')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

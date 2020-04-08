@@ -120,7 +120,7 @@ namespace BaseBusiness
                 var tmdt = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
                 if (tmdt != null)
                 {
-                    tmdt.A6_HoTen = (!string.IsNullOrEmpty(llkh.HocHam) ? llkh.HocHam + " " : "") + (!string.IsNullOrEmpty(llkh.HocViThacSy) ? llkh.HocViThacSy + " " : "") + (!string.IsNullOrEmpty(llkh.HocViTienSy) ? llkh.HocViTienSy + " " : "") + llkh.HoTen;
+                    tmdt.A6_HoTen = (!string.IsNullOrEmpty(llkh.HocHam) ? llkh.HocHam + ", " : "") + (!string.IsNullOrEmpty(llkh.HocViThacSy) ? llkh.HocViThacSy + ", " : "") + (!string.IsNullOrEmpty(llkh.HocViTienSy) ? llkh.HocViTienSy + ", " : "") + llkh.HoTen;
                     tmdt.A6_NgaySinh = llkh.NgaySinh;
                     tmdt.A6_GioiTinh = llkh.GioiTinh;
                     tmdt.A6_CMND = llkh.CMND;

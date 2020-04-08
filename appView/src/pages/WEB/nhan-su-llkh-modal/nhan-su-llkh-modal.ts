@@ -70,8 +70,11 @@ export class NhanSuLLKHModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmNhanSuLLKH')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmNhanSuLLKH')[0]);
+            this.bindData();
+        } catch(e){
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };
@@ -80,7 +83,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
     bindData() {
         $("#frmNhanSuLLKH").empty();
-        $(this.item.HTML).appendTo("#frmNhanSuLLKH");
+        if (this.idDeTai && this.idDeTai > 0) {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmNhanSuLLKH");
+        } else {
+            $(this.item.HTML).appendTo("#frmNhanSuLLKH");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);

@@ -47,8 +47,11 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmBangKhaiNhanSu')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmBangKhaiNhanSu')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

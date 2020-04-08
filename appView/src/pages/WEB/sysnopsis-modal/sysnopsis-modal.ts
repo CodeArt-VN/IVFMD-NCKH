@@ -58,8 +58,11 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmSynopsis')[0]);
-        this.bindData();
+        try { 
+            ko.cleanNode($('#frmSynopsis')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

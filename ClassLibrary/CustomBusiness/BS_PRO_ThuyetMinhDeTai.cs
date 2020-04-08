@@ -133,7 +133,7 @@ namespace BaseBusiness
                     var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == deTaiId && c.IDNhanSu == detai.IDChuNhiem && c.IsDeleted == false);
                     if (chunhiem != null)
                     {
-                        query.A6_HoTen = (!string.IsNullOrEmpty(chunhiem.HocHam) ? chunhiem.HocHam + " " : "") + (!string.IsNullOrEmpty(chunhiem.HocViThacSy) ? chunhiem.HocViThacSy + " " : "") + (!string.IsNullOrEmpty(chunhiem.HocViTienSy) ? chunhiem.HocViTienSy + " " : "") + chunhiem.HoTen;
+                        query.A6_HoTen = (!string.IsNullOrEmpty(chunhiem.HocHam) ? chunhiem.HocHam + ", " : "") + (!string.IsNullOrEmpty(chunhiem.HocViThacSy) ? chunhiem.HocViThacSy + ", " : "") + (!string.IsNullOrEmpty(chunhiem.HocViTienSy) ? chunhiem.HocViTienSy + ", " : "") + chunhiem.HoTen;
                         query.A6_NgaySinh = chunhiem.NgaySinh;
                         query.A6_GioiTinh = chunhiem.GioiTinh;
                         query.A6_CMND = chunhiem.CMND;

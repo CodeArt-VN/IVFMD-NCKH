@@ -47,8 +47,11 @@ export class DonXinXetDuyetModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmDonXinXetDuyet')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmDonXinXetDuyet')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };

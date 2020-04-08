@@ -104,7 +104,6 @@ export class DanhSachBenhNhanModalPage extends DetailPage {
                 {
                     text: 'Đồng ý xóa',
                     handler: () => {
-                        debugger
                         var seletedItems = [...this.lstBNSelected];
                         var doneCount = 0;
 
@@ -135,7 +134,7 @@ export class DanhSachBenhNhanModalPage extends DetailPage {
         this.lstBNSelected.push(...selected);
     }
     openDetailBN(item) {
-        let myModal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': 0 });
+        let myModal = this.modalCtrl.create(DeTaiBenhNhanModalPage, { 'id': item.ID, 'idDeTai': this.id, 'isNew': 1 });
         myModal.onDidDismiss(data => {
             this.refreshBN();
         });
