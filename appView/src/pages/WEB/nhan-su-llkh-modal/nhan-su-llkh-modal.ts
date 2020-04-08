@@ -254,12 +254,15 @@ export class NhanSuLLKHModalPage extends DetailPage {
         console.log(item);
 
         var errors = [];
+        if (!this.nckhProvider.checkFullDate(item.CMND_NgayCap))
+            errors.push('Ngày cấp CMND không hợp lệ.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoai_CoQuan))
-            errors.push('Điện thoại cơ quan không hợp lệ.');
+            errors.push('Điện thoại cơ quan không hợp lệ. Số điện thoại là chuỗi 7 đến 14 chữ số.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoai_CaNhan))
-            errors.push('Điện thoại cá nhân không hợp lệ.');
+            errors.push('Điện thoại cá nhân không hợp lệ. Số điện thoại là chuỗi 7 đến 14 chữ số.');
         if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
             errors.push('Ngày ký không hợp lệ.');
+       
 
         if (errors.length > 0)
             this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")

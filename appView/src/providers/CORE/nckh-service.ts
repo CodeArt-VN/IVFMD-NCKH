@@ -517,12 +517,20 @@ export class NCKHServiceProvider {
     checkDateTime(day: any, month: any, year: any, hour: any, minute: any, second: any) {
         return this.checkDate(day, month, year) && this.checkTime(hour, minute, second);
     }
+    checkFullDate(fullDate: any) {
+        if (this.isNull(fullDate))
+            return true;
+        var arr = fullDate.split("/");
+        if (arr.length == 3)
+            return this.checkDate(arr[0], arr[1], arr[2]);
+        return false;
+    }
     checkDate(day: any, month: any, year: any) {
         if (this.isNull(day) && this.isNull(month) && this.isNull(year))
             return true;
         var isValid = this.isInt(day.toString()) && this.inRange(day, 1, 31)
             && this.isInt(month.toString()) && this.inRange(month, 1, 12)
-            && this.isInt(year.toString()) && this.inRange(year, 2000, 2100);
+            && this.isInt(year.toString()) && this.inRange(year, 1900, 2100);
         if (isValid) {
             var d = this.getIntValue(day.toString());
             var m = this.getIntValue(month.toString()) - 1;
@@ -545,7 +553,7 @@ export class NCKHServiceProvider {
     isPhoneNumber(val: any) {
         if (this.isNull(val))
             return true;
-        var phone = val.toString();
+        var phone = this.extractContent(val).toString();
         if (phone.length < 7 || phone.length > 11)
             return false;
         var res = true;
@@ -556,6 +564,12 @@ export class NCKHServiceProvider {
             }
         }
         return res;
+    }
+    extractContent(val) {
+        val = val.trim();
+        var span = document.createElement('span');
+        span.innerHTML = val;
+        return span.textContent || span.innerText;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];

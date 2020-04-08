@@ -5,7 +5,6 @@ import { AccountServiceProvider } from '../providers/CORE/account-service';
 import { CommonServiceProvider } from '../providers/CORE/common-service';
 import introJs from 'intro.js/intro.js';
 import { PopoverPage } from './HETHONG/popover/popover';
-
 export class BasePage {
     @ViewChild(Content) content: Content;
     userprofile = GlobalData.Profile;
@@ -311,6 +310,7 @@ export class BasePage {
         document.body.removeChild(pom);
     }
 
-
-
+    downloadWithBaseName(path) {
+        this.downloadURLContent(this.commonService.getDownloadUrl(path));
+    }
 }

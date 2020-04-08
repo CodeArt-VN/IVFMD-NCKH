@@ -724,12 +724,13 @@ export class DeTaiDetailPage extends BasePage {
     }
 
     download(url) {
-        this.downloadURLContent(appSetting.mainService.base + url);
+        this.downloadWithBaseName(url);
     }
 
     downloadFileUpload() {
-        if (this.item.FileUpload)
+        if (this.item.FileUpload) {
             this.download(this.item.FileUpload);
+        }
     }
 
     downloadChapThuan() {

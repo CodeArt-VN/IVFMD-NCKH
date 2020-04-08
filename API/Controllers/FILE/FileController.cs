@@ -541,7 +541,7 @@ namespace API.Controllers.DOC
         }
 
         [HttpGet]
-        [Route("download")]
+        [Route("Download")]
         public HttpResponseMessage DownloadFile(string path, string name = null)
         {
             var absPath = System.Web.HttpContext.Current.Server.MapPath(path);
