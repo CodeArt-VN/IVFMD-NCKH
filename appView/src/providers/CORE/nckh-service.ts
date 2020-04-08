@@ -20,51 +20,97 @@ export class NCKHServiceProvider {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
-                $element.on('paste', function (e) {
-                    e.preventDefault();
-                    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
-                    var $result = $('<div></div>').append($(text));
+                //$element.on('paste', function (e) {
+                //    e.preventDefault();
+                //    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
+                //    var $result = $('<div></div>').append($(text));
 
-                    $result.children('style').remove();
-                    $result.children('meta').remove()
-                    $result.children('link').remove();
-                    $result.find('o\\:p').remove();
+                //    $result.children('style').remove();
+                //    $result.children('meta').remove()
+                //    $result.children('link').remove();
+                //    $result.find('o\\:p').remove();
 
-                    $result.contents().each(function () {
-                        if (this.nodeType === Node.COMMENT_NODE) {
-                            $(this).remove();
-                        }
-                    });
-                    $result.find('pre').replaceWith(function () {
-                        return $("<p>").html(this.innerHTML);
-                    });
+                //    $result.contents().each(function () {
+                //        if (this.nodeType === Node.COMMENT_NODE) {
+                //            $(this).remove();
+                //        }
+                //    });
+                //    $result.find('pre').replaceWith(function () {
+                //        return $("<p>").html(this.innerHTML);
+                //    });
 
-                    $.each($($result).find("*"), function (idx, val) {
-                        var $item = $(val);
-                        if (val.innerText == "")
-                            $item.remove();
-                        else if ($item.length > 0) {
-                            var saveStyle = {
-                                'font-style': $item.css('font-style'),
-                                'font-weight': $item.css('font-weight')
-                            };
-                            $item.contents().each(function () {
-                                if (this.nodeType === Node.COMMENT_NODE) {
-                                    $(this).remove();
-                                }
-                            });
-                            $item.removeAttr('style')
-                                .removeAttr('lang')
-                                .removeClass()
-                                .removeAttr('class')
-                                .css(saveStyle);
-                        }
-                    });
-                    $($element).html($result.html());
+                //    $.each($($result).find("*"), function (idx, val) {
+                //        var $item = $(val);
+                //        if (val.innerText == "")
+                //            $item.remove();
+                //        else if ($item.length > 0) {
+                //            var saveStyle = {
+                //                'font-style': $item.css('font-style'),
+                //                'font-weight': $item.css('font-weight')
+                //            };
+                //            $item.contents().each(function () {
+                //                if (this.nodeType === Node.COMMENT_NODE) {
+                //                    $(this).remove();
+                //                }
+                //            });
+                //            $item.removeAttr('style')
+                //                .removeAttr('lang')
+                //                .removeClass()
+                //                .removeAttr('class')
+                //                .css(saveStyle);
+                //        }
+                //    });
+                //    $($element).html($result.html());
 
-                    var observable = valueAccessor();
-                    observable($element.html());
-                });
+                //    var observable = valueAccessor();
+                //    observable($element.html());
+
+                //    function createRange(node, chars, range) {
+                //        if (!range) {
+                //            range = document.createRange()
+                //            range.selectNode(node);
+                //            range.setStart(node, 0);
+                //        }
+
+                //        if (chars.count === 0) {
+                //            range.setEnd(node, chars.count);
+                //        } else if (node && chars.count > 0) {
+                //            if (node.nodeType === Node.TEXT_NODE) {
+                //                if (node.textContent.length < chars.count) {
+                //                    chars.count -= node.textContent.length;
+                //                } else {
+                //                    range.setEnd(node, chars.count);
+                //                    chars.count = 0;
+                //                }
+                //            } else {
+                //                for (var lp = 0; lp < node.childNodes.length; lp++) {
+                //                    range = createRange(node.childNodes[lp], chars, range);
+
+                //                    if (chars.count === 0) {
+                //                        break;
+                //                    }
+                //                }
+                //            }
+                //        }
+
+                //        return range;
+                //    };
+                //    function setCurrentCursorPosition(chars) {
+                //        if (chars >= 0) {
+                //            var selection = window.getSelection();
+
+                //            var range = createRange($element[0], { count: chars }, null);
+
+                //            if (range) {
+                //                range.collapse(false);
+                //                selection.removeAllRanges();
+                //                selection.addRange(range);
+                //            }
+                //        }
+                //    };
+
+                //    setCurrentCursorPosition($result.text().length);
+                //});
             }
         };
         ko.bindingHandlers.checkedHtml = {
