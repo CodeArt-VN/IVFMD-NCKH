@@ -34,12 +34,12 @@ namespace BaseBusiness
                 {
                     dgdd.TenDeTai = detai.TenTiengViet;
 
-                    var chunhiem = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == detai.IDChuNhiem);
+                    var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == IDDeTai && c.IDNhanSu == detai.IDChuNhiem);
                     if (chunhiem != null)
                     {
-                        dgdd.HoTenChuNhiem = chunhiem.Name;
-                        dgdd.DiaChi = chunhiem.DiaChi;
-                        dgdd.DienThoai = chunhiem.SoDienThoai;
+                        dgdd.HoTenChuNhiem = chunhiem.HoTen;
+                        dgdd.DiaChi = chunhiem.DiaChi_CaNhan;
+                        dgdd.DienThoai = chunhiem.DienThoai_CaNhan;
                     }
                 }
 
@@ -141,6 +141,17 @@ namespace BaseBusiness
                     }
                     catch { }
 
+                }
+
+                var dgdd = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+                if (dgdd != null)
+                {
+                    if (llkh != null)
+                    {
+                        dgdd.HoTenChuNhiem = llkh.HoTen;
+                        dgdd.DiaChi = llkh.DiaChi_CaNhan;
+                        dgdd.DienThoai = llkh.DienThoai_CaNhan;
+                    }
                 }
 
                 db.SaveChanges();

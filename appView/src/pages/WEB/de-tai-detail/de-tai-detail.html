@@ -182,7 +182,8 @@
                                     style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">
                                     Download file
                                 </button>
-                                <button *ngIf="canApprove && item.IDTrangThai_HDDD == 8 && (item.FileChapThuan == null || item.FileChapThuan == '')"
+                                <button *ngIf="canApprove && (item.FileChapThuan == null || item.FileChapThuan == '')"
+                                        [disabled]="item.IDTrangThai_HDDD != 8"
                                         block ion-button (click)="uploadChapThuanClick()">
                                     Upload file
                                 </button>

@@ -106,6 +106,7 @@ export class SysnopsisModalPage extends DetailPage {
                 console.log('publish => app:Update ' + this.pageName);
                 //this.goBack();
                 this.toastMessage('Đã lưu xong!');
+                this.viewCtrl.dismiss();
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

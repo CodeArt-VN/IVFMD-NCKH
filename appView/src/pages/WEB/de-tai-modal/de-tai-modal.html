@@ -47,22 +47,16 @@
                     </select>
                 </div>
 
-                <div class="c-control">
+                <!--<div class="c-control">
                     <label class="c-label" for="Tags">
                         Tags
                     </label>
                     <mat-form-field>
                         <mat-select [(ngModel)]="item.Tags" [compareWith]="comparer" formControlName="Tags" multiple>
-                            <!--<mat-select-trigger>
-                                {{tags.length > 0 ? tags[0].TenTag : ''}}
-                                <span *ngIf="tags.length > 1" class="example-additional-selection">
-                                    (+{{tags.length - 1}} {{tags.length === 2 ? 'other' : 'others'}})
-                                </span>
-                            </mat-select-trigger>-->
                             <mat-option *ngFor="let tag of lstTag" [value]="tag">{{tag.TenTag}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
+                </div>-->
 
                 <div class="c-control">
                     <label class="c-label" style="color: red;font-weight: normal;font-style: italic;">

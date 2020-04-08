@@ -273,6 +273,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                         this.events.publish('app:Update' + this.pageName);
                         console.log('publish => app:Update ' + this.pageName);
                         this.toastMessage('Đã lưu xong!');
+                        this.viewCtrl.dismiss();
                     }).catch(err => {
                         console.log(err);
                         if (this.loading) this.loading.dismiss();
@@ -287,6 +288,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                         this.events.publish('app:Update' + this.pageName);
                         console.log('publish => app:Update ' + this.pageName);
                         this.toastMessage('Đã lưu xong!');
+                        this.viewCtrl.dismiss();
                     }).catch(err => {
                         console.log(err);
                         if (this.loading) this.loading.dismiss();

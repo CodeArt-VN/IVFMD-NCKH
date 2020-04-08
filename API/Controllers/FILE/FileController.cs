@@ -184,7 +184,7 @@ namespace API.Controllers.DOC
 
                 if (id == 0)
                 {
-                    item.Name = "";
+                    item.Name = fileName;
                     item.Code = uploadPath + "/" + fileName;
                     item.IsDeleted = true;
                     item.Path = uploadPath + "/" + fileName;
@@ -196,6 +196,7 @@ namespace API.Controllers.DOC
                 else
                 {
                     item.ID = id;
+                    item.Name = fileName;
                     item.Code = uploadPath + "/" + fileName;
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
