@@ -37,11 +37,13 @@ using Microsoft.AspNet.Identity;
 using OfficeOpenXml;
 using API.Models;
 using System.Threading.Tasks;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace API.Controllers.DOC
 {
 
-	[RoutePrefix("api/CUS/FILE")]
+    [RoutePrefix("api/CUS/FILE")]
     public class FileUploadController : CustomApiController
     {
         [Route("UploadImage")]
@@ -59,16 +61,16 @@ namespace API.Controllers.DOC
             {
                 #region upload file
                 var postedFile = httpRequest.Files[file];
-                
+
                 string uploadPath = "/Uploads/WebImages/" + DateTime.Today.ToString("yyyy/MM/dd").Replace("-", "/");
-                
+
                 string oldName = System.IO.Path.GetFileName(postedFile.FileName);
                 string ext = oldName.Substring(oldName.LastIndexOf('.') + 1).ToLower();
 
                 var g = Guid.NewGuid();
                 string fileid = g.ToString();
                 string fileName = "" + fileid + "." + oldName;
-        
+
                 string mapPath = System.Web.HttpContext.Current.Server.MapPath("~/");
                 string strDirectoryPath = mapPath + uploadPath;
                 string strFilePath = strDirectoryPath + "/" + fileName;
@@ -84,19 +86,19 @@ namespace API.Controllers.DOC
 
                 postedFile.SaveAs(strFilePath);
 
-                result.Image = uploadPath +"/"+ fileName;
+                result.Image = uploadPath + "/" + fileName;
 
                 #endregion
             }
 
-            
+
             if (result != null)
             {
                 return CreatedAtRoute("", new { id = result.ID }, result);
             }
             return Conflict();
 
-            
+
         }
 
         [Route("UploadAvatar/{code}")]
@@ -107,7 +109,7 @@ namespace API.Controllers.DOC
             {
                 return BadRequest(ModelState);
             }
-            
+
             foreach (string file in httpRequest.Files)
             {
                 #region upload file
@@ -118,13 +120,13 @@ namespace API.Controllers.DOC
                 string strDirectoryPath = mapPath + uploadPath;
                 if (!System.IO.Directory.Exists(strDirectoryPath)) System.IO.Directory.CreateDirectory(strDirectoryPath);
 
-             
+
                 string fileName = code + ".jpg";
                 string strFilePath = strDirectoryPath + "/" + fileName;
 
                 System.IO.FileInfo existingFile = new System.IO.FileInfo(strFilePath);
 
-                
+
                 if (existingFile.Exists)
                 {
                     existingFile.Delete();
@@ -132,7 +134,7 @@ namespace API.Controllers.DOC
                 }
 
                 postedFile.SaveAs(strFilePath);
-                
+
                 #endregion
             }
 
@@ -283,7 +285,7 @@ namespace API.Controllers.DOC
                     for (int i = 2; i <= SheetColumnsCount; i++)
                         row.Add(ws.Cells[rowid, i].Value == null ? "" : ws.Cells[rowid, i].Text);
 
-                    if (string.IsNullOrEmpty( row[1]) || string.IsNullOrEmpty(row[2]) || string.IsNullOrEmpty(row[4]) || string.IsNullOrEmpty(row[6])) //check validate
+                    if (string.IsNullOrEmpty(row[1]) || string.IsNullOrEmpty(row[2]) || string.IsNullOrEmpty(row[4]) || string.IsNullOrEmpty(row[6])) //check validate
                         continue;
 
 
@@ -327,7 +329,7 @@ namespace API.Controllers.DOC
                             BS_CUS_HRM_STAFF_NhanSu.post_CUS_HRM_STAFF_NhanSu(db, PartnerID, dbitem, Username);
                         }
 
-                        
+
                         //create/update account
                         var context = new ApplicationDbContext();
                         var dbUser = context.Users.FirstOrDefault(d => d.Email == dbitem.Email);
@@ -345,7 +347,7 @@ namespace API.Controllers.DOC
 
                         if (dbUser != null)
                         {
-                            
+
                             dbUser.FullName = dbitem.Name;
                             dbUser.Avatar = string.Format("Uploads/HRM/Staffs/Avatars/{0}.jpg", dbitem.Code);
                             dbUser.PhoneNumber = dbitem.SoDienThoai;
@@ -377,12 +379,12 @@ namespace API.Controllers.DOC
                             emailService.SendSync(new IdentityMessage() { Subject = "Thư viện điện tử - thông tin tài khoản", Destination = dbUser.Email, Body = html });
 
                         }
-                        else if(!string.IsNullOrEmpty(password))
+                        else if (!string.IsNullOrEmpty(password))
                         {
                             UserManager.RemovePassword(dbUser.Id);
                             IdentityResult result = await UserManager.AddPasswordAsync(dbUser.Id, password);
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -536,6 +538,30 @@ namespace API.Controllers.DOC
 
             return downloadFile(fileurl);
         }
+
+        [HttpGet]
+        [Route("download")]
+        public HttpResponseMessage DownloadFile(string path, string name = null)
+        {
+            var absPath = System.Web.HttpContext.Current.Server.MapPath(path);
+            var fileInfo = new FileInfo(absPath);
+            if (fileInfo.Exists)
+            {
+                var fileName = fileInfo.Name;
+                if (fileName.Length > 40)
+                    fileName = fileName.Substring(37);
+                var stream = new FileStream(absPath, FileMode.Open);
+                var result = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) };
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = name ?? fileName };
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                return result;
+            }
+            else
+            {
+                return new HttpResponseMessage(HttpStatusCode.NotFound) { Content = new StringContent("Không tìm thấy file trên server! Vui lòng kiểm tra lại đường dẫn") };
+            }
+        }
+
         #endregion
     }
 }
