@@ -97,20 +97,20 @@ namespace BaseBusiness
                     }
                 }
 
-                if (string.IsNullOrEmpty(query.HoTen))
-                    query.HoTen = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.NgaySinh))
-                    query.NgaySinh = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.Email))
-                    query.Email = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.DiaChi))
-                    query.DiaChi = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.Mobile))
-                    query.Mobile = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.ChucVu))
-                    query.ChucVu = "(LLKH chưa có thông tin)";
-                if (string.IsNullOrEmpty(query.DiaChiCoQuan))
-                    query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.HoTen))
+                //    query.HoTen = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.NgaySinh))
+                //    query.NgaySinh = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.Email))
+                //    query.Email = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.DiaChi))
+                //    query.DiaChi = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.Mobile))
+                //    query.Mobile = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.ChucVu))
+                //    query.ChucVu = "(LLKH chưa có thông tin)";
+                //if (string.IsNullOrEmpty(query.DiaChiCoQuan))
+                //    query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
 
                 query.ListKinhNghiem = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem>()
                 {
@@ -124,8 +124,10 @@ namespace BaseBusiness
                 {
                     query.ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
                     {
-                        HocVi = "(LLKH chưa có thông tin)",
-                        NamNhanBang = "(LLKH chưa có thông tin)"
+                        //HocVi = "(LLKH chưa có thông tin)",
+                        //NamNhanBang = "(LLKH chưa có thông tin)",
+                        HocVi = "",
+                        NamNhanBang = ""
                     });
                 }
             }

@@ -58,8 +58,11 @@ export class SysnopsisModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmSynopsis')[0]);
-        this.bindData();
+        try { 
+            ko.cleanNode($('#frmSynopsis')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };
@@ -68,10 +71,16 @@ export class SysnopsisModalPage extends DetailPage {
 
     bindData() {
         $("#frmSynopsis").empty();
-        $(this.item.HTML).appendTo("#frmSynopsis");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmSynopsis");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmSynopsis");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
+        
 
         let ObjModel = function (item) {
             var self = this;
@@ -100,6 +109,7 @@ export class SysnopsisModalPage extends DetailPage {
                 console.log('publish => app:Update ' + this.pageName);
                 //this.goBack();
                 this.toastMessage('Đã lưu xong!');
+                this.viewCtrl.dismiss();
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

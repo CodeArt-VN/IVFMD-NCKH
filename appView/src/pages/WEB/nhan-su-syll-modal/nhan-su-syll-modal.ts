@@ -86,7 +86,12 @@ export class NhanSuSYLLModalPage extends DetailPage {
 
     bindData() {
         $("#frmNhanSuSYLL").empty();
-        $(this.item.HTML).appendTo("#frmNhanSuSYLL");
+        if (this.idDeTai && this.idDeTai > 0) {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmNhanSuSYLL");
+        } else {
+            $(this.item.HTML).appendTo("#frmNhanSuSYLL");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
@@ -135,6 +140,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
                     this.events.publish('app:Update' + this.pageName);
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
+                    this.viewCtrl.dismiss();
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();
@@ -149,6 +155,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
                     this.events.publish('app:Update' + this.pageName);
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
+                    this.viewCtrl.dismiss();
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();

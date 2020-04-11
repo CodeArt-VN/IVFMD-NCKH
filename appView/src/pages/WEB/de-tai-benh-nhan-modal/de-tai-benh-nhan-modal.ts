@@ -59,7 +59,6 @@ export class DeTaiBenhNhanModalPage extends DetailPage {
         else {
             this.formGroup = formBuilder.group({
                 MaBenhNhan: ['', Validators.compose([Validators.required])],
-                TenBenhNhan: ['', Validators.compose([Validators.required])],
                 GioiTinh: ['', Validators.compose([Validators.required])]
             });
             super.preLoadData();

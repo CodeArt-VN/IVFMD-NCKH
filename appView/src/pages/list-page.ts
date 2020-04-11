@@ -245,7 +245,7 @@ export class ListPage extends BasePage {
     }
 
     download(url){
-         this.downloadURLContent( appSetting.mainService.base + url);
+         this.downloadWithBaseName(url);
     }
 
     private getAPIPathByPageName(pageName) {

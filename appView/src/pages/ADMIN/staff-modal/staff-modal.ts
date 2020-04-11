@@ -11,6 +11,7 @@ import { appSetting } from '../../../providers/CORE/api-list';
 import { ACCOUNT_ApplicationUserProvider } from '../../../providers/Services/CustomService';
 import { GlobalData } from '../../../providers/CORE/global-variable';
 import { CompareValidator } from '../../../providers/CORE/validators';
+import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 
 @IonicPage({ name: 'page-staff-modal', priority: 'high', defaultHistory: ['page-staff'] })
 @Component({
@@ -49,6 +50,7 @@ export class StaffModalPage extends DetailPage {
         public currentProvider: HRM_STAFF_NhanSuProvider,
         public urserProvider: ACCOUNT_ApplicationUserProvider,
         public roleProvider: SYS_RoleProvider,
+        public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -142,6 +144,15 @@ export class StaffModalPage extends DetailPage {
             this.toastMessage('Vui lòng kiểm tra lại các thông tin được tô đỏ bên trên.');
             return;
         }
+
+        var errors = [];
+        if (!this.nckhProvider.isPhoneNumber(this.item.SoDienThoai))
+            errors.push('Số điện thoại không hợp lệ. Số điện thoại là chuỗi 7 đến 14 chữ số.');
+        if (errors.length > 0) {
+            this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
+            return;
+        }
+
         if (this.userAccount.ID) {
             this.userAccount.Email = this.item.Email;
             this.userAccount.FullName = this.item.Name;

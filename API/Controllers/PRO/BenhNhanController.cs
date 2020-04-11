@@ -27,7 +27,7 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_BenhNhan))]
         public IHttpActionResult Get(int id)
         {
-            DTO_PRO_BenhNhan tbl_PRO_BenhNhan = BS_PRO_BenhNhan.get_PRO_BenhNhan(db, id);
+            DTO_PRO_BenhNhan tbl_PRO_BenhNhan = BS_PRO_BenhNhan.get_PRO_BenhNhanCustom(db, id);
             if (tbl_PRO_BenhNhan == null)
             {
                 return NotFound();
@@ -50,7 +50,7 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
 
-            bool result = BS_PRO_BenhNhan.put_PRO_BenhNhan(db, id, tbl_PRO_BenhNhan, Username);
+            bool result = BS_PRO_BenhNhan.put_PRO_BenhNhanCustom(db, id, tbl_PRO_BenhNhan, Username);
             
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);

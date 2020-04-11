@@ -9,5 +9,6 @@
         public bool IsLockedOut { get; set; }
         public bool IsHostAccount { get; set; }
 
+        public string CNDT { get; set; }
     }
 }

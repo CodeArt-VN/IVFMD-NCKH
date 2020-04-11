@@ -47,8 +47,11 @@ export class DonXinNghiemThuModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmDonXinNghiemThu')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmDonXinNghiemThu')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };
@@ -98,6 +101,7 @@ export class DonXinNghiemThuModalPage extends DetailPage {
                     this.events.publish('app:Update' + this.pageName);
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
+                    this.viewCtrl.dismiss();
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();

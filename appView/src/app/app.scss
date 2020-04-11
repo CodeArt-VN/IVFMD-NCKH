@@ -31,6 +31,22 @@ a{
     vertical-align: top;
 }
 
+.mat-form-field-underline{
+    height:0px !important
+}
+
+.mat-form-field {
+    background-color: #E6F4FA !important;
+    width: 100% !important;
+    padding-left: 25px !important;
+    padding-right: 7px !important;
+    font-size: 14px !important;
+}
+
+.mat-form-field-wrapper{
+    padding-bottom:10px !important;
+}
+
 .icon-ios-danger.split {
     color: #ed2947 !important
 }

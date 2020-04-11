@@ -43,7 +43,10 @@ namespace BaseBusiness
 
             if (query == null)
             {
-                query = new DTO_PRO_Sysnopsis();
+                query = new DTO_PRO_Sysnopsis
+                {
+                    IDDeTai = deTaiId
+                };
                 var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == deTaiId);
                 if (detai != null)
                     query.IsDisabled = detai.IsDisabledHRCO ?? false;

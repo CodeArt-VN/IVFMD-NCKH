@@ -40,8 +40,9 @@ namespace BaseBusiness
                 DiaChi = s.DiaChi,
                 RoleName = s.IDRole.HasValue ? s.tbl_CUS_SYS_Role.Name: "",
                 IsHRCO = s.IsHRCO,
-                IsCNDT = s.IsCNDT
-            }).OrderBy(o => o.Sort);
+                IsCNDT = s.IsCNDT,
+                CNDT = s.IsCNDT == true ? "Chủ nhiệm đề tài" : ""
+            }).OrderBy(o => o.Sort); 
         }
 
         public static DTO_CUS_HRM_STAFF_NhanSu ctoDTO(tbl_CUS_HRM_STAFF_NhanSu dbResult)

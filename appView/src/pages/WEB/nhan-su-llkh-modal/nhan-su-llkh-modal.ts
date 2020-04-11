@@ -70,8 +70,11 @@ export class NhanSuLLKHModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmNhanSuLLKH')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmNhanSuLLKH')[0]);
+            this.bindData();
+        } catch(e){
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };
@@ -80,7 +83,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
 
     bindData() {
         $("#frmNhanSuLLKH").empty();
-        $(this.item.HTML).appendTo("#frmNhanSuLLKH");
+        if (this.idDeTai && this.idDeTai > 0) {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmNhanSuLLKH");
+        } else {
+            $(this.item.HTML).appendTo("#frmNhanSuLLKH");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
@@ -254,12 +262,15 @@ export class NhanSuLLKHModalPage extends DetailPage {
         console.log(item);
 
         var errors = [];
+        if (!this.nckhProvider.checkFullDate(item.CMND_NgayCap))
+            errors.push('Ngày cấp CMND không hợp lệ.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoai_CoQuan))
-            errors.push('Điện thoại cơ quan không hợp lệ.');
+            errors.push('Điện thoại cơ quan không hợp lệ. Số điện thoại là chuỗi 7 đến 14 chữ số.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoai_CaNhan))
-            errors.push('Điện thoại cá nhân không hợp lệ.');
+            errors.push('Điện thoại cá nhân không hợp lệ. Số điện thoại là chuỗi 7 đến 14 chữ số.');
         if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
             errors.push('Ngày ký không hợp lệ.');
+       
 
         if (errors.length > 0)
             this.toastMessage(errors.join("\n") + "\nVui lòng kiểm tra lại.")
@@ -273,6 +284,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                         this.events.publish('app:Update' + this.pageName);
                         console.log('publish => app:Update ' + this.pageName);
                         this.toastMessage('Đã lưu xong!');
+                        this.viewCtrl.dismiss();
                     }).catch(err => {
                         console.log(err);
                         if (this.loading) this.loading.dismiss();
@@ -287,6 +299,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                         this.events.publish('app:Update' + this.pageName);
                         console.log('publish => app:Update ' + this.pageName);
                         this.toastMessage('Đã lưu xong!');
+                        this.viewCtrl.dismiss();
                     }).catch(err => {
                         console.log(err);
                         if (this.loading) this.loading.dismiss();

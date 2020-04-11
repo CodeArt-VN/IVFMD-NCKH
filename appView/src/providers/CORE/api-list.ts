@@ -18,34 +18,39 @@ export var appSetting = {
 }
 
 export var APIListBase = {
-	ACCOUNT: {
-		register: {
-			method: "POST",
-			url: appSetting.mainService.base + appSetting.mainService.api + "Account/Register"
-		},
-		registerFB: {
-			method: "POST",
-			url: appSetting.mainService.base + appSetting.mainService.api + "Account/RegisterExternal"
-		},
-		token: {
-			method: "POST",
-			url: appSetting.mainService.base + "token"
-		},
-		forgotPassword: {
-			method: "POST",
-			url: appSetting.mainService.base + appSetting.mainService.api + "Account/ForgotPassword"
-		},
-		getUserData: {
-			method: "GET",
-			url: appSetting.apiDomain("Account/UserInfo")
-		},
-		postUserData: {
-			method: "POST",
-			url: appSetting.mainService.base + appSetting.mainService.api + ""
-		},
-	},
+    ACCOUNT: {
+        register: {
+            method: "POST",
+            url: appSetting.mainService.base + appSetting.mainService.api + "Account/Register"
+        },
+        registerFB: {
+            method: "POST",
+            url: appSetting.mainService.base + appSetting.mainService.api + "Account/RegisterExternal"
+        },
+        token: {
+            method: "POST",
+            url: appSetting.mainService.base + "token"
+        },
+        forgotPassword: {
+            method: "POST",
+            url: appSetting.mainService.base + appSetting.mainService.api + "Account/ForgotPassword"
+        },
+        getUserData: {
+            method: "GET",
+            url: appSetting.apiDomain("Account/UserInfo")
+        },
+        postUserData: {
+            method: "POST",
+            url: appSetting.mainService.base + appSetting.mainService.api + ""
+        },
+    },
 
-
+    File: {
+        Download: {
+            method: "GET",
+            url: function (path) { return appSetting.apiDomain("CUS/File/Download/") + "?path=" + path }
+        },
+    },
 
 	DOC_File:{
         getList:{

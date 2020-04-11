@@ -26,17 +26,24 @@
   <ion-row>
       <ion-col class="doc-main">
           <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstData" [selected]="lstSelected"
-              [selectionType]="'single'" (select)='onSelect($event)'>
-            <ngx-datatable-column name="Tình trạng" prop="TinhTrangNghienCuu"></ngx-datatable-column>
-            <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
-            <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau" [width]="180"></ngx-datatable-column>
-            <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>
-            <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
-                <ng-template let-i="row" ngx-datatable-cell-template>
-                    {{i.NgayTaoText}}
-                </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Người báo cáo" prop="CreatedBy" [width]="150"></ngx-datatable-column>
+                         [selectionType]="'single'" (select)='onSelect($event)'>
+              <ngx-datatable-column name="Tình trạng" prop="TinhTrangNghienCuu" [width]="200" [maxWidth]="200" headerClass="name"
+                                    cellClass="name">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      <a (click)="openDetail(i)">
+                          {{i.TinhTrangNghienCuu}}
+                      </a>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
+              <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau" [width]="180"></ngx-datatable-column>
+              <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>
+              <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                  <ng-template let-i="row" ngx-datatable-cell-template>
+                      {{i.NgayTaoText}}
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Người báo cáo" prop="CreatedBy" [width]="150"></ngx-datatable-column>
           </ngx-datatable>
       </ion-col>
   </ion-row>

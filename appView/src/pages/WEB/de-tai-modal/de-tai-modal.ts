@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable'
-import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider } from '../../../providers/Services/Services';
+import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider, CAT_TagsProvider } from '../../../providers/Services/Services';
 import { Sys_VarProvider, PRO_NCVKhacCustomProvider, HRM_STAFF_NhanSuCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
@@ -11,6 +11,11 @@ import { DateAdapter } from "@angular/material";
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { DetailPage } from '../../detail-page';
 import 'jqueryui';
+
+interface obj {
+    TenTag: string;
+    ID: number;
+}
 
 @IonicPage({ name: 'page-de-tai-modal', priority: 'high', defaultHistory: ['page-de-tai'] })
 @Component({
@@ -25,17 +30,17 @@ export class DeTaiModalPage extends DetailPage {
     lstBenhNhan: any[] = [];
     lstBNSelected: any[] = [];
     queryBN: any = {};
-
+    lstTag: any[] = [];
     lstNCVKhac: any[] = [];
     lstNCVSelected: any[] = [];
     queryNCV: any = {};
     @ViewChild(DatatableComponent) table: DatatableComponent;
-
     constructor(
         public currentProvider: PRO_DeTaiProvider,
         public staffProvider: HRM_STAFF_NhanSuCustomProvider,
         public sysVarProvider: Sys_VarProvider,
         public ncvKhacProvider: PRO_NCVKhacCustomProvider,
+        public tagProvider: CAT_TagsProvider,
         public viewCtrl: ViewController,
         public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
@@ -58,25 +63,34 @@ export class DeTaiModalPage extends DetailPage {
             GhiChu: [''],
             IDChuNhiem: ['', Validators.compose([Validators.required])],
             myDate: [Date],
+            Tags: ['']
         });
+    }
+
+    comparer(o1: obj, o2: obj): boolean {
+        // if possible compare by object's name, and not by reference.
+        return o1 && o2 ? o1.TenTag === o2.TenTag : o2 === o2;
     }
 
     preLoadData() {
         Promise.all([
             this.staffProvider.getListChuNhiem(),
             this.sysVarProvider.getByTypeOfVar(1),
-            this.ncvKhacProvider.getByDeTai(this.id)
+            this.ncvKhacProvider.getByDeTai(this.id),
+            this.tagProvider.read(),
         ])
             .then(values => {
-                debugger 
                 this.staffs = values[0]['data'];
                 this.typeOfTopics = values[1]['data'];
                 this.lstNCVKhac = [...values[2]['data']];
+                this.lstTag = [...values[3]['data']];
                 super.preLoadData();
             })
     }
 
     loadedData() {
+        if (this.item.ID == 0)
+            this.item.Tags = [];
     }
 
     dismiss() {

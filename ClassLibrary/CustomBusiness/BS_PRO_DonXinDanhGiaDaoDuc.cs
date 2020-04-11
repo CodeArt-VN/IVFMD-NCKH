@@ -63,12 +63,12 @@ namespace BaseBusiness
                 {
                     query.TenDeTai = detai.TenTiengViet;
                     query.IsDisabled = detai.IsDisabledHDDD ?? false;
-                    var chunhiem = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == detai.IDChuNhiem);
+                    var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == deTaiId && c.IDNhanSu == detai.IDChuNhiem);
                     if (chunhiem != null)
                     {
-                        query.HoTenChuNhiem = chunhiem.Name;
-                        query.DiaChi = chunhiem.DiaChi;
-                        query.DienThoai = chunhiem.SoDienThoai;
+                        query.HoTenChuNhiem = chunhiem.HoTen;
+                        query.DiaChi = chunhiem.DiaChi_CaNhan;
+                        query.DienThoai = chunhiem.DienThoai_CaNhan;
                     }
                 }
             }

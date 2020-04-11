@@ -20,6 +20,97 @@ export class NCKHServiceProvider {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
+                //$element.on('paste', function (e) {
+                //    e.preventDefault();
+                //    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
+                //    var $result = $('<div></div>').append($(text));
+
+                //    $result.children('style').remove();
+                //    $result.children('meta').remove()
+                //    $result.children('link').remove();
+                //    $result.find('o\\:p').remove();
+
+                //    $result.contents().each(function () {
+                //        if (this.nodeType === Node.COMMENT_NODE) {
+                //            $(this).remove();
+                //        }
+                //    });
+                //    $result.find('pre').replaceWith(function () {
+                //        return $("<p>").html(this.innerHTML);
+                //    });
+
+                //    $.each($($result).find("*"), function (idx, val) {
+                //        var $item = $(val);
+                //        if (val.innerText == "")
+                //            $item.remove();
+                //        else if ($item.length > 0) {
+                //            var saveStyle = {
+                //                'font-style': $item.css('font-style'),
+                //                'font-weight': $item.css('font-weight')
+                //            };
+                //            $item.contents().each(function () {
+                //                if (this.nodeType === Node.COMMENT_NODE) {
+                //                    $(this).remove();
+                //                }
+                //            });
+                //            $item.removeAttr('style')
+                //                .removeAttr('lang')
+                //                .removeClass()
+                //                .removeAttr('class')
+                //                .css(saveStyle);
+                //        }
+                //    });
+                //    $($element).html($result.html());
+
+                //    var observable = valueAccessor();
+                //    observable($element.html());
+
+                //    function createRange(node, chars, range) {
+                //        if (!range) {
+                //            range = document.createRange()
+                //            range.selectNode(node);
+                //            range.setStart(node, 0);
+                //        }
+
+                //        if (chars.count === 0) {
+                //            range.setEnd(node, chars.count);
+                //        } else if (node && chars.count > 0) {
+                //            if (node.nodeType === Node.TEXT_NODE) {
+                //                if (node.textContent.length < chars.count) {
+                //                    chars.count -= node.textContent.length;
+                //                } else {
+                //                    range.setEnd(node, chars.count);
+                //                    chars.count = 0;
+                //                }
+                //            } else {
+                //                for (var lp = 0; lp < node.childNodes.length; lp++) {
+                //                    range = createRange(node.childNodes[lp], chars, range);
+
+                //                    if (chars.count === 0) {
+                //                        break;
+                //                    }
+                //                }
+                //            }
+                //        }
+
+                //        return range;
+                //    };
+                //    function setCurrentCursorPosition(chars) {
+                //        if (chars >= 0) {
+                //            var selection = window.getSelection();
+
+                //            var range = createRange($element[0], { count: chars }, null);
+
+                //            if (range) {
+                //                range.collapse(false);
+                //                selection.removeAllRanges();
+                //                selection.addRange(range);
+                //            }
+                //        }
+                //    };
+
+                //    setCurrentCursorPosition($result.text().length);
+                //});
             }
         };
         ko.bindingHandlers.checkedHtml = {
@@ -461,6 +552,9 @@ export class NCKHServiceProvider {
             val = val.substr(1);
         return Number.parseInt(val).toString() == val;
     }
+    isInt0(val: string) {
+        return Number.parseInt(val).toString() == val;
+    }
     getIntValue(val: string): number {
         if (val.startsWith("0"))
             val = val.substr(1);
@@ -472,12 +566,20 @@ export class NCKHServiceProvider {
     checkDateTime(day: any, month: any, year: any, hour: any, minute: any, second: any) {
         return this.checkDate(day, month, year) && this.checkTime(hour, minute, second);
     }
+    checkFullDate(fullDate: any) {
+        if (this.isNull(fullDate))
+            return true;
+        var arr = fullDate.split("/");
+        if (arr.length == 3)
+            return this.checkDate(arr[0], arr[1], arr[2]);
+        return false;
+    }
     checkDate(day: any, month: any, year: any) {
         if (this.isNull(day) && this.isNull(month) && this.isNull(year))
             return true;
         var isValid = this.isInt(day.toString()) && this.inRange(day, 1, 31)
             && this.isInt(month.toString()) && this.inRange(month, 1, 12)
-            && this.isInt(year.toString()) && this.inRange(year, 2000, 2100);
+            && this.isInt(year.toString()) && this.inRange(year, 1900, 2100);
         if (isValid) {
             var d = this.getIntValue(day.toString());
             var m = this.getIntValue(month.toString()) - 1;
@@ -487,20 +589,20 @@ export class NCKHServiceProvider {
         }
         return isValid;
     }
-    checkTime(hour: any, minute: any, second: any) {
+    checkTime(hour: any, minute: any, second: any) { 
         if (this.isNull(hour) && this.isNull(minute) && this.isNull(second))
             return true;
         if (this.isNull(second))
             second = 0;
         var isValid = this.isInt(hour.toString()) && this.inRange(hour, 0, 23)
             && this.isInt(minute.toString()) && this.inRange(minute, 0, 59)
-            && this.isInt(second.toString()) && this.inRange(second, 0, 59);
+            && this.isInt0(second.toString()) && this.inRange(second, 0, 59);
         return isValid;
     }
     isPhoneNumber(val: any) {
         if (this.isNull(val))
             return true;
-        var phone = val.toString();
+        var phone = this.extractContent(val).toString();
         if (phone.length < 7 || phone.length > 11)
             return false;
         var res = true;
@@ -511,6 +613,12 @@ export class NCKHServiceProvider {
             }
         }
         return res;
+    }
+    extractContent(val) {
+        val = val.trim();
+        var span = document.createElement('span');
+        span.innerHTML = val;
+        return span.textContent || span.innerText;
     }
     getConfigs() {
         var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];

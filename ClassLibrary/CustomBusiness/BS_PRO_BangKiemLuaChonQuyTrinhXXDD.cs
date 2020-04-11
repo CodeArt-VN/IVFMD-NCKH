@@ -153,26 +153,26 @@ namespace BaseBusiness
                         query.PhanBon_C1_TieuChuanLoaiRa = query.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
                     }
 
-                    if (string.IsNullOrEmpty(query.PhanHai_TenNCYSH))
-                        query.PhanHai_TenNCYSH = "(Đề tài chưa nhập tên Tiếng Việt)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_HoTen))
-                        query.PhanHai_NCVChinh_HoTen = "(SYLL chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_Email))
-                        query.PhanHai_NCVChinh_Email = "(SYLL chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DienThoai))
-                        query.PhanHai_NCVChinh_DienThoai = "(SYLL chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DiaChiLienHe))
-                        query.PhanHai_NCVChinh_DiaChiLienHe = "(SYLL chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_BenhVien))
-                        query.PhanHai_NCVChinh_BenhVien = "(SYLL chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_KhoaPhong))
-                        query.PhanHai_NCVChinh_KhoaPhong = "(LLKH chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanNhanVao))
-                        query.PhanBon_C1_TieuChuanNhanVao = "<br>" + "(Thuyết minh đề tài chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanLoaiRa))
-                        query.PhanBon_C1_TieuChuanLoaiRa = "<br>" + "(Thuyết minh đề tài chưa nhập)";
-                    if (string.IsNullOrEmpty(query.PhanBon_C1_NoiNhanMau))
-                        query.PhanBon_C1_NoiNhanMau = "<br>" + "(Đơn xin đánh giá chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_TenNCYSH))
+                    //    query.PhanHai_TenNCYSH = "(Đề tài chưa nhập tên Tiếng Việt)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_HoTen))
+                    //    query.PhanHai_NCVChinh_HoTen = "(SYLL chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_Email))
+                    //    query.PhanHai_NCVChinh_Email = "(SYLL chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DienThoai))
+                    //    query.PhanHai_NCVChinh_DienThoai = "(SYLL chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_DiaChiLienHe))
+                    //    query.PhanHai_NCVChinh_DiaChiLienHe = "(SYLL chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_BenhVien))
+                    //    query.PhanHai_NCVChinh_BenhVien = "(SYLL chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanHai_NCVChinh_KhoaPhong))
+                    //    query.PhanHai_NCVChinh_KhoaPhong = "(LLKH chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanNhanVao))
+                    //    query.PhanBon_C1_TieuChuanNhanVao = "<br>" + "(Thuyết minh đề tài chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanBon_C1_TieuChuanLoaiRa))
+                    //    query.PhanBon_C1_TieuChuanLoaiRa = "<br>" + "(Thuyết minh đề tài chưa nhập)";
+                    //if (string.IsNullOrEmpty(query.PhanBon_C1_NoiNhanMau))
+                    //    query.PhanBon_C1_NoiNhanMau = "<br>" + "(Đơn xin đánh giá chưa nhập)";
                 }
 
                 query.NCVKhac = new List<DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac>() { new DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_NCVKhac() };

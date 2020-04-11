@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { GlobalData } from '../CORE/global-variable'
+import { APIListBase } from './api-list';
 
 @Injectable()
 export class CommonServiceProvider {
@@ -354,7 +355,10 @@ export class CommonServiceProvider {
 					reject(err);
 				})
 		});
-	}
+    }
+    getDownloadUrl(path) {
+        return APIListBase.File.Download.url(path);
+    }
 	copyPropertiesValue(fromItem, toItem) {
 		for (let x in fromItem) {
 			if (x != '_isChecked') {

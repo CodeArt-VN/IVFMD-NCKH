@@ -1,7 +1,7 @@
 <ion-header>
     <h2>&nbsp;&nbsp; Danh sách báo cáo</h2>
     <div class="">
-        <button color="primary" ion-button icon-only clear (click)="refreshForm()">
+        <button color="primary" ion-button icon-only clear (click)="preLoadData()">
             <ion-icon name="refresh"></ion-icon>
         </button>
 
@@ -19,7 +19,13 @@
       <ion-col class="doc-main">
           <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstForm" [selected]="lstFormSelected"
                          [selectionType]="'single'">
-              <ngx-datatable-column name="Mã số đối tượng" prop="MaSo" [width]="250"></ngx-datatable-column>
+              <ngx-datatable-column name="Mã số đối tượng" prop="MaSoBenhNhan" [width]="250" [maxWidth]="250" headerClass="name" cellClass="name">
+                <ng-template let-i="row" ngx-datatable-cell-template>
+                    <a (click)="openDetailForm(i)">
+                        {{i.MaSoBenhNhan}}
+                    </a>
+                </ng-template>
+              </ngx-datatable-column>
               <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
                   <ng-template let-i="row" ngx-datatable-cell-template>
                       {{i.NgayTaoText}}

@@ -47,8 +47,11 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
     }
 
     loadedData() {
-        ko.cleanNode($('#frmPhieuXemXetDaoDuc')[0]);
-        this.bindData();
+        try {
+            ko.cleanNode($('#frmPhieuXemXetDaoDuc')[0]);
+            this.bindData();
+        } catch (e) {
+        }
     }
     dismiss() {
         let data = { 'foo': 'bar' };
@@ -57,7 +60,12 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
 
     bindData() {
         $("#frmPhieuXemXetDaoDuc").empty();
-        $(this.item.HTML).appendTo("#frmPhieuXemXetDaoDuc");
+        if (!this.item.IsDisabled)
+            $(this.item.HTML).appendTo("#frmPhieuXemXetDaoDuc");
+        else {
+            var dom = this.nckhProvider.disableContenteditable(this.item.HTML, [])
+            $(dom).appendTo("#frmPhieuXemXetDaoDuc");
+        }
         let id = this.item.ID;
         var that = this;
         this.nckhProvider.init(this.item.FormConfig);
@@ -117,6 +125,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
                 this.events.publish('app:Update' + this.pageName);
                 console.log('publish => app:Update ' + this.pageName);
                 this.toastMessage('Đã lưu xong!');
+                this.viewCtrl.dismiss();
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();
