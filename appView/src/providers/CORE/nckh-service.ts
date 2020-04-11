@@ -2,6 +2,7 @@ import { Injectable, Type } from '@angular/core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 import { Operator } from 'rxjs/Operator';
+import * as ckEditor from '../../assets/lib/ckeditor/ckeditor'
 
 @Injectable()
 export class NCKHServiceProvider {
@@ -13,12 +14,58 @@ export class NCKHServiceProvider {
         // bindingHandlers
         ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor) {
-                var $element = $(element);
+                var $element: any = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
                 $element.html(initialValue);
                 $element.on('input', function (e) {
                     var observable = valueAccessor();
                     observable($element.html());
+                });
+                $element.on('focus', function (e) {
+                    if (!$element[0].ckeditorInstance)
+                    {
+                    ckEditor.create($element.get(0), {
+                        fontSize: {
+                            options: [
+                                9,
+                                11,
+                                13,
+                                'default',
+                                17,
+                                19,
+                                21
+                            ]
+                        },
+                        toolbar: {
+                            items: [
+                                'fontColor',
+                                'fontSize',
+                                'fontFamily',
+                                '|',
+                                'heading',
+                                '|',
+                                'bold',
+                                'italic',
+                                'underline',
+                                'link',
+                                'bulletedList',
+                                'numberedList',
+                                '|',
+                                'alignment',
+                                'undo',
+                                'redo',
+                                'blockQuote',
+                                'subscript',
+                                'superscript',
+                                'removeFormat',
+                                'strikethrough'
+                            ]
+                        },
+                        language: 'vi',
+                        licenseKey: '',
+
+                    });
+                }
                 });
                 //$element.on('paste', function (e) {
                 //    e.preventDefault();
@@ -352,7 +399,7 @@ export class NCKHServiceProvider {
                             cols[i].style.width = conf.HeaderWidths[i];
                         } catch (e) {
                         }
-                    }                    
+                    }
                     cols[i].style.position = 'relative';
                     setListeners(div);
                 }
@@ -589,7 +636,7 @@ export class NCKHServiceProvider {
         }
         return isValid;
     }
-    checkTime(hour: any, minute: any, second: any) { 
+    checkTime(hour: any, minute: any, second: any) {
         if (this.isNull(hour) && this.isNull(minute) && this.isNull(second))
             return true;
         if (this.isNull(second))
@@ -648,7 +695,7 @@ export class NCKHServiceProvider {
         }
         return JSON.stringify(data);
     }
-    disableContenteditable(html:string, excepts: string[]) {
+    disableContenteditable(html: string, excepts: string[]) {
         var div = $("<div>" + html + "</div>");
         var contents = div.find('[data-bind]');
         $.each(contents, (i, o) => {
