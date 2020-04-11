@@ -22,50 +22,54 @@ export class NCKHServiceProvider {
                     observable($element.html());
                 });
                 $element.on('focus', function (e) {
-                    if (!$element[0].ckeditorInstance)
-                    {
-                    ckEditor.create($element.get(0), {
-                        fontSize: {
-                            options: [
-                                9,
-                                11,
-                                13,
-                                'default',
-                                17,
-                                19,
-                                21
-                            ]
-                        },
-                        toolbar: {
-                            items: [
-                                'fontColor',
-                                'fontSize',
-                                'fontFamily',
-                                '|',
-                                'heading',
-                                '|',
-                                'bold',
-                                'italic',
-                                'underline',
-                                'link',
-                                'bulletedList',
-                                'numberedList',
-                                '|',
-                                'alignment',
-                                'undo',
-                                'redo',
-                                'blockQuote',
-                                'subscript',
-                                'superscript',
-                                'removeFormat',
-                                'strikethrough'
-                            ]
-                        },
-                        language: 'vi',
-                        licenseKey: '',
+                    if (!$element[0].ckeditorInstance) {
+                        var modelValue = valueAccessor();
+                        ckEditor.create($element.get(0), {
+                            fontSize: {
+                                options: [
+                                    9,
+                                    11,
+                                    13,
+                                    'default',
+                                    17,
+                                    19,
+                                    21
+                                ]
+                            },
+                            toolbar: {
+                                items: [
+                                    'fontColor',
+                                    'fontSize',
+                                    'fontFamily',
+                                    '|',
+                                    'heading',
+                                    '|',
+                                    'bold',
+                                    'italic',
+                                    'underline',
+                                    'link',
+                                    'bulletedList',
+                                    'numberedList',
+                                    '|',
+                                    'alignment',
+                                    'undo',
+                                    'redo',
+                                    'blockQuote',
+                                    'subscript',
+                                    'superscript',
+                                    'removeFormat',
+                                    'strikethrough'
+                                ]
+                            },
+                            language: 'vi',
+                            licenseKey: '',
 
-                    });
-                }
+                        }).then((editor) => {
+                            editor.model.document.on('change:data', (evt, data) => {
+                                modelValue(editor.getData());
+                            });
+                        });
+                    }
                 });
                 //$element.on('paste', function (e) {
                 //    e.preventDefault();
