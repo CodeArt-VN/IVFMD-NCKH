@@ -102,7 +102,7 @@
 
     .prow {
         &:hover {
-            box-shadow: 0px 0px 2px #44a9eb;
+            //box-shadow: 0px 0px 2px #44a9eb;
         }
     }
 
@@ -177,21 +177,19 @@
 
         [contenteditable="true"] {
             &:hover, &:focus {
-                outline: 1px dashed #44a9eb;
+                //outline: 1px dashed #44a9eb;
             }
         }
     }
 
     [contenteditable="true"] {
         &:hover, &:focus {
-            outline: 1px dashed #44a9eb;
+            //outline: 1px dashed #44a9eb;
         }
-
         /*> p:first-child, > div:first-child {
             margin-top: 0;
         }*/
-
-        >p, > div {
+        > p, > div {
             margin-bottom: .6rem;
             margin-top: .6rem;
         }
@@ -327,8 +325,216 @@
         height: 30px;
         z-index: 9999;
     }
-}
 
+
+    &.input-mode {
+
+        &.tab-1 {
+            margin-left: 0;
+            width: 100% !important;
+        }
+
+        &.tab-2 {
+            margin-left: 0;
+            width: 100% !important;
+        }
+
+        .box-inline {
+            display: table;
+            width: 100%;
+            min-height: 26px;
+            margin: 0 0 3px 0;
+
+            > * {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0;
+            }
+
+            &.tab-1 {
+                margin-left: 1em;
+                width: calc(100% - 1em) !important;
+            }
+
+            &.tab-2 {
+                margin-left: 2em;
+                width: calc(100% - 2em) !important;
+            }
+
+            .box {
+                margin: 0;
+            }
+        }
+
+        .box {
+            display: table;
+            width: 100%;
+            min-height: 26px;
+            margin: 0 0 8px 0;
+
+            &.tab-1 {
+                margin-left: 0;
+                width: 100% !important;
+            }
+
+            &.tab-2 {
+                margin-left: 0;
+                width: 100% !important;
+            }
+
+            .box-title {
+                position: relative;
+            }
+
+            & > input[type="checkbox"] {
+                vertical-align: initial;
+            }
+
+            & > *:not(input) {
+                display: block;
+                padding: 3px;
+            }
+
+            [contenteditable] {
+                padding: 5px;
+                border: 1px solid #d2d2d2;
+                border-radius: 3px;
+                min-height: 32px;
+                text-indent: 0 !important;
+                text-rendering: auto;
+                color: -internal-light-dark-color(black, white);
+                letter-spacing: normal;
+                word-spacing: normal;
+                text-transform: none;
+                text-shadow: none;
+                text-align: start;
+                -webkit-appearance: textfield;
+                background-color: -internal-light-dark-color(white, black);
+                cursor: text;
+                margin: 0em;
+            }
+
+            [contenteditable="true"] {
+                &:hover, &:focus {
+                    border: 1px solid #44a9eb;
+                }
+            }
+
+            [contenteditable="false"] {
+                background-color: #eaeaea;
+            }
+        }
+
+        [contenteditable="true"] {
+            &:hover, &:focus {
+                border: 1px solid #44a9eb;
+            }
+            /*> p:first-child, > div:first-child {
+            margin-top: 0;
+        }*/
+            > p, > div {
+                margin-bottom: .6rem;
+                margin-top: .6rem;
+            }
+        }
+
+        table.nckh-table {
+            border-collapse: collapse;
+            font-size: inherit;
+
+            thead {
+                display: table-row-group;
+
+                tr {
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+
+                    &.table-header {
+                        text-align: center;
+                        vertical-align: middle;
+                        font-weight: 600;
+
+                        i {
+                            font-weight: normal;
+                        }
+                    }
+
+                    td, th {
+                        padding: 3px;
+                        page-break-inside: avoid;
+                        page-break-before: auto;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            tbody {
+                width: 100%;
+
+                tr {
+                    page-break-inside: avoid;
+                    page-break-before: auto;
+
+                    &[summary="true"] {
+                        td {
+                            font-weight: 600;
+                            text-align: center;
+                        }
+                    }
+
+                    td {
+                        padding: 3px;
+                        word-break: break-word;
+                        page-break-inside: avoid;
+                        page-break-before: auto;
+                        vertical-align: top;
+
+                        &[contenteditable="true"] {
+                            padding: 6px;
+                        }
+
+                        &[contenteditable="false"] {
+                            height: 26px;
+                        }
+
+                        .box:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+
+            &.td-padding-0 {
+                tbody {
+                    tr {
+                        > td {
+                            padding: 0
+                        }
+                    }
+                }
+            }
+
+            &.table-inside-table {
+                border: 0;
+
+                tr {
+                    > td {
+                        border: 1px solid #607d8b;
+                        border-bottom: 0;
+
+                        &:first-child {
+                            border-left: 0;
+                        }
+
+                        &:last-child {
+                            border-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media print {
     .nckh-form-template {
