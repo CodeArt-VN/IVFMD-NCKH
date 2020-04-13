@@ -6,7 +6,64 @@ import * as ckEditor from '../../assets/lib/ckeditor/ckeditor'
 
 @Injectable()
 export class NCKHServiceProvider {
+    e: number
+    editors: any
+    ckToolbarOptions: any
     constructor() {
+        this.e = 0;
+        this.editors = [];
+        this.ckToolbarOptions = {
+            startupFocus: true,
+            fontSize: {
+                options: [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    'default',
+                    17,
+                    19,
+                    21
+                ]
+            },
+            toolbar: {
+                items: [
+                    'fontColor',
+                    'fontSize',
+                    'fontFamily',
+                    '|',
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'alignment',
+                    'undo',
+                    'redo',
+                    'blockQuote',
+                    'subscript',
+                    'superscript',
+                    'removeFormat',
+                    'strikethrough'
+                ]
+            },
+            language: 'vi',
+            licenseKey: ''
+        }
+    }
+    dispose() {
+        $.each(this.editors, function (i, o) {
+            try {
+                o.editor.destroy();
+            } catch (e) {
+                console.error(e);
+            }
+        })
     }
     init(configs) {
         var me = this;
@@ -14,6 +71,8 @@ export class NCKHServiceProvider {
         // bindingHandlers
         ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor) {
+                var idx = me.e++;
+                var $editor;
                 var $element: any = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
                 $element.html(initialValue);
@@ -23,145 +82,27 @@ export class NCKHServiceProvider {
                 });
                 $element.on('focus', function (e) {
                     if (!$element[0].ckeditorInstance) {
-                        var modelValue = valueAccessor();
-                        ckEditor.create($element.get(0), {
-                            fontSize: {
-                                options: [
-                                    9,
-                                    11,
-                                    13,
-                                    'default',
-                                    17,
-                                    19,
-                                    21
-                                ]
-                            },
-                            toolbar: {
-                                items: [
-                                    'fontColor',
-                                    'fontSize',
-                                    'fontFamily',
-                                    '|',
-                                    'heading',
-                                    '|',
-                                    'bold',
-                                    'italic',
-                                    'underline',
-                                    'link',
-                                    'bulletedList',
-                                    'numberedList',
-                                    '|',
-                                    'alignment',
-                                    'undo',
-                                    'redo',
-                                    'blockQuote',
-                                    'subscript',
-                                    'superscript',
-                                    'removeFormat',
-                                    'strikethrough'
-                                ]
-                            },
-                            language: 'vi',
-                            licenseKey: '',
-
-                        }).then((editor) => {
-                            editor.model.document.on('change:data', (evt, data) => {
-                                modelValue(editor.getData());
+                        var observable = valueAccessor();
+                        ckEditor.create($element.get(0), me.ckToolbarOptions).then((editor) => {
+                            $editor = editor;
+                            me.editors.push({
+                                id: idx,
+                                editor: $editor
+                            });
+                            $editor.model.document.on('change:data', (evt, data) => {
+                                observable($editor.getData());
                             });
                         });
                     }
                 });
-                //$element.on('paste', function (e) {
-                //    e.preventDefault();
-                //    var text = (e.originalEvent || e)["clipboardData"].getData('text/html');
-                //    var $result = $('<div></div>').append($(text));
 
-                //    $result.children('style').remove();
-                //    $result.children('meta').remove()
-                //    $result.children('link').remove();
-                //    $result.find('o\\:p').remove();
-
-                //    $result.contents().each(function () {
-                //        if (this.nodeType === Node.COMMENT_NODE) {
-                //            $(this).remove();
-                //        }
-                //    });
-                //    $result.find('pre').replaceWith(function () {
-                //        return $("<p>").html(this.innerHTML);
-                //    });
-
-                //    $.each($($result).find("*"), function (idx, val) {
-                //        var $item = $(val);
-                //        if (val.innerText == "")
-                //            $item.remove();
-                //        else if ($item.length > 0) {
-                //            var saveStyle = {
-                //                'font-style': $item.css('font-style'),
-                //                'font-weight': $item.css('font-weight')
-                //            };
-                //            $item.contents().each(function () {
-                //                if (this.nodeType === Node.COMMENT_NODE) {
-                //                    $(this).remove();
-                //                }
-                //            });
-                //            $item.removeAttr('style')
-                //                .removeAttr('lang')
-                //                .removeClass()
-                //                .removeAttr('class')
-                //                .css(saveStyle);
-                //        }
-                //    });
-                //    $($element).html($result.html());
-
-                //    var observable = valueAccessor();
-                //    observable($element.html());
-
-                //    function createRange(node, chars, range) {
-                //        if (!range) {
-                //            range = document.createRange()
-                //            range.selectNode(node);
-                //            range.setStart(node, 0);
-                //        }
-
-                //        if (chars.count === 0) {
-                //            range.setEnd(node, chars.count);
-                //        } else if (node && chars.count > 0) {
-                //            if (node.nodeType === Node.TEXT_NODE) {
-                //                if (node.textContent.length < chars.count) {
-                //                    chars.count -= node.textContent.length;
-                //                } else {
-                //                    range.setEnd(node, chars.count);
-                //                    chars.count = 0;
-                //                }
-                //            } else {
-                //                for (var lp = 0; lp < node.childNodes.length; lp++) {
-                //                    range = createRange(node.childNodes[lp], chars, range);
-
-                //                    if (chars.count === 0) {
-                //                        break;
-                //                    }
-                //                }
-                //            }
-                //        }
-
-                //        return range;
-                //    };
-                //    function setCurrentCursorPosition(chars) {
-                //        if (chars >= 0) {
-                //            var selection = window.getSelection();
-
-                //            var range = createRange($element[0], { count: chars }, null);
-
-                //            if (range) {
-                //                range.collapse(false);
-                //                selection.removeAllRanges();
-                //                selection.addRange(range);
-                //            }
-                //        }
-                //    };
-
-                //    setCurrentCursorPosition($result.text().length);
-                //});
+                // handle disposal (if KO removes by the template binding)
+                ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+                    if ($editor) {
+                        $editor.destroy();
+                        me.editors.splice(idx, 1);
+                    };
+                });
             }
         };
         ko.bindingHandlers.checkedHtml = {
