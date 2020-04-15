@@ -241,7 +241,7 @@ export class NCKHServiceProvider {
                 '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
                 '</div>' +
                 '</div>');
-        $(".ptable").mouseenter(function (event) {
+        $(".ptable:not(.noaction)").mouseenter(function (event) {
             try {
                 var ptable = $(event.currentTarget),
                     sconf = ptable.attr("conf");
@@ -270,7 +270,7 @@ export class NCKHServiceProvider {
                 '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
                 '</div>' +
                 '</div>');
-        $(".pblock").mouseenter(function (event) {
+        $(".pblock:not(.noaction)").mouseenter(function (event) {
             try {
                 var pblock = $(event.currentTarget);
                 var sconf = pblock.attr("conf");
@@ -299,7 +299,7 @@ export class NCKHServiceProvider {
                 '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
                 '</div>' +
                 '</div>');
-        $(".pblock").on("mouseenter", ".prow", function (event) {
+        $(".pblock:not(.noaction)").on("mouseenter", ".prow", function (event) {
             try {
                 var pblock = $(event.currentTarget);
                 var sconf = pblock.attr("conf");
@@ -663,6 +663,16 @@ export class NCKHServiceProvider {
                 if (excepts.indexOf(field) == -1)
                     $(o).attr("disabled", "disabled");
             }
+        })
+        var tables = div.find("table.nckh-table");
+        $.each(tables, (i, o) => {
+            if ($(o).find('tbody tr').length > 0 && $(o).find("[contenteditable='true']").length == 0)
+                $(o).parent().addClass('noaction');
+        })
+        var pblocks = div.find(".pblock");
+        $.each(pblocks, (i, o) => {
+            if ($(o).find('.prow').length > 0 && $(o).find("[contenteditable='true']").length == 0)
+                $(o).addClass('noaction');
         })
         return div.children();
     }
