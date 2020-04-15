@@ -226,7 +226,7 @@ namespace API.Controllers.DOC
 
                     if (sendMailType == "ApproveRequired")
                     {
-                        subject = "Thư viện điện tử - tài liệu chờ duyệt";
+                        subject = "Quản lý Đề tài Nghiên cứu khoa học - tài liệu chờ duyệt";
                         template =
                             @"
                         Xin chào <strong>@Model.ToName</strong>,
@@ -255,13 +255,13 @@ namespace API.Controllers.DOC
                             });
 
                             EmailService emailService = new EmailService();
-                            emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
+                            //emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
                         }
 
                     }
                     else if (sendMailType == "Approved")
                     {
-                        subject = "Thư viện điện tử - đã duyệt tài liệu (" + tbl_CUS_DOC_File.Name + ")";
+                        subject = "Quản lý Đề tài Nghiên cứu khoa học - đã duyệt tài liệu (" + tbl_CUS_DOC_File.Name + ")";
                         template =
                             @"
                         Xin chào <strong>@Model.ToName</strong>,
@@ -291,7 +291,7 @@ namespace API.Controllers.DOC
                             });
 
                             EmailService emailService = new EmailService();
-                            emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
+                            //emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
                         }
 
 
@@ -299,7 +299,7 @@ namespace API.Controllers.DOC
                     }
                     else if (sendMailType == "Denied")
                     {
-                        subject = "Thư viện điện tử - TỪ CHỐI duyệt tài liệu (" + tbl_CUS_DOC_File.Name + ")";
+                        subject = "Quản lý Đề tài Nghiên cứu khoa học - TỪ CHỐI duyệt tài liệu (" + tbl_CUS_DOC_File.Name + ")";
                         template =
                             @"
                         Xin chào <strong>@Model.ToName</strong>,
@@ -329,7 +329,7 @@ namespace API.Controllers.DOC
                             });
 
                             EmailService emailService = new EmailService();
-                            emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
+                            //emailService.Send(new IdentityMessage() { Subject = subject, Destination = s.Email, Body = html });
                         }
                     }
                 }

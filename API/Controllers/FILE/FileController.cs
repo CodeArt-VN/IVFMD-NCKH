@@ -364,7 +364,7 @@ namespace API.Controllers.DOC
                         @"
                     Xin chào <strong>@Model.FullName</strong>,
                     <br>
-                    <br>Bạn vừa được tạo tài khoản truy cập vào hệ thống thư viện điện tử.
+                    <br>Bạn vừa được tạo tài khoản truy cập vào hệ thống Quản lý Đề tài Nghiên cứu khoa học.
                     <br>
                     <br>Tài khoản đăng nhập:
                     <br>Email: <strong>@Model.Email</strong>
@@ -377,7 +377,7 @@ namespace API.Controllers.DOC
                             var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://myduc.appcenter.vn:9003/" });
 
                             EmailService emailService = new EmailService();
-                            emailService.SendSync(new IdentityMessage() { Subject = "Thư viện điện tử - thông tin tài khoản", Destination = dbUser.Email, Body = html });
+                            //emailService.SendSync(new IdentityMessage() { Subject = "Quản lý Đề tài Nghiên cứu khoa học - thông tin tài khoản", Destination = dbUser.Email, Body = html });
 
                         }
                         else if (!string.IsNullOrEmpty(password))
