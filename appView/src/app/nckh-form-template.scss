@@ -254,7 +254,7 @@
                         height: 26px;
                     }
 
-                    .box:last-child {
+                    > .box:last-child {
                         margin-bottom: 0;
                     }
                 }
@@ -287,6 +287,28 @@
                         border-right: 0;
                     }
                 }
+            }
+        }
+
+        &.editable-table:not(.noaction) {
+            tbody > tr:hover::after, tbody > tr:focus::after {
+                display: inline;
+            }
+
+            tbody > tr::after {
+                display: none;
+                position: absolute;
+                content: "Delete";
+                right: 0;
+                transform: translate(0, -99%);
+                border: 1px solid red;
+                padding: 3px 5px;
+                font-size: 13px;
+                color: #000;
+                background: #f9f9f9;
+                border-radius: 4px;
+                cursor: pointer;
+                -webkit-appearance: button;
             }
         }
     }
@@ -324,6 +346,16 @@
         font-size: 15px;
         height: 30px;
         z-index: 9999;
+    }
+
+    .group_controls {
+        border-radius: 4px !important;
+        overflow: hidden;
+
+        .fieldgroup_controls {
+            button {
+            }
+        }
     }
 
 
@@ -430,8 +462,8 @@
                 border: 1px solid #44a9eb;
             }
             /*> p:first-child, > div:first-child {
-            margin-top: 0;
-        }*/
+                margin-top: 0;
+            }*/
             > p, > div {
                 margin-bottom: .6rem;
                 margin-top: .6rem;
@@ -497,7 +529,7 @@
                             height: 26px;
                         }
 
-                        .box:last-child {
+                        > .box:last-child {
                             margin-bottom: 0;
                         }
                     }

@@ -70,9 +70,7 @@ export class NCKHServiceProvider {
 
         // bindingHandlers
         ko.bindingHandlers.editableHtml = {
-            init: function (element, valueAccessor) {
-                var idx = me.e++;
-                var $editor;
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                 var $element: any = $(element);
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
                 $element.html(initialValue);
@@ -80,29 +78,32 @@ export class NCKHServiceProvider {
                     var observable = valueAccessor();
                     observable($element.html());
                 });
-                $element.on('focus', function (e) {
-                    if (!$element[0].ckeditorInstance) {
-                        var observable = valueAccessor();
-                        ckEditor.create($element.get(0), me.ckToolbarOptions).then((editor) => {
-                            $editor = editor;
-                            me.editors.push({
-                                id: idx,
-                                editor: $editor
+                if (!!$element.data('editor')) {
+                    var idx = me.e++;
+                    var $editor;
+                    $element.on('focus', function (e) {
+                        if (!$element[0].ckeditorInstance) {
+                            var observable = valueAccessor();
+                            ckEditor.create($element.get(0), me.ckToolbarOptions).then((editor) => {
+                                $editor = editor;
+                                me.editors.push({
+                                    id: idx,
+                                    editor: $editor
+                                });
+                                $editor.model.document.on('change:data', (evt, data) => {
+                                    observable($editor.getData());
+                                });
                             });
-                            $editor.model.document.on('change:data', (evt, data) => {
-                                observable($editor.getData());
-                            });
-                        });
-                    }
-                });
-
-                // handle disposal (if KO removes by the template binding)
-                ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                    if ($editor) {
-                        $editor.destroy();
-                        me.editors.splice(idx, 1);
-                    };
-                });
+                        }
+                    });
+                    // handle disposal (if KO removes by the template binding)
+                    ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+                        if ($editor) {
+                            $editor.destroy();
+                            me.editors.splice(idx, 1);
+                        };
+                    });
+                }
             }
         };
         ko.bindingHandlers.checkedHtml = {
@@ -178,32 +179,6 @@ export class NCKHServiceProvider {
                 }
             }
         });
-        $(".ptable").on("click", ".remove", function (e) {
-            var anchorNode = window.getSelection().anchorNode;
-            if (anchorNode) {
-                var ptable = $(e.currentTarget).closest(".pconf"),
-                    sconf = ptable.attr("conf");
-                var sconf1 = $(anchorNode).closest(".pconf").attr("conf");
-                if (sconf != null && sconf1 != null && (anchorNode.parentElement.tagName == "TD" || anchorNode.parentElement.tagName == "TR")) {
-                    try {
-                        var conf = JSON.parse(sconf);
-                        var conf1 = JSON.parse(sconf1);
-                        if (conf.name === conf1.name && conf.add) {
-                            var tr = $(anchorNode).closest('tr');
-                            if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
-                                var context = ko.contextFor(ptable[0]);
-                                var obj = ko.contextFor(tr[0]).$data;
-                                me.removeItem(context, conf.name, obj);
-                            }
-                        }
-                        return false;
-                    } catch (e) {
-                        console.error(e);
-                        return false;
-                    }
-                }
-            }
-        });
         $(".pblock").on("click", ".remove", function (e) {
             var prow = $(e.currentTarget).closest(".prow"),
                 pblock = prow.closest(".pconf"),
@@ -229,7 +204,6 @@ export class NCKHServiceProvider {
         var ptableGroupConrtrol =
             $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
                 '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
                 '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
                 '</div>' +
                 '</div>');
@@ -243,6 +217,7 @@ export class NCKHServiceProvider {
                         var group_controls = ptable.find(".group_controls");
                         if (group_controls.length == 0) {
                             ptableGroupConrtrol.appendTo(ptable);
+                            //event.stopPropagation()
                         }
                     }
                 }
@@ -262,17 +237,16 @@ export class NCKHServiceProvider {
                 '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
                 '</div>' +
                 '</div>');
-        $(".pblock:not(.noaction)").mouseenter(function (event) {
+        $(".pblock:not(.noaction)").mouseenter((event) => {
             try {
                 var pblock = $(event.currentTarget);
                 var sconf = pblock.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
-                        var group_controls = pblock.find(".group_controls");
+                        var group_controls = pblock.children(".group_controls");
                         if (group_controls.length == 0) {
                             pblockConrtrol.appendTo(pblock);
-                            event.stopPropagation()
                         }
                     }
                 }
@@ -280,10 +254,34 @@ export class NCKHServiceProvider {
                 console.error(e);
                 return false;
             }
-        }).mouseleave(function (event) {
-            var t = $(event.currentTarget).find(".group_controls");
+        }).mouseleave((event) => {
+            var t = $(event.currentTarget).children(".group_controls");
             t.detach();
         });
+
+        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e) {
+            if (e.offsetY < 0) {
+                var ptable = $(e.currentTarget).closest(".pconf"),
+                    sconf = ptable.attr("conf");
+                if (sconf != null) {
+                    try {
+                        var conf = JSON.parse(sconf);
+                        if (conf.name && conf.add) {
+                            var tr = $(e.currentTarget);
+                            if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
+                                var context = ko.contextFor(ptable[0]);
+                                var obj = ko.contextFor(tr[0]).$data;
+                                me.removeItem(context, conf.name, obj);
+                            }
+                        }
+                        return false;
+                    } catch (e) {
+                        console.error(e);
+                        return false;
+                    }
+                }
+            }
+        })
 
         var prowConrtrol =
             $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
@@ -314,6 +312,7 @@ export class NCKHServiceProvider {
                 group_controls = pblock.find(".group_controls");
             group_controls.detach();
         });
+
         var config = {
             tables: {}
         };
@@ -658,8 +657,10 @@ export class NCKHServiceProvider {
         })
         var tables = div.find("table.nckh-table");
         $.each(tables, (i, o) => {
-            if ($(o).find('tbody tr').length > 0 && $(o).find("[contenteditable='true']").length == 0)
+            if ($(o).find('tbody tr').length > 0 && $(o).find("[contenteditable='true']").length == 0) {
+                $(o).addClass('noaction');
                 $(o).parent().addClass('noaction');
+            }
         })
         var pblocks = div.find(".pblock");
         $.each(pblocks, (i, o) => {
