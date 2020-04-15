@@ -458,12 +458,15 @@
         }
 
         [contenteditable="true"] {
+            &:not(td) {
+                display: inline !important;
+                width: 100%;
+            }
+
             &:hover, &:focus {
                 border: 1px solid #44a9eb;
             }
-            /*> p:first-child, > div:first-child {
-                margin-top: 0;
-            }*/
+
             > p, > div {
                 margin-bottom: .6rem;
                 margin-top: .6rem;

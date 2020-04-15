@@ -72,11 +72,26 @@ export class NCKHServiceProvider {
         ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                 var $element: any = $(element);
+                var regex = /<br\s*[\/]?>/gi;
                 var initialValue = ko.utils.unwrapObservable(valueAccessor());
-                $element.html(initialValue);
+                var textOnly = $element.data('textonly');
+                if (textOnly) {
+                    var txt = initialValue.replace(regex, "\n");
+                    var ele = $("<p>" + txt + "</p>").text();
+                    $element.html(ele.replace(/(?:\r\n|\r|\n)/g, '<br>'));
+                }
+                else {
+                    $element.html(initialValue);
+                }
                 $element.on('input', function (e) {
                     var observable = valueAccessor();
-                    observable($element.html());
+                    if (textOnly) {
+                        var regex = /<br\s*[\/]?>/gi;
+                        var txt = $("<p>" + $element.html().replace(regex, "\n") + "</p>");
+                        observable(txt.text());
+                    } else {
+                        observable($element.html());
+                    }
                 });
                 if (!!$element.data('editor')) {
                     var idx = me.e++;
