@@ -571,7 +571,7 @@
                                     <br /><i>(chỉ ghi mã số)</i>
                                 </td>
                                 <td>
-                                    ISSN <br /><i>(ghi rõ thuộc ISI hay không)</i>
+                                    Số hiệu ISSN <br /><i>(ghi rõ thuộc ISI hay không)</i>
                                 </td>
                                 <td>Điểm IF</td>
                             </tr>
@@ -590,7 +590,7 @@
                 <p class="box">
                     <span class=""><u><i>2.2. Đăng trên tạp chí trong nước:</i></u></span>
                 </p>
-                <div conf='{"name":"ListTapChiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div conf='{"name":"ListTapChiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table name="ListTapChiTrongNuoc" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
@@ -608,7 +608,7 @@
                                     <br /><i>(chỉ ghi mã số)</i>
                                 </td>
                                 <td>
-                                    ISSN
+                                    Số hiệu ISSN
                                 </td>
                                 <td>Điểm IF</td>
                             </tr>
@@ -619,7 +619,7 @@
                                 <td contenteditable="true" data-bind="editableHtml: TenBaiViet"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SanPham"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SoHieu"></td>
-                                <td contenteditable="true" data-bind="editableHtml: DiemIF"></td>
+                                <td contenteditable="true" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -627,7 +627,7 @@
                 <p class="box">
                     <span class=""><u><i>2.3. Đăng trên kỷ yếu Hội nghị Quốc tế:</i></u></span>
                 </p>
-                <div conf='{"name":"ListHoiNghiQuocTe","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div conf='{"name":"ListHoiNghiQuocTe","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table name="ListHoiNghiQuocTe" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
@@ -645,7 +645,7 @@
                                     <br /><i>(chỉ ghi mã số)</i>
                                 </td>
                                 <td>
-                                    ISSN
+                                    Số hiệu ISBN
                                 </td>
                                 <td>Điểm IF</td>
                             </tr>
@@ -656,7 +656,7 @@
                                 <td contenteditable="true" data-bind="editableHtml: TenBaiViet"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SanPham"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SoHieu"></td>
-                                <td contenteditable="true" data-bind="editableHtml: DiemIF"></td>
+                                <td contenteditable="true" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -664,7 +664,7 @@
                 <p class="box">
                     <span class=""><u><i>2.4. Đăng trên kỷ yếu Hội nghị trong nước:</i></u></span>
                 </p>
-                <div conf='{"name":"ListHoiNghiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","DiemIF"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div conf='{"name":"ListHoiNghiTrongNuoc","add":true,"resizeable":true, "props": ["TenBaiViet","SanPham","SoHieu","GhiChu"]}' class="ptable pconf" style="width:100%;position:relative;">
                     <table name="ListHoiNghiTrongNuoc" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
@@ -682,9 +682,9 @@
                                     <br /><i>(chỉ ghi mã số)</i>
                                 </td>
                                 <td>
-                                    ISSN
+                                    Số hiệu ISBN
                                 </td>
-                                <td>Điểm IF</td>
+                                <td>Ghi chú</td>
                             </tr>
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListHoiNghiTrongNuoc">
@@ -693,7 +693,7 @@
                                 <td contenteditable="true" data-bind="editableHtml: TenBaiViet"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SanPham"></td>
                                 <td contenteditable="true" data-bind="editableHtml: SoHieu"></td>
-                                <td contenteditable="true" data-bind="editableHtml: DiemIF"></td>
+                                <td contenteditable="true" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
