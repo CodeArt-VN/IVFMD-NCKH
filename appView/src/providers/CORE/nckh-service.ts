@@ -67,7 +67,7 @@ export class NCKHServiceProvider {
     }
     init(configs) {
         var me = this;
-
+        var enableCKEditor = !1;
         // bindingHandlers
         ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -93,7 +93,7 @@ export class NCKHServiceProvider {
                         observable($element.html());
                     }
                 });
-                if (!!$element.data('editor')) {
+                if (enableCKEditor && !!$element.data('editor')) {
                     var idx = me.e++;
                     var $editor;
                     $element.on('focus', function (e) {

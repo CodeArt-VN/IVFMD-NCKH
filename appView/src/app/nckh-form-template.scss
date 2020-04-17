@@ -177,14 +177,14 @@
 
         [contenteditable="true"] {
             &:hover, &:focus {
-                //outline: 1px dashed #44a9eb;
+                outline: 1px dashed #44a9eb;
             }
         }
     }
 
     [contenteditable="true"] {
         &:hover, &:focus {
-            //outline: 1px dashed #44a9eb;
+            outline: 1px dashed #44a9eb;
         }
         /*> p:first-child, > div:first-child {
             margin-top: 0;
@@ -359,7 +359,7 @@
     }
 
 
-    &.input-mode {
+    &.input-mode-nouse {
 
         &.tab-1 {
             margin-left: 0;
