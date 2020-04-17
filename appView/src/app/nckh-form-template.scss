@@ -305,24 +305,31 @@
 
         &.editable-table:not(.noaction) {
             tbody > tr[removable="true"], tbody > tr[removable="1"] {
-                &:hover::after, &:focus::after {
-                    display: inline;
+                &:hover, &:focus {
+                    td:last-child::after {
+                        display: inline;
+                    }
                 }
 
-                &::after {
-                    display: none;
-                    position: absolute;
-                    content: "Delete";
-                    right: 0;
-                    transform: translate(0, -99%);
-                    border: 1px solid red;
-                    padding: 3px 5px;
-                    font-size: 13px;
-                    color: #000;
-                    background: #f9f9f9;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    -webkit-appearance: button;
+                & > td:last-child {
+                    position: relative;
+
+                    &::after {
+                        display: none;
+                        position: absolute;
+                        content: "Delete";
+                        right: 0;
+                        top: 0;
+                        transform: translate(0, -100%);
+                        border: 1px solid red;
+                        padding: 3px 5px;
+                        font-size: 13px;
+                        color: #000;
+                        background: #f9f9f9;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        -webkit-appearance: button;
+                    }
                 }
             }
         }
