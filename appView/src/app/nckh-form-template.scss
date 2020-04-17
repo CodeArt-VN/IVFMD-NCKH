@@ -102,7 +102,7 @@
 
     .prow {
         &:hover {
-            //box-shadow: 0px 0px 2px #44a9eb;
+            box-shadow: 0px 0px 2px #44a9eb;
         }
     }
 
@@ -221,6 +221,19 @@
                     page-break-inside: avoid;
                     page-break-before: auto;
                     vertical-align: middle;
+                    border: 1px solid #808080;
+                }
+            }
+        }
+
+        &.table-bordered {
+            border: none !important;
+
+            thead, tbody {
+                tr {
+                    td, th {
+                        border: 1px solid #808080;
+                    }
                 }
             }
         }
@@ -276,7 +289,7 @@
 
             tr {
                 > td {
-                    border: 1px solid #607d8b;
+                    border: 1px solid #808080;
                     border-bottom: 0;
 
                     &:first-child {
@@ -291,24 +304,26 @@
         }
 
         &.editable-table:not(.noaction) {
-            tbody > tr:hover::after, tbody > tr:focus::after {
-                display: inline;
-            }
+            tbody > tr[removable="true"], tbody > tr[removable="1"] {
+                &:hover::after, &:focus::after {
+                    display: inline;
+                }
 
-            tbody > tr::after {
-                display: none;
-                position: absolute;
-                content: "Delete";
-                right: 0;
-                transform: translate(0, -99%);
-                border: 1px solid red;
-                padding: 3px 5px;
-                font-size: 13px;
-                color: #000;
-                background: #f9f9f9;
-                border-radius: 4px;
-                cursor: pointer;
-                -webkit-appearance: button;
+                &::after {
+                    display: none;
+                    position: absolute;
+                    content: "Delete";
+                    right: 0;
+                    transform: translate(0, -99%);
+                    border: 1px solid red;
+                    padding: 3px 5px;
+                    font-size: 13px;
+                    color: #000;
+                    background: #f9f9f9;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    -webkit-appearance: button;
+                }
             }
         }
     }
@@ -539,6 +554,18 @@
                 }
             }
 
+            &.table-bordered {
+                border: none !important;
+
+                thead, tbody {
+                    tr {
+                        td, th {
+                            border: 1px solid #808080;
+                        }
+                    }
+                }
+            }
+
             &.td-padding-0 {
                 tbody {
                     tr {
@@ -554,7 +581,7 @@
 
                 tr {
                     > td {
-                        border: 1px solid #607d8b;
+                        border: 1px solid #808080;
                         border-bottom: 0;
 
                         &:first-child {
