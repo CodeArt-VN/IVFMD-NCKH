@@ -1,0 +1,213 @@
+﻿<div class="form-template-header">
+    <div class="nckh-form-template print-mode nckh-form-09 font-size-13" style="padding: 0 .8in 0 1in;">
+        <div class="page-header">
+            <table style="position:relative; width: 100%;top: 30px;border-bottom: 1px solid black;font-size: 10pt;font-style:italic;">
+                <tr>
+                    <td style="vertical-align:top">
+                        Phụ lục 7
+                    </td>
+                    <td style="text-align:right;vertical-align:top">
+                        Quy chế tổ chức & hoạt động của HĐĐĐ_BVMĐ
+                        <br />
+                        Cập nhật tháng 9/2014
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-template-body">
+    <div class="nckh-form-template print-mode nckh-form-09 font-size-13" style="padding: 0 .8in 0 1in;">
+        <div class="inline text-center text-bold" style="font-size: 14pt;">
+            <p style="margin:0;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+            <p style="border-bottom: 1px solid black;display: inline;padding-bottom: .3em;">Độc lập – Tự do – Hạnh phúc</p>
+        </div>
+        <div class="inline text-center text-bold" style="padding-top:2em;font-size: 14pt;">
+            <p style="margin: 6px;">
+                SƠ YẾU LÝ LỊCH KHOA HỌC<br />
+                NGHIÊN CỨU VIÊN CHÍNH NCYSH
+            </p>
+        </div>
+        <div class="block">
+            <table border="1" bordercolor="#607D8B" class="nckh-table" style="width:100%;border-collapse: collapse;">
+                <tr style="page-break-inside:auto;">
+                    <td>
+                        <div>
+                            <p class="box">
+                                <span class="box-title">1. Họ và tên:</span>
+                                <span contenteditable="false" style="text-indent: 92px;" data-bind="editableHtml: HoTen"></span>
+                            </p>
+                            <p class="box">
+                                <span class="box-title">2. Ngày tháng năm sinh:</span>
+                                <span contenteditable="false" style="text-indent: 172px;" data-bind="editableHtml: NgaySinh"></span>
+                            </p>
+                            <p class="box">
+                                <span class="box-title">3. Nam, nữ:</span>
+                                <span contenteditable="false" style="text-indent: 84px;" data-bind="editableHtml: GioiTinh"></span>
+                            </p>
+                            <p class="box">
+                                <span class="box-title">4. Địa chỉ gửi thư:</span>
+                                <span contenteditable="false" style="text-indent: 129px;" data-bind="editableHtml: DiaChi"></span>
+                            </p>
+                            <div class="box-inline">
+                                <div style="display:inline-block;min-width:50%">
+                                    <p class="box">
+                                        <span class="box-title">5. Điện thoại CQ:</span>
+                                        <span contenteditable="false" style="text-indent: 126px;" data-bind="editableHtml: DienThoaiCQ"></span>
+                                    </p>
+                                </div>
+                                <div style="display:inline-block;min-width:50%">
+                                    <p class="box">
+                                        <span class="box-title">Mobile:</span>
+                                        <span contenteditable="false" style="text-indent: 58px;" data-bind="editableHtml: Mobile"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="box">
+                                <span class="box-title">6. Email:</span>
+                                <span contenteditable="false" style="text-indent: 66px;" data-bind="editableHtml: Email"></span>
+                            </p>
+                            <p class="box">
+                                <span class="box-title">7. Chức vụ:</span>
+                                <span contenteditable="false" style="text-indent: 84px;" data-bind="editableHtml: ChucVu"></span>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="page-break-inside:auto;">
+                    <td>
+                        <p class="box">
+                            <span class="box-title">8. Cơ quan - nơi làm việc:</span>
+                            <span contenteditable="false" style="text-indent: 184px;" data-bind="editableHtml: CoQuanLamViec"></span>
+                        </p>
+                        <p class="box tab-1">
+                            <span class="box-title">Tên người Lãnh đạo cơ quan (Thủ trưởng cơ quan):</span>
+                            <span contenteditable="true" style="text-indent: 362px;" data-bind="editableHtml: ThuTruongCoQuan"></span>
+                        </p>
+                        <p class="box tab-1">
+                            <span class="box-title">Điện thoại người Lãnh đạo cơ quan:</span>
+                            <span contenteditable="true" style="text-indent: 254px;" data-bind="editableHtml: DienThoaiThuTruong"></span>
+                        </p>
+                        <p class="box tab-1">
+                            <span class="box-title">Địa chỉ cơ quan:</span>
+                            <span contenteditable="false" style="text-indent: 118px;" data-bind="editableHtml: DiaChiCoQuan"></span>
+                        </p>
+                        <div class="pblock pconf" conf='{"name":"ListTrinhDoChuyenMon","add":true,"remove":true,"props":["HocVi","NamNhanBang","ChuyenNganhDaoTao"]}' style="width:100%;position:relative;page-break-inside:auto">
+                            <p class="box">
+                                <span class="box-title" style="width: 100%;">9. Trình độ chuyên môn (ghi đầy đủ cho từng loại văn bằng đã được nhận)</span>
+                            </p>
+                            <div data-bind="foreach: ListTrinhDoChuyenMon" style="page-break-inside:auto">
+                                <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removable: true }" style="position:relative;page-break-inside:auto">
+                                    <p class="box tab-1">
+                                        <span class="box-title">Học vị:</span>
+                                        <span contenteditable="true" style="text-indent: 54px;" data-bind="editableHtml: HocVi"></span>
+                                    </p>
+                                    <p class="box tab-1">
+                                        <span class="box-title">Năm nhận bằng:</span>
+                                        <span contenteditable="true" style="text-indent: 116px;" data-bind="editableHtml: NamNhanBang"></span>
+                                    </p>
+                                    <p class="box tab-1">
+                                        <span class="box-title">Chuyên ngành đào tạo:</span>
+                                        <span contenteditable="true" style="text-indent: 162px;" data-bind="editableHtml: ChuyenNganhDaoTao"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="page-break-inside:auto;">
+                    <td>
+                        <p class="box">
+                            <span>10. Kinh nghiệm nghiên cứu:</span>
+                        </p>
+                        <p class="box text-bold" style="margin-bottom:1em">
+                            <span>
+                                Các đề tài/dự án đã chủ trì hoặc tham gia trong 5 năm gần đây:
+                            </span>
+                        </p>
+                        <div conf='{"name":"ListKinhNghiem","add":true,"resizeable":true,"props": ["TenDeTai","NhiemVuCaNhan","CoQuanChuTri","NamBatDauKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
+                            <table name="ListKinhNghiem" class="nckh-table table-inside-table resize-grid" style="width:100%;" border="0">
+                                <colgroup>
+                                    <col />
+                                    <col />
+                                    <col width="120" />
+                                    <col />
+                                </colgroup>
+                                <thead>
+                                    <tr class="table-header" style="font-weight:normal;">
+                                        <td>Tên đề tài/dự án đã chủ trì</td>
+                                        <td>Nhiệm vụ cá nhân trong nghiên cứu</td>
+                                        <td>Cơ quan chủ trì đề tài/dự án</td>
+                                        <td>Năm bắt đầu - kết thúc</td>
+                                    </tr>
+                                </thead>
+                                <tbody style="width:100%;" data-bind="foreach: ListKinhNghiem">
+                                    <tr data-bind="attr: { index: $index, removable: true }">
+                                        <td contenteditable="true" data-bind="editableHtml: TenDeTai"></td>
+                                        <td contenteditable="true" data-bind="editableHtml: NhiemVuCaNhan"></td>
+                                        <td contenteditable="true" data-bind="editableHtml: CoQuanChuTri"></td>
+                                        <td contenteditable="true" data-bind="editableHtml: NamBatDauKetThuc"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div class="box" style="font-style: italic">
+                    <div style="width:50%;" class="text-center">
+                    </div>
+                    <div style="width:50%;" class="text-center">
+                        <div class="box-inline">
+                            <div style="display:inline-block;min-width:136px">
+                                <p class="box">
+                                    <span class="box-title">TP. HCM, ngày </span>
+                                    <span contenteditable="true" style="text-indent:110px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                </p>
+                            </div>
+                            <div style="display:inline-block;min-width:72px">
+                                <p class="box">
+                                    <span class="box-title">tháng</span>
+                                    <span contenteditable="true" style="text-indent:38px;" data-bind="editableHtml: NgayKy_Thang"></span>
+                                </p>
+                            </div>
+                            <div style="display:inline-block;min-width:60px">
+                                <p class="box">
+                                    <span class="box-title">năm</span>
+                                    <span contenteditable="true" style="text-indent:35px;" data-bind="editableHtml: NgayKy_Nam"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="box" style="">
+                    <span style="width:50%;" class="text-center">
+                    </span>
+                    <span style="width:50%;" class="text-center">
+                        <b>NGHIÊN CỨU VIÊN CHÍNH</b>
+                        <br />
+                        <i>(Ký và ghi rõ họ tên)</i>
+                        <span contenteditable="true" data-bind="editableHtml: NgayKy_ChuKy" style="width: 100%;min-height: 100px;display: block;"></span>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-template-footer">
+    <div class="nckh-form-template print-mode nckh-form-09 font-size-13" style="padding: 0 .8in 0 1in;">
+        <div class="page-footer">
+            <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
+                <tr>
+                    <td style="vertical-align:middle" class="text-center">
+                        <div class="print-hidden">1</div>
+                        <div class="uiview-hidden">[[Page]]</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,424 @@
+﻿<div class="form-template-header">
+    <div class="nckh-form-template print-mode nckh-form-32 font-size-13" style="padding: 0 .69in 0 1.18in;">
+        <div class="page-header" style="height: 0.8in">
+            <table style="position:relative; width: 100%;top: 30px;border-bottom: 1px solid black;font-size: 12pt;font-style:italic;">
+                <tr>
+                    <td style="text-align:right;vertical-align:top">
+                        Phụ lục 1: Mẫu báo cáo bất lợi AE
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-template-body">
+    <div class="nckh-form-template print-mode nckh-form-32 font-size-13" style="padding: 0 .69in 0 1.18in;">
+        <div>
+            <table class="nckh-table text-bold" style="width:100%;" border="0">
+                <colgroup>
+                    <col width="150" />
+                    <col />
+                    <col width="150" />
+                </colgroup>
+                <tbody style="width:100%;">
+                    <tr>
+                        <td colspan="3">
+                            <div class="inline text-center">
+                                <p style="margin: 6px;font-size:15pt;">
+                                    BÁO CÁO BIẾN CỐ BẤT LỢI (AE)
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mã số đối tượng
+                        </td>
+                        <td></td>
+                        <td style="text-align:right;">
+                            Mã số báo cáo AE
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="box">
+                                <span class="box-title"></span>
+                                <span contenteditable="true" data-bind="editableHtml: MaSoBenhNhan">
+                                    _________________
+                                </span>
+                            </p>
+                        </td>
+                        <td></td>
+                        <td style="text-align:right;">
+                            <p class="box">
+                                <span class="box-title"></span>
+                                <span contenteditable="true" data-bind="editableHtml: MaSo">|_______|</span>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <table name="AE" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:13pt" border="1">
+            <colgroup>
+                <col />
+                <col width="400" />
+            </colgroup>
+            <tbody style="width:100%;">
+                <tr style="border-top: 1px solid black;">
+                    <td colspan="2" style="vertical-align:middle;">
+                        <p class="box" style="margin:0;">
+                            <span class="box-title">1.<i>	Tên biến cố bất lợi:</i></span>
+                            <span contenteditable="true" style="text-indent:156px;" data-bind="editableHtml: TenBienCo"><br /><br /><br /><br /></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        2.	Ngày khởi phát
+                    </td>
+                    <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Ngay">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Thang">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Nam">|__|__|__|__|</div>
+                        (ngày/tháng/năm)
+                        <br />
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Gio">|__|__|</div>
+                        :
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKhoiPhat_Phut">|__|__|</div> 
+                        (giờ - phút)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        3.	Ngày kết thúc
+                    </td>
+                    <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Ngay">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Thang">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Nam">|__|__|__|__|</div>
+                        (ngày/tháng/năm)
+                        <br />
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Gio">|__|__|</div>
+                        :
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: NgayKetThuc_Phut">|__|__|</div>
+                        (giờ - phút)
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NgayKhoiPhat_DangTiepDien" /> Đang tiếp diễn
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        4.	Phân độ nặng
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_Nghe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: PhanDoNang_Nang" /> Nặng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        5.	Có yêu cầu điều trị
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: CanDieuTri_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: CanDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        6.	Hành động đưa ra với thuốc nghiên cứu
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        7.	Hành động đưa ra với thuốc dùng kèm (NIMP)
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        8.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc nghiên cứu
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocNghienCuu_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocNghienCuu_Co" /> Có
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        9.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc dùng kèm (NIMP)
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocDungKem_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: LyDoThuocDungKem_Co" /> Có
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        10.	Kết quả
+                    </td>
+                    <td style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_HoiPhucKhongDiChung" /> Hồi phục không có di chứng
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_CoDiChung" /> Hồi phục có di chứng
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_DangHoiPhuc" /> Đang hồi phục
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaHoiPhuc" /> Chưa/Không hồi phục
+                        <br />
+                        <div class="cell-inline">
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_TuVong" />
+                            Tử vong, ngày tử vong:
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Ngay">|__|__|</div>
+                            /
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Thang">|__|__|</div>
+                            /
+                            <div contenteditable="true" class="input-inline text-center" style="min-width:16px;" data-bind="editableHtml: KetQua_TuVong_Nam">|__|__|</div>
+                        </div>
+                        <input type="checkbox" data-bind="checkedHtml: KetQua_KhongBiet" /> Không biết
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;">
+                        11.	Nghiêm trọng?
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: NghiemTrong_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NghiemTrong_Co" /> Có, chọn lý do:
+                        <br />
+                        <div style="margin-left:20px;">
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_TuVong" /> Tử vong
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        12.	AE này co tiến triển thành SAE không?
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: TienHanhSAE1_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: TienHanhSAE1_Co" /> Có, ghi thông tin SAE vào mẫu tương ứng
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="nckh-table" style="width:100%;margin-top:5px;font-size:13pt" border="0">
+            <tr>
+                <td>
+                    Họ tên và chữ ký người thực hiện
+                </td>
+                <td>
+                    Ngày báo cáo
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="true" data-bind="editableHtml: HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                    <br />
+                    _______________________________________
+                </td>
+                <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
+                    <br />
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Ngay">|__|__|</div>
+                    /
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Thang">|__|__|</div>
+                    /
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NgayBaoCao_Nam">|__|__|__|__|</div>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <div>
+            <div>
+                <b>
+                    * Các phần sau chỉ áp dụng khi AE tăng độ nặng hoặc AE trở nên nghiêm trọng:
+                </b>
+            </div>
+        </div>
+        <table name="AENghiemTrong" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:13pt" border="1">
+            <colgroup>
+                <col />
+                <col width="400" />
+            </colgroup>
+            <tbody style="width:100%;">
+                <tr>
+                    <td style="vertical-align:middle;">
+                        Ngày/Giờ tăng độ nặng, trở nên nghiêm trọng
+                    </td>
+                    <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Ngay">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Thang">|__|__|</div>
+                        /
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Nam">|__|__|__|__|</div>
+                        (ngày – tháng – năm)
+                        <br />
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Gio">|__|__|</div>
+                        :
+                        <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayGioTangDoNang_Phut">|__|__|</div>
+                        (giờ - phút)
+                        <br />
+                        Nếu không rõ giờ, ghi N/A
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        14.	Độ nặng của AE
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_Nhe" /> Nhẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_TrungBinh" /> Trung bình&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_DoNangAE_Nang" /> Nặng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        15.	Có yêu cầu điều trị
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NT_YeuCauDieuTri_Co" /> Có. <i>Lưu toa/Cập nhật phiếu Thuốc dùng đồng thời</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        16.	Hành động đưa ra với thuốc nghiên cứu
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocNghienCuu_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocNghienCuu_NgungSuDung" /> Ngừng sử dụng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        17.	Hành động đưa ra với thuốc dùng kèm (NIMP)
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocDungKem_KhongApDung" /> Không áp dụng&nbsp;&nbsp;
+                        <input type="checkbox" data-bind="checkedHtml: NT_HDThuocDungKem_NgungSuDung" /> Ngừng sử dụng
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        18.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc nghiên cứu
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocNghienCuu_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocNghienCuu_Co" /> Có
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        19.	Có lý do hợp lý chứng minh AE gây ra bởi thuốc dùng kèm (NIMP)
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocDungKem_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NT_LyDoThuocDungKem_Co" /> Có
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle;">
+                        20.	Nghiêm trọng?
+                    </td>
+                    <td contenteditable="true" style="line-height: 1.5em; padding: 0 6px;">
+                        <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_Khong" /> Không
+                        <br />
+                        <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_Co" /> Có, chọn lý do:
+                        <br />
+                        <div style="margin-left:20px;">
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_TuVong" /> Tử vong
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_DeDoaTinhMang" /> Đe dọa tính mạng
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_NhapVien" /> Nhập viện/ Kéo dài thời gian nhập viện
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_TanTat" /> Tàn tật hay/ Mất khả năng vận động đáng kể
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_BatThuong" /> Bất thường bẩm sinh/ dị tật bẩm sinh
+                            <br />
+                            <input type="checkbox" data-bind="checkedHtml: NT_NghiemTrong_BienCoKhac" />Biến cố y khoa quan trọng khác
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="nckh-table" style="width:100%;margin-top:5px;font-size:13pt" border="0">
+            <tr>
+                <td>
+                    Họ tên và chữ ký người thực hiện
+                </td>
+                <td>
+                    Ngày báo cáo
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="true" data-bind="editableHtml: NT_HoTenThucHien" style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;">
+                    <br />
+                    _______________________________________
+                </td>
+                <td style="line-height: 1.5em; padding: 0 6px;vertical-align:middle;" class="cell-inline">
+                    <br />
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Ngay">|__|__|</div>
+                    /
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Thang">|__|__|</div>
+                    /
+                    <div contenteditable="true" class="input-inline text-center" style="min-width:16px" data-bind="editableHtml: NT_NgayBaoCao_Nam">|__|__|__|__|</div>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div style="padding:2px 0; margin-bottom:3px;">
+            <div>
+                21. Ghi chú (cập nhật thông tin biến cố bất lợi, mô tả chi tiết)
+            </div>
+            <div contenteditable="true" style="line-height:1.8em" data-bind="editableHtml: NT_GhiChu">
+                .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-template-footer">
+    <div class="nckh-form-template print-mode nckh-form-32 font-size-13" style="padding: 0 .69in 0 1.18in;">
+        <div class="page-footer" style="height:0.8in">
+            <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
+                <tr>
+                    <td style="vertical-align:middle" class="text-center"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

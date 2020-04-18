@@ -1,0 +1,84 @@
+﻿<div class="form-template-body">
+    <div class="nckh-form-template print-modeno-header-footer nckh-form-33 font-size-12">
+        <div>
+            <div style="font-size:24pt;text-transform:uppercase;" class="text-bold" data-bind="text: HoTen"></div>
+            <div style="font-size:12pt;color:rgb(128,128,128);" data-bind="text: Email"></div>
+        </div>
+        <br />
+        <br />
+        <div class="block highlight-on-hover">
+            <div conf='{"name":"ListDonViCongTac","add":true,"props":["data---"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div class="text-bold" style="padding:5px 0;">
+                    ĐƠN VỊ CÔNG TÁC HIỆN TẠI
+                </div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;" data-bind="foreach: ListDonViCongTac">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td contenteditable="true" data-bind="editableHtml: data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="block highlight-on-hover">
+            <div conf='{"name":"ListQuaTrinhDaoTao","add":true,"props":["data---"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div class="text-bold" style="padding:5px 0;">
+                    QUÁ TRÌNH ĐÀO TẠO VÀ BẰNG CẤP
+                </div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;" data-bind="foreach: ListQuaTrinhDaoTao">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td contenteditable="true" data-bind="editableHtml: data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="block highlight-on-hover">
+            <div conf='{"name":"ListHoatDongKhac","add":true,"props":["data---"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div class="text-bold" style="padding:5px 0;">
+                    HOẠT ĐỘNG KHÁC
+                </div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;" data-bind="foreach: ListHoatDongKhac">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td contenteditable="true" data-bind="editableHtml: data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="block highlight-on-hover">
+            <div conf='{"name":"ListKinhNghiemLamViec","add":true,"props":["data---"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div class="text-bold" style="padding:5px 0;">
+                    KINH NGHIỆM VÀ QUÁ TRÌNH LÀM VIỆC
+                </div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;" data-bind="foreach: ListKinhNghiemLamViec">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td contenteditable="true" data-bind="editableHtml: data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="block highlight-on-hover">
+            <div conf='{"name":"ListBaiDangTapChi","add":true,"props":["data"]}' class="ptable pconf" style="width:100%;position:relative;">
+                <div class="text-bold" style="padding:5px 0;">
+                    BÀI ĐĂNG TẠP CHÍ, SÁCH VÀ BÁO CÁO KHOA HỌC
+                </div>
+                <table class="nckh-table" style="width:100%;" border="0">
+                    <tbody style="width:100%;" data-bind="foreach: ListBaiDangTapChi">
+                        <tr data-bind="attr: { index: $index, removable: true }">
+                            <td contenteditable="true" data-bind="editableHtml: data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+﻿<div class="form-template-header">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13">
+        <div class="page-header">
+            <table style="position:relative; width: 100%;top: 30px;border-bottom: 1px solid black;font-size: 10pt;font-style:italic;">
+                <tr>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-template-body">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13">
+        <div>
+            <p style="text-align:center; font-size: 16pt;">
+                <b>BẢNG KHAI CHI TIẾT NHÂN SỰ THAM GIA NGHIÊN CỨU</b>
+            </p>
+        </div>
+        <br />
+        <div>
+            <table name="ChiTietNhanSu" class="nckh-table resize-grid" style="width:100%;" border="1">
+                <colgroup>
+                    <col width="100" />
+                    <col width="100" />
+                    <col width="100" />
+                    <col width="80" />
+                </colgroup>
+                <thead>
+                    <tr class="table-header">
+                        <td>Tên hạng mục</td>
+                        <td>Mô tả chi tiết</td>
+                        <td>Người thực hiện</td>
+                        <td>Kinh phí</td>
+                    </tr>
+                </thead>
+                <tbody style="width:100%;">
+                    <tr>
+                        <td contenteditable="false">Nhóm NC</td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" contenteditable="false">Ý tưởng và phương pháp NC</td>
+                        <td contenteditable="false">Phát triển ý tưởng, xây dựng mục tiêu chính của nghiên cứu (bao gồm phần tổng quan tài liệu, primary outcome)</td>
+                        <td contenteditable="true" data-bind="editableHtml: YTuong_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: YTuong_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Xây dựng phương pháp nghiên cứu</td>
+                        <td contenteditable="true" data-bind="editableHtml: PhuongPhap_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: PhuongPhap_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" contenteditable="false">Nhận mẫu nghiên cứu</td>
+                        <td contenteditable="false">Xây dựng quy trình nhận mẫu NC</td>
+                        <td contenteditable="true" data-bind="editableHtml: QuyTrinhNhanMau_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: QuyTrinhNhanMau_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Thực hiện nhận mẫu (thu thập số liệu từ HSBA, tuyển/theo dõi bệnh nhân NC)</td>
+                        <td contenteditable="true" data-bind="editableHtml: ThucHienNhanMau_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: ThucHienNhanMau_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Nhập dữ liệu vào phần mềm NC</td>
+                        <td contenteditable="true" data-bind="editableHtml: NhapDuLieuVaoPM_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: NhapDuLieuVaoPM_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" contenteditable="false">Viết full text</td>
+                        <td contenteditable="false">Viết bài báo cáo nghiên cứu tiếng Việt</td>
+                        <td contenteditable="true" data-bind="editableHtml: VietBaiBaoCaoTiengViet_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: VietBaiBaoCaoTiengViet_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Viết bài báo cáo nghiên cứu tiếng Anh</td>
+                        <td contenteditable="true" data-bind="editableHtml: VietBaiBaoCaoTiengAnh_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: VietBaiBaoCaoTiengAnh_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Quản lý và phân tích dữ liệu</td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" contenteditable="false">Quản lý dữ liệu</td>
+                        <td contenteditable="false">Review tính khả thi của số liệu</td>
+                        <td contenteditable="true" data-bind="editableHtml: ReviewTinhKhaThi_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: ReviewTinhKhaThi_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Xây dựng phần mềm thu thập số liệu + cách thức nhập/ xóa/ chỉnh sửa số liệu trên phần mềm</td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungPhanMem_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungPhanMem_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" contenteditable="false">Phân tích – Thống kê</td>
+                        <td contenteditable="false">Xây dựng kế hoạch phân tích</td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungKeHoachPhanTich_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungKeHoachPhanTich_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Làm sạch số liệu</td>
+                        <td contenteditable="true" data-bind="editableHtml: LamSachSoLieu_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: LamSachSoLieu_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Phân tích + Diễn giải số liệu</td>
+                        <td contenteditable="true" data-bind="editableHtml: PhanTichSoLieu_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: PhanTichSoLieu_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" contenteditable="false">Điều phối NC</td>
+                        <td contenteditable="false">Xây dựng kế hoạch điều phối/ giám sát NC</td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungKeHoachDieuPhoi_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: XayDungKeHoachDieuPhoi_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Chuẩn bị hồ sơ, giấy tờ hành chính</td>
+                        <td contenteditable="true" data-bind="editableHtml: ChuanBiHoSoGiayTo_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: ChuanBiHoSoGiayTo_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Điều phối hoạt động NC</td>
+                        <td contenteditable="true" data-bind="editableHtml: DieuPhoiHoatDongNghienCuu_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: DieuPhoiHoatDongNghienCuu_ChiPhi"></td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Quản lý chung </td>
+                        <td contenteditable="false">Quản lý, điều hành chung, chịu trách nghiệm chính của NC</td>
+                        <td contenteditable="false" data-bind="editableHtml: QuanLyDieuHanhChung_NguoiThucHien"></td>
+                        <td contenteditable="true" data-bind="editableHtml: QuanLyDieuHanhChung_ChiPhi"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-template-footer">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13">
+        <div class="page-footer">
+            
+        </div>
+    </div>
+</div>

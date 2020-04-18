@@ -17,6 +17,7 @@ namespace DTOModel
         public string HocVi { get; set; }
         public string NamNhanBang { get; set; }
         public string ChuyenNganhDaoTao { get; set; }
+        public string HocHam { get; set; }
     }
 
     public class DTO_PRO_SYLL_KinhNghiem

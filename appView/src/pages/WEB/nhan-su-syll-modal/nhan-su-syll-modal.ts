@@ -105,7 +105,8 @@ export class NhanSuSYLLModalPage extends DetailPage {
                 return {
                     HocVi: ko.observable(nn.HocVi || ""),
                     NamNhanBang: ko.observable(nn.NamNhanBang || ""),
-                    ChuyenNganhDaoTao: ko.observable(nn.ChuyenNganhDaoTao || "")
+                    ChuyenNganhDaoTao: ko.observable(nn.ChuyenNganhDaoTao || ""),
+                    HocHam: ko.observable(nn.HocHam || "")
                 };
             }));
 
