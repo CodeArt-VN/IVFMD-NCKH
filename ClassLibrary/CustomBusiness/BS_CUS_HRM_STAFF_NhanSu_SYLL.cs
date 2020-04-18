@@ -46,6 +46,7 @@ namespace BaseBusiness
                 NgayKy_Thang = s.NgayKy_Thang,
                 JSON_HocVi = s.JSON_HocVi,
                 DienThoaiNhaRieng = s.DienThoaiNhaRieng,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -56,6 +57,9 @@ namespace BaseBusiness
                     IDNhanSu = nhanSuId
                 };
                 query.ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+
+                var nhansu = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == nhanSuId);
+                query.IsCNDT = nhansu != null && nhansu.IsCNDT == true;
 
                 var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == nhanSuId);
                 if (objLL != null)

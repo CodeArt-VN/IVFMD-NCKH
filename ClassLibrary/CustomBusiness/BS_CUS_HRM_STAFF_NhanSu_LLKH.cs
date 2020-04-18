@@ -76,6 +76,7 @@ namespace BaseBusiness
                 NamHocViThacSy = s.NamHocViThacSy,
                 HocViTienSy = s.HocViTienSy,
                 NamHocViTienSy = s.NamHocViTienSy,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -92,6 +93,7 @@ namespace BaseBusiness
                     query.HoTen = objNhanSu.Name;
                     query.DiaChi_CaNhan = objNhanSu.DiaChi;
                     query.DienThoai_CaNhan = objNhanSu.SoDienThoai;
+                    query.IsCNDT = objNhanSu.IsCNDT == true;
                 }
 
                 query.ListNgoaiNgu = new List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu>() { new DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu() };

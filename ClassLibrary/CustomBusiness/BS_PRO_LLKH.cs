@@ -76,6 +76,7 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -142,6 +143,7 @@ namespace BaseBusiness
                     NamHocViThacSy = s.NamHocViThacSy,
                     HocViTienSy = s.HocViTienSy,
                     NamHocViTienSy = s.NamHocViTienSy,
+                    IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
                 }).FirstOrDefault();
             }
 
@@ -151,11 +153,14 @@ namespace BaseBusiness
                 query = new DTO_PRO_LLKH
                 {
                     IDNhanSu = nhanSuId,
-                    IDDetai = idDeTai
+                    IDDetai = idDeTai,
                 };
                 var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.Where(c => c.ID == nhanSuId).FirstOrDefault();
                 if (objNhanSu != null)
+                {
+                    query.IsCNDT = objNhanSu.IsCNDT == true;
                     query.HoTen = objNhanSu.Name;
+                }
 
                 query.ListNgoaiNgu = new List<DTO_PRO_LLKH_NgoaiNgu>() { new DTO_PRO_LLKH_NgoaiNgu() };
                 query.ListThoiGianCongTac = new List<DTO_PRO_LLKH_ThoiGianCongTac>() { new DTO_PRO_LLKH_ThoiGianCongTac { } };

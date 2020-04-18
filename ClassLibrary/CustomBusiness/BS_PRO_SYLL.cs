@@ -47,6 +47,7 @@ namespace BaseBusiness
                 NgayKy_Ngay = s.NgayKy_Ngay,
                 NgayKy_Thang = s.NgayKy_Thang,
                 JSON_HocVi = s.JSON_HocVi,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -84,6 +85,7 @@ namespace BaseBusiness
                     NgayKy_Ngay = s.NgayKy_Ngay,
                     NgayKy_Thang = s.NgayKy_Thang,
                     JSON_HocVi = s.JSON_HocVi,
+                    IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
                 }).FirstOrDefault();
             }
 
@@ -102,6 +104,7 @@ namespace BaseBusiness
                     query.Email = objNhanSu.Email;
                     query.DiaChi = objNhanSu.DiaChi;
                     query.Mobile = objNhanSu.SoDienThoai;
+                    query.IsCNDT = objNhanSu.IsCNDT == true;
                 }
                 query.ListKinhNghiem = new List<DTO_PRO_SYLL_KinhNghiem>() { new DTO_PRO_SYLL_KinhNghiem() };
                 query.ListTrinhDoChuyenMon = new List<DTO_PRO_SYLL_TrinhDoChuyenMon>() { new DTO_PRO_SYLL_TrinhDoChuyenMon() };
