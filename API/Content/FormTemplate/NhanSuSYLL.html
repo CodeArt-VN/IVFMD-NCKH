@@ -92,27 +92,25 @@
                             <span class="box-title">Địa chỉ cơ quan:</span>
                             <span contenteditable="false" style="text-indent: 118px;" data-bind="editableHtml: DiaChiCoQuan"></span>
                         </p>
-                        <div class="pblock pconf" conf='{"name":"ListTrinhDoChuyenMon","add":true,"remove":true,"props":["HocVi","NamNhanBang","ChuyenNganhDaoTao","HocHam"]}' style="width:100%;position:relative;page-break-inside:auto">
+                        <div class="pblock pconf" conf='{"name":"ListTrinhDoChuyenMon","add":false,"remove":false,"props":["HocVi","NamNhanBang","ChuyenNganhDaoTao","HocHam"]}' style="width:100%;position:relative;page-break-inside:auto">
                             <p class="box">
                                 <span class="box-title" style="width: 100%;">9. Trình độ chuyên môn (ghi đầy đủ cho từng loại văn bằng đã được nhận)</span>
                             </p>
                             <div data-bind="foreach: ListTrinhDoChuyenMon" style="page-break-inside:auto">
-                                <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removable: true }" style="position:relative;page-break-inside:auto">
+                                <div class="prow" conf='{"remove":false}' data-bind="attr: { index: $index, removable: false }" style="position:relative;page-break-inside:auto">
                                     <p class="box tab-1">
-                                        <span class="box-title">Học vị:</span>
-                                        <span contenteditable="true" style="text-indent: 54px;" data-bind="editableHtml: HocVi"></span>
+                                        <span class="box-title" data-bind="visible: $index() < 2">Học vị:</span>
+                                        <span class="box-title" data-bind="visible: $index() >= 2">Học hàm:</span>
+                                        <span contenteditable="false" data-bind="visible: $index() < 2, editableHtml: HocVi" style="text-indent: 54px;"></span>
+                                        <span contenteditable="false" data-bind="visible: $index() >= 2, editableHtml: HocVi" style="text-indent: 70px;"></span>
                                     </p>
                                     <p class="box tab-1">
                                         <span class="box-title">Năm nhận bằng:</span>
-                                        <span contenteditable="true" style="text-indent: 116px;" data-bind="editableHtml: NamNhanBang"></span>
+                                        <span contenteditable="false" style="text-indent: 116px;" data-bind="editableHtml: NamNhanBang"></span>
                                     </p>
                                     <p class="box tab-1">
                                         <span class="box-title">Chuyên ngành đào tạo:</span>
                                         <span contenteditable="true" style="text-indent: 162px;" data-bind="editableHtml: ChuyenNganhDaoTao"></span>
-                                    </p>
-                                    <p class="box tab-1" data-bind="visible: IsCNDT">
-                                        <span class="box-title">Học hàm:</span>
-                                        <span contenteditable="true" style="text-indent: 70px;" data-bind="editableHtml: HocHam"></span>
                                     </p>
                                 </div>
                             </div>

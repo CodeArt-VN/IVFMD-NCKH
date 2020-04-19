@@ -100,7 +100,6 @@ export class NhanSuSYLLModalPage extends DetailPage {
             var self = this;
 
             that.nckhProvider.copyPropertiesValue(item, self);
-
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
                     HocVi: ko.observable(nn.HocVi || ""),

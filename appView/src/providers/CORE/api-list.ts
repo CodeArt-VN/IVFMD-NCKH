@@ -10,7 +10,7 @@ export var appSetting = {
 	mainService: {
         //base: document.location.origin + "/",
         //base: "http://nckh.appcenter.vn/",
-        base: "http://localhost:54009/", 
+        base: "http://localhost:54009/",
 		api: "api/",
 	},
 	apiDomain:function(api){

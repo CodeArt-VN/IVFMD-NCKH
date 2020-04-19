@@ -11,6 +11,7 @@ namespace DTOModel
         public List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon> ListTrinhDoChuyenMon { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem> ListKinhNghiem { get; set; }
         public bool IsCNDT { get; set; }
+
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
@@ -18,6 +19,7 @@ namespace DTOModel
         public string HocVi { get; set; }
         public string NamNhanBang { get; set; }
         public string ChuyenNganhDaoTao { get; set; }
+        public string HocHam { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem

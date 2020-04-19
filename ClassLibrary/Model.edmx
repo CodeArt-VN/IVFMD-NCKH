@@ -315,8 +315,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDNhanSu" Type="int" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="JSON_DonViCongTac" Type="nvarchar(max)" />
           <Property Name="JSON_HoatDongKhac" Type="nvarchar(max)" />
           <Property Name="JSON_KinhNghiemLamViec" Type="nvarchar(max)" />
@@ -337,32 +337,32 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDNhanSu" Type="int" Nullable="false" />
-          <Property Name="ImageURL" Type="nvarchar" MaxLength="200" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="TruongVien" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhongKhoa" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND_NgayCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND_NoiCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="HocVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="HocHam" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_MST" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_STK" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_NganHang" Type="nvarchar" MaxLength="200" />
-          <Property Name="LinhVucChuyenMon" Type="nvarchar" MaxLength="200" />
-          <Property Name="LinhVuc" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChuyenNganh" Type="nvarchar" MaxLength="200" />
-          <Property Name="HuongNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="HoatDongKhac" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageURL" Type="nvarchar(max)" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="GioiTinh" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="nvarchar(max)" />
+          <Property Name="TruongVien" Type="nvarchar(max)" />
+          <Property Name="PhongKhoa" Type="nvarchar(max)" />
+          <Property Name="ChucVu" Type="nvarchar(max)" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="CMND_NgayCap" Type="nvarchar(max)" />
+          <Property Name="CMND_NoiCap" Type="nvarchar(max)" />
+          <Property Name="HocVi" Type="nvarchar(max)" />
+          <Property Name="HocHam" Type="nvarchar(max)" />
+          <Property Name="DiaChi_CoQuan" Type="nvarchar(max)" />
+          <Property Name="DiaChi_CaNhan" Type="nvarchar(max)" />
+          <Property Name="DienThoai_CoQuan" Type="nvarchar(max)" />
+          <Property Name="DienThoai_CaNhan" Type="nvarchar(max)" />
+          <Property Name="Email_CoQuan" Type="nvarchar(max)" />
+          <Property Name="Email_CaNhan" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_MST" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_STK" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_NganHang" Type="nvarchar(max)" />
+          <Property Name="LinhVucChuyenMon" Type="nvarchar(max)" />
+          <Property Name="LinhVuc" Type="nvarchar(max)" />
+          <Property Name="ChuyenNganh" Type="nvarchar(max)" />
+          <Property Name="HuongNghienCuu" Type="nvarchar(max)" />
+          <Property Name="HoatDongKhac" Type="nvarchar(max)" />
           <Property Name="JSON_NgoaiNgu" Type="nvarchar(max)" />
           <Property Name="JSON_ThoiGianCongTac" Type="nvarchar(max)" />
           <Property Name="JSON_QuaTrinhDaoTao" Type="nvarchar(max)" />
@@ -385,15 +385,15 @@
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="JSON_HocVi" Type="nvarchar(max)" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
-          <Property Name="NamPhongHocHam" Type="nvarchar" MaxLength="4000" />
-          <Property Name="HocViThacSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NamHocViThacSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="HocViTienSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NamHocViTienSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
+          <Property Name="NamPhongHocHam" Type="nvarchar(max)" />
+          <Property Name="HocViThacSy" Type="nvarchar(max)" />
+          <Property Name="NamHocViThacSy" Type="nvarchar(max)" />
+          <Property Name="HocViTienSy" Type="nvarchar(max)" />
+          <Property Name="NamHocViTienSy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_CUS_HRM_STAFF_NhanSu_SYLL">
@@ -402,18 +402,18 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDNhanSu" Type="int" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiCQ" Type="nvarchar" MaxLength="200" />
-          <Property Name="Mobile" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="200" />
-          <Property Name="CoQuanLamViec" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThuTruongCoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiThuTruong" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChiCoQuan" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="GioiTinh" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="DienThoaiCQ" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="ChucVu" Type="nvarchar(max)" />
+          <Property Name="CoQuanLamViec" Type="nvarchar(max)" />
+          <Property Name="ThuTruongCoQuan" Type="nvarchar(max)" />
+          <Property Name="DienThoaiThuTruong" Type="nvarchar(max)" />
+          <Property Name="DiaChiCoQuan" Type="nvarchar(max)" />
           <Property Name="JSON_TrinhDoChuyenMon" Type="nvarchar(max)" />
           <Property Name="JSON_KinhNghiem" Type="nvarchar(max)" />
           <Property Name="HTML" Type="nvarchar(max)" />
@@ -423,11 +423,11 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiNhaRieng" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
+          <Property Name="DienThoaiNhaRieng" Type="nvarchar(max)" />
           <Property Name="JSON_HocVi" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
@@ -627,14 +627,14 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
           <Property Name="IDBenhNhan" Type="int" Nullable="false" />
-          <Property Name="MaSo" Type="nvarchar" MaxLength="200" />
-          <Property Name="MaSoBenhNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenBienCo" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKhoiPhat_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKhoiPhat_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKhoiPhat_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKhoiPhat_Gio" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKhoiPhat_Phut" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaSo" Type="nvarchar(max)" />
+          <Property Name="MaSoBenhNhan" Type="nvarchar(max)" />
+          <Property Name="TenBienCo" Type="nvarchar(max)" />
+          <Property Name="NgayKhoiPhat_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKhoiPhat_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKhoiPhat_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKhoiPhat_Gio" Type="nvarchar(max)" />
+          <Property Name="NgayKhoiPhat_Phut" Type="nvarchar(max)" />
           <Property Name="NgayKhoiPhat_DangTiepDien" Type="bit" Nullable="false" />
           <Property Name="PhanDoNang_Nghe" Type="bit" Nullable="false" />
           <Property Name="PhanDoNang_TrungBinh" Type="bit" Nullable="false" />
@@ -654,9 +654,9 @@
           <Property Name="KetQua_DangHoiPhuc" Type="bit" Nullable="false" />
           <Property Name="KetQua_ChuaHoiPhuc" Type="bit" Nullable="false" />
           <Property Name="KetQua_KhongBiet" Type="bit" Nullable="false" />
-          <Property Name="KetQua_TuVong_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="KetQua_TuVong_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="KetQua_TuVong_Nam" Type="nvarchar" MaxLength="200" />
+          <Property Name="KetQua_TuVong_Ngay" Type="nvarchar(max)" />
+          <Property Name="KetQua_TuVong_Thang" Type="nvarchar(max)" />
+          <Property Name="KetQua_TuVong_Nam" Type="nvarchar(max)" />
           <Property Name="NghiemTrong_Khong" Type="bit" Nullable="false" />
           <Property Name="NghiemTrong_Co" Type="bit" Nullable="false" />
           <Property Name="NghiemTrong_TuVong" Type="bit" Nullable="false" />
@@ -667,15 +667,15 @@
           <Property Name="NghiemTrong_BienCoKhac" Type="bit" Nullable="false" />
           <Property Name="TienHanhSAE_Khong" Type="bit" Nullable="false" />
           <Property Name="TienHanhSAE_Co" Type="bit" Nullable="false" />
-          <Property Name="HoTenThucHien" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayBaoCao_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayBaoCao_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayBaoCao_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayGioTangDoNang_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayGioTangDoNang_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayGioTangDoNang_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayGioTangDoNang_Gio" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayGioTangDoNang_Phut" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTenThucHien" Type="nvarchar(max)" />
+          <Property Name="NgayBaoCao_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayBaoCao_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayBaoCao_Nam" Type="nvarchar(max)" />
+          <Property Name="NT_NgayGioTangDoNang_Ngay" Type="nvarchar(max)" />
+          <Property Name="NT_NgayGioTangDoNang_Thang" Type="nvarchar(max)" />
+          <Property Name="NT_NgayGioTangDoNang_Nam" Type="nvarchar(max)" />
+          <Property Name="NT_NgayGioTangDoNang_Gio" Type="nvarchar(max)" />
+          <Property Name="NT_NgayGioTangDoNang_Phut" Type="nvarchar(max)" />
           <Property Name="NT_DoNangAE_Nhe" Type="bit" Nullable="false" />
           <Property Name="NT_DoNangAE_TrungBinh" Type="bit" Nullable="false" />
           <Property Name="NT_DoNangAE_Nang" Type="bit" Nullable="false" />
@@ -697,10 +697,10 @@
           <Property Name="NT_NghiemTrong_TanTat" Type="bit" Nullable="false" />
           <Property Name="NT_NghiemTrong_BatThuong" Type="bit" Nullable="false" />
           <Property Name="NT_NghiemTrong_BienCoKhac" Type="bit" Nullable="false" />
-          <Property Name="NT_HoTenThucHien" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayBaoCao_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayBaoCao_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NT_NgayBaoCao_Nam" Type="nvarchar" MaxLength="200" />
+          <Property Name="NT_HoTenThucHien" Type="nvarchar(max)" />
+          <Property Name="NT_NgayBaoCao_Ngay" Type="nvarchar(max)" />
+          <Property Name="NT_NgayBaoCao_Thang" Type="nvarchar(max)" />
+          <Property Name="NT_NgayBaoCao_Nam" Type="nvarchar(max)" />
           <Property Name="NT_GhiChu" Type="nvarchar(max)" />
           <Property Name="HTML" Type="nvarchar(max)" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
@@ -709,11 +709,11 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKetThuc_Ngay" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKetThuc_Thang" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKetThuc_Nam" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKetThuc_Gio" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKetThuc_Phut" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKetThuc_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKetThuc_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKetThuc_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKetThuc_Gio" Type="nvarchar(max)" />
+          <Property Name="NgayKetThuc_Phut" Type="nvarchar(max)" />
           <Property Name="KetQua_TuVong" Type="bit" />
           <Property Name="TienHanhSAE1_Co" Type="bit" />
           <Property Name="TienHanhSAE1_Khong" Type="bit" />
@@ -725,37 +725,37 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="YTuong_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="YTuong_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="YTuong_ChiPhi" Type="money" />
-          <Property Name="PhuongPhap_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PhuongPhap_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="PhuongPhap_ChiPhi" Type="money" />
-          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="QuyTrinhNhanMau_ChiPhi" Type="money" />
-          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="ThucHienNhanMau_ChiPhi" Type="money" />
-          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="NhapDuLieuVaoPM_ChiPhi" Type="money" />
-          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="VietBaiBaoCaoTiengViet_ChiPhi" Type="money" />
-          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="VietBaiBaoCaoTiengAnh_ChiPhi" Type="money" />
-          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="ReviewTinhKhaThi_ChiPhi" Type="money" />
-          <Property Name="XayDungPhanMem_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungPhanMem_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="XayDungPhanMem_ChiPhi" Type="money" />
-          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="XayDungKeHoachPhanTich_ChiPhi" Type="money" />
-          <Property Name="LamSachSoLieu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="LamSachSoLieu_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="LamSachSoLieu_ChiPhi" Type="money" />
-          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="PhanTichSoLieu_ChiPhi" Type="money" />
-          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="XayDungKeHoachDieuPhoi_ChiPhi" Type="money" />
-          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="ChuanBiHoSoGiayTo_ChiPhi" Type="money" />
-          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="DieuPhoiHoatDongNghienCuu_ChiPhi" Type="money" />
-          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="nvarchar" MaxLength="2000" />
+          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="nvarchar(max)" />
           <Property Name="QuanLyDieuHanhChung_ChiPhi" Type="money" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -769,20 +769,20 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="MaSo" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaSo" Type="nvarchar(max)" />
           <Property Name="PhanMot_ConNguoi" Type="bit" Nullable="false" />
           <Property Name="PhanMot_DongVat" Type="bit" Nullable="false" />
           <Property Name="PhanHai_TenNCYSH" Type="nvarchar(max)" />
-          <Property Name="PhanHai_NCVChinh_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NCVChinh_KhoaPhong" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NCVChinh_BenhVien" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NCVChinh_DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NCVChinh_Email" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NCVChinh_DiaChiLienHe" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NGS_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NGS_NoiLamViec" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NGS_DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanHai_NGS_Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhanHai_NCVChinh_HoTen" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NCVChinh_KhoaPhong" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NCVChinh_BenhVien" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NCVChinh_DienThoai" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NCVChinh_Email" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NCVChinh_DiaChiLienHe" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NGS_HoTen" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NGS_NoiLamViec" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NGS_DienThoai" Type="nvarchar(max)" />
+          <Property Name="PhanHai_NGS_Email" Type="nvarchar(max)" />
           <Property Name="PhanBa_A_JSON" Type="nvarchar(max)" />
           <Property Name="PhanBa_B_JSON" Type="nvarchar(max)" />
           <Property Name="PhanBon_C1_MoTaQuyTrinh" Type="nvarchar(max)" />
@@ -795,33 +795,33 @@
           <Property Name="PhanBon_C2_CachTienHanh" Type="nvarchar(max)" />
           <Property Name="PhanBon_C3_MoTaQuyTrinh" Type="nvarchar(max)" />
           <Property Name="PhanNam_JSON" Type="nvarchar(max)" />
-          <Property Name="ThoiGianTienHanh_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianTienHanh_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianTienHanh_Nam" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThap_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThap_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThap_Nam" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuu_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuu_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuu_Nam" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianTienHanh_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianTienHanh_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianTienHanh_Nam" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThap_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThap_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThap_Nam" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu_Nam" Type="nvarchar(max)" />
           <Property Name="JSON_NCVKhac" Type="nvarchar(max)" />
           <Property Name="DaGuiThuDienTu" Type="bit" Nullable="false" />
           <Property Name="JSON_MoTaNCYSH" Type="nvarchar(max)" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi" Type="bit" Nullable="false" />
           <Property Name="PhanSau_NCYSH_DuDieuKienXemXet" Type="bit" Nullable="false" />
-          <Property Name="PhanSau_NCYSH_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanSau_NCYSH_NgayThangNam" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhanSau_NCYSH_HoTen" Type="nvarchar(max)" />
+          <Property Name="PhanSau_NCYSH_NgayThangNam" Type="nvarchar(max)" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH" Type="bit" Nullable="false" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT" Type="bit" Nullable="false" />
           <Property Name="PhanSau_NGS_KhongThuocPhamVi" Type="bit" Nullable="false" />
           <Property Name="PhanSau_NGS_DuDieuKienXemXet" Type="bit" Nullable="false" />
-          <Property Name="PhanSau_NGS_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanSau_NGS_NgayThangNam" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhanSau_NGS_HoTen" Type="nvarchar(max)" />
+          <Property Name="PhanSau_NGS_NgayThangNam" Type="nvarchar(max)" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi" Type="bit" Nullable="false" />
           <Property Name="PhanSau_TruongKhoa_DuDieuKienXemXet" Type="bit" Nullable="false" />
-          <Property Name="PhanSau_TruongKhoa_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanSau_TruongKhoa_ChucVu" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhanSau_TruongKhoa_NgayThangNam" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhanSau_TruongKhoa_HoTen" Type="nvarchar(max)" />
+          <Property Name="PhanSau_TruongKhoa_ChucVu" Type="nvarchar(max)" />
+          <Property Name="PhanSau_TruongKhoa_NgayThangNam" Type="nvarchar(max)" />
           <Property Name="YKienHDDD_KhongThuocPhamVi" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_DuocXemXetDaoDuc" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_DuocXemXetDaoDucRutGon" Type="bit" Nullable="false" />
@@ -834,10 +834,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="YKienHDDD_So" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="4000" />
+          <Property Name="YKienHDDD_So" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="bit" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="bit" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="bit" />
@@ -848,15 +848,15 @@
           <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="bit" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="bit" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="bit" />
-          <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
@@ -867,7 +867,7 @@
           <Property Name="IDDeTai" Type="int" Nullable="false" />
           <Property Name="IDNhom" Type="int" />
           <Property Name="IDSite" Type="int" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="2000" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" />
           <Property Name="NgayBaoCao" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TapChiHoiNghi" Type="nvarchar(max)" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
@@ -914,11 +914,11 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaiFulltext" Type="nvarchar" MaxLength="4000" />
+          <Property Name="BaiFulltext" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
-          <Property Name="ThoiGian_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThoiGian_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="FileBaoCaoTongHop" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ThoiGian_Thang" Type="nvarchar(max)" />
+          <Property Name="ThoiGian_Nam" Type="nvarchar(max)" />
+          <Property Name="FileBaoCaoTongHop" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -926,21 +926,21 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="SoCaThuThapHopLe" Type="nvarchar" MaxLength="4000" />
-          <Property Name="TienDoThuNhanMau" Type="nvarchar" MaxLength="4000" />
-          <Property Name="KhoKhan" Type="nvarchar" MaxLength="4000" />
+          <Property Name="SoCaThuThapHopLe" Type="nvarchar(max)" />
+          <Property Name="TienDoThuNhanMau" Type="nvarchar(max)" />
+          <Property Name="KhoKhan" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="4000" />
-          <Property Name="ChuNhiemDeTai" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NCVChinh" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NgayDuyetNghienCuu" Type="nvarchar" MaxLength="4000" />
-          <Property Name="SoNCT" Type="nvarchar" MaxLength="4000" />
-          <Property Name="ThoiGianTienHanh" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" />
+          <Property Name="ChuNhiemDeTai" Type="nvarchar(max)" />
+          <Property Name="NCVChinh" Type="nvarchar(max)" />
+          <Property Name="NgayDuyetNghienCuu" Type="nvarchar(max)" />
+          <Property Name="SoNCT" Type="nvarchar(max)" />
+          <Property Name="ThoiGianTienHanh" Type="nvarchar(max)" />
           <Property Name="CoMau" Type="nvarchar(max)" />
           <Property Name="IDTinhTrangNghienCuu" Type="int" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
@@ -974,26 +974,26 @@
           <Property Name="IDTrangThai_HRCO" Type="int" Nullable="false" />
           <Property Name="IDTrangThai_NghiemThu" Type="int" Nullable="false" />
           <Property Name="DeTai" Type="nvarchar(max)" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="2000" />
-          <Property Name="SoNCT" Type="nvarchar" MaxLength="200" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="SoNCT" Type="nvarchar(max)" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaSo" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenTiengViet" Type="nvarchar" MaxLength="2000" />
-          <Property Name="TenTiengAnh" Type="nvarchar" MaxLength="2000" />
-          <Property Name="MaSoProtocalID" Type="nvarchar" MaxLength="200" />
-          <Property Name="MaSoHDDD" Type="nvarchar" MaxLength="200" />
-          <Property Name="FileUpload" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MaSo" Type="nvarchar(max)" />
+          <Property Name="TenTiengViet" Type="nvarchar(max)" />
+          <Property Name="TenTiengAnh" Type="nvarchar(max)" />
+          <Property Name="MaSoProtocalID" Type="nvarchar(max)" />
+          <Property Name="MaSoHDDD" Type="nvarchar(max)" />
+          <Property Name="FileUpload" Type="nvarchar(max)" />
           <Property Name="IDHinhThucXetDuyet" Type="int" />
           <Property Name="IDTinhTrangNghienCuu" Type="int" />
-          <Property Name="FileChapThuan" Type="nvarchar" MaxLength="4000" />
+          <Property Name="FileChapThuan" Type="nvarchar(max)" />
           <Property Name="IsDisabledHRCO" Type="bit" />
           <Property Name="IsDisabledHDDD" Type="bit" />
-          <Property Name="FileQuyetDinhNghiemThu" Type="nvarchar" MaxLength="4000" />
+          <Property Name="FileQuyetDinhNghiemThu" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -1001,18 +1001,18 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="nvarchar" MaxLength="200" />
-          <Property Name="DonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDonViChuTri" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaDiemNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThoiGianNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="TuNgay" Type="nvarchar" MaxLength="200" />
-          <Property Name="DenNgay" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTenChuNhiem" Type="nvarchar(max)" />
+          <Property Name="DonVi" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="DienThoai" Type="nvarchar(max)" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" />
+          <Property Name="TenDonViChuTri" Type="nvarchar(max)" />
+          <Property Name="DiaChiDonVi" Type="nvarchar(max)" />
+          <Property Name="DienThoaiDonVi" Type="nvarchar(max)" />
+          <Property Name="DiaDiemNghienCuu" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu" Type="nvarchar(max)" />
+          <Property Name="TuNgay" Type="nvarchar(max)" />
+          <Property Name="DenNgay" Type="nvarchar(max)" />
           <Property Name="BangKiemLuaChon" Type="bit" Nullable="false" />
           <Property Name="PhieuThongTinXemXet" Type="bit" Nullable="false" />
           <Property Name="DeCuongNCYSH" Type="bit" Nullable="false" />
@@ -1029,10 +1029,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinNghiemThu">
@@ -1041,18 +1041,18 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="nvarchar" MaxLength="200" />
-          <Property Name="DonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDonViChuTri" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaDiemNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThoiGianNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="TuNgay" Type="nvarchar" MaxLength="200" />
-          <Property Name="DenNgay" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTenChuNhiem" Type="nvarchar(max)" />
+          <Property Name="DonVi" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="DienThoai" Type="nvarchar(max)" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" />
+          <Property Name="TenDonViChuTri" Type="nvarchar(max)" />
+          <Property Name="DiaChiDonVi" Type="nvarchar(max)" />
+          <Property Name="DienThoaiDonVi" Type="nvarchar(max)" />
+          <Property Name="DiaDiemNghienCuu" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu" Type="nvarchar(max)" />
+          <Property Name="TuNgay" Type="nvarchar(max)" />
+          <Property Name="DenNgay" Type="nvarchar(max)" />
           <Property Name="BaoCaoTomTat" Type="bit" Nullable="false" />
           <Property Name="BaoCaoTongKet" Type="bit" Nullable="false" />
           <Property Name="ThuyetMinhDeTai" Type="bit" Nullable="false" />
@@ -1068,10 +1068,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinXetDuyet">
@@ -1080,18 +1080,18 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="nvarchar" MaxLength="200" />
-          <Property Name="DonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="200" />
-          <Property Name="TenDonViChuTri" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiDonVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaDiemNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThoiGianNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="TuNgay" Type="nvarchar" MaxLength="200" />
-          <Property Name="DenNgay" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTenChuNhiem" Type="nvarchar(max)" />
+          <Property Name="DonVi" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="DienThoai" Type="nvarchar(max)" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" />
+          <Property Name="TenDonViChuTri" Type="nvarchar(max)" />
+          <Property Name="DiaChiDonVi" Type="nvarchar(max)" />
+          <Property Name="DienThoaiDonVi" Type="nvarchar(max)" />
+          <Property Name="DiaDiemNghienCuu" Type="nvarchar(max)" />
+          <Property Name="ThoiGianNghienCuu" Type="nvarchar(max)" />
+          <Property Name="TuNgay" Type="nvarchar(max)" />
+          <Property Name="DenNgay" Type="nvarchar(max)" />
           <Property Name="ThuyetMinhDeCuong" Type="bit" Nullable="false" />
           <Property Name="LLKHChuNhiem" Type="bit" Nullable="false" />
           <Property Name="LLKHNCV" Type="bit" Nullable="false" />
@@ -1104,10 +1104,10 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_HoiNghiHoiThao">
@@ -1117,11 +1117,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDNhanVien" Type="int" />
           <Property Name="ThoiGian" Type="datetime2" Precision="7" />
-          <Property Name="DiaDiem" Type="nvarchar" MaxLength="2000" />
-          <Property Name="TenHoiNghi" Type="nvarchar" MaxLength="2000" />
-          <Property Name="CVBaoCaoVien" Type="nvarchar" MaxLength="4000" />
-          <Property Name="BaiAbstract" Type="nvarchar" MaxLength="4000" />
-          <Property Name="BaiFulltext" Type="nvarchar" MaxLength="4000" />
+          <Property Name="DiaDiem" Type="nvarchar(max)" />
+          <Property Name="TenHoiNghi" Type="nvarchar(max)" />
+          <Property Name="CVBaoCaoVien" Type="nvarchar(max)" />
+          <Property Name="BaiAbstract" Type="nvarchar(max)" />
+          <Property Name="BaiFulltext" Type="nvarchar(max)" />
           <Property Name="HTMLHosrem" Type="nvarchar(max)" />
           <Property Name="IDTrangThai" Type="int" Nullable="false" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
@@ -1154,9 +1154,9 @@
           <Property Name="IDHoiNghiHoiThao" Type="int" Nullable="false" />
           <Property Name="IDHinhThucDangKy" Type="int" Nullable="false" />
           <Property Name="IDTrangThai" Type="int" Nullable="false" />
-          <Property Name="TenDeTai" Type="nvarchar" MaxLength="4000" Nullable="false" />
-          <Property Name="BaiAbstract" Type="nvarchar" MaxLength="4000" />
-          <Property Name="BaiFulltext" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TenDeTai" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BaiAbstract" Type="nvarchar(max)" />
+          <Property Name="BaiFulltext" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" />
@@ -1183,32 +1183,32 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDetai" Type="int" Nullable="false" />
           <Property Name="IDNhanSu" Type="int" Nullable="false" />
-          <Property Name="ImageURL" Type="nvarchar" MaxLength="200" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="TruongVien" Type="nvarchar" MaxLength="200" />
-          <Property Name="PhongKhoa" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND_NgayCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="CMND_NoiCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="HocVi" Type="nvarchar" MaxLength="200" />
-          <Property Name="HocHam" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoai_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email_CoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email_CaNhan" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_MST" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_STK" Type="nvarchar" MaxLength="200" />
-          <Property Name="TaiKhoan_NganHang" Type="nvarchar" MaxLength="200" />
-          <Property Name="LinhVucChuyenMon" Type="nvarchar" MaxLength="200" />
-          <Property Name="LinhVuc" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChuyenNganh" Type="nvarchar" MaxLength="200" />
-          <Property Name="HuongNghienCuu" Type="nvarchar" MaxLength="200" />
-          <Property Name="HoatDongKhac" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageURL" Type="nvarchar(max)" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="GioiTinh" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="nvarchar(max)" />
+          <Property Name="TruongVien" Type="nvarchar(max)" />
+          <Property Name="PhongKhoa" Type="nvarchar(max)" />
+          <Property Name="ChucVu" Type="nvarchar(max)" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="CMND_NgayCap" Type="nvarchar(max)" />
+          <Property Name="CMND_NoiCap" Type="nvarchar(max)" />
+          <Property Name="HocVi" Type="nvarchar(max)" />
+          <Property Name="HocHam" Type="nvarchar(max)" />
+          <Property Name="DiaChi_CoQuan" Type="nvarchar(max)" />
+          <Property Name="DiaChi_CaNhan" Type="nvarchar(max)" />
+          <Property Name="DienThoai_CoQuan" Type="nvarchar(max)" />
+          <Property Name="DienThoai_CaNhan" Type="nvarchar(max)" />
+          <Property Name="Email_CoQuan" Type="nvarchar(max)" />
+          <Property Name="Email_CaNhan" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_MST" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_STK" Type="nvarchar(max)" />
+          <Property Name="TaiKhoan_NganHang" Type="nvarchar(max)" />
+          <Property Name="LinhVucChuyenMon" Type="nvarchar(max)" />
+          <Property Name="LinhVuc" Type="nvarchar(max)" />
+          <Property Name="ChuyenNganh" Type="nvarchar(max)" />
+          <Property Name="HuongNghienCuu" Type="nvarchar(max)" />
+          <Property Name="HoatDongKhac" Type="nvarchar(max)" />
           <Property Name="JSON_NgoaiNgu" Type="nvarchar(max)" />
           <Property Name="JSON_ThoiGianCongTac" Type="nvarchar(max)" />
           <Property Name="JSON_QuaTrinhDaoTao" Type="nvarchar(max)" />
@@ -1230,15 +1230,15 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
-          <Property Name="NamPhongHocHam" Type="nvarchar" MaxLength="4000" />
-          <Property Name="HocViThacSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NamHocViThacSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="HocViTienSy" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NamHocViTienSy" Type="nvarchar" MaxLength="4000" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
+          <Property Name="NamPhongHocHam" Type="nvarchar(max)" />
+          <Property Name="HocViThacSy" Type="nvarchar(max)" />
+          <Property Name="NamHocViThacSy" Type="nvarchar(max)" />
+          <Property Name="HocViTienSy" Type="nvarchar(max)" />
+          <Property Name="NamHocViTienSy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_MauPhanTichDuLieu">
@@ -1269,8 +1269,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
           <Property Name="IDNCV" Type="int" Nullable="false" />
-          <Property Name="ChucDanh" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="200" />
+          <Property Name="ChucDanh" Type="nvarchar(max)" />
+          <Property Name="ChucVu" Type="nvarchar(max)" />
           <Property Name="IsCanView" Type="bit" Nullable="false" />
           <Property Name="IsCanChange" Type="bit" Nullable="false" />
           <Property Name="IsCanApprove" Type="bit" Nullable="false" />
@@ -1287,7 +1287,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="MaSo" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaSo" Type="nvarchar(max)" />
           <Property Name="NghienCuuDuocTaiTro" Type="bit" Nullable="false" />
           <Property Name="XinPhepTapThe" Type="bit" Nullable="false" />
           <Property Name="KhongThuocNghienCuuNao" Type="bit" Nullable="false" />
@@ -1298,13 +1298,13 @@
           <Property Name="TenNCSYH" Type="nvarchar(max)" />
           <Property Name="JSON_CacNCV" Type="nvarchar(max)" />
           <Property Name="DonViChuTri" Type="nvarchar(max)" />
-          <Property Name="NguoiGiaoDich_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_DiaChiGiaoDich" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_DienThoaiCQ" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_DienThoaiFx" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_DienThoaiNR" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_DienThoaiDD" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiGiaoDich_Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="NguoiGiaoDich_HoTen" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_DiaChiGiaoDich" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_DienThoaiCQ" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_DienThoaiFx" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_DienThoaiNR" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_DienThoaiDD" Type="nvarchar(max)" />
+          <Property Name="NguoiGiaoDich_Email" Type="nvarchar(max)" />
           <Property Name="JSON_CacCoQuan" Type="nvarchar(max)" />
           <Property Name="QuyChe_TreEm" Type="bit" Nullable="false" />
           <Property Name="QuyChe_NguoiQuanHeLeThuoc" Type="bit" Nullable="false" />
@@ -1433,7 +1433,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
           <Property Name="IDBenhNhan" Type="int" Nullable="false" />
-          <Property Name="MaSo" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaSo" Type="nvarchar(max)" />
           <Property Name="BaoCaoLanDau" Type="bit" Nullable="false" />
           <Property Name="BaoCaoBoSung" Type="bit" Nullable="false" />
           <Property Name="TuVong" Type="bit" Nullable="false" />
@@ -1449,12 +1449,12 @@
           <Property Name="MoMu_Co" Type="bit" Nullable="false" />
           <Property Name="MoMu_Khong" Type="bit" Nullable="false" />
           <Property Name="MoMu_KhongCoThongTin" Type="bit" Nullable="false" />
-          <Property Name="NhaTaiTro" Type="nvarchar" MaxLength="2000" />
-          <Property Name="HoTenNCV" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiemNghienCuu" Type="nvarchar" MaxLength="2000" />
-          <Property Name="ThoiDiemNhanThongTin" Type="nvarchar" MaxLength="2000" />
-          <Property Name="ThoiDiemXuatHien" Type="nvarchar" MaxLength="2000" />
-          <Property Name="ThoiDiemKetThuc" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NhaTaiTro" Type="nvarchar(max)" />
+          <Property Name="HoTenNCV" Type="nvarchar(max)" />
+          <Property Name="DiemNghienCuu" Type="nvarchar(max)" />
+          <Property Name="ThoiDiemNhanThongTin" Type="nvarchar(max)" />
+          <Property Name="ThoiDiemXuatHien" Type="nvarchar(max)" />
+          <Property Name="ThoiDiemKetThuc" Type="nvarchar(max)" />
           <Property Name="DangTiepDien" Type="bit" Nullable="false" />
           <Property Name="TenSAE" Type="nvarchar(max)" />
           <Property Name="TenNguoiThuThuoc" Type="nvarchar(max)" />
@@ -1465,23 +1465,23 @@
           <Property Name="KetQua_DangHoiPhuc" Type="bit" Nullable="false" />
           <Property Name="KetQua_ChuaHoiPhuc" Type="bit" Nullable="false" />
           <Property Name="KetQua_TuVong" Type="bit" Nullable="false" />
-          <Property Name="KetQua_TuVong_Ngay" Type="nvarchar" MaxLength="200" />
+          <Property Name="KetQua_TuVong_Ngay" Type="nvarchar(max)" />
           <Property Name="KetQua_KhongCoThongTin" Type="bit" Nullable="false" />
-          <Property Name="NguoiThamGia_NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiThamGia_Tuoi" Type="nvarchar" MaxLength="200" />
+          <Property Name="NguoiThamGia_NgaySinh" Type="nvarchar(max)" />
+          <Property Name="NguoiThamGia_Tuoi" Type="nvarchar(max)" />
           <Property Name="NguoiThamGia_GioiTinh_Nam" Type="bit" Nullable="false" />
           <Property Name="NguoiThamGia_GioiTinh_Nu" Type="bit" Nullable="false" />
           <Property Name="NguoiThamGia_GioiTinh_Nu_DangMangThai" Type="bit" Nullable="false" />
-          <Property Name="NguoiThamGia_GioiTinh_Nu_TuanMangThai" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiThamGia_CanNang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NguoiThamGia_TienSuYKhoa" Type="nvarchar" MaxLength="200" />
+          <Property Name="NguoiThamGia_GioiTinh_Nu_TuanMangThai" Type="nvarchar(max)" />
+          <Property Name="NguoiThamGia_CanNang" Type="nvarchar(max)" />
+          <Property Name="NguoiThamGia_TienSuYKhoa" Type="nvarchar(max)" />
           <Property Name="JSON_ThuocThuLamSang" Type="nvarchar(max)" />
           <Property Name="JSON_CanThiepThuocThuLamSang" Type="nvarchar(max)" />
           <Property Name="JSON_ThuocSuDungDongThoi" Type="nvarchar(max)" />
           <Property Name="JSON_DanhGiaNCV" Type="nvarchar(max)" />
           <Property Name="LyDoDanhGia" Type="nvarchar(max)" />
-          <Property Name="LyDoDanhGia_SoLuong" Type="nvarchar" MaxLength="200" />
-          <Property Name="LyDoDanhGia_SoLuongNghienCuuKhac" Type="nvarchar" MaxLength="200" />
+          <Property Name="LyDoDanhGia_SoLuong" Type="nvarchar(max)" />
+          <Property Name="LyDoDanhGia_SoLuongNghienCuuKhac" Type="nvarchar(max)" />
           <Property Name="YKienHDDD_NguoiThamGia_TiepTucThamGia" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_NguoiThamGia_TamNgungThamGia" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_NguoiThamGia_RutKhoiNghienCuu" Type="bit" Nullable="false" />
@@ -1489,12 +1489,12 @@
           <Property Name="YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_DeXuatNghienCuu_NgungTrienKhai" Type="bit" Nullable="false" />
           <Property Name="YKienHDDD_DeXuatKhac" Type="nvarchar(max)" />
-          <Property Name="NguoiBaoCao_ChuKy" Type="nvarchar" MaxLength="2000" />
-          <Property Name="NguoiBaoCao_NgayKy" Type="nvarchar" MaxLength="2000" />
-          <Property Name="NguoiBaoCao_HoTen" Type="nvarchar" MaxLength="2000" />
-          <Property Name="NguoiBaoCao_ChucVu" Type="nvarchar" MaxLength="2000" />
-          <Property Name="NguoiBaoCao_DienThoai" Type="nvarchar" MaxLength="2000" />
-          <Property Name="NguoiBaoCao_Email" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NguoiBaoCao_ChuKy" Type="nvarchar(max)" />
+          <Property Name="NguoiBaoCao_NgayKy" Type="nvarchar(max)" />
+          <Property Name="NguoiBaoCao_HoTen" Type="nvarchar(max)" />
+          <Property Name="NguoiBaoCao_ChucVu" Type="nvarchar(max)" />
+          <Property Name="NguoiBaoCao_DienThoai" Type="nvarchar(max)" />
+          <Property Name="NguoiBaoCao_Email" Type="nvarchar(max)" />
           <Property Name="HTML" Type="nvarchar(max)" />
           <Property Name="IsDisabled" Type="bit" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -1511,18 +1511,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDetai" Type="int" Nullable="false" />
           <Property Name="IDNhanSu" Type="int" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiCQ" Type="nvarchar" MaxLength="200" />
-          <Property Name="Mobile" Type="nvarchar" MaxLength="200" />
-          <Property Name="Email" Type="nvarchar" MaxLength="200" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="200" />
-          <Property Name="CoQuanLamViec" Type="nvarchar" MaxLength="200" />
-          <Property Name="ThuTruongCoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiThuTruong" Type="nvarchar" MaxLength="200" />
-          <Property Name="DiaChiCoQuan" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="GioiTinh" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="DienThoaiCQ" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="ChucVu" Type="nvarchar(max)" />
+          <Property Name="CoQuanLamViec" Type="nvarchar(max)" />
+          <Property Name="ThuTruongCoQuan" Type="nvarchar(max)" />
+          <Property Name="DienThoaiThuTruong" Type="nvarchar(max)" />
+          <Property Name="DiaChiCoQuan" Type="nvarchar(max)" />
           <Property Name="JSON_TrinhDoChuyenMon" Type="nvarchar(max)" />
           <Property Name="JSON_KinhNghiem" Type="nvarchar(max)" />
           <Property Name="HTML" Type="nvarchar(max)" />
@@ -1533,11 +1533,11 @@
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="JSON_HocVi" Type="nvarchar(max)" />
-          <Property Name="NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
-          <Property Name="DienThoaiNhaRieng" Type="nvarchar" MaxLength="200" />
+          <Property Name="NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="NgayKy_ChuKy" Type="nvarchar(max)" />
+          <Property Name="DienThoaiNhaRieng" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_Sysnopsis">
@@ -1589,8 +1589,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDeTai" Type="int" Nullable="false" />
-          <Property Name="A1_TenTiengViet" Type="nvarchar" MaxLength="2000" />
-          <Property Name="A1_TenTiengAnh" Type="nvarchar" MaxLength="2000" />
+          <Property Name="A1_TenTiengViet" Type="nvarchar(max)" />
+          <Property Name="A1_TenTiengAnh" Type="nvarchar(max)" />
           <Property Name="A2_QuanLy" Type="bit" Nullable="false" />
           <Property Name="A2_SinhHocVaCongNghe" Type="bit" Nullable="false" />
           <Property Name="A2_KhoaHocSucKhoe" Type="bit" Nullable="false" />
@@ -1600,24 +1600,24 @@
           <Property Name="A3_NghienCuuUngDung" Type="bit" Nullable="false" />
           <Property Name="A3_NghienCuuTrienKhai" Type="bit" Nullable="false" />
           <Property Name="A4_ThoiGianThucHien" Type="nvarchar(max)" />
-          <Property Name="A5_TongKinhPhi" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_HoTen" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_NgaySinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_GioiTinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_CMND" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_NgayCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_NoiCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_MST" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_STK" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_NganHang" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_DiaChiCoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="A6_Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="A5_TongKinhPhi" Type="nvarchar(max)" />
+          <Property Name="A6_HoTen" Type="nvarchar(max)" />
+          <Property Name="A6_NgaySinh" Type="nvarchar(max)" />
+          <Property Name="A6_GioiTinh" Type="nvarchar(max)" />
+          <Property Name="A6_CMND" Type="nvarchar(max)" />
+          <Property Name="A6_NgayCap" Type="nvarchar(max)" />
+          <Property Name="A6_NoiCap" Type="nvarchar(max)" />
+          <Property Name="A6_MST" Type="nvarchar(max)" />
+          <Property Name="A6_STK" Type="nvarchar(max)" />
+          <Property Name="A6_NganHang" Type="nvarchar(max)" />
+          <Property Name="A6_DiaChiCoQuan" Type="nvarchar(max)" />
+          <Property Name="A6_DienThoai" Type="nvarchar(max)" />
+          <Property Name="A6_Email" Type="nvarchar(max)" />
           <Property Name="A6_TomTatHoatDong" Type="nvarchar(max)" />
-          <Property Name="A7_TenCoQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="A7_HoTenThuTruong" Type="nvarchar" MaxLength="200" />
-          <Property Name="A7_DienThoai" Type="nvarchar" MaxLength="200" />
-          <Property Name="A7_DiaChi" Type="nvarchar" MaxLength="200" />
+          <Property Name="A7_TenCoQuan" Type="nvarchar(max)" />
+          <Property Name="A7_HoTenThuTruong" Type="nvarchar(max)" />
+          <Property Name="A7_DienThoai" Type="nvarchar(max)" />
+          <Property Name="A7_DiaChi" Type="nvarchar(max)" />
           <Property Name="A8_CoQuanPhoiHopThucHien" Type="nvarchar(max)" />
           <Property Name="A9_JSON_NhanLucNghienCuu" Type="nvarchar(max)" />
           <Property Name="B1_GioiThieu" Type="nvarchar(max)" />
@@ -1665,26 +1665,26 @@
           <Property Name="PhuLuc_JSON_ThietBi" Type="nvarchar(max)" />
           <Property Name="PhuLuc_JSON_ChiKhac" Type="nvarchar(max)" />
           <Property Name="A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai" Type="nvarchar(max)" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CNDT_NgayKy_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CNDT_NgayKy_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CNDT_NgayKy_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CNDT_NgayKy_ChuKy" Type="nvarchar" MaxLength="200" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_ChuKy" Type="nvarchar(max)" />
+          <Property Name="B52_CNDT_NgayKy_Ngay" Type="nvarchar(max)" />
+          <Property Name="B52_CNDT_NgayKy_Thang" Type="nvarchar(max)" />
+          <Property Name="B52_CNDT_NgayKy_Nam" Type="nvarchar(max)" />
+          <Property Name="B52_CNDT_NgayKy_ChuKy" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
           <Property Name="A8_JSON_CoQuanPhoiHopThucHien" Type="nvarchar(max)" />
           <Property Name="B3221_TieuChuanNhan" Type="nvarchar(max)" />
           <Property Name="B3221_TieuChuanLoai" Type="nvarchar(max)" />
-          <Property Name="B52_CoQuanChuTri_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CoQuanChuTri_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_CoQuanChuTri_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_ChuNhiemDeTai_Ngay" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_ChuNhiemDeTai_Thang" Type="nvarchar" MaxLength="200" />
-          <Property Name="B52_ChuNhiemDeTai_Nam" Type="nvarchar" MaxLength="200" />
-          <Property Name="A0_NgayNhanHoSo" Type="nvarchar" MaxLength="200" />
-          <Property Name="A0_MaSoDeTai" Type="nvarchar" MaxLength="200" />
+          <Property Name="B52_CoQuanChuTri_Ngay" Type="nvarchar(max)" />
+          <Property Name="B52_CoQuanChuTri_Thang" Type="nvarchar(max)" />
+          <Property Name="B52_CoQuanChuTri_Nam" Type="nvarchar(max)" />
+          <Property Name="B52_ChuNhiemDeTai_Ngay" Type="nvarchar(max)" />
+          <Property Name="B52_ChuNhiemDeTai_Thang" Type="nvarchar(max)" />
+          <Property Name="B52_ChuNhiemDeTai_Nam" Type="nvarchar(max)" />
+          <Property Name="A0_NgayNhanHoSo" Type="nvarchar(max)" />
+          <Property Name="A0_MaSoDeTai" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">
           <Key>
@@ -4495,8 +4495,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_DonViCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_HoatDongKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_KinhNghiemLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -4518,32 +4518,32 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TruongVien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhongKhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND_NgayCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND_NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HocVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HocHam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_MST" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_STK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_NganHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LinhVucChuyenMon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LinhVuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChuyenNganh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HuongNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HoatDongKhac" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TruongVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhongKhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND_NgayCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND_NoiCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocHam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_MST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_STK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_NganHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinhVucChuyenMon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinhVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuyenNganh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HuongNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoatDongKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_NgoaiNgu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ThoiGianCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_QuaTrinhDaoTao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -4566,15 +4566,15 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamPhongHocHam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocViThacSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViThacSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocViTienSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViTienSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
         </EntityType>
@@ -4584,18 +4584,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiCQ" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CoQuanLamViec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThuTruongCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiThuTruong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChiCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiCQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CoQuanLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThuTruongCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiThuTruong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_TrinhDoChuyenMon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_KinhNghiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -4605,11 +4605,11 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiNhaRieng" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiNhaRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_CUS_HRM_STAFF_NhanSu_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_CUS_HRM_STAFF_NhanSu_SYLL" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
@@ -4837,14 +4837,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
           <Property Name="IDBenhNhan" Type="Int32" Nullable="false" />
-          <Property Name="MaSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MaSoBenhNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenBienCo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKhoiPhat_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKhoiPhat_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKhoiPhat_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKhoiPhat_Gio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKhoiPhat_Phut" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MaSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaSoBenhNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenBienCo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiPhat_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiPhat_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiPhat_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiPhat_Gio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiPhat_Phut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayKhoiPhat_DangTiepDien" Type="Boolean" Nullable="false" />
           <Property Name="PhanDoNang_Nghe" Type="Boolean" Nullable="false" />
           <Property Name="PhanDoNang_TrungBinh" Type="Boolean" Nullable="false" />
@@ -4864,9 +4864,9 @@
           <Property Name="KetQua_DangHoiPhuc" Type="Boolean" Nullable="false" />
           <Property Name="KetQua_ChuaHoiPhuc" Type="Boolean" Nullable="false" />
           <Property Name="KetQua_KhongBiet" Type="Boolean" Nullable="false" />
-          <Property Name="KetQua_TuVong_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="KetQua_TuVong_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="KetQua_TuVong_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="KetQua_TuVong_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KetQua_TuVong_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KetQua_TuVong_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NghiemTrong_Khong" Type="Boolean" Nullable="false" />
           <Property Name="NghiemTrong_Co" Type="Boolean" Nullable="false" />
           <Property Name="NghiemTrong_TuVong" Type="Boolean" Nullable="false" />
@@ -4877,15 +4877,15 @@
           <Property Name="NghiemTrong_BienCoKhac" Type="Boolean" Nullable="false" />
           <Property Name="TienHanhSAE_Khong" Type="Boolean" Nullable="false" />
           <Property Name="TienHanhSAE_Co" Type="Boolean" Nullable="false" />
-          <Property Name="HoTenThucHien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayBaoCao_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayBaoCao_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayBaoCao_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayGioTangDoNang_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayGioTangDoNang_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayGioTangDoNang_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayGioTangDoNang_Gio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayGioTangDoNang_Phut" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBaoCao_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBaoCao_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBaoCao_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayGioTangDoNang_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayGioTangDoNang_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayGioTangDoNang_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayGioTangDoNang_Gio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayGioTangDoNang_Phut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NT_DoNangAE_Nhe" Type="Boolean" Nullable="false" />
           <Property Name="NT_DoNangAE_TrungBinh" Type="Boolean" Nullable="false" />
           <Property Name="NT_DoNangAE_Nang" Type="Boolean" Nullable="false" />
@@ -4907,10 +4907,10 @@
           <Property Name="NT_NghiemTrong_TanTat" Type="Boolean" Nullable="false" />
           <Property Name="NT_NghiemTrong_BatThuong" Type="Boolean" Nullable="false" />
           <Property Name="NT_NghiemTrong_BienCoKhac" Type="Boolean" Nullable="false" />
-          <Property Name="NT_HoTenThucHien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayBaoCao_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayBaoCao_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NT_NgayBaoCao_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NT_HoTenThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayBaoCao_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayBaoCao_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NT_NgayBaoCao_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NT_GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
@@ -4919,11 +4919,11 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKetThuc_Ngay" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKetThuc_Thang" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKetThuc_Nam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKetThuc_Gio" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKetThuc_Phut" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Gio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKetThuc_Phut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KetQua_TuVong" Type="Boolean" />
           <Property Name="TienHanhSAE1_Co" Type="Boolean" />
           <Property Name="TienHanhSAE1_Khong" Type="Boolean" />
@@ -4937,37 +4937,37 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="YTuong_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="YTuong_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="YTuong_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PhuongPhap_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PhuongPhap_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhuongPhap_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="QuyTrinhNhanMau_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QuyTrinhNhanMau_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ThucHienNhanMau_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThucHienNhanMau_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NhapDuLieuVaoPM_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NhapDuLieuVaoPM_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="VietBaiBaoCaoTiengViet_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VietBaiBaoCaoTiengViet_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="VietBaiBaoCaoTiengAnh_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VietBaiBaoCaoTiengAnh_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewTinhKhaThi_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReviewTinhKhaThi_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="XayDungPhanMem_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungPhanMem_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="XayDungPhanMem_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungKeHoachPhanTich_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="XayDungKeHoachPhanTich_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LamSachSoLieu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="LamSachSoLieu_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LamSachSoLieu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PhanTichSoLieu_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanTichSoLieu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="XayDungKeHoachDieuPhoi_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="XayDungKeHoachDieuPhoi_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ChuanBiHoSoGiayTo_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ChuanBiHoSoGiayTo_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DieuPhoiHoatDongNghienCuu_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DieuPhoiHoatDongNghienCuu_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="QuanLyDieuHanhChung_NguoiThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QuanLyDieuHanhChung_ChiPhi" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -4982,20 +4982,20 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="MaSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MaSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanMot_ConNguoi" Type="Boolean" Nullable="false" />
           <Property Name="PhanMot_DongVat" Type="Boolean" Nullable="false" />
           <Property Name="PhanHai_TenNCYSH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_KhoaPhong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_BenhVien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NCVChinh_DiaChiLienHe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NGS_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NGS_NoiLamViec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NGS_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanHai_NGS_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_KhoaPhong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_BenhVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NCVChinh_DiaChiLienHe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NGS_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NGS_NoiLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NGS_DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanHai_NGS_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanBa_A_JSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanBa_B_JSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanBon_C1_MoTaQuyTrinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5008,33 +5008,33 @@
           <Property Name="PhanBon_C2_CachTienHanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanBon_C3_MoTaQuyTrinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanNam_JSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanh_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanh_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanh_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThap_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThap_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThap_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThap_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThap_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThap_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_NCVKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DaGuiThuDienTu" Type="Boolean" Nullable="false" />
           <Property Name="JSON_MoTaNCYSH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi" Type="Boolean" Nullable="false" />
           <Property Name="PhanSau_NCYSH_DuDieuKienXemXet" Type="Boolean" Nullable="false" />
-          <Property Name="PhanSau_NCYSH_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanSau_NCYSH_NgayThangNam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NCYSH_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NCYSH_NgayThangNam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH" Type="Boolean" Nullable="false" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_TCKT" Type="Boolean" Nullable="false" />
           <Property Name="PhanSau_NGS_KhongThuocPhamVi" Type="Boolean" Nullable="false" />
           <Property Name="PhanSau_NGS_DuDieuKienXemXet" Type="Boolean" Nullable="false" />
-          <Property Name="PhanSau_NGS_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanSau_NGS_NgayThangNam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NGS_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_NGS_NgayThangNam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi" Type="Boolean" Nullable="false" />
           <Property Name="PhanSau_TruongKhoa_DuDieuKienXemXet" Type="Boolean" Nullable="false" />
-          <Property Name="PhanSau_TruongKhoa_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanSau_TruongKhoa_ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhanSau_TruongKhoa_NgayThangNam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_TruongKhoa_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_TruongKhoa_ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhanSau_TruongKhoa_NgayThangNam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="YKienHDDD_KhongThuocPhamVi" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_DuocXemXetDaoDuc" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_DuocXemXetDaoDucRutGon" Type="Boolean" Nullable="false" />
@@ -5047,10 +5047,10 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="YKienHDDD_So" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="YKienHDDD_So" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Co" Type="Boolean" />
           <Property Name="PhanSau_NCYSH_KhongThuocPhamVi_Khong" Type="Boolean" />
           <Property Name="PhanSau_NCYSH_GuiThongBao_KHTH_Co" Type="Boolean" />
@@ -5061,15 +5061,15 @@
           <Property Name="PhanSau_NGS_KhongThuocPhamVi_Khong" Type="Boolean" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Co" Type="Boolean" />
           <Property Name="PhanSau_TruongKhoa_KhongThuocPhamVi_Khong" Type="Boolean" />
-          <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanhDenNgay_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanhDenNgay_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanhDenNgay_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianThuThapDenNgay_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" ToRole="tbl_PRO_DeTai" />
         </EntityType>
@@ -5081,7 +5081,7 @@
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
           <Property Name="IDNhom" Type="Int32" />
           <Property Name="IDSite" Type="Int32" />
-          <Property Name="TenDeTai" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayBaoCao" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TapChiHoiNghi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
@@ -5132,12 +5132,12 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="BaiFulltext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGian_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGian_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGian_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGian_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
-          <Property Name="FileBaoCaoTongHop" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="FileBaoCaoTongHop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -5145,21 +5145,21 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="SoCaThuThapHopLe" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="TienDoThuNhanMau" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="KhoKhan" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="SoCaThuThapHopLe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TienDoThuNhanMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KhoKhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="TenDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NCVChinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NgayDuyetNghienCuu" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="SoNCT" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianTienHanh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuNhiemDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NCVChinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDuyetNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoNCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianTienHanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CoMau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDTinhTrangNghienCuu" Type="Int32" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5197,26 +5197,26 @@
           <Property Name="IDTrangThai_HRCO" Type="Int32" Nullable="false" />
           <Property Name="IDTrangThai_NghiemThu" Type="Int32" Nullable="false" />
           <Property Name="DeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GhiChu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="SoNCT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoNCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenTiengViet" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="TenTiengAnh" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="MaSoProtocalID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="MaSoHDDD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FileUpload" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MaSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenTiengViet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenTiengAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaSoProtocalID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaSoHDDD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDHinhThucXetDuyet" Type="Int32" />
           <Property Name="IDTinhTrangNghienCuu" Type="Int32" />
-          <Property Name="FileChapThuan" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="FileChapThuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabledHRCO" Type="Boolean" />
           <Property Name="IsDisabledHDDD" Type="Boolean" />
-          <Property Name="FileQuyetDinhNghiemThu" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="FileQuyetDinhNghiemThu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_AE" Relationship="AppModel.FK_tbl_PRO_AE_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_AE" />
@@ -5253,18 +5253,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDeTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDonViChuTri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TuNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DenNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenChuNhiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDonViChuTri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TuNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DenNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BangKiemLuaChon" Type="Boolean" Nullable="false" />
           <Property Name="PhieuThongTinXemXet" Type="Boolean" Nullable="false" />
           <Property Name="DeCuongNCYSH" Type="Boolean" Nullable="false" />
@@ -5281,10 +5281,10 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_DonXinDanhGiaDaoDuc" ToRole="tbl_PRO_DeTai" />
         </EntityType>
@@ -5294,18 +5294,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDeTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDonViChuTri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TuNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DenNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenChuNhiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDonViChuTri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TuNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DenNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BaoCaoTomTat" Type="Boolean" Nullable="false" />
           <Property Name="BaoCaoTongKet" Type="Boolean" Nullable="false" />
           <Property Name="ThuyetMinhDeTai" Type="Boolean" Nullable="false" />
@@ -5321,10 +5321,10 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" FromRole="tbl_PRO_DonXinNghiemThu" ToRole="tbl_PRO_DeTai" />
         </EntityType>
@@ -5334,18 +5334,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="HoTenChuNhiem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDeTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TenDonViChuTri" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TuNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DenNgay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenChuNhiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenDonViChuTri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiDonVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaDiemNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TuNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DenNgay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThuyetMinhDeCuong" Type="Boolean" Nullable="false" />
           <Property Name="LLKHChuNhiem" Type="Boolean" Nullable="false" />
           <Property Name="LLKHNCV" Type="Boolean" Nullable="false" />
@@ -5358,10 +5358,10 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" FromRole="tbl_PRO_DonXinXetDuyet" ToRole="tbl_PRO_DeTai" />
         </EntityType>
@@ -5372,11 +5372,11 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDNhanVien" Type="Int32" />
           <Property Name="ThoiGian" Type="DateTime" Precision="7" />
-          <Property Name="DiaDiem" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="TenHoiNghi" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="CVBaoCaoVien" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiAbstract" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="DiaDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TenHoiNghi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CVBaoCaoVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaiAbstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaiFulltext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTMLHosrem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDTrangThai" Type="Int32" Nullable="false" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
@@ -5417,9 +5417,9 @@
           <Property Name="IDHoiNghiHoiThao" Type="Int32" Nullable="false" />
           <Property Name="IDHinhThucDangKy" Type="Int32" Nullable="false" />
           <Property Name="IDTrangThai" Type="Int32" Nullable="false" />
-          <Property Name="TenDeTai" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiAbstract" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="BaiFulltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TenDeTai" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaiAbstract" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaiFulltext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
@@ -5452,32 +5452,32 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDetai" Type="Int32" Nullable="false" />
           <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TruongVien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PhongKhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND_NgayCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CMND_NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HocVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HocHam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoai_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email_CoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email_CaNhan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_MST" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_STK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TaiKhoan_NganHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LinhVucChuyenMon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LinhVuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChuyenNganh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HuongNghienCuu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="HoatDongKhac" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TruongVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhongKhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND_NgayCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND_NoiCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocHam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email_CoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email_CaNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_MST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_STK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan_NganHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinhVucChuyenMon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinhVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChuyenNganh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HuongNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoatDongKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_NgoaiNgu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ThoiGianCongTac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_QuaTrinhDaoTao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5499,15 +5499,15 @@
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NamPhongHocHam" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="HocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NamHocViThacSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="HocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NamHocViTienSy" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamPhongHocHam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocViThacSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViThacSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HocViTienSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamHocViTienSy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_LLKH" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_LLKH" ToRole="tbl_PRO_DeTai" />
@@ -5541,8 +5541,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
           <Property Name="IDNCV" Type="Int32" Nullable="false" />
-          <Property Name="ChucDanh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ChucDanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsCanView" Type="Boolean" Nullable="false" />
           <Property Name="IsCanChange" Type="Boolean" Nullable="false" />
           <Property Name="IsCanApprove" Type="Boolean" Nullable="false" />
@@ -5561,7 +5561,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="MaSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MaSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NghienCuuDuocTaiTro" Type="Boolean" Nullable="false" />
           <Property Name="XinPhepTapThe" Type="Boolean" Nullable="false" />
           <Property Name="KhongThuocNghienCuuNao" Type="Boolean" Nullable="false" />
@@ -5572,13 +5572,13 @@
           <Property Name="TenNCSYH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_CacNCV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DonViChuTri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_DiaChiGiaoDich" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_DienThoaiCQ" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_DienThoaiFx" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_DienThoaiNR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_DienThoaiDD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiGiaoDich_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_DiaChiGiaoDich" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_DienThoaiCQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_DienThoaiFx" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_DienThoaiNR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_DienThoaiDD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiGiaoDich_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_CacCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="QuyChe_TreEm" Type="Boolean" Nullable="false" />
           <Property Name="QuyChe_NguoiQuanHeLeThuoc" Type="Boolean" Nullable="false" />
@@ -5708,7 +5708,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
           <Property Name="IDBenhNhan" Type="Int32" Nullable="false" />
-          <Property Name="MaSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MaSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BaoCaoLanDau" Type="Boolean" Nullable="false" />
           <Property Name="BaoCaoBoSung" Type="Boolean" Nullable="false" />
           <Property Name="TuVong" Type="Boolean" Nullable="false" />
@@ -5724,12 +5724,12 @@
           <Property Name="MoMu_Co" Type="Boolean" Nullable="false" />
           <Property Name="MoMu_Khong" Type="Boolean" Nullable="false" />
           <Property Name="MoMu_KhongCoThongTin" Type="Boolean" Nullable="false" />
-          <Property Name="NhaTaiTro" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="HoTenNCV" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiemNghienCuu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiDiemNhanThongTin" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiDiemXuatHien" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiDiemKetThuc" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NhaTaiTro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoTenNCV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiemNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiDiemNhanThongTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiDiemXuatHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiDiemKetThuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DangTiepDien" Type="Boolean" Nullable="false" />
           <Property Name="TenSAE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TenNguoiThuThuoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5740,23 +5740,23 @@
           <Property Name="KetQua_DangHoiPhuc" Type="Boolean" Nullable="false" />
           <Property Name="KetQua_ChuaHoiPhuc" Type="Boolean" Nullable="false" />
           <Property Name="KetQua_TuVong" Type="Boolean" Nullable="false" />
-          <Property Name="KetQua_TuVong_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="KetQua_TuVong_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KetQua_KhongCoThongTin" Type="Boolean" Nullable="false" />
-          <Property Name="NguoiThamGia_NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiThamGia_Tuoi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThamGia_NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThamGia_Tuoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NguoiThamGia_GioiTinh_Nam" Type="Boolean" Nullable="false" />
           <Property Name="NguoiThamGia_GioiTinh_Nu" Type="Boolean" Nullable="false" />
           <Property Name="NguoiThamGia_GioiTinh_Nu_DangMangThai" Type="Boolean" Nullable="false" />
-          <Property Name="NguoiThamGia_GioiTinh_Nu_TuanMangThai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiThamGia_CanNang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiThamGia_TienSuYKhoa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThamGia_GioiTinh_Nu_TuanMangThai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThamGia_CanNang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThamGia_TienSuYKhoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ThuocThuLamSang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_CanThiepThuocThuLamSang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_ThuocSuDungDongThoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_DanhGiaNCV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LyDoDanhGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LyDoDanhGia_SoLuong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LyDoDanhGia_SoLuongNghienCuuKhac" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LyDoDanhGia_SoLuong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LyDoDanhGia_SoLuongNghienCuuKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="YKienHDDD_NguoiThamGia_TiepTucThamGia" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_NguoiThamGia_TamNgungThamGia" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_NguoiThamGia_RutKhoiNghienCuu" Type="Boolean" Nullable="false" />
@@ -5764,12 +5764,12 @@
           <Property Name="YKienHDDD_DeXuatNghienCuu_TamNgungTrienKhai" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_DeXuatNghienCuu_NgungTrienKhai" Type="Boolean" Nullable="false" />
           <Property Name="YKienHDDD_DeXuatKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_ChuKy" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_NgayKy" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_HoTen" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_ChucVu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_DienThoai" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiBaoCao_Email" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_NgayKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiBaoCao_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
@@ -5788,18 +5788,18 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDetai" Type="Int32" Nullable="false" />
           <Property Name="IDNhanSu" Type="Int32" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiCQ" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ChucVu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CoQuanLamViec" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ThuTruongCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiThuTruong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChiCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiCQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CoQuanLamViec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThuTruongCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiThuTruong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_TrinhDoChuyenMon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="JSON_KinhNghiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5810,11 +5810,11 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="JSON_HocVi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DienThoaiNhaRieng" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoaiNhaRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_SYLL" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_SYLL_tbl_PRO_Detai" FromRole="tbl_PRO_SYLL" ToRole="tbl_PRO_DeTai" />
@@ -5871,8 +5871,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDeTai" Type="Int32" Nullable="false" />
-          <Property Name="A1_TenTiengViet" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="A1_TenTiengAnh" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="A1_TenTiengViet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A1_TenTiengAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A2_QuanLy" Type="Boolean" Nullable="false" />
           <Property Name="A2_SinhHocVaCongNghe" Type="Boolean" Nullable="false" />
           <Property Name="A2_KhoaHocSucKhoe" Type="Boolean" Nullable="false" />
@@ -5882,24 +5882,24 @@
           <Property Name="A3_NghienCuuUngDung" Type="Boolean" Nullable="false" />
           <Property Name="A3_NghienCuuTrienKhai" Type="Boolean" Nullable="false" />
           <Property Name="A4_ThoiGianThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="A5_TongKinhPhi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_NgaySinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_GioiTinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_CMND" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_NgayCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_MST" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_STK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_NganHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_DiaChiCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A6_Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="A5_TongKinhPhi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_NgaySinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_NgayCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_NoiCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_MST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_STK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_NganHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_DiaChiCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A6_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A6_TomTatHoatDong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="A7_TenCoQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A7_HoTenThuTruong" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A7_DienThoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A7_DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="A7_TenCoQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A7_HoTenThuTruong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A7_DienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A7_DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A8_CoQuanPhoiHopThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A9_JSON_NhanLucNghienCuu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="B1_GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -5947,26 +5947,26 @@
           <Property Name="PhuLuc_JSON_ThietBi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhuLuc_JSON_ChiKhac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CNDT_NgayKy_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CNDT_NgayKy_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CNDT_NgayKy_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CNDT_NgayKy_ChuKy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CNDT_NgayKy_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CNDT_NgayKy_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CNDT_NgayKy_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CNDT_NgayKy_ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A8_JSON_CoQuanPhoiHopThucHien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="B3221_TieuChuanNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="B3221_TieuChuanLoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_CoQuanChuTri_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_ChuNhiemDeTai_Ngay" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_ChuNhiemDeTai_Thang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="B52_ChuNhiemDeTai_Nam" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A0_NgayNhanHoSo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="A0_MaSoDeTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_CoQuanChuTri_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_ChuNhiemDeTai_Ngay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_ChuNhiemDeTai_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="B52_ChuNhiemDeTai_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A0_NgayNhanHoSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A0_MaSoDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_ThuyetMinhDeTai" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">

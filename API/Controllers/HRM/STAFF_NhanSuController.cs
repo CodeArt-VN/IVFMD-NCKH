@@ -83,7 +83,10 @@ namespace API.Controllers.HRM
             
             if (id != tbl_CUS_HRM_STAFF_NhanSu.ID || PartnerID != tbl_CUS_HRM_STAFF_NhanSu.IDPartner)
                 return BadRequest();
-            
+
+            string checkData = BS_CUS_HRM_STAFF_NhanSu.check_CUS_HRM_STAFF_NhanSu(db, id, tbl_CUS_HRM_STAFF_NhanSu);
+            if (!string.IsNullOrEmpty(checkData))
+                return BadRequest(checkData);
 
             bool resul = BS_CUS_HRM_STAFF_NhanSu.put_CUS_HRM_STAFF_NhanSu(db, PartnerID, id, tbl_CUS_HRM_STAFF_NhanSu, Username);
 
@@ -91,7 +94,6 @@ namespace API.Controllers.HRM
                 return StatusCode(HttpStatusCode.NoContent);
             else
                 return NotFound();
-
         }
 
         [Route("")]

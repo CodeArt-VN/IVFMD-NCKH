@@ -198,6 +198,11 @@ namespace API.Controllers.PRO
                 {
                     tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac);
                 }
+
+                if (tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong != null && tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong.Count == 5)
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong.Insert(3, new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4SachTaiLieu));
+                }
             }
 
             return Ok(tbl_PRO_ThuyetMinhDeTai);
