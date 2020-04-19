@@ -91,8 +91,6 @@ export class DeTaiModalPage extends DetailPage {
     loadedData() {
         if (this.item.ID == 0)
             this.item.Tags = [];
-        
-        jQuery("#datetimepicker1").datetimepicker();
     }
 
     dismiss() {
