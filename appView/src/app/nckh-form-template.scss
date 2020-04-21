@@ -307,7 +307,7 @@
             tbody > tr[removable="true"], tbody > tr[removable="1"] {
                 &:hover, &:focus {
                     td:last-child::after {
-                        display: inline;
+                        //display: inline;
                     }
                 }
 
@@ -370,12 +370,44 @@
         z-index: 9999;
     }
 
-    .group_controls {
-        border-radius: 4px !important;
+    .group_controls, .row_controls {
+        position: absolute;
+        top: -28px;
+        right: 0;
+        margin: 0 !important;
+        border: 1px solid #6b6b6b;
         overflow: hidden;
+        background-color: #fff;
+        width: 50px;
 
-        .fieldgroup_controls {
+        &.rm {
+            width: 88px;
+
+            .field_controls {
+
+                button.remove {
+                    display: initial;
+                }
+            }
+        }
+
+        .field_controls {
+            text-align: center;
+
             button {
+                line-height: 20px;
+                color: #fff;
+                border-radius: 4px;
+                margin: 2px;
+
+                &.clone {
+                    background: #6ebfff;
+                }
+
+                &.remove {
+                    display: none;
+                    background: #F44336;
+                }
             }
         }
     }

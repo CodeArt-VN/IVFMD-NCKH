@@ -147,7 +147,27 @@ export class NCKHServiceProvider {
         };
 
         // eventHandlers
-        $(".ptable,.pblock").on("click", ".clone", function (e) {
+        $(".ptable,.pblock").on("click", ".row_controls .clone", (e) => {
+            var target = $(e.currentTarget).closest(".pconf"),
+                prow = $(e.currentTarget).closest('tr') || $(e.currentTarget).closest('.prow'),
+                sconf = target.attr("conf");
+            if (sconf != null && prow.length > 0) {
+                try {
+                    var context = ko.contextFor(target[0]);
+                    var conf = JSON.parse(sconf);
+                    if (conf.add) {
+                        var obj = ko.contextFor(prow[0]).$data;
+                        me.addItem(context, conf.name, conf.props, obj, prow.attr('values'));
+                    }
+                    return false;
+                } catch (e) {
+                    console.error(e);
+                    return false;
+                }
+            }
+        });
+
+        $(".ptable,.pblock").on("click", ".group_controls .clone", (e) => {
             var target = $(e.currentTarget).closest(".pconf"),
                 sconf = target.attr("conf");
             if (sconf != null) {
@@ -215,117 +235,149 @@ export class NCKHServiceProvider {
                 }
             }
         });
+        $(".ptable").on("click", ".remove", function (e) {
+            var ptable = $(e.currentTarget).closest(".pconf"),
+                sconf = ptable.attr("conf");
+            if (sconf != null) {
+                try {
+                    var conf = JSON.parse(sconf);
+                    if (conf.name && conf.add) {
+                        var tr = $(e.currentTarget).closest('tr');
+                        if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
+                            var context = ko.contextFor(ptable[0]);
+                            var obj = ko.contextFor(tr[0]).$data;
+                            me.removeItem(context, conf.name, obj);
+                        }
+                    }
+                    return false;
+                } catch (er) {
+                    console.error(er);
+                    return false;
+                }
+            }
+        });
 
-        var ptableGroupConrtrol =
-            $('<div class="group_controls" style="position:absolute;top:-24px;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
+        var pConrtrol =
+            $('<div class="group_controls">' +
+                '<div class="field_controls">' +
                 '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
                 '</div>' +
                 '</div>');
-        $(".ptable:not(.noaction)").mouseenter(function (event) {
+        $(".ptable:not(.noaction)").mouseenter(function (e) {
             try {
-                var ptable = $(event.currentTarget),
+                var ptable = $(e.currentTarget),
                     sconf = ptable.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
-                        var group_controls = ptable.find(".group_controls");
+                        var group_controls = ptable.children(".group_controls");
                         if (group_controls.length == 0) {
-                            ptableGroupConrtrol.appendTo(ptable);
-                            //event.stopPropagation()
+                            pConrtrol.appendTo(ptable);
+                            //e.stopPropagation()
                         }
                     }
                 }
-            } catch (e) {
-                console.error(e);
+            } catch (er) {
+                console.error(er);
                 return false;
             }
-        }).mouseleave(function (event) {
-            var ptable = $(event.currentTarget),
-                group_controls = ptable.find(".group_controls");
+        }).mouseleave(function (e) {
+            var group_controls = $(e.currentTarget).children(".group_controls");
             group_controls.detach();
         });
 
-        var pblockConrtrol =
-            $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
-                '</div>' +
-                '</div>');
-        $(".pblock:not(.noaction)").mouseenter((event) => {
+        $(".pblock:not(.noaction)").mouseenter((e) => {
             try {
-                var pblock = $(event.currentTarget);
+                var pblock = $(e.currentTarget);
                 var sconf = pblock.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.add || conf.remove) {
                         var group_controls = pblock.children(".group_controls");
                         if (group_controls.length == 0) {
-                            pblockConrtrol.appendTo(pblock);
+                            pConrtrol.appendTo(pblock);
                         }
                     }
                 }
-            } catch (e) {
-                console.error(e);
+            } catch (er) {
+                console.error(er);
                 return false;
             }
-        }).mouseleave((event) => {
-            var t = $(event.currentTarget).children(".group_controls");
-            t.detach();
+        }).mouseleave((e) => {
+            var group_controls = $(e.currentTarget).children(".group_controls");
+            group_controls.detach();
         });
 
-        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e) {
-            if (e.offsetY < 0) {
+        $(".ptable:not(.noaction) > table.editable-table > tbody").on('mouseenter', 'tr', (e)=> {
+            try {
                 var ptable = $(e.currentTarget).closest(".pconf"),
+                    prow = $(e.currentTarget),
+                    pcell = prow.children('td:last-child'),
                     sconf = ptable.attr("conf");
                 if (sconf != null) {
-                    try {
-                        var conf = JSON.parse(sconf);
-                        if (conf.name && conf.add) {
-                            var tr = $(e.currentTarget);
-                            if (tr.attr('removable') == "1" || tr.attr('removable') == "true") {
-                                var context = ko.contextFor(ptable[0]);
-                                var obj = ko.contextFor(tr[0]).$data;
-                                me.removeItem(context, conf.name, obj);
+                    var conf = JSON.parse(sconf);                    
+                    if (conf.add || conf.remove) {
+                        var row_controls = prow.find(".row_controls");
+                        if (row_controls.length == 0) {
+                            var prowConrtrol =
+                                $('<div class="row_controls" contenteditable="false">' +
+                                    '<div class="field_controls">' +
+                                    '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                                    '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                                    '</div>' +
+                                    '</div>');
+                            if (prow.attr('removable') == "1" || prow.attr('removable') == "true") {
+                                prowConrtrol.addClass('rm');
                             }
+
+                            if (pcell.text() == "")
+                                pcell.html("&nbsp;")
+                            prowConrtrol.appendTo(pcell);
+                            //e.stopPropagation()
                         }
-                        return false;
-                    } catch (e) {
-                        console.error(e);
-                        return false;
                     }
                 }
+            } catch (er) {
+                console.error(er);
+                return false;
             }
-        })
-
-        var prowConrtrol =
-            $('<div class="group_controls" style="position:absolute;top:0;right:0;border:1px solid red">' +
-                '<div class="fieldgroup_controls">' +
-                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
-                '</div>' +
-                '</div>');
-        $(".pblock:not(.noaction)").on("mouseenter", ".prow", function (event) {
+        }).on('mouseleave', 'tr', (e) => {
             try {
-                var pblock = $(event.currentTarget);
+                var prow = $(e.currentTarget),
+                    pcell = prow.children('td:last-child'),
+                    row_controls = pcell.children(".row_controls");
+                row_controls.detach();
+            } catch (er) {
+                console.error(er);
+                return false;
+            }
+        });
+        $(".pblock:not(.noaction) .prow").mouseenter((e) =>  {
+            try {
+                var pblock = $(e.currentTarget);
                 var sconf = pblock.attr("conf");
                 if (sconf != null) {
                     var conf = JSON.parse(sconf);
                     if (conf.remove) {
-                        var group_controls = pblock.find(".group_controls");
-                        if (group_controls.length == 0) {
-                            prowConrtrol.appendTo(pblock);
+                        var row_controls = pblock.find(".row_controls");
+                        if (row_controls.length == 0) {
+                            $('&nbsp<div class="row_controls">' +
+                                '<div class="field_controls">' +
+                                '<button style="line-height:20px" class="clone"><i class="fa fa-plus"></i> Thêm</button>' +
+                                '<button style="line-height:20px" class="remove"><i class="fa fa-minus"></i> Xóa</button>' +
+                                '</div>' +
+                                '</div>').appendTo(pblock);
                         }
                     }
                 }
-            } catch (e) {
-                console.error(e);
+            } catch (er) {
+                console.error(er);
                 return false;
             }
-        });
-        $(".pblock").on("mouseleave", ".prow", function (event) {
-            var pblock = $(event.currentTarget),
-                group_controls = pblock.find(".group_controls");
-            group_controls.detach();
+        }).mouseleave((e) =>  {
+            var pblock = $(e.currentTarget),
+                row_controls = pblock.find(".row_controls");
+            row_controls.detach();
         });
 
         var config = {
