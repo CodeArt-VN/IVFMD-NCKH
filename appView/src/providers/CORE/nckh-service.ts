@@ -67,7 +67,7 @@ export class NCKHServiceProvider {
     }
     init(configs) {
         var me = this;
-        var enableCKEditor = !1;
+        var enableCKEditor = 1;
         // bindingHandlers
         ko.bindingHandlers.editableHtml = {
             init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {

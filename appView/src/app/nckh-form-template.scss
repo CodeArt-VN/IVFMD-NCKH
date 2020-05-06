@@ -190,8 +190,8 @@
             margin-top: 0;
         }*/
         > p, > div {
-            margin-bottom: .6rem;
-            margin-top: .6rem;
+            margin-bottom: .6rem !important;
+            margin-top: .6rem !important;
         }
     }
 
@@ -490,8 +490,8 @@
             }
 
             > p, > div {
-                margin-bottom: .6rem;
-                margin-top: .6rem;
+                margin-bottom: .6rem !important;
+                margin-top: .6rem !important;
             }
         }
 
