@@ -279,6 +279,23 @@ namespace BaseBusiness
 
         }
 
+        public static string check_CUS_HRM_STAFF_NhanSu(AppEntities db, int id, DTO_CUS_HRM_STAFF_NhanSu item)
+        {
+            var obj = db.tbl_CUS_HRM_STAFF_NhanSu.Find(id);
+
+            if (obj != null)
+            {
+                if (obj.IsCNDT == true && item.IsCNDT == false)
+                {
+                    if (db.tbl_PRO_DeTai.Any(c => c.IDChuNhiem == obj.ID && c.IsDeleted == false))
+                    {
+                        return "Nhân sự đã tham gia vào dự án có vai trò chủ nhiệm, không thể chỉnh sửa";
+                    }
+                }
+            }
+
+            return string.Empty;
+        }
 
     }
 }

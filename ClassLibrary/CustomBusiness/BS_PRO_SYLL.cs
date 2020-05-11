@@ -47,6 +47,7 @@ namespace BaseBusiness
                 NgayKy_Ngay = s.NgayKy_Ngay,
                 NgayKy_Thang = s.NgayKy_Thang,
                 JSON_HocVi = s.JSON_HocVi,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -84,6 +85,7 @@ namespace BaseBusiness
                     NgayKy_Ngay = s.NgayKy_Ngay,
                     NgayKy_Thang = s.NgayKy_Thang,
                     JSON_HocVi = s.JSON_HocVi,
+                    IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
                 }).FirstOrDefault();
             }
 
@@ -102,9 +104,34 @@ namespace BaseBusiness
                     query.Email = objNhanSu.Email;
                     query.DiaChi = objNhanSu.DiaChi;
                     query.Mobile = objNhanSu.SoDienThoai;
+                    query.IsCNDT = objNhanSu.IsCNDT == true;
                 }
+
+
+                var ListTrinhDoChuyenMon = new List<DTO_PRO_SYLL_TrinhDoChuyenMon>();
+                var objHocVi1 = new DTO_PRO_SYLL_TrinhDoChuyenMon();
+                var objHocVi2 = new DTO_PRO_SYLL_TrinhDoChuyenMon();
+                var objHocVi3 = new DTO_PRO_SYLL_TrinhDoChuyenMon();
+
+                var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == nhanSuId);
+                if (objLL != null)
+                {
+                    objHocVi1.HocVi = objLL.HocViThacSy;
+                    objHocVi1.NamNhanBang = objLL.NamHocViThacSy;
+
+                    objHocVi2.HocVi = objLL.HocViTienSy;
+                    objHocVi2.NamNhanBang = objLL.NamHocViTienSy;
+
+                    objHocVi3.HocVi = objLL.HocHam;
+                    objHocVi3.NamNhanBang = objLL.NamPhongHocHam;
+                }
+
+                ListTrinhDoChuyenMon.Add(objHocVi1);
+                ListTrinhDoChuyenMon.Add(objHocVi2);
+                ListTrinhDoChuyenMon.Add(objHocVi3);
+
                 query.ListKinhNghiem = new List<DTO_PRO_SYLL_KinhNghiem>() { new DTO_PRO_SYLL_KinhNghiem() };
-                query.ListTrinhDoChuyenMon = new List<DTO_PRO_SYLL_TrinhDoChuyenMon>() { new DTO_PRO_SYLL_TrinhDoChuyenMon() };
+                query.ListTrinhDoChuyenMon = ListTrinhDoChuyenMon;
             }
             else
             {

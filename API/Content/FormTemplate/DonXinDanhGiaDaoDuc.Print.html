@@ -1,5 +1,5 @@
 ﻿<div class="form-template-header">
-    <div class="nckh-form-template input-mode nckh-form-07 font-size-13" style="padding: 0 .7in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-13 font-size-13" style="padding: 0 .7in 0 1in;">
         <div class="page-header">
             <table style="position:relative; width: 100%;top: 30px;border-bottom: 1px solid black;font-size: 10pt;font-style:italic;">
                 <tr>
@@ -17,24 +17,24 @@
     </div>
 </div>
 <div class="form-template-body">
-    <div class="nckh-form-template input-mode nckh-form-07 font-size-13" style="padding: 0 .7in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-13 font-size-13" style="padding: 0 .7in 0 1in;">
         <div class="inline text-center text-bold">
             <p style="margin:0;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
             <p style="border-bottom: 1px solid black;display: inline;padding-bottom: .3em;">Độc lập – Tự do – Hạnh phúc</p>
         </div>
         <div class="inline text-center text-bold" style="padding-top:2em;font-size:14pt;">
             <p style="margin: 6px;">
-                ĐƠN XIN XÉT DUYỆT ĐỀ TÀI NGHIÊN CỨU KHOA HỌC
+                ĐƠN XIN ĐÁNH GIÁ ĐẠO ĐỨC TRONG NGHIÊN CỨU
             </p>
             <p style="margin: 6px;">
-                Kính gửi: Hội đồng khoa học Bệnh viện đa khoa Mỹ Đức
+                Kính gửi: Hội đồng Đạo đức trong nghiên cứu y sinh học
             </p>
         </div>
         <div class="block">
             <div>
                 <p class="box">
                     <span class="box-title">1. Họ và tên chủ nhiệm đề tài:</span>
-                    <span contenteditable="true" style="text-indent: 212px;" data-bind="editableHtml: HoTenChuNhiem"></span>
+                    <span contenteditable="false" style="text-indent: 212px;" data-bind="editableHtml: HoTenChuNhiem"></span>
                 </p>
                 <p class="box tab-1">
                     <span class="box-title">Đơn vị: </span>
@@ -42,11 +42,11 @@
                 </p>
                 <p class="box tab-1">
                     <span class="box-title">Địa chỉ: </span>
-                    <span contenteditable="true" style="text-indent: 58px;" data-bind="editableHtml: DiaChi"></span>
+                    <span contenteditable="false" style="text-indent: 58px;" data-bind="editableHtml: DiaChi"></span>
                 </p>
                 <p class="box tab-1">
                     <span class="box-title">Điện thoại: </span>
-                    <span contenteditable="true" style="text-indent: 82px;" data-bind="editableHtml: DienThoai"></span>
+                    <span contenteditable="false" style="text-indent: 82px;" data-bind="editableHtml: DienThoai"></span>
                 </p>
             </div>
             <div>
@@ -85,7 +85,9 @@
                         </p>
                     </div>
                     <div style="display:inline-block;">
-                        <span class="box" style="padding-left:4px;padding-right: 4px;">tháng.</span>
+                        <p class="box">
+                            <span class="box" style="padding-left:4px;padding-right: 4px;">tháng.</span>
+                        </p>
                     </div>
                     <div style="display:inline-block;min-width:100px">
                         <p class="box">
@@ -106,22 +108,39 @@
                     <span class="" style="width:auto;">5. Hồ sơ gửi kèm theo đơn xin đánh giá bao gồm: (đánh dấu “x” vào ô tương ứng):</span>
                 </p>
                 <p class="box tab-1">
-                    <input class="" type="checkbox" data-bind="checkedHtml: ThuyetMinhDeCuong">
-                    Thuyết minh đề cương nghiên cứu
+                    <input class="" type="checkbox" data-bind="checkedHtml: BangKiemLuaChon">
+                    Bảng kiểm lựa chọn qui trình xem xét (phụ lục 10).
                 </p>
                 <p class="box tab-1">
-                    <input class="" type="checkbox" data-bind="checkedHtml: LLKHChuNhiem">
-                    Lý lịch khoa học của chủ nhiệm đề tài
+                    <input class="" type="checkbox" data-bind="checkedHtml: PhieuThongTinXemXet">
+                    Phiếu thông tin xem xét theo qui trình đầy đủ (phụ lục 11).
                 </p>
                 <p class="box tab-1">
-                    <input class="" type="checkbox" data-bind="checkedHtml: LLKHNCV">
-                    Lý lịch khoa học của nghiên cứu viên chính
+                    <input class="" type="checkbox" data-bind="checkedHtml: DeCuongNCYSH">
+                    Đề cương NCYSH.
+                </p>
+                <p class="box tab-1">
+                    <input class="" type="checkbox" data-bind="checkedHtml: CacBangCauHoi">
+                    Các bảng câu hỏi, biểu mẫu, phụ lục trong nghiên cứu.
+                </p>
+                <p class="box tab-1">
+                    <input class="" type="checkbox" data-bind="checkedHtml: MauPhieuChapThuanTinhNguyen">
+                    Mẫu phiếu chấp thuận tình nguyện của người tham gia nghiên cứu.
+                </p>
+                <p class="box tab-1">
+                    <input class="" type="checkbox" data-bind="checkedHtml: TrangThongTinGioiThieu">
+                    Trang thông tin giới thiệu nghiên cứu.
+                </p>
+                <p class="box tab-1">
+                    <input class="" type="checkbox" data-bind="checkedHtml: SYLLChuNhiem">
+                    Sơ yếu lý lịch của Chủ nhiệm đề tài và những nghiên cứu viên chính.
                 </p>
                 <p class="box tab-1">
                     <input class="" type="checkbox" data-bind="checkedHtml: GiayToKhac">
-                    Các loại giấy tờ khác có liên quan (nếu có)
+                    Các tài liệu, văn bản có giá trị về mặt khoa học, pháp lý có liên quan đến NCYSH xin đánh giá (nếu có, ghi rõ tên từng tài liệu cụ thể).
                 </p>
             </div>
+            <br />
             <div>
                 <p class="table text-justify">
                     Thay mặt nhóm nghiên cứu, tôi xin cam kết thực hiện theo đúng các Quy định về đạo đức trong nghiên cứu y sinh học của bệnh viện.
@@ -175,7 +194,7 @@
     </div>
 </div>
 <div class="form-template-footer">
-    <div class="nckh-form-template input-mode nckh-form-07 font-size-13" style="padding: 0 .7in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-13 font-size-13" style="padding: 0 .7in 0 1in;">
         <div class="page-footer">
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 11pt;font-style:italic;">
                 <tr>

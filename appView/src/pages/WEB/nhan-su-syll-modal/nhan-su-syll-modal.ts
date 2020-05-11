@@ -100,12 +100,12 @@ export class NhanSuSYLLModalPage extends DetailPage {
             var self = this;
 
             that.nckhProvider.copyPropertiesValue(item, self);
-
             self.ListTrinhDoChuyenMon = ko.observableArray(ko.utils.arrayMap(item.ListTrinhDoChuyenMon || [{}, {}, {}], function (nn) {
                 return {
                     HocVi: ko.observable(nn.HocVi || ""),
                     NamNhanBang: ko.observable(nn.NamNhanBang || ""),
-                    ChuyenNganhDaoTao: ko.observable(nn.ChuyenNganhDaoTao || "")
+                    ChuyenNganhDaoTao: ko.observable(nn.ChuyenNganhDaoTao || ""),
+                    HocHam: ko.observable(nn.HocHam || "")
                 };
             }));
 

@@ -1,5 +1,5 @@
 ﻿<div class="form-template-header">
-    <div class="nckh-form-template input-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
         <div class="page-header">
             <table style="position:relative; width: 100%;top: 30px;border-bottom: 1px solid black;font-size: 10pt;font-style:italic;">
                 <tr>
@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="form-template-body">
-    <div class="nckh-form-template input-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
         <div class="inline text-center text-bold" style="font-size: 14pt;">
             <p style="margin:0;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
             <p style="border-bottom: 1px solid black;display: inline;padding-bottom: .3em;">Độc lập – Tự do – Hạnh phúc</p>
@@ -103,7 +103,7 @@
                                 <span class="box-title" style="width: 100%;">9. Trình độ chuyên môn (ghi đầy đủ cho từng loại văn bằng đã được nhận)</span>
                             </p>
                             <div data-bind="foreach: ListTrinhDoChuyenMon" style="page-break-inside:auto">
-                                <div class="prow" conf='{"remove":false}' data-bind="attr: { index: $index, removable: false }" style="position:relative;page-break-inside:auto">
+                                <div class="prow" conf='{"remove":true}' data-bind="attr: { index: $index, removable: true }" style="position:relative;page-break-inside:auto">
                                     <p class="box tab-1">
                                         <span class="box-title" data-bind="visible: $index() < 2">Học vị:</span>
                                         <span class="box-title" data-bind="visible: $index() >= 2">Học hàm:</span>
@@ -112,7 +112,7 @@
                                     </p>
                                     <p class="box tab-1">
                                         <span class="box-title">Năm nhận bằng:</span>
-                                        <span contenteditable="false" style="text-indent: 116px;" data-bind="editableHtml: NamNhanBang"></span>
+                                        <span contenteditable="true" style="text-indent: 116px;" data-bind="editableHtml: NamNhanBang"></span>
                                     </p>
                                     <p class="box tab-1">
                                         <span class="box-title">Chuyên ngành đào tạo:</span>
@@ -134,7 +134,7 @@
                             </span>
                         </p>
                         <div conf='{"name":"ListKinhNghiem","add":true,"resizeable":true,"props": ["TenDeTai","NhiemVuCaNhan","CoQuanChuTri","NamBatDauKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
-                            <table name="ListKinhNghiem" class="nckh-table editable-table table-inside-table resize-grid" style="width:100%;" border="0">
+                            <table name="ListKinhNghiem" class="nckh-table table-inside-table resize-grid" style="width:100%;" border="0">
                                 <colgroup>
                                     <col />
                                     <col />
@@ -206,7 +206,7 @@
     </div>
 </div>
 <div class="form-template-footer">
-    <div class="nckh-form-template input-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-16 font-size-13" style="padding: 0 .8in 0 1in;">
         <div class="page-footer">
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
                 <tr>

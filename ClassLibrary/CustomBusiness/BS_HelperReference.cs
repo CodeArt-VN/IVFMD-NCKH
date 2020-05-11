@@ -108,6 +108,58 @@ namespace BaseBusiness
                     xxdd.PhanHai_NCVChinh_KhoaPhong = llkh.PhongKhoa;
                 }
 
+                try
+                {
+                    var syll = db.tbl_PRO_SYLL.FirstOrDefault(c => c.IDDetai == IDDeTai && c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+                    if (syll != null)
+                    {
+                        List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon> ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                        var objHocVi1 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi2 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi3 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+
+                        objHocVi1.HocVi = llkh.HocViThacSy;
+                        objHocVi1.NamNhanBang = llkh.NamHocViThacSy;
+
+                        objHocVi2.HocVi = llkh.HocViTienSy;
+                        objHocVi2.NamNhanBang = llkh.NamHocViTienSy;
+
+                        objHocVi3.HocVi = llkh.HocHam;
+                        objHocVi3.NamNhanBang = llkh.NamPhongHocHam;
+
+                        var myData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>>(syll.JSON_TrinhDoChuyenMon);
+                        if (myData != null)
+                        {
+                            if (myData.Count > 0)
+                            {
+                                var hocvi = myData.ToArray()[0];
+                                if (hocvi != null)
+                                    objHocVi1.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 1)
+                            {
+                                var hocvi = myData.ToArray()[1];
+                                if (hocvi != null)
+                                    objHocVi2.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 2)
+                            {
+                                var hocvi = myData.ToArray()[2];
+                                if (hocvi != null)
+                                    objHocVi3.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+                        }
+
+                        ListTrinhDoChuyenMon.Add(objHocVi1);
+                        ListTrinhDoChuyenMon.Add(objHocVi2);
+                        ListTrinhDoChuyenMon.Add(objHocVi3);
+
+                        syll.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);
+                    }
+                }
+                catch { }
                 db.SaveChanges();
             }
         }
@@ -153,6 +205,59 @@ namespace BaseBusiness
                         dgdd.DienThoai = llkh.DienThoai_CaNhan;
                     }
                 }
+
+                try
+                {
+                    var syll = db.tbl_PRO_SYLL.FirstOrDefault(c => c.IDDetai == IDDeTai && c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+                    if (syll != null)
+                    {
+                        List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon> ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                        var objHocVi1 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi2 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi3 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+
+                        objHocVi1.HocVi = llkh.HocViThacSy;
+                        objHocVi1.NamNhanBang = llkh.NamHocViThacSy;
+
+                        objHocVi2.HocVi = llkh.HocViTienSy;
+                        objHocVi2.NamNhanBang = llkh.NamHocViTienSy;
+
+                        objHocVi3.HocVi = llkh.HocHam;
+                        objHocVi3.NamNhanBang = llkh.NamPhongHocHam;
+
+                        var myData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>>(syll.JSON_TrinhDoChuyenMon);
+                        if (myData != null)
+                        {
+                            if (myData.Count > 0)
+                            {
+                                var hocvi = myData.ToArray()[0];
+                                if (hocvi != null)
+                                    objHocVi1.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 1)
+                            {
+                                var hocvi = myData.ToArray()[1];
+                                if (hocvi != null)
+                                    objHocVi2.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 2)
+                            {
+                                var hocvi = myData.ToArray()[2];
+                                if (hocvi != null)
+                                    objHocVi3.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+                        }
+
+                        ListTrinhDoChuyenMon.Add(objHocVi1);
+                        ListTrinhDoChuyenMon.Add(objHocVi2);
+                        ListTrinhDoChuyenMon.Add(objHocVi3);
+
+                        syll.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);
+                    }
+                }
+                catch { }
 
                 db.SaveChanges();
             }
@@ -234,9 +339,8 @@ namespace BaseBusiness
                     bangkiem.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
                     bangkiem.PhanBon_C1_TieuChuanNhanVao = bangkiem.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
                     bangkiem.PhanBon_C1_TieuChuanLoaiRa = bangkiem.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
+                    bangkiem.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
                 }
-
-
 
                 db.SaveChanges();
             }
@@ -260,59 +364,52 @@ namespace BaseBusiness
                     query.DiaChiCoQuan = objLL.DiaChi_CoQuan;
                     query.CoQuanLamViec = "Bệnh viện Mỹ Đức";
                     query.DienThoaiCQ = objLL.DienThoai_CoQuan;
-                    //if (string.IsNullOrEmpty(query.HoTen))
-                    //    query.HoTen = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.NgaySinh))
-                    //    query.NgaySinh = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.Email))
-                    //    query.Email = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.DiaChi))
-                    //    query.DiaChi = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.Mobile))
-                    //    query.Mobile = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.ChucVu))
-                    //    query.ChucVu = "(LLKH chưa có thông tin)";
-                    //if (string.IsNullOrEmpty(query.DiaChiCoQuan))
-                    //    query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
-
 
                     try
                     {
-                        var ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
-                        if (string.IsNullOrEmpty(objLL.HocViThacSy))
+                        List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon> ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                        var objHocVi1 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi2 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                        var objHocVi3 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+
+                        objHocVi1.HocVi = objLL.HocViThacSy;
+                        objHocVi1.NamNhanBang = objLL.NamHocViThacSy;
+
+                        objHocVi2.HocVi = objLL.HocViTienSy;
+                        objHocVi2.NamNhanBang = objLL.NamHocViTienSy;
+
+                        objHocVi3.HocVi = objLL.HocHam;
+                        objHocVi3.NamNhanBang = objLL.NamPhongHocHam;
+
+                        var myData = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>>(query.JSON_TrinhDoChuyenMon);
+                        if (myData != null)
                         {
-                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                            if (myData.Count > 0)
                             {
-                                HocVi = objLL.HocViThacSy,
-                                NamNhanBang = objLL.NamHocViThacSy
-                            });
-                        }
-                        if (string.IsNullOrEmpty(objLL.HocViTienSy))
-                        {
-                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                                var hocvi = myData.ToArray()[0];
+                                if (hocvi != null)
+                                    objHocVi1.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 1)
                             {
-                                HocVi = objLL.HocViTienSy,
-                                NamNhanBang = objLL.NamHocViTienSy
-                            });
-                        }
-                        if (string.IsNullOrEmpty(objLL.HocHam))
-                        {
-                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
+                                var hocvi = myData.ToArray()[1];
+                                if (hocvi != null)
+                                    objHocVi2.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
+
+                            if (myData.Count > 2)
                             {
-                                HocVi = objLL.HocHam,
-                                NamNhanBang = objLL.NamPhongHocHam
-                            });
+                                var hocvi = myData.ToArray()[2];
+                                if (hocvi != null)
+                                    objHocVi3.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                            }
                         }
-                        if (ListTrinhDoChuyenMon.Count == 0)
-                        {
-                            ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
-                            {
-                                //HocVi = "(LLKH chưa có thông tin)",
-                                //NamNhanBang = "(LLKH chưa có thông tin)",
-                                HocVi = "",
-                                NamNhanBang = ""
-                            });
-                        }
+
+                        ListTrinhDoChuyenMon.Add(objHocVi1);
+                        ListTrinhDoChuyenMon.Add(objHocVi2);
+                        ListTrinhDoChuyenMon.Add(objHocVi3);
+
                         query.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);
                     }
                     catch { }

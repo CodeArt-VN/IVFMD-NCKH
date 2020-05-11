@@ -1,12 +1,12 @@
 ﻿<div class="form-template-header">
-    <div class="nckh-form-template input-mode nckh-form-10 font-size-13" style="padding: 0 .4in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13" style="padding: 0 .4in 0 1in;">
         <div class="page-header">
 
         </div>
     </div>
 </div>
 <div class="form-template-body">
-    <div class="nckh-form-template input-mode nckh-form-10 font-size-13"  style="padding: 0 .4in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13"  style="padding: 0 .4in 0 1in;">
         <div class="inline text-center text-bold">
             <table style="width:100%;">
                 <tr>
@@ -223,7 +223,7 @@
                     </p>
                     <p class="box">
                         <span class="box-title">- Họ và tên thủ trưởng:</span>
-                        <span contenteditable="true" style="text-indent: 162px;" data-bind="editableHtml: A7_HoTenThuTruong"></span>
+                        <span contenteditable="false" style="text-indent: 162px;" data-bind="editableHtml: A7_HoTenThuTruong"></span>
                     </p>
                     <p class="box">
                         <span class="box-title">- Điện thoại:</span>
@@ -267,7 +267,7 @@
                     A9. Nhân lực nghiên cứu
                 </div>
                 <div conf='{"name":"ListNhanLucNghienCuu","add":true,"resizeable":true, "props": ["HoTen","DonVi","SoThangLamViec"]}' class="ptable pconf" style="width:100%;position:relative;">
-                    <table name="ListNhanLucNghienCuu" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                    <table name="ListNhanLucNghienCuu" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
                             <col />
@@ -337,7 +337,7 @@
                         <b style="color:blue;">Giới thiệu chuyên gia/nhà khoa học am hiểu đề tài này</b> <i>(không bắt buộc)</i>
                     </div>
                     <div conf='{"name":"ListGioiThieuChuyenGia","add":true,"resizeable":true, "props": ["HoTen","HuongNghienCuu","CoQuan","DienThoai"]}' class="ptable pconf" style="width:100%;position:relative;">
-                        <table name="ListGioiThieuChuyenGia" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                        <table name="ListGioiThieuChuyenGia" class="nckh-table resize-grid" style="width:100%;" border="1">
                             <colgroup>
                                 <col width="30" />
                                 <col />
@@ -399,7 +399,7 @@
                             -&nbsp;&nbsp;&nbsp;Kế hoạch thực hiện
                         </div>
                         <div conf='{"name":"ListKeHoachThucHien","add":false,"resizeable":true, "props": ["NoiDung","ThoiGianThucHien","KetQua","NguoiThucHien"]}' class="ptable pconf" style="width:100%;position:relative;">
-                            <table name="ListKeHoachThucHien" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                            <table name="ListKeHoachThucHien" class="nckh-table resize-grid" style="width:100%;" border="1">
                                 <colgroup>
                                     <col />
                                     <col />
@@ -440,8 +440,6 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             2.	Dân số nghiên cứu
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B322_DanSoNghienCuu" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
-                        </div>
                         <div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 2.1	Tiêu chuẩn nhận và loại
@@ -469,7 +467,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             3.	Phương pháp tiến hành
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B323_PhuongPhapTienHanh" data-editor="true" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B323_PhuongPhapTienHanh" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
                         </div>
                     </div>
                     <div>
@@ -510,7 +508,7 @@
                             6.	Các biến số cần thu thập
                         </div>
                         <div conf='{"name":"ListBienSo","add":true,"resizeable":true, "props": ["Ten","PhanLoai","LoaiBienSo--2","GiaTri","CachThuThap"]}' class="ptable pconf tab-1" style="position:relative;">
-                            <table name="ListBienSo" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                            <table name="ListBienSo" class="nckh-table resize-grid" style="width:100%;" border="1">
                                 <colgroup>
                                     <col />
                                     <col />
@@ -649,7 +647,7 @@
                         <div class="text-right">
                             <i>Đơn vị tính: ngàn đồng</i>
                         </div>
-                        <table name="ListKinhPhiTongHop" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                        <table name="ListKinhPhiTongHop" class="nckh-table resize-grid" style="width:100%;" border="1">
                             <colgroup>
                                 <col width="30" />
                                 <col />
@@ -763,7 +761,7 @@
                     <div class="text-right">
                         <i>Đơn vị tính: ngàn đồng</i>
                     </div>
-                    <table name="ListKinhPhiCongLaoDong" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                    <table name="ListKinhPhiCongLaoDong" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
                             <col />
@@ -807,7 +805,7 @@
                     <div class="text-right">
                         <i>Đơn vị tính: ngàn đồng</i>
                     </div>
-                    <table name="ListKinhPhiNguyenVatLieu" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                    <table name="ListKinhPhiNguyenVatLieu" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
                             <col />
@@ -849,7 +847,7 @@
                     <div class="text-right">
                         <i>Đơn vị tính: ngàn đồng</i>
                     </div>
-                    <table name="ListKinhPhiThietBi" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                    <table name="ListKinhPhiThietBi" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
                             <col />
@@ -891,7 +889,7 @@
                     <div class="text-right">
                         <i>Đơn vị tính: ngàn đồng</i>
                     </div>
-                    <table name="ListKinhPhiKhac" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
+                    <table name="ListKinhPhiKhac" class="nckh-table resize-grid" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
                             <col />
@@ -929,7 +927,7 @@
     </div>
 </div>
 <div class="form-template-footer">
-    <div class="nckh-form-template input-mode nckh-form-10 font-size-13"  style="padding: 0 .4in 0 1in;">
+    <div class="nckh-form-template print-mode nckh-form-10 font-size-13"  style="padding: 0 .4in 0 1in;">
         <div class="page-footer">
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
                 <tr>

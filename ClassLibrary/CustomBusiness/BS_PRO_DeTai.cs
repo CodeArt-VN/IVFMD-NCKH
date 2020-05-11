@@ -116,7 +116,7 @@ namespace BaseBusiness
                         helperCopy.Copy(objHRM_LLKH_NCV, objLLKH_NCV);
                         objLLKH_NCV.ID = 0;
                     }
-                    objLLKH_NCV.IDNhanSu = item.IDNCV;
+                    objLLKH_NCV.IDNhanSu = dbitem.IDNCV;
                     objLLKH_NCV.tbl_PRO_DeTai = dbitem;
                     objLLKH_NCV.CreatedBy = Username;
                     objLLKH_NCV.CreatedDate = DateTime.Now;

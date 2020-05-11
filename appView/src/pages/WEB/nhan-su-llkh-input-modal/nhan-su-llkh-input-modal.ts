@@ -52,6 +52,7 @@ export class NhanSuLLKHInputModalPage extends DetailPage {
         if (this.idDeTai > 0) {
             this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu).then((ite) => {
                 this.item = ite;
+                this.item.HoTen = "<span>test</span>";
                 this.loadedData();
             }).catch((data) => {
                 this.item.ID = 0;

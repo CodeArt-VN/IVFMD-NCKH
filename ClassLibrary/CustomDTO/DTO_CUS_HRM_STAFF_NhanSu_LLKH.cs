@@ -23,6 +23,7 @@ namespace DTOModel
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_HiepHoiKhoaHoc> ListHiepHoiKhoaHoc { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_ThongTinKhac_TruongDaiHoc> ListTruongDaiHoc { get; set; }
         public List<DTO_CUS_HRM_STAFF_NhanSu_LLKH_HocVi> ListHocVi { get; set; }
+        public bool IsCNDT { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_NgoaiNgu

@@ -117,6 +117,7 @@ namespace API.Controllers.PRO
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan2ThuThapDL),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan3XLVaPTSoLieu),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4DieuPhoiNghienCuu),
+                        new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan5VietBaiDangBao),
                         new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Cong),
                     },
                     ListKinhPhiNguyenVatLieu = new List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>()
@@ -196,6 +197,11 @@ namespace API.Controllers.PRO
                 if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac))
                 {
                     tbl_PRO_ThuyetMinhDeTai.ListKinhPhiKhac = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KinhPhi>>(tbl_PRO_ThuyetMinhDeTai.PhuLuc_JSON_ChiKhac);
+                }
+
+                if (tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong != null && tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong.Count == 5)
+                {
+                    tbl_PRO_ThuyetMinhDeTai.ListKinhPhiCongLaoDong.Insert(3, new DTO_PRO_ThuyetMinhDeTai_KinhPhi(DTO_PRO_ThuyetMinhDeTai_KinhPhi.NoiDungKinhPhi.Khoan4SachTaiLieu));
                 }
             }
 

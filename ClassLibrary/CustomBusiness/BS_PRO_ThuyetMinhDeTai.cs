@@ -158,45 +158,6 @@ namespace BaseBusiness
                         query.A7_DiaChi = dxdg.DiaChiDonVi;
                         query.A7_DienThoai = dxdg.DienThoaiDonVi;
                     }
-
-                    //if (string.IsNullOrEmpty(query.A1_TenTiengViet))
-                    //    query.A1_TenTiengViet = "(Đề tài chưa nhập tên Tiếng Việt)";
-                    //if (string.IsNullOrEmpty(query.A1_TenTiengAnh))
-                    //    query.A1_TenTiengAnh = "(Đề tài chưa nhập tên Tiếng Anh)";
-                    //if (string.IsNullOrEmpty(query.A6_HoTen))
-                    //    query.A6_HoTen = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_NgaySinh))
-                    //    query.A6_NgaySinh = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_GioiTinh))
-                    //    query.A6_GioiTinh = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_CMND))
-                    //    query.A6_CMND = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_NgayCap))
-                    //    query.A6_NgayCap = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_NoiCap))
-                    //    query.A6_NoiCap = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_MST))
-                    //    query.A6_MST = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_STK))
-                    //    query.A6_STK = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_NganHang))
-                    //    query.A6_NganHang = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_DiaChiCoQuan))
-                    //    query.A6_DiaChiCoQuan = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A6_Email))
-                    //    query.A6_Email = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.ChuNhiemDeTai.HoTen))
-                    //    query.ChuNhiemDeTai.HoTen = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.ChuNhiemDeTai.DonVi))
-                    //    query.ChuNhiemDeTai.DonVi = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A4_ThoiGianThucHien))
-                    //    query.A4_ThoiGianThucHien = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A7_TenCoQuan))
-                    //    query.A7_TenCoQuan = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A7_DiaChi))
-                    //    query.A7_DiaChi = "(LLKH của chủ nhiệm chưa nhập)";
-                    //if (string.IsNullOrEmpty(query.A7_DienThoai))
-                    //    query.A7_DienThoai = "(LLKH của chủ nhiệm chưa nhập)";
                 }
             }
 

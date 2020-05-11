@@ -44,6 +44,12 @@ export class DefaultPage extends ListPage {
         this.navCtrl.setRoot(menu.Code);
     }
 
+    gotoPageRefer() {
+        let origin = document.location.origin;
+        let url = origin.substring(0, origin.lastIndexOf(":")) + ":9002/";
+        window.open(url);
+    }
+
     loadData() {
 
     }

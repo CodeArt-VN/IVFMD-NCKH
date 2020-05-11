@@ -46,9 +46,19 @@ namespace API.Controllers.HRM
             //if (tbl_CUS_HRM_STAFF_NhanSu_LLKH.ID == 0)
             //{
             string html = "";
-            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
+            if (tbl_CUS_HRM_STAFF_NhanSu_SYLL.IsCNDT == false)
             {
-                html = r.ReadToEnd();
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+            else
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai.html")))
+                {
+                    html = r.ReadToEnd();
+                }
             }
             tbl_CUS_HRM_STAFF_NhanSu_SYLL.HTML = html;
             //}

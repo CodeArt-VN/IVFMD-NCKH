@@ -46,6 +46,7 @@ namespace BaseBusiness
                 NgayKy_Thang = s.NgayKy_Thang,
                 JSON_HocVi = s.JSON_HocVi,
                 DienThoaiNhaRieng = s.DienThoaiNhaRieng,
+                IsCNDT = s.tbl_CUS_HRM_STAFF_NhanSu.IsCNDT == true
             }).FirstOrDefault();
 
             if (query == null)
@@ -55,7 +56,14 @@ namespace BaseBusiness
                 {
                     IDNhanSu = nhanSuId
                 };
+
+                var nhansu = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == nhanSuId);
+                query.IsCNDT = nhansu != null && nhansu.IsCNDT == true;
+
                 query.ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                var objHocVi1 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                var objHocVi2 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                var objHocVi3 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
 
                 var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == nhanSuId);
                 if (objLL != null)
@@ -71,46 +79,19 @@ namespace BaseBusiness
                     query.CoQuanLamViec = "Bệnh viện Mỹ Đức";
                     query.DienThoaiCQ = objLL.DienThoai_CoQuan;
 
-                    if (string.IsNullOrEmpty(objLL.HocViThacSy))
-                    {
-                        query.ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
-                        {
-                            HocVi = objLL.HocViThacSy,
-                            NamNhanBang = objLL.NamHocViThacSy
-                        });
-                    }
-                    if (string.IsNullOrEmpty(objLL.HocViTienSy))
-                    {
-                        query.ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
-                        {
-                            HocVi = objLL.HocViTienSy,
-                            NamNhanBang = objLL.NamHocViTienSy
-                        });
-                    }
-                    if (string.IsNullOrEmpty(objLL.HocHam))
-                    {
-                        query.ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
-                        {
-                            HocVi = objLL.HocHam,
-                            NamNhanBang = objLL.NamPhongHocHam
-                        });
-                    }
+                    objHocVi1.HocVi = objLL.HocViThacSy;
+                    objHocVi1.NamNhanBang = objLL.NamHocViThacSy;
+
+                    objHocVi2.HocVi = objLL.HocViTienSy;
+                    objHocVi2.NamNhanBang = objLL.NamHocViTienSy;
+
+                    objHocVi3.HocVi = objLL.HocHam;
+                    objHocVi3.NamNhanBang = objLL.NamPhongHocHam;
                 }
 
-                //if (string.IsNullOrEmpty(query.HoTen))
-                //    query.HoTen = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.NgaySinh))
-                //    query.NgaySinh = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.Email))
-                //    query.Email = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.DiaChi))
-                //    query.DiaChi = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.Mobile))
-                //    query.Mobile = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.ChucVu))
-                //    query.ChucVu = "(LLKH chưa có thông tin)";
-                //if (string.IsNullOrEmpty(query.DiaChiCoQuan))
-                //    query.DiaChiCoQuan = "(LLKH chưa có thông tin)";
+                query.ListTrinhDoChuyenMon.Add(objHocVi1);
+                query.ListTrinhDoChuyenMon.Add(objHocVi2);
+                query.ListTrinhDoChuyenMon.Add(objHocVi3);
 
                 query.ListKinhNghiem = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_KinhNghiem>()
                 {
@@ -119,17 +100,6 @@ namespace BaseBusiness
                         
                     }
                 };
-                
-                if (query.ListTrinhDoChuyenMon.Count == 0)
-                {
-                    query.ListTrinhDoChuyenMon.Add(new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon
-                    {
-                        //HocVi = "(LLKH chưa có thông tin)",
-                        //NamNhanBang = "(LLKH chưa có thông tin)",
-                        HocVi = "",
-                        NamNhanBang = ""
-                    });
-                }
             }
             else
             {
