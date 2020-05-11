@@ -108,16 +108,6 @@ export class NCKHServiceProvider {
                     'imageStyle:full',
                     'imageStyle:side'
                 ]
-            },
-            simpleUpload: {
-                // The URL that the images are uploaded to.
-                uploadUrl: APIListBase.File.UploadImageCustom.url(),
-    
-                // Headers sent along with the XMLHttpRequest to the upload server.
-                headers: {
-                    'Authorization': this.commonService.getToken(),
-				    'withCredentials': true
-                }
             }
         }
     }
