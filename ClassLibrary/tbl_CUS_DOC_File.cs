@@ -42,11 +42,13 @@ namespace ClassLibrary
         public Nullable<System.DateTime> ApprovedDate { get; set; }
         public double FileSize { get; set; }
         public string FileVersion { get; set; }
+        public Nullable<int> IDDeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_File_Actitity> tbl_CUS_DOC_File_Actitity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_File_Permission> tbl_CUS_DOC_File_Permission { get; set; }
         public virtual tbl_PAR_Partner tbl_PAR_Partner { get; set; }
+        public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_FileInFolder> tbl_CUS_DOC_FileInFolder { get; set; }
     }
@@ -75,6 +77,7 @@ namespace DTOModel
 		public Nullable<System.DateTime> ApprovedDate { get; set; }
 		public double FileSize { get; set; }
 		public string FileVersion { get; set; }
+		public Nullable<int> IDDeTai { get; set; }
 	}
 }
 
@@ -115,7 +118,8 @@ namespace BaseBusiness
 				ApprovedBy = s.ApprovedBy,							
 				ApprovedDate = s.ApprovedDate,							
 				FileSize = s.FileSize,							
-				FileVersion = s.FileVersion,					
+				FileVersion = s.FileVersion,							
+				IDDeTai = s.IDDeTai,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -144,7 +148,8 @@ namespace BaseBusiness
 					ApprovedBy = dbResult.ApprovedBy,							
 					ApprovedDate = dbResult.ApprovedDate,							
 					FileSize = dbResult.FileSize,							
-					FileVersion = dbResult.FileVersion,
+					FileVersion = dbResult.FileVersion,							
+					IDDeTai = dbResult.IDDeTai,
 				};
 			}
 			else
@@ -297,6 +302,20 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FileVersion == keyword);
             }
 
+			//Query IDDeTai (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDDeTai"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDDeTai").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDDeTai));
+            }
+
 
 			return toDTO(query);
 
@@ -341,7 +360,8 @@ namespace BaseBusiness
 				dbitem.ApprovedBy = item.ApprovedBy;							
 				dbitem.ApprovedDate = item.ApprovedDate;							
 				dbitem.FileSize = item.FileSize;							
-				dbitem.FileVersion = item.FileVersion;                
+				dbitem.FileVersion = item.FileVersion;							
+				dbitem.IDDeTai = item.IDDeTai;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -381,7 +401,8 @@ namespace BaseBusiness
 				dbitem.ApprovedBy = item.ApprovedBy;							
 				dbitem.ApprovedDate = item.ApprovedDate;							
 				dbitem.FileSize = item.FileSize;							
-				dbitem.FileVersion = item.FileVersion;                
+				dbitem.FileVersion = item.FileVersion;							
+				dbitem.IDDeTai = item.IDDeTai;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

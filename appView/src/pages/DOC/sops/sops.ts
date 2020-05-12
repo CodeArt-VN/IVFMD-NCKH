@@ -43,6 +43,8 @@ export class SopsPage extends ListPage {
     canDeleteFolder = false;
     canDeleteFile = false;
 
+    isFolderOther = false;
+
     FormGroups = [];
     Modules = [];
     CurrentModule = "SOPs"; 
@@ -107,7 +109,14 @@ export class SopsPage extends ListPage {
 
         this.token = GlobalData.Token.access_token;
         this.apiDomain = appSetting.mainService.base;
+        this.checkRight();
+        super.preLoadData();
+        //init left tree
+        this.loadFolderTree(null);
 
+    }
+
+    checkRight() {
         this.canManageFolder = this.isUserCanUse('page-folder-modal');
         this.canManageFile = this.isUserCanUse('page-file-modal');
         this.canEditFile = this.isUserCanUse('func-document-editor');
@@ -118,11 +127,6 @@ export class SopsPage extends ListPage {
         this.canDownload = this.isUserCanUse('func-download');
         this.canDeleteFolder = this.isUserCanUse('func-folder-delete');
         this.canDeleteFile = this.isUserCanUse('func-file-delete');
-
-        super.preLoadData();
-        //init left tree
-        this.loadFolderTree(null);
-
     }
 
     loadData() {
@@ -139,7 +143,7 @@ export class SopsPage extends ListPage {
     loadedData() {
         let folders = [];
         this.folderViewList.forEach(i => {
-            folders.push({ ID: i.ID, Code: i.Code, Name: i.Name, Remark: i.Remark, Extension: 'folder', FileSize: '', Path: '', CreatedBy: i.CreatedBy, CreatedDate: i.CreatedDate, ModifiedBy: i.ModifiedBy, ModifiedDate: i.ModifiedDate });
+            folders.push({ ID: i.ID, Code: i.Code, Name: i.Name, Remark: i.Remark, Extension: 'folder', FileSize: '', Path: '', CreatedBy: i.CreatedBy, CreatedDate: i.CreatedDate, ModifiedBy: i.ModifiedBy, ModifiedDate: i.ModifiedDate, IDLinhVuc: i.IDLinhVuc, IDDeTai: i.IDDeTai });
         });
 
         folders = folders.concat(this.items);
@@ -279,10 +283,18 @@ export class SopsPage extends ListPage {
 
     editItem(item) {
         if (item.Extension == 'folder') {
+            if (item.IDLinhVuc > 0) {
+                this.toastMessage('Không thể sửa folder này!')
+                return;
+            }
             let myModal = this.modalCtrl.create(FolderModalPage, { item: item, 'id': item.ID, IDPartner: this.query.IDPartner });
             myModal.present();
         }
         else {
+            if (item.IDDeTai > 0) {
+                this.toastMessage('Không thể sửa file này!')
+                return;
+            }
             let myModal = this.modalCtrl.create(FileModalPage, { item: item, 'id': item.ID, IDPartner: this.query.IDPartner, canApproveDoc: this.canApproveDoc });
             myModal.present();
         }
@@ -316,6 +328,15 @@ export class SopsPage extends ListPage {
     }
 
     deleteItem(item) {
+        if (item.IDLinhVuc > 0) {
+            this.toastMessage('Không thể xóa folder này!')
+            return;
+        }
+        if (item.IDDeTai > 0) {
+            this.toastMessage('Không thể xóa file này!')
+            return;
+        }
+
         this.showActionMore = false;
         var count = this.countCheckedItems();
         let title = 'Xóa ' + count + ' dòng';
@@ -428,11 +449,19 @@ export class SopsPage extends ListPage {
         if (folder == null) {
             this.query.IDParent = null;
             this.query.IDFolder = null;
-
+            this.checkRight();
         }
         else {
             this.query.IDParent = folder.ID;
             this.query.IDFolder = folder.ID;
+            if (folder.IDLinhVuc > 0) {
+                this.canManageFolder = false;
+                this.canManageFile = false;
+                this.canEditFile = false;
+                this.canDeleteFolder = false;
+                this.canDeleteFile = false;
+                this.isFolderOther = false;
+            } else this.isFolderOther = true;
 
             let active = this.folderTree.find(d => d.ID == folder.ID);
             this.loadFolderTree(active);

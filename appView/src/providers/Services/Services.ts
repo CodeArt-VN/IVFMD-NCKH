@@ -316,6 +316,13 @@ export class CAT_KinhPhiProvider extends exService {
 }
 
 @Injectable()
+export class CAT_LinhVucProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_LinhVuc, SearchConfig.getSearchFields('CAT_LinhVuc'), commonService);
+    }
+}
+
+@Injectable()
 export class CAT_BangGiaKinhPhiProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.CAT_BangGiaKinhPhi, SearchConfig.getSearchFields('CAT_BangGiaKinhPhi'), commonService);

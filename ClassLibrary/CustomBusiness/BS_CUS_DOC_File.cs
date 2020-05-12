@@ -38,6 +38,10 @@
                 ApprovedDate = s.ApprovedDate,
                 FileSize = s.FileSize,
                 FileVersion = s.FileVersion,
+                IDDeTai = s.IDDeTai,
+                TenDeTai = s.IDDeTai > 0 ? s.tbl_PRO_DeTai.TenTiengViet : "",
+                CNDT = s.IDDeTai > 0 ? s.tbl_PRO_DeTai.tbl_CUS_HRM_STAFF_NhanSu1.Ho + " " + s.tbl_PRO_DeTai.tbl_CUS_HRM_STAFF_NhanSu1.Name : "",
+                NCVChinh = s.IDDeTai > 0 ? s.tbl_PRO_DeTai.tbl_CUS_HRM_STAFF_NhanSu.Ho + " " + s.tbl_PRO_DeTai.tbl_CUS_HRM_STAFF_NhanSu.Name : "",
             }).OrderBy(o => o.Sort);
         }
 

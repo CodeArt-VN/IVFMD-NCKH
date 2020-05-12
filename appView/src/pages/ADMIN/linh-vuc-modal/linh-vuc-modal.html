@@ -1,0 +1,72 @@
+<ion-header>
+  <button class="close-btn" ion-button clear icon-only large (click)="dismiss()">
+      <ion-icon name="close" color="ivf1"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formGroup">
+        <div padding></div>
+        <div class="c-control">
+            <label class="c-label" for="ParentID">
+                Thuộc lĩnh vực
+                <span *ngIf="!formGroup.controls.ParentID.valid && !formGroup.controls.ParentID.pending && (formGroup.controls.ParentID.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+
+            <select class="c-input c-dropdown" [(ngModel)]="item.ParentID" formControlName="ParentID" [attr.disabled]="isViewProfile ? '' : null">
+                <option [ngValue]="null">
+                    Root
+                </option>
+                <option *ngFor="let t of linhvucTree" [attr.disabled]="t.ID==item.ID ? '' : null" [value]="t.ID">
+                    {{'&nbsp;&nbsp;&nbsp;' + t.levels.join('&nbsp;&nbsp;&nbsp;')}} {{t.Name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Name">
+                Lĩnh vực
+                <span *ngIf="!formGroup.controls.Name.valid && !formGroup.controls.Name.pending && (formGroup.controls.Name.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Name" [(ngModel)]="item.Name" formControlName="Name" type="text">
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Note">
+                Ghi chú
+                <span *ngIf="!formGroup.controls.Note.valid && !formGroup.controls.Note.pending && (formGroup.controls.Note.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <textarea rows="3" class="c-input" id="Note" [(ngModel)]="item.Note" formControlName="Note" type="textarea"></textarea>
+
+        </div>
+
+        <div class="c-control">
+            <label class="c-label" for="Sort">
+                Thứ tự
+                <span *ngIf="!formGroup.controls.Sort.valid && !formGroup.controls.Sort.pending && (formGroup.controls.Sort.dirty || submitAttempt)"
+                      ion-text color="danger">(*)</span>
+            </label>
+            <input class="c-input" id="Sort" [(ngModel)]="item.Sort" formControlName="Sort" type="number">
+        </div>
+
+        <div class="c-control" *ngIf="item.ID==0">
+            <label class="c-label" for=""></label>
+            <button ion-button float-right (click)="saveChange()">
+                Lưu
+            </button>
+        </div>
+        <div class="c-control" *ngIf="item.ID!=0">
+            <label class="c-label" for=""></label>
+
+            <button ion-button float-right (click)="saveChange()" [disabled]="!formGroup.dirty">
+                Lưu
+            </button>
+            <button color="warning" ion-button float-right (click)="cancel()" [disabled]="!formGroup.dirty">
+                Hủy thay đổi
+            </button>
+        </div>
+    </form>
+</ion-content>

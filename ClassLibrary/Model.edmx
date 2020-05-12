@@ -50,6 +50,22 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="IsManual" Type="bit" />
         </EntityType>
+        <EntityType Name="tbl_CAT_LinhVuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_CAT_Nhom">
           <Key>
             <PropertyRef Name="ID" />
@@ -119,6 +135,7 @@
           <Property Name="ApprovedDate" Type="datetime2" Precision="7" />
           <Property Name="FileSize" Type="float" Nullable="false" />
           <Property Name="FileVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDDeTai" Type="int" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_File_Actitity">
           <Key>
@@ -189,6 +206,7 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IDLinhVuc" Type="int" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_Folder_Activity">
           <Key>
@@ -994,6 +1012,7 @@
           <Property Name="IsDisabledHRCO" Type="bit" />
           <Property Name="IsDisabledHDDD" Type="bit" />
           <Property Name="FileQuyetDinhNghiemThu" Type="nvarchar(max)" />
+          <Property Name="IDLinhVuc" Type="int" />
         </EntityType>
         <EntityType Name="tbl_PRO_DonXinDanhGiaDaoDuc">
           <Key>
@@ -2271,6 +2290,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc">
+          <End Role="tbl_CAT_LinhVuc" Type="Self.tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Role="tbl_CAT_LinhVuc1" Type="Self.tbl_CAT_LinhVuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_LinhVuc1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
           <End Role="tbl_PAR_Partner" Type="Self.tbl_PAR_Partner" Multiplicity="0..1" />
           <End Role="tbl_CUS_Version" Type="Self.tbl_CUS_Version" Multiplicity="*" />
@@ -2331,6 +2362,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_CUS_DOC_File_tbl_PRO_DeTai">
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="0..1" />
+          <End Role="tbl_CUS_DOC_File" Type="Self.tbl_CUS_DOC_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CUS_DOC_File">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File">
           <End Role="tbl_CUS_DOC_File" Type="Self.tbl_CUS_DOC_File" Multiplicity="0..1" />
           <End Role="tbl_CUS_DOC_FileInFolder" Type="Self.tbl_CUS_DOC_FileInFolder" Multiplicity="*" />
@@ -2388,6 +2431,18 @@
             </Principal>
             <Dependent Role="tbl_CUS_DOC_Folder_Permission">
               <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc">
+          <End Role="tbl_CAT_LinhVuc" Type="Self.tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Role="tbl_CUS_DOC_Folder" Type="Self.tbl_CUS_DOC_Folder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CUS_DOC_Folder">
+              <PropertyRef Name="IDLinhVuc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2652,6 +2707,18 @@
             </Principal>
             <Dependent Role="tbl_PRO_BenhNhan">
               <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc">
+          <End Role="tbl_CAT_LinhVuc" Type="Self.tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_DeTai">
+              <PropertyRef Name="IDLinhVuc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3199,6 +3266,7 @@
           <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="Self.tbl_CAT_BangGiaKinhPhi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="Self.tbl_CAT_HRCOConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_KinhPhi" EntityType="Self.tbl_CAT_KinhPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CAT_LinhVuc" EntityType="Self.tbl_CAT_LinhVuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="Self.tbl_CAT_Nhom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Site" EntityType="Self.tbl_CAT_Site" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_CAT_Tags" EntityType="Self.tbl_CAT_Tags" Schema="dbo" store:Type="Tables" />
@@ -3353,6 +3421,10 @@
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_CAT_HRCOConfig" EntitySet="tbl_CAT_HRCOConfig" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc" Association="Self.FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_CAT_LinhVuc1" EntitySet="tbl_CAT_LinhVuc" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang" Association="Self.FK_tbl_CUS_COM_LIST_Version_tbl_PAR_KhachHang">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
             <End Role="tbl_CUS_Version" EntitySet="tbl_CUS_Version" />
@@ -3371,6 +3443,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_File_tbl_PAR_Partner" Association="Self.FK_tbl_CUS_DOC_File_tbl_PAR_Partner">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
+            <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" Association="Self.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" Association="Self.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File">
@@ -3392,6 +3468,10 @@
           <AssociationSet Name="FK_tbl_CUS_DOC_Folder_Permission_tbl_PAR_Role" Association="Self.FK_tbl_CUS_DOC_Folder_Permission_tbl_PAR_Role">
             <End Role="tbl_CUS_SYS_Role" EntitySet="tbl_CUS_SYS_Role" />
             <End Role="tbl_CUS_DOC_Folder_Permission" EntitySet="tbl_CUS_DOC_Folder_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc" Association="Self.FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_CUS_DOC_Folder" EntitySet="tbl_CUS_DOC_Folder" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_Folder_tbl_CUS_DOC_Folder" Association="Self.FK_tbl_CUS_DOC_Folder_tbl_CUS_DOC_Folder">
             <End Role="tbl_CUS_DOC_Folder" EntitySet="tbl_CUS_DOC_Folder" />
@@ -3480,6 +3560,10 @@
           <AssociationSet Name="FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_BenhNhan_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_BenhNhan" EntitySet="tbl_PRO_BenhNhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc" Association="Self.FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
@@ -3670,6 +3754,7 @@
           <EntitySet Name="tbl_CAT_BangGiaKinhPhi" EntityType="AppModel.tbl_CAT_BangGiaKinhPhi" />
           <EntitySet Name="tbl_CAT_HRCOConfig" EntityType="AppModel.tbl_CAT_HRCOConfig" />
           <EntitySet Name="tbl_CAT_KinhPhi" EntityType="AppModel.tbl_CAT_KinhPhi" />
+          <EntitySet Name="tbl_CAT_LinhVuc" EntityType="AppModel.tbl_CAT_LinhVuc" />
           <EntitySet Name="tbl_CAT_Nhom" EntityType="AppModel.tbl_CAT_Nhom" />
           <EntitySet Name="tbl_CAT_Site" EntityType="AppModel.tbl_CAT_Site" />
           <EntitySet Name="tbl_CAT_Tags" EntityType="AppModel.tbl_CAT_Tags" />
@@ -3748,6 +3833,18 @@
             <End Role="tbl_CAT_KinhPhi" EntitySet="tbl_CAT_KinhPhi" />
             <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc" Association="AppModel.FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_CAT_LinhVuc1" EntitySet="tbl_CAT_LinhVuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc" Association="AppModel.FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_CUS_DOC_Folder" EntitySet="tbl_CUS_DOC_Folder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc" Association="AppModel.FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc">
+            <End Role="tbl_CAT_LinhVuc" EntitySet="tbl_CAT_LinhVuc" />
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom" Association="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom">
             <End Role="tbl_CAT_Nhom" EntitySet="tbl_CAT_Nhom" />
             <End Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" EntitySet="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
@@ -3774,6 +3871,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_File_tbl_PAR_Partner" Association="AppModel.FK_tbl_CUS_DOC_File_tbl_PAR_Partner">
             <End Role="tbl_PAR_Partner" EntitySet="tbl_PAR_Partner" />
+            <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" Association="AppModel.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" Association="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File">
@@ -4182,6 +4283,26 @@
           <NavigationProperty Name="tbl_CAT_BangGiaKinhPhi" Relationship="AppModel.FK_tbl_CAT_BangGiaKinhPhi_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_CAT_BangGiaKinhPhi" />
           <NavigationProperty Name="tbl_PRO_BaoCaoNangSuatKhoaHoc" Relationship="AppModel.FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_KinhPhi" FromRole="tbl_CAT_KinhPhi" ToRole="tbl_PRO_BaoCaoNangSuatKhoaHoc" />
         </EntityType>
+        <EntityType Name="tbl_CAT_LinhVuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CAT_LinhVuc1" Relationship="AppModel.FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc" FromRole="tbl_CAT_LinhVuc" ToRole="tbl_CAT_LinhVuc1" />
+          <NavigationProperty Name="tbl_CAT_LinhVuc2" Relationship="AppModel.FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc" FromRole="tbl_CAT_LinhVuc1" ToRole="tbl_CAT_LinhVuc" />
+          <NavigationProperty Name="tbl_CUS_DOC_Folder" Relationship="AppModel.FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc" FromRole="tbl_CAT_LinhVuc" ToRole="tbl_CUS_DOC_Folder" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc" FromRole="tbl_CAT_LinhVuc" ToRole="tbl_PRO_DeTai" />
+        </EntityType>
         <EntityType Name="tbl_CAT_Nhom">
           <Key>
             <PropertyRef Name="ID" />
@@ -4255,9 +4376,11 @@
           <Property Name="ApprovedDate" Type="DateTime" Precision="7" />
           <Property Name="FileSize" Type="Double" Nullable="false" />
           <Property Name="FileVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDDeTai" Type="Int32" />
           <NavigationProperty Name="tbl_CUS_DOC_File_Actitity" Relationship="AppModel.FK_tbl_CUS_DOC_File_Actitity_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_CUS_DOC_File_Actitity" />
           <NavigationProperty Name="tbl_CUS_DOC_File_Permission" Relationship="AppModel.FK_tbl_CUS_DOC_File_Permission_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_CUS_DOC_File_Permission" />
           <NavigationProperty Name="tbl_PAR_Partner" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PAR_Partner" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PAR_Partner" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_CUS_DOC_FileInFolder" Relationship="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_CUS_DOC_FileInFolder" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_File_Actitity">
@@ -4334,6 +4457,8 @@
           <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IDLinhVuc" Type="Int32" />
+          <NavigationProperty Name="tbl_CAT_LinhVuc" Relationship="AppModel.FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc" FromRole="tbl_CUS_DOC_Folder" ToRole="tbl_CAT_LinhVuc" />
           <NavigationProperty Name="tbl_CUS_DOC_FileInFolder" Relationship="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_Folder" FromRole="tbl_CUS_DOC_Folder" ToRole="tbl_CUS_DOC_FileInFolder" />
           <NavigationProperty Name="tbl_CUS_DOC_Folder_Activity" Relationship="AppModel.FK_tbl_CUS_DOC_Folder_Activity_tbl_CUS_DOC_Folder" FromRole="tbl_CUS_DOC_Folder" ToRole="tbl_CUS_DOC_Folder_Activity" />
           <NavigationProperty Name="tbl_CUS_DOC_Folder_Permission" Relationship="AppModel.FK_tbl_CUS_DOC_Folder_Permission_tbl_CUS_DOC_Folder" FromRole="tbl_CUS_DOC_Folder" ToRole="tbl_CUS_DOC_Folder_Permission" />
@@ -5136,8 +5261,8 @@
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGian_Thang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGian_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
           <Property Name="FileBaoCaoTongHop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BaoCaoNghiemThuDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_BaoCaoNghiemThuDeTai" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoTienDoNghienCuu">
           <Key>
@@ -5217,6 +5342,9 @@
           <Property Name="IsDisabledHRCO" Type="Boolean" />
           <Property Name="IsDisabledHDDD" Type="Boolean" />
           <Property Name="FileQuyetDinhNghiemThu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDLinhVuc" Type="Int32" />
+          <NavigationProperty Name="tbl_CAT_LinhVuc" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc" FromRole="tbl_PRO_DeTai" ToRole="tbl_CAT_LinhVuc" />
+          <NavigationProperty Name="tbl_CUS_DOC_File" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_DOC_File" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_CUS_HRM_STAFF_NhanSu1" Relationship="AppModel.FK_tbl_PRO_DeTai_tbl_CUS_HRM_STAFF_NhanSu_ChuNhiem" FromRole="tbl_PRO_DeTai" ToRole="tbl_CUS_HRM_STAFF_NhanSu" />
           <NavigationProperty Name="tbl_PRO_AE" Relationship="AppModel.FK_tbl_PRO_AE_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_AE" />
@@ -6369,6 +6497,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_CAT_LinhVuc_tbl_CAT_LinhVuc">
+          <End Type="AppModel.tbl_CAT_LinhVuc" Role="tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_CAT_LinhVuc" Role="tbl_CAT_LinhVuc1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CAT_LinhVuc1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CUS_DOC_Folder_tbl_CAT_LinhVuc">
+          <End Type="AppModel.tbl_CAT_LinhVuc" Role="tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_CUS_DOC_Folder" Role="tbl_CUS_DOC_Folder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CUS_DOC_Folder">
+              <PropertyRef Name="IDLinhVuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_DeTai_tbl_CAT_LinhVuc">
+          <End Type="AppModel.tbl_CAT_LinhVuc" Role="tbl_CAT_LinhVuc" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CAT_LinhVuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_DeTai">
+              <PropertyRef Name="IDLinhVuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_BaoCaoNangSuatKhoaHoc_tbl_CAT_Nhom">
           <End Type="AppModel.tbl_CAT_Nhom" Role="tbl_CAT_Nhom" Multiplicity="0..1" />
           <End Type="AppModel.tbl_PRO_BaoCaoNangSuatKhoaHoc" Role="tbl_PRO_BaoCaoNangSuatKhoaHoc" Multiplicity="*" />
@@ -6450,6 +6614,18 @@
             </Principal>
             <Dependent Role="tbl_CUS_DOC_File">
               <PropertyRef Name="IDPartner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CUS_DOC_File_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="0..1" />
+          <End Type="AppModel.tbl_CUS_DOC_File" Role="tbl_CUS_DOC_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CUS_DOC_File">
+              <PropertyRef Name="IDDeTai" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7575,6 +7751,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CAT_LinhVuc">
+            <EntityTypeMapping TypeName="AppModel.tbl_CAT_LinhVuc">
+              <MappingFragment StoreEntitySet="tbl_CAT_LinhVuc">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_CAT_Nhom">
             <EntityTypeMapping TypeName="AppModel.tbl_CAT_Nhom">
               <MappingFragment StoreEntitySet="tbl_CAT_Nhom">
@@ -7627,6 +7820,7 @@
           <EntitySetMapping Name="tbl_CUS_DOC_File">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_DOC_File">
               <MappingFragment StoreEntitySet="tbl_CUS_DOC_File">
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="FileVersion" ColumnName="FileVersion" />
                 <ScalarProperty Name="FileSize" ColumnName="FileSize" />
                 <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
@@ -7707,6 +7901,7 @@
           <EntitySetMapping Name="tbl_CUS_DOC_Folder">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_DOC_Folder">
               <MappingFragment StoreEntitySet="tbl_CUS_DOC_Folder">
+                <ScalarProperty Name="IDLinhVuc" ColumnName="IDLinhVuc" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -8520,6 +8715,7 @@
           <EntitySetMapping Name="tbl_PRO_DeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_DeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_DeTai">
+                <ScalarProperty Name="IDLinhVuc" ColumnName="IDLinhVuc" />
                 <ScalarProperty Name="FileQuyetDinhNghiemThu" ColumnName="FileQuyetDinhNghiemThu" />
                 <ScalarProperty Name="IsDisabledHDDD" ColumnName="IsDisabledHDDD" />
                 <ScalarProperty Name="IsDisabledHRCO" ColumnName="IsDisabledHRCO" />

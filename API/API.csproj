@@ -329,6 +329,7 @@
     <Compile Include="Controllers\APP\FormController.cs" />
     <Compile Include="Controllers\CAT\HRCOConfigController.cs" />
     <Compile Include="Controllers\CAT\BangGiaKinhPhiController.cs" />
+    <Compile Include="Controllers\CAT\LinhVucController.cs" />
     <Compile Include="Controllers\CAT\KinhPhiController.cs" />
     <Compile Include="Controllers\CAT\ThietLapTemplate.cs" />
     <Compile Include="Controllers\CAT\ThietLapThoiGianBaoCaoTDNCController.cs" />

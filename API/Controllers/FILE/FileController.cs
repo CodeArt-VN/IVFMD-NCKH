@@ -186,9 +186,8 @@ namespace API.Controllers.DOC
 
                 if (id == 0)
                 {
-                    item.Name = fileName;
+                    item.Name = oldName;
                     item.Code = uploadPath + "/" + fileName;
-                    item.IsDeleted = true;
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
                     item.FileSize = new System.IO.FileInfo(strFilePath).Length;
@@ -198,7 +197,7 @@ namespace API.Controllers.DOC
                 else
                 {
                     item.ID = id;
-                    item.Name = fileName;
+                    item.Name = oldName;
                     item.Code = uploadPath + "/" + fileName;
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");

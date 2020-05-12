@@ -894,7 +894,29 @@ export var APIListBase = {
             method: "DELETE",
             url: function (id) { return appSetting.apiDomain("CAT/KinhPhi/") + id }
         }
+    },
 
+    CAT_LinhVuc: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("CAT/LinhVuc") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("CAT/LinhVuc/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("CAT/LinhVuc/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/LinhVuc") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("CAT/LinhVuc/") + id }
+        }
     },
 
     CAT_BangGiaKinhPhi: {

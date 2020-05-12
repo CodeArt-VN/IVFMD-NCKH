@@ -67,5 +67,40 @@
             
         }
 
+        public static string delete_CUS_DOC_FolderCustom(AppEntities db, int ID, string Username)
+        {
+            string result = string.Empty;
+            var dbitem = db.tbl_CUS_DOC_Folder.Find(ID);
+            if (dbitem != null)
+            {
+
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+                dbitem.IsDeleted = true;
+
+                if (dbitem.IDLinhVuc > 0)
+                    result = "Không được xóa thư mục Lĩnh vực";
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_CUS_DOC_Folder", dbitem.ModifiedDate, Username);
+
+
+
+
+                    
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("delete_CUS_DOC_Folder", e);
+                    result = e.InnerException.Message;
+                }
+            }
+            return result;
+        }
+
+
     }
 }

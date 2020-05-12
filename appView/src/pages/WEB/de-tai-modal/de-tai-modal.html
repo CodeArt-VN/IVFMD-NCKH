@@ -47,20 +47,41 @@
                     </select>
                 </div>
 
+                <div class="c-control">
+                    <label class="c-label" for="IDLinhVuc">
+                        Lĩnh vực
+                        <span *ngIf="!formGroup.controls.IDLinhVuc.valid && !formGroup.controls.IDLinhVuc.pending && (formGroup.controls.IDLinhVuc.dirty || submitAttempt)"
+                              ion-text color="danger">(*)</span>
+                    </label> 
+
+                    <select class="c-input c-dropdown" [(ngModel)]="item.IDLinhVuc" formControlName="IDLinhVuc" [disabled]="true">
+                        <option [ngValue]="null" [attr.disabled]="(item.ID > 0 && itemRoot.IDLinhVuc > 0) ? '' : null">
+                            
+                        </option>
+                        <option *ngFor="let t of linhvucTree" [attr.disabled]="t.ID==item.ID || (item.ID > 0 && itemRoot.IDLinhVuc > 0) ? '' : null" [value]="t.ID">
+                            {{'&nbsp;&nbsp;&nbsp;' + t.levels.join('&nbsp;&nbsp;&nbsp;')}} {{t.Name}}
+                        </option>
+                    </select>
+                </div>
+
                 <!--<div class="c-control">
-                    <label class="c-label" for="Tags">
-                        Tags
-                    </label>
-                    <mat-form-field>
-                        <mat-select [(ngModel)]="item.Tags" [compareWith]="comparer" formControlName="Tags" multiple>
-                            <mat-option *ngFor="let tag of lstTag" [value]="tag">{{tag.TenTag}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>-->
+        <label class="c-label" for="Tags">
+            Tags
+        </label>
+        <mat-form-field>
+            <mat-select [(ngModel)]="item.Tags" [compareWith]="comparer" formControlName="Tags" multiple>
+                <mat-option *ngFor="let tag of lstTag" [value]="tag">{{tag.TenTag}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>-->
 
                 <div class="c-control">
                     <label class="c-label" style="color: red;font-weight: normal;font-style: italic;">
-                        Lưu ý: "Vui lòng hoàn tất Sơ yếu lý lịch và Lý lịch khoa học của NCV chính và CNĐT trước khi tạo đề tài NCKH"
+                        Lưu ý: 
+                        <br />
+                        - "Vui lòng hoàn tất Sơ yếu lý lịch và Lý lịch khoa học của NCV chính và CNĐT trước khi tạo đề tài NCKH"
+                        <br />
+                        - "Lĩnh vực chỉ được chọn 1 lần duy nhất, không được phép thay đổi"
                     </label>
                 </div>
 

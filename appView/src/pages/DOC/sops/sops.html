@@ -111,7 +111,7 @@
                 <a [class]="folderid == null ? 'active': ''" (click)="showFolder(null)">
                     <ion-icon name="fa-database"></ion-icon>
                     <span>
-                        Team Resources
+                        Thư viện
                     </span>
                 </a>
                 <div class="group">
@@ -134,8 +134,8 @@
         <ion-col class="doc-main">
 
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'"
-                [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items"
-                [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'>
+                           [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items"
+                           [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'>
                 <ngx-datatable-column name="Tên" prop="Name" [width]="200" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
 
@@ -143,27 +143,23 @@
                             <ion-icon ngClass="{{i.FileTypeIcon}}" [name]="i.FileTypeIcon"></ion-icon>
                             {{i.Name}}
                             <ion-icon [attr.tooltip]="i.ApprovedBy =='Chờ duyệt' ? 'Đã gửi duyệt': i.ApprovedBy =='Không được duyệt'? 'Không được duyệt' : 'Nháp'"
-                                *ngIf="!i.IsApproved && i.FileTypeIcon !='ios-folder'" [color]="i.ApprovedBy =='Chờ duyệt' ? 'success': i.ApprovedBy =='Không được duyệt'? 'danger' : 'warning'"
-                                [name]="i.ApprovedBy =='Không được duyệt'?  'alert':'ios-information-circle-outline'"></ion-icon>
+                                      *ngIf="!i.IsApproved && i.FileTypeIcon !='ios-folder'" [color]="i.ApprovedBy =='Chờ duyệt' ? 'success': i.ApprovedBy =='Không được duyệt'? 'danger' : 'warning'"
+                                      [name]="i.ApprovedBy =='Không được duyệt'?  'alert':'ios-information-circle-outline'"></ion-icon>
                         </a>
 
                     </ng-template>
                 </ngx-datatable-column>
 
-                
-                <ngx-datatable-column name="Version" prop="FileVersion" [width]="70" [maxWidth]="70" headerClass="text-right" cellClass="text-right"></ngx-datatable-column>
-                <ngx-datatable-column name="Người tạo" prop="CreatedBy" [width]="150" [maxWidth]="200" headerClass="text-right" cellClass="text-right"></ngx-datatable-column>
-                <ngx-datatable-column name="Ngày cập nhật" prop="ModifiedDate" [width]="145" [maxWidth]="145" headerClass="text-right" cellClass="text-right">
+                <ngx-datatable-column name="Đề tài" prop="TenDeTai" [width]="150" [maxWidth]="200" *ngIf="!isFolderOther"></ngx-datatable-column>
+                <ngx-datatable-column name="Chủ nhiệm đề tài" prop="CNDT" [width]="150" [maxWidth]="200" *ngIf="!isFolderOther"></ngx-datatable-column>
+                <ngx-datatable-column name="NCV chính" prop="NCVChinh" [width]="150" [maxWidth]="200" *ngIf="!isFolderOther"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Người tạo" prop="CreatedBy" [width]="150" [maxWidth]="200" ></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày cập nhật" prop="ModifiedDate" [width]="145" [maxWidth]="145" >
                     <ng-template let-i="row" ngx-datatable-cell-template>
                         <span>{{i.ModifiedDateText}}</span>
                     </ng-template>
                 </ngx-datatable-column>
-                <!-- <ngx-datatable-column name="File size" prop="FileSize" [width]="110" [maxWidth]="110" headerClass="text-right" cellClass="text-right">
-                    <ng-template let-i="row" ngx-datatable-cell-template>
-                        <span>{{i.FileSizeText}}</span>
-                    </ng-template>
-                </ngx-datatable-column> -->
-
             </ngx-datatable>
 
         </ion-col>

@@ -215,7 +215,48 @@ namespace BaseBusiness
                 dbitem.ModifiedDate = DateTime.Now;
             }
 
+            if (!string.IsNullOrEmpty(dbitem.BaiFulltext))
+            {
+                var oldFile = db.tbl_CUS_DOC_File.FirstOrDefault(c => c.Path == dbitem.BaiFulltext);
+                if (oldFile != null)
+                {
+                    oldFile.IsDeleted = true;
+                    var fileInFolder = db.tbl_CUS_DOC_FileInFolder.FirstOrDefault(c => c.IDFile == oldFile.ID && c.IsDeleted == false);
+                    if (fileInFolder != null)
+                        fileInFolder.IsDeleted = true;
+                }
+            }
+
             dbitem.BaiFulltext = path;
+
+            var file = db.tbl_CUS_DOC_File.FirstOrDefault(c => c.Path == path);
+            if (file != null)
+            {
+                file.IDDeTai = ID;
+                file.IsApproved = true;
+                file.IsDeleted = false;
+                var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == ID);
+                if (detai.IDLinhVuc > 0)
+                {
+                    var folder = db.tbl_CUS_DOC_Folder.FirstOrDefault(c => c.IDLinhVuc == detai.IDLinhVuc);
+                    if (folder != null)
+                    {
+                        var fileInFolder = db.tbl_CUS_DOC_FileInFolder.FirstOrDefault(c => c.IDFile == file.ID && c.IDFolder == folder.ID && c.IsDeleted == false);
+                        if (fileInFolder == null)
+                        {
+                            fileInFolder = new tbl_CUS_DOC_FileInFolder();
+                            fileInFolder.CreatedBy = Username;
+                            fileInFolder.CreatedDate = DateTime.Now;
+                            fileInFolder.ModifiedBy = Username;
+                            fileInFolder.ModifiedDate = DateTime.Now;
+                            fileInFolder.IDFile = file.ID;
+                            fileInFolder.IDFolder = folder.ID;
+                            fileInFolder.IDPartner = 1;
+                            db.tbl_CUS_DOC_FileInFolder.Add(fileInFolder);
+                        }
+                    }
+                }
+            }
 
             try
             {

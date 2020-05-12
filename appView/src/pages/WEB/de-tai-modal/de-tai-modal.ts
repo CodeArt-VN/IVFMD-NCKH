@@ -3,7 +3,7 @@ import { ViewController, IonicPage, NavController, NavParams, Events, LoadingCon
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable'
-import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider, CAT_TagsProvider } from '../../../providers/Services/Services';
+import { PRO_DeTaiProvider, HRM_STAFF_NhanSuProvider, CAT_TagsProvider, CAT_LinhVucProvider } from '../../../providers/Services/Services';
 import { Sys_VarProvider, PRO_NCVKhacCustomProvider, HRM_STAFF_NhanSuCustomProvider } from '../../../providers/Services/CustomService';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
 import { NcvKhacModalPage } from '../ncv-khac-modal/ncv-khac-modal';
@@ -24,6 +24,7 @@ interface obj {
 })
 export class DeTaiModalPage extends DetailPage {
     myDatePicker: any = {};
+    itemRoot: any = {};
     tab = '1';
     staffs: any[] = [];
     typeOfTopics = [];
@@ -34,6 +35,8 @@ export class DeTaiModalPage extends DetailPage {
     lstNCVKhac: any[] = [];
     lstNCVSelected: any[] = [];
     queryNCV: any = {};
+    linhvucList: any = [];
+    linhvucTree: any = [];
     @ViewChild(DatatableComponent) table: DatatableComponent;
     constructor(
         public currentProvider: PRO_DeTaiProvider,
@@ -41,6 +44,7 @@ export class DeTaiModalPage extends DetailPage {
         public sysVarProvider: Sys_VarProvider,
         public ncvKhacProvider: PRO_NCVKhacCustomProvider,
         public tagProvider: CAT_TagsProvider,
+        public linhvucProvider: CAT_LinhVucProvider,
         public viewCtrl: ViewController,
         public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
@@ -63,7 +67,8 @@ export class DeTaiModalPage extends DetailPage {
             GhiChu: [''],
             IDChuNhiem: ['', Validators.compose([Validators.required])],
             myDate: [Date],
-            Tags: ['']
+            Tags: [''],
+            IDLinhVuc: ['']
         });
     }
 
@@ -78,19 +83,40 @@ export class DeTaiModalPage extends DetailPage {
             this.sysVarProvider.getByTypeOfVar(1),
             this.ncvKhacProvider.getByDeTai(this.id),
             this.tagProvider.read(),
+            this.linhvucProvider.read()
         ])
             .then(values => {
                 this.staffs = values[0]['data'];
                 this.typeOfTopics = values[1]['data'];
                 this.lstNCVKhac = [...values[2]['data']];
                 this.lstTag = [...values[3]['data']];
+                this.linhvucList = values[4]['data'];
+                this.linhvucTree = [];
+                this.buildTree(null);
                 super.preLoadData();
             })
+    }
+
+    buildTree(item) {
+        let idp = item == null ? null : item.ID;
+        let childrent = this.linhvucList.filter(d => d.ParentID == idp && d.ID != this.id);
+        let level = (item && item.level >= 0) ? item.level: 0;
+
+        let index = this.linhvucTree.findIndex(d => d.ID == idp)
+        this.linhvucTree.splice(index + 1, 0, ...childrent);
+
+        childrent.forEach(i => {
+            i.levels = Array(level).fill('');
+            i.level = level;
+            this.buildTree(i);
+        });
     }
 
     loadedData() {
         if (this.item.ID == 0)
             this.item.Tags = [];
+
+        this.itemRoot.IDLinhVuc = this.item.IDLinhVuc;  
     }
 
     dismiss() {

@@ -48,6 +48,7 @@ namespace BaseBusiness
                 dbitem.IDPhanLoaiDeTai = -(int)SYSVarType.PhanLoaiDeTai_NghienCuu;
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
+                dbitem.IDLinhVuc = item.IDLinhVuc;
                 db.tbl_PRO_DeTai.Add(dbitem);
 
                 //Tạo mới 
@@ -142,7 +143,8 @@ namespace BaseBusiness
                 dbitem.MaSoProtocalID = item.MaSoProtocalID;
                 dbitem.IDHinhThucXetDuyet = item.IDHinhThucXetDuyet;
                 dbitem.IDTinhTrangNghienCuu = item.IDTinhTrangNghienCuu;
-
+                if (dbitem.IDLinhVuc == null)
+                    dbitem.IDLinhVuc = item.IDLinhVuc;
                 dbitem.ModifiedBy = Username;
                 dbitem.ModifiedDate = DateTime.Now;
 
@@ -245,6 +247,8 @@ namespace BaseBusiness
                 FileChapThuan = s.FileChapThuan,
                 IsDisabledHDDD = s.IsDisabledHDDD ?? false,
                 IsDisabledHRCO = s.IsDisabledHRCO ?? false,
+                IDLinhVuc = s.IDLinhVuc,
+                LinhVuc = s.IDLinhVuc > 0 ? s.tbl_CAT_LinhVuc.Name : ""
             }).FirstOrDefault();
 
             if (query != null)
@@ -1296,7 +1300,9 @@ namespace BaseBusiness
                 MaSoHDDD = s.MaSoHDDD,
                 MaSoProtocalID = s.MaSoProtocalID,
                 IDHinhThucXetDuyet = s.IDHinhThucXetDuyet,
-                IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu
+                IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
+                IDLinhVuc = s.IDLinhVuc,
+                LinhVuc = s.IDLinhVuc > 0 ? s.tbl_CAT_LinhVuc.Name : ""
         });
 
         }

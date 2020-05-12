@@ -94,12 +94,15 @@ namespace API.Controllers.DOC
                 return NotFound();
             }
 
-            bool result = BS_CUS_DOC_Folder.delete_CUS_DOC_Folder(db, id, Username); 
+            string result = BS_CUS_DOC_Folder.delete_CUS_DOC_FolderCustom(db, id, Username); 
 
-			if(result){
+			if(string.IsNullOrEmpty(result)){
 				return StatusCode(HttpStatusCode.NoContent);
-			}
-				return Conflict();
+            }
+            else
+            {
+                return BadRequest(result);
+            }
 
         }
 

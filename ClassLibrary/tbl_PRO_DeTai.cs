@@ -18,6 +18,7 @@ namespace ClassLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_PRO_DeTai()
         {
+            this.tbl_CUS_DOC_File = new HashSet<tbl_CUS_DOC_File>();
             this.tbl_PRO_AE = new HashSet<tbl_PRO_AE>();
             this.tbl_PRO_BangKhaiNhanSu = new HashSet<tbl_PRO_BangKhaiNhanSu>();
             this.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD = new HashSet<tbl_PRO_BangKiemLuaChonQuyTrinhXXDD>();
@@ -71,6 +72,10 @@ namespace ClassLibrary
         public Nullable<bool> IsDisabledHRCO { get; set; }
         public Nullable<bool> IsDisabledHDDD { get; set; }
         public string FileQuyetDinhNghiemThu { get; set; }
+        public Nullable<int> IDLinhVuc { get; set; }
+        public virtual tbl_CAT_LinhVuc tbl_CAT_LinhVuc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_CUS_DOC_File> tbl_CUS_DOC_File { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu { get; set; }
         public virtual tbl_CUS_HRM_STAFF_NhanSu tbl_CUS_HRM_STAFF_NhanSu1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -158,6 +163,7 @@ namespace DTOModel
 		public Nullable<bool> IsDisabledHRCO { get; set; }
 		public Nullable<bool> IsDisabledHDDD { get; set; }
 		public string FileQuyetDinhNghiemThu { get; set; }
+		public Nullable<int> IDLinhVuc { get; set; }
 	}
 }
 
@@ -210,7 +216,8 @@ namespace BaseBusiness
 				FileChapThuan = s.FileChapThuan,							
 				IsDisabledHRCO = s.IsDisabledHRCO,							
 				IsDisabledHDDD = s.IsDisabledHDDD,							
-				FileQuyetDinhNghiemThu = s.FileQuyetDinhNghiemThu,					
+				FileQuyetDinhNghiemThu = s.FileQuyetDinhNghiemThu,							
+				IDLinhVuc = s.IDLinhVuc,					
 			});
                               
         }
@@ -251,7 +258,8 @@ namespace BaseBusiness
 					FileChapThuan = dbResult.FileChapThuan,							
 					IsDisabledHRCO = dbResult.IsDisabledHRCO,							
 					IsDisabledHDDD = dbResult.IsDisabledHDDD,							
-					FileQuyetDinhNghiemThu = dbResult.FileQuyetDinhNghiemThu,
+					FileQuyetDinhNghiemThu = dbResult.FileQuyetDinhNghiemThu,							
+					IDLinhVuc = dbResult.IDLinhVuc,
 				};
 			}
 			else
@@ -539,6 +547,20 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FileQuyetDinhNghiemThu == keyword);
             }
 
+			//Query IDLinhVuc (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDLinhVuc"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDLinhVuc").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDLinhVuc));
+            }
+
 
 			return toDTO(query);
 
@@ -586,7 +608,8 @@ namespace BaseBusiness
 				dbitem.FileChapThuan = item.FileChapThuan;							
 				dbitem.IsDisabledHRCO = item.IsDisabledHRCO;							
 				dbitem.IsDisabledHDDD = item.IsDisabledHDDD;							
-				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;                
+				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;							
+				dbitem.IDLinhVuc = item.IDLinhVuc;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -638,7 +661,8 @@ namespace BaseBusiness
 				dbitem.FileChapThuan = item.FileChapThuan;							
 				dbitem.IsDisabledHRCO = item.IsDisabledHRCO;							
 				dbitem.IsDisabledHDDD = item.IsDisabledHDDD;							
-				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;                
+				dbitem.FileQuyetDinhNghiemThu = item.FileQuyetDinhNghiemThu;							
+				dbitem.IDLinhVuc = item.IDLinhVuc;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

@@ -9,6 +9,7 @@ namespace DTOModel
     using System;
     public partial class DTO_PRO_DeTai
     {
+        public string LinhVuc { get; set; }
         public string TrangThai_HDDD { get; set; }
         public string TrangThai_HDKH { get; set; }
         public string TrangThai_HRCO { get; set; }

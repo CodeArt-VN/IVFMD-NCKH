@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomBusiness\BS_CAT_LinhVuc.cs" />
     <Compile Include="CustomBusiness\BS_HelperReference.cs" />
     <Compile Include="CustomBusiness\BS_CUS_DOC_File.cs" />
     <Compile Include="CustomBusiness\BS_CUS_DOC_Folder.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="CustomBusiness\HelperCopy.cs" />
     <Compile Include="CustomBusiness\OrderedQueryable.cs" />
     <Compile Include="CustomDTO\DTO_APP_Form.cs" />
+    <Compile Include="CustomDTO\DTO_CAT_LinhVuc.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File.cs" />
     <Compile Include="CustomDTO\DTO_CUS_DOC_File_Actitity.cs" />
     <Compile Include="CustomDTO\DTO_CUS_HRM_STAFF_NhanSu_HOSREM.cs" />
@@ -151,6 +153,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CAT_KinhPhi.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CAT_LinhVuc.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CAT_Nhom.cs">

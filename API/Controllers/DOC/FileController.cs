@@ -166,7 +166,7 @@ namespace API.Controllers.DOC
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            if (id != tbl_CUS_DOC_File.ID || PartnerID != tbl_CUS_DOC_File.IDPartner)
+            if (id != tbl_CUS_DOC_File.ID)
                 return BadRequest();
 
             //Get list staff with email can approve document
@@ -454,6 +454,7 @@ namespace API.Controllers.DOC
                 if (id == 0)
                 {
                     item.Name = "";
+                    item.IDPartner = 1;
                     item.Code = uploadPath + "/" + viewName;
                     item.IsDeleted = true;
                     item.Path = uploadPath + "/" + fileName;
@@ -465,6 +466,7 @@ namespace API.Controllers.DOC
                 else
                 {
                     item.ID = id;
+                    item.IDPartner = 1;
                     item.Code = uploadPath + "/" + viewName;
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");

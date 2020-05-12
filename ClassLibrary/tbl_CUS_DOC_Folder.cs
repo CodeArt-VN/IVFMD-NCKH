@@ -37,6 +37,8 @@ namespace ClassLibrary
         public string ModifiedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ModifiedDate { get; set; }
+        public Nullable<int> IDLinhVuc { get; set; }
+        public virtual tbl_CAT_LinhVuc tbl_CAT_LinhVuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_FileInFolder> tbl_CUS_DOC_FileInFolder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -67,6 +69,7 @@ namespace DTOModel
 		public string ModifiedBy { get; set; }
 		public System.DateTime CreatedDate { get; set; }
 		public System.DateTime ModifiedDate { get; set; }
+		public Nullable<int> IDLinhVuc { get; set; }
 	}
 }
 
@@ -101,7 +104,8 @@ namespace BaseBusiness
 				CreatedBy = s.CreatedBy,							
 				ModifiedBy = s.ModifiedBy,							
 				CreatedDate = s.CreatedDate,							
-				ModifiedDate = s.ModifiedDate,					
+				ModifiedDate = s.ModifiedDate,							
+				IDLinhVuc = s.IDLinhVuc,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -124,7 +128,8 @@ namespace BaseBusiness
 					CreatedBy = dbResult.CreatedBy,							
 					ModifiedBy = dbResult.ModifiedBy,							
 					CreatedDate = dbResult.CreatedDate,							
-					ModifiedDate = dbResult.ModifiedDate,
+					ModifiedDate = dbResult.ModifiedDate,							
+					IDLinhVuc = dbResult.IDLinhVuc,
 				};
 			}
 			else
@@ -248,6 +253,20 @@ namespace BaseBusiness
                 if (DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ModifiedDateFrom").Value, out DateTime fromDate) && DateTime.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "ModifiedDateTo").Value, out DateTime toDate))
                     query = query.Where(d => fromDate <= d.ModifiedDate && d.ModifiedDate <= toDate);
 
+			//Query IDLinhVuc (Nullable<int>)
+			if (QueryStrings.Any(d => d.Key == "IDLinhVuc"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDLinhVuc").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int?> IDs = new List<int?>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+					else if (item == "null")
+						IDs.Add(null);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDLinhVuc));
+            }
+
 
 			return toDTO(query);
 
@@ -286,7 +305,8 @@ namespace BaseBusiness
 				dbitem.Remark = item.Remark;							
 				dbitem.Sort = item.Sort;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.IDLinhVuc = item.IDLinhVuc;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -320,7 +340,8 @@ namespace BaseBusiness
 				dbitem.Remark = item.Remark;							
 				dbitem.Sort = item.Sort;							
 				dbitem.IsDisabled = item.IsDisabled;							
-				dbitem.IsDeleted = item.IsDeleted;                
+				dbitem.IsDeleted = item.IsDeleted;							
+				dbitem.IDLinhVuc = item.IDLinhVuc;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;
