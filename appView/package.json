@@ -34,6 +34,7 @@
         "@ionic/storage": "^2.1.3",
         "@ng-bootstrap/ng-bootstrap": "^6.0.1",
         "@swimlane/ngx-datatable": "^11.0.4",
+        "@types/eonasdan-bootstrap-datetimepicker": "^4.17.26",
         "chart.js": "^2.7.1",
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-facebook4": "^1.9.1",

@@ -2,14 +2,18 @@ import { Injectable, Type } from '@angular/core';
 import * as $ from 'jquery';
 import * as ko from 'knockout';
 import { Operator } from 'rxjs/Operator';
-import * as ckEditor from '../../assets/lib/ckeditor/ckeditor'
-
+import * as ckEditor from '../../assets/lib/ckeditor/ckeditor';
+import { CommonServiceProvider } from '../CORE/common-service';
+import { APIListBase } from '../CORE/api-list'
 @Injectable()
 export class NCKHServiceProvider {
+    commonService: CommonServiceProvider;
     e: number
     editors: any
     ckToolbarOptions: any
-    constructor() {
+    ckToolbarWithImageOptions: any
+    constructor(commonService: CommonServiceProvider) {
+        this.commonService = commonService;
         this.e = 0;
         this.editors = [];
         this.ckToolbarOptions = {
@@ -54,6 +58,57 @@ export class NCKHServiceProvider {
             },
             language: 'vi',
             licenseKey: ''
+        };
+        this.ckToolbarWithImageOptions = {
+            startupFocus: true,
+            fontSize: {
+                options: [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    'default',
+                    17,
+                    19,
+                    21
+                ]
+            },
+            toolbar: {
+                items: [
+                    'fontColor',
+                    'fontSize',
+                    'fontFamily',
+                    '|',
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'alignment',
+                    'undo',
+                    'redo',
+                    'blockQuote',
+                    'subscript',
+                    'superscript',
+                    'removeFormat',
+                    'strikethrough',
+                    'imageUpload'
+                ]
+            },
+            language: 'vi',
+            licenseKey: '',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side'
+                ]
+            }
         }
     }
     dispose() {
@@ -98,8 +153,12 @@ export class NCKHServiceProvider {
                     var $editor;
                     $element.on('focus', function (e) {
                         if (!$element[0].ckeditorInstance) {
+                            var ckOptions = me.ckToolbarOptions;
+                            if (!!$element.data('editor-image'))
+                                ckOptions = me.ckToolbarWithImageOptions;
+
                             var observable = valueAccessor();
-                            ckEditor.create($element.get(0), me.ckToolbarOptions).then((editor) => {
+                            ckEditor.create($element.get(0), ckOptions).then((editor) => {
                                 $editor = editor;
                                 me.editors.push({
                                     id: idx,

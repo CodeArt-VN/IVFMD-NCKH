@@ -39,6 +39,7 @@ using API.Models;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http.Headers;
+using System.Web;
 
 namespace API.Controllers.DOC
 {
@@ -563,5 +564,49 @@ namespace API.Controllers.DOC
         }
 
         #endregion
+
+        [Route("UploadImageCustom")]
+        public IHttpActionResult Post_UploadImageCustom()
+        {
+            string pathFile = "";
+            var httpRequest = System.Web.HttpContext.Current.Request;
+            if (httpRequest.Files.Count < 1)
+            {
+                return Content(HttpStatusCode.BadRequest, "");
+            }
+
+            #region upload file
+            var postedFile = httpRequest.Files[0];
+
+            string uploadPath = "/Uploads/Images/" + DateTime.Today.ToString("yyyy/MM/dd").Replace("-", "/");
+
+            string oldName = System.IO.Path.GetFileName(postedFile.FileName);
+            string ext = oldName.Substring(oldName.LastIndexOf('.') + 1).ToLower();
+
+            var g = Guid.NewGuid();
+            string fileid = g.ToString();
+            string fileName = "" + fileid + "." + oldName;
+
+            string mapPath = System.Web.HttpContext.Current.Server.MapPath("~/");
+            string strDirectoryPath = mapPath + uploadPath;
+            string strFilePath = strDirectoryPath + "/" + fileName;
+
+            System.IO.FileInfo existingFile = new System.IO.FileInfo(strFilePath);
+
+            if (!System.IO.Directory.Exists(strDirectoryPath)) System.IO.Directory.CreateDirectory(strDirectoryPath);
+            if (existingFile.Exists)
+            {
+                existingFile.Delete();
+                existingFile = new System.IO.FileInfo(strFilePath);
+            }
+
+            postedFile.SaveAs(strFilePath);
+            string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+            pathFile = domainName + "/" + uploadPath + "/" + fileName;
+
+            #endregion
+            return Content(HttpStatusCode.OK, new { url = pathFile});
+
+        }
     }
 }

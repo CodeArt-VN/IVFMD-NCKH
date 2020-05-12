@@ -51,6 +51,10 @@ export var APIListBase = {
             method: "GET",
             url: function (path) { return appSetting.apiDomain("CUS/File/Download/") + "?path=" + path }
         },
+        UploadImageCustom: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CUS/File/UploadImageCustom") }
+        },
     },
 
 	DOC_File:{

@@ -648,6 +648,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\RPT\" />
     <Folder Include="EmailTemplates\" />
+    <Folder Include="Uploads\Images\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
