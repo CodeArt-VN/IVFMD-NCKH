@@ -151,25 +151,27 @@ export class NCKHServiceProvider {
                 if (enableCKEditor && !!$element.data('editor')) {
                     var idx = me.e++;
                     var $editor;
-                    $element.on('focus', function (e) {
-                        if (!$element[0].ckeditorInstance) {
-                            var ckOptions = me.ckToolbarOptions;
-                            if (!!$element.data('editor-image'))
-                                ckOptions = me.ckToolbarWithImageOptions;
+                    if (!$element[0].ckeditorInstance) {
+                        var ckOptions = me.ckToolbarOptions;
+                        if (!!$element.data('editor-image'))
+                            ckOptions = me.ckToolbarWithImageOptions;
 
-                            var observable = valueAccessor();
-                            ckEditor.create($element.get(0), ckOptions).then((editor) => {
-                                $editor = editor;
-                                me.editors.push({
-                                    id: idx,
-                                    editor: $editor
-                                });
-                                $editor.model.document.on('change:data', (evt, data) => {
-                                    observable($editor.getData());
-                                });
+                        var observable = valueAccessor();
+                        ckEditor.create($element.get(0), ckOptions).then((editor) => {
+                            $editor = editor;
+                            me.editors.push({
+                                id: idx,
+                                editor: $editor
                             });
-                        }
-                    });
+                            $editor.model.document.on('change:data', (evt, data) => {
+                                observable($editor.getData());
+                            });
+                        });
+                    }
+
+                    //$element.on('focus', function (e) {
+                        
+                    //});
                     // handle disposal (if KO removes by the template binding)
                     ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                         if ($editor) {

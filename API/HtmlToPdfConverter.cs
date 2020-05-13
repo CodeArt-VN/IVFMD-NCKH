@@ -60,7 +60,8 @@ namespace API
 
             htmlConverter.ConverterSettings = setting;
             //Convert to PDF
-            PdfDocument docBody = htmlConverter.Convert(html.Replace("[[HTML]]", bodyHtml), string.Empty);
+            var body = html.Replace("[[HTML]]", bodyHtml);
+            PdfDocument docBody = htmlConverter.Convert(body, string.Empty);
             Stream stream = new MemoryStream();
             docBody.Save(stream);
             docBody.Close();
