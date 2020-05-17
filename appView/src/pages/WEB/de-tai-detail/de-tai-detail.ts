@@ -25,6 +25,7 @@ import { BangKhaiNhanSuModalPage } from '../bang-khai-nhan-su-modal/bang-khai-nh
 import { ThuyetMinhDeTaiModalPage } from '../thuyet-minh-de-tai-modal/thuyet-minh-de-tai-modal';
 import { TienDoNghienCuuModalPage } from '../tien-do-nghien-cuu-modal/tien-do-nghien-cuu-modal';
 import { BaoCaoNghiemThuDeTaiModalPage } from '../bao-cao-nghiem-thu-de-tai-modal/bao-cao-nghiem-thu-de-tai-modal';
+import { HoSoKhacModalPage } from '../ho-so-khac-modal/ho-so-khac-modal';
 import { FileUploader, FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { appSetting } from '../../../providers/CORE/api-list';
 import { DuyetHrcoModalPage } from '../duyet-hrco-modal/duyet-hrco-modal'
@@ -454,6 +455,9 @@ export class DeTaiDetailPage extends BasePage {
                 break;
             case 17:
                 page = BangKhaiNhanSuModalPage;
+                break;
+            case 18:
+                page = HoSoKhacModalPage;
                 break;
         }
         if (type == 12 || type == 13) {

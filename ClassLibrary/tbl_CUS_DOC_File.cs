@@ -21,6 +21,7 @@ namespace ClassLibrary
             this.tbl_CUS_DOC_File_Actitity = new HashSet<tbl_CUS_DOC_File_Actitity>();
             this.tbl_CUS_DOC_File_Permission = new HashSet<tbl_CUS_DOC_File_Permission>();
             this.tbl_CUS_DOC_FileInFolder = new HashSet<tbl_CUS_DOC_FileInFolder>();
+            this.tbl_PRO_HoSoKhac = new HashSet<tbl_PRO_HoSoKhac>();
         }
     
         public int IDPartner { get; set; }
@@ -51,6 +52,8 @@ namespace ClassLibrary
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_FileInFolder> tbl_CUS_DOC_FileInFolder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoSoKhac> tbl_PRO_HoSoKhac { get; set; }
     }
 }
 namespace DTOModel

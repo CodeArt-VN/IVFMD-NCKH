@@ -118,7 +118,7 @@
                 <ion-row class="center-row">
                     <ion-col col-md-4 *ngFor="let i of listForm2">
                         <ion-card color="white"
-                            no-margin class="news">
+                                  no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
                                     <a (click)="openDetailInputModal(i.Index)">{{i.Name}}</a>
@@ -130,12 +130,60 @@
 
 
                                 <button *ngIf="i.TrangThaiCode === 'Update' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
-                                    (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    CẬP NHẬT
+                                </button>
                                 <button *ngIf="i.TrangThaiCode === 'New' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
-                                    (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    TẠO MỚI
+                                </button>
 
                                 <button *ngIf="i.Index == 4 || i.Index == 5 || i.Index == 6 || i.Index == 7" ion-button block
-                                    (click)="openDetailModal(i.Index)">XEM</button>
+                                        (click)="openDetailModal(i.Index)">
+                                    XEM
+                                </button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white"
+                                  no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Nghiên cứu viên chính</a>
+                                </ion-card-title>
+                                <div padding style="margin-bottom:20px"></div>
+
+                                <button ion-button block
+                                        (click)="openDetailModal(6)">
+                                    Lý lịch khoa học
+                                </button>
+                                <button ion-button block
+                                        (click)="openDetailModal(7)">
+                                    Sơ yếu lý lịch
+                                </button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white"
+                                  no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Chủ nhiệm đề tài</a>
+                                </ion-card-title>
+                                <div padding style="margin-bottom:20px"></div>
+
+                                <button ion-button block
+                                        (click)="openDetailModal(6)">
+                                    Lý lịch khoa học
+                                </button>
+                                <button ion-button block
+                                        (click)="openDetailModal(7)">
+                                    Sơ yếu lý lịch
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -147,16 +195,18 @@
                                     Mã số Protocal ID
                                 </span>
                                 <div class="c-control" style="margin-bottom:5px">
-                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoProtocalID" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8"/>
+                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoProtocalID" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
                                 </div>
                                 <span style="font-size:13px">
                                     Mã số HĐĐĐ
                                 </span>
                                 <div class="c-control" style="margin-bottom:5px">
-                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoHDDD" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8"/>
+                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoHDDD" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
                                 </div>
-                                <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8">CẬP
-                                    NHẬT</button>
+                                <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8">
+                                    CẬP
+                                    NHẬT
+                                </button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -179,7 +229,7 @@
                                     Upload file
                                 </button>
                                 <button *ngIf="canApprove && item.FileChapThuan != null && item.FileChapThuan != ''"
-                                    style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadChapThuan()">
                                     Download file
                                 </button>
                                 <button *ngIf="canApprove && (item.FileChapThuan == null || item.FileChapThuan == '')"
@@ -188,9 +238,27 @@
                                     Upload file
                                 </button>
                                 <button *ngIf="!canApprove"
-                                    [disabled]="item.FileChapThuan == null || item.FileChapThuan == ''" ion-button block
-                                    (click)="downloadChapThuan()">
+                                        [disabled]="item.FileChapThuan == null || item.FileChapThuan == ''" ion-button block
+                                        (click)="downloadChapThuan()">
                                     Download file
+                                </button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col col-md-4>
+                        <ion-card color="white"
+                                  no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Hồ sơ khác</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                </p>
+                                <div padding></div>
+                                <button ion-button block
+                                        (click)="openDetailModal(18)">
+                                    Upload file
                                 </button>
                             </ion-card-content>
                         </ion-card>

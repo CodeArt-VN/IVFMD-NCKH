@@ -151,7 +151,7 @@ namespace BaseBusiness
                         query.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
                         query.PhanBon_C1_TieuChuanNhanVao = query.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
                         query.PhanBon_C1_TieuChuanLoaiRa = query.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
-                        query.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
+                        //query.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
                     }
                 }
 

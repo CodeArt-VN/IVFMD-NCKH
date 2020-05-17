@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-row>
+        <h2>&nbsp;&nbsp; Danh sách file đã up</h2>
+        <button class="close-btn" style="height: 25px; width: 25px; right: 11px; top:15px" ion-button clear icon-only large (click)="dismiss()">
+            <ion-icon name="close" color="ivf1"></ion-icon>
+        </button>
+    </ion-row>
+    <ion-row>
+        <button color="primary" ion-button icon-only clear (click)="preLoadData()">
+            <ion-icon name="refresh"></ion-icon>
+        </button>
+
+        <button color="primary" ion-button icon-only clear (click)="uploadFile()">
+            <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+    </ion-row>
+</ion-header>
+
+<ion-content>
+    <input class="ng-hide" #importfile type="file" (change)="onFileSelected()" ng2FileSelect accept=".xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,image/*,video/*"
+           [uploader]="uploader" />
+
+    <ion-row>
+        <ion-col class="doc-main">
+            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow"
+                           [selectionType]="'single'" (select)='onSelect($event)'>
+                <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="deleteFile(i)">
+                            Xóa
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Tên file" prop="TenFile">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="donwloadFile(i)">
+                            {{i.TenFile}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Người up" prop="CreatedBy" [width]="150" [maxWidth]="150"></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày up" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.CreatedDateText}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </ion-col>
+    </ion-row>
+</ion-content>

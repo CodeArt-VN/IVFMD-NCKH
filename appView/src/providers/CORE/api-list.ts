@@ -1334,6 +1334,33 @@ export var APIListBase = {
         }
     },
 
+    PRO_HoSoKhac: {
+        getList: {
+            method: "GET",
+            url: function () { return appSetting.apiDomain("PRO/HoSoKhac") }
+        },
+        getItem: {
+            method: "GET",
+            url: function (id) { return appSetting.apiDomain("PRO/HoSoKhac/") + id }
+        },
+        putItem: {
+            method: "PUT",
+            url: function (id) { return appSetting.apiDomain("PRO/HoSoKhac/") + id }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("PRO/HoSoKhac") }
+        },
+        delItem: {
+            method: "DELETE",
+            url: function (id) { return appSetting.apiDomain("PRO/HoSoKhac/") + id }
+        },
+        getListCustom: {
+            method: "GET",
+            url: function (idDeTai) { return appSetting.apiDomain("PRO/HoSoKhac/get_PRO_HoSoKhacByDeTai/") + idDeTai }
+        }
+    },
+
     PRO_DonXinNghiemThu: {
         getList: {
             method: "GET",

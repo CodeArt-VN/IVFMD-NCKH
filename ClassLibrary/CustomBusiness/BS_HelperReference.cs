@@ -339,7 +339,7 @@ namespace BaseBusiness
                     bangkiem.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
                     bangkiem.PhanBon_C1_TieuChuanNhanVao = bangkiem.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
                     bangkiem.PhanBon_C1_TieuChuanLoaiRa = bangkiem.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
-                    bangkiem.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
+                    //bangkiem.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
                 }
 
                 db.SaveChanges();

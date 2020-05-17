@@ -330,6 +330,26 @@ export class PRO_DonXinDanhGiaDaoDucCustomProvider extends exService {
 }
 
 @Injectable()
+export class PRO_HoSoKhacCustomProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.PRO_HoSoKhac, SearchConfig.getSearchFields('PRO_HoSoKhac'), commonService);
+    }
+    getListCustom(idDeTai) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_HoSoKhac.getListCustom;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+}
+
+@Injectable()
 export class PRO_BaoCaoTienDoNghienCuuCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_BaoCaoTienDoNghienCuu, SearchConfig.getSearchFields('PRO_BaoCaoTienDoNghienCuu'), commonService);

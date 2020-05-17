@@ -355,6 +355,7 @@
     <Compile Include="Controllers\HRM\STAFF_NhanSu_SYLLController.cs" />
     <Compile Include="Controllers\PAR\PartnerController.cs" />
     <Compile Include="Controllers\PRO\BaoCaoNghiemThuDeTaiController.cs" />
+    <Compile Include="Controllers\PRO\HoSoKhacController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoDangKyDeTaiController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoDangKyController.cs" />
     <Compile Include="Controllers\PRO\HoiNghiHoiThaoController.cs" />

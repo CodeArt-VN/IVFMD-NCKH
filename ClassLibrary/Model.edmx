@@ -1181,6 +1181,20 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_PRO_HoSoKhac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDeTai" Type="int" Nullable="false" />
+          <Property Name="IDFile" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_PRO_HRCO">
           <Key>
             <PropertyRef Name="ID" />
@@ -3010,6 +3024,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File">
+          <End Role="tbl_CUS_DOC_File" Type="Self.tbl_CUS_DOC_File" Multiplicity="1" />
+          <End Role="tbl_PRO_HoSoKhac" Type="Self.tbl_PRO_HoSoKhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_DOC_File">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoSoKhac">
+              <PropertyRef Name="IDFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai">
+          <End Role="tbl_PRO_DeTai" Type="Self.tbl_PRO_DeTai" Multiplicity="1" />
+          <End Role="tbl_PRO_HoSoKhac" Type="Self.tbl_PRO_HoSoKhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoSoKhac">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
           <End Role="tbl_CUS_HRM_STAFF_NhanSu" Type="Self.tbl_CUS_HRM_STAFF_NhanSu" Multiplicity="1" />
           <End Role="tbl_PRO_HRCO" Type="Self.tbl_PRO_HRCO" Multiplicity="*" />
@@ -3307,6 +3345,7 @@
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao" EntityType="Self.tbl_PRO_HoiNghiHoiThao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao_DangKy" EntityType="Self.tbl_PRO_HoiNghiHoiThao_DangKy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" EntityType="Self.tbl_PRO_HoiNghiHoiThao_DangKyDeTai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRO_HoSoKhac" EntityType="Self.tbl_PRO_HoSoKhac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_HRCO" EntityType="Self.tbl_PRO_HRCO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_LLKH" EntityType="Self.tbl_PRO_LLKH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRO_MauPhanTichDuLieu" EntityType="Self.tbl_PRO_MauPhanTichDuLieu" Schema="dbo" store:Type="Tables" />
@@ -3661,6 +3700,14 @@
             <End Role="tbl_SYS_Var" EntitySet="tbl_SYS_Var" />
             <End Role="tbl_PRO_HoiNghiHoiThao" EntitySet="tbl_PRO_HoiNghiHoiThao" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File" Association="Self.FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File">
+            <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
+            <End Role="tbl_PRO_HoSoKhac" EntitySet="tbl_PRO_HoSoKhac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai" Association="Self.FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_HoSoKhac" EntitySet="tbl_PRO_HoSoKhac" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu" Association="Self.FK_tbl_PRO_HRCO_tbl_CUS_HRM_STAFF_NhanSu">
             <End Role="tbl_CUS_HRM_STAFF_NhanSu" EntitySet="tbl_CUS_HRM_STAFF_NhanSu" />
             <End Role="tbl_PRO_HRCO" EntitySet="tbl_PRO_HRCO" />
@@ -3795,6 +3842,7 @@
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao" EntityType="AppModel.tbl_PRO_HoiNghiHoiThao" />
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao_DangKy" EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKy" />
           <EntitySet Name="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" EntityType="AppModel.tbl_PRO_HoiNghiHoiThao_DangKyDeTai" />
+          <EntitySet Name="tbl_PRO_HoSoKhac" EntityType="AppModel.tbl_PRO_HoSoKhac" />
           <EntitySet Name="tbl_PRO_HRCO" EntityType="AppModel.tbl_PRO_HRCO" />
           <EntitySet Name="tbl_PRO_LLKH" EntityType="AppModel.tbl_PRO_LLKH" />
           <EntitySet Name="tbl_PRO_MauPhanTichDuLieu" EntityType="AppModel.tbl_PRO_MauPhanTichDuLieu" />
@@ -3880,6 +3928,10 @@
           <AssociationSet Name="FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" Association="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File">
             <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
             <End Role="tbl_CUS_DOC_FileInFolder" EntitySet="tbl_CUS_DOC_FileInFolder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File" Association="AppModel.FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File">
+            <End Role="tbl_CUS_DOC_File" EntitySet="tbl_CUS_DOC_File" />
+            <End Role="tbl_PRO_HoSoKhac" EntitySet="tbl_PRO_HoSoKhac" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_CUS_DOC_File_Permission_tbl_CUS_SYS_Role" Association="AppModel.FK_tbl_CUS_DOC_File_Permission_tbl_CUS_SYS_Role">
             <End Role="tbl_CUS_SYS_Role" EntitySet="tbl_CUS_SYS_Role" />
@@ -4108,6 +4160,10 @@
           <AssociationSet Name="FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
             <End Role="tbl_PRO_DonXinXetDuyet" EntitySet="tbl_PRO_DonXinXetDuyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai">
+            <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
+            <End Role="tbl_PRO_HoSoKhac" EntitySet="tbl_PRO_HoSoKhac" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_PRO_HRCO_tbl_PRO_DeTai" Association="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai">
             <End Role="tbl_PRO_DeTai" EntitySet="tbl_PRO_DeTai" />
@@ -4382,6 +4438,7 @@
           <NavigationProperty Name="tbl_PAR_Partner" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PAR_Partner" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PAR_Partner" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_CUS_DOC_FileInFolder" Relationship="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_CUS_DOC_FileInFolder" />
+          <NavigationProperty Name="tbl_PRO_HoSoKhac" Relationship="AppModel.FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PRO_HoSoKhac" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_File_Actitity">
           <Key>
@@ -5363,6 +5420,7 @@
           <NavigationProperty Name="tbl_PRO_DonXinDanhGiaDaoDuc" Relationship="AppModel.FK_tbl_PRO_DonXinDanhGiaDaoDuc_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinDanhGiaDaoDuc" />
           <NavigationProperty Name="tbl_PRO_DonXinNghiemThu" Relationship="AppModel.FK_tbl_PRO_DonXinNghiemThu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinNghiemThu" />
           <NavigationProperty Name="tbl_PRO_DonXinXetDuyet" Relationship="AppModel.FK_tbl_PRO_DonXinXetDuyet_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_DonXinXetDuyet" />
+          <NavigationProperty Name="tbl_PRO_HoSoKhac" Relationship="AppModel.FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_HoSoKhac" />
           <NavigationProperty Name="tbl_PRO_HRCO" Relationship="AppModel.FK_tbl_PRO_HRCO_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_HRCO" />
           <NavigationProperty Name="tbl_PRO_LLKH" Relationship="AppModel.FK_tbl_PRO_LLKH_tbl_PRO_Detai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_LLKH" />
           <NavigationProperty Name="tbl_PRO_MauPhanTichDuLieu" Relationship="AppModel.FK_tbl_PRO_MauPhanTichDuLieu_tbl_PRO_DeTai" FromRole="tbl_PRO_DeTai" ToRole="tbl_PRO_MauPhanTichDuLieu" />
@@ -5556,6 +5614,22 @@
           <NavigationProperty Name="tbl_PRO_HoiNghiHoiThao_DangKy" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_PRO_HoiNghiHoiThao_DangKy" FromRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" ToRole="tbl_PRO_HoiNghiHoiThao_DangKy" />
           <NavigationProperty Name="tbl_SYS_Var" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_SYS_VarHinhThucDangKy" FromRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" ToRole="tbl_SYS_Var" />
           <NavigationProperty Name="tbl_SYS_Var1" Relationship="AppModel.FK_tbl_PRO_HoiNghiHoiThao_DangKyDeTai_tbl_SYS_VarTrangThai" FromRole="tbl_PRO_HoiNghiHoiThao_DangKyDeTai" ToRole="tbl_SYS_Var" />
+        </EntityType>
+        <EntityType Name="tbl_PRO_HoSoKhac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDeTai" Type="Int32" Nullable="false" />
+          <Property Name="IDFile" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CUS_DOC_File" Relationship="AppModel.FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File" FromRole="tbl_PRO_HoSoKhac" ToRole="tbl_CUS_DOC_File" />
+          <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai" FromRole="tbl_PRO_HoSoKhac" ToRole="tbl_PRO_DeTai" />
         </EntityType>
         <EntityType Name="tbl_PRO_HRCO">
           <Key>
@@ -6641,6 +6715,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File">
+          <End Type="AppModel.tbl_CUS_DOC_File" Role="tbl_CUS_DOC_File" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HoSoKhac" Role="tbl_PRO_HoSoKhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CUS_DOC_File">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoSoKhac">
+              <PropertyRef Name="IDFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbl_CUS_DOC_File_Permission_tbl_CUS_SYS_Role">
           <End Type="AppModel.tbl_CUS_SYS_Role" Role="tbl_CUS_SYS_Role" Multiplicity="1" />
           <End Type="AppModel.tbl_CUS_DOC_File_Permission" Role="tbl_CUS_DOC_File_Permission" Multiplicity="*" />
@@ -7321,6 +7407,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbl_PRO_DonXinXetDuyet">
+              <PropertyRef Name="IDDeTai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PRO_HoSoKhac_tbl_PRO_DeTai">
+          <End Type="AppModel.tbl_PRO_DeTai" Role="tbl_PRO_DeTai" Multiplicity="1" />
+          <End Type="AppModel.tbl_PRO_HoSoKhac" Role="tbl_PRO_HoSoKhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PRO_DeTai">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PRO_HoSoKhac">
               <PropertyRef Name="IDDeTai" />
             </Dependent>
           </ReferentialConstraint>
@@ -8919,6 +9017,21 @@
                 <ScalarProperty Name="IDHinhThucDangKy" ColumnName="IDHinhThucDangKy" />
                 <ScalarProperty Name="IDHoiNghiHoiThao" ColumnName="IDHoiNghiHoiThao" />
                 <ScalarProperty Name="IDDangKy" ColumnName="IDDangKy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRO_HoSoKhac">
+            <EntityTypeMapping TypeName="AppModel.tbl_PRO_HoSoKhac">
+              <MappingFragment StoreEntitySet="tbl_PRO_HoSoKhac">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="IDFile" ColumnName="IDFile" />
+                <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

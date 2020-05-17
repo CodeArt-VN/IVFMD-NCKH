@@ -28,6 +28,7 @@ namespace ClassLibrary
             this.tbl_PRO_DonXinDanhGiaDaoDuc = new HashSet<tbl_PRO_DonXinDanhGiaDaoDuc>();
             this.tbl_PRO_DonXinNghiemThu = new HashSet<tbl_PRO_DonXinNghiemThu>();
             this.tbl_PRO_DonXinXetDuyet = new HashSet<tbl_PRO_DonXinXetDuyet>();
+            this.tbl_PRO_HoSoKhac = new HashSet<tbl_PRO_HoSoKhac>();
             this.tbl_PRO_HRCO = new HashSet<tbl_PRO_HRCO>();
             this.tbl_PRO_LLKH = new HashSet<tbl_PRO_LLKH>();
             this.tbl_PRO_MauPhanTichDuLieu = new HashSet<tbl_PRO_MauPhanTichDuLieu>();
@@ -103,6 +104,8 @@ namespace ClassLibrary
         public virtual ICollection<tbl_PRO_DonXinNghiemThu> tbl_PRO_DonXinNghiemThu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_DonXinXetDuyet> tbl_PRO_DonXinXetDuyet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PRO_HoSoKhac> tbl_PRO_HoSoKhac { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRO_HRCO> tbl_PRO_HRCO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
