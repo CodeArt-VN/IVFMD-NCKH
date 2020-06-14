@@ -37,9 +37,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_Sysnopsis);
         }
 
-        [Route("get_PRO_SysnopsisByDeTai/{idDeTai:int}/{isReset?}")]
+        [Route("get_PRO_SysnopsisByDeTai/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_Sysnopsis))]
-        public IHttpActionResult GetCustom(int idDeTai, bool? isReset = false)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_SysnopsisByDeTai(db, idDeTai);
             string html = "";
@@ -47,6 +47,15 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_Sysnopsis.HTML = html;
 
             return Ok(tbl_PRO_Sysnopsis);

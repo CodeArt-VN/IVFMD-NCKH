@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { PRO_AECustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
@@ -20,11 +20,13 @@ export class AEModalPage extends DetailPage {
     idDeTai: any;
     idBenhNhan: any;
     model: any;
+    isInput: any;
     constructor(
         public currentProvider: PRO_AECustomProvider,
         public nckhProvider: NCKHServiceProvider,
         public deTaiCustomProvider: PRO_DeTaiCustomProvider,
         public viewCtrl: ViewController,
+        public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
         super('page-ae-modal', null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
@@ -50,10 +52,11 @@ export class AEModalPage extends DetailPage {
         else {
             this.id = -1;
         }
+        this.isInput = navParams.get('isInput');
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan, this.id).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan, this.id, this.isInput).then((ite) => {
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -155,5 +158,12 @@ export class AEModalPage extends DetailPage {
                 this.toastMessage('Không in được, \nvui lòng thử lại.');
             });
         });
+    };
+
+    printPreview() {
+        var param = { 'idDeTai': this.idDeTai, 'idBenhNhan': this.idBenhNhan, 'id': this.id, 'isInput': false };
+        let myModal = this.modalCtrl.create(AEModalPage, param, { cssClass: 'preview-modal' });
+        this.viewCtrl.dismiss();
+        myModal.present();
     };
 }

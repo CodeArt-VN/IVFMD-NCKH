@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { PRO_SAECustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
@@ -20,10 +20,12 @@ export class SAEModalPage extends DetailPage {
     idDeTai: any;
     idBenhNhan: any;
     model: any;
+    isInput: any;
     constructor(
         public currentProvider: PRO_SAECustomProvider,
         public nckhProvider: NCKHServiceProvider,
         public viewCtrl: ViewController,
+        public modalCtrl: ModalController,
         public deTaiCustomProvider: PRO_DeTaiCustomProvider,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -50,10 +52,11 @@ export class SAEModalPage extends DetailPage {
         else {
             this.id = -1;
         }
+        this.isInput = navParams.get('isInput');
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan, this.id).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDeTai, this.idBenhNhan, this.id, this.isInput).then((ite) => {
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -192,4 +195,12 @@ export class SAEModalPage extends DetailPage {
             });
         });
     };
+
+    printPreview() {
+        var param = { 'idDeTai': this.idDeTai, 'idBenhNhan': this.idBenhNhan, 'id': this.id, 'isInput': false };
+        let myModal = this.modalCtrl.create(SAEModalPage, param, { cssClass: 'preview-modal' });
+        this.viewCtrl.dismiss();
+        myModal.present();
+    };
+
 }

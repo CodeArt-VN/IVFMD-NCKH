@@ -254,11 +254,11 @@ export class PRO_SysnopsisCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_Sysnopsis, SearchConfig.getSearchFields('PRO_Sysnopsis'), commonService);
     }
-    getItemCustom(idDeTai, isReset?) {
+    getItemCustom(idDeTai, isInput?) {
         let that = this.commonService;
         let apiPath = APIList.PRO_Sysnopsis.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, isReset), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -274,11 +274,11 @@ export class PRO_MauPhanTichDuLieuCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_MauPhanTichDuLieu, SearchConfig.getSearchFields('PRO_MauPhanTichDuLieu'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_MauPhanTichDuLieu.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -294,11 +294,11 @@ export class PRO_DonXinXetDuyetCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_DonXinXetDuyet, SearchConfig.getSearchFields('PRO_DonXinXetDuyet'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_DonXinXetDuyet.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -314,11 +314,11 @@ export class PRO_DonXinDanhGiaDaoDucCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_DonXinDanhGiaDaoDuc, SearchConfig.getSearchFields('PRO_DonXinDanhGiaDaoDuc'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_DonXinDanhGiaDaoDuc.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -400,11 +400,11 @@ export class PRO_DonXinNghiemThuCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_DonXinNghiemThu, SearchConfig.getSearchFields('PRO_DonXinNghiemThu'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_DonXinNghiemThu.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -475,11 +475,11 @@ export class STAFF_NhanSu_LLKHProviderCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.STAFF_NhanSu_LLKH, SearchConfig.getSearchFields('STAFF_NhanSu_LLKH'), commonService);
     }
-    getItemCustom(idNhanSu) {
+    getItemCustom(idNhanSu, isInput) {
         let that = this.commonService;
         let apiPath = APIList.STAFF_NhanSu_LLKH.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idNhanSu), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idNhanSu, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -508,11 +508,11 @@ export class PRO_LLKHCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_LLKH, SearchConfig.getSearchFields('PRO_LLKH'), commonService);
     }
-    getItemCustom(idDeTai, idNhanSu) {
+    getItemCustom(idDeTai, idNhanSu, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_LLKH.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -554,11 +554,11 @@ export class STAFF_NhanSu_SYLLProviderCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.STAFF_NhanSu_SYLL, SearchConfig.getSearchFields('STAFF_NhanSu_SYLL'), commonService);
     }
-    getItemCustom(idNhanSu) {
+    getItemCustom(idNhanSu, isInput) {
         let that = this.commonService;
         let apiPath = APIList.STAFF_NhanSu_SYLL.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idNhanSu), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idNhanSu, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -587,11 +587,11 @@ export class PRO_SYLLCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_LLKH, SearchConfig.getSearchFields('PRO_LLKH'), commonService);
     }
-    getItemCustom(idDeTai, idNhanSu, isChuNhiem) {
+    getItemCustom(idDeTai, idNhanSu, isChuNhiem, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_SYLL.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu, isChuNhiem), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idNhanSu, isChuNhiem, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -942,11 +942,11 @@ export class PRO_BangKiemXXDDCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_XemXetDD, SearchConfig.getSearchFields('PRO_XemXetDD'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_XemXetDD.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -975,11 +975,11 @@ export class PRO_PhieuXemXetDaoDucCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_PhieuXemXetDaoDuc, SearchConfig.getSearchFields('PRO_PhieuXemXetDaoDuc'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_PhieuXemXetDaoDuc.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -995,11 +995,11 @@ export class PRO_AECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_AE, SearchConfig.getSearchFields('PRO_AE'), commonService);
     }
-    getItemCustom(idDeTai, idBenhNhan, id) {
+    getItemCustom(idDeTai, idBenhNhan, id, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_AE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1029,11 +1029,11 @@ export class PRO_SAECustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_SAE, SearchConfig.getSearchFields('PRO_SAE'), commonService);
     }
-    getItemCustom(idDeTai, idBenhNhan, id) {
+    getItemCustom(idDeTai, idBenhNhan, id, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_SAE.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, idBenhNhan, id, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1077,11 +1077,11 @@ export class PRO_BaoCaoNghiemThuDeTaiCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_BaoCaoNghiemThuDeTai, SearchConfig.getSearchFields('PRO_BaoCaoNghiemThuDeTai'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_BaoCaoNghiemThuDeTai.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1139,11 +1139,11 @@ export class PRO_ThuyetMinhDeTaiCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_ThuyetMinhDeTai, SearchConfig.getSearchFields('PRO_ThuyetMinhDeTai'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_ThuyetMinhDeTai.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1159,11 +1159,11 @@ export class PRO_BangKhaiNhanSuCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.PRO_BangKhaiNhanSu, SearchConfig.getSearchFields('PRO_BangKhaiNhanSu'), commonService);
     }
-    getItemCustom(idDeTai) {
+    getItemCustom(idDeTai, isInput) {
         let that = this.commonService;
         let apiPath = APIList.PRO_BangKhaiNhanSu.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idDeTai), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idDeTai, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1192,11 +1192,11 @@ export class STAFF_NhanSu_HosremCustomProvider extends exService {
     constructor(public commonService: CommonServiceProvider) {
         super(APIList.STAFF_NhanSu_Hosrem, SearchConfig.getSearchFields('STAFF_NhanSu_Hosrem'), commonService);
     }
-    getItemCustom(idNhanSu) {
+    getItemCustom(idNhanSu, isInput) {
         let that = this.commonService;
         let apiPath = APIList.STAFF_NhanSu_Hosrem.getItemCustom;
         return new Promise(function (resolve, reject) {
-            that.connect(apiPath.method, apiPath.url(idNhanSu), null).toPromise()
+            that.connect(apiPath.method, apiPath.url(idNhanSu, isInput), null).toPromise()
                 .then(data => {
                     resolve(data);
                 })
@@ -1308,6 +1308,39 @@ export class CAT_ThietLapTemplateProvider extends exService {
     saveCustom(item) {
         let that = this.commonService;
         let apiPath = APIList.CAT_ThietLapTemplate.postItem;
+        return new Promise((resolve, reject) => {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then((data) => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        });
+    }
+}
+
+@Injectable()
+export class CAT_ThietLapEmailProvider extends exService {
+    constructor(public commonService: CommonServiceProvider) {
+        super(APIList.CAT_ThietLapEmail, SearchConfig.getSearchFields('CAT_ThietLapEmail'), commonService);
+    }
+    get(code) {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapEmail.get;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(code), null).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
+
+    saveCustom(item) {
+        let that = this.commonService;
+        let apiPath = APIList.CAT_ThietLapEmail.postItem;
         return new Promise((resolve, reject) => {
             that.connect(apiPath.method, apiPath.url(), item).toPromise()
                 .then((data) => {

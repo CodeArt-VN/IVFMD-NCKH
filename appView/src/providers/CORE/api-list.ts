@@ -972,11 +972,22 @@ export var APIListBase = {
     CAT_ThietLapTemplate: {
         get: {
             method: "GET",
-            url: function () { return appSetting.apiDomain("CAT/ThietLapTemplate") }
+            url: function (code) { return appSetting.apiDomain("CAT/ThietLapTemplate") }
         },
         postItem: {
             method: "POST",
             url: function () { return appSetting.apiDomain("CAT/ThietLapTemplate") }
+        },
+    },
+
+    CAT_ThietLapEmail: {
+        get: {
+            method: "GET",
+            url: function (code) { return appSetting.apiDomain("CAT/ThietLapEmail/get_CAT_ThietLapEmailCustom/") + code }
+        },
+        postItem: {
+            method: "POST",
+            url: function () { return appSetting.apiDomain("CAT/ThietLapEmail") }
         },
     },
     
@@ -1249,7 +1260,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, isReset?) { return appSetting.apiDomain("PRO/Sysnopsis/get_PRO_SysnopsisByDeTai/") + idDeTai + "/" + isReset }
+            url: function (idDeTai, isInput?) { return appSetting.apiDomain("PRO/Sysnopsis/get_PRO_SysnopsisByDeTai/") + idDeTai + "/" + isInput }
         }
     },
 
@@ -1276,7 +1287,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/get_PRO_MauPhanTichDuLieuByDeTai/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/MauPhanTichDuLieu/get_PRO_MauPhanTichDuLieuByDeTai/") + idDeTai + "/" + isInput }
         }
     },
 
@@ -1303,7 +1314,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinXetDuyet/get_PRO_DonXinXetDuyetByDeTai/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/DonXinXetDuyet/get_PRO_DonXinXetDuyetByDeTai/") + idDeTai + "/" + isInput }
         }
     },
 
@@ -1330,7 +1341,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/get_PRO_DonXinDanhGiaDaoDucByDeTai/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/DonXinDanhGiaDaoDuc/get_PRO_DonXinDanhGiaDaoDucByDeTai/") + idDeTai + "/" + isInput }
         }
     },
 
@@ -1384,7 +1395,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/DonXinNghiemThu/get_PRO_DonXinNghiemThuByDeTai/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/DonXinNghiemThu/get_PRO_DonXinNghiemThuByDeTai/") + idDeTai + "/" + isInput }
         }
     },
 
@@ -1528,7 +1539,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/get_CUS_HRM_STAFF_NhanSu_LLKH/") + idNhanSu }
+            url: function (idNhanSu, isInput) { return appSetting.apiDomain("HRM/STAFF_NhanSu_LLKH/get_CUS_HRM_STAFF_NhanSu_LLKH/") + idNhanSu + "/" + isInput}
         },
         saveCustom:{
             method: "POST",
@@ -1558,7 +1569,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/LLKH/get_PRO_LLKH/") + idDeTai + "/" + idNhanSu }
+            url: function (idDeTai, idNhanSu, isInput) { return appSetting.apiDomain("PRO/LLKH/get_PRO_LLKH/") + idDeTai + "/" + idNhanSu + "/" + isInput}
         },
         saveCustom:{
             method: "POST",
@@ -1592,7 +1603,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/get_CUS_HRM_STAFF_NhanSu_SYLL/") + idNhanSu }
+            url: function (idNhanSu, isInput) { return appSetting.apiDomain("HRM/STAFF_NhanSu_SYLL/get_CUS_HRM_STAFF_NhanSu_SYLL/") + idNhanSu + "/" + isInput}
         },
         saveCustom:{
             method: "POST",
@@ -1622,7 +1633,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idNhanSu, isChuNhiem) { return appSetting.apiDomain("PRO/SYLL/get_PRO_SYLL/") + idDeTai + "/" + idNhanSu + "/" + isChuNhiem }
+            url: function (idDeTai, idNhanSu, isChuNhiem, isInput) { return appSetting.apiDomain("PRO/SYLL/get_PRO_SYLL/") + idDeTai + "/" + idNhanSu + "/" + isChuNhiem + "/" + isInput }
         },
         saveCustom:{
             method: "POST",
@@ -1656,7 +1667,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idNhanSu) { return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/get_PRO_BangKiemLuaChonQuyTrinhXXDD/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/BangKiemLuaChonQuyTrinhXXDD/get_PRO_BangKiemLuaChonQuyTrinhXXDD/") + idDeTai + "/" + isInput }
         },
         saveCustom:{
             method: "POST",
@@ -1686,7 +1697,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/get_PRO_PhieuXemXetDaoDuc/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/PhieuXemXetDaoDuc/get_PRO_PhieuXemXetDaoDuc/") + idDeTai + "/" + isInput }
         }
     },
     PRO_AE: {
@@ -1716,7 +1727,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idBenhNhan, id) { return appSetting.apiDomain("PRO/AE/get_PRO_AE/") + idDeTai + "/" + idBenhNhan + "/" + id }
+            url: function (idDeTai, idBenhNhan, id, isInput) { return appSetting.apiDomain("PRO/AE/get_PRO_AE/") + idDeTai + "/" + idBenhNhan + "/" + id + "/" + isInput }
         }
     },
     PRO_SAE: {
@@ -1746,7 +1757,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai, idBenhNhan, id) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE/") + idDeTai + "/" + idBenhNhan + "/" + id}
+            url: function (idDeTai, idBenhNhan, id, isInput) { return appSetting.apiDomain("PRO/SAE/get_PRO_SAE/") + idDeTai + "/" + idBenhNhan + "/" + id + "/" + isInput}
         },
         saveCustom:{
             method: "POST",
@@ -1776,7 +1787,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/get_PRO_BaoCaoNghiemThuDeTai/") + idDeTai  }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/BaoCaoNghiemThuDeTai/get_PRO_BaoCaoNghiemThuDeTai/") + idDeTai + "/" + isInput }
         },
         saveCustom: {
             method: "POST",
@@ -1814,7 +1825,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/ThuyetMinhDeTai/get_PRO_ThuyetMinhDeTaiByDeTai/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/ThuyetMinhDeTai/get_PRO_ThuyetMinhDeTaiByDeTai/") + idDeTai + "/" + isInput }
         }
     },
     PRO_BangKhaiNhanSu: {
@@ -1840,7 +1851,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idDeTai) { return appSetting.apiDomain("PRO/BangKhaiNhanSu/get_PRO_BangKhaiNhanSu/") + idDeTai }
+            url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/BangKhaiNhanSu/get_PRO_BangKhaiNhanSu/") + idDeTai + "/" + isInput}
         },
         refreshItem: {
             method: "POST",
@@ -1870,7 +1881,7 @@ export var APIListBase = {
         },
         getItemCustom: {
             method: "GET",
-            url: function (idNhanSu) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/get_CUS_HRM_STAFF_NhanSu_HOSREM/") + idNhanSu }
+            url: function (idNhanSu, isInput) { return appSetting.apiDomain("HRM/STAFF_NhanSu_Hosrem/get_CUS_HRM_STAFF_NhanSu_HOSREM/") + idNhanSu + "/" + isInput }
         },
         saveCustom:{
             method: "POST",

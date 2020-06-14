@@ -37,9 +37,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_BaoCaoNghiemThuDeTai);
         }
 
-        [Route("get_PRO_BaoCaoNghiemThuDeTai/{idDeTai:int}")]
+        [Route("get_PRO_BaoCaoNghiemThuDeTai/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_BaoCaoNghiemThuDeTai))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_BaoCaoNghiemThuDeTai tbl_PRO_BaoCaoNghiemThuDeTai = BS_PRO_BaoCaoNghiemThuDeTai.get_PRO_BaoCaoNghiemThuDeTaiCustom(db, idDeTai);
 
@@ -48,6 +48,14 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_BaoCaoNghiemThuDeTai.HTML = html;
 
             return Ok(tbl_PRO_BaoCaoNghiemThuDeTai);

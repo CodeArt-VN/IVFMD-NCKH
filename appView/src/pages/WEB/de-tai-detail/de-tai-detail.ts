@@ -395,9 +395,11 @@ export class DeTaiDetailPage extends BasePage {
     }
 
     /// 0: Sysnopsis/1:Phan tich/2:HDDD/3:HDKH/4:LLKH-CN/5:SYLL-CN/6:LLKH-NCV/7:SYLL-NCV
-    openDetailModal(type) {
+    openDetailModal(type, isInput) {
         var page = null;
-        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false };
+        if (isInput == undefined || isInput == null)
+            isInput = false;
+        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': isInput };
         switch (type) {
             case 0:
                 page = SysnopsisModalPage;
@@ -413,19 +415,19 @@ export class DeTaiDetailPage extends BasePage {
                 break;
             case 4:
                 page = NhanSuLLKHModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': false };
+                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': false, 'isInput': isInput };
                 break;
             case 5:
                 page = NhanSuSYLLModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': true };
+                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': true, 'isInput': isInput };
                 break;
             case 6:
                 page = NhanSuLLKHModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
+                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false, 'isInput': isInput };
                 break;
             case 7:
                 page = NhanSuSYLLModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
+                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false, 'isInput': isInput };
                 break;
             case 8:
                 page = ThuyetMinhDeTaiModalPage;
@@ -440,11 +442,11 @@ export class DeTaiDetailPage extends BasePage {
                 //page = BaoCaoTienDoNghienCuuPage;
                 break;
             case 12:
-                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1, 'isChuNhiem': false };
+                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1, 'isChuNhiem': false, 'isInput': isInput };
                 page = ListSelectModalPage;
                 break;
             case 13:
-                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2, 'isChuNhiem': false };
+                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2, 'isChuNhiem': false, 'isInput': isInput };
                 page = ListSelectModalPage;
                 break;
             case 14:
@@ -487,93 +489,6 @@ export class DeTaiDetailPage extends BasePage {
             });
             myModal.present();
             this.slides.lockSwipes(true);
-            //this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
-            //return false;
-        }
-    }
-
-    openDetailInputModal(type) {
-        var page = null;
-        var param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false };
-        switch (type) {
-            case 0:
-                page = SysnopsisModalPage;
-                break;
-            case 1:
-                page = MauPhanTichDuLieuModalPage;
-                break;
-            case 2:
-                page = DonXinDanhGiaDaoDucModalPage;
-                break;
-            case 3:
-                page = DonXinXetDuyetModalPage;
-                break;
-            case 4:
-                page = NhanSuLLKHInputModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': false };
-                break;
-            case 5:
-                page = NhanSuSYLLModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDChuNhiem, 'type': -1, 'isChuNhiem': true };
-                break;
-            case 6:
-                page = NhanSuLLKHModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
-                break;
-            case 7:
-                page = NhanSuSYLLModalPage;
-                param = { 'idDeTai': this.id, 'idNhanSu': this.item.IDNCV, 'type': -1, 'isChuNhiem': false };
-                break;
-            case 8:
-                page = ThuyetMinhDeTaiModalPage;
-                break;
-            case 9:
-                page = DonXinNghiemThuModalPage;
-                break;
-            case 10:
-                page = PhieuXemXetDaoDucModalPage;
-                break;
-            case 11:
-                //page = BaoCaoTienDoNghienCuuPage;
-                break;
-            case 12:
-                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 1, 'isChuNhiem': false };
-                page = ListSelectModalPage;
-                break;
-            case 13:
-                param = { 'idDeTai': this.id, 'idNhanSu': -1, 'type': 2, 'isChuNhiem': false };
-                page = ListSelectModalPage;
-                break;
-            case 14:
-                page = BangKiemXXDDModalPage;
-                break;
-            case 15:
-                page = BaoCaoNghiemThuDeTaiModalPage;
-                break;
-        }
-        if (type == 12 || type == 13) {
-            let myModal = this.modalCtrl.create(page, param);
-            myModal.onDidDismiss(data => {
-                this.refreshData();
-            });
-            myModal.present();
-        }
-        else if (type != 11) {
-            if (page != null) {
-                let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
-                myModal.onDidDismiss(data => {
-                    this.refreshData();
-                });
-                myModal.present();
-            }
-        } else if (type == 11) {
-            let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': this.id });
-            myModal.onDidDismiss(data => {
-                this.refreshData();
-            });
-            myModal.present();
-            //this.navCtrl.setRoot('page-bao-cao-tien-do-nghien-cuu', { 'value': 'view-bao-cao-tien-do-' + this.id });
-            //return false;
         }
     }
 

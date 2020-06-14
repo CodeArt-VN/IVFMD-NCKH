@@ -92,6 +92,18 @@ namespace BaseBusiness
                 query = query.Where(c => c.IsCNDT == true).OrderBy(c => c.Name);
             }
 
+            List<int> ListRoleID = new List<int>();
+            if (QueryStrings.Any(d => d.Key == "ListRoleID") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ListRoleID").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ListRoleID").Value;
+                try
+                {
+                    ListRoleID = keyword.Split(',').Select(int.Parse).ToList();
+                    if (ListRoleID.Count > 0)
+                        query = query.Where(c => c.IDRole > 0 && ListRoleID.Contains(c.IDRole.Value));
+                }
+                catch { }
+            }
 
             //Query keyword
             if (QueryStrings.Any(d => d.Key == "Keywork") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Keywork").Value))

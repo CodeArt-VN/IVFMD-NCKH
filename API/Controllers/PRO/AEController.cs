@@ -42,9 +42,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_AE);
         }
 
-        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}/{id:int}")]
+        [Route("get_PRO_AE/{idDeTai:int}/{idBenhNhan:int}/{id:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_AE))]
-        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1)
+        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1, bool? isInput = false)
         {
             DTO_PRO_AE tbl_PRO_AE = BS_PRO_AE.get_PRO_AEByDeTai(db, idDeTai, idBenhNhan, id);
             //if (tbl_PRO_LLKH.ID == 0)
@@ -54,6 +54,15 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/AE_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_AE.HTML = html;
             //}
 

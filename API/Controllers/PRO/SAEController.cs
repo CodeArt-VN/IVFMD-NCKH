@@ -42,20 +42,27 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_SAE);
         }
 
-        [Route("get_PRO_SAE/{idDeTai:int}/{idBenhNhan:int}/{id:int}")]
+        [Route("get_PRO_SAE/{idDeTai:int}/{idBenhNhan:int}/{id:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_SAE))]
-        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1)
+        public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1, bool? isInput = false)
         {
             DTO_PRO_SAE tbl_PRO_SAE = BS_PRO_SAE.get_PRO_SAECustom(db, idDeTai, idBenhNhan, id);
-            //if (tbl_PRO_LLKH.ID == 0)
-            //{
+            
             string html = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/SAE.html")))
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/SAE_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_SAE.HTML = html;
-            //}
 
             return Ok(tbl_PRO_SAE);
         }

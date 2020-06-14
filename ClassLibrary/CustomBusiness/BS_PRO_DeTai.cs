@@ -6,7 +6,8 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using RazorEngine;
+using RazorEngine.Templating; // Dont forget to include this.
 namespace BaseBusiness
 {
     public static partial class BS_PRO_DeTai
@@ -268,11 +269,11 @@ namespace BaseBusiness
                 if (db.tbl_PRO_MauPhanTichDuLieu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 1, Type = 0, Name = "Đăng kí phân tích", Description = "Đăng kí phân tích", FormCode = "tbl_PRO_MauPhanTichDuLieu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 1, Type = 0, Name = "Đăng kí phân tích", Description = "Đăng kí phân tích", FormCode = "tbl_PRO_MauPhanTichDuLieu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
-                
+
                 if (db.tbl_PRO_DonXinDanhGiaDaoDuc.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức trong nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 2, Type = 1, Name = "Xét duyệt HĐĐĐ", Description = "Đơn xin đánh giá đạo đức trong nghiên cứu", FormCode = "tbl_PRO_DonXinDanhGiaDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
-                
+
                 //if (db.tbl_PRO_LLKH.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDChuNhiem && c.IsDeleted == false))
                 //    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học CNĐT", FormCode = "tbl_PRO_LLKH", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 4, Type = 1, Name = "Lý lịch khoa học CNĐT", Description = "Lý lịch khoa học CNĐT", FormCode = "tbl_PRO_LLKH", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
@@ -288,11 +289,11 @@ namespace BaseBusiness
                 //if (db.tbl_PRO_SYLL.Any(c => c.IDDetai == ID && c.IDNhanSu == query.IDNCV && c.IsDeleted == false))
                 //    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 7, Type = 1, Name = "Sơ yếu lý lịch NCV chính", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 7, Type = 1, Name = "Sơ yếu lý lịch NCV chính", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
-                
+
                 if (db.tbl_PRO_ThuyetMinhDeTai.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
-                
+
                 if (db.tbl_PRO_DonXinNghiemThu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 9, Type = 4, Name = "Nghiệm thu", Description = "Đơn xin nghiệm thu", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 9, Type = 4, Name = "Nghiệm thu", Description = "Đơn xin nghiệm thu", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
@@ -303,7 +304,7 @@ namespace BaseBusiness
                         query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                     else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 10, Type = 1, Name = "Phiếu thông tin xem xét đạo đức", Description = "Phiếu thông tin xem xét đạo đức theo quy trình đầy đủ", FormCode = "tbl_PRO_PhieuXemXetDaoDuc", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
                 }
-                
+
                 if (db.tbl_PRO_AE.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 12, Type = 3, Name = "Báo cáo AE", Description = "Báo cáo AE", FormCode = "tbl_PRO_AE", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 12, Type = 3, Name = "Báo cáo AE", Description = "Báo cáo AE", FormCode = "tbl_PRO_AE", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
@@ -343,8 +344,11 @@ namespace BaseBusiness
             return query;
         }
 
-        public static string updateStatus_PRO_DeTai(AppEntities db, int ID, string ActionCode, int typeId, string Username)
+        public static DTO_StatusResult updateStatus_PRO_DeTai(AppEntities db, int ID, string ActionCode, int typeId, string Username)
         {
+            DTO_StatusResult result = new DTO_StatusResult();
+            result.ListEmail = new List<DTO_Email>();
+
             tbl_PRO_DeTai dbitem = db.tbl_PRO_DeTai.Find(ID);
 
             if (dbitem != null)
@@ -354,7 +358,10 @@ namespace BaseBusiness
                 if (ActionCode == "SendHRCO")
                 {
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
-                        return "Chưa thiết lập nhân sự ban HRCO";
+                    {
+                        result.Error = "Chưa thiết lập nhân sự ban HRCO";
+                        return result;
+                    }
 
                     if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
                     {
@@ -385,8 +392,75 @@ namespace BaseBusiness
                             db.tbl_PRO_HRCO.Add(obj);
                         }
                         db.SaveChanges();
+
+                        #region Gửi email cho NCV
+                        var emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailGuiHDNB_NCV.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+                            var ncvChinh = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDNCV);
+                            var chuNhiem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDChuNhiem);
+
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailGuiHDNB_NCV.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailGuiHDNB_NCV.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = ncvChinh.Email });
+                        }
+                        #endregion
+
+                        #region Gửi email cho HRCO
+                        emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailGuiHDNB_HRCO.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body) && !string.IsNullOrEmpty(emailTemplate.EmailList))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+                            var ncvChinh = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDNCV);
+                            var chuNhiem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDChuNhiem);
+
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailGuiHDNB_HRCO.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailGuiHDNB_HRCO.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            var lstEmail = emailTemplate.EmailList.Split(';');
+                            foreach (var item in lstEmail)
+                            {
+                                if (!string.IsNullOrEmpty(item))
+                                    result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = item.Trim() });
+                            }
+                        }
+                        #endregion
                     }
-                    else return "Đã gửi trước đó, vui lòng chờ duyệt";
+                    else
+                    {
+                        result.Error = "Đã gửi trước đó, vui lòng chờ duyệt";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -406,8 +480,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui) { return "Đề tài chưa được gửi, không thể hủy gửi"; }
-                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_DaDuyet) { return "Đề tài đã được duyệt, không thể hủy gửi"; }
+                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy gửi";
+                        return result;
+                    }
+                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_DaDuyet)
+                    {
+                        result.Error = "Đề tài đã được duyệt, không thể hủy gửi";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -431,9 +513,46 @@ namespace BaseBusiness
                         dbitem.IsDisabledHRCO = true;
 
                         db.SaveChanges();
+
+                        #region Gửi email cho NCV
+                        var emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailHDNBDuyet_NCV.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+                            var ncvChinh = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDNCV);
+                            var chuNhiem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDChuNhiem);
+
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailHDNBDuyet_NCV.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailHDNBDuyet_NCV.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = ncvChinh.Email });
+                        }
+                        #endregion
                     }
-                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
-                    else return "Đề tài đã được duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -456,8 +575,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
-                    else return "Đề tài đã được hủy duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HRCO == -(int)SYSVarType.TrangThai_HRCO_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được hủy duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
@@ -467,7 +594,10 @@ namespace BaseBusiness
                 if (ActionCode == "SendHDDD")
                 {
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
-                        return "Chưa thiết lập nhân sự ban HRCO";
+                    {
+                        result.Error = "Chưa thiết lập nhân sự ban HRCO";
+                        return result;
+                    }
 
                     if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
                     {
@@ -481,8 +611,81 @@ namespace BaseBusiness
                         dbLog.IDTrangThaiMoi = dbitem.IDTrangThai_HDDD;
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
+
+                        #region Gửi email cho NCV
+                        var ncvChinh = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDNCV);
+                        var chuNhiem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDChuNhiem);
+                        var ThoiGianXetDuyet = "1 tháng tính từ ngày hoàn chỉnh hồ sơ hoàn chỉnh";
+                        if (dbitem.IDHinhThucXetDuyet == -(int)SYSVarType.HinhThucXetDuyet_DayDu)
+                            ThoiGianXetDuyet = "sẽ thông báo thời gian trình cụ thể ngay khi có thông tin chính thức";
+
+                        var emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailGuiHDDD_NCV.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+                            
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailGuiHDDD_NCV.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                                ThoiGianXetDuyet = ThoiGianXetDuyet,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailGuiHDDD_NCV.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                                ThoiGianXetDuyet = ThoiGianXetDuyet,
+                            });
+
+                            result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = ncvChinh.Email });
+                        }
+                        #endregion
+
+                        #region Gửi email cho HRCO
+                        emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailGuiHDDD_HRCO.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body) && !string.IsNullOrEmpty(emailTemplate.EmailList))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailGuiHDDD_HRCO.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                                ThoiGianXetDuyet = ThoiGianXetDuyet,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailGuiHDDD_HRCO.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                                ThoiGianXetDuyet = ThoiGianXetDuyet,
+                            });
+
+                            var lstEmail = emailTemplate.EmailList.Split(';');
+                            foreach (var item in lstEmail)
+                            {
+                                if (!string.IsNullOrEmpty(item))
+                                    result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = item.Trim() });
+                            }
+                        }
+                        #endregion
                     }
-                    else return "Đã gửi trước đó, vui lòng chờ duyệt";
+                    else
+                    {
+                        result.Error = "Đã gửi trước đó, vui lòng chờ duyệt";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -502,8 +705,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui) { return "Đề tài chưa được gửi, không thể hủy gửi"; }
-                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_DaDuyet) { return "Đề tài đã được duyệt, không thể hủy gửi"; }
+                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy gửi";
+                        return result;
+                    }
+                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_DaDuyet)
+                    {
+                        result.Error = "Đề tài đã được duyệt, không thể hủy gửi";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -523,9 +734,46 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         dbitem.IsDisabledHDDD = true;
                         db.SaveChanges();
+
+                        #region Gửi email cho NCV
+                        var emailTemplate = BS_SYS_Config.get_SYS_ConfigEmail_Template(db, SYSConfigCode.EmailHDDDDuyet_NCV.ToString());
+                        if (emailTemplate != null && !string.IsNullOrEmpty(emailTemplate.Subject) && !string.IsNullOrEmpty(emailTemplate.Body))
+                        {
+                            string template = emailTemplate.Body;
+                            string subject = emailTemplate.Subject;
+                            var ncvChinh = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDNCV);
+                            var chuNhiem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(dbitem.IDChuNhiem);
+
+                            var htmlSubject = Engine.Razor.RunCompile(subject, SYSConfigCode.EmailHDDDDuyet_NCV.ToString(), null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            var htmlBody = Engine.Razor.RunCompile(template, SYSConfigCode.EmailHDDDDuyet_NCV.ToString() + "_body", null, new
+                            {
+                                Email = ncvChinh.Email,
+                                TenDeTai = dbitem.TenTiengViet,
+                                NCVChinh = ncvChinh.Name,
+                                ChuNhiemDeTai = chuNhiem.Name,
+                            });
+
+                            result.ListEmail.Add(new DTO_Email { Body = htmlBody, Subject = htmlSubject, Destination = ncvChinh.Email });
+                        }
+                        #endregion
                     }
-                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
-                    else return "Đề tài đã được duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -546,8 +794,16 @@ namespace BaseBusiness
                         dbitem.IsDisabledHDDD = false;
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
-                    else return "Đề tài đã được hủy duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HDDD == -(int)SYSVarType.TrangThai_HDDD_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được hủy duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
@@ -557,7 +813,10 @@ namespace BaseBusiness
                 if (ActionCode == "SendHDKH")
                 {
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
-                        return "Chưa thiết lập nhân sự ban HRCO";
+                    {
+                        result.Error = "Chưa thiết lập nhân sự ban HRCO";
+                        return result;
+                    }
 
                     if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
                     {
@@ -572,7 +831,11 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else return "Đã gửi trước đó, vui lòng chờ duyệt";
+                    else
+                    {
+                        result.Error = "Đã gửi trước đó, vui lòng chờ duyệt";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -592,8 +855,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui) { return "Đề tài chưa được gửi, không thể hủy gửi"; }
-                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_DaDuyet) { return "Đề tài đã được duyệt, không thể hủy gửi"; }
+                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy gửi";
+                        return result;
+                    }
+                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_DaDuyet)
+                    {
+                        result.Error = "Đề tài đã được duyệt, không thể hủy gửi";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -613,8 +884,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
-                    else return "Đề tài đã được duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -634,8 +913,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
-                    else return "Đề tài đã được hủy duyệt trước đó";
+                    else if (dbitem.IDTrangThai_HDKH == -(int)SYSVarType.TrangThai_HDKH_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được hủy duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
@@ -645,7 +932,10 @@ namespace BaseBusiness
                 if (ActionCode == "SendNghiemThu")
                 {
                     if (db.tbl_CUS_HRM_STAFF_NhanSu.Count(c => c.IsDeleted == false && c.IDRole > 0 && c.tbl_CUS_SYS_Role.Code == "ADMIN") == 0)
-                        return "Chưa thiết lập nhân sự ban HRCO";
+                    {
+                        result.Error = "Chưa thiết lập nhân sự ban HRCO";
+                        return result;
+                    }
 
                     if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
                     {
@@ -660,7 +950,11 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else return "Đã gửi trước đó, vui lòng chờ duyệt";
+                    else
+                    {
+                        result.Error = "Đã gửi trước đó, vui lòng chờ duyệt";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -680,8 +974,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui) { return "Đề tài chưa được gửi, không thể hủy gửi"; }
-                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_DaDuyet) { return "Đề tài đã được duyệt, không thể hủy gửi"; }
+                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy gửi";
+                        return result;
+                    }
+                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_DaDuyet)
+                    {
+                        result.Error = "Đề tài đã được duyệt, không thể hủy gửi";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -701,8 +1003,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui) { return "Đề tài chưa được gửi, không thể duyệt"; }
-                    else return "Đề tài đã được duyệt trước đó";
+                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -722,8 +1032,16 @@ namespace BaseBusiness
                         db.tbl_PRO_TrangThai_Log.Add(dbLog);
                         db.SaveChanges();
                     }
-                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui) { return "Đề tài chưa được gửi, không thể hủy duyệt"; }
-                    else return "Đề tài đã được hủy duyệt trước đó";
+                    else if (dbitem.IDTrangThai_NghiemThu == -(int)SYSVarType.TrangThai_NghiemThu_ChoGui)
+                    {
+                        result.Error = "Đề tài chưa được gửi, không thể hủy duyệt";
+                        return result;
+                    }
+                    else
+                    {
+                        result.Error = "Đề tài đã được hủy duyệt trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
@@ -737,7 +1055,11 @@ namespace BaseBusiness
                         dbitem.IsDisabledHRCO = true;
                         db.SaveChanges();
                     }
-                    else return "Đã khóa trước đó";
+                    else
+                    {
+                        result.Error = "Đã khóa trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -749,7 +1071,11 @@ namespace BaseBusiness
                         dbitem.IsDisabledHRCO = false;
                         db.SaveChanges();
                     }
-                    else return "Đã mở khóa trước đó";
+                    else
+                    {
+                        result.Error = "Đã mở khóa trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
@@ -763,7 +1089,11 @@ namespace BaseBusiness
                         dbitem.IsDisabledHDDD = true;
                         db.SaveChanges();
                     }
-                    else return "Đã khóa trước đó";
+                    else
+                    {
+                        result.Error = "Đã khóa trước đó";
+                        return result;
+                    }
                 }
                 #endregion
 
@@ -775,13 +1105,17 @@ namespace BaseBusiness
                         dbitem.IsDisabledHDDD = false;
                         db.SaveChanges();
                     }
-                    else return "Đã mở khóa trước đó";
+                    else
+                    {
+                        result.Error = "Đã mở khóa trước đó";
+                        return result;
+                    }
                 }
                 #endregion
                 #endregion
             }
 
-            return string.Empty;
+            return result;
         }
 
         public static string updateNCT_PRO_DeTai(AppEntities db, int ID, string NCT, string Username)
@@ -1303,7 +1637,7 @@ namespace BaseBusiness
                 IDTinhTrangNghienCuu = s.IDTinhTrangNghienCuu,
                 IDLinhVuc = s.IDLinhVuc,
                 LinhVuc = s.IDLinhVuc > 0 ? s.tbl_CAT_LinhVuc.Name : ""
-        });
+            });
 
         }
 

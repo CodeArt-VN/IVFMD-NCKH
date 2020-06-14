@@ -36,19 +36,27 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_LLKH);
         }
 
-        [Route("get_PRO_LLKH/{idDeTai:int}/{idNhanSu:int}/{isReset?}")]
+        [Route("get_PRO_LLKH/{idDeTai:int}/{idNhanSu:int}/{isReset?}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_LLKH))]
-        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu, bool? isReset = false)
+        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu, bool? isReset = false, bool? isInput = false)
         {
             DTO_PRO_LLKH tbl_PRO_LLKH = BS_PRO_LLKH.get_PRO_LLKHCustom(db, idDeTai, idNhanSu, isReset);
             //if (tbl_PRO_LLKH.ID == 0)
             //{
-                string html = "";
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+            {
+                html = r.ReadToEnd();
+            }
+            tbl_PRO_LLKH.HTML = html;
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
                 {
                     html = r.ReadToEnd();
                 }
-                tbl_PRO_LLKH.HTML = html;
+            }
             //}
 
             return Ok(tbl_PRO_LLKH);

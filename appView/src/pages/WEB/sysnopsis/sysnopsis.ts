@@ -10,6 +10,7 @@ import { BasePage } from '../../base-page';
 export class SysnopsisPage extends BasePage {
     id: any;
     idDetai: any;
+    isInput: any;
     _uid: string;
     item: any;
     submitAttempt: boolean = false;
@@ -28,7 +29,6 @@ export class SysnopsisPage extends BasePage {
     ) {
         super('page-sysnopsis', '', currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService);
 
-        debugger
         this.id = navParams.get('id');
         if (this.id && commonService.isNumeric(this.id)) {
             this.id = parseInt(this.id, 10);
@@ -47,13 +47,16 @@ export class SysnopsisPage extends BasePage {
                 }
             });
         }
+
+        this.isInput = navParams.get('isInput');
+
         if (!this.item) {
             this.item = {}
         }
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDetai).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDetai, this.isInput).then((ite) => {
             this.commonService.copyPropertiesValue(ite, this.item);
         }).catch((data) => {
             this.item.ID = 0;

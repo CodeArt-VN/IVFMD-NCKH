@@ -2,13 +2,16 @@
     <button class="close-btn" ion-button float-right (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
-    <button ion-button float-right (click)="saveChange()" *ngIf="item.IsDisabled == false">
+    <button ion-button float-right (click)="saveChange()" *ngIf="item.IsDisabled == false && isInput">
         Lưu
     </button>
-    <button ion-button float-right (click)="print()">
+    <button ion-button float-right (click)="print()" *ngIf="!isInput">
         In
     </button>
-    <button color="warning" ion-button float-right (click)="cancel()">
+    <button ion-button float-right (click)="printPreview()" *ngIf="isInput">
+        In Preview
+    </button>
+    <button color="warning" ion-button float-right *ngIf="isInput" (click)="cancel()">
         Hủy thay đổi
     </button>
 </ion-header>

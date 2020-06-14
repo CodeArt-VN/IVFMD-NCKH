@@ -159,7 +159,7 @@ export class MyApp {
     openLLKH() {
         if (this.userprofile.Id) {
             if (this.userprofile.StaffID) {
-                let myModal = this.modalCtrl.create(NhanSuLLKHModalPage, { 'idNhanSu': this.userprofile.StaffID }, { cssClass: 'preview-modal' });
+                let myModal = this.modalCtrl.create(NhanSuLLKHModalPage, { 'idNhanSu': this.userprofile.StaffID, 'isInput': true }, { cssClass: 'preview-modal' });
                 myModal.present();
             }
             this.menu.close();
@@ -176,7 +176,7 @@ export class MyApp {
     openSYLL() {
         if (this.userprofile.Id) {
             if (this.userprofile.StaffID) {
-                let myModal = this.modalCtrl.create(NhanSuSYLLModalPage, { 'idNhanSu': this.userprofile.StaffID }, { cssClass: 'preview-modal' });
+                let myModal = this.modalCtrl.create(NhanSuSYLLModalPage, { 'idNhanSu': this.userprofile.StaffID, 'isInput': true }, { cssClass: 'preview-modal' });
                 myModal.present();
             }
             this.menu.close();
@@ -193,7 +193,7 @@ export class MyApp {
     openHosrem() {
         if (this.userprofile.Id) {
             if (this.userprofile.StaffID) {
-                let myModal = this.modalCtrl.create(HosremModalPage, { 'idNhanSu': this.userprofile.StaffID }, { cssClass: 'preview-modal' });
+                let myModal = this.modalCtrl.create(HosremModalPage, { 'idNhanSu': this.userprofile.StaffID, 'isInput': true }, { cssClass: 'preview-modal' });
                 myModal.present();
             }
             this.menu.close();

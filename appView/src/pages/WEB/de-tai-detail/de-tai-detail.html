@@ -62,16 +62,16 @@
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a>{{i.Name}}</a>
+                                    <a (click)="openDetailModal(i.Index)">{{i.Name}}</a>
                                 </ion-card-title>
                                 <p class="summary">
                                     {{i.Description}}
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                    (click)="openDetailModal(i.Index)">CẬP NHẬT</button>
+                                    (click)="openDetailModal(i.Index, true)">CẬP NHẬT</button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                    (click)="openDetailModal(i.Index)">TẠO MỚI</button>
+                                    (click)="openDetailModal(i.Index, true)">TẠO MỚI</button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -121,7 +121,7 @@
                                   no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
-                                    <a (click)="openDetailInputModal(i.Index)">{{i.Name}}</a>
+                                    <a>{{i.Name}}</a>
                                 </ion-card-title>
                                 <p class="summary">
                                     {{i.Description}}
@@ -130,16 +130,16 @@
 
 
                                 <button *ngIf="i.TrangThaiCode === 'Update' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                        (click)="openDetailModal(i.Index, true)">
                                     CẬP NHẬT
                                 </button>
                                 <button *ngIf="i.TrangThaiCode === 'New' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                        (click)="openDetailModal(i.Index, true)">
                                     TẠO MỚI
                                 </button>
 
                                 <button *ngIf="i.Index == 4 || i.Index == 5 || i.Index == 6 || i.Index == 7" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                        (click)="openDetailModal(i.Index, true)">
                                     XEM
                                 </button>
                             </ion-card-content>
@@ -319,11 +319,11 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                    (click)="openDetailModal(i.Index)">
+                                    (click)="openDetailModal(i.Index, true)">
                                     CẬP NHẬT
                                 </button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                    (click)="openDetailModal(i.Index)">
+                                    (click)="openDetailModal(i.Index, true)">
                                     TẠO MỚI
                                 </button>
                             </ion-card-content>
@@ -347,11 +347,11 @@
                                 </p>
                                 <div padding></div>
                                 <button *ngIf="i.TrangThaiCode === 'Update'" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                        (click)="openDetailModal(i.Index, true)">
                                     CẬP NHẬT
                                 </button>
                                 <button *ngIf="i.TrangThaiCode === 'New'" ion-button block
-                                        (click)="openDetailModal(i.Index)">
+                                        (click)="openDetailModal(i.Index, true)">
                                     TẠO MỚI
                                 </button>
 

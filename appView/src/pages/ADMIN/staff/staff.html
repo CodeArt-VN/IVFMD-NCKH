@@ -10,9 +10,10 @@
         </select>
     </div>
     <div class="path">
-        <a (click)="openDefaultPage()">Home</a>
-        <ion-icon class="split" name="ios-arrow-forward"></ion-icon>
-        <a class="active">Quản lý người dùng</a>
+        <div class="filter-block" (click)="showRole = !showRole">
+            <input style="width: 180px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Nhóm người dùng">
+            <ion-icon [color]="query.ListRoleID != ''? 'danger':'ivf1'" class="split" name="ios-funnel"></ion-icon>
+        </div>
     </div>
     <div class="tools">
 
@@ -70,6 +71,27 @@
     
     
             <ion-col class="doc-main">
+                <div [ngClass]="showRole ? '' : 'hideRole'" style="position: absolute; z-index: 100; width: 160px; left:110px; padding: 10px 0 10px 10px; border-radius: 0 0 5px 5px; background: white; box-shadow: 3px 3px 10px 0px #007cc56e;">
+                    <ion-grid>
+                        <ion-row *ngFor="let t of roleList" style="margin-bottom:2px">
+                            <label style="word-wrap:break-word" [for]="t.Code"> <input type="checkbox" [id]="t.Code" [(ngModel)]="t.Selected"> {{t.Name}}</label>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-12 padding-right>
+                                <div class="c-control">
+                                    <button small ion-button float-right (click)="filterByRole()">
+                                        Lọc
+                                    </button>
+                                    <button small color="warning" ion-button float-right (click)="clearFilterByRole()">
+                                        Bỏ lọc
+                                    </button>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+
+
                 <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'"
                                [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="items"
                                [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'>
@@ -101,10 +123,10 @@
                     </ngx-datatable-column>
 
                 </ngx-datatable>
-    
-    
-    
-    
+
+
+
+
             </ion-col>
         </ion-row>
     </ion-content>

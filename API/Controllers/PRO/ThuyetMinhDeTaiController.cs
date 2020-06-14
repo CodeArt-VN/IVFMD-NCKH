@@ -38,9 +38,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_ThuyetMinhDeTai);
         }
 
-        [Route("get_PRO_ThuyetMinhDeTaiByDeTai/{idDeTai:int}")]
+        [Route("get_PRO_ThuyetMinhDeTaiByDeTai/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_ThuyetMinhDeTai))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTaiByDeTai(db, idDeTai);
 
@@ -49,6 +49,15 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             if (tbl_PRO_ThuyetMinhDeTai == null || tbl_PRO_ThuyetMinhDeTai.ID == 0)
             {
                 var tbl_PRO_ThuyetMinhDeTaiNew = new DTO_PRO_ThuyetMinhDeTai

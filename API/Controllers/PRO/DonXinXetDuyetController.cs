@@ -37,9 +37,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_DonXinXetDuyet);
         }
 
-        [Route("get_PRO_DonXinXetDuyetByDeTai/{idDeTai:int}")]
+        [Route("get_PRO_DonXinXetDuyetByDeTai/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_DonXinXetDuyet))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_DonXinXetDuyet tbl_PRO_DonXinXetDuyet = BS_PRO_DonXinXetDuyet.get_PRO_DonXinXetDuyetByDeTai(db, idDeTai);
 
@@ -47,6 +47,14 @@ namespace API.Controllers.PRO
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinXetDuyet.html")))
             {
                 html = r.ReadToEnd();
+            }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinXetDuyet_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
             }
             tbl_PRO_DonXinXetDuyet.HTML = html;
 

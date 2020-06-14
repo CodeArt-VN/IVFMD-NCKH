@@ -55,5 +55,11 @@
         ThoiGianBaoCaoNSKH,
         ThoiGianBaoCaoTDNC,
         Template,
+        EmailHDNBDuyet_NCV,
+        EmailHDDDDuyet_NCV,
+        EmailGuiHDNB_NCV,
+        EmailGuiHDDD_NCV,
+        EmailGuiHDNB_HRCO,
+        EmailGuiHDDD_HRCO,
     }
 }

@@ -50,7 +50,7 @@ export class NhanSuLLKHInputModalPage extends DetailPage {
 
     loadData() {
         if (this.idDeTai > 0) {
-            this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu).then((ite) => {
+            this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu, false).then((ite) => {
                 this.item = ite;
                 this.item.HoTen = "<span>test</span>";
                 this.loadedData();
@@ -60,7 +60,7 @@ export class NhanSuLLKHInputModalPage extends DetailPage {
             });
         }
         else {
-            this.currentProvider.getItemCustom(this.idNhanSu).then((ite) => {
+            this.currentProvider.getItemCustom(this.idNhanSu, false).then((ite) => {
                 this.item = ite;
                 this.loadedData();
             }).catch((data) => {

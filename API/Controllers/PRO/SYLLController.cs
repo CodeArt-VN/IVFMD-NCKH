@@ -38,9 +38,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_SYLL);
         }
 
-        [Route("get_PRO_SYLL/{idDeTai:int}/{idNhanSu:int}/{isChuNhiem}")]
+        [Route("get_PRO_SYLL/{idDeTai:int}/{idNhanSu:int}/{isChuNhiem}/{isInput?}")]
         [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_SYLL))]
-        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu, bool isChuNhiem)
+        public IHttpActionResult GetCustom(int idDeTai, int idNhanSu, bool isChuNhiem, bool? isInput = false)
         {
             DTO_PRO_SYLL tbl_PRO_SYLL = BS_PRO_SYLL.get_PRO_SYLLCustom(db, idDeTai, idNhanSu);
             //if (tbl_PRO_LLKH.ID == 0)
@@ -60,6 +60,25 @@ namespace API.Controllers.PRO
                     html = r.ReadToEnd();
                 }
             }
+
+            if (isInput == true)
+            {
+                if (isChuNhiem)
+                {
+                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
+                    {
+                        html = r.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_Input.html")))
+                    {
+                        html = r.ReadToEnd();
+                    }
+                }
+            }
+
             tbl_PRO_SYLL.HTML = html;
             //}
 

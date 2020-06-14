@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { STAFF_NhanSu_LLKHProviderCustomProvider, PRO_LLKHCustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
@@ -19,12 +19,13 @@ export class NhanSuLLKHModalPage extends DetailPage {
     idNhanSu: any;
     idDeTai: any;
     model: any;
+    isInput: any;
     constructor(
         public currentProvider: STAFF_NhanSu_LLKHProviderCustomProvider,
         public proLLKHProvider: PRO_LLKHCustomProvider,
         public nckhProvider: NCKHServiceProvider,
         public deTaiCustomProvider: PRO_DeTaiCustomProvider,
-
+        public modalCtrl: ModalController,
         public viewCtrl: ViewController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
@@ -46,11 +47,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
         else {
             this.idDeTai = -1;
         }
+        this.isInput = navParams.get('isInput');
     }
 
     loadData() {
         if (this.idDeTai > 0) {
-            this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu).then((ite) => {
+            this.proLLKHProvider.getItemCustom(this.idDeTai, this.idNhanSu, this.isInput).then((ite) => {
                 this.item = ite;
                 this.loadedData();
             }).catch((data) => {
@@ -59,7 +61,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
             });
         }
         else {
-            this.currentProvider.getItemCustom(this.idNhanSu).then((ite) => {
+            this.currentProvider.getItemCustom(this.idNhanSu, this.isInput).then((ite) => {
                 this.item = ite;
                 this.loadedData();
             }).catch((data) => {
@@ -363,5 +365,12 @@ export class NhanSuLLKHModalPage extends DetailPage {
                 this.toastMessage('Không in được, \nvui lòng thử lại.');
             });
         });
+    };
+
+    printPreview() {
+        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': this.idNhanSu, 'isInput': false };
+        let myModal = this.modalCtrl.create(NhanSuLLKHModalPage, param, { cssClass: 'preview-modal' });
+        this.viewCtrl.dismiss();
+        myModal.present();
     };
 }

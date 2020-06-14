@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { ModalController, ViewController, IonicPage, NavController, NavParams, Events, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { PRO_BaoCaoNghiemThuDeTaiCustomProvider, PRO_DeTaiCustomProvider } from '../../../providers/Services/CustomService';
@@ -17,11 +17,13 @@ import { NCKHServiceProvider } from '../../../providers/CORE/nckh-service';
 export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
     idDeTai: any;
     model: any;
+    isInput: any;
     constructor(
         public currentProvider: PRO_BaoCaoNghiemThuDeTaiCustomProvider,
         public nckhProvider: NCKHServiceProvider,
         public deTaiCustomProvider: PRO_DeTaiCustomProvider,
         public viewCtrl: ViewController,
+        public modalCtrl: ModalController,
         public navCtrl: NavController, public navParams: NavParams, public events: Events, public toastCtrl: ToastController, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public formBuilder: FormBuilder, public commonService: CommonServiceProvider, public accountService: AccountServiceProvider,
     ) {
         super('page-bao-cao-nghiem-thu-de-tai-modal', null, currentProvider, navCtrl, navParams, events, toastCtrl, loadingCtrl, alertCtrl, commonService, accountService, formBuilder);
@@ -34,10 +36,11 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
         }
+        this.isInput = navParams.get('isInput');
     }
 
     loadData() {
-        this.currentProvider.getItemCustom(this.idDeTai).then((ite) => {
+        this.currentProvider.getItemCustom(this.idDeTai, this.isInput).then((ite) => {
             this.item = ite;
             this.loadedData();
         }).catch((data) => {
@@ -127,5 +130,12 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
                 this.toastMessage('Không in được, \nvui lòng thử lại.');
             });
         });
+    };
+
+    printPreview() {
+        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
+        let myModal = this.modalCtrl.create(BaoCaoNghiemThuDeTaiModalPage, param, { cssClass: 'preview-modal' });
+        this.viewCtrl.dismiss();
+        myModal.present();
     };
 }

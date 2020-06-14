@@ -37,9 +37,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_MauPhanTichDuLieu);
         }
 
-        [Route("get_PRO_MauPhanTichDuLieuByDeTai/{idDeTai:int}")]
+        [Route("get_PRO_MauPhanTichDuLieuByDeTai/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_MauPhanTichDuLieu))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_MauPhanTichDuLieu tbl_PRO_MauPhanTichDuLieu = BS_PRO_MauPhanTichDuLieu.get_PRO_MauPhanTichDuLieuByDeTai(db, idDeTai);
 
@@ -48,6 +48,15 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_MauPhanTichDuLieu.HTML = html;
             return Ok(tbl_PRO_MauPhanTichDuLieu);
         }

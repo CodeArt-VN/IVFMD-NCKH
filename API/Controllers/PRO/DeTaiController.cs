@@ -68,8 +68,18 @@ namespace API.Controllers.PRO
         {
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             var result = BS_PRO_DeTai.updateStatus_PRO_DeTai(db, id, actionCode, typeId, Username);
-            if (!string.IsNullOrEmpty(result))
-                return BadRequest(result);
+            if (!string.IsNullOrEmpty(result.Error))
+                return BadRequest(result.Error);
+
+            if (result.ListEmail != null)
+            {
+                foreach (var item in result.ListEmail)
+                {
+                    EmailService emailService = new EmailService();
+                    emailService.Send(new IdentityMessage() { Subject = item.Subject, Destination = item.Destination, Body = item.Body });
+                }
+            }
+
             DTO_PRO_DeTai tbl_PRO_DeTai = BS_PRO_DeTai.get_PRO_DeTaiCustom(db, id, user.StaffID);
             if (tbl_PRO_DeTai == null)
             {

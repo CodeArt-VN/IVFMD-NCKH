@@ -36,20 +36,27 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_PhieuXemXetDaoDuc);
         }
 
-        [Route("get_PRO_PhieuXemXetDaoDuc/{idDeTai:int}")]
+        [Route("get_PRO_PhieuXemXetDaoDuc/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_PhieuXemXetDaoDuc))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_PhieuXemXetDaoDuc tbl_PRO_PhieuXemXetDaoDuc = BS_PRO_PhieuXemXetDaoDuc.get_PRO_PhieuXemXetDaoDucCustom(db, idDeTai);
-            //if (tbl_PRO_LLKH.ID == 0)
-            //{
+            
             string html = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/PhieuXemXetDaoDuc.html")))
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/PhieuXemXetDaoDuc_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_PhieuXemXetDaoDuc.HTML = html;
-            //}
 
             return Ok(tbl_PRO_PhieuXemXetDaoDuc);
         }

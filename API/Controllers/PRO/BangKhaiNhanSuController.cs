@@ -36,9 +36,9 @@ namespace API.Controllers.PRO
             return Ok(tbl_PRO_BangKhaiNhanSu);
         }
 
-        [Route("get_PRO_BangKhaiNhanSu/{idDeTai:int}")]
+        [Route("get_PRO_BangKhaiNhanSu/{idDeTai:int}/{isInput?}")]
         [ResponseType(typeof(DTO_PRO_BangKhaiNhanSu))]
-        public IHttpActionResult GetCustom(int idDeTai)
+        public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_BangKhaiNhanSu tbl_PRO_BangKhaiNhanSu = BS_PRO_BangKhaiNhanSu.get_PRO_BangKhaiNhanSuByDeTai(db, idDeTai);
             //if (tbl_PRO_LLKH.ID == 0)
@@ -48,6 +48,15 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKhaiNhanSu_Input.html")))
+                {
+                    html = r.ReadToEnd();
+                }
+            }
+
             tbl_PRO_BangKhaiNhanSu.HTML = html;
 
             return Ok(tbl_PRO_BangKhaiNhanSu);
