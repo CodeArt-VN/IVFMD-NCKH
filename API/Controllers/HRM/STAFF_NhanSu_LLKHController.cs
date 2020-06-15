@@ -38,20 +38,26 @@ namespace API.Controllers.HRM
             return Ok(tbl_CUS_HRM_STAFF_NhanSu_LLKH);
         }
 
-        [Route("get_CUS_HRM_STAFF_NhanSu_LLKH/{idNhanSu:int}")]
+        [Route("get_CUS_HRM_STAFF_NhanSu_LLKH/{idNhanSu:int}/{isInput?}")]
         [ResponseType(typeof(DTO_CUS_HRM_STAFF_NhanSu_LLKH))]
-        public IHttpActionResult GetCustom(int idNhanSu)
+        public IHttpActionResult GetCustom(int idNhanSu, bool? isInput = false)
         {
             DTO_CUS_HRM_STAFF_NhanSu_LLKH tbl_CUS_HRM_STAFF_NhanSu_LLKH = BS_CUS_HRM_STAFF_NhanSu_LLKH.get_CUS_HRM_STAFF_NhanSu_LLKHByNhanSu(db, idNhanSu);
-            //if (tbl_CUS_HRM_STAFF_NhanSu_LLKH.ID == 0)
-            //{
-                string html = "";
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+
+            string html = "";
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+            {
+                html = r.ReadToEnd();
+            }
+
+            if (isInput == true)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
                 {
                     html = r.ReadToEnd();
                 }
-                tbl_CUS_HRM_STAFF_NhanSu_LLKH.HTML = html;
-            //}
+            }
+            tbl_CUS_HRM_STAFF_NhanSu_LLKH.HTML = html;
 
             return Ok(tbl_CUS_HRM_STAFF_NhanSu_LLKH);
         }

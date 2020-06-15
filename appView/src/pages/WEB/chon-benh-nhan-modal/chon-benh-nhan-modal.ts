@@ -76,7 +76,7 @@ export class ChonBenhNhanModalPage extends DetailPage {
       else {
         this.dismiss();
         var page = null; 
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': this.idBenhNhan };
+        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': this.idBenhNhan, 'isInput': true };
         switch(this.type){
             case 1:
               page = AEModalPage;
