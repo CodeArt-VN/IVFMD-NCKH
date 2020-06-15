@@ -183,7 +183,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     TenBaiViet: ko.observable(nn.TenBaiViet || ""),
                     SanPham: ko.observable(nn.SanPham || ""),
                     SoHieu: ko.observable(nn.SoHieu || ""),
-                    DiemIF: ko.observable(nn.DiemIF || "")
+                    GhiChu: ko.observable(nn.GhiChu || "")
                 };
             }));
 
@@ -192,7 +192,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     TenBaiViet: ko.observable(nn.TenBaiViet || ""),
                     SanPham: ko.observable(nn.SanPham || ""),
                     SoHieu: ko.observable(nn.SoHieu || ""),
-                    DiemIF: ko.observable(nn.DiemIF || "")
+                    GhiChu: ko.observable(nn.GhiChu || "")
                 };
             }));
 
@@ -201,7 +201,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                     TenBaiViet: ko.observable(nn.TenBaiViet || ""),
                     SanPham: ko.observable(nn.SanPham || ""),
                     SoHieu: ko.observable(nn.SoHieu || ""),
-                    DiemIF: ko.observable(nn.DiemIF || "")
+                    GhiChu: ko.observable(nn.GhiChu || "")
                 };
             }));
 
