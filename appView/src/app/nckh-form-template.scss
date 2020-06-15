@@ -143,6 +143,14 @@
         .box {
             margin: 0;
         }
+
+        div {
+            padding-right: 3px !important;
+
+            &:last-child {
+                padding-right: 0 !important;
+            }
+        }
     }
 
     .box {
@@ -186,9 +194,7 @@
         &:hover, &:focus {
             outline: 1px dashed #44a9eb;
         }
-        /*> p:first-child, > div:first-child {
-            margin-top: 0;
-        }*/
+
         > p, > div {
             margin-bottom: .6rem !important;
             margin-top: .6rem !important;
@@ -380,17 +386,14 @@
         }
     }
 
-
     &.input-mode-custom {
 
-        &.tab-1 {
+        .tab-1 {
             margin-left: 0;
-            width: 100% !important;
         }
 
-        &.tab-2 {
+        .tab-2 {
             margin-left: 0;
-            width: 100% !important;
         }
 
         .box-inline {
@@ -406,13 +409,13 @@
             }
 
             &.tab-1 {
-                margin-left: 1em;
-                width: calc(100% - 1em) !important;
+                margin-left: 0;
+                width: 100% !important;
             }
 
             &.tab-2 {
-                margin-left: 2em;
-                width: calc(100% - 2em) !important;
+                margin-left: 0;
+                width: 100% !important;
             }
 
             .box {
@@ -449,44 +452,56 @@
                 padding: 3px;
             }
 
-            [contenteditable] {
-                padding: 5px;
-                border: 1px solid #d2d2d2;
-                border-radius: 3px;
-                min-height: 32px;
-                text-indent: 0 !important;
-                text-rendering: auto;
-                color: -internal-light-dark-color(black, white);
-                letter-spacing: normal;
-                word-spacing: normal;
-                text-transform: none;
-                text-shadow: none;
-                text-align: start;
-                -webkit-appearance: textfield;
-                background-color: -internal-light-dark-color(white, black);
-                cursor: text;
-                margin: 0em;
-            }
-
-            [contenteditable="true"] {
-                &:hover, &:focus {
-                    border: 1px solid #44a9eb;
-                }
-            }
-
-            [contenteditable="false"] {
-                background-color: #eaeaea;
+            &.box-inline > * {
+                display: table-cell;
+                vertical-align: middle;
+                padding: 3px;
             }
         }
 
+        [contenteditable]:not(td) {
+            padding: 5px;
+            border: 1px solid #d2d2d2;
+            border-radius: 3px;
+            min-height: 32px;
+            text-indent: 0 !important;
+            text-rendering: auto;
+            color: -internal-light-dark-color(black, white);
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-transform: none;
+            text-shadow: none;
+            text-align: start;
+            -webkit-appearance: textfield;
+            background-color: -internal-light-dark-color(white, black);
+            cursor: text;
+            margin: 0em;
+        }
+
         [contenteditable="true"] {
-            &:not(td) {
+            &:hover, &:focus {
+                border: 1px solid #44a9eb;
+            }
+        }
+
+        [contenteditable="false"] {
+            background-color: #eaeaea;
+        }
+
+        [contenteditable="true"] {
+            &:not(td), &:not(input[type="checkbox"]) {
                 display: inline !important;
                 width: 100%;
             }
 
+            &[type="checkbox"] {
+                height: auto;
+                min-height: 0;
+            }
+
             &:hover, &:focus {
                 border: 1px solid #44a9eb;
+                border-radius: 3px;
             }
 
             > p, > div {
@@ -602,31 +617,35 @@
                 }
             }
         }
+
+        span[contenteditable] {
+            line-height: 15pt;
+        }
     }
 }
 
-@media print {
-    .nckh-form-template {
-        font-family: 'Times New Roman', Times, serif;
-
-        .print-hidden {
-            display: none;
-        }
-
-        .group_controls {
-            display: none;
-        }
-
+    @media print {
         .nckh-form-template {
-            box-shadow: none;
-        }
+            font-family: 'Times New Roman', Times, serif;
 
-        .box {
-            [contenteditable="true"] {
-                &:hover, &:focus {
-                    outline: none;
+            .print-hidden {
+                display: none;
+            }
+
+            .group_controls {
+                display: none;
+            }
+
+            .nckh-form-template {
+                box-shadow: none;
+            }
+
+            .box {
+                [contenteditable="true"] {
+                    &:hover, &:focus {
+                        outline: none;
+                    }
                 }
             }
         }
     }
-}

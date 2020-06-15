@@ -66,20 +66,23 @@
                 </div>
                 <div style="line-height: 1.5em;">
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A2_QuanLy" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A2_QuanLy" />
                         <span style="display: inline;">Quản lý</span>
                     </p>
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A2_SinhHocVaCongNghe" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A2_SinhHocVaCongNghe" />
                         <span style="display: inline;">Sinh học và công nghệ sinh học</span>
                     </p>
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A2_KhoaHocSucKhoe" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A2_KhoaHocSucKhoe" />
                         <span style="display: inline;">Khoa học sức khỏe</span>
                     </p>
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A2_Khac" />
-                        <span style="display: inline;">Khác <span contenteditable="true" data-bind="editableHtml: A2_KhacMoTa">…</span></span>
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A2_Khac" />
+                        <span style="display: inline;">Khác</span>
+                    </p>
+                    <p class="box tab-1">
+                        <span contenteditable="true" data-bind="editableHtml: A2_KhacMoTa">…</span>
                     </p>
                     <p class="box tab-1">
                         <span class="box-title">Chuyên ngành hẹp:</span>
@@ -93,15 +96,15 @@
                 </div>
                 <div style="line-height: 1.5em;">
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A3_NghienCuuCoBan" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A3_NghienCuuCoBan" />
                         <span style="display: inline;">Nghiên cứu cơ bản</span>
                     </p>
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A3_NghienCuuUngDung" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A3_NghienCuuUngDung" />
                         <span style="display: inline;">Nghiên cứu ứng dụng</span>
                     </p>
                     <p class="box tab-1">
-                        <input style="position: relative;top: 4px;" type="checkbox" contenteditable="true" data-bind="checkedHtml: A3_NghienCuuTrienKhai" />
+                        <input style="position: relative;top: 4px;" type="checkbox" data-bind="checkedHtml: A3_NghienCuuTrienKhai" />
                         <span style="display: inline;">Nghiên cứu triển khai</span>
                     </p>
                 </div>
@@ -110,7 +113,7 @@
                 <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                     A4. Thời gian thực hiện
                 </div>
-                <div contenteditable="false" data-bind="editableHtml: A4_ThoiGianThucHien" style="display: block;text-indent: 1em;padding:3px 0;">
+                <div contenteditable="false" data-bind="editableHtml: A4_ThoiGianThucHien" style="display: block;">
 
                 </div>
             </div>
@@ -208,7 +211,7 @@
                 <div class="block-heading heading-1" style="color:blue;padding:5px 0;">
                     <b>Tóm tắt hoạt động nghiên cứu và đào tạo sau đại học có liên quan đến đề tài của chủ nhiệm</b><i>(không quá 500 chữ)</i>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: A6_TomTatHoatDong" style="display: block;text-indent: 1em;padding:3px 0;line-height:1.2em;">
+                <div contenteditable="true" data-bind="editableHtml: A6_TomTatHoatDong" style="display: block;line-height:1.2em;">
 
                 </div>
             </div>
@@ -321,7 +324,7 @@
                 <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                     B1. Giới thiệu và cơ sở nghiên cứu
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: B1_GioiThieu" style="display: block;text-indent: 1em;padding:3px 0;">
+                <div contenteditable="true" data-bind="editableHtml: B1_GioiThieu" style="display: block;">
 
                 </div>
             </div>
@@ -329,7 +332,7 @@
                 <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                     B2. Tài liệu tham khảo
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: B2_TaiLieuThamKhao" style="display: block;text-indent: 1em;padding:3px 0;">
+                <div contenteditable="true" data-bind="editableHtml: B2_TaiLieuThamKhao" style="display: block;">
 
                 </div>
                 <div>
@@ -379,7 +382,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             1. Mục tiêu nghiên cứu
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B311_MucTieuNghienCuu" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B311_MucTieuNghienCuu" class="tab-1" style="display: block;">
 
                         </div>
                     </div>
@@ -387,7 +390,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             2.	Chỉ tiêu đánh giá
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B312_ChiTieuDanhGia" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B312_ChiTieuDanhGia" class="tab-1" style="display: block;">
 
                         </div>
                     </div>
@@ -432,7 +435,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             1.	Thiết kế nghiên cứu
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B321_ThietKeNghienCuu" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B321_ThietKeNghienCuu" class="tab-1" style="display: block;">
                             ...
                         </div>
                     </div>
@@ -440,7 +443,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             2.	Dân số nghiên cứu
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B322_DanSoNghienCuu" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B322_DanSoNghienCuu" class="tab-1" style="display: block;">
                         </div>
                         <div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
@@ -449,19 +452,19 @@
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 -	Tiêu chuẩn nhận:
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3221_TieuChuanNhan" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3221_TieuChuanNhan" class="tab-2" style="display: block;">
                             </div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 -	Tiêu chuẩn loại:
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3221_TieuChuanLoai" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3221_TieuChuanLoai" class="tab-2" style="display: block;">
                             </div>
                         </div>
                         <div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 2.2	Cỡ mẫu
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3222_CoMau" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3222_CoMau" class="tab-2" style="display: block;">
                             </div>
                         </div>
                     </div>
@@ -469,7 +472,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             3.	Phương pháp tiến hành
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B323_PhuongPhapTienHanh" data-editor="true" data-editor-image="true" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B323_PhuongPhapTienHanh" data-editor="true" data-editor-image="true" class="tab-1" style="display: block;">
                         </div>
                     </div>
                     <div>
@@ -480,21 +483,21 @@
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 4.1 Yếu tố đánh giá kết quả
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3241_YeuToDanhGiaKetQua" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3241_YeuToDanhGiaKetQua" class="tab-2" style="display: block;">
                             </div>
                         </div>
                         <div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 4.2 Các biến chứng điều trị
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3242_CacBienChungDieuTri" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3242_CacBienChungDieuTri" class="tab-2" style="display: block;">
                             </div>
                         </div>
                         <div>
                             <div class="block-heading heading-1 text-bold tab-2" style="padding:5px 0;">
                                 4.3 Các biến chứng về sản khoa và chu sinh bao gồm
                             </div>
-                            <div contenteditable="true" data-bind="editableHtml: B3243_CacBienChungVeSanKhoa" class="tab-2" style="display: block;text-indent: 1em;padding:3px 0;">
+                            <div contenteditable="true" data-bind="editableHtml: B3243_CacBienChungVeSanKhoa" class="tab-2" style="display: block;">
                             </div>
                         </div>
                     </div>
@@ -502,7 +505,7 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             5.	Phương pháp phân tích
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B325_PhuongPhapPhanTich" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B325_PhuongPhapPhanTich" class="tab-1" style="display: block;">
                         </div>
                     </div>
                     <div>
@@ -567,21 +570,21 @@
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             7.	Bảng kết quả dự kiến
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B327_BangKetQuaDuKien" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B327_BangKetQuaDuKien" class="tab-1" style="display: block;">
                         </div>
                     </div>
                     <div>
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             8.	Vấn đề y đức
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B328_VanDeYDuc" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B328_VanDeYDuc" class="tab-1" style="display: block;">
                         </div>
                     </div>
                     <div>
                         <div class="block-heading heading-1 text-bold tab-1" style="padding:5px 0;">
                             9.	Tính khả thi
                         </div>
-                        <div contenteditable="true" data-bind="editableHtml: B329_TinhKhaThi" class="tab-1" style="display: block;text-indent: 1em;padding:3px 0;">
+                        <div contenteditable="true" data-bind="editableHtml: B329_TinhKhaThi" class="tab-1" style="display: block;">
                         </div>
                     </div>
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
@@ -611,19 +614,19 @@
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                         B4.1 Ấn phẩm khoa học
                     </div>
-                    <div contenteditable="true" data-bind="editableHtml: B41_AnPhamKhoaHoc" style="display: block;text-indent: 1em;padding:3px 0;">
+                    <div contenteditable="true" data-bind="editableHtml: B41_AnPhamKhoaHoc" style="display: block;">
 
                     </div>
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                         B4.2 Đăng ký sở hữu trí tuệ:
                     </div>
-                    <div contenteditable="true" data-bind="editableHtml: B42_DangKySoHuuTriTue" style="display: block;text-indent: 1em;padding:3px 0;">
+                    <div contenteditable="true" data-bind="editableHtml: B42_DangKySoHuuTriTue" style="display: block;">
 
                     </div>
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                         B4.3 Kết quả đào tạo:
                     </div>
-                    <div contenteditable="true" data-bind="editableHtml: B43_KetQuaDaoTao" style="display: block;text-indent: 1em;padding:3px 0;">
+                    <div contenteditable="true" data-bind="editableHtml: B43_KetQuaDaoTao" style="display: block;">
 
                     </div>
                 </div>
@@ -632,14 +635,14 @@
                 <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                     B5. Khả năng ứng dụng kết quả nghiên cứu
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: B5_KhaNangUngDung" style="display: block;text-indent: 1em;padding:3px 0;">
+                <div contenteditable="true" data-bind="editableHtml: B5_KhaNangUngDung" style="display: block;">
 
                 </div>
                 <div>
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
                         B5.1 Khả năng ứng dụng trong lĩnh vực đào tạo, nghiên cứu khoa học & công nghệ, chính sách, quản lý
                     </div>
-                    <div contenteditable="true" data-bind="editableHtml: B51_KhaNangUngDungLinhVucDaoTao" style="display: block;text-indent: 1em;padding:3px 0;">
+                    <div contenteditable="true" data-bind="editableHtml: B51_KhaNangUngDungLinhVucDaoTao" style="display: block;">
 
                     </div>
                     <div class="block-heading heading-1 text-bold" style="color:blue;padding:5px 0;">
@@ -691,21 +694,21 @@
                             <div>
                                 <div class="box-inline">
                                     <div style="display:inline-block;min-width:54px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">Ngày </span>
-                                            <span contenteditable="true" style="text-indent:38px;" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Ngay"></span>
+                                            <span contenteditable="true" style="text-indent:38px;min-width:40px" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Ngay"></span>
                                         </p>
                                     </div>
                                     <div style="display:inline-block;min-width:60px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">tháng</span>
-                                            <span contenteditable="true" style="text-indent:40px;" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Thang"></span>
+                                            <span contenteditable="true" style="text-indent:40px;min-width:40px" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Thang"></span>
                                         </p>
                                     </div>
                                     <div style="display:inline-block;min-width:60px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">năm</span>
-                                            <span contenteditable="true" style="text-indent:30px;" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Nam"></span>
+                                            <span contenteditable="true" style="text-indent:30px;min-width:60px" data-bind="editableHtml: B52_CoQuanChuTri_NgayKy_Nam"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -720,21 +723,21 @@
                             <div>
                                 <div class="box-inline">
                                     <div style="display:inline-block;min-width:54px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">Ngày </span>
-                                            <span contenteditable="true" style="text-indent:38px;" data-bind="editableHtml: B52_CNDT_NgayKy_Ngay"></span>
+                                            <span contenteditable="true" style="text-indent:38px;min-width:40px" data-bind="editableHtml: B52_CNDT_NgayKy_Ngay"></span>
                                         </p>
                                     </div>
                                     <div style="display:inline-block;min-width:60px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">tháng</span>
-                                            <span contenteditable="true" style="text-indent:40px;" data-bind="editableHtml: B52_CNDT_NgayKy_Thang"></span>
+                                            <span contenteditable="true" style="text-indent:40px;min-width:40px" data-bind="editableHtml: B52_CNDT_NgayKy_Thang"></span>
                                         </p>
                                     </div>
                                     <div style="display:inline-block;min-width:60px;text-align:left">
-                                        <p class="box">
+                                        <p class="box box-inline">
                                             <span class="box-title">năm</span>
-                                            <span contenteditable="true" style="text-indent:30px;" data-bind="editableHtml: B52_CNDT_NgayKy_Nam"></span>
+                                            <span contenteditable="true" style="text-indent:30px;min-width:60px" data-bind="editableHtml: B52_CNDT_NgayKy_Nam"></span>
                                         </p>
                                     </div>
                                 </div>
