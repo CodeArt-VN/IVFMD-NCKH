@@ -88,80 +88,35 @@
                 </div>
             </div>
             <div>
-                <div style="width:100%;position:relative;">
-                    <table class="nckh-table" style="width:100%;" border="0">
-                        <colgroup>
-                            <col width="78" />
-                            <col />
-                            <col width="250" />
-                        </colgroup>
-                        <tbody style="width:100%;">
-                            <tr>
-                                <td style="padding-left: 0;" rowspan="2">
-                                    <p class="box">
-                                        <span class="box-title text-bold">6. Học vị:</span>
-                                        <span contenteditable="false"></span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="box">
-                                        <span contenteditable="true" data-bind="editableHtml: HocViThacSy"></span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="box">
-                                        <span class="box-title">năm đạt:</span>
-                                        <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHtml: NamHocViThacSy"></span>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="box">
-                                        <span contenteditable="true" data-bind="editableHtml: HocViTienSy"></span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="box">
-                                        <span class="box-title">năm đạt:</span>
-                                        <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHtml: NamHocViTienSy"></span>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p class="box">
+                    <span class="text-bold">6. Học vị:</span>
+                </p>
+                <p class="box">
+                    <span class="box-title text-bold">Học vị thạc sỹ:</span>
+                    <span contenteditable="true" data-bind="editableHtml: HocViThacSy"></span>
+                </p>
+                <p class="box">
+                    <span class="box-title">Năm đạt:</span>
+                    <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHtml: NamHocViThacSy"></span>
+                </p>
+                <p class="box">
+                    <span class="box-title text-bold">Học vị tiến sỹ:</span>
+                    <span contenteditable="true" data-bind="editableHtml: HocViTienSy"></span>
+                </p>
+                <p class="box">
+                    <span class="box-title">Năm đạt:</span>
+                    <span contenteditable="true" style="text-indent: 60px;" data-bind="editableHtml: NamHocViTienSy"></span>
+                </p>
             </div>
             <div>
-                <div style="width:100%;position:relative;">
-                    <table class="nckh-table" style="width:100%;" border="0">
-                        <colgroup>
-                            <col width="90" />
-                            <col />
-                            <col width="250" />
-                        </colgroup>
-                        <tbody style="width:100%;">
-                            <tr>
-                                <td style="padding-left: 0;padding-right:0;">
-                                    <p class="box">
-                                        <span class="text-bold">7. Học hàm:</span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="box">
-                                        <span contenteditable="true" data-bind="editableHtml: HocHam"></span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="box">
-                                        <span class="box-title">năm phong:</span>
-                                        <span contenteditable="true" style="text-indent: 80px;" data-bind="editableHtml: NamPhongHocHam"></span>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p class="box">
+                    <span class="text-bold">7. Học hàm:</span>
+                    <span contenteditable="true" data-bind="editableHtml: HocHam"></span>
+                </p>
+                <p class="box">
+                    <span class="box-title">Năm phong:</span>
+                    <span contenteditable="true" style="text-indent: 80px;" data-bind="editableHtml: NamPhongHocHam"></span>
+                </p>
             </div>
             <div class="description">
                 <p class="box">
@@ -812,26 +767,24 @@
         </div>
         <div class="block">
             <div class="box" style="font-style: italic">
-                <div style="width:50%;" class="text-center">
-                </div>
-                <div style="width:50%;" class="text-center">
+                <div style="width:100%;" class="text-center">
                     <div class="box-inline">
                         <div style="display:inline-block;min-width:65px">
-                            <p class="box">
+                            <p class="box box-inline">
                                 <span class="box-title">Ngày </span>
-                                <span contenteditable="true" style="text-indent:34px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                <span contenteditable="true" style="text-indent:34px;min-width:100px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:72px">
-                            <p class="box">
+                            <p class="box box-inline">
                                 <span class="box-title">tháng</span>
-                                <span contenteditable="true" style="text-indent:38px;" data-bind="editableHtml: NgayKy_Thang"></span>
+                                <span contenteditable="true" style="text-indent:38px;min-width:100px;" data-bind="editableHtml: NgayKy_Thang"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:60px">
-                            <p class="box">
+                            <p class="box box-inline">
                                 <span class="box-title">năm</span>
-                                <span contenteditable="true" style="text-indent:35px;" data-bind="editableHtml: NgayKy_Nam"></span>
+                                <span contenteditable="true" style="text-indent:35px;min-width:100px" data-bind="editableHtml: NgayKy_Nam"></span>
                             </p>
                         </div>
                     </div>
@@ -840,9 +793,7 @@
         </div>
         <div>
             <p class="box" style="">
-                <span style="width:50%;" class="text-center">
-                </span>
-                <span style="width:50%;" class="text-center">
+                <span style="width:100%;min-height:200px;" class="text-center">
                     <b>Người khai</b>
                     <br>
                     <i>(Ký và ghi rõ họ tên)</i>

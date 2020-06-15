@@ -323,7 +323,7 @@
                     &::after {
                         display: none;
                         position: absolute;
-                        content: "Delete";
+                        content: "X";
                         right: 0;
                         top: 0;
                         transform: translate(0, -100%);
@@ -513,6 +513,9 @@
         table.nckh-table {
             border-collapse: collapse;
             font-size: inherit;
+            border-color: #cecece;
+            border-left: 0;
+            border-right: 0;
 
             thead {
                 display: table-row-group;
@@ -566,6 +569,7 @@
                         }
 
                         &[contenteditable="false"] {
+                            padding: 6px;
                             height: 26px;
                         }
 
@@ -620,6 +624,11 @@
 
         span[contenteditable] {
             line-height: 15pt;
+        }
+
+        [contenteditable].input-inline {
+            padding: 3px;
+            min-width: 32px !important;
         }
     }
 }
