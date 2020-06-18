@@ -49,6 +49,7 @@ namespace BaseBusiness
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_ChuKy = s.NgayKy_ChuKy,
                 FormConfig = s.FormConfig,
+                NgayKy_ChuKyThuTruong = s.NgayKy_ChuKyThuTruong
             }).FirstOrDefault();
 
             if (query == null)

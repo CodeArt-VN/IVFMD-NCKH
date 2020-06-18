@@ -398,10 +398,10 @@ namespace API.Controllers
                         <br><a href='@Model.Domain'>@Model.Domain</a> 
                         <br>";
 
-                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://myduc.appcenter.vn:9003/" });
+                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://113.161.87.251:9004/" });
 
-                //EmailService emailService = new EmailService();
-                //emailService.Send(new IdentityMessage() { Subject = "Quản lý Đề tài Nghiên cứu khoa học - thông tin tài khoản", Destination = dbUser.Email, Body = html });
+                EmailService emailService = new EmailService();
+                emailService.Send(new IdentityMessage() { Subject = "Quản lý Đề tài Nghiên cứu khoa học - thông tin tài khoản", Destination = dbUser.Email, Body = html });
 
                 return StatusCode(HttpStatusCode.NoContent);
             }
