@@ -50,6 +50,7 @@ namespace BaseBusiness
                 NgayKy_Nam = s.NgayKy_Nam,
                 NgayKy_Ngay = s.NgayKy_Ngay,
                 NgayKy_Thang = s.NgayKy_Thang,
+                NgayKy_ChuKyThuTruong = s.NgayKy_ChuKyThuTruong,
             }).FirstOrDefault();
 
             if (query == null)

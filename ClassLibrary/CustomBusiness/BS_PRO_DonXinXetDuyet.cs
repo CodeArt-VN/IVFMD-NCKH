@@ -46,6 +46,7 @@ namespace BaseBusiness
                 CreatedBy = s.CreatedBy,
                 ModifiedDate = s.ModifiedDate,
                 ModifiedBy = s.ModifiedBy,
+                NgayKy_ChuKyThuTruong = s.NgayKy_ChuKyThuTruong
             }).FirstOrDefault();
 
             if (query == null)
