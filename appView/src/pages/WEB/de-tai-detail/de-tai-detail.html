@@ -126,7 +126,7 @@
                                 <p class="summary">
                                     {{i.Description}}
                                 </p>
-                                <div padding></div>
+                                <div style="padding-bottom:5px"></div>
 
 
                                 <button *ngIf="i.TrangThaiCode === 'Update' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
@@ -153,7 +153,7 @@
                                 <ion-card-title>
                                     <a>Nghiên cứu viên chính</a>
                                 </ion-card-title>
-                                <div padding style="margin-bottom:20px"></div>
+                                <div style="padding-bottom:5px"></div>
 
                                 <button ion-button block
                                         (click)="openDetailModal(6)">
@@ -174,7 +174,7 @@
                                 <ion-card-title>
                                     <a>Chủ nhiệm đề tài</a>
                                 </ion-card-title>
-                                <div padding style="margin-bottom:20px"></div>
+                                <div style="padding-bottom:5px"></div>
 
                                 <button ion-button block
                                         (click)="openDetailModal(4)">
@@ -191,17 +191,17 @@
                     <ion-col col-md-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
-                                <span style="font-size:13px">
+                                <span style="font-size: 13px;float: left;margin: 6px; width:104px">
                                     Mã số Protocal ID
                                 </span>
-                                <div class="c-control" style="margin-bottom:5px">
-                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoProtocalID" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
+                                <div class="c-control" style="margin-bottom: 5px;width: calc(100% - 120px);float: left;">
+                                    <input class="c-input" style="padding: 8px 25px;" type="text" [(ngModel)]="item.MaSoProtocalID" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
                                 </div>
-                                <span style="font-size:13px">
+                                <span style="font-size: 13px;float: left;margin: 6px;width:104px">
                                     Mã số HĐĐĐ
                                 </span>
-                                <div class="c-control" style="margin-bottom:5px">
-                                    <input class="c-input" type="text" [(ngModel)]="item.MaSoHDDD" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
+                                <div class="c-control" style="margin-bottom: 5px;width: calc(100% - 120px);float: left;">
+                                    <input class="c-input" style="padding: 8px 25px;" type="text" [(ngModel)]="item.MaSoHDDD" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8" />
                                 </div>
                                 <button ion-button block (click)="updateMaSo()" [disabled]="!canApprove || item.IDTrangThai_HDDD != 8">
                                     CẬP
@@ -223,7 +223,7 @@
                                 <p class="summary" *ngIf="item.FileChapThuan == null || item.FileChapThuan == ''">
                                     Chưa up file
                                 </p>
-                                <div padding></div>
+                                <div style="padding-bottom:5px"></div>
                                 <button *ngIf="canApprove && item.IDTrangThai_HDDD == 8 && item.FileChapThuan != null && item.FileChapThuan != ''"
                                         style="width: calc(50% - 10px);" ion-button (click)="uploadChapThuanClick()">
                                     Upload file
@@ -255,7 +255,7 @@
                                 </ion-card-title>
                                 <p class="summary">
                                 </p>
-                                <div padding></div>
+                                <div style="padding-bottom:5px"></div>
                                 <button ion-button block
                                         (click)="openDetailModal(18)">
                                     Upload file

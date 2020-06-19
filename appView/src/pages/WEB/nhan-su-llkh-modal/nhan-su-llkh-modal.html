@@ -11,7 +11,7 @@
     <button ion-button float-right (click)="printPreview()" *ngIf="isInput">
         In Preview
     </button>
-    <button *ngIf="idDeTai > 0&&isInput" ion-button float-right (click)="updateFromHRM()">
+    <button *ngIf="idDeTai > 0" ion-button float-right (click)="updateFromHRM()">
         Lấy lại dữ liệu mới
     </button>
     <button color="warning" ion-button float-right *ngIf="isInput" (click)="cancel()">
