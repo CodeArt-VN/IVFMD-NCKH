@@ -4,7 +4,7 @@ import * as ko from 'knockout';
 import { Operator } from 'rxjs/Operator';
 import * as ckEditor from '../../assets/lib/ckeditor/ckeditor';
 import { CommonServiceProvider } from '../CORE/common-service';
-import { APIListBase } from '../CORE/api-list'
+import { APIListBase } from '../CORE/api-list';
 @Injectable()
 export class NCKHServiceProvider {
     commonService: CommonServiceProvider;
@@ -53,7 +53,8 @@ export class NCKHServiceProvider {
                     'subscript',
                     'superscript',
                     'removeFormat',
-                    'strikethrough'
+                    'strikethrough',
+                    'removeFormat'
                 ]
             },
             language: 'vi',
@@ -79,6 +80,7 @@ export class NCKHServiceProvider {
                     'fontColor',
                     'fontSize',
                     'fontFamily',
+                    'lineHeight',
                     '|',
                     'heading',
                     '|',
@@ -97,6 +99,7 @@ export class NCKHServiceProvider {
                     'superscript',
                     'removeFormat',
                     'strikethrough',
+                    'removeFormat',
                     'imageUpload'
                 ]
             },
@@ -108,7 +111,10 @@ export class NCKHServiceProvider {
                     'imageStyle:full',
                     'imageStyle:side'
                 ]
-            }
+            },
+            lineHeight: { // specify your otions in the lineHeight config object. Default values are [ 0, 0.5, 1, 1.5, 2 ]
+                options: [ 0.5, 1, 1.5, 2, 2.5 ]
+            },
         }
     }
     dispose() {
