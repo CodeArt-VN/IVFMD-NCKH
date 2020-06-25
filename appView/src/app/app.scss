@@ -475,8 +475,8 @@ ion-row.response {
     visibility: hidden!important;
 }
 
-.ck.ck-reset_all {
-    position: fixed !important;
+.ck.ck-balloon-panel {
+    position: absolute !important;
 }
 
 .ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_se, .ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_sw {
