@@ -36,6 +36,7 @@ export class NCKHServiceProvider {
                     'fontColor',
                     'fontSize',
                     'fontFamily',
+                    'lineHeight',
                     '|',
                     'heading',
                     '|',
@@ -52,10 +53,12 @@ export class NCKHServiceProvider {
                     'blockQuote',
                     'subscript',
                     'superscript',
-                    'removeFormat',
                     'strikethrough',
                     'removeFormat'
                 ]
+            },
+            lineHeight: { // specify your otions in the lineHeight config object. Default values are [ 0, 0.5, 1, 1.5, 2 ]
+                options: [ 0.5, 1, 1.5, 2, 2.5 ]
             },
             language: 'vi',
             licenseKey: ''
@@ -97,7 +100,6 @@ export class NCKHServiceProvider {
                     'blockQuote',
                     'subscript',
                     'superscript',
-                    'removeFormat',
                     'strikethrough',
                     'removeFormat',
                     'imageUpload'
