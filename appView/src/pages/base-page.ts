@@ -245,16 +245,24 @@ export class BasePage {
             modules.push({ Module: "Home", Name: 'Home', Code: this.userprofile.MenuItems.filter(d => d.Code == 'Home')[0].FormMenu[0].Code });
         }
         if (isNCKH) {
-            modules.push({ Module: "NCKH-View", Name: 'Nghiên cứu khoa học', Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
+            modules.push({ Module: "NCKH-View", Name: 'Nghiên cứu khoa học', 
+            Remark: 'Đăng ký đề tài nghiên cứu khoa học. Khai báo các thông tin hội đồng nội bộ, hội đồng đạo đức, Clinical Trial, thu nhận bệnh nhân... Báo cáo tiến độ nghiên cứu.',
+            Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
         }
         if (isNSKH) {
-            modules.push({ Module: "NSKH", Name: 'Năng suất khoa học', Code: this.userprofile.MenuItems.filter(d => d.Code == 'NSKH')[0].FormMenu[0].Code });
+            modules.push({ Module: "NSKH", Name: 'Năng suất khoa học',
+            Remark: 'Báo cáo đề tài, tạp chí hội nghị - hội thảo, sản phẩm khoa học, duyệt kinh phí...', 
+            Code: this.userprofile.MenuItems.filter(d => d.Code == 'NSKH')[0].FormMenu[0].Code });
         }
         if (isHNHT) {
-            modules.push({ Module: "HNHT", Name: 'Hội nghị, hội thảo', Code: this.userprofile.MenuItems.filter(d => d.Code == 'HNHT')[0].FormMenu[0].Code });
+            modules.push({ Module: "HNHT", Name: 'Hội nghị, hội thảo',
+            Remark: 'Quản lý hội nghị hội thảo và các đề tài...', 
+            Code: this.userprofile.MenuItems.filter(d => d.Code == 'HNHT')[0].FormMenu[0].Code });
         }
         if (isSOPs) {
-            modules.push({ Module: "SOPs", Name: 'Thư viện điện tử', Code: this.userprofile.MenuItems.filter(d => d.Code == 'SOPs')[0].FormMenu[0].Code });
+            modules.push({ Module: "SOPs", Name: 'Thư viện điện tử', 
+            Remark: 'Thư viện điện tử, nơi lưu trữ các tài liệu, đề tài khoa học đã báo cáo...',
+            Code: this.userprofile.MenuItems.filter(d => d.Code == 'SOPs')[0].FormMenu[0].Code });
         }
         if (isAdmin) {
             modules.push({ Module: "Admin-PAR", Name: 'Quản trị hệ thống', Code: this.userprofile.MenuItems.filter(d => d.Code == 'Admin-PAR')[0].FormMenu[0].Code });

@@ -54,11 +54,10 @@
     <ion-slides class="marginLeft" pager="false" slidesPerView="1" [options]="slideOpts"
         (ionSlideDidChange)="slideChanged()" #pages>
         <ion-slide class="page-1">
-
             <!-- Hội đồng nội bộ -->
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4 *ngFor="let i of listForm1">
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4 *ngFor="let i of listForm1">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -76,7 +75,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -113,10 +112,10 @@
             </ion-grid>
         </ion-slide>
         <!-- Hội đồng Đạo đức, Hội đồng Khoa học -->
-        <ion-slide class="page-2" style="overflow:auto">
+        <ion-slide class="page-1" style="overflow:auto">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4 *ngFor="let i of listForm2">
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4 *ngFor="let i of listForm2">
                         <ion-card color="white"
                                   no-margin class="news">
                             <ion-card-content>
@@ -146,7 +145,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white"
                                   no-margin class="news">
                             <ion-card-content>
@@ -167,7 +166,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white"
                                   no-margin class="news">
                             <ion-card-content>
@@ -188,7 +187,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <span style="font-size: 13px;float: left;margin: 6px; width:104px">
@@ -211,7 +210,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -246,7 +245,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white"
                                   no-margin class="news">
                             <ion-card-content>
@@ -270,14 +269,15 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
                                     <a>Số NCT</a>
                                 </ion-card-title>
                                 <p class="summary">
-                                    <a (click)="openNCT()">Hướng dẫn đăng ký NCT</a>
+                                    <a (click)="openNCT()">Xin vui lòng truy cập vào trang <br> https://register.clinicaltrials.gov <br> để lấy Số NCT. Sau đó điền Số NCT vào ô bên dưới...</a>
+                                    <br>
                                 </p>
                                 <div class="c-control">
                                     <input class="c-input" type="text" [(ngModel)]="item.SoNCT" />
@@ -294,7 +294,7 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -308,7 +308,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4 *ngFor="let i of listForm4">
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4 *ngFor="let i of listForm4">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -336,7 +336,7 @@
         <ion-slide class="page-1">
             <ion-grid>
                 <ion-row class="center-row">
-                    <ion-col col-md-4 *ngFor="let i of listForm5">
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4 *ngFor="let i of listForm5">
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -359,7 +359,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -390,7 +390,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>
@@ -424,7 +424,7 @@
                         </ion-card>
                     </ion-col>
 
-                    <ion-col col-md-4>
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
                         <ion-card color="white" no-margin class="news">
                             <ion-card-content>
                                 <ion-card-title>

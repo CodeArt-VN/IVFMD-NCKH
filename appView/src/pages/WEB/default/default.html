@@ -1,55 +1,140 @@
-<ion-header *ngIf="userprofile">
+<ion-header *ngIf="userprofile" shrink-header default-height="120">
+    <ion-row>
+        <ion-col class="web-content">
+            <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
+            <!-- <a class="menu-logo" (click)="showSmallMenu($event)">
+                <ion-icon name="ios-menu"></ion-icon>
+            </a> -->
+            <img class="hide-logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <div class="web-menu-container">
+                <div class="web-menu">
+                    <a class="menu-item sops" (click)="gotoPageRefer(i)">
+                        HOPE EPI®
+                    </a>
+                    
+                </div>
+            </div>
+        </ion-col>
 
-    <a (click)="openDefaultPage()" class="logo" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.LogoURL? userprofile.Partner.LogoURL : './assets/imgs/avartar-empty.jpg') + ')'}"></a>
-    <div class="search">
-        <ion-searchbar class="txt-search" placeholder="Search..." [(ngModel)]="keyword" (ionInput)="search($event)"></ion-searchbar>
-    </div>
-    <div class="path">
-    </div>
-    <div class="tools">
+        <div id="cp" class="web" *ngIf="userprofile.Id != ''">
+            <button color="ivfdark3" ion-button clear large icon-left>
+                <ion-icon name="fa-bell"></ion-icon>
+                <ion-badge color="warning" item-right>8</ion-badge>
+            </button>
 
-    </div>
+            <div class="splitor">|</div>
 
-    <div class="background" [ngStyle]="{'background-image': 'url(' + (userprofile.Partner.BannerURL? userprofile.Partner.BannerURL : './assets/imgs/header-bg.jpg') + ')'}"></div>
-
+            <a class="username" (click)="popover($event, popoverCtrl);">
+                {{userprofile.UserName}}
+            </a>
+            <a class="avatar" (click)="popover($event, popoverCtrl);">
+                <img [src]="avatarURL" (error)="img.src = 'assets/imgs/avartar-empty.jpg'" #img>
+            </a>
+        </div>
+    </ion-row>
 </ion-header>
 
 <ion-content>
-  <ion-row>
-      <ion-col class="doc-main">
-          <ion-grid>
-              <ion-row class="center-row">
-                  <ion-col col-md-4 *ngFor="let i of ListMenu">
-                      <ion-card color="white" no-margin class="news">
-                          <ion-card-content>
-                              <ion-card-title>
-                                  <a>{{i.Name}}</a>
-                              </ion-card-title>
-                              <div padding></div>
-                              <button ion-button block
-                                      (click)="gotoPage(i)">
-                                  ĐI ĐẾN
-                              </button>
-                          </ion-card-content>
-                      </ion-card>
-                  </ion-col>
+    <ion-grid style="min-height: 100vh;" fixed>
+        <ion-row>
+            <ion-col class="web-content">
 
-                  <ion-col col-md-4>
-                      <ion-card color="white" no-margin class="news">
-                          <ion-card-content>
-                              <ion-card-title>
-                                  <a>Thu thập số liệu nghiên cứu</a>
-                              </ion-card-title>
-                              <div padding></div>
-                              <button ion-button block
-                                      (click)="gotoPageRefer(i)">
-                                  ĐI ĐẾN
-                              </button>
-                          </ion-card-content>
-                      </ion-card>
-                  </ion-col>
-              </ion-row>
-          </ion-grid>
-      </ion-col>
-  </ion-row>
+                <div class="cate-title">
+                    TRUY CẬP NHANH
+                </div>
+
+                <ion-row>
+                    <ion-col col-12>
+                        <ng-container *ngFor="let i of ListMenu">
+                            
+                        <div ngClass="{{i.Module}}" *ngIf="i.Module !='Admin-PAR'" class="box" >
+                            <span class="title">{{i.Name}}</span>
+                            <p>
+                                {{i.Remark}}
+                            </p>
+                            <button ion-button (click)="gotoPage(i)">
+                                Đi đến {{i.Name.toLowerCase()}}
+                            </button>
+                        </div>
+                        <div class="admin-box" *ngIf="i.Module =='Admin-PAR'">
+                            <a (click)="gotoPage(i)">{{i.Name}}</a>
+                        </div>
+                    </ng-container>
+                    </ion-col>
+                </ion-row>
+
+            </ion-col>
+        </ion-row>
+       
+    </ion-grid>
+
+
+    <div class="web-footer">
+        <div class="links">
+
+            <!-- <a>
+                <ion-icon name="fa-twitter"></ion-icon>
+            </a> -->
+            <a href="https://www.facebook.com/benh.vien.my.duc/" target="_blank">
+                <ion-icon name="fa-facebook-f"></ion-icon>
+            </a>
+
+            <a href="https://www.facebook.com/benh.vien.my.duc.tan.binh/" target="_blank">
+                <ion-icon name="fa-facebook-f"></ion-icon>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCEXXDdUt5h1maXGhd_0mm_g" target="_blank">
+                <ion-icon name="fa-youtube"></ion-icon>
+            </a>
+        </div>
+        <ion-row>
+            <ion-col col-12 col-md-6 col-lg-4 col-ll-3>
+                <h2>
+                    BỆNH VIỆN MỸ ĐỨC
+                </h2>
+                <span>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=My+Duc+Hospital,+4+Đường+Núi+Thành,+Phường+13,+Tân+Bình,+Hồ+Chí+Minh" target="_blank">
+                        <ion-icon name="fa-map-marker"></ion-icon> 04 Núi Thành, P. 13, Q. Tân Bình, TP. HCM
+                    </a>
+                    <br>
+                    <a href="tel:(028) 7308 5885">
+                        <ion-icon name="fa-phone"></ion-icon> (028) 7308 5885
+                    </a>
+                    <br>
+                    <a href="mailto:info@myduchospital.vn">
+                        <ion-icon name="fa-envelope"></ion-icon> info@myduchospital.vn
+                    </a>
+                </span>
+            </ion-col>
+            <ion-col col-12 col-md-6 col-lg-4 col-ll-3>
+                <h2>
+                    BỆNH VIỆN MỸ ĐỨC PHÚ NHUẬN
+                </h2>
+                <span>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Bệnh+viện+Mỹ+Đức+Phú+Nhuận,+43R%2F2+-+4+phường+9,+quận+Phú+Nhuận,+Hồ+Văn+Huê,+Thành+phố+Hồ+Chí+Minh" target="_blank">
+                        <ion-icon name="fa-map-marker"></ion-icon> 43R/2-4 Hồ Văn Huê, P. 9, Q. Phú Nhuận
+                    </a>
+                    <br>
+                    <a href="tel:(028) 6285 6262">
+                        <ion-icon name="fa-phone"></ion-icon> (028) 6285 6262
+                    </a>
+                    <br>
+                    <a href="mailto:info@myducphunhuan.vn">
+                        <ion-icon name="fa-envelope"></ion-icon> info@myducphunhuan.vn
+                    </a>
+                </span>
+            </ion-col>
+            <ion-col col-12 col-md-12 col-lg-4 col-ll-6>
+
+                <h2>
+
+                </h2>
+                <span>
+
+                    <br>Cổng thông tin - Thư viện điện tử
+                    <br>Copyright © 2018 BỆNH VIỆN MỸ ĐỨC
+                </span>
+            </ion-col>
+        </ion-row>
+    </div>
 </ion-content>

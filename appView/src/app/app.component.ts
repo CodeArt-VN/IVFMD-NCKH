@@ -43,7 +43,6 @@ export class MyApp {
         public accountService: AccountServiceProvider
 
     ) {
-        
         events.subscribe('app:UpdateAvatar', (avatarURL) => {
             if(avatarURL){
                 this.avatarURL = avatarURL;
@@ -76,6 +75,7 @@ export class MyApp {
             let layout = 'doc-layout';
             if (
                 pageComponent == 'page-home'
+                || pageComponent == 'page-default'
                 || pageComponent == 'page-web-list'
                 || pageComponent == 'page-web-detail'
                 || pageComponent == 'page-contact'

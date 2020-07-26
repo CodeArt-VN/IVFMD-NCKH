@@ -18,6 +18,7 @@ npm install --save @ionic-native/facebook
 
 
 
+
 https://documenter.getpostman.com/collection/publish?meta=Y29sbGVjdGlvbl9pZD1jM2JiYjhkZC1mOWFlLTQzOGMtOGNjMi05ZmY2ZWJmNGVlZjYmb3duZXI9Mjg4OTU1NCZjb2xsZWN0aW9uX25hbWU9SFlFQw==
 
 (.*){\n(.*)\"key\"\: "PartnerID",\n(.*),\n(.*)\n(.*)},
@@ -25,8 +26,15 @@ https://documenter.getpostman.com/collection/publish?meta=Y29sbGVjdGlvbl9pZD1jM2
 
 ionic build --prod
 
-ionic build --aot --minifyjs --minifycss
+ionic build --aot --minifyjs --minifycss --env=prod
 
+ionic cordova build android --release --prod --generateSourceMap false
+ionic build --env=prod;
+
+ionic build --minifyjs --minifycss --env=prod
+
+
+./node_modules/.bin/ngc <= check error
 
 
 let distinctDoctors = this.donHangChiTietList.map(item=>item.ID).filter((value, index, self) => self.indexOf(value) === index);

@@ -1,2 +1,90 @@
 page-default {
+    .background-image {
+        background-image: url(https://ununsplash.imgix.net/photo-1421091242698-34f6ad7fc088?fit=crop&fm=jpg&h=650&q=75&w=950);
+        background-size: cover;
+        background-position: center;
+        height: 50vw;
+    }
+ 
+    .main-content {
+        min-height: 500px;
+        padding: 20px;
+        background-color: white;
+        position: absolute;
+    }
+
+    #cp.web {
+        @media (max-width: 767px){
+            right: 40px !important;
+        }
+        
+    }
+
+    .box{
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+
+        display: block;
+        max-width: 694px;
+        margin: 0px auto;
+        margin-bottom: 20px;
+        background: url(https://dashboard.ionicframework.com/img/hub/bg-setup-panes.svg) 0% 0% / cover, linear-gradient(90deg, rgb(76, 172, 220) 0%, rgb(140, 217, 255) 100%) 0% 0% / 100%;
+        color: white;
+        border-radius: 8px;
+        padding: 32px;
+        box-shadow: rgba(2, 8, 20, 0.08) 0px 4px 8px, rgba(2, 8, 20, 0.08) 0px 2px 4px;
+        padding-top: 50px;
+        padding-bottom: 40px;
+        text-align: center;
+
+        &.SOPs{
+            background: url(https://dashboard.ionicframework.com/img/hub/bg-setup-panes.svg) 0% 0%/cover, linear-gradient(90deg, #FF9800 0%, #FFC107 100%) 0% 0%/100%;
+            .button-ios{
+                background-color: #FF5722;
+            }
+        }
+        
+        .button-ios {
+            max-width: 98%;
+
+           
+        }
+
+        .title{
+            display: block;
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        p{
+            max-width: 309px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.4;
+            opacity: 0.8;
+            color: white;
+            font-weight: 500;
+            margin: 0 auto 12px;
+        }
+    }
+
+    .admin-box{
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 30px;
+        a{
+            display: inline-block;
+            border-bottom: solid 1px #89d5fa;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 22px;
+            letter-spacing: -0.28px;
+        }
+    }
+    
+
+
 }
+
+

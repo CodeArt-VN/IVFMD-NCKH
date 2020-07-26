@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, LoadingController, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+
 import { RegisterPage } from '../register/register';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { GlobalData } from '../../../providers/CORE/global-variable';
@@ -27,7 +27,7 @@ export class LoginPage {
 		public navParams: NavParams,
 		public toastCtrl: ToastController,
 		public formBuilder: FormBuilder,
-		private fb: Facebook,
+		
 		private accountService: AccountServiceProvider) {
 		var that = this;
 
@@ -106,51 +106,7 @@ export class LoginPage {
 			});
 	}
 
-	doFbLogin() {
-		if (GlobalData.IsCordova) {
-			let permissions = new Array();
-			permissions = ["public_profile", "email"];
-			let that = this;
-
-			this.fb.login(permissions).then(function (response) {
-				let params = new Array();
-				//Getting name and gender properties
-				this.fb.api("/me?fields=email,gender", params).then(function (user) {
-					//user.picture = "https://graph.facebook.com/" + response.authResponse.userID + "/picture?type=large";
-					that.showLoading();
-					that.accountService.facebookLogin(user.email, response.authResponse.userID)
-						.then(data => {
-							that.loading.dismiss();
-							this.goBack();
-						})
-						.catch(err => {
-							that.loading.dismiss();
-							let toast = that.toastCtrl.create({
-								message: 'Đăng nhập không thành công, \nvui lòng thử lại.',
-								duration: GlobalData.UserData.Setting.ToastMessageDelay
-							});
-							toast.present();
-						});
-				})
-			}, function (error) {
-
-			});
-		}
-		else {
-			this.showLoading();
-			this.accountService.facebookWebInfo().then(() => {
-				this.loading.dismiss();
-				this.goBack();
-			}).catch(err => {
-				this.loading.dismiss();
-				let toast = this.toastCtrl.create({
-					message: 'Đăng nhập không thành công, \nvui lòng thử lại.',
-					duration: GlobalData.UserData.Setting.ToastMessageDelay
-				});
-				toast.present();
-			});
-		}
-	}
+	
 
 	showLoading() {
 		this.loading = this.loadingCtrl.create({

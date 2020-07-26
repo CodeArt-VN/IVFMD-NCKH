@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DefaultPage } from './default';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { DirectivesModule } from '../../../directives/directives.module';
 
 @NgModule({
   declarations: [
         DefaultPage,
   ],
   imports: [
-    NgxDatatableModule,
-      IonicPageModule.forChild(DefaultPage),
+      IonicPageModule.forChild(DefaultPage), DirectivesModule
   ],
   exports: [
       DefaultPage

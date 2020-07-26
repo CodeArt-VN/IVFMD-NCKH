@@ -15,8 +15,7 @@
                 </div>
             </div>
         </ion-col>
-        <ion-col class="web-pin">
-        </ion-col>
+        
         <div id="cp" class="web" *ngIf="userprofile.Id != ''">
             <button color="ivfdark3" ion-button clear large icon-left>
                 <ion-icon name="fa-bell"></ion-icon>
@@ -37,9 +36,40 @@
 </ion-header>
 
 <ion-content>
+    <ion-grid>
+        <ion-row class="center-row">
+            <ion-col col-md-4 *ngFor="let i of ListMenu">
+                <ion-card color="white" no-margin class="news">
+                    <ion-card-content>
+                        <ion-card-title>
+                            <a>{{i.Name}}</a>
+                        </ion-card-title>
+                        <div padding></div>
+                        <button ion-button block
+                                (click)="gotoPage(i)">
+                            ĐI ĐẾN
+                        </button>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
 
-
-
+            <ion-col col-md-4>
+                <ion-card color="white" no-margin class="news">
+                    <ion-card-content>
+                        <ion-card-title>
+                            <a>Thu thập số liệu nghiên cứu</a>
+                        </ion-card-title>
+                        <div padding></div>
+                        <button ion-button block
+                                (click)="gotoPageRefer(i)">
+                            ĐI ĐẾN
+                        </button>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    
     <ion-row>
         <ion-col class="web-content" *ngIf="items.length">
 
@@ -100,30 +130,7 @@
             </ion-row>
 
         </ion-col>
-        <ion-col class="web-pin" >
-            <ion-row>
-                <ion-col col-12 col-md-6 col-lg-12 *ngFor="let i of pinPost">
-                    <div class="news-item">
-                        <a class="thumb" [href]="i.URL" [ngStyle]="{'background-image': 'url(' + (i.ThumbnailImage?.indexOf('http')==0? i.ThumbnailImage : imageServer + i.ThumbnailImage)  + ')'}"></a>
-                        <a class="title" [href]="i.URL">{{i.Name}}</a>
-                        <span class="summary">
-                            {{i.Remark}}
-                        </span>
-                        <div class="news-info">
-                            <span class="author">
-                                <ion-icon name="ios-contact"></ion-icon>
-                                {{i.CreatedBy}}
-                            </span>
-                            <span class="date-time">
-                                <ion-icon name="ios-time"></ion-icon>
-                                {{ commonService.dateFormatFriendly(i.ModifiedDate)}}
-                            </span>
-                        </div>
-
-                    </div>
-                </ion-col>
-            </ion-row>
-        </ion-col>
+       
     </ion-row>
     <div class="web-footer">
         <div class="links">
