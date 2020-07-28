@@ -163,5 +163,40 @@ namespace BaseBusiness
 
             return query;
         }
+
+        public static bool uploadFileThuyetMinh(AppEntities db, int deTaiId, string path, string Username)
+        {
+            bool result = false;
+            var dbitem = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == deTaiId);
+            if (dbitem == null)
+            {
+                dbitem = new tbl_PRO_ThuyetMinhDeTai();
+                dbitem.IDDeTai = deTaiId;
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+                db.tbl_PRO_ThuyetMinhDeTai.Add(dbitem);
+            }
+            if (dbitem != null)
+            {
+                dbitem.FileThuyetMinh = path;
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, null, "tbl_PRO_ThuyetMinhDeTai", DateTime.Now, Username);
+
+                    result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("uploadFileThuyetMinh", e);
+                    result = false;
+                }
+            }
+            return result;
+        }
     }
 }

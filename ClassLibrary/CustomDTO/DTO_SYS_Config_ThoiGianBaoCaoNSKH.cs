@@ -21,5 +21,6 @@
     {
         public string MauTrinhBayPPT { get; set; }
         public string MauBaoCaoTongHop { get; set; }
+        public string MauThuyetMinhDeTai { get; set; }
     }
 }

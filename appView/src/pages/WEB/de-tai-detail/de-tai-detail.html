@@ -127,7 +127,6 @@
                                 </p>
                                 <div style="padding-bottom:5px"></div>
 
-
                                 <button *ngIf="i.TrangThaiCode === 'Update' && i.Index != 4 && i.Index != 5 && i.Index != 6 && i.Index != 7" ion-button block
                                         (click)="openDetailModal(i.Index, true)">
                                     CẬP NHẬT
@@ -140,6 +139,40 @@
                                 <button *ngIf="i.Index == 4 || i.Index == 5 || i.Index == 6 || i.Index == 7" ion-button block
                                         (click)="openDetailModal(i.Index, true)">
                                     XEM
+                                </button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <!-- Thuyết minh đề tài -->
+                    <ion-col align-self-center col-12 col-sm-10 push-sm-1 col-md-8 push-md-2 col-lg-6 push-lg-0 col-xl-4>
+                        <ion-card color="white" no-margin class="news">
+                            <ion-card-content>
+                                <ion-card-title>
+                                    <a>Thuyết minh đề tài</a>
+                                </ion-card-title>
+                                <p class="summary">
+                                    Tải file mẫu về hoàn thành và upload file hoàn chỉnh
+                                </p>
+                                <button *ngIf="item.FileThuyetMinh != null && item.FileThuyetMinh != ''"
+                                        style="width: calc(33% - 10px);" ion-button (click)="downloadTemplateFileThuyetMinh()">
+                                    Download <br />file mẫu
+                                </button>
+                                <button *ngIf="item.FileThuyetMinh != null && item.FileThuyetMinh != ''" [disabled]="item.IsDisabledHDDD"
+                                        style="width: calc(33% - 10px);" ion-button (click)="uploadFileThuyetMinhClick()">
+                                    Upload file
+                                </button>
+                                <button *ngIf="item.FileThuyetMinh != null && item.FileThuyetMinh != ''"
+                                        style="width: calc(33% - 10px);" ion-button (click)="downloadFileThuyetMinh()">
+                                    Download file
+                                </button>
+                                <button *ngIf="item.FileThuyetMinh == null || item.FileThuyetMinh == ''"
+                                        style="width: calc(50% - 10px);" ion-button (click)="downloadTemplateFileThuyetMinh()">
+                                    Download <br />file mẫu
+                                </button>
+                                <button *ngIf="item.FileThuyetMinh == null || item.FileThuyetMinh == ''" [disabled]="item.IsDisabledHDDD"
+                                        style="width: calc(50% - 10px);" ion-button (click)="uploadFileThuyetMinhClick()">
+                                    Upload file
                                 </button>
                             </ion-card-content>
                         </ion-card>

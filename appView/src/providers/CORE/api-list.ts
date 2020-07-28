@@ -8,9 +8,9 @@
 
 export var appSetting = {
 	mainService: {
-        //base: document.location.origin + "/",
+        base: document.location.origin + "/",
         //base: "http://nckh.appcenter.vn/",
-        base: "http://localhost:54009/",
+        //base: "http://localhost:54009/",
 		api: "api/",
 	},
 	apiDomain:function(api){
@@ -1826,7 +1826,11 @@ export var APIListBase = {
         getItemCustom: {
             method: "GET",
             url: function (idDeTai, isInput) { return appSetting.apiDomain("PRO/ThuyetMinhDeTai/get_PRO_ThuyetMinhDeTaiByDeTai/") + idDeTai + "/" + isInput }
-        }
+        },
+        uploadFileThuyetMinh: {
+            method: "POST",
+            url: function (id, path) { return appSetting.apiDomain("PRO/ThuyetMinhDeTai/uploadFileThuyetMinh/") }
+        },
     },
     PRO_BangKhaiNhanSu: {
         getList: {

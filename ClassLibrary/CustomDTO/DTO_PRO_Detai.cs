@@ -20,6 +20,7 @@ namespace DTOModel
         public string ChuNhiemDeTai { get; set; }
         public string BaiFullTextNghiemThu { get; set; }
         public string FileBaoCaoTongHop { get; set; }
+        public string FileThuyetMinh { get; set; }
         public List<DTO_PRO_DeTai_Tag> Tags { get; set; }
     }
 

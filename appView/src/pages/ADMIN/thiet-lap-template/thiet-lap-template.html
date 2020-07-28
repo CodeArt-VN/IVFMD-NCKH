@@ -84,6 +84,27 @@
                         </a>
                     </ion-col>
                 </ion-row>
+                <ion-row responsive-sm>
+                    <ion-col col-4 col-sm-4 padding-right>
+                        <div class="c-control">
+                            <label class="c-label" for="MauThuyetMinhDeTai">Mẫu thuyết minh đề tài</label>
+                        </div>
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && item.Template.MauThuyetMinhDeTai">
+                        Đã up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right *ngIf="item.Template && !item.Template.MauThuyetMinhDeTai">
+                        Chưa up file
+                    </ion-col>
+                    <ion-col col-4 col-sm-4 padding-right>
+                        <a (click)="uploadMauThuyetMinhDeTai()">
+                            Tải file lên
+                        </a>&nbsp;
+                        <a (click)="downloadMauThuyetMinhDeTai()">
+                            Tải file xuống
+                        </a>
+                    </ion-col>
+                </ion-row>
             </ion-grid>
         </ion-col>
     </ion-row>

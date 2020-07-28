@@ -302,5 +302,12 @@ namespace API.Controllers.PRO
             }
             return Conflict();
         }
+
+        [Route("uploadFileThuyetMinh")]
+        public IHttpActionResult UploadFileThuyetMinh(DTO_PRO_ThuyetMinhDeTai item)
+        {
+            BS_PRO_ThuyetMinhDeTai.uploadFileThuyetMinh(db, item.IDDeTai, item.FileThuyetMinh, Username);
+            return Ok();
+        }
     }
 }

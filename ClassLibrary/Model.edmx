@@ -1721,6 +1721,7 @@
           <Property Name="B52_ChuNhiemDeTai_Nam" Type="nvarchar(max)" />
           <Property Name="A0_NgayNhanHoSo" Type="nvarchar(max)" />
           <Property Name="A0_MaSoDeTai" Type="nvarchar(max)" />
+          <Property Name="FileThuyetMinh" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">
           <Key>
@@ -6176,6 +6177,7 @@
           <Property Name="A0_NgayNhanHoSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A0_MaSoDeTai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_ThuyetMinhDeTai_tbl_PRO_DeTai" FromRole="tbl_PRO_ThuyetMinhDeTai" ToRole="tbl_PRO_DeTai" />
+          <Property Name="FileThuyetMinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_TrangThai_Log">
           <Key>
@@ -9478,6 +9480,7 @@
           <EntitySetMapping Name="tbl_PRO_ThuyetMinhDeTai">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_ThuyetMinhDeTai">
               <MappingFragment StoreEntitySet="tbl_PRO_ThuyetMinhDeTai">
+                <ScalarProperty Name="FileThuyetMinh" ColumnName="FileThuyetMinh" />
                 <ScalarProperty Name="A0_MaSoDeTai" ColumnName="A0_MaSoDeTai" />
                 <ScalarProperty Name="A0_NgayNhanHoSo" ColumnName="A0_NgayNhanHoSo" />
                 <ScalarProperty Name="B52_ChuNhiemDeTai_Nam" ColumnName="B52_ChuNhiemDeTai_Nam" />

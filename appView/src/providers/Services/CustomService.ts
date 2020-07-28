@@ -1151,7 +1151,21 @@ export class PRO_ThuyetMinhDeTaiCustomProvider extends exService {
                     reject(err);
                 });
         });
-	}
+    }
+
+    uploadFileThuyetMinh(item) {
+        let that = this.commonService;
+        let apiPath = APIList.PRO_ThuyetMinhDeTai.uploadFileThuyetMinh;
+        return new Promise(function (resolve, reject) {
+            that.connect(apiPath.method, apiPath.url(), item).toPromise()
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 @Injectable()

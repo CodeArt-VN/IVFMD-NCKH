@@ -290,9 +290,9 @@ namespace BaseBusiness
                 //    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 7, Type = 1, Name = "Sơ yếu lý lịch NCV chính", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
                 //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 7, Type = 1, Name = "Sơ yếu lý lịch NCV chính", Description = "Sơ yếu lý lịch NCV chính", FormCode = "tbl_PRO_SYLL", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
-                if (db.tbl_PRO_ThuyetMinhDeTai.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
-                    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
-                else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
+                //if (db.tbl_PRO_ThuyetMinhDeTai.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
+                //    query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
+                //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 8, Type = 1, Name = "Thuyết minh đề tài", Description = "Thuyết minh đề tài", FormCode = "tbl_PRO_ThuyetMinhDeTai", TrangThai = "Chưa tạo", TrangThaiCode = "New" });
 
                 if (db.tbl_PRO_DonXinNghiemThu.Any(c => c.IDDeTai == ID && c.IsDeleted == false))
                     query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 9, Type = 4, Name = "Nghiệm thu", Description = "Đơn xin nghiệm thu", FormCode = "tbl_PRO_DonXinNghiemThu", TrangThai = "Đã tạo", TrangThaiCode = "Update" });
@@ -334,6 +334,13 @@ namespace BaseBusiness
                     query.BaiFullTextNghiemThu = nghiemthu.BaiFulltext;
                     query.FileBaoCaoTongHop = nghiemthu.FileBaoCaoTongHop;
                 }
+
+                var thuyetminh = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == ID && c.IsDeleted == false);
+                if (thuyetminh != null)
+                {
+                    query.FileThuyetMinh = thuyetminh.FileThuyetMinh;
+                }
+
                 //else query.ListFormStatus.Add(new DTO_PRO_DeTai_TrangThai { Index = 16, Type = 4, Name = "Upload bài fulltext", Description = "Upload bài fulltext", FormCode = "tbl_PRO_BaoCaoNghiemThuDeTai", TrangThai = "Chưa up", TrangThaiCode = "File" });
 
                 if (db.tbl_PRO_BangKhaiNhanSu.Any(c => c.IDDeTai == ID))

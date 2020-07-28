@@ -113,6 +113,7 @@ namespace ClassLibrary
         public string B52_ChuNhiemDeTai_Nam { get; set; }
         public string A0_NgayNhanHoSo { get; set; }
         public string A0_MaSoDeTai { get; set; }
+        public string FileThuyetMinh { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -219,6 +220,7 @@ namespace DTOModel
 		public string B52_ChuNhiemDeTai_Nam { get; set; }
 		public string A0_NgayNhanHoSo { get; set; }
 		public string A0_MaSoDeTai { get; set; }
+		public string FileThuyetMinh { get; set; }
 	}
 }
 
@@ -338,7 +340,8 @@ namespace BaseBusiness
 				B52_ChuNhiemDeTai_Thang = s.B52_ChuNhiemDeTai_Thang,							
 				B52_ChuNhiemDeTai_Nam = s.B52_ChuNhiemDeTai_Nam,							
 				A0_NgayNhanHoSo = s.A0_NgayNhanHoSo,							
-				A0_MaSoDeTai = s.A0_MaSoDeTai,					
+				A0_MaSoDeTai = s.A0_MaSoDeTai,							
+				FileThuyetMinh = s.FileThuyetMinh,					
 			});
                               
         }
@@ -446,7 +449,8 @@ namespace BaseBusiness
 					B52_ChuNhiemDeTai_Thang = dbResult.B52_ChuNhiemDeTai_Thang,							
 					B52_ChuNhiemDeTai_Nam = dbResult.B52_ChuNhiemDeTai_Nam,							
 					A0_NgayNhanHoSo = dbResult.A0_NgayNhanHoSo,							
-					A0_MaSoDeTai = dbResult.A0_MaSoDeTai,
+					A0_MaSoDeTai = dbResult.A0_MaSoDeTai,							
+					FileThuyetMinh = dbResult.FileThuyetMinh,
 				};
 			}
 			else
@@ -1162,6 +1166,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.A0_MaSoDeTai == keyword);
             }
 
+			//Query FileThuyetMinh (string)
+			if (QueryStrings.Any(d => d.Key == "FileThuyetMinh") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "FileThuyetMinh").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "FileThuyetMinh").Value;
+                query = query.Where(d=>d.FileThuyetMinh == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1274,7 +1285,8 @@ namespace BaseBusiness
 				dbitem.B52_ChuNhiemDeTai_Thang = item.B52_ChuNhiemDeTai_Thang;							
 				dbitem.B52_ChuNhiemDeTai_Nam = item.B52_ChuNhiemDeTai_Nam;							
 				dbitem.A0_NgayNhanHoSo = item.A0_NgayNhanHoSo;							
-				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;                
+				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;							
+				dbitem.FileThuyetMinh = item.FileThuyetMinh;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1393,7 +1405,8 @@ namespace BaseBusiness
 				dbitem.B52_ChuNhiemDeTai_Thang = item.B52_ChuNhiemDeTai_Thang;							
 				dbitem.B52_ChuNhiemDeTai_Nam = item.B52_ChuNhiemDeTai_Nam;							
 				dbitem.A0_NgayNhanHoSo = item.A0_NgayNhanHoSo;							
-				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;                
+				dbitem.A0_MaSoDeTai = item.A0_MaSoDeTai;							
+				dbitem.FileThuyetMinh = item.FileThuyetMinh;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

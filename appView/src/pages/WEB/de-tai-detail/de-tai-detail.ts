@@ -3,7 +3,7 @@ import { NavController, ModalController, NavParams, Events, LoadingController, T
 import { BasePage } from '../../base-page';
 import { AccountServiceProvider } from '../../../providers/CORE/account-service';
 import { CommonServiceProvider } from '../../../providers/CORE/common-service';
-import { PRO_DeTaiCustomProvider, PRO_BaoCaoNghiemThuDeTaiCustomProvider } from '../../../providers/Services/CustomService';
+import { PRO_DeTaiCustomProvider, PRO_BaoCaoNghiemThuDeTaiCustomProvider, PRO_ThuyetMinhDeTaiCustomProvider } from '../../../providers/Services/CustomService';
 import { DeTaiPage } from '../de-tai/de-tai';
 import { SysnopsisModalPage } from '../sysnopsis-modal/sysnopsis-modal';
 import { MauPhanTichDuLieuModalPage } from '../mau-phan-tich-du-lieu-modal/mau-phan-tich-du-lieu-modal';
@@ -86,6 +86,7 @@ export class DeTaiDetailPage extends BasePage {
     constructor(
         public currentProvider: PRO_DeTaiCustomProvider,
         public baoCaoNghiemThuProvider: PRO_BaoCaoNghiemThuDeTaiCustomProvider,
+        public thuyetMinhDeTaiProvider: PRO_ThuyetMinhDeTaiCustomProvider,
         public thietLapProvider: CAT_ThietLapTemplateProvider,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
@@ -132,6 +133,9 @@ export class DeTaiDetailPage extends BasePage {
                 }
                 if (this.CurrentFile == "FileBaoCaoTongHop") {
                     this.uploadFileBaoCaoTongHop(data.Path); 
+                }
+                if (this.CurrentFile == "FileThuyetMinh") {
+                    this.uploadFileThuyetMinh(data.Path);
                 }
             }
         }
@@ -709,7 +713,6 @@ export class DeTaiDetailPage extends BasePage {
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();
-                //this.toastMessage('Không cập nhật được, \nvui lòng thử lại.');
             });
         })
     }
@@ -717,6 +720,32 @@ export class DeTaiDetailPage extends BasePage {
     downloadFileBaoCaoTongHop() {
         if (this.item.FileBaoCaoTongHop)
             this.download(this.item.FileBaoCaoTongHop);
+    }
+
+    uploadFileThuyetMinhClick() {
+        this.CurrentFile = "FileThuyetMinh";
+        this.showActionMore = false;
+        this.importfile.nativeElement.value = "";
+        this.importfile.nativeElement.click();
+    }
+
+    uploadFileThuyetMinh(path) {
+        this.loadingMessage('Lưu dữ liệu...').then(() => {
+            this.thuyetMinhDeTaiProvider.uploadFileThuyetMinh({ IDDeTai: this.id, FileThuyetMinh: path }).then((savedItem: any) => {
+                if (this.loading) this.loading.dismiss();
+                this.refreshData();
+                console.log('publish => app:Update ' + this.pageName);
+                this.toastMessage('Đã cập nhật!');
+            }).catch(err => {
+                console.log(err);
+                if (this.loading) this.loading.dismiss();
+            });
+        })
+    }
+
+    downloadFileThuyetMinh() {
+        if (this.item.FileThuyetMinh)
+            this.download(this.item.FileThuyetMinh);
     }
 
     downloadTemplate() {
@@ -748,6 +777,27 @@ export class DeTaiDetailPage extends BasePage {
                     if (value.Template.MauBaoCaoTongHop) {
                         this.templateUrl = value.Template.MauBaoCaoTongHop;
                         this.download(value.Template.MauBaoCaoTongHop);
+                    }
+                    else
+                        this.toastMessage('Không có file mẫu.');
+                } catch (error) {
+                    this.toastMessage('Không có file mẫu.');
+                }
+            }).catch((data) => {
+            });;
+        }
+        else {
+            this.download(this.templateUrl);
+        }
+    }
+
+    downloadTemplateFileThuyetMinh() {
+        if (this.templateUrl == '') {
+            this.thietLapProvider.get().then((value: any) => {
+                try {
+                    if (value.Template.MauThuyetMinhDeTai) {
+                        this.templateUrl = value.Template.MauThuyetMinhDeTai;
+                        this.download(value.Template.MauThuyetMinhDeTai);
                     }
                     else
                         this.toastMessage('Không có file mẫu.');

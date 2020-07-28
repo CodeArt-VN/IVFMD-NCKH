@@ -298,49 +298,48 @@ namespace BaseBusiness
             var thuyetminh = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
             if (thuyetminh != null)
             {
-                if (!string.IsNullOrEmpty(thuyetminh.B313_JSON_KeHoachThucHien))
-                {
-                    try
-                    {
-                        var bkns = db.tbl_PRO_BangKhaiNhanSu.FirstOrDefault(c => c.IDDeTai == IDDeTai);
-                        if (bkns != null)
-                        {
-                            List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien> lst = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien>>(thuyetminh.B313_JSON_KeHoachThucHien);
-                            foreach (var item in lst)
-                            {
-                                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietDeCuong)
-                                {
-                                    bkns.YTuong_NguoiThucHien = item.NguoiThucHien;
-                                    bkns.PhuongPhap_NguoiThucHien = item.NguoiThucHien;
-                                }
-                                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.ThuThapSoLieu)
-                                {
-                                    bkns.QuyTrinhNhanMau_NguoiThucHien = item.NguoiThucHien;
-                                    bkns.ThucHienNhanMau_NguoiThucHien = item.NguoiThucHien;
-                                    bkns.NhapDuLieuVaoPM_NguoiThucHien = item.NguoiThucHien;
-                                }
-                                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoTrongNuoc)
-                                    bkns.VietBaiBaoCaoTiengViet_NguoiThucHien = item.NguoiThucHien;
-                                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoQuocTe)
-                                    bkns.VietBaiBaoCaoTiengAnh_NguoiThucHien = item.NguoiThucHien;
-                                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.PhanTichSoLieuCuoiCung)
-                                    bkns.PhanTichSoLieu_NguoiThucHien = item.NguoiThucHien;
-                            }
+                //if (!string.IsNullOrEmpty(thuyetminh.B313_JSON_KeHoachThucHien))
+                //{
+                //    try
+                //    {
+                //        var bkns = db.tbl_PRO_BangKhaiNhanSu.FirstOrDefault(c => c.IDDeTai == IDDeTai);
+                //        if (bkns != null)
+                //        {
+                //            List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien> lst = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien>>(thuyetminh.B313_JSON_KeHoachThucHien);
+                //            foreach (var item in lst)
+                //            {
+                //                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietDeCuong)
+                //                {
+                //                    bkns.YTuong_NguoiThucHien = item.NguoiThucHien;
+                //                    bkns.PhuongPhap_NguoiThucHien = item.NguoiThucHien;
+                //                }
+                //                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.ThuThapSoLieu)
+                //                {
+                //                    bkns.QuyTrinhNhanMau_NguoiThucHien = item.NguoiThucHien;
+                //                    bkns.ThucHienNhanMau_NguoiThucHien = item.NguoiThucHien;
+                //                    bkns.NhapDuLieuVaoPM_NguoiThucHien = item.NguoiThucHien;
+                //                }
+                //                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoTrongNuoc)
+                //                    bkns.VietBaiBaoCaoTiengViet_NguoiThucHien = item.NguoiThucHien;
+                //                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.VietBaiDangBaoQuocTe)
+                //                    bkns.VietBaiBaoCaoTiengAnh_NguoiThucHien = item.NguoiThucHien;
+                //                if (item.NoiDung == DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien.PhanTichSoLieuCuoiCung)
+                //                    bkns.PhanTichSoLieu_NguoiThucHien = item.NguoiThucHien;
+                //            }
                             
-                        }
-                    }
-                    catch { }
-                }
+                //        }
+                //    }
+                //    catch { }
+                //}
 
-                var bangkiem = db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
-                if (bangkiem != null)
-                {
-                    bangkiem.PhanBon_C1_TieuChuanNhanVao = "<br>" + thuyetminh.B3221_TieuChuanNhan;
-                    bangkiem.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
-                    bangkiem.PhanBon_C1_TieuChuanNhanVao = bangkiem.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
-                    bangkiem.PhanBon_C1_TieuChuanLoaiRa = bangkiem.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
-                    //bangkiem.PhanBon_C2_CachTienHanh = thuyetminh.B323_PhuongPhapTienHanh;
-                }
+                //var bangkiem = db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.FirstOrDefault(c => c.IDDeTai == IDDeTai && c.IsDeleted == false);
+                //if (bangkiem != null)
+                //{
+                //    bangkiem.PhanBon_C1_TieuChuanNhanVao = "<br>" + thuyetminh.B3221_TieuChuanNhan;
+                //    bangkiem.PhanBon_C1_TieuChuanLoaiRa = "<br>" + thuyetminh.B3221_TieuChuanLoai;
+                //    bangkiem.PhanBon_C1_TieuChuanNhanVao = bangkiem.PhanBon_C1_TieuChuanNhanVao.Replace("<div>", "<br>").Replace("</div>", "");
+                //    bangkiem.PhanBon_C1_TieuChuanLoaiRa = bangkiem.PhanBon_C1_TieuChuanLoaiRa.Replace("<div>", "<br>").Replace("</div>", "");
+                //}
 
                 db.SaveChanges();
             }
