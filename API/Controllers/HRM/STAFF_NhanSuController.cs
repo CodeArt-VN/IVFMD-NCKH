@@ -91,7 +91,10 @@ namespace API.Controllers.HRM
             bool resul = BS_CUS_HRM_STAFF_NhanSu.put_CUS_HRM_STAFF_NhanSu(db, PartnerID, id, tbl_CUS_HRM_STAFF_NhanSu, Username);
 
 			if (resul)
+            {
+                BS_HelperReference.STAFF_Info_Update(db, id);
                 return StatusCode(HttpStatusCode.NoContent);
+            }
             else
                 return NotFound();
         }

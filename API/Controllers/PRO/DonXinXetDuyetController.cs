@@ -75,9 +75,9 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
 
-            bool result = BS_PRO_DonXinXetDuyet.put_PRO_DonXinXetDuyet(db, id, tbl_PRO_DonXinXetDuyet, Username);
+            var result = BS_PRO_DonXinXetDuyet.save_PRO_DonXinXetDuyet(db, tbl_PRO_DonXinXetDuyet, Username);
             
-            if (result)
+            if (result != null)
                 return StatusCode(HttpStatusCode.NoContent);
             else
                 return NotFound();
@@ -92,7 +92,7 @@ namespace API.Controllers.PRO
                 return BadRequest(ModelState);
             }
 
-            DTO_PRO_DonXinXetDuyet result = BS_PRO_DonXinXetDuyet.post_PRO_DonXinXetDuyet(db, tbl_PRO_DonXinXetDuyet, Username);
+            DTO_PRO_DonXinXetDuyet result = BS_PRO_DonXinXetDuyet.save_PRO_DonXinXetDuyet(db, tbl_PRO_DonXinXetDuyet, Username);
 			
 
 			if (result != null)

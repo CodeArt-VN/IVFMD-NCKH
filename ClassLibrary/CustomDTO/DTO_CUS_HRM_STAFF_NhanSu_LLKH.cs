@@ -109,6 +109,7 @@ namespace DTOModel
         public string SanPham { get; set; }
         public string SoHieu { get; set; }
         public string DiemIF { get; set; }
+        public string GhiChu { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_CongTrinhDaCongBo_HoiNghi
@@ -118,6 +119,7 @@ namespace DTOModel
         public string SanPham { get; set; }
         public string SoHieu { get; set; }
         public string DiemIF { get; set; }
+        public string GhiChu { get; set; }
     }
 
     public class DTO_CUS_HRM_STAFF_NhanSu_LLKH_GiaiThuong

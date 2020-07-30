@@ -677,8 +677,8 @@ export class NCKHServiceProvider {
     isPhoneNumber(val: any) {
         if (this.isNull(val))
             return true;
-        var phone = this.extractContent(val).toString();
-        if (phone.length < 7 || phone.length > 11)
+        var phone = this.extractContent(val).toString().replace("<br>", "");
+        if (phone != "" && (phone.length < 7 || phone.length > 11))
             return false;
         var res = true;
         for (var i = 0; i < phone.length; i++) {

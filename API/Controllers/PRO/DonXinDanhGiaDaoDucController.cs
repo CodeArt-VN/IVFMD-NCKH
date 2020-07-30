@@ -75,9 +75,9 @@ namespace API.Controllers.PRO
                 return BadRequest();
             }
 
-            bool result = BS_PRO_DonXinDanhGiaDaoDuc.put_PRO_DonXinDanhGiaDaoDuc(db, id, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
+            var result = BS_PRO_DonXinDanhGiaDaoDuc.save_PRO_DonXinDanhGiaDaoDuc(db, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
             
-            if (result)
+            if (result != null)
             {
                 BS_HelperReference.PRO_DonXinDanhGiaDaoDuc_Update(db, tbl_PRO_DonXinDanhGiaDaoDuc.IDDeTai);
                 return StatusCode(HttpStatusCode.NoContent);
@@ -95,8 +95,7 @@ namespace API.Controllers.PRO
                 return BadRequest(ModelState);
             }
 
-            DTO_PRO_DonXinDanhGiaDaoDuc result = BS_PRO_DonXinDanhGiaDaoDuc.post_PRO_DonXinDanhGiaDaoDuc(db, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
-			
+            DTO_PRO_DonXinDanhGiaDaoDuc result = BS_PRO_DonXinDanhGiaDaoDuc.save_PRO_DonXinDanhGiaDaoDuc(db, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
 
 			if (result != null)
             {

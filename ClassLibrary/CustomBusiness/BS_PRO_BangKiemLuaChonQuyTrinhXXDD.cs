@@ -197,6 +197,15 @@ namespace BaseBusiness
                 dbitem = new tbl_PRO_BangKiemLuaChonQuyTrinhXXDD();
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
+                dbitem.PhanHai_TenNCYSH = item.PhanHai_TenNCYSH;
+                dbitem.PhanHai_NCVChinh_HoTen = item.PhanHai_NCVChinh_HoTen;
+                dbitem.PhanHai_NCVChinh_BenhVien = item.PhanHai_NCVChinh_BenhVien;
+                dbitem.PhanHai_NCVChinh_DienThoai = item.PhanHai_NCVChinh_DienThoai;
+                dbitem.PhanHai_NCVChinh_Email = item.PhanHai_NCVChinh_Email;
+                dbitem.PhanHai_NCVChinh_DiaChiLienHe = item.PhanHai_NCVChinh_DiaChiLienHe;
+                dbitem.PhanHai_NCVChinh_KhoaPhong = item.PhanHai_NCVChinh_KhoaPhong;
+                dbitem.PhanBon_C1_NoiNhanMau = item.PhanBon_C1_NoiNhanMau;
+
                 db.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.Add(dbitem);
             }
 
@@ -204,19 +213,11 @@ namespace BaseBusiness
             dbitem.MaSo = item.MaSo;
             dbitem.PhanMot_ConNguoi = item.PhanMot_ConNguoi;
             dbitem.PhanMot_DongVat = item.PhanMot_DongVat;
-            dbitem.PhanHai_TenNCYSH = item.PhanHai_TenNCYSH;
-            dbitem.PhanHai_NCVChinh_HoTen = item.PhanHai_NCVChinh_HoTen;
-            dbitem.PhanHai_NCVChinh_KhoaPhong = item.PhanHai_NCVChinh_KhoaPhong;
-            dbitem.PhanHai_NCVChinh_BenhVien = item.PhanHai_NCVChinh_BenhVien;
-            dbitem.PhanHai_NCVChinh_DienThoai = item.PhanHai_NCVChinh_DienThoai;
-            dbitem.PhanHai_NCVChinh_Email = item.PhanHai_NCVChinh_Email;
-            dbitem.PhanHai_NCVChinh_DiaChiLienHe = item.PhanHai_NCVChinh_DiaChiLienHe;
             dbitem.PhanHai_NGS_HoTen = item.PhanHai_NGS_HoTen;
             dbitem.PhanHai_NGS_NoiLamViec = item.PhanHai_NGS_NoiLamViec;
             dbitem.PhanHai_NGS_DienThoai = item.PhanHai_NGS_DienThoai;
             dbitem.PhanHai_NGS_Email = item.PhanHai_NGS_Email;
             dbitem.PhanBon_C1_MoTaQuyTrinh = item.PhanBon_C1_MoTaQuyTrinh;
-            dbitem.PhanBon_C1_NoiNhanMau = item.PhanBon_C1_NoiNhanMau;
             dbitem.PhanBon_C1_DanSoChonMau = item.PhanBon_C1_DanSoChonMau;
             dbitem.PhanBon_C1_CoMauNghienCuu = item.PhanBon_C1_CoMauNghienCuu;
             dbitem.PhanBon_C1_TieuChuanNhanVao = item.PhanBon_C1_TieuChuanNhanVao;

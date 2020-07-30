@@ -76,5 +76,65 @@ namespace BaseBusiness
 
             return query;
         }
+
+        public static DTO_PRO_DonXinDanhGiaDaoDuc save_PRO_DonXinDanhGiaDaoDuc(AppEntities db, DTO_PRO_DonXinDanhGiaDaoDuc item, string Username)
+        {
+            var dbitem = db.tbl_PRO_DonXinDanhGiaDaoDuc.FirstOrDefault(c => c.IDDeTai == item.IDDeTai && c.IsDeleted == false);
+            if (dbitem == null)
+            {
+                dbitem = new tbl_PRO_DonXinDanhGiaDaoDuc();
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+                dbitem.TenDeTai = item.TenDeTai;
+                dbitem.HoTenChuNhiem = item.HoTenChuNhiem;
+                dbitem.DiaChi = item.DiaChi;
+                dbitem.DienThoai = item.DienThoai;
+                db.tbl_PRO_DonXinDanhGiaDaoDuc.Add(dbitem);
+            }
+
+            dbitem.IDDeTai = item.IDDeTai;
+            dbitem.DonVi = item.DonVi;
+            dbitem.TenDonViChuTri = item.TenDonViChuTri;
+            dbitem.DiaChiDonVi = item.DiaChiDonVi;
+            dbitem.DienThoaiDonVi = item.DienThoaiDonVi;
+            dbitem.DiaDiemNghienCuu = item.DiaDiemNghienCuu;
+            dbitem.ThoiGianNghienCuu = item.ThoiGianNghienCuu;
+            dbitem.TuNgay = item.TuNgay;
+            dbitem.DenNgay = item.DenNgay;
+            dbitem.BangKiemLuaChon = item.BangKiemLuaChon;
+            dbitem.PhieuThongTinXemXet = item.PhieuThongTinXemXet;
+            dbitem.DeCuongNCYSH = item.DeCuongNCYSH;
+            dbitem.CacBangCauHoi = item.CacBangCauHoi;
+            dbitem.MauPhieuChapThuanTinhNguyen = item.MauPhieuChapThuanTinhNguyen;
+            dbitem.TrangThongTinGioiThieu = item.TrangThongTinGioiThieu;
+            dbitem.SYLLChuNhiem = item.SYLLChuNhiem;
+            dbitem.GiayToKhac = item.GiayToKhac;
+            dbitem.GhiChuGiayToKhac = item.GhiChuGiayToKhac;
+            dbitem.HTML = item.HTML;
+            dbitem.IsDisabled = item.IsDisabled;
+            dbitem.IsDeleted = item.IsDeleted;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
+            dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
+            dbitem.FormConfig = item.FormConfig;
+            dbitem.NgayKy_ChuKyThuTruong = item.NgayKy_ChuKyThuTruong;
+
+            dbitem.ModifiedBy = Username;
+            dbitem.ModifiedDate = DateTime.Now;
+
+            try
+            {
+                db.SaveChanges();
+                item.ID = dbitem.ID;
+                BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_DonXinDanhGiaDaoDuc", DateTime.Now, Username);
+            }
+            catch (DbEntityValidationException e)
+            {
+                errorLog.logMessage("put_PRO_DonXinDanhGiaDaoDuc", e);
+            }
+            return item;
+        }
+
     }
 }

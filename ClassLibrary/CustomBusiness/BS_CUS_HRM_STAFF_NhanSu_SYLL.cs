@@ -125,27 +125,86 @@ namespace BaseBusiness
                 dbitem = new tbl_CUS_HRM_STAFF_NhanSu_SYLL();
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
+                dbitem.HoTen = item.HoTen;
+                dbitem.GioiTinh = item.GioiTinh;
+                dbitem.NgaySinh = item.NgaySinh;
+                dbitem.DiaChi = item.DiaChi;
+                dbitem.DienThoaiCQ = item.DienThoaiCQ;
+                dbitem.Mobile = item.Mobile;
+                dbitem.Email = item.Email;
+                dbitem.ChucVu = item.ChucVu;
+                dbitem.CoQuanLamViec = item.CoQuanLamViec;
+                dbitem.DiaChiCoQuan = item.DiaChiCoQuan;
+                dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;
+
+                if (item.ListTrinhDoChuyenMon != null)
+                {
+                    dbitem.JSON_TrinhDoChuyenMon = JsonConvert.SerializeObject(item.ListTrinhDoChuyenMon);
+                }
+                else
+                    dbitem.JSON_TrinhDoChuyenMon = string.Empty;
+
                 db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.Add(dbitem);
+            }
+            else
+            {
+                var objHocVi1 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                var objHocVi2 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                var objHocVi3 = new DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon();
+                var objLL = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == item.IDNhanSu);
+                if (objLL != null)
+                {
+                    objHocVi1.HocVi = objLL.HocViThacSy;
+                    objHocVi1.NamNhanBang = objLL.NamHocViThacSy;
+
+                    objHocVi2.HocVi = objLL.HocViTienSy;
+                    objHocVi2.NamNhanBang = objLL.NamHocViTienSy;
+
+                    objHocVi3.HocVi = objLL.HocHam;
+                    objHocVi3.NamNhanBang = objLL.NamPhongHocHam;
+                }
+                var ListTrinhDoChuyenMon = new List<DTO_CUS_HRM_STAFF_NhanSu_SYLL_TrinhDoChuyenMon>();
+                ListTrinhDoChuyenMon.Add(objHocVi1);
+                ListTrinhDoChuyenMon.Add(objHocVi2);
+                ListTrinhDoChuyenMon.Add(objHocVi3);
+
+                if (item.ListTrinhDoChuyenMon != null && item.ListTrinhDoChuyenMon.Count == 3)
+                {
+                    int count = 1;
+                    foreach (var itemTrinhDoChuyenMon in item.ListTrinhDoChuyenMon)
+                    {
+                        if (count == 1)
+                        {
+                            objHocVi1.HocHam = itemTrinhDoChuyenMon.HocHam;
+                            objHocVi1.ChuyenNganhDaoTao = itemTrinhDoChuyenMon.ChuyenNganhDaoTao;
+                        }
+
+                        if (count == 2)
+                        {
+                            objHocVi2.HocHam = itemTrinhDoChuyenMon.HocHam;
+                            objHocVi2.ChuyenNganhDaoTao = itemTrinhDoChuyenMon.ChuyenNganhDaoTao;
+                        }
+
+                        if (count == 3)
+                        {
+                            objHocVi3.HocHam = itemTrinhDoChuyenMon.HocHam;
+                            objHocVi3.ChuyenNganhDaoTao = itemTrinhDoChuyenMon.ChuyenNganhDaoTao;
+                        }
+
+                        count++;
+                    }
+                }
+
+                dbitem.JSON_TrinhDoChuyenMon = Newtonsoft.Json.JsonConvert.SerializeObject(ListTrinhDoChuyenMon);
             }
 
             dbitem.IDNhanSu = item.IDNhanSu;
-            dbitem.HoTen = item.HoTen;
-            dbitem.GioiTinh = item.GioiTinh;
-            dbitem.NgaySinh = item.NgaySinh;
-            dbitem.DiaChi = item.DiaChi;
-            dbitem.DienThoaiCQ = item.DienThoaiCQ;
-            dbitem.Mobile = item.Mobile;
-            dbitem.Email = item.Email;
-            dbitem.ChucVu = item.ChucVu;
-            dbitem.CoQuanLamViec = item.CoQuanLamViec;
             dbitem.ThuTruongCoQuan = item.ThuTruongCoQuan;
             dbitem.DienThoaiThuTruong = item.DienThoaiThuTruong;
-            dbitem.DiaChiCoQuan = item.DiaChiCoQuan;
             dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
             dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
             dbitem.NgayKy_Thang = item.NgayKy_Thang;
             dbitem.NgayKy_Nam = item.NgayKy_Nam;
-            dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;
             if (item.ListKinhNghiem != null)
             {
                 dbitem.JSON_KinhNghiem = JsonConvert.SerializeObject(item.ListKinhNghiem);
@@ -153,12 +212,6 @@ namespace BaseBusiness
             else
                 dbitem.JSON_KinhNghiem = string.Empty;
 
-            if (item.ListTrinhDoChuyenMon != null)
-            {
-                dbitem.JSON_TrinhDoChuyenMon = JsonConvert.SerializeObject(item.ListTrinhDoChuyenMon);
-            }
-            else
-                dbitem.JSON_TrinhDoChuyenMon = string.Empty;
 
             dbitem.FormConfig = item.FormConfig;
             dbitem.HTML = item.HTML;

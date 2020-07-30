@@ -115,6 +115,7 @@ namespace DTOModel
         public string SanPham { get; set; }
         public string SoHieu { get; set; }
         public string DiemIF { get; set; }
+        public string GhiChu { get; set; }
     }
 
     public class DTO_PRO_LLKH_GiaiThuong

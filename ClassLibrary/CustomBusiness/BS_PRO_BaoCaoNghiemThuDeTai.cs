@@ -129,14 +129,13 @@ namespace BaseBusiness
                 dbitem = new tbl_PRO_BaoCaoNghiemThuDeTai();
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;
+                dbitem.TenDeTai = item.TenDeTai;
+                dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;
                 db.tbl_PRO_BaoCaoNghiemThuDeTai.Add(dbitem);
             }
 
             dbitem.IDDeTai = item.IDDeTai;
-            dbitem.TenDeTai = item.TenDeTai;
-            dbitem.ChuNhiemDeTai = item.ChuNhiemDeTai;
             dbitem.BaiFulltext = item.BaiFulltext;
-
             dbitem.JSON_TomTat = item.JSON_TomTat;
             dbitem.JSON_Abstract = item.JSON_Abstract;
             dbitem.JSON_LoiCamOn = item.JSON_LoiCamOn;

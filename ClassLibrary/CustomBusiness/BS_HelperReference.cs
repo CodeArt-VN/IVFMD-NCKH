@@ -387,21 +387,30 @@ namespace BaseBusiness
                             {
                                 var hocvi = myData.ToArray()[0];
                                 if (hocvi != null)
+                                {
                                     objHocVi1.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                                    objHocVi1.HocHam = hocvi.HocHam;
+                                }
                             }
 
                             if (myData.Count > 1)
                             {
                                 var hocvi = myData.ToArray()[1];
                                 if (hocvi != null)
+                                {
                                     objHocVi2.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                                    objHocVi2.HocHam = hocvi.HocHam;
+                                }
                             }
 
                             if (myData.Count > 2)
                             {
                                 var hocvi = myData.ToArray()[2];
                                 if (hocvi != null)
+                                {
                                     objHocVi3.ChuyenNganhDaoTao = hocvi.ChuyenNganhDaoTao;
+                                    objHocVi3.HocHam = hocvi.HocHam;
+                                }
                             }
                         }
 
@@ -417,5 +426,37 @@ namespace BaseBusiness
                 db.SaveChanges();
             }
         }
+
+        public static void STAFF_Info_Update(AppEntities db, int IDNhanSu)
+        {
+            var objNhanSu = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == IDNhanSu && c.IsDeleted == false);
+            if (objNhanSu != null)
+            {
+                var queryLLKH = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+                if (queryLLKH != null)
+                {
+                    queryLLKH.HoTen = objNhanSu.Name;
+                }
+
+                var querySYLL = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == IDNhanSu && c.IsDeleted == false);
+                if (querySYLL != null)
+                {
+                    querySYLL.HoTen = objNhanSu.Name;
+                }
+
+                foreach (var item in db.tbl_PRO_SYLL.Where(c=>c.IDNhanSu == IDNhanSu && c.IsDeleted == false))
+                {
+                    item.HoTen = objNhanSu.Name;
+                }
+
+                foreach (var item in db.tbl_PRO_LLKH.Where(c => c.IDNhanSu == IDNhanSu && c.IsDeleted == false))
+                {
+                    item.HoTen = objNhanSu.Name;
+                }
+
+                db.SaveChanges();
+            }
+        }
+
     }
 }

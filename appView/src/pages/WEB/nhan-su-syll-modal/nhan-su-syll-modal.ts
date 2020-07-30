@@ -174,6 +174,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
         console.log(item);
 
         var errors = [];
+        debugger
         if (!this.nckhProvider.isPhoneNumber(item.DienThoaiCQ))
             errors.push('Điện thoại cơ quan không hợp lệ.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoaiNhaRieng))
