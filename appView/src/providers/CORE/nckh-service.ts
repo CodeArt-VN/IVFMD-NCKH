@@ -649,8 +649,9 @@ export class NCKHServiceProvider {
             return this.checkDate(arr[0], arr[1], arr[2]);
         return false;
     }
-    checkDate(day: any, month: any, year: any) {
-        if (this.isNull(day) && this.isNull(month) && this.isNull(year))
+    checkDate(day: any, month: any, year: any, ignoreDay: boolean = false) {
+        ignoreDay = ignoreDay || false;
+        if ((ignoreDay || this.isNull(day)) && this.isNull(month) && this.isNull(year))
             return true;
         var isValid = this.isInt(day.toString()) && this.inRange(day, 1, 31)
             && this.isInt(month.toString()) && this.inRange(month, 1, 12)

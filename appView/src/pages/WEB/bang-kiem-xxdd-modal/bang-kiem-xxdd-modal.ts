@@ -106,13 +106,13 @@ export class BangKiemXXDDModalPage extends DetailPage {
             errors.push('Thời gian bắt đầu tiến hành thử nghiệm của nghiên cứu không hợp lệ.');
         if (!this.nckhProvider.checkDate(item.ThoiGianTienHanhDenNgay_Ngay, item.ThoiGianTienHanhDenNgay_Thang, item.ThoiGianTienHanhDenNgay_Nam))
             errors.push('Thời gian kết thúc tiến hành thử nghiệm của nghiên cứu không hợp lệ.');
-        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThap_Thang, item.ThoiGianThuThap_Nam))
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThap_Thang, item.ThoiGianThuThap_Nam, true))
             errors.push('Thời gian bắt đầu thu thập số liệu của nghiên cứu không hợp lệ.');
-        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThapDenNgay_Thang, item.ThoiGianThuThapDenNgay_Nam))
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianThuThapDenNgay_Thang, item.ThoiGianThuThapDenNgay_Nam, true))
             errors.push('Thời gian kết thúc thu thập số liệu của nghiên cứu không hợp lệ.');
-        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuu_Thang, item.ThoiGianNghienCuu_Nam))
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuu_Thang, item.ThoiGianNghienCuu_Nam, true))
             errors.push('Bắt đầu toàn bộ quỹ thời gian nghiên cứu không hợp lệ.');
-        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuuDenNgay_Thang, item.ThoiGianNghienCuuDenNgay_Nam))
+        if (!this.nckhProvider.checkDate(1, item.ThoiGianNghienCuuDenNgay_Thang, item.ThoiGianNghienCuuDenNgay_Nam, true))
             errors.push('Kết thúc toàn bộ quỹ thời gian nghiên cứu không hợp lệ.');
         if (!this.nckhProvider.checkDate(item.NgayKy_Ngay, item.NgayKy_Thang, item.NgayKy_Nam))
             errors.push('Ngày ký của chủ tịch hội đồng đạo đức không hợp lệ.');
