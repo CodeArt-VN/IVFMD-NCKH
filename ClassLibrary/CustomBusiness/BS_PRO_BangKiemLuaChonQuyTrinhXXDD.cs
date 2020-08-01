@@ -225,28 +225,15 @@ namespace BaseBusiness
             dbitem.PhanBon_C2_MoTaQuyTrinh = item.PhanBon_C2_MoTaQuyTrinh;
             dbitem.PhanBon_C2_CachTienHanh = item.PhanBon_C2_CachTienHanh;
             dbitem.PhanBon_C3_MoTaQuyTrinh = item.PhanBon_C3_MoTaQuyTrinh;
-
             dbitem.ThoiGianTienHanh_Ngay = item.ThoiGianTienHanh_Ngay;
             dbitem.ThoiGianTienHanh_Thang = item.ThoiGianTienHanh_Thang;
             dbitem.ThoiGianTienHanh_Nam = item.ThoiGianTienHanh_Nam;
-            dbitem.ThoiGianTienHanhDenNgay_Ngay = item.ThoiGianTienHanhDenNgay_Ngay;
-            dbitem.ThoiGianTienHanhDenNgay_Thang = item.ThoiGianTienHanhDenNgay_Thang;
-            dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;
-
             dbitem.ThoiGianThuThap_Ngay = item.ThoiGianThuThap_Ngay;
             dbitem.ThoiGianThuThap_Thang = item.ThoiGianThuThap_Thang;
             dbitem.ThoiGianThuThap_Nam = item.ThoiGianThuThap_Nam;
-            dbitem.ThoiGianThuThapDenNgay_Ngay = item.ThoiGianThuThapDenNgay_Ngay;
-            dbitem.ThoiGianThuThapDenNgay_Thang = item.ThoiGianThuThapDenNgay_Thang;
-            dbitem.ThoiGianThuThapDenNgay_Nam = item.ThoiGianThuThapDenNgay_Nam;
-
             dbitem.ThoiGianNghienCuu_Ngay = item.ThoiGianNghienCuu_Ngay;
             dbitem.ThoiGianNghienCuu_Thang = item.ThoiGianNghienCuu_Thang;
             dbitem.ThoiGianNghienCuu_Nam = item.ThoiGianNghienCuu_Nam;
-            dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;
-            dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;
-            dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;
-
             dbitem.DaGuiThuDienTu = item.DaGuiThuDienTu;
             dbitem.PhanSau_NCYSH_KhongThuocPhamVi = item.PhanSau_NCYSH_KhongThuocPhamVi;
             dbitem.PhanSau_NCYSH_DuDieuKienXemXet = item.PhanSau_NCYSH_DuDieuKienXemXet;
@@ -268,6 +255,29 @@ namespace BaseBusiness
             dbitem.YKienHDDD_DuocXemXetDaoDucRutGon = item.YKienHDDD_DuocXemXetDaoDucRutGon;
             dbitem.YKienHDDD_CanDuocHoiDongXemXet = item.YKienHDDD_CanDuocHoiDongXemXet;
             dbitem.YKienHDDD_NhanXet = item.YKienHDDD_NhanXet;
+            dbitem.YKienHDDD_So = item.YKienHDDD_So;
+            dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
+            dbitem.NgayKy_Thang = item.NgayKy_Thang;
+            dbitem.NgayKy_Nam = item.NgayKy_Nam;
+            dbitem.PhanSau_NCYSH_KhongThuocPhamVi_Co = item.PhanSau_NCYSH_KhongThuocPhamVi_Co;
+            dbitem.PhanSau_NCYSH_KhongThuocPhamVi_Khong = item.PhanSau_NCYSH_KhongThuocPhamVi_Khong;
+            dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Co = item.PhanSau_NCYSH_GuiThongBao_KHTH_Co;
+            dbitem.PhanSau_NCYSH_GuiThongBao_KHTH_Khong = item.PhanSau_NCYSH_GuiThongBao_KHTH_Khong;
+            dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Co = item.PhanSau_NCYSH_GuiThongBao_TCKT_Co;
+            dbitem.PhanSau_NCYSH_GuiThongBao_TCKT_Khong = item.PhanSau_NCYSH_GuiThongBao_TCKT_Khong;
+            dbitem.PhanSau_NGS_KhongThuocPhamVi_Co = item.PhanSau_NGS_KhongThuocPhamVi_Co;
+            dbitem.PhanSau_NGS_KhongThuocPhamVi_Khong = item.PhanSau_NGS_KhongThuocPhamVi_Khong;
+            dbitem.PhanSau_TruongKhoa_KhongThuocPhamVi_Co = item.PhanSau_TruongKhoa_KhongThuocPhamVi_Co;
+            dbitem.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong = item.PhanSau_TruongKhoa_KhongThuocPhamVi_Khong;
+            dbitem.ThoiGianTienHanhDenNgay_Ngay = item.ThoiGianTienHanhDenNgay_Ngay;
+            dbitem.ThoiGianTienHanhDenNgay_Thang = item.ThoiGianTienHanhDenNgay_Thang;
+            dbitem.ThoiGianTienHanhDenNgay_Nam = item.ThoiGianTienHanhDenNgay_Nam;
+            dbitem.ThoiGianThuThapDenNgay_Ngay = item.ThoiGianThuThapDenNgay_Ngay;
+            dbitem.ThoiGianThuThapDenNgay_Thang = item.ThoiGianThuThapDenNgay_Thang;
+            dbitem.ThoiGianThuThapDenNgay_Nam = item.ThoiGianThuThapDenNgay_Nam;
+            dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;
+            dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;
+            dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;
 
             if (item.PhanBa_A != null)
             {

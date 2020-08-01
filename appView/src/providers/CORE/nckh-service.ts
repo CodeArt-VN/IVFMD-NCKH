@@ -58,7 +58,7 @@ export class NCKHServiceProvider {
                 ]
             },
             lineHeight: { // specify your otions in the lineHeight config object. Default values are [ 0, 0.5, 1, 1.5, 2 ]
-                options: [ 0.5, 1, 1.5, 2, 2.5 ]
+                options: [0.5, 1, 1.5, 2, 2.5]
             },
             language: 'vi',
             licenseKey: ''
@@ -115,7 +115,7 @@ export class NCKHServiceProvider {
                 ]
             },
             lineHeight: { // specify your otions in the lineHeight config object. Default values are [ 0, 0.5, 1, 1.5, 2 ]
-                options: [ 0.5, 1, 1.5, 2, 2.5 ]
+                options: [0.5, 1, 1.5, 2, 2.5]
             },
         }
     }
@@ -178,7 +178,7 @@ export class NCKHServiceProvider {
                     }
 
                     //$element.on('focus', function (e) {
-                        
+
                     //});
                     // handle disposal (if KO removes by the template binding)
                     ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
@@ -526,11 +526,11 @@ export class NCKHServiceProvider {
                 } else if (this.typeof(fromItem[x], Date, 'object')) {
                     toItem[x] = ko.observable(fromItem[x] || new Date());
                 } else if (fromItem[x] instanceof Array) {
-                    toItem[x] = ko.observable([]);
+                    toItem[x] = ko.observableArray([]);
                 } else if (fromItem[x] instanceof Object) {
                     var obj = {};
                     this.copyPropertiesValue(fromItem[x], obj);
-                    toItem[x] = ko.observable(obj);
+                    toItem[x] = obj;
                 } else if (fromItem[x] == undefined || fromItem[x] == null) {
                     toItem[x] = ko.observable("");
                 }

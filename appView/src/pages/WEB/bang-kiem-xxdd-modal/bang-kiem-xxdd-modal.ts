@@ -76,7 +76,6 @@ export class BangKiemXXDDModalPage extends DetailPage {
 
         let ObjModel = function (item) {
             var self = this;
-
             that.nckhProvider.copyPropertiesValue(item, self);
 
             self.NCVKhac = ko.observableArray(ko.utils.arrayMap(item.NCVKhac || [{}], function (nn) {
@@ -90,7 +89,12 @@ export class BangKiemXXDDModalPage extends DetailPage {
             };
         }
         this.model = new ObjModel(this.item);
-        ko.applyBindings(this.model, document.getElementById("frmBangKiemXXDD"));
+        console.log(this.model.getItem());
+        try {
+            ko.applyBindings(this.model, document.getElementById("frmBangKiemXXDD"));
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     saveChange() {
