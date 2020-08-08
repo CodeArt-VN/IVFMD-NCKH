@@ -165,7 +165,7 @@
                         </tr>
                     </thead>
                     <tbody style="width:100%;">
-                        <tr  style="border-bottom: 0;border-top: 0;">
+                        <tr style="border-bottom: 0;border-top: 0;">
                             <td style="padding: 6px;">Nghiên cứu viên chính</td>
                             <td></td>
                             <td></td>
@@ -1042,7 +1042,7 @@
                     7(a) Thời gian thử nghiệm của nghiên cứu
                 </b>
                 <br />
-                <div style="padding: 5px  0 3px 60px;">
+                <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
                     <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
@@ -1064,7 +1064,7 @@
                     7(b) Thời gian thu thập dữ liệu của nghiên cứu
                 </b>
                 <br />
-                <div style="padding: 5px  0 3px 60px;">
+                <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
                     <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
@@ -1086,7 +1086,7 @@
                     7(c) Tổng quỹ thời gian của nghiên cứu
                 </b>
                 <br />
-                <div style="padding: 5px  0 3px 60px;">
+                <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
                     <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
@@ -1243,17 +1243,19 @@
                                                 Bộ môn
                                             </td>
                                             <td class="text-bold">
-                                                <p class="box" style="margin:0;border-bottom: 1px solid black">
-                                                    <span contenteditable="true" data-bind="editableHtml: BoMon"></span>
+                                                <p class="box" style="margin:0;">
+                                                    <span contenteditable="true" data-bind="editableHtml: BoMon" style="border-bottom: 1px solid black;"></span>
                                                 </p>
                                             </td>
                                             <td style="vertical-align:middle;" class="text-bold">
-                                                Ngày
-                                                <span contenteditable="true" data-bind="editableHtml: NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                                                tháng
-                                                <span contenteditable="true" data-bind="editableHtml: ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                                                năm
-                                                <span contenteditable="true" data-bind="editableHtml: NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                <p class="box-inline">
+                                                    Ngày
+                                                    <span contenteditable="true" data-bind="editableHtml: NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                    tháng
+                                                    <span contenteditable="true" data-bind="editableHtml: ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                    năm
+                                                    <span contenteditable="true" data-bind="editableHtml: NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                </p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1262,7 +1264,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: HoTenVaChucDanh"></td>
+                                            <td colspan="3" style="margin:0;border-bottom: 1px solid black;height:42px;" contenteditable="true" data-bind="editableHtml: HoTenVaChucDanh"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1336,17 +1338,19 @@
                             Bộ môn
                         </td>
                         <td class="text-bold">
-                            <p class="box" style="margin:0;border-bottom: 1px solid black">
-                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_BoMon"></span>
+                            <p class="box" style="margin:0;">
+                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_BoMon" style="border-bottom: 1px solid black;"></span>
                             </p>
                         </td>
                         <td style="vertical-align:middle;" class="text-bold">
-                            Ngày
-                            <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                            tháng
-                            <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                            năm
-                            <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                            <p class="box-inline">
+                                Ngày
+                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                tháng
+                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                năm
+                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -1355,7 +1359,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_HoTenVaChucDanh"></td>
+                        <td colspan="3" style="margin:0;border-bottom: 1px solid black;height:42px;" contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_HoTenVaChucDanh"></td>
                     </tr>
                 </tbody>
             </table>
@@ -1490,17 +1494,19 @@
                             Bộ môn
                         </td>
                         <td class="text-bold">
-                            <p class="box" style="margin:0;border-bottom: 1px solid black">
-                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_BoMon"></span>
+                            <p class="box" style="margin:0;">
+                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_BoMon" style="border-bottom: 1px solid black;"></span>
                             </p>
                         </td>
                         <td style="vertical-align:middle;" class="text-bold">
-                            Ngày
-                            <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                            tháng
-                            <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
-                            năm
-                            <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                            <p class="box-inline">
+                                Ngày
+                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                tháng
+                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                năm
+                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -1509,7 +1515,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_HoTenVaChucDanh"></td>
+                        <td colspan="3" style="margin:0;border-bottom: 1px solid black;height:42px;" contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_HoTenVaChucDanh"></td>
                     </tr>
                 </tbody>
             </table>

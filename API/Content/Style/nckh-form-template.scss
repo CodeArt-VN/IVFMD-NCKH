@@ -143,6 +143,11 @@
             padding: 0;
         }
 
+        > span[contenteditable] {
+            min-height: 18px;
+            padding: 6px;
+        }
+
         &.tab-1 {
             margin-left: 1em;
             width: calc(100% - 1em) !important;
@@ -166,6 +171,15 @@
 
         .box-title {
             position: absolute;
+
+            &.title-ck {
+                position: relative;
+            }
+
+            + span.ck {
+                position: relative;
+                text-indent: 0 !important;
+            }
         }
 
         & > input[type="checkbox"] {
@@ -192,6 +206,17 @@
             &:hover, &:focus {
                 outline: none;
             }
+        }
+
+        & > *:not(input) {
+            display: block;
+            padding: 3px;
+        }
+
+        &.box-inline > * {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 5px 3px;
         }
     }
 
@@ -252,6 +277,16 @@
 
                     &[contenteditable="false"] {
                         height: 26px;
+                    }
+
+                    > .box {
+                        > span[contenteditable] {
+                            min-height: 18px;
+                        }
+                    }
+
+                    > .box:last-child {
+                        margin-bottom: 0;
                     }
                 }
             }
