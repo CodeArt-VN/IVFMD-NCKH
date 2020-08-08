@@ -161,6 +161,15 @@
 
         .box-title {
             position: absolute;
+
+            &.title-ck {
+                position: relative;
+            }
+
+            + span.ck {
+                position: relative;
+                text-indent: 0 !important;
+            }
         }
 
         & > input[type="checkbox"] {
@@ -187,6 +196,17 @@
             &:hover, &:focus {
                 outline: 1px dashed #44a9eb;
             }
+        }
+
+        & > *:not(input) {
+            display: block;
+            padding: 3px;
+        }
+
+        &.box-inline > * {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 3px;
         }
     }
 
@@ -267,10 +287,12 @@
 
                     &[contenteditable="true"] {
                         padding: 6px;
+                        display: table-cell !important;
                     }
 
                     &[contenteditable="false"] {
                         height: 26px;
+                        display: table-cell !important;
                     }
 
                     > .box:last-child {
@@ -489,7 +511,7 @@
         }
 
         [contenteditable="true"] {
-            &:not(td), &:not(input[type="checkbox"]) {
+            &:not(td):not(input[type="checkbox"]) {
                 display: inline !important;
                 width: 100%;
             }
@@ -633,28 +655,28 @@
     }
 }
 
-    @media print {
+@media print {
+    .nckh-form-template {
+        font-family: 'Times New Roman', Times, serif;
+
+        .print-hidden {
+            display: none;
+        }
+
+        .group_controls {
+            display: none;
+        }
+
         .nckh-form-template {
-            font-family: 'Times New Roman', Times, serif;
+            box-shadow: none;
+        }
 
-            .print-hidden {
-                display: none;
-            }
-
-            .group_controls {
-                display: none;
-            }
-
-            .nckh-form-template {
-                box-shadow: none;
-            }
-
-            .box {
-                [contenteditable="true"] {
-                    &:hover, &:focus {
-                        outline: none;
-                    }
+        .box {
+            [contenteditable="true"] {
+                &:hover, &:focus {
+                    outline: none;
                 }
             }
         }
     }
+}

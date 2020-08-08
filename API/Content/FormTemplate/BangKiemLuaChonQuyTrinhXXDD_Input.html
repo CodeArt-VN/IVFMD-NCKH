@@ -31,7 +31,9 @@
                             </div>
                         </td>
                         <td style="vertical-align:middle;border-bottom: 0;border-left: 0;">
-                            Số:  <span contenteditable="true" style="min-width: 20px;display: inline-block;" data-bind="editableHtml: MaSo">_______</span>/ĐĐ-BVMĐ
+                            <span>Số:  </span>
+                            <span contenteditable="true" style="min-width: 20px;display: inline-block;line-height: 12px;height: 20px;min-height: 0;padding: 0;margin: 0;margin-bottom: -4px;" data-bind="editableHtml: MaSo">_______</span>
+                            <span>/ĐĐ-BVMĐ</span>
                         </td>
                     </tr>
                     <tr>
@@ -116,7 +118,7 @@
                 </colgroup>
                 <tbody style="width:100%;">
                     <tr>
-                        <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;" rowspan="2"><b>Nghiên cứu viên chính</b></td>
+                        <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;min-width:120px;" rowspan="2"><b>Nghiên cứu viên chính</b></td>
                         <td style="border: 1px solid black;" contenteditable="false" data-bind="editableHtml: PhanHai_NCVChinh_HoTen"></td>
                     </tr>
                     <tr>
@@ -173,7 +175,7 @@
                 </colgroup>
                 <tbody style="width:100%;">
                     <tr>
-                        <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;" rowspan="2"><b>Người giám sát/hướng dẫn</b> <i>(nếu liên quan)</i></td>
+                        <td style="border: 1px solid black;background-color:#e0e0e0;vertical-align: middle;min-width:120px;" rowspan="2"><b>Người giám sát/hướng dẫn</b> <i>(nếu liên quan)</i></td>
                         <td style="border: 1px solid black;" contenteditable="true" data-bind="editableHtml: PhanHai_NGS_HoTen"></td>
                     </tr>
                     <tr>
@@ -673,7 +675,7 @@
                 <tbody style="width:100%;">
                     <tr>
                         <td style="vertical-align: top;padding:0;">
-                            <div style="background-color:#e0e0e0;line-height:1.5em;border: 1px solid black;border-right:0;padding:3px;">
+                            <div style="background-color:#e0e0e0;line-height:1.5em;border: 1px solid black;border-right:0;padding:3px;min-width:150px;">
                                 <b>Mô tả NCYSH</b>
                             </div>
                             <div class="text-center" style="padding: 3px;">
@@ -780,10 +782,10 @@
                                 <table style="width:100%;">
                                     <colgroup>
                                         <col width="100" />
-                                        <col />
+                                        <col/>
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Chữ ký:
                                         </td>
                                         <td contenteditable="true" style="border-bottom:1px solid #fff;padding:3px;"></td>
@@ -804,7 +806,7 @@
                                         <col />
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Họ tên:
                                         </td>
                                         <td contenteditable="true" data-bind="editableHtml: PhanSau_NCYSH_HoTen" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
@@ -820,7 +822,7 @@
                                         <col />
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Ngày:
                                         </td>
                                         <td contenteditable="true" data-bind="editableHtml: PhanSau_NCYSH_NgayThangNam" style="padding:3px;">
@@ -926,7 +928,7 @@
                                         <col />
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Chữ ký:
                                         </td>
                                         <td contenteditable="true" style="border-bottom:1px solid #fff;padding:3px;"></td>
@@ -947,7 +949,7 @@
                                         <col />
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Họ tên:
                                         </td>
                                         <td contenteditable="true" data-bind="editableHtml: PhanSau_NGS_HoTen" style="border-bottom:1px solid #9E9E9E;padding:3px;"></td>
@@ -963,7 +965,7 @@
                                         <col />
                                     </colgroup>
                                     <tr>
-                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;">
+                                        <td class="text-bold" style="padding-left:0;vertical-align:middle;min-width:100px">
                                             Ngày:
                                         </td>
                                         <td contenteditable="true" data-bind="editableHtml: PhanSau_NGS_NgayThangNam" style="padding:3px;">
@@ -1154,8 +1156,8 @@
                             <div class="box-inline" style="margin-top: 5px;">
                                 <div style="display:inline-block;min-width:50px">
                                     <p class="box" style="display:inline-block;">
-                                        <span class="box-title text-bold" style="display:inline-block;">Ngày:</span>
-                                        <span contenteditable="true" style="display:inline-block;min-width:20px" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                        <span class="box-title text-bold" style="display:inline-block;padding: 6px 3px;">Ngày:</span>
+                                        <span contenteditable="true" style="display:inline-block;min-width:20px;width:auto;max-width:60px" data-bind="editableHtml: NgayKy_Ngay"></span>
                                     </p>
                                 </div>
                                 <div>/</div>
