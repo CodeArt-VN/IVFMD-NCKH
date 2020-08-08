@@ -166,6 +166,9 @@ export class NCKHServiceProvider {
 
                         var observable = valueAccessor();
                         ckEditor.create($element.get(0), ckOptions).then((editor) => {
+                            if ($element.data('read-only')){
+                                editor.isReadOnly = true;
+                            }
                             $editor = editor;
                             me.editors.push({
                                 id: idx,
