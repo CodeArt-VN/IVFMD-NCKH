@@ -343,7 +343,7 @@ export class NCKHServiceProvider {
             t.detach();
         });
         $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean  {
-            if (e.offsetY < 0 && (e.originalEvent as MouseEvent).clientY < 0) {
+            if (e.offsetY < -1) {
                 var ptable = $(e.currentTarget).closest(".pconf"),
                     sconf = ptable.attr("conf");
                 if (sconf != null) {
