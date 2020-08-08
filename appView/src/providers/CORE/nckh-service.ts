@@ -342,10 +342,8 @@ export class NCKHServiceProvider {
             var t = $(event.currentTarget).children(".group_controls");
             t.detach();
         });
-
         $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean  {
-            //@ts-ignore
-            if (e.offsetY < 0 && e.originalEvent.layerY < 0) {
+            if (e.offsetY < 0 && (e.originalEvent as MouseEvent).clientY < 0) {
                 var ptable = $(e.currentTarget).closest(".pconf"),
                     sconf = ptable.attr("conf");
                 if (sconf != null) {
