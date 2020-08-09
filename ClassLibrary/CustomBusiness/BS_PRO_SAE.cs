@@ -92,6 +92,7 @@ namespace BaseBusiness
                     CreatedBy = s.CreatedBy,
                     ModifiedDate = s.ModifiedDate,
                     ModifiedBy = s.ModifiedBy,
+                    MaSoBenhNhan = s.tbl_CUS_HRM_BenhNhan.MaBenhNhan,
                 }).FirstOrDefault();
 
                 //Edit
@@ -268,7 +269,8 @@ namespace BaseBusiness
                 MaSo = s.MaSo,
                 HoTenBenhNhan = s.tbl_CUS_HRM_BenhNhan.HoTen,
                 CreatedBy = s.CreatedBy,
-                CreatedDate = s.CreatedDate
+                CreatedDate = s.CreatedDate,
+                MaSoBenhNhan = s.tbl_CUS_HRM_BenhNhan.MaBenhNhan,
             });
 
             return query;

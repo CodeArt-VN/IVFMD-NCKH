@@ -101,4 +101,8 @@ export class DeTaiBenhNhanModalPage extends DetailPage {
             });
         })
     };
+
+    savedChange() {
+        this.dismiss();
+    }
 }

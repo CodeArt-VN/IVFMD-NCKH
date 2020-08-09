@@ -250,9 +250,13 @@ export class BasePage {
             Code: this.userprofile.MenuItems.filter(d => d.Code == 'NCKH-View')[0].FormMenu[0].Code });
         }
         if (isNSKH) {
-            modules.push({ Module: "NSKH", Name: 'Năng suất khoa học',
-            Remark: 'Báo cáo đề tài, tạp chí hội nghị - hội thảo, sản phẩm khoa học, duyệt kinh phí...', 
-            Code: this.userprofile.MenuItems.filter(d => d.Code == 'NSKH')[0].FormMenu[0].Code });
+            if (this.userprofile.MenuItems.filter(d => d.Code == 'NSKH')[0].FormMenu.length > 0) {
+                modules.push({
+                    Module: "NSKH", Name: 'Năng suất khoa học',
+                    Remark: 'Báo cáo đề tài, tạp chí hội nghị - hội thảo, sản phẩm khoa học, duyệt kinh phí...',
+                    Code: this.userprofile.MenuItems.filter(d => d.Code == 'NSKH')[0].FormMenu[0].Code
+                });
+            }
         }
         if (isHNHT) {
             modules.push({ Module: "HNHT", Name: 'Hội nghị, hội thảo',

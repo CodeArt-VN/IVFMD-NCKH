@@ -62,6 +62,7 @@ export class DeTaiDetailPage extends BasePage {
     statusHRCO = 'Gửi HRCO';
     statusHDDD = 'Gửi HĐĐĐ';
     statusHDKH = 'Gửi HĐKH';
+    statusNghiemThu = 'Gửi HĐĐĐ';
     canApprove = false;
 
     //
@@ -160,6 +161,13 @@ export class DeTaiDetailPage extends BasePage {
         }
         else if (this.item.IDTrangThai_HDKH == 14) {
             this.statusHDKH = 'HĐKH đã duyệt';
+        }
+
+        if (this.item.IDTrangThai_NghiemThu == 25) {
+            this.statusNghiemThu = 'Đang chờ HĐĐĐ duyệt ';
+        }
+        else if (this.item.IDTrangThai_NghiemThu == 26) {
+            this.statusNghiemThu = 'HĐĐĐ đã duyệt';
         }
 
         this.slideListByType = [
@@ -393,6 +401,14 @@ export class DeTaiDetailPage extends BasePage {
                 else if (this.item.IDTrangThai_HRCO == 14) {
                     this.statusHRCO = 'HĐKH đã duyệt';
                 }
+
+                if (this.item.IDTrangThai_NghiemThu == 25) {
+                    this.statusNghiemThu = 'Đang chờ HĐĐĐ duyệt ';
+                }
+                else if (this.item.IDTrangThai_NghiemThu == 26) {
+                    this.statusNghiemThu = 'HĐĐĐ đã duyệt';
+                }
+
                 if (this.loading) this.loading.dismiss();
             });
         });

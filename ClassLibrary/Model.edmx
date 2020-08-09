@@ -876,6 +876,7 @@
           <Property Name="ThoiGianNghienCuuDenNgay_Thang" Type="nvarchar(max)" />
           <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="nvarchar(max)" />
           <Property Name="FormConfig" Type="nvarchar(max)" />
+          <Property Name="ChuKy" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
           <Key>
@@ -5258,6 +5259,7 @@
           <Property Name="ThoiGianNghienCuuDenNgay_Nam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormConfig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_PRO_BangKiemLuaChonQuyTrinhXXDD_tbl_PRO_DeTai" FromRole="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD" ToRole="tbl_PRO_DeTai" />
+          <Property Name="ChuKy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbl_PRO_BaoCaoNangSuatKhoaHoc">
           <Key>
@@ -8620,6 +8622,7 @@
           <EntitySetMapping Name="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
             <EntityTypeMapping TypeName="AppModel.tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
               <MappingFragment StoreEntitySet="tbl_PRO_BangKiemLuaChonQuyTrinhXXDD">
+                <ScalarProperty Name="ChuKy" ColumnName="ChuKy" />
                 <ScalarProperty Name="FormConfig" ColumnName="FormConfig" />
                 <ScalarProperty Name="ThoiGianNghienCuuDenNgay_Nam" ColumnName="ThoiGianNghienCuuDenNgay_Nam" />
                 <ScalarProperty Name="ThoiGianNghienCuuDenNgay_Thang" ColumnName="ThoiGianNghienCuuDenNgay_Thang" />

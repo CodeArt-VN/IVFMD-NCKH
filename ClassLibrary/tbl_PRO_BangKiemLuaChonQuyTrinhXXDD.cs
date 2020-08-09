@@ -106,6 +106,7 @@ namespace ClassLibrary
         public string ThoiGianNghienCuuDenNgay_Thang { get; set; }
         public string ThoiGianNghienCuuDenNgay_Nam { get; set; }
         public string FormConfig { get; set; }
+        public string ChuKy { get; set; }
         public virtual tbl_PRO_DeTai tbl_PRO_DeTai { get; set; }
     }
 }
@@ -205,6 +206,7 @@ namespace DTOModel
 		public string ThoiGianNghienCuuDenNgay_Thang { get; set; }
 		public string ThoiGianNghienCuuDenNgay_Nam { get; set; }
 		public string FormConfig { get; set; }
+		public string ChuKy { get; set; }
 	}
 }
 
@@ -317,7 +319,8 @@ namespace BaseBusiness
 				ThoiGianNghienCuuDenNgay_Ngay = s.ThoiGianNghienCuuDenNgay_Ngay,							
 				ThoiGianNghienCuuDenNgay_Thang = s.ThoiGianNghienCuuDenNgay_Thang,							
 				ThoiGianNghienCuuDenNgay_Nam = s.ThoiGianNghienCuuDenNgay_Nam,							
-				FormConfig = s.FormConfig,					
+				FormConfig = s.FormConfig,							
+				ChuKy = s.ChuKy,					
 			});
                               
         }
@@ -418,7 +421,8 @@ namespace BaseBusiness
 					ThoiGianNghienCuuDenNgay_Ngay = dbResult.ThoiGianNghienCuuDenNgay_Ngay,							
 					ThoiGianNghienCuuDenNgay_Thang = dbResult.ThoiGianNghienCuuDenNgay_Thang,							
 					ThoiGianNghienCuuDenNgay_Nam = dbResult.ThoiGianNghienCuuDenNgay_Nam,							
-					FormConfig = dbResult.FormConfig,
+					FormConfig = dbResult.FormConfig,							
+					ChuKy = dbResult.ChuKy,
 				};
 			}
 			else
@@ -1043,6 +1047,13 @@ namespace BaseBusiness
                 query = query.Where(d=>d.FormConfig == keyword);
             }
 
+			//Query ChuKy (string)
+			if (QueryStrings.Any(d => d.Key == "ChuKy") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "ChuKy").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "ChuKy").Value;
+                query = query.Where(d=>d.ChuKy == keyword);
+            }
+
 
 			return toDTO(query);
 
@@ -1148,7 +1159,8 @@ namespace BaseBusiness
 				dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;							
 				dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;							
 				dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.ChuKy = item.ChuKy;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -1260,7 +1272,8 @@ namespace BaseBusiness
 				dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;							
 				dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;							
 				dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;							
-				dbitem.FormConfig = item.FormConfig;                
+				dbitem.FormConfig = item.FormConfig;							
+				dbitem.ChuKy = item.ChuKy;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

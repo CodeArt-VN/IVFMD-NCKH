@@ -107,6 +107,7 @@ namespace BaseBusiness
                 ThoiGianNghienCuuDenNgay_Nam = s.ThoiGianNghienCuuDenNgay_Nam,
                 FormConfig = s.FormConfig,
                 IsDisabled = s.tbl_PRO_DeTai.IsDisabledHDDD ?? false,
+                ChuKy = s.ChuKy
             }).FirstOrDefault();
 
             if (query == null)
@@ -278,7 +279,7 @@ namespace BaseBusiness
             dbitem.ThoiGianNghienCuuDenNgay_Ngay = item.ThoiGianNghienCuuDenNgay_Ngay;
             dbitem.ThoiGianNghienCuuDenNgay_Thang = item.ThoiGianNghienCuuDenNgay_Thang;
             dbitem.ThoiGianNghienCuuDenNgay_Nam = item.ThoiGianNghienCuuDenNgay_Nam;
-
+            dbitem.ChuKy = item.ChuKy;
             if (item.PhanBa_A != null)
             {
                 dbitem.PhanBa_A_JSON = JsonConvert.SerializeObject(item.PhanBa_A);

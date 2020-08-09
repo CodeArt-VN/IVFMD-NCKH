@@ -41,8 +41,8 @@ export class PermissionPage extends ListPage {
     }
 
     preLoadData() {
-
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 3);
+        this.Modules = this.getModules();
         super.preLoadData();
     }
 

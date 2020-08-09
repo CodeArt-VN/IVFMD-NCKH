@@ -94,7 +94,7 @@ export class BaoCaoNangSuatKhoaHocPage extends ListPage {
     }
 
     isUserCanUse(functionCode) {
-        let menus = this.userprofile.MenuItems.filter(d => d.AppID == 5);
+        let menus = this.userprofile.MenuItems.filter(d => d.AppID == 8);
         return menus[0].Forms.findIndex(d => d.Code == functionCode) > -1;
     }
 

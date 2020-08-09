@@ -48,6 +48,15 @@
                 (click)="updateSatus('EnableHDDD')">
             Mở khóa dữ liệu
         </button>
+
+        <button *ngIf="pageIndex==4" [disabled]="item.IDTrangThai_HDDD < 8 || item.IDTrangThai_NghiemThu >= 25" ion-button block color="light"
+                (click)="updateSatus('SendNghiemThu')">
+            {{ statusNghiemThu }}
+        </button>
+        <button *ngIf="pageIndex==4 && item.IDTrangThai_NghiemThu == 25 && canApprove" ion-button block color="light"
+                (click)="updateSatus('ApprovedNghiemThu')">
+            HĐĐĐ Duyệt
+        </button>
     </div>
 </ion-header>
 <ion-content>
