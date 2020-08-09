@@ -25,7 +25,7 @@
             </p>
         </div>
         <br />
-        <table class="nckh-table" style="width:100%;margin-top:5px;font-size:14pt" border="0">
+        <table class="nckh-table" style="width:100%;margin-top:5px;font-size:14pt;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col />
                 <col width="200" />
@@ -91,7 +91,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <div style="position: relative;">
+                        <div style="position: relative;
+">
                             <input type="checkbox" data-bind="checkedHtml: DiTatBamSinh" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Dị tật bẩm sinh/dị dạng thai nhi
@@ -111,7 +112,7 @@
             </tbody>
         </table>
         <br />
-        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height: 1.5em;" border="0">
+        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height: 1.5em;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col />
                 <col width="125" />
@@ -234,7 +235,7 @@
             </tbody>
         </table>
         <br />
-        <table name="MoTaDienBienVaXuTriSAE" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:14pt" border="0">
+        <table name="MoTaDienBienVaXuTriSAE" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:14pt;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col width="200" />
                 <col width="200" />
@@ -338,7 +339,7 @@
             </tbody>
         </table>
         <br />
-        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height:1.5em;" border="0">
+        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height:1.5em;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col width="143" />
                 <col />
@@ -531,32 +532,32 @@
                 <tbody style="width:100%;" data-bind="foreach: ListCanThiepThuocThuLamSan">
                     <tr data-bind="attr: { index: $index, removable: true }">
                         <td contenteditable="true" data-bind="editableHtml: STT" class="text-center"></td>
-                        <td contenteditable="true" data-bind="editableHtml: NgungLieu_Co" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: NgungLieu_Co" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: NgungLieu_Khong" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: NgungLieu_Khong" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: CaiThien_Co" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: CaiThien_Co" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: CaiThien_Khong" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: CaiThien_Khong" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: CaiThien_KhongCoThongTin" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: CaiThien_KhongCoThongTin" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: XuatHienLai_Co" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: XuatHienLai_Co" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: XuatHienLai_Khong" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: XuatHienLai_Khong" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: XuatHienLai_KhongCoThongTin" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: XuatHienLai_KhongCoThongTin" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: XuatHienLai_KhongTaiSuDung" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: XuatHienLai_KhongTaiSuDung" />
                         </td>
                     </tr>
                 </tbody>
@@ -678,20 +679,20 @@
                 <tbody style="width:100%;" data-bind="foreach: ListDanhGiaNCV">
                     <tr data-bind="attr: { index: $index, removable: true }">
                         <td contenteditable="true" data-bind="editableHtml: STT" class="text-center"></td>
-                        <td contenteditable="true" data-bind="editableHtml: KetQua_Co" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_Co" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: KetQua_Khong" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_Khong" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: KetQua_ChuaKetLuan" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: KetQua_ChuaKetLuan" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: PhanUng_DuocDuKien" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: PhanUng_DuocDuKien" />
                         </td>
-                        <td contenteditable="true" data-bind="editableHtml: PhanUng_NgoaiDuKien" class="text-center">
-                            <input type="checkbox" />
+                        <td contenteditable="false" class="text-center">
+                            <input type="checkbox" data-bind="checkedHtml: PhanUng_NgoaiDuKien" />
                         </td>
                     </tr>
                 </tbody>
@@ -722,7 +723,7 @@
             </div>
         </div>
         <br />
-        <table name="YKienHDDD" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:14pt" border="0">
+        <table name="YKienHDDD" class="nckh-table resize-grid" style="width:100%;margin-top:5px;font-size:14pt;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col />
                 <col />
@@ -808,7 +809,7 @@
             </tbody>
         </table>
         <br />
-        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height:1.5em;" border="0">
+        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height:1.5em;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col width="225" />
                 <col />
@@ -913,7 +914,7 @@
     </div>
 </div>
 <div class="form-template-footer">
-    <div class="nckh-form-template input-mode nckh-form-33 font-size-14" style="padding: 0 .5in;">
+    <div class="nckh-form-template input-mode-custom nckh-form-33 font-size-14" style="padding: 0 .5in;">
         <div class="page-footer">
             <table style="position:relative;width: 100%;top: 20px;border-top: 1px solid #fff;font-size: 10pt;">
                 <tr>

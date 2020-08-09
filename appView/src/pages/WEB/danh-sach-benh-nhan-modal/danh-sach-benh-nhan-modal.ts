@@ -40,8 +40,10 @@ export class DanhSachBenhNhanModalPage extends DetailPage {
         this.pageName = "page-de-tai";
         this.events.unsubscribe('app:Close-page-danh-sach-benh-nhan-modal');
         this.events.subscribe('app:Close-page-danh-sach-benh-nhan-modal', () => {
+            this.events.publish('app:close-danh-sach-benh-nhan-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-danh-sach-benh-nhan-modal');
     }
 
     preLoadData() {
@@ -58,6 +60,7 @@ export class DanhSachBenhNhanModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-danh-sach-benh-nhan-modal');
     }
 
     //#region BenhNhan

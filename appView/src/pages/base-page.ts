@@ -5,6 +5,7 @@ import { AccountServiceProvider } from '../providers/CORE/account-service';
 import { CommonServiceProvider } from '../providers/CORE/common-service';
 import introJs from 'intro.js/intro.js';
 import { PopoverPage } from './HETHONG/popover/popover';
+
 export class BasePage {
     @ViewChild(Content) content: Content;
     userprofile = GlobalData.Profile;
@@ -294,12 +295,20 @@ export class BasePage {
             else if (data == 'openProfile') {
                 this.events.publish('user:openProfile');
             }
+            else if (data == 'openLLKH') {
+                this.events.publish('user:openLLKH');
+            }
+            else if (data == 'openSYLL') {
+                this.events.publish('user:openSYLL');
+            }
+            else if (data == 'openHosrem') {
+                this.events.publish('user:openHosrem');
+            }
             else if (data == 'logout') {
                 this.events.publish('user:logout');
             }
         });
     }
-
 
     downloadContent(name, data) {
         var pom = document.createElement('a');

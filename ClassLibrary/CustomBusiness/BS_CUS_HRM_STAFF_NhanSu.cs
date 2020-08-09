@@ -309,5 +309,57 @@ namespace BaseBusiness
             return string.Empty;
         }
 
+        public static bool put_CUS_HRM_STAFF_NhanSu_Custom(AppEntities db, int PartnerID, int ID, DTO_CUS_HRM_STAFF_NhanSu item, string Username, out bool isChangeCode, out string oldCode)
+        {
+            bool result = false;
+            isChangeCode = false;
+            oldCode = "";
+            var dbitem = db.tbl_CUS_HRM_STAFF_NhanSu.Find(ID);
+            if (dbitem != null)
+            {
+                oldCode = dbitem.Code;
+                isChangeCode = dbitem.Code != item.Code;
+                dbitem.IDChucDanh = item.IDChucDanh;
+                dbitem.IDBoPhan = item.IDBoPhan;
+                dbitem.IDRole = item.IDRole;
+                dbitem.Code = item.Code;
+                dbitem.Name = item.Name;
+                dbitem.Remark = item.Remark;
+                dbitem.Sort = item.Sort;
+                dbitem.IsDisabled = item.IsDisabled;
+                dbitem.IsDeleted = item.IsDeleted;
+                dbitem.Ten = item.Ten;
+                dbitem.Ho = item.Ho;
+                dbitem.Email = item.Email;
+                dbitem.SoDienThoai = item.SoDienThoai;
+                dbitem.DiaChi = item.DiaChi;
+                dbitem.IsHRCO = item.IsHRCO;
+                dbitem.IsCNDT = item.IsCNDT;
+
+                dbitem.ModifiedBy = Username;
+                dbitem.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    db.SaveChanges();
+
+                    BS_CUS_Version.update_CUS_Version(db, dbitem.IDPartner, "DTO_CUS_HRM_STAFF_NhanSu", dbitem.ModifiedDate, Username);
+
+                    if (isChangeCode)
+                    {
+                        
+                    }
+
+                    result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("put_CUS_HRM_STAFF_NhanSu", e);
+                    result = false;
+                }
+            }
+            return result;
+        }
+
     }
 }

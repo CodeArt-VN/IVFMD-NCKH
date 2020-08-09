@@ -30,8 +30,10 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         this.pageName = "page-phieu-xem-xet-dao-duc-modal";
         this.events.unsubscribe('app:Close-page-phieu-xem-xet-dao-duc-modal');
         this.events.subscribe('app:Close-page-phieu-xem-xet-dao-duc-modal', () => {
+            this.events.publish('app:close-page-phieu-xem-xet-dao-duc-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-phieu-xem-xet-dao-duc-modal');
         this.idDeTai = navParams.get('idDeTai');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
@@ -59,6 +61,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-phieu-xem-xet-dao-duc-modal');
     }
 
     bindData() {
@@ -129,6 +132,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
                 console.log('publish => app:Update ' + this.pageName);
                 this.toastMessage('Đã lưu xong!');
                 this.viewCtrl.dismiss();
+                this.events.publish('app:close-page-phieu-xem-xet-dao-duc-modal');
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

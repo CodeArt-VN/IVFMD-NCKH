@@ -33,8 +33,10 @@ export class NhanSuSYLLModalPage extends DetailPage {
         this.pageName = "page-nhan-su-syll-modal";
         this.events.unsubscribe('app:Close-page-nhan-su-syll-modal');
         this.events.subscribe('app:Close-page-nhan-su-syll-modal', () => {
+            this.events.publish('app:close-page-nhan-su-syll-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-nhan-su-syll-modal');
         this.idNhanSu = navParams.get('idNhanSu');
         if (this.idNhanSu && commonService.isNumeric(this.idNhanSu)) {
             this.idNhanSu = parseInt(this.idNhanSu, 10);
@@ -85,6 +87,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-nhan-su-syll-modal');
     }
 
     bindData() {
@@ -144,6 +147,7 @@ export class NhanSuSYLLModalPage extends DetailPage {
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
                     this.viewCtrl.dismiss();
+                    this.events.publish('app:close-page-nhan-su-syll-modal');
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();
@@ -174,7 +178,6 @@ export class NhanSuSYLLModalPage extends DetailPage {
         console.log(item);
 
         var errors = [];
-        debugger
         if (!this.nckhProvider.isPhoneNumber(item.DienThoaiCQ))
             errors.push('Điện thoại cơ quan không hợp lệ.');
         if (!this.nckhProvider.isPhoneNumber(item.DienThoaiNhaRieng))

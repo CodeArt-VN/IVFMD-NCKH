@@ -278,6 +278,7 @@ namespace BaseBusiness
             tbl_PRO_BaoCaoNangSuatKhoaHoc dbitem = new tbl_PRO_BaoCaoNangSuatKhoaHoc();
             if (item != null)
             {
+                item.Error = string.Empty;
                 dbitem.IDDeTai = item.IDDeTai;
                 dbitem.IDNhom = item.IDNhom;
                 dbitem.IDSite = item.IDSite;
@@ -316,36 +317,40 @@ namespace BaseBusiness
                     catch { }
                 }
 
-                var kinhphi = db.tbl_CAT_KinhPhi.FirstOrDefault(c => c.ID == item.IDKinhPhi);
-                if (kinhphi != null && kinhphi.IsManual != true)
+                if (string.IsNullOrEmpty(item.Error))
                 {
-                    DateTime dt = item.NgayBaoCao;
-                    var banggia = db.tbl_CAT_BangGiaKinhPhi.Where(c => c.IDKinhPhi == item.IDKinhPhi && c.NgayHieuLuc <= dt).OrderByDescending(c => c.NgayHieuLuc).FirstOrDefault();
-                    if (banggia != null)
-                        dbitem.KinhPhi = banggia.Gia;
-                }
 
-                try
-                {
-                    db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Add(dbitem);
-                    db.SaveChanges();
+                    var kinhphi = db.tbl_CAT_KinhPhi.FirstOrDefault(c => c.ID == item.IDKinhPhi);
+                    if (kinhphi != null && kinhphi.IsManual != true)
+                    {
+                        DateTime dt = item.NgayBaoCao;
+                        var banggia = db.tbl_CAT_BangGiaKinhPhi.Where(c => c.IDKinhPhi == item.IDKinhPhi && c.NgayHieuLuc <= dt).OrderByDescending(c => c.NgayHieuLuc).FirstOrDefault();
+                        if (banggia != null)
+                            dbitem.KinhPhi = banggia.Gia;
+                    }
 
-                    BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BaoCaoNangSuatKhoaHoc", DateTime.Now, Username);
+                    try
+                    {
+                        db.tbl_PRO_BaoCaoNangSuatKhoaHoc.Add(dbitem);
+                        db.SaveChanges();
+
+                        BS_CUS_Version.update_CUS_Version(db, null, "DTO_PRO_BaoCaoNangSuatKhoaHoc", DateTime.Now, Username);
 
 
-                    item.ID = dbitem.ID;
+                        item.ID = dbitem.ID;
 
-                    item.CreatedBy = dbitem.CreatedBy;
-                    item.CreatedDate = dbitem.CreatedDate;
+                        item.CreatedBy = dbitem.CreatedBy;
+                        item.CreatedDate = dbitem.CreatedDate;
 
-                    item.ModifiedBy = dbitem.ModifiedBy;
-                    item.ModifiedDate = dbitem.ModifiedDate;
+                        item.ModifiedBy = dbitem.ModifiedBy;
+                        item.ModifiedDate = dbitem.ModifiedDate;
 
-                }
-                catch (DbEntityValidationException e)
-                {
-                    errorLog.logMessage("post_PRO_BaoCaoNangSuatKhoaHoc", e);
-                    item = null;
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        errorLog.logMessage("post_PRO_BaoCaoNangSuatKhoaHoc", e);
+                        item = null;
+                    }
                 }
             }
             return item;

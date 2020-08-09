@@ -33,8 +33,10 @@ export class NhanSuLLKHModalPage extends DetailPage {
         this.pageName = "page-nhan-su-llkh-modal";
         this.events.unsubscribe('app:Close-page-nhan-su-llkh-modal');
         this.events.subscribe('app:Close-page-nhan-su-llkh-modal', () => {
+            this.events.publish('app:close-page-nhan-su-llkh-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-nhan-su-llkh-modal');
         this.idNhanSu = navParams.get('idNhanSu');
         if (this.idNhanSu && commonService.isNumeric(this.idNhanSu)) {
             this.idNhanSu = parseInt(this.idNhanSu, 10);
@@ -81,6 +83,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-nhan-su-llkh-modal');
     }
 
     bindData() {
@@ -287,6 +290,7 @@ export class NhanSuLLKHModalPage extends DetailPage {
                         console.log('publish => app:Update ' + this.pageName);
                         this.toastMessage('Đã lưu xong!');
                         this.viewCtrl.dismiss();
+                        this.events.publish('app:close-page-nhan-su-llkh-modal');
                     }).catch(err => {
                         console.log(err);
                         if (this.loading) this.loading.dismiss();

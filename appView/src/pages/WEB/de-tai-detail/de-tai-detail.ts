@@ -140,6 +140,32 @@ export class DeTaiDetailPage extends BasePage {
                 }
             }
         }
+
+        let dataPage = [
+            "page-sae-modal",
+            "page-ae-modal",
+            "page-don-xin-nghiem-thu-modal",
+            "page-bang-khai-nhan-su-modal",
+            "page-bang-kiem-xxdd-modal",
+            "page-don-xin-danh-gia-dao-duc-modal",
+            "page-don-xin-xet-duyet-modal",
+            "page-hosrem-modal",
+            "page-mau-phan-tich-du-lieu-modal",
+            "page-nhan-su-llkh-modal",
+            "page-nhan-su-syll-modal",
+            "page-phieu-xem-xet-dao-duc-modal",
+            "page-sysnopsis-modal",
+            "page-danh-sach-benh-nhan-modal",
+        ]; 
+
+        dataPage.forEach(item => {
+            this.events.subscribe('app:open-' + item, () => {
+                this.slides.lockSwipes(true);
+            })
+            this.events.subscribe('app:close-' + item, () => {
+                this.slides.lockSwipes(false);
+            })
+        });
     }
 
     mockupData() {

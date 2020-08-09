@@ -67,6 +67,15 @@ export class MyApp {
         events.subscribe('user:openProfile', () => {
             this.openProfile();
         });
+        events.subscribe('user:openLLKH', () => {
+            this.openLLKH(); 
+        });
+        events.subscribe('user:openSYLL', () => {
+            this.openSYLL();
+        });
+        events.subscribe('user:openHosrem', () => {
+            this.openHosrem();
+        });
         events.subscribe('app:openDefaultPage', () => {
             this.openDefaultPage();
         });

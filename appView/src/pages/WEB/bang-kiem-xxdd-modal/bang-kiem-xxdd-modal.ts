@@ -31,8 +31,10 @@ export class BangKiemXXDDModalPage extends DetailPage {
         this.pageName = "page-bang-kiem-xxdd-modal";
         this.events.unsubscribe('app:Close-page-bang-kiem-xxdd-modal');
         this.events.subscribe('app:Close-page-bang-kiem-xxdd-modal', () => {
+            this.events.publish('app:close-page-bang-kiem-xxdd-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-bang-kiem-xxdd-modal');
         this.idDeTai = navParams.get('idDeTai');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
@@ -60,6 +62,7 @@ export class BangKiemXXDDModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-bang-kiem-xxdd-modal');
     }
 
     bindData() {
@@ -133,6 +136,7 @@ export class BangKiemXXDDModalPage extends DetailPage {
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
                     this.viewCtrl.dismiss();
+                    this.events.publish('app:close-page-bang-kiem-xxdd-modal');
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();

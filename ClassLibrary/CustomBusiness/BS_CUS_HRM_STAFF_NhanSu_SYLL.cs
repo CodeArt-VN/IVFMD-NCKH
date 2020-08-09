@@ -201,6 +201,7 @@ namespace BaseBusiness
             dbitem.IDNhanSu = item.IDNhanSu;
             dbitem.ThuTruongCoQuan = item.ThuTruongCoQuan;
             dbitem.DienThoaiThuTruong = item.DienThoaiThuTruong;
+            dbitem.DienThoaiNhaRieng = item.DienThoaiNhaRieng;
             dbitem.NgayKy_ChuKy = item.NgayKy_ChuKy;
             dbitem.NgayKy_Ngay = item.NgayKy_Ngay;
             dbitem.NgayKy_Thang = item.NgayKy_Thang;

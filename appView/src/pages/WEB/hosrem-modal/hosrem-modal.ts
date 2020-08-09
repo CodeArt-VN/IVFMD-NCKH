@@ -31,9 +31,10 @@ export class HosremModalPage extends DetailPage {
         this.pageName = "page-hosrem-modal";
         this.events.unsubscribe('app:Close-page-hosrem-modal');
         this.events.subscribe('app:Close-page-hosrem-modal', () => {
+            this.events.publish('app:close-page-hosrem-modal');
             this.dismiss();
         });
-
+        this.events.publish('app:open-page-hosrem-modal');
         this.idNhanSu = navParams.get('idNhanSu');
         if (this.idNhanSu && commonService.isNumeric(this.idNhanSu)) {
             this.idNhanSu = parseInt(this.idNhanSu, 10);
@@ -61,6 +62,7 @@ export class HosremModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-hosrem-modal');
     }
 
     bindData() {
@@ -108,6 +110,7 @@ export class HosremModalPage extends DetailPage {
                 console.log('publish => app:Update ' + this.pageName);
                 this.toastMessage('Đã lưu xong!');
                 this.viewCtrl.dismiss();
+                this.events.publish('app:close-page-hosrem-modal');
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

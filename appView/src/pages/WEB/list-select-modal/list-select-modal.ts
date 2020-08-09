@@ -87,7 +87,7 @@ export class ListSelectModalPage extends DetailPage {
     openDetailForm(i) {
         this.dismiss();
         var page = null;
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': i.IDBenhNhan, 'id': i.ID };
+        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': i.IDBenhNhan, 'id': i.ID, isInput: true };
         switch (this.type) {
             case 1:
                 page = AEModalPage;

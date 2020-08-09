@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, Events, ViewController, } from 'ionic-angular';
+import { IonicPage, NavParams, Events, ViewController } from 'ionic-angular';
 import { GlobalData } from '../../../providers/CORE/global-variable';
-
 @IonicPage({name: 'page-popover', segment: 'popover', priority: 'high',})
 @Component({selector: 'page-popover',templateUrl: 'popover.html',})
 
@@ -9,7 +8,6 @@ import { GlobalData } from '../../../providers/CORE/global-variable';
 export class PopoverPage {
     popid = '';
     version = GlobalData.Version;
-
     //user cp
     isAdminItems = null; 
     isDocItems = null;
@@ -55,6 +53,4 @@ export class PopoverPage {
         document.execCommand('copy');
         this.command('copied');
     }
-
-
 }

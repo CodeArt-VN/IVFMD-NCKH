@@ -30,8 +30,10 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
         this.pageName = "page-bang-khai-nhan-su-modal";
         this.events.unsubscribe('app:Close-page-bang-khai-nhan-su-modal');
         this.events.subscribe('app:Close-page-bang-khai-nhan-su-modal', () => {
+            this.events.publish('app:close-page-bang-khai-nhan-su-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-bang-khai-nhan-su-modal');
         this.idDeTai = navParams.get('idDeTai');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
@@ -59,6 +61,7 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-bang-khai-nhan-su-modal');
     }
 
     bindData() {
@@ -148,6 +151,7 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
                 console.log('publish => app:Update ' + this.pageName);
                 this.toastMessage('Đã lưu xong!');
                 this.viewCtrl.dismiss();
+                this.events.publish('app:close-page-bang-khai-nhan-su-modal');
             }).catch(err => {
                 console.log(err);
                 if (this.loading) this.loading.dismiss();

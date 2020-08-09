@@ -33,8 +33,10 @@ export class SAEModalPage extends DetailPage {
         this.pageName = "page-sae-modal";
         this.events.unsubscribe('app:Close-page-sae-modal');
         this.events.subscribe('app:Close-page-sae-modal', () => {
+            this.events.publish('app:close-page-sae-modal');
             this.dismiss();
         });
+        this.events.publish('app:open-page-sae-modal'); 
         this.idDeTai = navParams.get('idDeTai');
         if (this.idDeTai && commonService.isNumeric(this.idDeTai)) {
             this.idDeTai = parseInt(this.idDeTai, 10);
@@ -75,6 +77,7 @@ export class SAEModalPage extends DetailPage {
     dismiss() {
         let data = { 'foo': 'bar' };
         this.viewCtrl.dismiss(data);
+        this.events.publish('app:close-page-sae-modal');
     }
 
     bindData() {
@@ -166,6 +169,7 @@ export class SAEModalPage extends DetailPage {
                     console.log('publish => app:Update ' + this.pageName);
                     this.toastMessage('Đã lưu xong!');
                     this.viewCtrl.dismiss();
+                    this.events.publish('app:close-page-sae-modal');
                 }).catch(err => {
                     console.log(err);
                     if (this.loading) this.loading.dismiss();

@@ -88,11 +88,27 @@ namespace API.Controllers.HRM
             if (!string.IsNullOrEmpty(checkData))
                 return BadRequest(checkData);
 
-            bool resul = BS_CUS_HRM_STAFF_NhanSu.put_CUS_HRM_STAFF_NhanSu(db, PartnerID, id, tbl_CUS_HRM_STAFF_NhanSu, Username);
+            bool isChangeCode = false;
+            string oldCode = "";
+            bool result = BS_CUS_HRM_STAFF_NhanSu.put_CUS_HRM_STAFF_NhanSu_Custom(db, PartnerID, id, tbl_CUS_HRM_STAFF_NhanSu, Username, out isChangeCode, out oldCode);
 
-			if (resul)
+			if (result)
             {
                 BS_HelperReference.STAFF_Info_Update(db, id);
+
+                // Đổi code => đổi avt
+                if (isChangeCode)
+                {
+                    string mapPath = System.Web.HttpContext.Current.Server.MapPath("~/");
+                    string uploadPath = "Uploads/HRM/Staffs/Avatars/" + oldCode + ".jpg";
+                    string strDirectoryPath = mapPath + uploadPath;
+                    if (System.IO.File.Exists(strDirectoryPath))
+                    {
+                        string strFilePath = mapPath + "Uploads/HRM/Staffs/Avatars/" + tbl_CUS_HRM_STAFF_NhanSu.Code + ".jpg";
+                        System.IO.File.Move(strDirectoryPath, strFilePath);
+                    }
+                }
+
                 return StatusCode(HttpStatusCode.NoContent);
             }
             else

@@ -79,10 +79,10 @@ export class ChonBenhNhanModalPage extends DetailPage {
         var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'idBenhNhan': this.idBenhNhan, 'isInput': true };
         switch(this.type){
             case 1:
-              page = AEModalPage;
+                page = AEModalPage;
               break;
-            case 2:
-              page = SAEModalPage;
+            case 2: 
+                page = SAEModalPage;
               break;
         }
           let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
