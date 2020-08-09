@@ -130,6 +130,11 @@
             padding: 0;
         }
 
+        > span[contenteditable] {
+            min-height: 32px;
+            padding: 6px;
+        }
+
         &.tab-1 {
             margin-left: 1em;
             width: calc(100% - 1em) !important;
@@ -206,7 +211,7 @@
         &.box-inline > * {
             display: table-cell;
             vertical-align: middle;
-            padding: 3px;
+            padding: 5px 3px;
         }
     }
 
@@ -293,6 +298,12 @@
                     &[contenteditable="false"] {
                         height: 26px;
                         display: table-cell !important;
+                    }
+
+                    > .box {
+                        > span[contenteditable] {
+                            min-height: 32px;
+                        }
                     }
 
                     > .box:last-child {
@@ -477,7 +488,7 @@
             &.box-inline > * {
                 display: table-cell;
                 vertical-align: middle;
-                padding: 3px;
+                padding: 5px 3px;
             }
         }
 
@@ -511,11 +522,6 @@
         }
 
         [contenteditable="true"] {
-            &:not(td):not(input[type="checkbox"]) {
-                display: inline !important;
-                width: 100%;
-            }
-
             &[type="checkbox"] {
                 height: auto;
                 min-height: 0;
