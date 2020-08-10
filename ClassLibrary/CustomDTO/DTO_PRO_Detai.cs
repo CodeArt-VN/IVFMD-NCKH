@@ -49,7 +49,7 @@ namespace DTOModel
         public string htmlContent { get; set; }
         public string htmlFooter { get; set; }
         public string htmlHeader { get; set; }
-        public int pxHeader { get; set; }
-        public int pxFooter { get; set; }
+        public float pxHeader { get; set; }
+        public float pxFooter { get; set; }
     }
 }
