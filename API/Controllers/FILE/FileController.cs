@@ -192,7 +192,7 @@ namespace API.Controllers.DOC
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
                     item.FileSize = new System.IO.FileInfo(strFilePath).Length;
-
+                    item.IsHidden = true;
                     result = BS_CUS_DOC_File.post_CUS_DOC_File(db, PartnerID, item, Username, true);
                 }
                 else
@@ -203,7 +203,7 @@ namespace API.Controllers.DOC
                     item.Path = uploadPath + "/" + fileName;
                     item.Extension = System.IO.Path.GetExtension(strFilePath).Replace(".", "");
                     item.FileSize = new System.IO.FileInfo(strFilePath).Length;
-
+                    item.IsHidden = true;
                     result = item;
                 }
             }

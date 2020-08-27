@@ -395,7 +395,7 @@
                 dbitem.ApprovedDate = item.ApprovedDate;
                 dbitem.FileSize = item.FileSize;
                 dbitem.FileVersion = item.FileVersion;
-
+                dbitem.IsHidden = item.IsHidden;
 
                 dbitem.CreatedBy = Username;
                 dbitem.CreatedDate = DateTime.Now;

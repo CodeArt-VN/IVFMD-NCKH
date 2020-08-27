@@ -461,7 +461,10 @@ export class SopsPage extends ListPage {
                 this.canDeleteFolder = false;
                 this.canDeleteFile = false;
                 this.isFolderOther = false;
-            } else this.isFolderOther = true;
+            } else {
+                this.isFolderOther = true;
+                this.checkRight();
+            }
 
             let active = this.folderTree.find(d => d.ID == folder.ID);
             this.loadFolderTree(active);

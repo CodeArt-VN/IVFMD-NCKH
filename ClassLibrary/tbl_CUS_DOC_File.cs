@@ -44,6 +44,7 @@ namespace ClassLibrary
         public double FileSize { get; set; }
         public string FileVersion { get; set; }
         public Nullable<int> IDDeTai { get; set; }
+        public Nullable<bool> IsHidden { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CUS_DOC_File_Actitity> tbl_CUS_DOC_File_Actitity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -81,6 +82,7 @@ namespace DTOModel
 		public double FileSize { get; set; }
 		public string FileVersion { get; set; }
 		public Nullable<int> IDDeTai { get; set; }
+		public Nullable<bool> IsHidden { get; set; }
 	}
 }
 
@@ -122,7 +124,8 @@ namespace BaseBusiness
 				ApprovedDate = s.ApprovedDate,							
 				FileSize = s.FileSize,							
 				FileVersion = s.FileVersion,							
-				IDDeTai = s.IDDeTai,					
+				IDDeTai = s.IDDeTai,							
+				IsHidden = s.IsHidden,					
 			}).OrderBy(o => o.Sort == null).ThenBy(u => u.Sort);
                               
         }
@@ -152,7 +155,8 @@ namespace BaseBusiness
 					ApprovedDate = dbResult.ApprovedDate,							
 					FileSize = dbResult.FileSize,							
 					FileVersion = dbResult.FileVersion,							
-					IDDeTai = dbResult.IDDeTai,
+					IDDeTai = dbResult.IDDeTai,							
+					IsHidden = dbResult.IsHidden,
 				};
 			}
 			else
@@ -319,6 +323,8 @@ namespace BaseBusiness
                     query = query.Where(d => IDs.Contains(d.IDDeTai));
             }
 
+			//Query IsHidden (Nullable<bool>)
+
 
 			return toDTO(query);
 
@@ -364,7 +370,8 @@ namespace BaseBusiness
 				dbitem.ApprovedDate = item.ApprovedDate;							
 				dbitem.FileSize = item.FileSize;							
 				dbitem.FileVersion = item.FileVersion;							
-				dbitem.IDDeTai = item.IDDeTai;                
+				dbitem.IDDeTai = item.IDDeTai;							
+				dbitem.IsHidden = item.IsHidden;                
 				
 				dbitem.ModifiedBy = Username;
 				dbitem.ModifiedDate = DateTime.Now;
@@ -405,7 +412,8 @@ namespace BaseBusiness
 				dbitem.ApprovedDate = item.ApprovedDate;							
 				dbitem.FileSize = item.FileSize;							
 				dbitem.FileVersion = item.FileVersion;							
-				dbitem.IDDeTai = item.IDDeTai;                
+				dbitem.IDDeTai = item.IDDeTai;							
+				dbitem.IsHidden = item.IsHidden;                
 				
 				dbitem.CreatedBy = Username;
 				dbitem.CreatedDate = DateTime.Now;

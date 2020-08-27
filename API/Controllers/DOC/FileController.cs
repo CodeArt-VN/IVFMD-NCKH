@@ -43,7 +43,7 @@ namespace API.Controllers.DOC
             {
             
                 var query = db.tbl_CUS_DOC_File
-                .Where(d => d.IsDeleted == false && d.IDPartner == PartnerID && (d.ModifiedBy == Username || d.CreatedBy == Username));
+                .Where(d => d.IsDeleted == false && d.IsHidden != true && d.IDPartner == PartnerID && (d.ModifiedBy == Username || d.CreatedBy == Username));
 
                 if (QueryStrings.Any(d => d.Key == "IDFolder"))
                 {

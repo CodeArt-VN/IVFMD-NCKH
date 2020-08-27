@@ -136,6 +136,7 @@
           <Property Name="FileSize" Type="float" Nullable="false" />
           <Property Name="FileVersion" Type="nvarchar" MaxLength="50" />
           <Property Name="IDDeTai" Type="int" />
+          <Property Name="IsHidden" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_File_Actitity">
           <Key>
@@ -4444,6 +4445,7 @@
           <NavigationProperty Name="tbl_PRO_DeTai" Relationship="AppModel.FK_tbl_CUS_DOC_File_tbl_PRO_DeTai" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PRO_DeTai" />
           <NavigationProperty Name="tbl_CUS_DOC_FileInFolder" Relationship="AppModel.FK_tbl_CUS_DOC_FileInFolder_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_CUS_DOC_FileInFolder" />
           <NavigationProperty Name="tbl_PRO_HoSoKhac" Relationship="AppModel.FK_tbl_PRO_HoSoKhac_tbl_CUS_DOC_File" FromRole="tbl_CUS_DOC_File" ToRole="tbl_PRO_HoSoKhac" />
+          <Property Name="IsHidden" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_CUS_DOC_File_Actitity">
           <Key>
@@ -7928,6 +7930,7 @@
           <EntitySetMapping Name="tbl_CUS_DOC_File">
             <EntityTypeMapping TypeName="AppModel.tbl_CUS_DOC_File">
               <MappingFragment StoreEntitySet="tbl_CUS_DOC_File">
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
                 <ScalarProperty Name="IDDeTai" ColumnName="IDDeTai" />
                 <ScalarProperty Name="FileVersion" ColumnName="FileVersion" />
                 <ScalarProperty Name="FileSize" ColumnName="FileSize" />
