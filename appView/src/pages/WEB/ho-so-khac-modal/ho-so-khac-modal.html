@@ -1,19 +1,25 @@
-<ion-header>
-    <ion-row>
-        <h2>&nbsp;&nbsp; Danh sách file đã up</h2>
-        <button class="close-btn" style="height: 25px; width: 25px; right: 11px; top:15px" ion-button clear icon-only large (click)="dismiss()">
-            <ion-icon name="close" color="ivf1"></ion-icon>
-        </button>
-    </ion-row>
-    <ion-row>
-        <button color="primary" ion-button icon-only clear (click)="preLoadData()">
-            <ion-icon name="refresh"></ion-icon>
-        </button>
 
-        <button color="primary" ion-button icon-only clear (click)="uploadFile()">
-            <ion-icon name="cloud-upload"></ion-icon>
-        </button>
-    </ion-row>
+
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Danh sách file đã up
+        </ion-title>
+        <ion-buttons end>
+            <button color="primary" ion-button icon-only clear (click)="preLoadData()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+    
+            <button color="primary" ion-button icon-start clear (click)="uploadFile()">
+                <ion-icon name="cloud-upload"></ion-icon>
+                Upload file
+            </button>
+
+            <button color="danger" ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>

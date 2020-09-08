@@ -1,2 +1,16 @@
-page-bao-cao-nang-suat-khoa-hoc-modal {
+hoi-nghi-hoi-thao-modal {
+    .header{
+        .toolbar{
+            .title {
+                padding-right: 90px;
+                @media (min-width: 480px){
+                    padding-right: auto;
+                }
+            }
+            .segment-button {
+                max-width: 200px;
+            }
+        }
+    }
+    
 }

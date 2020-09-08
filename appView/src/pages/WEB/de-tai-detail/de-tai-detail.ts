@@ -160,10 +160,10 @@ export class DeTaiDetailPage extends BasePage {
 
         dataPage.forEach(item => {
             this.events.subscribe('app:open-' + item, () => {
-                this.slides.lockSwipes(true);
+                //this.slides.lockSwipes(true);
             })
             this.events.subscribe('app:close-' + item, () => {
-                this.slides.lockSwipes(false);
+                //this.slides.lockSwipes(false);
             })
         });
     }
@@ -337,7 +337,7 @@ export class DeTaiDetailPage extends BasePage {
         else {
             this.events.publish('app:ShowMenu', true);
         }
-        //this.slides.lockSwipes(false).then(()=>{
+        ////this.slides.lockSwipes(false).then(()=>{
         this.slides.slideTo(index);
         //});
 
@@ -371,20 +371,10 @@ export class DeTaiDetailPage extends BasePage {
             this.updateSlides();
         }, 0);
 
+        this.pageIndex = this.slides.getActiveIndex();
 
         //this.slides.lockSwipes(true);
-        // this.slides.getActiveIndex().then(index=>{
-        //   this.pageIndex = index;
-
-        //   this.slides.lockSwipes(true);
-
-        //   if(index > 0){
-        //     this.events.publish('app:ShowMenu', false);
-        //   }
-        //   else{
-        //     this.events.publish('app:ShowMenu', true);
-        //   }
-        // });
+        
     }
 
     updateSlides() {
@@ -512,29 +502,29 @@ export class DeTaiDetailPage extends BasePage {
             let myModal = this.modalCtrl.create(page, param);
             myModal.onDidDismiss(data => {
                 this.refreshData();
-                this.slides.lockSwipes(false);
+                //this.slides.lockSwipes(false);
             });
             myModal.present();
-            this.slides.lockSwipes(true);
+            //this.slides.lockSwipes(true);
         }
         else if (type != 11) {
             if (page != null) {
                 let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
                 myModal.onDidDismiss(data => {
                     this.refreshData();
-                    this.slides.lockSwipes(false);
+                    //this.slides.lockSwipes(false);
                 });
                 myModal.present();
-                this.slides.lockSwipes(true);
+                //this.slides.lockSwipes(true);
             }
         } else if (type == 11) {
             let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': this.id });
             myModal.onDidDismiss(data => {
                 this.refreshData();
-                this.slides.lockSwipes(false);
+                //this.slides.lockSwipes(false);
             });
             myModal.present();
-            this.slides.lockSwipes(true);
+            //this.slides.lockSwipes(true);
         }
     }
 

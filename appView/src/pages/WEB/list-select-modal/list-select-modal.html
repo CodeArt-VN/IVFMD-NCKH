@@ -1,17 +1,22 @@
 <ion-header>
-    <h2>&nbsp;&nbsp; Danh sách báo cáo</h2>
-    <div class="">
-        <button color="primary" ion-button icon-only clear (click)="preLoadData()">
-            <ion-icon name="refresh"></ion-icon>
-        </button>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Danh sách báo cáo
+        </ion-title>
+        <ion-buttons end>
+            <button color="success" ion-button icon-only clear (click)="addForm()">
+                <ion-icon name="ios-add-circle"></ion-icon>
+            </button>
 
-        <button color="success" ion-button icon-only clear (click)="addForm()">
-            <ion-icon name="ios-add-circle"></ion-icon>
-        </button>
-    </div>
-    <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
-        <ion-icon name="close" color="ivf1"></ion-icon>
-    </button>
+            <button color="primary" ion-button icon-only clear (click)="preLoadData()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+
+            <button color="danger" ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>

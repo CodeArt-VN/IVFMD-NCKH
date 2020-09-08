@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-segment [(ngModel)]="tab" style="width: 700px;">
+<!-- <ion-header>
+    <ion-segment [(ngModel)]="tab"  >
         <ion-segment-button value="1">
             Thông tin chung
         </ion-segment-button>
@@ -10,18 +10,59 @@
     <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
+</ion-header> -->
+
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Thông tin đề tài
+        </ion-title>
+        <ion-buttons end>
+            <button color="danger" ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="tab">
+            <ion-segment-button value="1">
+                Thông tin chung
+            </ion-segment-button>
+            <ion-segment-button value="2">
+                Nghiên cứu viên khác
+            </ion-segment-button>
+        </ion-segment>
+
+        <ion-buttons end *ngIf="tab==2">
+            <button color="success" ion-button icon-only (click)="addNCV()">
+                <ion-icon name="ios-add-circle"></ion-icon>
+            </button>
+            <button color="primary" ion-button icon-only (click)="refreshNCV()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+
+            <button ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="openDetailNCV(lstNCVSelected[0])">
+                <ion-icon name="ios-create"></ion-icon>
+            </button>
+            <button color="danger" ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="deleteNCV()">
+                <ion-icon name="ios-trash"></ion-icon>
+            </button>
+
+
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div [ngSwitch]="tab"  style="height: 100%">
+    <div [ngSwitch]="tab" style="height: 100%">
         <div *ngSwitchCase="'1'">
             <form [formGroup]="formGroup">
                 <div padding></div>
                 <div class="c-control">
                     <label class="c-label" for="TenTiengViet">
                         Tên tiếng Việt
-                        <span *ngIf="!formGroup.controls.TenTiengViet.valid && !formGroup.controls.TenTiengViet.pending && (formGroup.controls.TenTiengViet.dirty || submitAttempt)"
-                              ion-text color="danger">(*)</span>
+                        <span *ngIf="!formGroup.controls.TenTiengViet.valid && !formGroup.controls.TenTiengViet.pending && (formGroup.controls.TenTiengViet.dirty || submitAttempt)" ion-text color="danger">(*)</span>
                     </label>
                     <input class="c-input" id="TenTiengViet" [(ngModel)]="item.TenTiengViet" formControlName="TenTiengViet" type="text">
                 </div>
@@ -29,8 +70,7 @@
                 <div class="c-control">
                     <label class="c-label" for="TenTiengAnh">
                         Tên tiếng Anh
-                        <span *ngIf="!formGroup.controls.TenTiengAnh.valid && !formGroup.controls.TenTiengAnh.pending && (formGroup.controls.TenTiengAnh.dirty || submitAttempt)"
-                              ion-text color="danger">(*)</span>
+                        <span *ngIf="!formGroup.controls.TenTiengAnh.valid && !formGroup.controls.TenTiengAnh.pending && (formGroup.controls.TenTiengAnh.dirty || submitAttempt)" ion-text color="danger">(*)</span>
                     </label>
                     <input class="c-input" id="TenTiengAnh" [(ngModel)]="item.TenTiengAnh" formControlName="TenTiengAnh" type="text">
                 </div>
@@ -38,8 +78,7 @@
                 <div class="c-control">
                     <label class="c-label" for="IDChuNhiem">
                         Chủ nhiệm
-                        <span *ngIf="!formGroup.controls.IDChuNhiem.valid && !formGroup.controls.IDChuNhiem.pending && (formGroup.controls.IDChuNhiem.dirty || submitAttempt)"
-                              ion-text color="danger">(*)</span>
+                        <span *ngIf="!formGroup.controls.IDChuNhiem.valid && !formGroup.controls.IDChuNhiem.pending && (formGroup.controls.IDChuNhiem.dirty || submitAttempt)" ion-text color="danger">(*)</span>
                     </label>
 
                     <select class="c-input c-dropdown" [(ngModel)]="item.IDChuNhiem" formControlName="IDChuNhiem">
@@ -50,13 +89,12 @@
                 <div class="c-control">
                     <label class="c-label" for="IDLinhVuc">
                         Lĩnh vực
-                        <span *ngIf="!formGroup.controls.IDLinhVuc.valid && !formGroup.controls.IDLinhVuc.pending && (formGroup.controls.IDLinhVuc.dirty || submitAttempt)"
-                              ion-text color="danger">(*)</span>
-                    </label> 
+                        <span *ngIf="!formGroup.controls.IDLinhVuc.valid && !formGroup.controls.IDLinhVuc.pending && (formGroup.controls.IDLinhVuc.dirty || submitAttempt)" ion-text color="danger">(*)</span>
+                    </label>
 
                     <select class="c-input c-dropdown" [(ngModel)]="item.IDLinhVuc" formControlName="IDLinhVuc" [disabled]="true">
                         <option [ngValue]="null" [attr.disabled]="(item.ID > 0 && itemRoot.IDLinhVuc > 0) ? '' : null">
-                            
+
                         </option>
                         <option *ngFor="let t of linhvucTree" [attr.disabled]="t.ID==item.ID || (item.ID > 0 && itemRoot.IDLinhVuc > 0) ? '' : null" [value]="t.ID">
                             {{'&nbsp;&nbsp;&nbsp;' + t.levels.join('&nbsp;&nbsp;&nbsp;')}} {{t.Name}}
@@ -66,7 +104,7 @@
 
                 <div class="c-control">
                     <label class="c-label" style="color: red;font-weight: normal;font-style: italic;">
-                        Lưu ý: 
+                        Lưu ý:
                         <br />
                         - "Vui lòng hoàn tất Sơ yếu lý lịch và Lý lịch khoa học của NCV chính và CNĐT trước khi tạo đề tài NCKH"
                         <br />
@@ -93,28 +131,12 @@
             </form>
         </div>
         <div *ngSwitchCase="'2'" style="height: 100%">
-            <div class="tools">
-                <button color="primary" ion-button icon-only clear (click)="refreshNCV()">
-                          <ion-icon name="refresh"></ion-icon>
-                      </button>
 
-                <button color="success" ion-button icon-only clear (click)="addNCV()">
-                          <ion-icon name="ios-add-circle"></ion-icon>
-                      </button>
+            
 
-                <span class="split" *ngIf="lstNCVSelected.length"></span>
-
-                <button ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="openDetailNCV(lstNCVSelected[0])">
-                    <ion-icon name="ios-create"></ion-icon>
-                </button>
-                <button color="danger" ion-button icon-only clear *ngIf="lstNCVSelected.length" (click)="deleteNCV()">
-                    <ion-icon name="ios-trash"></ion-icon>
-                </button>
-            </div>
-            <ion-row style="height: calc(100% - 53px)">
+            <ion-row style="height: 100%">
                 <ion-col class="doc-main">
-                    <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected"
-                        [selectionType]="'single'" (select)='onSelectNCV($event)'>
+                    <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstNCVKhac" [selected]="lstNCVSelected" [selectionType]="'single'" (select)='onSelectNCV($event)'>
 
                         <ngx-datatable-column name="Họ tên" prop="TenNCV" [width]="150" [maxWidth]="150" headerClass="name" cellClass="name">
                             <ng-template let-i="row" ngx-datatable-cell-template>

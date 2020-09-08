@@ -199,7 +199,7 @@
 
         [contenteditable="true"] {
             &:hover, &:focus {
-                outline: 1px dashed #44a9eb;
+                // outline: 1px dashed #44a9eb;
             }
         }
 
@@ -217,7 +217,7 @@
 
     [contenteditable="true"] {
         &:hover, &:focus {
-            outline: 1px dashed #44a9eb;
+            // outline: 1px dashed #44a9eb;
         }
 
         > p, > div {
@@ -513,7 +513,7 @@
 
         [contenteditable="true"] {
             &:hover, &:focus {
-                border: 1px solid #44a9eb;
+                // border: 1px solid #44a9eb;
             }
         }
 
@@ -528,7 +528,7 @@
             }
 
             &:hover, &:focus {
-                border: 1px solid #44a9eb;
+                // border: 1px solid #44a9eb;
                 border-radius: 3px;
             }
 
@@ -652,6 +652,21 @@
 
         span[contenteditable] {
             line-height: 15pt;
+            display: inline-block;
+            border-radius: 4px;
+            padding: 15px 25px;
+            font-size: 14px;
+            color: #4D4F5C;
+            border: 1px solid #E6F4FA;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: #E6F4FA;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: calc(100% - 0px);
         }
 
         [contenteditable].input-inline {

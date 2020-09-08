@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-row>
         <h2>&nbsp;&nbsp; Danh sách Hội nghị, hội thảo đăng ký</h2>
         <button class="close-btn" style="height: 25px; width: 25px; right: 11px; top:15px" ion-button clear icon-only large (click)="dismiss()">
@@ -10,16 +10,33 @@
             <ion-icon name="refresh"></ion-icon>
         </button>
     </ion-row>
+</ion-header> -->
+
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Danh sách Hội nghị, hội thảo đăng ký
+        </ion-title>
+        <ion-buttons end>
+            <button color="primary" ion-button icon-only (click)="preLoadData()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+
+            <button color="danger" ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
+
 
 <ion-content>
     <ion-row>
         <ion-col class="doc-main">
-            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow"
-                           [selectionType]="'single'">
+            <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstRow" [selectionType]="'single'">
                 <ngx-datatable-column name="" prop="" [width]="110" [maxWidth]="110" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>
-                        <a (click)="resgister(i)"  [ngClass]="i.CoTheDangKy ? '' : 'text-ios-danger'">
+                        <a (click)="resgister(i)" [ngClass]="i.CoTheDangKy ? '' : 'text-ios-danger'">
                             {{i.ChoPhepDangKy}}
                         </a>
                     </ng-template>

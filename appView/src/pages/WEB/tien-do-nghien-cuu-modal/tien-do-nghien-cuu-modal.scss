@@ -1,3 +1,15 @@
-page-tien-do-nghien-cuu-modal {
-
+tien-do-nghien-cuu-modal {
+    .header{
+        .toolbar{
+            .title {
+                padding-right: 90px;
+                @media (min-width: 480px){
+                    padding-right: auto;
+                }
+            }
+            .segment-button {
+                max-width: 200px;
+            }
+        }
+    }
 }

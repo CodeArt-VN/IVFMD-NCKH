@@ -13,14 +13,14 @@
         <div class="filter-block" (click)="showDatePicks = !showDatePicks">
             <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Thời gian">
             <ion-icon [color]="(query.DateFrom == '' && query.DateTo == '')? 'ivf1':'danger'" class="split" name="ios-funnel"></ion-icon>
-        </div>
+        </div>&nbsp;
         <div class="filter-block" (click)="showStatus = !showStatus">
             <input style="width: 110px; cursor: pointer" disabled type="text" class="c-dropdown" placeholder="Tình trạng">
             <ion-icon [color]="query.ListStatusID != ''? 'danger':'ivf1'" class="split" name="ios-funnel"></ion-icon>
         </div>
     </div>
     <div class="tools">
-        <button color="primary" ion-button icon-only clear (click)="refresh()">
+        <button color="primary" ion-button icon-only clear (click)="refresh()" title="Refresh">
             <ion-icon name="refresh"></ion-icon>
         </button>
 

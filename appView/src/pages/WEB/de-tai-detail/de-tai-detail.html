@@ -60,7 +60,7 @@
     </div>
 </ion-header>
 <ion-content>
-    <ion-slides class="marginLeft" pager="false" slidesPerView="1" [options]="slideOpts"
+    <ion-slides class="marginLeft" pager="false" slidesPerView="1" shouldLockSwipes="true" [options]="slideOpts"
         (ionSlideDidChange)="slideChanged()" #pages>
         <ion-slide class="page-1">
             <!-- Hội đồng nội bộ -->

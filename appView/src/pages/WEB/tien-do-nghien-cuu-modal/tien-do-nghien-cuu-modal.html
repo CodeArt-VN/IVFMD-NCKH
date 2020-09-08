@@ -1,50 +1,52 @@
 <ion-header>
-    <div class="">
-        <button color="primary" ion-button icon-only clear (click)="refresh()">
-                    <ion-icon name="refresh"></ion-icon>
-                </button>
-  
-        <button color="success" ion-button icon-only clear *ngIf="!isView" (click)="add()">
-                    <ion-icon name="ios-add-circle"></ion-icon>
-                </button>
-  
-        <span class="split" *ngIf="lstSelected.length"></span>
-  
-        <button ion-button icon-only clear *ngIf="lstSelected.length" (click)="openDetail(lstSelected[0])">
-            <ion-icon name="ios-create"></ion-icon>
-        </button>
-        <button color="danger" ion-button icon-only clear *ngIf="lstSelected.length && !isView" (click)="delete()">
-            <ion-icon name="ios-trash"></ion-icon>
-        </button>
-    </div>
-  <button class="close-btn" style="height: 25px; width: 25px; right: 5px;" ion-button clear icon-only large (click)="dismiss()">
-      <ion-icon name="close" color="ivf1"></ion-icon>
-  </button>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Tiến độ nghiên cứu
+        </ion-title>
+        <ion-buttons end>
+            <button color="success" ion-button icon-only clear *ngIf="!isView" (click)="add()">
+                <ion-icon name="ios-add-circle"></ion-icon>
+            </button>
+
+            <button ion-button icon-only clear *ngIf="lstSelected.length" (click)="openDetail(lstSelected[0])">
+                <ion-icon name="ios-create"></ion-icon>
+            </button>
+            <button color="danger" ion-button icon-only clear *ngIf="lstSelected.length && !isView" (click)="delete()">
+                <ion-icon name="ios-trash"></ion-icon>
+            </button>
+
+            <button color="primary" ion-button icon-only clear (click)="refresh()" title="Refresh">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+
+            <button color="danger" ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-row>
-      <ion-col class="doc-main">
-          <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstData" [selected]="lstSelected"
-                         [selectionType]="'single'" (select)='onSelect($event)'>
-              <ngx-datatable-column name="Tình trạng" prop="TinhTrangNghienCuu" [width]="200" [maxWidth]="200" headerClass="name"
-                                    cellClass="name">
-                  <ng-template let-i="row" ngx-datatable-cell-template>
-                      <a (click)="openDetail(i)">
-                          {{i.TinhTrangNghienCuu}}
-                      </a>
-                  </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
-              <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau" [width]="180"></ngx-datatable-column>
-              <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>
-              <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
-                  <ng-template let-i="row" ngx-datatable-cell-template>
-                      {{i.NgayTaoText}}
-                  </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Người báo cáo" prop="CreatedBy" [width]="150"></ngx-datatable-column>
-          </ngx-datatable>
-      </ion-col>
-  </ion-row>
+    <ion-row>
+        <ion-col class="doc-main">
+            <ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true" [scrollbarH]="true" [rows]="lstData" [selected]="lstSelected" [selectionType]="'single'" (select)='onSelect($event)'>
+                <ngx-datatable-column name="Tình trạng" prop="TinhTrangNghienCuu" [width]="200" [maxWidth]="200" headerClass="name" cellClass="name">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        <a (click)="openDetail(i)">
+                            {{i.TinhTrangNghienCuu}}
+                        </a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Số ca thu thập hợp lệ" [width]="180" [maxWidth]="180" headerClass="name" cellClass="name" prop="SoCaThuThapHopLe"></ngx-datatable-column>
+                <ngx-datatable-column name="Tiến độ thu nhận mẫu" prop="TienDoThuNhanMau" [width]="180"></ngx-datatable-column>
+                <ngx-datatable-column name="Khó khăn" prop="KhoKhan"></ngx-datatable-column>
+                <ngx-datatable-column name="Ngày báo cáo" prop="CreatedDate" [width]="150" [maxWidth]="150">
+                    <ng-template let-i="row" ngx-datatable-cell-template>
+                        {{i.NgayTaoText}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Người báo cáo" prop="CreatedBy" [width]="150"></ngx-datatable-column>
+            </ngx-datatable>
+        </ion-col>
+    </ion-row>
 </ion-content>
