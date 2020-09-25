@@ -117,7 +117,8 @@
       outline: none; }
     .nckh-form-template.print-mode .box > *:not(input), .nckh-form-template.input-mode .box > *:not(input) {
       display: block;
-      padding: 3px; }
+      padding: 3px;
+      min-height: 20px; }
     .nckh-form-template.print-mode .box.box-inline > *, .nckh-form-template.input-mode .box.box-inline > * {
       display: table-cell;
       vertical-align: middle;

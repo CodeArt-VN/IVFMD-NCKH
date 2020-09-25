@@ -211,6 +211,7 @@
         & > *:not(input) {
             display: block;
             padding: 3px;
+            min-height: 20px;
         }
 
         &.box-inline > * {
