@@ -427,19 +427,25 @@ namespace BaseBusiness
         public static DTO_PRO_LLKH update_PRO_LLKH(AppEntities db, DTO_PRO_LLKH item, string Username)
         {
             var dbitem = db.tbl_PRO_LLKH.Find(item.ID);
-
+            if (dbitem == null)
+            {
+                dbitem = new tbl_PRO_LLKH();
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+                dbitem.IDDetai = item.IDDetai;
+                dbitem.IDNhanSu = item.IDNhanSu;
+                db.tbl_PRO_LLKH.Add(dbitem);
+            }
             var objHRM_LLKH = db.tbl_CUS_HRM_STAFF_NhanSu_LLKH.FirstOrDefault(c => c.IDNhanSu == item.IDNhanSu);
             if (objHRM_LLKH != null)
             {
                 CopyHelper copyHelper = new CopyHelper();
                 copyHelper.Copy(objHRM_LLKH, dbitem);
             }
-            dbitem.ID = item.ID;
             dbitem.IDDetai = item.IDDetai;
             dbitem.IDNhanSu = item.IDNhanSu;
             dbitem.IsDisabled = item.IsDisabled;
             dbitem.IsDeleted = item.IsDeleted;
-
             dbitem.ModifiedBy = Username;
             dbitem.ModifiedDate = DateTime.Now;
 
@@ -452,7 +458,7 @@ namespace BaseBusiness
                 {
                     if (detai.IDNCV == dbitem.IDNhanSu)
                         BS_HelperReference.PRO_LLKH_NCV_Update(db, dbitem.IDDetai, dbitem.IDNhanSu);
-                    if (detai.IDNCV == dbitem.IDNhanSu)
+                    if (detai.IDChuNhiem == dbitem.IDNhanSu)
                         BS_HelperReference.PRO_LLKH_CN_Update(db, dbitem.IDDetai, dbitem.IDNhanSu);
                 }
 

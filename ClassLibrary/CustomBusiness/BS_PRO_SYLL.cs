@@ -234,13 +234,22 @@ namespace BaseBusiness
         public static DTO_PRO_SYLL update_PRO_SYLL(AppEntities db, DTO_PRO_SYLL item, string Username)
         {
             var dbitem = db.tbl_PRO_SYLL.Find(item.ID);
+            if (dbitem == null)
+            {
+                dbitem = new tbl_PRO_SYLL();
+                dbitem.CreatedBy = Username;
+                dbitem.CreatedDate = DateTime.Now;
+                dbitem.IDDetai = item.IDDetai;
+                dbitem.IDNhanSu = item.IDNhanSu;
+                db.tbl_PRO_SYLL.Add(dbitem);
+            }
+
             var objHRM_SYLL = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == item.IDNhanSu);
             if (objHRM_SYLL != null)
             {
                 CopyHelper copyHelper = new CopyHelper();
                 copyHelper.Copy(objHRM_SYLL, dbitem);
             }
-            dbitem.ID = item.ID;
             dbitem.IDDetai = item.IDDetai;
             dbitem.IDNhanSu = item.IDNhanSu;
             dbitem.IsDisabled = item.IsDisabled;

@@ -78,8 +78,12 @@ namespace BaseBusiness
 
             foreach (var prop in propMap)
             {
-                var sourceValue = prop.SourceProperty.GetValue(source, null);
-                prop.TargetProperty.SetValue(target, sourceValue, null);
+                try
+                {
+                    var sourceValue = prop.SourceProperty.GetValue(source, null);
+                    prop.TargetProperty.SetValue(target, sourceValue, null);
+                }
+                catch { }
             }
         }
     }
