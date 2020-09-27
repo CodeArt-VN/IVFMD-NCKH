@@ -123,6 +123,18 @@ namespace BaseBusiness
             dbitem.ModifiedBy = Username;
             dbitem.ModifiedDate = DateTime.Now;
 
+            var detai = db.tbl_PRO_DeTai.FirstOrDefault(c => c.ID == item.IDDeTai);
+            if (detai != null)
+            {
+                var chunhiem = db.tbl_PRO_LLKH.FirstOrDefault(c => c.IDDetai == item.IDDeTai && c.IDNhanSu == detai.IDChuNhiem);
+                if (chunhiem != null)
+                {
+                    dbitem.HoTenChuNhiem = chunhiem.HoTen;
+                    dbitem.DiaChi = chunhiem.DiaChi_CaNhan;
+                    dbitem.DienThoai = chunhiem.DienThoai_CaNhan;
+                }
+            }
+
             try
             {
                 db.SaveChanges();

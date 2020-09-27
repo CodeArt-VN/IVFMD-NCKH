@@ -404,7 +404,7 @@ namespace BaseBusiness
                 {
                     if (detai.IDNCV == dbitem.IDNhanSu)
                         BS_HelperReference.PRO_LLKH_NCV_Update(db, dbitem.IDDetai, dbitem.IDNhanSu);
-                    if (detai.IDNCV == dbitem.IDNhanSu)
+                    if (detai.IDChuNhiem == dbitem.IDNhanSu)
                         BS_HelperReference.PRO_LLKH_CN_Update(db, dbitem.IDDetai, dbitem.IDNhanSu);
                 }
 
