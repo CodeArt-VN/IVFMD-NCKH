@@ -529,11 +529,11 @@ namespace BaseBusiness
                         dbitem.ThoiGianTienHanh = donxindanhgiaDD.ThoiGianNghienCuu;
                     }
 
-                    var thuyetminhdetai = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == item.IDDeTai && c.IsDeleted == false);
-                    if (thuyetminhdetai != null)
-                    {
-                        dbitem.CoMau = thuyetminhdetai.B3222_CoMau;
-                    }
+                    //var thuyetminhdetai = db.tbl_PRO_ThuyetMinhDeTai.FirstOrDefault(c => c.IDDeTai == item.IDDeTai && c.IsDeleted == false);
+                    //if (thuyetminhdetai != null)
+                    //{
+                    //    dbitem.CoMau = thuyetminhdetai.B3222_CoMau;
+                    //}
                 }
 
                 try

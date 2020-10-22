@@ -20,6 +20,13 @@
         </div>
 
         <div class="c-control">
+            <label class="c-label" for="CoMau">
+                Cỡ mẫu
+            </label>
+            <textarea rows="3" class="c-input" id="CoMau" [(ngModel)]="item.CoMau" formControlName="CoMau" type="textarea"></textarea>
+        </div>
+
+        <div class="c-control">
             <label class="c-label" for="SoCaThuThapHopLe">
                 Số ca thu thập hợp lệ
                 <span *ngIf="!formGroup.controls.SoCaThuThapHopLe.valid && !formGroup.controls.SoCaThuThapHopLe.pending && (formGroup.controls.SoCaThuThapHopLe.dirty || submitAttempt)"
@@ -30,7 +37,7 @@
 
         <div class="c-control">
             <label class="c-label" for="TienDoThuNhanMau">
-                Tiến độ thu nhận mẫu
+                Tiến độ thu nhận mẫu (theo từng size)
                 <span *ngIf="!formGroup.controls.TienDoThuNhanMau.valid && !formGroup.controls.TienDoThuNhanMau.pending && (formGroup.controls.TienDoThuNhanMau.dirty || submitAttempt)"
                       ion-text color="danger">(*)</span>
             </label>

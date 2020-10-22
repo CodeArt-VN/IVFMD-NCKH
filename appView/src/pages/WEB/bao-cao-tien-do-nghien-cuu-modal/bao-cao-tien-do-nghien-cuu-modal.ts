@@ -34,6 +34,7 @@ export class BaoCaoTienDoNghienCuuModalPage extends DetailPage {
             SoCaThuThapHopLe: ['', Validators.compose([Validators.required])],
             TienDoThuNhanMau: ['', Validators.compose([Validators.required])],
             KhoKhan: [''],
+            CoMau: [''],
             IDTinhTrangNghienCuu: ['', Validators.compose([Validators.required])]
         });
         this.idDeTai = navParams.get('idDeTai');
