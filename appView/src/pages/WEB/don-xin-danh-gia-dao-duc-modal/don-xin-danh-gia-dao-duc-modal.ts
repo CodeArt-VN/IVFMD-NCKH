@@ -126,6 +126,7 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
 
     print() {
         this.loadingMessage('Lấy dữ liệu in...').then(() => {
+
             var itemPrint = {
                 id: this.id,
                 type: 0,
@@ -147,9 +148,29 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(DonXinDanhGiaDaoDucModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        this.currentProvider.getItemCustom(this.idDeTai, false).then((ite) => {
+            let item = this.model.getItem();
+
+            $("#frmDonXinDanhGiaDaoDucPrint").empty();
+            $(ite.HTML).appendTo("#frmDonXinDanhGiaDaoDucPrint");
+            var that = this;
+            this.nckhProvider.init(this.item.FormConfig);
+
+            let ObjModel = function (item) {
+                var self = this;
+
+                that.nckhProvider.copyPropertiesValue(item, self);
+
+                self.getItem = function () {
+                    return ko.toJS(self);
+                };
+            }
+            var model = new ObjModel(item);
+            ko.applyBindings(model, document.getElementById("frmDonXinDanhGiaDaoDucPrint"));
+            debugger
+            this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html());
+        }).catch((data) => {
+        });
+
     };
 }

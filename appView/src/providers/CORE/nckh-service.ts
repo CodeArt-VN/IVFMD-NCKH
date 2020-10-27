@@ -756,4 +756,16 @@ export class NCKHServiceProvider {
         })
         return div.children();
     }
+    print(html: string, title: string = null) {
+        var win = window.open('', '_blank');
+        win.document.write('<html><head><title>' + (title || document.title) + '</title><link href="http://localhost:54009/content/style/nckh-form-template.css" rel="stylesheet">');
+        win.document.write('</head><body >');
+        win.document.write(html);
+        win.document.write('</body></html>');
+
+        win.document.close(); // necessary for IE >= 10
+        win.focus(); // necessary for IE >= 10*/
+
+        win.print();
+    }
 }
