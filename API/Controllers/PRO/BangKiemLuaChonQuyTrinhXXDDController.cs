@@ -48,13 +48,10 @@ namespace API.Controllers.PRO
             {
                 html = r.ReadToEnd();
             }
-
-            if (isInput == true)
+            tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.HTMLPrint = html;
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKiemLuaChonQuyTrinhXXDD_Input.html")))
             {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKiemLuaChonQuyTrinhXXDD_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
+                html = r.ReadToEnd();
             }
             tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.HTML = html;
             //}
