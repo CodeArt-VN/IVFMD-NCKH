@@ -758,8 +758,8 @@ export class NCKHServiceProvider {
     }
     print(html: string, title: string = null) {
         var win = window.open('', '_blank');
-        win.document.write('<html><head><title>' + (title || document.title) + '</title><link href="http://localhost:54009/content/style/nckh-form-template.css" rel="stylesheet">');
-        win.document.write('</head><body >');
+        win.document.write('<html class="browser"><head><title>' + (title || document.title) + '</title><link href="http://localhost:54009/content/style/nckh-form-template.css?v=' + (new Date().getTime()) + '" rel="stylesheet">');
+        win.document.write('<style type="text/css" media="print">@page { size: auto;  margin: .8in 0; } body { margin: 0; padding: 0; }</style></head><body >');
         win.document.write(html);
         win.document.write('</body></html>');
 

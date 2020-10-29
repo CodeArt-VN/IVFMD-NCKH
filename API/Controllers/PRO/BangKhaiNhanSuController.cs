@@ -44,20 +44,19 @@ namespace API.Controllers.PRO
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKhaiNhanSu.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKhaiNhanSu_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKhaiNhanSu_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
-
             tbl_PRO_BangKhaiNhanSu.HTML = html;
+            tbl_PRO_BangKhaiNhanSu.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_BangKhaiNhanSu);
         }

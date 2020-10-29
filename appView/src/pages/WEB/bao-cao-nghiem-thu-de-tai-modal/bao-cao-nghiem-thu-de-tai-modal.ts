@@ -133,9 +133,14 @@ export class BaoCaoNghiemThuDeTaiModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(BaoCaoNghiemThuDeTaiModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmBaoCaoNghiemThuDeTaiPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmBaoCaoNghiemThuDeTaiPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmBaoCaoNghiemThuDeTaiPrint"));
+        this.nckhProvider.print($("#frmBaoCaoNghiemThuDeTaiPrint .form-template-body").html());
     };
 }

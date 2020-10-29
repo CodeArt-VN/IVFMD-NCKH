@@ -126,7 +126,6 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
 
     print() {
         this.loadingMessage('Lấy dữ liệu in...').then(() => {
-
             var itemPrint = {
                 id: this.id,
                 type: 0,
@@ -148,29 +147,14 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
     };
 
     printPreview() {
-        this.currentProvider.getItemCustom(this.idDeTai, false).then((ite) => {
-            let item = this.model.getItem();
-
-            $("#frmDonXinDanhGiaDaoDucPrint").empty();
-            $(ite.HTML).appendTo("#frmDonXinDanhGiaDaoDucPrint");
-            var that = this;
-            this.nckhProvider.init(this.item.FormConfig);
-
-            let ObjModel = function (item) {
-                var self = this;
-
-                that.nckhProvider.copyPropertiesValue(item, self);
-
-                self.getItem = function () {
-                    return ko.toJS(self);
-                };
-            }
-            var model = new ObjModel(item);
-            ko.applyBindings(model, document.getElementById("frmDonXinDanhGiaDaoDucPrint"));
-            debugger
-            this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html());
-        }).catch((data) => {
-        });
-
+        try {
+            ko.cleanNode($('#frmDonXinDanhGiaDaoDucPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmDonXinDanhGiaDaoDucPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmDonXinDanhGiaDaoDucPrint"));
+        this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html());
     };
 }

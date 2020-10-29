@@ -9,5 +9,6 @@ namespace DTOModel
     public partial class DTO_PRO_BangKhaiNhanSu
     {
         public string HTML { get; set; }
+        public string HTMLPrint { get; set; }
     }
 }

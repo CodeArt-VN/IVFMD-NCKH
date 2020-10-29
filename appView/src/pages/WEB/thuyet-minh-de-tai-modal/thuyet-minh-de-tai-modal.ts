@@ -272,9 +272,14 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'isInput': false };
-        let myModal = this.modalCtrl.create(ThuyetMinhDeTaiModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmThuyetMinhDeTaiPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmThuyetMinhDeTaiPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmThuyetMinhDeTaiPrint"));
+        this.nckhProvider.print($("#frmThuyetMinhDeTaiPrint .form-template-body").html(), "ThuyetMinhDeTai");
     };
 }

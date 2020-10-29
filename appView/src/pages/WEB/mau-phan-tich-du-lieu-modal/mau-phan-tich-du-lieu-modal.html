@@ -5,7 +5,7 @@
     <button ion-button float-right (click)="saveChange()" *ngIf="item.IsDisabled == false">
         Lưu
     </button>
-    <button ion-button float-right (click)="print()">
+    <button ion-button float-right (click)="printPreview()">
         In
     </button>
     <button color="warning" ion-button float-right (click)="cancel()">
@@ -15,4 +15,5 @@
 <ion-content style="background-color: #fff;">
     <br />
     <div id="frmMauPhanTichDuLieu" class="nckh-form-wrapper"></div>
+    <div id="frmMauPhanTichDuLieuPrint" class="nckh-form-wrapper"></div>
 </ion-content>

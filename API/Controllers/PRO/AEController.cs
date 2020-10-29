@@ -50,20 +50,19 @@ namespace API.Controllers.PRO
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/AE.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/AE_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/AE_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
-
             tbl_PRO_AE.HTML = html;
+            tbl_PRO_AE.HTMLPrint = htmlPrint;
             //}
 
             return Ok(tbl_PRO_AE);
@@ -101,7 +100,6 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_AE result = BS_PRO_AE.post_PRO_AE(db, tbl_PRO_AE, Username);
-
 
             if (result != null)
             {

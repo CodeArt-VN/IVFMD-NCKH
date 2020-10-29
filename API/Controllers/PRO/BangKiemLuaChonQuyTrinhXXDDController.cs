@@ -44,9 +44,10 @@ namespace API.Controllers.PRO
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKiemLuaChonQuyTrinhXXDD.html")))
             {
-                html = r.ReadToEnd();
+                htmlPrint = r.ReadToEnd();
             }
             tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.HTMLPrint = html;
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BangKiemLuaChonQuyTrinhXXDD_Input.html")))
@@ -54,6 +55,7 @@ namespace API.Controllers.PRO
                 html = r.ReadToEnd();
             }
             tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.HTML = html;
+            tbl_PRO_BangKiemLuaChonQuyTrinhXXDD.HTMLPrint = htmlPrint;
             //}
 
             return Ok(tbl_PRO_BangKiemLuaChonQuyTrinhXXDD);
@@ -74,7 +76,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.put_PRO_BangKiemLuaChonQuyTrinhXXDD(db, id, tbl_PRO_BangKiemLuaChonQuyTrinhXXDD, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -91,9 +93,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_BangKiemLuaChonQuyTrinhXXDD result = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.post_PRO_BangKiemLuaChonQuyTrinhXXDD(db, tbl_PRO_BangKiemLuaChonQuyTrinhXXDD, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_BangKiemLuaChonQuyTrinhXXDD", new { id = result.ID }, result);
             }
@@ -104,17 +106,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_BangKiemLuaChonQuyTrinhXXDD))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.check_PRO_BangKiemLuaChonQuyTrinhXXDD_Exists(db, id); 
+            bool check = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.check_PRO_BangKiemLuaChonQuyTrinhXXDD_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.delete_PRO_BangKiemLuaChonQuyTrinhXXDD(db, id, Username); 
+            bool result = BS_PRO_BangKiemLuaChonQuyTrinhXXDD.delete_PRO_BangKiemLuaChonQuyTrinhXXDD(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 

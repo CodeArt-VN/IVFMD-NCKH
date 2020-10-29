@@ -44,19 +44,18 @@ namespace API.Controllers.PRO
             DTO_PRO_DonXinXetDuyet tbl_PRO_DonXinXetDuyet = BS_PRO_DonXinXetDuyet.get_PRO_DonXinXetDuyetByDeTai(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinXetDuyet.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinXetDuyet_Input.html")))
             {
                 html = r.ReadToEnd();
             }
-
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinXetDuyet_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
             tbl_PRO_DonXinXetDuyet.HTML = html;
+            tbl_PRO_DonXinXetDuyet.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_DonXinXetDuyet);
         }
@@ -76,7 +75,7 @@ namespace API.Controllers.PRO
             }
 
             var result = BS_PRO_DonXinXetDuyet.save_PRO_DonXinXetDuyet(db, tbl_PRO_DonXinXetDuyet, Username);
-            
+
             if (result != null)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -93,9 +92,8 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_DonXinXetDuyet result = BS_PRO_DonXinXetDuyet.save_PRO_DonXinXetDuyet(db, tbl_PRO_DonXinXetDuyet, Username);
-			
 
-			if (result != null)
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_DonXinXetDuyet", new { id = result.ID }, result);
             }
@@ -106,17 +104,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DonXinXetDuyet))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_DonXinXetDuyet.check_PRO_DonXinXetDuyet_Exists(db, id); 
+            bool check = BS_PRO_DonXinXetDuyet.check_PRO_DonXinXetDuyet_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_DonXinXetDuyet.delete_PRO_DonXinXetDuyet(db, id, Username); 
+            bool result = BS_PRO_DonXinXetDuyet.delete_PRO_DonXinXetDuyet(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }

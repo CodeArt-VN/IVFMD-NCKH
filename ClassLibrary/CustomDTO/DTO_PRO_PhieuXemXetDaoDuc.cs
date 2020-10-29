@@ -12,6 +12,7 @@ namespace DTOModel
         public List<DTO_PRO_PhieuXemXetDaoDuc_NCV> ListNCV { get; set; }
         public List<DTO_PRO_PhieuXemXetDaoDuc_CoQuan> ListCoQuan { get; set; }
         public DTO_PRO_PhieuXemXetDaoDuc_NCV NCVChinh { get; set; }
+        public string HTMLPrint { get; set; }
     }
 
     public class DTO_PRO_PhieuXemXetDaoDuc_NCV

@@ -43,20 +43,20 @@ namespace API.Controllers.PRO
         {
             DTO_PRO_Sysnopsis tbl_PRO_Sysnopsis = BS_PRO_Sysnopsis.get_PRO_SysnopsisByDeTai(db, idDeTai);
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/Sysnopsis_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
 
             tbl_PRO_Sysnopsis.HTML = html;
+            tbl_PRO_Sysnopsis.HTMLPrint = htmlPrint;
+
 
             return Ok(tbl_PRO_Sysnopsis);
         }
@@ -76,7 +76,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_Sysnopsis.put_PRO_Sysnopsis(db, id, tbl_PRO_Sysnopsis, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -93,9 +93,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_Sysnopsis result = BS_PRO_Sysnopsis.post_PRO_Sysnopsis(db, tbl_PRO_Sysnopsis, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_Sysnopsis", new { id = result.ID }, result);
             }
@@ -106,17 +106,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_Sysnopsis))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_Sysnopsis.check_PRO_Sysnopsis_Exists(db, id); 
+            bool check = BS_PRO_Sysnopsis.check_PRO_Sysnopsis_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_Sysnopsis.delete_PRO_Sysnopsis(db, id, Username); 
+            bool result = BS_PRO_Sysnopsis.delete_PRO_Sysnopsis(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }

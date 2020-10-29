@@ -149,9 +149,14 @@ export class SysnopsisModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(SysnopsisModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmSynopsisPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmSynopsisPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmSynopsisPrint"));
+        this.nckhProvider.print($("#frmSynopsisPrint .form-template-body").html(), "Synopsis");
     };
 }

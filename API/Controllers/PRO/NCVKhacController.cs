@@ -51,7 +51,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_NCVKhac.put_PRO_NCVKhac(db, id, tbl_PRO_NCVKhac, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -68,9 +68,8 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_NCVKhac result = BS_PRO_NCVKhac.post_PRO_NCVKhac(db, tbl_PRO_NCVKhac, Username);
-			
 
-			if (result != null)
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_NCVKhac", new { id = result.ID }, result);
             }
@@ -81,17 +80,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_NCVKhac))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_NCVKhac.check_PRO_NCVKhac_Exists(db, id); 
+            bool check = BS_PRO_NCVKhac.check_PRO_NCVKhac_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_NCVKhac.delete_PRO_NCVKhac(db, id, Username); 
+            bool result = BS_PRO_NCVKhac.delete_PRO_NCVKhac(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 

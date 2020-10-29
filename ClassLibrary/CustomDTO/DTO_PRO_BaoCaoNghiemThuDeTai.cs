@@ -9,6 +9,7 @@ namespace DTOModel
     public partial class DTO_PRO_BaoCaoNghiemThuDeTai
     {
         public List<DTO_PRO_BaoCaoNghiemThuDeTai_CanBo> ListCanBo { get; set; }
+        public string HTMLPrint { get; set; }
     }
     public class DTO_PRO_BaoCaoNghiemThuDeTai_CanBo
     {

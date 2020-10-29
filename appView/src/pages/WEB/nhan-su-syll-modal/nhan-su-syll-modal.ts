@@ -230,9 +230,14 @@ export class NhanSuSYLLModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': this.idNhanSu, 'isInput': false };
-        let myModal = this.modalCtrl.create(NhanSuSYLLModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmNhanSuSYLLPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmNhanSuSYLLPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmNhanSuSYLLPrint"));
+        this.nckhProvider.print($("#frmNhanSuSYLLPrint .form-template-body").html(), "NhanSuSYLL");
     };
 }

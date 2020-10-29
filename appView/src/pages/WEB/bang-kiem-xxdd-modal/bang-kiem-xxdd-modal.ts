@@ -168,36 +168,14 @@ export class BangKiemXXDDModalPage extends DetailPage {
     };
 
     printPreview() {
-        let item = this.model.getItem();
         try {
             ko.cleanNode($('#frmBangKiemXXDDPrint')[0]);
         } catch (e) {
         }
+        let item = this.model.getItem();
         $(this.item.HTMLPrint).appendTo("#frmBangKiemXXDDPrint");
-        var that = this;
-        this.nckhProvider.init(this.item.FormConfig);
-
-        let ObjModel = function (item) {
-            var self = this;
-
-            that.nckhProvider.copyPropertiesValue(item, self);
-
-            self.NCVKhac = ko.observableArray(ko.utils.arrayMap(item.NCVKhac || [{}], function (nn) {
-                return {
-                    ThongTin: ko.observable(nn.ThongTin || "")
-                };
-            }));
-
-            self.getItem = function () {
-                return ko.toJS(self);
-            };
-        }
-        var model = new ObjModel(item);
-        ko.applyBindings(model, document.getElementById("frmBangKiemXXDDPrint"));
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmBangKiemXXDDPrint"));
         this.nckhProvider.print($("#frmBangKiemXXDDPrint .form-template-body").html());
-        //var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        //let myModal = this.modalCtrl.create(BangKiemXXDDModalPage, param, { cssClass: 'preview-modal' });
-        //this.viewCtrl.dismiss();
-        //myModal.present();
     };
 }

@@ -142,9 +142,14 @@ export class DonXinXetDuyetModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(DonXinXetDuyetModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmDonXinXetDuyetPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmDonXinXetDuyetPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmDonXinXetDuyetPrint"));
+        this.nckhProvider.print($("#frmDonXinXetDuyetPrint .form-template-body").html(), "DON_XIN_XET_DUYET");
     };
 }

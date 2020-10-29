@@ -164,9 +164,14 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(PhieuXemXetDaoDucModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmPhieuXemXetDaoDucPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmPhieuXemXetDaoDucPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmPhieuXemXetDaoDucPrint"));
+        this.nckhProvider.print($("#frmPhieuXemXetDaoDucPrint .form-template-body").html(), "PhieuXemXetDaoDuc");
     };
 }

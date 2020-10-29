@@ -44,19 +44,18 @@ namespace API.Controllers.PRO
             DTO_PRO_BaoCaoNghiemThuDeTai tbl_PRO_BaoCaoNghiemThuDeTai = BS_PRO_BaoCaoNghiemThuDeTai.get_PRO_BaoCaoNghiemThuDeTaiCustom(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai_Input.html")))
             {
                 html = r.ReadToEnd();
             }
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/BaoCaoNghiemThuDeTai_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
 
             tbl_PRO_BaoCaoNghiemThuDeTai.HTML = html;
+            tbl_PRO_BaoCaoNghiemThuDeTai.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_BaoCaoNghiemThuDeTai);
         }

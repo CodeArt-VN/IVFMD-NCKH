@@ -45,17 +45,15 @@ namespace API.Controllers.PRO
             DTO_PRO_ThuyetMinhDeTai tbl_PRO_ThuyetMinhDeTai = BS_PRO_ThuyetMinhDeTai.get_PRO_ThuyetMinhDeTaiByDeTai(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai.html")))
             {
-                html = r.ReadToEnd();
+                htmlPrint = r.ReadToEnd();
             }
 
-            if (isInput == true)
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai_Input.html")))
             {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/ThuyetMinhDeTai_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
+                html = r.ReadToEnd();
             }
 
             if (tbl_PRO_ThuyetMinhDeTai == null || tbl_PRO_ThuyetMinhDeTai.ID == 0)
@@ -64,6 +62,7 @@ namespace API.Controllers.PRO
                 {
                     IDDeTai = idDeTai,
                     HTML = html,
+                    HTMLPrint = htmlPrint,
                     A1_TenTiengViet = tbl_PRO_ThuyetMinhDeTai.A1_TenTiengViet,
                     A1_TenTiengAnh = tbl_PRO_ThuyetMinhDeTai.A1_TenTiengAnh,
                     A6_HoTen = tbl_PRO_ThuyetMinhDeTai.A6_HoTen,
@@ -163,6 +162,7 @@ namespace API.Controllers.PRO
             else
             {
                 tbl_PRO_ThuyetMinhDeTai.HTML = html;
+                tbl_PRO_ThuyetMinhDeTai.HTMLPrint = htmlPrint;
                 if (!string.IsNullOrWhiteSpace(tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien))
                 {
                     tbl_PRO_ThuyetMinhDeTai.ListCoQuanPhoiHop = JsonConvert.DeserializeObject<List<DTO_PRO_ThuyetMinhDeTai_DonVi>>(tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien);
@@ -230,7 +230,7 @@ namespace API.Controllers.PRO
             {
                 return BadRequest();
             }
-            
+
             tbl_PRO_ThuyetMinhDeTai.A8_JSON_CoQuanPhoiHopThucHien = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListCoQuanPhoiHop);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu_ChuNhiemDeTai = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ChuNhiemDeTai);
             tbl_PRO_ThuyetMinhDeTai.A9_JSON_NhanLucNghienCuu = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_ThuyetMinhDeTai.ListNhanLucNghienCuu);

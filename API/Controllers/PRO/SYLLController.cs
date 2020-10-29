@@ -46,11 +46,12 @@ namespace API.Controllers.PRO
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
+            string htmlPrint = "";
             if (isChuNhiem)
             {
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai.html")))
                 {
-                    html = r.ReadToEnd();
+                    htmlPrint = r.ReadToEnd();
                 }
             }
             else
@@ -60,26 +61,23 @@ namespace API.Controllers.PRO
                     html = r.ReadToEnd();
                 }
             }
-
-            if (isInput == true)
+            if (isChuNhiem)
             {
-                if (isChuNhiem)
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
                 {
-                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
-                    {
-                        html = r.ReadToEnd();
-                    }
+                    htmlPrint = r.ReadToEnd();
                 }
-                else
+            }
+            else
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_Input.html")))
                 {
-                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_Input.html")))
-                    {
-                        html = r.ReadToEnd();
-                    }
+                    html = r.ReadToEnd();
                 }
             }
 
             tbl_PRO_SYLL.HTML = html;
+            tbl_PRO_SYLL.HTMLPrint = htmlPrint;
             //}
 
             return Ok(tbl_PRO_SYLL);
@@ -100,7 +98,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_SYLL.put_PRO_SYLL(db, id, tbl_PRO_SYLL, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -117,9 +115,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_SYLL result = BS_PRO_SYLL.post_PRO_SYLL(db, tbl_PRO_SYLL, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_SYLL", new { id = result.ID }, result);
             }
@@ -130,17 +128,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_SYLL))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_SYLL.check_PRO_SYLL_Exists(db, id); 
+            bool check = BS_PRO_SYLL.check_PRO_SYLL_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_SYLL.delete_PRO_SYLL(db, id, Username); 
+            bool result = BS_PRO_SYLL.delete_PRO_SYLL(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 
@@ -154,7 +153,6 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_SYLL result = BS_PRO_SYLL.save_PRO_SYLL(db, tbl_PRO_SYLL, Username);
-
 
             if (result != null)
             {

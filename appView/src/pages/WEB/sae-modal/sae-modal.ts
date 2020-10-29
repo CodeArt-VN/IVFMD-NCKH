@@ -201,10 +201,15 @@ export class SAEModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idBenhNhan': this.idBenhNhan, 'id': this.id, 'isInput': false };
-        let myModal = this.modalCtrl.create(SAEModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmSAEPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmSAEPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmSAEPrint"));
+        this.nckhProvider.print($("#frmSAEPrint .form-template-body").html(), "SAE");
     };
 
 }

@@ -165,9 +165,14 @@ export class AEModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idBenhNhan': this.idBenhNhan, 'id': this.id, 'isInput': false };
-        let myModal = this.modalCtrl.create(AEModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmAEPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmAEPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmAEPrint"));
+        this.nckhProvider.print($("#frmAEPrint .form-template-body").html());
     };
 }

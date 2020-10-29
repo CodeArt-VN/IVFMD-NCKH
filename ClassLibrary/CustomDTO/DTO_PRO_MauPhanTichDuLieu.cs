@@ -14,6 +14,7 @@ namespace DTOModel
         public DTO_PRO_MauPhanTichDuLieu_ChuKyChuyenPhoi ChuKyChuyenPhoi { get; set; }
         public DTO_PRO_MauPhanTichDuLieu_KetQuaThai KetQuaThai { get; set; }
         public DTO_PRO_MauPhanTichDuLieu_BienSoKhac BienSoKhac { get; set; }
+        public string HTMLPrint { get; set; }
     }
 
     public class DTO_PRO_MauPhanTichDuLieu_DacDiemNen

@@ -19,6 +19,7 @@ namespace DTOModel
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiThietBi { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_KinhPhi> ListKinhPhiKhac { get; set; }
         public List<DTO_PRO_ThuyetMinhDeTai_DonVi> ListCoQuanPhoiHop { get; set; }
+        public string HTMLPrint { get; set; }
     }
 
     public class DTO_PRO_ThuyetMinhDeTai_KeHoachThucHien

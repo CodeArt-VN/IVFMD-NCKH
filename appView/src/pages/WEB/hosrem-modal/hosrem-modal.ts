@@ -142,8 +142,14 @@ export class HosremModalPage extends DetailPage {
     };
 
     printPreview() {
-        let myModal = this.modalCtrl.create(HosremModalPage, { 'idNhanSu': this.idNhanSu, 'isInput': false }, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmHosremPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        $(this.item.HTMLPrint).appendTo("#frmHosremPrint");
+        this.nckhProvider.init(item.FormConfig);
+        ko.applyBindings(item, document.getElementById("frmHosremPrint"));
+        this.nckhProvider.print($("#frmHosremPrint .form-template-body").html(), "Hosrem");
     };
 }

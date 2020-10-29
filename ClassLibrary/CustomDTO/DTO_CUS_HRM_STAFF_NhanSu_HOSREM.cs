@@ -10,5 +10,6 @@
         public List<string> ListKinhNghiemLamViec { get; set; }
         public List<string> ListBaiDangTapChi { get; set; }
         public List<string> ListQuaTrinhDaoTao { get; set; }
+        public string HTMLPrint { get; set; }
     }
 }

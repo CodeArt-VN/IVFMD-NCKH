@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DTOModel
 {
-    public partial class DTO_PRO_AE
+    public partial class DTO_PRO_Sysnopsis
     {
-        public string HoTenBenhNhan { get; set; }
         public string HTMLPrint { get; set; }
     }
 }
