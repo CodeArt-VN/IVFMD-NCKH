@@ -173,9 +173,10 @@ export class BangKiemXXDDModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmBangKiemXXDDPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmBangKiemXXDDPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmBangKiemXXDDPrint"));
-        this.nckhProvider.print($("#frmBangKiemXXDDPrint .form-template-body").html());
+        this.nckhProvider.print($("#frmBangKiemXXDDPrint .form-template-body").html(), "Bảng kiểm XXĐĐ", 4000);
     };
 }

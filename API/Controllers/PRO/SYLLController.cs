@@ -58,14 +58,15 @@ namespace API.Controllers.PRO
             {
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
                 {
-                    html = r.ReadToEnd();
+                    htmlPrint = r.ReadToEnd();
                 }
             }
+
             if (isChuNhiem)
             {
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
                 {
-                    htmlPrint = r.ReadToEnd();
+                    html = r.ReadToEnd();
                 }
             }
             else

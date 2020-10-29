@@ -277,9 +277,10 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmThuyetMinhDeTaiPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmThuyetMinhDeTaiPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmThuyetMinhDeTaiPrint"));
-        this.nckhProvider.print($("#frmThuyetMinhDeTaiPrint .form-template-body").html(), "ThuyetMinhDeTai");
+        this.nckhProvider.print($("#frmThuyetMinhDeTaiPrint .form-template-body").html(), "Thuyết minh đề tài");
     };
 }

@@ -147,9 +147,10 @@ export class DonXinXetDuyetModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmDonXinXetDuyetPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinXetDuyetPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmDonXinXetDuyetPrint"));
-        this.nckhProvider.print($("#frmDonXinXetDuyetPrint .form-template-body").html(), "DON_XIN_XET_DUYET");
+        this.nckhProvider.print($("#frmDonXinXetDuyetPrint .form-template-body").html(), "Đơn xin xét duyệt");
     };
 }

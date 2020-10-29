@@ -2107,3 +2107,23 @@ label.ck.ck-color-grid__label {
     margin-left: 0; }
   [dir=rtl] .ck.ck-link-actions .ck-button:not(.ck-link-actions__preview):last-of-type {
     border-right: 1px solid var(--ck-color-base-border); } }
+
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); } }
+
+.centerLoader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; }

@@ -140,9 +140,10 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmMauPhanTichDuLieuPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmMauPhanTichDuLieuPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmMauPhanTichDuLieuPrint"));
-        this.nckhProvider.print($("#frmMauPhanTichDuLieuPrint .form-template-body").html(), "MauPhanTichDuLieu");
+        this.nckhProvider.print($("#frmMauPhanTichDuLieuPrint .form-template-body").html(), "Mẫu phân tích dữ liệu");
     };
 }

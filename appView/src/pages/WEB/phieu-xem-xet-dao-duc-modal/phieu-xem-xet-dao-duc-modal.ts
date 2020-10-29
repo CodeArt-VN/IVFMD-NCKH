@@ -169,9 +169,10 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmNhanSuSYLLPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmPhieuXemXetDaoDucPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmPhieuXemXetDaoDucPrint"));
-        this.nckhProvider.print($("#frmPhieuXemXetDaoDucPrint .form-template-body").html(), "PhieuXemXetDaoDuc");
+        this.nckhProvider.print($("#frmPhieuXemXetDaoDucPrint .form-template-body").html(), "Phiếu xem xét đạo đức");
     };
 }

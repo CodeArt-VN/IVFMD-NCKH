@@ -2,8 +2,8 @@
     <button class="close-btn" ion-button float-right (click)="dismiss()">
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
-    <button ion-button float-right (click)="print()" *ngIf="!isInput">
-        In
+    <button ion-button float-right (click)="printPreview()" *ngIf="!isInput">
+        In Preview
     </button>
     <button *ngIf="idDeTai == -1&&isInput" ion-button float-right (click)="saveChange()">
         Lưu
@@ -21,5 +21,5 @@
 <ion-content style="background-color: #fff;">
     <br />
     <div id="frmNhanSuSYLL" class="nckh-form-wrapper"></div>
-    <div id="frmNhanSuSYLLPrint" class="nckh-form-wrapper"></div>
+    <div id="frmNhanSuSYLLPrint" class="nckh-form-wrapper hide"></div>
 </ion-content>

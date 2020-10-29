@@ -170,9 +170,10 @@ export class AEModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmAEPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmAEPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmAEPrint"));
-        this.nckhProvider.print($("#frmAEPrint .form-template-body").html());
+        this.nckhProvider.print($("#frmAEPrint .form-template-body").html(), "AE", 4000);
     };
 }

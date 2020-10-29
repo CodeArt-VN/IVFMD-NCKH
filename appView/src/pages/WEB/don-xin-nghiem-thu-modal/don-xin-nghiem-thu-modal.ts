@@ -145,9 +145,10 @@ export class DonXinNghiemThuModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmDonXinNghiemThuPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinNghiemThuPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmDonXinNghiemThuPrint"));
-        this.nckhProvider.print($("#frmDonXinNghiemThuPrint .form-template-body").html());
+        this.nckhProvider.print($("#frmDonXinNghiemThuPrint .form-template-body").html(), "Đơn xin nghiệm thu");
     };
 }

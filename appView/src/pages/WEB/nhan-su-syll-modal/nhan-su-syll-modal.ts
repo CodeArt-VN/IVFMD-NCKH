@@ -235,9 +235,10 @@ export class NhanSuSYLLModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmNhanSuSYLLPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmNhanSuSYLLPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmNhanSuSYLLPrint"));
-        this.nckhProvider.print($("#frmNhanSuSYLLPrint .form-template-body").html(), "NhanSuSYLL");
+        this.nckhProvider.print($("#frmNhanSuSYLLPrint .form-template-body").html(), "Sơ yếu lý lịch", 4000);
     };
 }

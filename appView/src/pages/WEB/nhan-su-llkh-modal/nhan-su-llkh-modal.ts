@@ -377,9 +377,10 @@ export class NhanSuLLKHModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmNhanSuLLKHPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmNhanSuLLKHPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmNhanSuLLKHPrint"));
-        this.nckhProvider.print($("#frmNhanSuLLKHPrint .form-template-body").html(), "NhanSuLLKH");
+        this.nckhProvider.print($("#frmNhanSuLLKHPrint .form-template-body").html(), "Lý lịch khoa học", 5000);
     };
 }

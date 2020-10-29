@@ -206,10 +206,11 @@ export class SAEModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmSAEPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmSAEPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmSAEPrint"));
-        this.nckhProvider.print($("#frmSAEPrint .form-template-body").html(), "SAE");
+        this.nckhProvider.print($("#frmSAEPrint .form-template-body").html(), "SAE", 5000);
     };
 
 }

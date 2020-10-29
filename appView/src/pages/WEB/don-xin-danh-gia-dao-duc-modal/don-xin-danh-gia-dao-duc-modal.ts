@@ -152,9 +152,10 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmDonXinDanhGiaDaoDucPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinDanhGiaDaoDucPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmDonXinDanhGiaDaoDucPrint"));
-        this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html());
+        this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html(), "Đơn xin đánh giá đạo đức");
     };
 }

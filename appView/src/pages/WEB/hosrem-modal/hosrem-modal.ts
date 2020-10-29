@@ -147,8 +147,9 @@ export class HosremModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        $("#frmHosremPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmHosremPrint");
-        this.nckhProvider.init(item.FormConfig);
+        this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmHosremPrint"));
         this.nckhProvider.print($("#frmHosremPrint .form-template-body").html(), "Hosrem");
     };
