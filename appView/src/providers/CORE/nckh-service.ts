@@ -733,8 +733,8 @@ export class NCKHServiceProvider {
                 if (colgroup) {
                     var gcols = colgroup.children;
                     for (var i = 0; i < gcols.length; i++) {
-                        if (gcols[i].width > 0) 
-                            headerWidths[i] = gcols[i].width  + 'px';
+                        if (gcols[i].width > 0)
+                            headerWidths[i] = gcols[i].width + 'px';
                     }
                 }
                 var row = table.getElementsByTagName('tr')[0],
@@ -786,7 +786,7 @@ export class NCKHServiceProvider {
     print(html: string, title: string = null, timeout = 1000, margin = 0.6) {
         var win = window.open('', '_blank');
         win.document.write('<html class="browser"><head><title>' + (title || document.title) + "_" + (new Date().getTime()) + '</title><link href="' + appSetting.mainService.base + 'content/style/nckh-form-template.css?v=' + (new Date().getTime()) + '" rel="stylesheet">');
-        win.document.write('<style type="text/css" media="print">@page { size: auto;  margin: ' + margin + 'in 0; } body { margin: 0; padding: 0; }</style></head><body >');
+        win.document.write('<style type="text/css" media="print">@page { size: a4;  margin: ' + margin + 'in 0; } body { margin: 0; padding: 0; }</style></head><body >');
         win.document.write('<div id="loader" class="centerLoader"></div>');
         win.document.write('<script> document.querySelector("body").style.visibility = "hidden";document.querySelector("#loader").style.visibility = "visible";setTimeout(function () { document.querySelector("#loader").style.display = "none";document.querySelector("body").style.visibility = "visible";window.print(); },' + timeout + '); </script>');
         win.document.write(html);
