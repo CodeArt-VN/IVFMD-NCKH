@@ -154,6 +154,7 @@ export class SysnopsisModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmSynopsisPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmSynopsisPrint");
         this.nckhProvider.init(item.FormConfig, true);

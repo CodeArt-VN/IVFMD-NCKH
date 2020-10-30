@@ -173,6 +173,7 @@ export class BangKiemXXDDModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmBangKiemXXDDPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmBangKiemXXDDPrint");
         this.nckhProvider.init(item.FormConfig, true);

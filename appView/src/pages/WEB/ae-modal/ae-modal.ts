@@ -170,6 +170,7 @@ export class AEModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmAEPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmAEPrint");
         this.nckhProvider.init(item.FormConfig, true);

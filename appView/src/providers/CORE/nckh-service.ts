@@ -166,7 +166,7 @@ export class NCKHServiceProvider {
 
                         var observable = valueAccessor();
                         ckEditor.create($element.get(0), ckOptions).then((editor) => {
-                            if ($element.data('read-only')){
+                            if ($element.data('read-only')) {
                                 editor.isReadOnly = true;
                             }
                             $editor = editor;
@@ -345,7 +345,7 @@ export class NCKHServiceProvider {
             var t = $(event.currentTarget).children(".group_controls");
             t.detach();
         });
-        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean  {
+        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean {
             if (e.offsetY < -1) {
                 var ptable = $(e.currentTarget).closest(".pconf"),
                     sconf = ptable.attr("conf");
@@ -406,7 +406,7 @@ export class NCKHServiceProvider {
             config = JSON.parse(configs);
         } catch (e) {
         }
-        
+
         var lstWrapper = document.getElementsByClassName("nckh-form-wrapper");
         var wrapper = lstWrapper[0];
         if (lstWrapper.length > 1 && frmPrint)
@@ -420,6 +420,20 @@ export class NCKHServiceProvider {
             }
 
             function resizableGrid(table, conf) {
+                var colgroup = table.getElementsByTagName('colgroup')[0];
+                if (colgroup && conf != null) {
+                    var gcols = colgroup.children;
+                    for (var i = 0; i < gcols.length; i++) {
+                        try {
+                            if (conf.HeaderWidths[i] && conf.HeaderWidths[i] != '') {
+                                var w = conf.HeaderWidths[i].endsWith('px') ? conf.HeaderWidths[i].substr(0, conf.HeaderWidths[i].length - 2) : conf.HeaderWidths[i];
+                                gcols[i].width = w;
+                            }
+                        } catch (e) {
+                            console.error(e)
+                        }
+                    }
+                }
                 var row = table.getElementsByTagName('tr')[0],
                     cols = row ? row.children : undefined;
                 if (!cols) return;
@@ -427,10 +441,11 @@ export class NCKHServiceProvider {
                 for (var i = 0; i < cols.length; i++) {
                     var div = createDiv(2440);
                     cols[i].appendChild(div);
-                    if (conf != null) {
+                    if (conf != null && !colgroup) {
                         try {
                             cols[i].style.width = conf.HeaderWidths[i];
                         } catch (e) {
+                            console.error(e)
                         }
                     }
                     cols[i].style.position = 'relative';
@@ -714,13 +729,22 @@ export class NCKHServiceProvider {
             }
             function getTableConfig(table) {
                 var headerWidths = [];
+                var colgroup = table.getElementsByTagName('colgroup')[0];
+                if (colgroup) {
+                    var gcols = colgroup.children;
+                    for (var i = 0; i < gcols.length; i++) {
+                        if (gcols[i].width > 0) 
+                            headerWidths[i] = gcols[i].width  + 'px';
+                    }
+                }
                 var row = table.getElementsByTagName('tr')[0],
                     cols = row ? row.children : undefined;
                 if (!cols) return {
                     HeaderWidths: headerWidths
                 };
                 for (var i = 0; i < cols.length; i++) {
-                    headerWidths[i] = cols[i].style.width;
+                    if (!headerWidths[i])
+                        headerWidths[i] = cols[i].style.width;
                 }
                 return {
                     HeaderWidths: headerWidths
@@ -759,10 +783,10 @@ export class NCKHServiceProvider {
         })
         return div.children();
     }
-    print(html: string, title: string = null, timeout = 1000) {
+    print(html: string, title: string = null, timeout = 1000, margin = 0.6) {
         var win = window.open('', '_blank');
         win.document.write('<html class="browser"><head><title>' + (title || document.title) + "_" + (new Date().getTime()) + '</title><link href="' + appSetting.mainService.base + 'content/style/nckh-form-template.css?v=' + (new Date().getTime()) + '" rel="stylesheet">');
-        win.document.write('<style type="text/css" media="print">@page { size: auto;  margin: .8in 0; } body { margin: 0; padding: 0; }</style></head><body >');
+        win.document.write('<style type="text/css" media="print">@page { size: auto;  margin: ' + margin + 'in 0; } body { margin: 0; padding: 0; }</style></head><body >');
         win.document.write('<div id="loader" class="centerLoader"></div>');
         win.document.write('<script> document.querySelector("body").style.visibility = "hidden";document.querySelector("#loader").style.visibility = "visible";setTimeout(function () { document.querySelector("#loader").style.display = "none";document.querySelector("body").style.visibility = "visible";window.print(); },' + timeout + '); </script>');
         win.document.write(html);

@@ -147,6 +147,7 @@ export class HosremModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmHosremPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmHosremPrint");
         this.nckhProvider.init(item.FormConfig, true);

@@ -277,6 +277,7 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmThuyetMinhDeTaiPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmThuyetMinhDeTaiPrint");
         this.nckhProvider.init(item.FormConfig, true);

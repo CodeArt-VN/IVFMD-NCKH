@@ -169,6 +169,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmNhanSuSYLLPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmPhieuXemXetDaoDucPrint");
         this.nckhProvider.init(item.FormConfig, true);

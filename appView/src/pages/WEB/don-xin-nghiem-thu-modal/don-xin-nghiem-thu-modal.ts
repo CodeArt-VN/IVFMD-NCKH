@@ -145,6 +145,7 @@ export class DonXinNghiemThuModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmDonXinNghiemThuPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinNghiemThuPrint");
         this.nckhProvider.init(item.FormConfig, true);

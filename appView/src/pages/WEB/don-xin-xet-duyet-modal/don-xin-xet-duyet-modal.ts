@@ -147,6 +147,7 @@ export class DonXinXetDuyetModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmDonXinXetDuyetPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinXetDuyetPrint");
         this.nckhProvider.init(item.FormConfig, true);

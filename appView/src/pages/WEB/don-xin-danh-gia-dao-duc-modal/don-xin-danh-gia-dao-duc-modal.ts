@@ -152,10 +152,11 @@ export class DonXinDanhGiaDaoDucModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmDonXinDanhGiaDaoDucPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmDonXinDanhGiaDaoDucPrint");
         this.nckhProvider.init(item.FormConfig, true);
         ko.applyBindings(item, document.getElementById("frmDonXinDanhGiaDaoDucPrint"));
-        this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html(), "Đơn xin đánh giá đạo đức");
+        this.nckhProvider.print($("#frmDonXinDanhGiaDaoDucPrint .form-template-body").html(), "Đơn xin đánh giá đạo đức", 1000, 0.6);
     };
 }

@@ -140,6 +140,7 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmMauPhanTichDuLieuPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmMauPhanTichDuLieuPrint");
         this.nckhProvider.init(item.FormConfig, true);

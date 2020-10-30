@@ -10,9 +10,11 @@
       padding: .5in 0;
       background: #fff; } }
 
-html.browser body .nckh-form-template.print-mode.no-header-footer {
-  padding-top: 0;
-  padding-bottom: 0; }
+html.browser body {
+  margin: 0; }
+  html.browser body .nckh-form-template.print-mode.no-header-footer {
+    padding-top: 0;
+    padding-bottom: 0; }
 
 .nckh-form-template.print-mode, .nckh-form-template.input-mode {
   background-color: #fff;

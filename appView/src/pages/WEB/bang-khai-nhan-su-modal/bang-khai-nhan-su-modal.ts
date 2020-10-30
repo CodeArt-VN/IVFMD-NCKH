@@ -223,6 +223,7 @@ export class BangKhaiNhanSuModalPage extends DetailPage {
         } catch (e) {
         }
         let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
         $("#frmBangKhaiNhanSuPrint").empty(); 
         $(this.item.HTMLPrint).appendTo("#frmBangKhaiNhanSuPrint");
         this.nckhProvider.init(item.FormConfig, true);
