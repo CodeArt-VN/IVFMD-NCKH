@@ -272,9 +272,16 @@ export class ThuyetMinhDeTaiModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'isInput': false };
-        let myModal = this.modalCtrl.create(ThuyetMinhDeTaiModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmThuyetMinhDeTaiPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
+        $("#frmThuyetMinhDeTaiPrint").empty(); 
+        $(this.item.HTMLPrint).appendTo("#frmThuyetMinhDeTaiPrint");
+        this.nckhProvider.init(item.FormConfig, true);
+        ko.applyBindings(item, document.getElementById("frmThuyetMinhDeTaiPrint"));
+        this.nckhProvider.print($("#frmThuyetMinhDeTaiPrint .form-template-body").html(), "Thuyết minh đề tài");
     };
 }

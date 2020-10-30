@@ -44,19 +44,18 @@ namespace API.Controllers.PRO
             //if (tbl_PRO_LLKH.ID == 0)
             //{
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
             {
                 html = r.ReadToEnd();
             }
             tbl_PRO_LLKH.HTML = html;
+            tbl_PRO_LLKH.HTMLPrint = htmlPrint;
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
             //}
 
             return Ok(tbl_PRO_LLKH);
@@ -77,7 +76,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_LLKH.put_PRO_LLKH(db, id, tbl_PRO_LLKH, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -94,9 +93,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_LLKH result = BS_PRO_LLKH.post_PRO_LLKH(db, tbl_PRO_LLKH, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_LLKH", new { id = result.ID }, result);
             }
@@ -107,17 +106,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_LLKH))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_LLKH.check_PRO_LLKH_Exists(db, id); 
+            bool check = BS_PRO_LLKH.check_PRO_LLKH_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_LLKH.delete_PRO_LLKH(db, id, Username); 
+            bool result = BS_PRO_LLKH.delete_PRO_LLKH(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 
@@ -131,7 +131,6 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_LLKH result = BS_PRO_LLKH.save_PRO_LLKH(db, tbl_PRO_LLKH, Username);
-
 
             if (result != null)
             {

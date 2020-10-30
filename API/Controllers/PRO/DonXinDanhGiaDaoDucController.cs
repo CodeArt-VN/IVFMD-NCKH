@@ -44,19 +44,18 @@ namespace API.Controllers.PRO
             DTO_PRO_DonXinDanhGiaDaoDuc tbl_PRO_DonXinDanhGiaDaoDuc = BS_PRO_DonXinDanhGiaDaoDuc.get_PRO_DonXinDanhGiaDaoDucByDeTai(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinDanhGiaDaoDuc.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinDanhGiaDaoDuc_Input.html")))
             {
                 html = r.ReadToEnd();
             }
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinDanhGiaDaoDuc_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
 
             tbl_PRO_DonXinDanhGiaDaoDuc.HTML = html;
+            tbl_PRO_DonXinDanhGiaDaoDuc.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_DonXinDanhGiaDaoDuc);
         }
@@ -76,7 +75,7 @@ namespace API.Controllers.PRO
             }
 
             var result = BS_PRO_DonXinDanhGiaDaoDuc.save_PRO_DonXinDanhGiaDaoDuc(db, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
-            
+
             if (result != null)
             {
                 BS_HelperReference.PRO_DonXinDanhGiaDaoDuc_Update(db, tbl_PRO_DonXinDanhGiaDaoDuc.IDDeTai);
@@ -97,7 +96,7 @@ namespace API.Controllers.PRO
 
             DTO_PRO_DonXinDanhGiaDaoDuc result = BS_PRO_DonXinDanhGiaDaoDuc.save_PRO_DonXinDanhGiaDaoDuc(db, tbl_PRO_DonXinDanhGiaDaoDuc, Username);
 
-			if (result != null)
+            if (result != null)
             {
                 BS_HelperReference.PRO_DonXinDanhGiaDaoDuc_Update(db, tbl_PRO_DonXinDanhGiaDaoDuc.IDDeTai);
                 return CreatedAtRoute("get_PRO_DonXinDanhGiaDaoDuc", new { id = result.ID }, result);
@@ -109,17 +108,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DonXinDanhGiaDaoDuc))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_DonXinDanhGiaDaoDuc.check_PRO_DonXinDanhGiaDaoDuc_Exists(db, id); 
+            bool check = BS_PRO_DonXinDanhGiaDaoDuc.check_PRO_DonXinDanhGiaDaoDuc_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_DonXinDanhGiaDaoDuc.delete_PRO_DonXinDanhGiaDaoDuc(db, id, Username); 
+            bool result = BS_PRO_DonXinDanhGiaDaoDuc.delete_PRO_DonXinDanhGiaDaoDuc(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }

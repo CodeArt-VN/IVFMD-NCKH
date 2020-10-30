@@ -14,6 +14,7 @@ namespace DTOModel
         public List<DTO_PRO_SAE_CanThiepThuocThuLamSan> ListCanThiepThuocThuLamSan { get; set; }
         public List<DTO_PRO_SAE_ThuocSuDungDongThoi> ListThuocSuDungDongThoi { get; set; }
         public List<DTO_PRO_SAE_DanhGiaNCV> ListDanhGiaNCV { get; set; }
+        public string HTMLPrint { get; set; }
     }
 
     public class DTO_PRO_SAE_ThuocThuLamSan

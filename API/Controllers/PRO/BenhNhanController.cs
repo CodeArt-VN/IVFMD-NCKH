@@ -51,7 +51,7 @@ namespace API.Controllers.PRO
             }
 
             bool result = BS_PRO_BenhNhan.put_PRO_BenhNhanCustom(db, id, tbl_PRO_BenhNhan, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -68,9 +68,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_BenhNhan result = BS_PRO_BenhNhan.post_PRO_BenhNhan(db, tbl_PRO_BenhNhan, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_BenhNhan", new { id = result.ID }, result);
             }
@@ -81,17 +81,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_BenhNhan))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_BenhNhan.check_PRO_BenhNhan_Exists(db, id); 
+            bool check = BS_PRO_BenhNhan.check_PRO_BenhNhan_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_BenhNhan.delete_PRO_BenhNhan(db, id, Username); 
+            bool result = BS_PRO_BenhNhan.delete_PRO_BenhNhan(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
 

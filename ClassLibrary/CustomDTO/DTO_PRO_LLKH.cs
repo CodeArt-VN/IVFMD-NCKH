@@ -24,6 +24,7 @@ namespace DTOModel
         public List<DTO_PRO_LLKH_ThongTinKhac_TruongDaiHoc> ListTruongDaiHoc { get; set; }
         public List<DTO_PRO_LLKH_HocVi> ListHocVi { get; set; }
         public bool IsCNDT { get; set; }
+        public string HTMLPrint { get; set; }
     }
 
     public class DTO_PRO_LLKH_NgoaiNgu

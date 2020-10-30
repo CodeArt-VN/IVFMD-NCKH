@@ -9,13 +9,14 @@
         In
     </button>
     <button ion-button float-right (click)="printPreview()" *ngIf="isInput">
-        In Preview
+        In
     </button>
     <button color="warning" ion-button float-right *ngIf="isInput" (click)="cancel()">
         Hủy thay đổi
     </button>
 </ion-header>
 <ion-content style="background-color: #fff;">
-  <br />
-  <div id="frmHosrem" class="nckh-form-wrapper"></div>
+    <br />
+    <div id="frmHosrem" class="nckh-form-wrapper"></div>
+    <div id="frmHosremPrint" class="nckh-form-wrapper hide"></div>
 </ion-content>

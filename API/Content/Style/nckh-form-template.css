@@ -1,4 +1,22 @@
-﻿.nckh-form-template.print-mode, .nckh-form-template.input-mode {
+﻿@media screen {
+  html.browser {
+    size: a4;
+    max-width: 8.27in;
+    margin: auto;
+    padding: 1in .6in;
+    background: #f2f2f2; }
+    html.browser body {
+      box-shadow: 0px 0px 1px 1px #c7c7c7;
+      padding: .5in 0;
+      background: #fff; } }
+
+html.browser body {
+  margin: 0; }
+  html.browser body .nckh-form-template.print-mode.no-header-footer {
+    padding-top: 0;
+    padding-bottom: 0; }
+
+.nckh-form-template.print-mode, .nckh-form-template.input-mode {
   background-color: #fff;
   margin: auto;
   padding: 0 1in;
@@ -2091,3 +2109,23 @@ label.ck.ck-color-grid__label {
     margin-left: 0; }
   [dir=rtl] .ck.ck-link-actions .ck-button:not(.ck-link-actions__preview):last-of-type {
     border-right: 1px solid var(--ck-color-base-border); } }
+
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); } }
+
+.centerLoader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; }

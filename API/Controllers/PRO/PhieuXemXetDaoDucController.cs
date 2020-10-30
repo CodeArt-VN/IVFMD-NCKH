@@ -41,22 +41,20 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai, bool? isInput = false)
         {
             DTO_PRO_PhieuXemXetDaoDuc tbl_PRO_PhieuXemXetDaoDuc = BS_PRO_PhieuXemXetDaoDuc.get_PRO_PhieuXemXetDaoDucCustom(db, idDeTai);
-            
+
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/PhieuXemXetDaoDuc.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/PhieuXemXetDaoDuc_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/PhieuXemXetDaoDuc_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
-
             tbl_PRO_PhieuXemXetDaoDuc.HTML = html;
+            tbl_PRO_PhieuXemXetDaoDuc.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_PhieuXemXetDaoDuc);
         }
@@ -79,7 +77,7 @@ namespace API.Controllers.PRO
             tbl_PRO_PhieuXemXetDaoDuc.JSON_CacNCV = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_PhieuXemXetDaoDuc.ListNCV);
             tbl_PRO_PhieuXemXetDaoDuc.JSON_ChuKy = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_PhieuXemXetDaoDuc.CanKet_ListChuKy);
             bool result = BS_PRO_PhieuXemXetDaoDuc.put_PRO_PhieuXemXetDaoDuc(db, id, tbl_PRO_PhieuXemXetDaoDuc, Username);
-            
+
 
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);

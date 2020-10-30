@@ -47,22 +47,21 @@ namespace API.Controllers.PRO
         public IHttpActionResult GetCustom(int idDeTai, int idBenhNhan, int? id = -1, bool? isInput = false)
         {
             DTO_PRO_SAE tbl_PRO_SAE = BS_PRO_SAE.get_PRO_SAECustom(db, idDeTai, idBenhNhan, id);
-            
+
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/SAE.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/SAE_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/SAE_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
-
             tbl_PRO_SAE.HTML = html;
+            tbl_PRO_SAE.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_SAE);
         }

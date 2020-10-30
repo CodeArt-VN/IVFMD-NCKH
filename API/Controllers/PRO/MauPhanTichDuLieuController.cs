@@ -44,20 +44,19 @@ namespace API.Controllers.PRO
             DTO_PRO_MauPhanTichDuLieu tbl_PRO_MauPhanTichDuLieu = BS_PRO_MauPhanTichDuLieu.get_PRO_MauPhanTichDuLieuByDeTai(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/MauPhanTichDuLieu_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
-
             tbl_PRO_MauPhanTichDuLieu.HTML = html;
+            tbl_PRO_MauPhanTichDuLieu.HTMLPrint = htmlPrint;
             return Ok(tbl_PRO_MauPhanTichDuLieu);
         }
 
@@ -83,7 +82,7 @@ namespace API.Controllers.PRO
             tbl_PRO_MauPhanTichDuLieu.JSON_LaBo = Newtonsoft.Json.JsonConvert.SerializeObject(tbl_PRO_MauPhanTichDuLieu.LaBo);
 
             bool result = BS_PRO_MauPhanTichDuLieu.put_PRO_MauPhanTichDuLieu(db, id, tbl_PRO_MauPhanTichDuLieu, Username);
-            
+
             if (result)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -108,7 +107,7 @@ namespace API.Controllers.PRO
 
             DTO_PRO_MauPhanTichDuLieu result = BS_PRO_MauPhanTichDuLieu.post_PRO_MauPhanTichDuLieu(db, tbl_PRO_MauPhanTichDuLieu, Username);
 
-			if (result != null)
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_MauPhanTichDuLieu", new { id = result.ID }, result);
             }
@@ -119,17 +118,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_MauPhanTichDuLieu))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_MauPhanTichDuLieu.check_PRO_MauPhanTichDuLieu_Exists(db, id); 
+            bool check = BS_PRO_MauPhanTichDuLieu.check_PRO_MauPhanTichDuLieu_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_MauPhanTichDuLieu.delete_PRO_MauPhanTichDuLieu(db, id, Username); 
+            bool result = BS_PRO_MauPhanTichDuLieu.delete_PRO_MauPhanTichDuLieu(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }

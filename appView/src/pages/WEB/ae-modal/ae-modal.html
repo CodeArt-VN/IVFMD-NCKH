@@ -9,7 +9,7 @@
         In
     </button>
     <button ion-button float-right (click)="printPreview()" *ngIf="isInput">
-        In Preview
+        In
     </button>
     <button color="warning" ion-button float-right *ngIf="isInput" (click)="cancel()">
         Hủy thay đổi
@@ -17,6 +17,7 @@
 </ion-header>
 
 <ion-content style="background-color: #eaeaea;">
-  <br />
-  <div id="frmAE" class="nckh-form-wrapper"></div>
+    <br />
+    <div id="frmAE" class="nckh-form-wrapper"></div>
+    <div id="frmAEPrint" class="nckh-form-wrapper" style="visibility:collapse"></div>
 </ion-content>

@@ -44,19 +44,17 @@ namespace API.Controllers.PRO
             DTO_PRO_DonXinNghiemThu tbl_PRO_DonXinNghiemThu = BS_PRO_DonXinNghiemThu.get_PRO_DonXinNghiemThuByDeTai(db, idDeTai);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinNghiemThu.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinNghiemThu_Input.html")))
             {
                 html = r.ReadToEnd();
             }
-
-            if (isInput == true)
-            {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/DonXinNghiemThu_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
-            }
             tbl_PRO_DonXinNghiemThu.HTML = html;
+            tbl_PRO_DonXinNghiemThu.HTMLPrint = htmlPrint;
 
             return Ok(tbl_PRO_DonXinNghiemThu);
         }
@@ -76,7 +74,7 @@ namespace API.Controllers.PRO
             }
 
             var result = BS_PRO_DonXinNghiemThu.save_PRO_DonXinNghiemThu(db, tbl_PRO_DonXinNghiemThu, Username);
-            
+
             if (result != null)
                 return StatusCode(HttpStatusCode.NoContent);
             else
@@ -93,9 +91,9 @@ namespace API.Controllers.PRO
             }
 
             DTO_PRO_DonXinNghiemThu result = BS_PRO_DonXinNghiemThu.save_PRO_DonXinNghiemThu(db, tbl_PRO_DonXinNghiemThu, Username);
-			
 
-			if (result != null)
+
+            if (result != null)
             {
                 return CreatedAtRoute("get_PRO_DonXinNghiemThu", new { id = result.ID }, result);
             }
@@ -106,17 +104,18 @@ namespace API.Controllers.PRO
         [ResponseType(typeof(DTO_PRO_DonXinNghiemThu))]
         public IHttpActionResult Delete(int id)
         {
-            bool check = BS_PRO_DonXinNghiemThu.check_PRO_DonXinNghiemThu_Exists(db, id); 
+            bool check = BS_PRO_DonXinNghiemThu.check_PRO_DonXinNghiemThu_Exists(db, id);
             if (!check)
             {
                 return NotFound();
             }
 
-            bool result = BS_PRO_DonXinNghiemThu.delete_PRO_DonXinNghiemThu(db, id, Username); 
+            bool result = BS_PRO_DonXinNghiemThu.delete_PRO_DonXinNghiemThu(db, id, Username);
 
-			if(result){
-				return StatusCode(HttpStatusCode.NoContent);
-			}
+            if (result)
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
             return Conflict();
         }
     }

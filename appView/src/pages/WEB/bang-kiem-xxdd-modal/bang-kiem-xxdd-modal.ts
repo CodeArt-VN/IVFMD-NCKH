@@ -168,9 +168,16 @@ export class BangKiemXXDDModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(BangKiemXXDDModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmBangKiemXXDDPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
+        $("#frmBangKiemXXDDPrint").empty(); 
+        $(this.item.HTMLPrint).appendTo("#frmBangKiemXXDDPrint");
+        this.nckhProvider.init(item.FormConfig, true);
+        ko.applyBindings(item, document.getElementById("frmBangKiemXXDDPrint"));
+        this.nckhProvider.print($("#frmBangKiemXXDDPrint .form-template-body").html(), "Bảng kiểm XXĐĐ", 4000);
     };
 }

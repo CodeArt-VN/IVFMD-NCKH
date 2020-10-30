@@ -4,7 +4,7 @@ import * as ko from 'knockout';
 import { Operator } from 'rxjs/Operator';
 import * as ckEditor from '../../assets/lib/ckeditor/ckeditor';
 import { CommonServiceProvider } from '../CORE/common-service';
-import { APIListBase } from '../CORE/api-list';
+import { APIListBase, appSetting } from '../CORE/api-list';
 @Injectable()
 export class NCKHServiceProvider {
     commonService: CommonServiceProvider;
@@ -128,7 +128,7 @@ export class NCKHServiceProvider {
             }
         })
     }
-    init(configs) {
+    init(configs, frmPrint = false) {
         var me = this;
         var enableCKEditor = 1;
         // bindingHandlers
@@ -166,7 +166,7 @@ export class NCKHServiceProvider {
 
                         var observable = valueAccessor();
                         ckEditor.create($element.get(0), ckOptions).then((editor) => {
-                            if ($element.data('read-only')){
+                            if ($element.data('read-only')) {
                                 editor.isReadOnly = true;
                             }
                             $editor = editor;
@@ -345,7 +345,7 @@ export class NCKHServiceProvider {
             var t = $(event.currentTarget).children(".group_controls");
             t.detach();
         });
-        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean  {
+        $(".ptable:not(.noaction) >table.editable-table").on('click', ' tr', function (e: JQueryEventObject): boolean {
             if (e.offsetY < -1) {
                 var ptable = $(e.currentTarget).closest(".pconf"),
                     sconf = ptable.attr("conf");
@@ -407,7 +407,10 @@ export class NCKHServiceProvider {
         } catch (e) {
         }
 
-        var wrapper = document.getElementsByClassName("nckh-form-wrapper")[0];
+        var lstWrapper = document.getElementsByClassName("nckh-form-wrapper");
+        var wrapper = lstWrapper[0];
+        if (lstWrapper.length > 1 && frmPrint)
+            wrapper = lstWrapper[1];
         if (wrapper != null) {
             var tables = wrapper.getElementsByClassName('resize-grid');
             for (var i = 0; i < tables.length; i++) {
@@ -417,6 +420,20 @@ export class NCKHServiceProvider {
             }
 
             function resizableGrid(table, conf) {
+                var colgroup = table.getElementsByTagName('colgroup')[0];
+                if (colgroup && conf != null) {
+                    var gcols = colgroup.children;
+                    for (var i = 0; i < gcols.length; i++) {
+                        try {
+                            if (conf.HeaderWidths[i] && conf.HeaderWidths[i] != '') {
+                                var w = conf.HeaderWidths[i].endsWith('px') ? conf.HeaderWidths[i].substr(0, conf.HeaderWidths[i].length - 2) : conf.HeaderWidths[i];
+                                gcols[i].width = w;
+                            }
+                        } catch (e) {
+                            console.error(e)
+                        }
+                    }
+                }
                 var row = table.getElementsByTagName('tr')[0],
                     cols = row ? row.children : undefined;
                 if (!cols) return;
@@ -424,10 +441,11 @@ export class NCKHServiceProvider {
                 for (var i = 0; i < cols.length; i++) {
                     var div = createDiv(2440);
                     cols[i].appendChild(div);
-                    if (conf != null) {
+                    if (conf != null && !colgroup) {
                         try {
                             cols[i].style.width = conf.HeaderWidths[i];
                         } catch (e) {
+                            console.error(e)
                         }
                     }
                     cols[i].style.position = 'relative';
@@ -711,13 +729,22 @@ export class NCKHServiceProvider {
             }
             function getTableConfig(table) {
                 var headerWidths = [];
+                var colgroup = table.getElementsByTagName('colgroup')[0];
+                if (colgroup) {
+                    var gcols = colgroup.children;
+                    for (var i = 0; i < gcols.length; i++) {
+                        if (gcols[i].width > 0)
+                            headerWidths[i] = gcols[i].width + 'px';
+                    }
+                }
                 var row = table.getElementsByTagName('tr')[0],
                     cols = row ? row.children : undefined;
                 if (!cols) return {
                     HeaderWidths: headerWidths
                 };
                 for (var i = 0; i < cols.length; i++) {
-                    headerWidths[i] = cols[i].style.width;
+                    if (!headerWidths[i])
+                        headerWidths[i] = cols[i].style.width;
                 }
                 return {
                     HeaderWidths: headerWidths
@@ -755,5 +782,17 @@ export class NCKHServiceProvider {
                 $(o).addClass('noaction');
         })
         return div.children();
+    }
+    print(html: string, title: string = null, timeout = 1000, margin = 0.6) {
+        var win = window.open('', '_blank');
+        win.document.write('<html class="browser"><head><title>' + (title || document.title) + "_" + (new Date().getTime()) + '</title><link href="' + appSetting.mainService.base + 'content/style/nckh-form-template.css?v=' + (new Date().getTime()) + '" rel="stylesheet">');
+        win.document.write('<style type="text/css" media="print">@page { size: a4;  margin: ' + margin + 'in 0; } body { margin: 0; padding: 0; }</style></head><body >');
+        win.document.write('<div id="loader" class="centerLoader"></div>');
+        win.document.write('<script> document.querySelector("body").style.visibility = "hidden";document.querySelector("#loader").style.visibility = "visible";setTimeout(function () { document.querySelector("#loader").style.display = "none";document.querySelector("body").style.visibility = "visible";window.print(); },' + timeout + '); </script>');
+        win.document.write(html);
+        win.document.write('</body></html>');
+
+        win.document.close(); // necessary for IE >= 10
+        win.focus(); // necessary for IE >= 10*/
     }
 }

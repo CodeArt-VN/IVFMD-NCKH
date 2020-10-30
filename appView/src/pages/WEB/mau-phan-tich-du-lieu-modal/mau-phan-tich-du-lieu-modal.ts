@@ -135,9 +135,16 @@ export class MauPhanTichDuLieuModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': -1, 'type': -1, 'isChuNhiem': false, 'isInput': false };
-        let myModal = this.modalCtrl.create(MauPhanTichDuLieuModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmMauPhanTichDuLieuPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
+        $("#frmMauPhanTichDuLieuPrint").empty(); 
+        $(this.item.HTMLPrint).appendTo("#frmMauPhanTichDuLieuPrint");
+        this.nckhProvider.init(item.FormConfig, true);
+        ko.applyBindings(item, document.getElementById("frmMauPhanTichDuLieuPrint"));
+        this.nckhProvider.print($("#frmMauPhanTichDuLieuPrint .form-template-body").html(), "Mẫu phân tích dữ liệu");
     };
 }

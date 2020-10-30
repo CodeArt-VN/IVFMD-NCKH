@@ -372,9 +372,16 @@ export class NhanSuLLKHModalPage extends DetailPage {
     };
 
     printPreview() {
-        var param = { 'idDeTai': this.idDeTai, 'idNhanSu': this.idNhanSu, 'isInput': false };
-        let myModal = this.modalCtrl.create(NhanSuLLKHModalPage, param, { cssClass: 'preview-modal' });
-        this.viewCtrl.dismiss();
-        myModal.present();
+        try {
+            ko.cleanNode($('#frmNhanSuLLKHPrint')[0]);
+        } catch (e) {
+        }
+        let item = this.model.getItem();
+        item.FormConfig = this.nckhProvider.getConfigs();
+        $("#frmNhanSuLLKHPrint").empty(); 
+        $(this.item.HTMLPrint).appendTo("#frmNhanSuLLKHPrint");
+        this.nckhProvider.init(item.FormConfig, true);
+        ko.applyBindings(item, document.getElementById("frmNhanSuLLKHPrint"));
+        this.nckhProvider.print($("#frmNhanSuLLKHPrint .form-template-body").html(), "Lý lịch khoa học", 5000);
     };
 }

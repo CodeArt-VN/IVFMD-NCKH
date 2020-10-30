@@ -8,6 +8,7 @@ namespace DTOModel
 {
     public partial class DTO_PRO_BangKiemLuaChonQuyTrinhXXDD
     {
+        public string HTMLPrint { get; set; }
         public DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_PhanBaA PhanBa_A { get; set; }
         public DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_PhanBaB PhanBa_B { get; set; }
         public DTO_PRO_BangKiemLuaChonQuyTrinhXXDD_PhanNam PhanNam { get; set; }
