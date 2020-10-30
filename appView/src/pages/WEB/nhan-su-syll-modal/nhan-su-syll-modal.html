@@ -3,13 +3,13 @@
         <ion-icon name="close" color="ivf1"></ion-icon>
     </button>
     <button ion-button float-right (click)="printPreview()" *ngIf="!isInput">
-        In Preview
+        In
     </button>
     <button *ngIf="idDeTai == -1&&isInput" ion-button float-right (click)="saveChange()">
         Lưu
     </button>
     <button ion-button float-right (click)="printPreview()" *ngIf="isInput">
-        In Preview
+        In
     </button>
     <button *ngIf="idDeTai > 0" ion-button float-right (click)="updateFromHRM()">
         Lấy lại dữ liệu mới
