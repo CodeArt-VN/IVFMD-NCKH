@@ -114,7 +114,9 @@ export class DeTaiDetailPage extends BasePage {
             this.id = parseInt(this.id, 10);
         }
         this.pageIndex = 0;
-
+        //setTimeout(() => {
+        //    this.slides.lockSwipes(true);
+        //}, 100);
         this.uploader.onBeforeUploadItem = (item) => {
             this.UploadAPI = appSetting.apiDomain('CUS/File/FileUpload/' + 0 + '?IDPartner=' + 1);
             item.url = this.UploadAPI;
@@ -337,8 +339,10 @@ export class DeTaiDetailPage extends BasePage {
         else {
             this.events.publish('app:ShowMenu', true);
         }
+        //this.slides.lockSwipes(false);
         ////this.slides.lockSwipes(false).then(()=>{
         this.slides.slideTo(index);
+        //this.slides.lockSwipes(true);
         //});
 
 
@@ -502,29 +506,29 @@ export class DeTaiDetailPage extends BasePage {
             let myModal = this.modalCtrl.create(page, param);
             myModal.onDidDismiss(data => {
                 this.refreshData();
-                //this.slides.lockSwipes(false);
+                this.slides.lockSwipes(false);
             });
             myModal.present();
-            //this.slides.lockSwipes(true);
+            this.slides.lockSwipes(true);
         }
         else if (type != 11) {
             if (page != null) {
                 let myModal = this.modalCtrl.create(page, param, { cssClass: 'preview-modal' });
                 myModal.onDidDismiss(data => {
                     this.refreshData();
-                    //this.slides.lockSwipes(false);
+                    this.slides.lockSwipes(false);
                 });
                 myModal.present();
-                //this.slides.lockSwipes(true);
+                this.slides.lockSwipes(true);
             }
         } else if (type == 11) {
             let myModal = this.modalCtrl.create(TienDoNghienCuuModalPage, { 'idDeTai': this.id });
             myModal.onDidDismiss(data => {
                 this.refreshData();
-                //this.slides.lockSwipes(false);
+                this.slides.lockSwipes(false);
             });
             myModal.present();
-            //this.slides.lockSwipes(true);
+            this.slides.lockSwipes(true);
         }
     }
 
