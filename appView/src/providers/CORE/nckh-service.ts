@@ -438,6 +438,7 @@ export class NCKHServiceProvider {
                     cols = row ? row.children : undefined;
                 if (!cols) return;
                 table.style.overflow = 'hidden';
+                row.classList.add('row-resizer');
                 for (var i = 0; i < cols.length; i++) {
                     var div = createDiv(2440);
                     cols[i].appendChild(div);
@@ -449,10 +450,10 @@ export class NCKHServiceProvider {
                         }
                     }
                     cols[i].style.position = 'relative';
-                    setListeners(div);
+                    setListeners(div, table, i);
                 }
 
-                function setListeners(div) {
+                function setListeners(div, table, idx) {
                     var pageX, curCol, nxtCol, curColWidth, nxtColWidth;
 
                     div.addEventListener('mousedown', function (e) {
@@ -476,9 +477,18 @@ export class NCKHServiceProvider {
                     table.addEventListener('mousemove', function (e) {
                         if (curCol) {
                             var diffX = e.pageX - pageX;
-                            if (nxtCol)
+                            var row = table.getElementsByTagName('colgroup')[0],
+                                cols = row ? row.children : undefined;
+                            if (nxtCol) {
                                 nxtCol.style.width = (nxtColWidth - (diffX)) + 'px';
+                                if (cols && cols.length > idx) {
+                                    cols[idx + 1].width = (nxtColWidth - (diffX));
+                                }
+                            }
                             curCol.style.width = (curColWidth + diffX) + 'px';
+                            if (cols && cols.length >= idx) {
+                                cols[idx].width = (curColWidth + diffX);
+                            }
                         }
                     });
 
