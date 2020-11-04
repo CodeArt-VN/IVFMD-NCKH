@@ -45,19 +45,21 @@ namespace API.Controllers.HRM
             DTO_CUS_HRM_STAFF_NhanSu_LLKH tbl_CUS_HRM_STAFF_NhanSu_LLKH = BS_CUS_HRM_STAFF_NhanSu_LLKH.get_CUS_HRM_STAFF_NhanSu_LLKHByNhanSu(db, idNhanSu);
 
             string html = "";
+            string htmlPrint = "";
             using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH.html")))
+            {
+                htmlPrint = r.ReadToEnd();
+            }
+            using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
             {
                 html = r.ReadToEnd();
             }
 
             if (isInput == true)
             {
-                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuLLKH_Input.html")))
-                {
-                    html = r.ReadToEnd();
-                }
             }
             tbl_CUS_HRM_STAFF_NhanSu_LLKH.HTML = html;
+            tbl_CUS_HRM_STAFF_NhanSu_LLKH.HTMLPrint = htmlPrint;
 
             return Ok(tbl_CUS_HRM_STAFF_NhanSu_LLKH);
         }

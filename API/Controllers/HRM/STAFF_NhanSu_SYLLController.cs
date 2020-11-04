@@ -45,39 +45,38 @@ namespace API.Controllers.HRM
             DTO_CUS_HRM_STAFF_NhanSu_SYLL tbl_CUS_HRM_STAFF_NhanSu_SYLL = BS_CUS_HRM_STAFF_NhanSu_SYLL.get_CUS_HRM_STAFF_NhanSu_SYLLByNhanSu(db, idNhanSu);
             
             string html = "";
+            string htmlPrint = "";
             if (tbl_CUS_HRM_STAFF_NhanSu_SYLL.IsCNDT == false)
             {
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL.html")))
                 {
-                    html = r.ReadToEnd();
+                    htmlPrint = r.ReadToEnd();
                 }
             }
             else
             {
                 using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai.html")))
                 {
+                    htmlPrint = r.ReadToEnd();
+                }
+            }
+            if (tbl_CUS_HRM_STAFF_NhanSu_SYLL.IsCNDT == false)
+            {
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_Input.html")))
+                {
                     html = r.ReadToEnd();
                 }
             }
-            if (isInput == true)
+            else
             {
-                if (tbl_CUS_HRM_STAFF_NhanSu_SYLL.IsCNDT == false)
+                using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
                 {
-                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_Input.html")))
-                    {
-                        html = r.ReadToEnd();
-                    }
-                }
-                else
-                {
-                    using (System.IO.StreamReader r = new System.IO.StreamReader(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/FormTemplate/NhanSuSYLL_ChuNhiemDeTai_Input.html")))
-                    {
-                        html = r.ReadToEnd();
-                    }
+                    html = r.ReadToEnd();
                 }
             }
 
             tbl_CUS_HRM_STAFF_NhanSu_SYLL.HTML = html;
+            tbl_CUS_HRM_STAFF_NhanSu_SYLL.HTMLPrint = htmlPrint;
 
             return Ok(tbl_CUS_HRM_STAFF_NhanSu_SYLL);
         }
