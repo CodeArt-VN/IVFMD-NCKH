@@ -31,7 +31,7 @@
                             </div>
                         </td>
                         <td style="vertical-align:middle;border-bottom: 0;border-left: 0;">
-                            Số: <span contenteditable="true" data-bind="editableHtml: MaSo" style="min-width: 20px;display: inline-block;vertical-align:middle;padding: 4px;">_____</span>/ĐĐ-BVMĐ
+                            Số: <span contentEditable="plaintext-only" data-bind="editableHtml: MaSo" style="min-width: 20px;display: inline-block;vertical-align:middle;padding: 4px;">_____</span>/ĐĐ-BVMĐ
                         </td>
                     </tr>
                     <tr>
@@ -171,9 +171,9 @@
                             <td></td>
                         </tr>
                         <tr style="border-bottom: 0;border-top: 0;">
-                            <td contenteditable="true" data-bind="editableHtml: NCVChinh.HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHtml: NCVChinh.ChucDanh"></td>
-                            <td contenteditable="true" data-bind="editableHtml: NCVChinh.ChucVu"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: NCVChinh.HoTen"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: NCVChinh.ChucDanh"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: NCVChinh.ChucVu"></td>
                         </tr>
                         <tr style="border-top: 1px solid #808080; border-bottom: 0;">
                             <td style="padding: 6px;">Các nghiên cứu viên khác</td>
@@ -182,9 +182,9 @@
                         </tr>
                         <!-- ko foreach: ListNCV -->
                         <tr data-bind="attr: { index: $index, removable: true }" style="border-bottom: 0;border-top: 0;">
-                            <td contenteditable="true" data-bind="editableHtml: HoTen"></td>
-                            <td contenteditable="true" data-bind="editableHtml: ChucDanh"></td>
-                            <td contenteditable="true" data-bind="editableHtml: ChucVu"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: HoTen"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: ChucDanh"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: ChucVu"></td>
                         </tr>
                         <!-- /ko -->
                     </tbody>
@@ -217,7 +217,7 @@
                 </colgroup>
                 <tbody style="width:100%;">
                     <tr>
-                        <td colspan="3" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_HoTen">
+                        <td colspan="3" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_HoTen">
                             <b>Họ, tên, chức danh:</b>
                             <br />
                             <br />
@@ -227,7 +227,7 @@
                         <td class="text-bold" style="padding-top: 6px;">
                             Địa chỉ giao dịch:
                         </td>
-                        <td colspan="2" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_DiaChiGiaoDich">
+                        <td colspan="2" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_DiaChiGiaoDich">
                             <br />
                             <br />
                         </td>
@@ -236,18 +236,18 @@
                         <td class="text-bold" rowspan="2" style="border-bottom:none;padding-top: 6px;">
                             Điện thoại:
                         </td>
-                        <td style="border-bottom:none;" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_DienThoaiCQ">
+                        <td style="border-bottom:none;" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_DienThoaiCQ">
                             CQ:
                         </td>
-                        <td style="border-bottom:none;" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_DienThoaiNR">
+                        <td style="border-bottom:none;" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_DienThoaiNR">
                             NR:
                         </td>
                     </tr>
                     <tr>
-                        <td style="border-top:none;" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_DienThoaiFx">
+                        <td style="border-top:none;" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_DienThoaiFx">
                             Fax:
                         </td>
-                        <td style="border-top:none;" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_DienThoaiDD">
+                        <td style="border-top:none;" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_DienThoaiDD">
                             Di động:
                         </td>
                     </tr>
@@ -255,7 +255,7 @@
                         <td class="text-bold" style="padding-top: 6px;">
                             Thư điện tử:
                         </td>
-                        <td colspan="2" contenteditable="true" data-bind="editableHtml: NguoiGiaoDich_Email"></td>
+                        <td colspan="2" contentEditable="plaintext-only" data-bind="editableHtml: NguoiGiaoDich_Email"></td>
                     </tr>
                 </tbody>
             </table>
@@ -281,7 +281,7 @@
                     </thead>
                     <tbody style="width:100%;" data-bind="foreach: ListCoQuan">
                         <tr>
-                            <td contenteditable="true" data-bind="editableHtml: CoQuan"></td>
+                            <td contentEditable="plaintext-only" data-bind="editableHtml: CoQuan"></td>
                             <td style="padding-top:6px;padding-bottom:6px;">
                                 <input type="checkbox" data-bind="checkedHtml: DuocCapPhep" />
                                 Đã được cấp phép
@@ -445,7 +445,7 @@
                     Thông tin về nguồn tài trợ
                 </b>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: ThongTinNguonTaiTro" style="border: 1px solid black;min-height:76px;">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: ThongTinNguonTaiTro" style="border: 1px solid black;min-height:76px;">
             </div>
         </div>
         <br />
@@ -455,7 +455,7 @@
                     Thông tin về NCYSH sinh viên
                 </b>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: ThongTinNCYSHSinhVien" style="border: 1px solid black;min-height:76px;">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: ThongTinNCYSHSinhVien" style="border: 1px solid black;min-height:76px;">
             </div>
         </div>
         <br />
@@ -477,7 +477,7 @@
                         1a. Mô tả dự án
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_MoTaDuAn" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_MoTaDuAn" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -487,7 +487,7 @@
                         1b. Quy trình thực hiện
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_QuyTrinhThucHien" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_QuyTrinhThucHien" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -497,7 +497,7 @@
                         1c. Mục đích/giả thuyết/vấn đề nghiên cứu
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_MucDich" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_MucDich" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -507,7 +507,7 @@
                         1d. Vấn đề liên quan đến người dân tộc thiểu số
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_VanDeLienQuan" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_VanDeLienQuan" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -517,7 +517,7 @@
                         1e. Địa điểm nghiên cứu
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_DiaDiemNghienCuu" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_DiaDiemNghienCuu" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -527,7 +527,7 @@
                         1f. Nghiên cứu tại nơi làm việc của người tham gia
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinh_NghienCuuTaiNoiLamViecNguoiThamGia" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinh_NghienCuuTaiNoiLamViecNguoiThamGia" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
         </div>
@@ -587,7 +587,7 @@
                         2b. So sánh mức độ rủi ro khi tham gia nghiên cứu với mức xảy ra trong sinh hoạt hàng ngày
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_SoSanhRuiRo" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_SoSanhRuiRo" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -597,7 +597,7 @@
                         2c. Quy trình giảm thiểu rủi ro
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_QuyTrinhGiamRuiRo" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_QuyTrinhGiamRuiRo" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -607,7 +607,7 @@
                         2d. Cách xử lý khi xảy ra rủi ro
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_CachXuLyRuiRo" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: NguyCoTiemTang_CachXuLyRuiRo" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -617,7 +617,7 @@
                         2e. Các nguy cơ về sức khoẻ và tính an toàn
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguyCoTiemTang_SucKhoeVaTinhAnToan" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguyCoTiemTang_SucKhoeVaTinhAnToan" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -627,7 +627,7 @@
                         2f. Các vấn đề về an toàn sinh học
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguyCoTiemTang_CacVanDeAnToanSinhHoc" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguyCoTiemTang_CacVanDeAnToanSinhHoc" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -637,7 +637,7 @@
                         2g. Thao tác gen
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguyCoTiemTang_ThaoTacGen" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguyCoTiemTang_ThaoTacGen" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
         </div>
@@ -656,7 +656,7 @@
                         3a. Có những lợi ích gì?
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_NhungLoiIch" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_NhungLoiIch" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -666,7 +666,7 @@
                         3b. Ai được lợi?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: LoiIchTiemTang_AiDuocLoi" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: LoiIchTiemTang_AiDuocLoi" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -676,7 +676,7 @@
                         3c. Đóng góp khoa học của nghiên cứu
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_DongGopKhoaHoc" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_DongGopKhoaHoc" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -686,7 +686,7 @@
                         3d. So sánh giữa nguy cơ và lợi ích của người tham gia
                     </b>
                 </div>
-                <div contenteditable="true" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_SoSanh" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: LoiIchTiemTang_SoSanh" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
         </div>
@@ -705,7 +705,7 @@
                         4(a) Người tham gia dự kiến?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_DuKien" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_DuKien" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -715,7 +715,7 @@
                         4(b) Cách xác định, tiếp xúc, và tuyển mộ
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_CachXacDinh" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_CachXacDinh" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -725,7 +725,7 @@
                         4(c) Sự tham gia của trẻ vị thành niên?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_TreViThanhNien" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_TreViThanhNien" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -735,7 +735,7 @@
                         4(d) Sự tham gia của người bị thương tổn thần kinh hoặc thiểu năng trí tuệ?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_ThieuNangTriTue" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_ThieuNangTriTue" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -745,7 +745,7 @@
                         4(e) Sự tham gia của người đang bị giam giữ, người có quan hệ lệ thuộc/không bình đẳng?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_CoQuanHeLeThuoc" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_CoQuanHeLeThuoc" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -755,7 +755,7 @@
                         4(f) Mối quan hệ sẵn có với những người tham gia?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_MoiQuanHeSanCo" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_MoiQuanHeSanCo" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -765,7 +765,7 @@
                         4(g) Rào cản ngôn ngữ phổ thông?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_RaoCanNgonNgu" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_RaoCanNgonNgu" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -775,7 +775,7 @@
                         4(h) Sàng tuyển?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_SangTuyen" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_SangTuyen" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -785,7 +785,7 @@
                         4(i) Người tham gia phải từ chối phác đồ điều trị đang áp dụng?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_PhaiTuChoiPhacDoDangApDung" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -795,7 +795,7 @@
                         4(j) Tuyển chọn có chủ định các thành viên thuộc các cộng đồng dân tộc thiểu số
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_DanTocThieuSo" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_DanTocThieuSo" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -805,7 +805,7 @@
                         4(k) Sự tham gia tập thể?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_ThamGiaTapThe" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_ThamGiaTapThe" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -815,7 +815,7 @@
                         4(l) Chi trả khuyến khích
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_ChiTraKhuyenKhich" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_ChiTraKhuyenKhich" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -825,7 +825,7 @@
                         4(m) Quy trình báo cáo, công bố kết quả cuối cùng
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_QuyTrinhBaoCaoCuoiCung" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -835,7 +835,7 @@
                         4(n) Quy trình công bố báo cáo tóm tắt
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGiaNghienCuu_QuyTrinhBaoCaoTomTat" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
         </div>
@@ -847,7 +847,7 @@
                     5. QUY TRÌNH XIN CHẤP THUẬN TÌNH NGHUYỆN
                 </b>
             </div>
-            <div contenteditable="true" data-editor="true" data-bind="editableHtml: QuyTrinhXinChapThuanTinhNguyen" style="border: 1px solid black;min-height:76px;">
+            <div contentEditable="plaintext-only" data-editor="true" data-bind="editableHtml: QuyTrinhXinChapThuanTinhNguyen" style="border: 1px solid black;min-height:76px;">
             </div>
         </div>
         <br />
@@ -865,7 +865,7 @@
                         6(a) Thu thập dữ liệu trực tiếp?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_ThuThapTrucTiep" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_ThuThapTrucTiep" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -875,7 +875,7 @@
                         6(b) Tiếp cận thông tin cá nhân?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_TiepCanThongTinCaNhan" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_TiepCanThongTinCaNhan" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -885,7 +885,7 @@
                         6(c) Dữ liệu sẽ được ghi lại như thế nào?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_GhiLaiDL" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_GhiLaiDL" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -895,7 +895,7 @@
                         6(d) Thông tin cá nhân/nhạy cảm
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_ThonTinCaNhanNhayCam" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -905,14 +905,14 @@
                         6(e) Bảo mật thông tin
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoMatThongTin" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoMatThongTin" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
             <div>
                 <div style="padding:2px 0; margin-bottom:6px;">
                     <b>
-                        6(f) Bảo quản và lưu trữ trong <span contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_LuuTruDLTrongXNam" style="min-width: 30px;border-bottom: 1px solid black;display: inline-block;text-align:center;vertical-align:middle;"></span> năm.
+                        6(f) Bảo quản và lưu trữ trong <span contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_LuuTruDLTrongXNam" style="min-width: 30px;border-bottom: 1px solid black;display: inline-block;text-align:center;vertical-align:middle;"></span> năm.
                     </b>
                     Làm rõ việc lưu trữ riêng cho hai loại thông tin:
                 </div>
@@ -935,7 +935,7 @@
                             </td>
                             <td style="">
                                 <p class="box" style="margin:0;border-bottom: 1px solid black">
-                                    <span contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru"></span>
+                                    <span contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_DiaDiemLuuTru"></span>
                                 </p>
                             </td>
                             <td style="vertical-align:middle;">
@@ -947,7 +947,7 @@
                             <td colspan="3">
                                 <p class="box">
                                     <span class="box-title">Ai được phép tiếp cận thông tin</span>
-                                    <span contenteditable="true" style="text-indent:206px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:206px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_NguoiDuocPhepTienCan"></span>
                                 </p>
                             </td>
                         </tr>
@@ -955,7 +955,7 @@
                             <td colspan="3">
                                 <p class="box">
                                     <span class="box-title">Cách kiểm soát tiếp cận thông tin</span>
-                                    <span contenteditable="true" style="text-indent:216px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:216px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLTrongNghienCuu_CachKiemSoat"></span>
                                 </p>
                             </td>
                         </tr>
@@ -980,7 +980,7 @@
                             </td>
                             <td style="">
                                 <p class="box" style="margin:0;border-bottom: 1px solid black">
-                                    <span contenteditable="true" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru"></span>
+                                    <span contentEditable="plaintext-only" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_DiaDiemLuuTru"></span>
                                 </p>
                             </td>
                             <td style="vertical-align:middle;">
@@ -992,7 +992,7 @@
                             <td colspan="3">
                                 <p class="box">
                                     <span class="box-title">Ai được phép tiếp cận thông tin</span>
-                                    <span contenteditable="true" style="text-indent:206px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:206px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_NguoiDuocPhepTienCan"></span>
                                 </p>
                             </td>
                         </tr>
@@ -1000,7 +1000,7 @@
                             <td colspan="3">
                                 <p class="box">
                                     <span class="box-title">Cách kiểm soát tiếp cận thông tin</span>
-                                    <span contenteditable="true" style="text-indent:216px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:216px" data-bind="editableHtml: QuanLyDLVaBaoMat_DLBaoCaoKetQua_CachKiemSoat"></span>
                                 </p>
                             </td>
                         </tr>
@@ -1016,15 +1016,15 @@
                 </div>
                 <p class="box">
                     <span class="box-title">6(g)i. Cơ quan/Nơi đang lưu trữ</span>
-                    <span contenteditable="true" style="text-indent:208px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru"></span>
+                    <span contentEditable="plaintext-only" style="text-indent:208px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_CoQuanLuuTru"></span>
                 </p>
                 <p class="box">
                     <span class="box-title">6(g)ii. Số lượng hồ sơ</span>
-                    <span contenteditable="true" style="text-indent:144px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo"></span>
+                    <span contentEditable="plaintext-only" style="text-indent:144px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_SoLuongHoSo"></span>
                 </p>
                 <p class="box">
                     <span class="box-title">6(g)iii. Các nguyên tắc bảo mật thông tin cá nhân đang áp dụng</span>
-                    <span contenteditable="true" style="text-indent:408px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat"></span>
+                    <span contentEditable="plaintext-only" style="text-indent:408px" data-bind="editableHtml: QuanLyDLVaBaoMat_BaoVeThongTinCaNhan_NguyenTacBaoMat"></span>
                 </p>
             </div>
         </div>
@@ -1044,19 +1044,19 @@
                 <br />
                 <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     <span style="padding-left: 20px;padding-right: 20px;">
                         đến
                     </span>
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuNghiem_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                 </div>
             </div>
             <div style="padding:2px 0; margin-bottom:6px;">
@@ -1066,19 +1066,19 @@
                 <br />
                 <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     <span style="padding-left: 20px;padding-right: 20px;">
                         đến
                     </span>
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_ThuThapDL_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                 </div>
             </div>
             <div style="padding:2px 0; margin-bottom:6px;">
@@ -1088,19 +1088,19 @@
                 <br />
                 <div style="padding: 5px  0 3px 60px;" class="box-inline">
                     Từ
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NgayBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_ThangBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NamBatDau" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     <span style="padding-left: 20px;padding-right: 20px;">
                         đến
                     </span>
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NgayKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_ThangKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                     /
-                    <span contenteditable="true" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien_TongThoiGian_NamKetThuc" style="min-width: 50px;border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                 </div>
             </div>
         </div>
@@ -1119,7 +1119,7 @@
                         8(a) Nghiên cứu theo yêu cầu của (thay cho) người tài trợ/ tổ chức thương mại?
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: MauThuanLoiIch_NghienCuuTheoYeuCau" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: MauThuanLoiIch_NghienCuuTheoYeuCau" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -1129,7 +1129,7 @@
                         8(b) Sự phụ thuộc hoặc liên quan về tài chính
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: MauThuanLoiIch_PhuThuocTaiChinh" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: MauThuanLoiIch_PhuThuocTaiChinh" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
             <br />
@@ -1139,7 +1139,7 @@
                         8(c) Lợi ích tài chính trực tiếp/gián tiếp hoặc lợi ích khác của nhóm nghiên cứu
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: MauThuanLoiIch_LoiIchTaiChinh" style="border: 1px solid black;min-height:76px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: MauThuanLoiIch_LoiIchTaiChinh" style="border: 1px solid black;min-height:76px;">
                 </div>
             </div>
         </div>
@@ -1151,7 +1151,7 @@
                     9. NHỮNG CÂN NHẮC ĐẠO ĐỨC KHÁC
                 </b>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: CanNhacDaoDucKhac" style="border: 1px solid black;min-height:76px;">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: CanNhacDaoDucKhac" style="border: 1px solid black;min-height:76px;">
             </div>
         </div>
         <br />
@@ -1167,7 +1167,7 @@
                     Đính kèm câu trả lời của bạn về vấn đề này (không được dài quá 6 trang).
                 </i>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: TongQuanTaiLieuKeHoachPhuongPhap" style="min-height:76px;">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: TongQuanTaiLieuKeHoachPhuongPhap" style="min-height:76px;">
             </div>
         </div>
         <br />
@@ -1185,7 +1185,7 @@
                         Tên NCYSH:
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: CanKet_TenNCYSH" style="border: 1px solid black;min-height:57px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: CanKet_TenNCYSH" style="border: 1px solid black;min-height:57px;">
                 </div>
             </div>
             <br />
@@ -1244,17 +1244,17 @@
                                             </td>
                                             <td class="text-bold">
                                                 <p class="box" style="margin:0">
-                                                    <span contenteditable="true" data-bind="editableHtml: BoMon" style="border-bottom: 1px solid black"></span>
+                                                    <span contentEditable="plaintext-only" data-bind="editableHtml: BoMon" style="border-bottom: 1px solid black"></span>
                                                 </p>
                                             </td>
                                             <td style="vertical-align:middle;" class="text-bold">
                                                 <p class="box-inline">
                                                     Ngày
-                                                    <span contenteditable="true" data-bind="editableHtml: NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                    <span contentEditable="plaintext-only" data-bind="editableHtml: NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                                     tháng
-                                                    <span contenteditable="true" data-bind="editableHtml: ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                    <span contentEditable="plaintext-only" data-bind="editableHtml: ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                                     năm
-                                                    <span contenteditable="true" data-bind="editableHtml: NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                                    <span contentEditable="plaintext-only" data-bind="editableHtml: NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                                 </p>
                                             </td>
                                         </tr>
@@ -1264,7 +1264,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: HoTenVaChucDanh"></td>
+                                            <td colspan="3" style="margin:0;border-bottom: 1px solid black" contentEditable="plaintext-only" data-bind="editableHtml: HoTenVaChucDanh"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1289,7 +1289,7 @@
                         Tên NCYSH:
                     </b>
                 </div>
-                <div contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_TenNCYSH" style="border: 1px solid black;min-height:57px;">
+                <div contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_TenNCYSH" style="border: 1px solid black;min-height:57px;">
                 </div>
             </div>
             <br />
@@ -1304,7 +1304,7 @@
                     NHẬN XÉT VỀ NHỮNG CÂN NHẮC ĐẠO ĐỨC TRONG NGHIÊN CỨU:
                 </b>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NhanXet">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_NhanXet">
                 <table class="nckh-table" style="width:100%;">
                     <tbody>
                         <tr>
@@ -1339,17 +1339,17 @@
                         </td>
                         <td class="text-bold">
                             <p class="box" style="margin:0;">
-                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_BoMon" style="border-bottom: 1px solid black"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_BoMon" style="border-bottom: 1px solid black"></span>
                             </p>
                         </td>
                         <td style="vertical-align:middle;" class="text-bold">
                             <p class="box-inline">
                                 Ngày
-                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                 tháng
-                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                 năm
-                                <span contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                             </p>
                         </td>
                     </tr>
@@ -1359,7 +1359,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: YKienNguoiHuongDan_HoTenVaChucDanh"></td>
+                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contentEditable="plaintext-only" data-bind="editableHtml: YKienNguoiHuongDan_HoTenVaChucDanh"></td>
                     </tr>
                 </tbody>
             </table>
@@ -1460,7 +1460,7 @@
                     NHẬN XÉT VỀ NHỮNG CÂN NHẮC ĐẠO ĐỨC TRONG NGHIÊN CỨU:
                 </b>
             </div>
-            <div contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NhanXet">
+            <div contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_NhanXet">
                 <table class="nckh-table" style="width:100%;">
                     <tbody>
                         <tr>
@@ -1495,17 +1495,17 @@
                         </td>
                         <td class="text-bold">
                             <p class="box" style="margin:0;">
-                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_BoMon" style="border-bottom: 1px solid black"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_BoMon" style="border-bottom: 1px solid black"></span>
                             </p>
                         </td>
                         <td style="vertical-align:middle;" class="text-bold">
                             <p class="box-inline">
                                 Ngày
-                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_NgayKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                 tháng
-                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_ThangKy" style="width: 30px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                                 năm
-                                <span contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
+                                <span contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_NamKy" style="width: 45px; padding:3px; border-bottom: 1px solid black;display: inline-block;text-align:center;"></span>
                             </p>
                         </td>
                     </tr>
@@ -1515,7 +1515,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contenteditable="true" data-bind="editableHtml: YKienTruongKhoa_HoTenVaChucDanh"></td>
+                        <td colspan="3" style="margin:0;border-bottom: 1px solid black" contentEditable="plaintext-only" data-bind="editableHtml: YKienTruongKhoa_HoTenVaChucDanh"></td>
                     </tr>
                 </tbody>
             </table>
