@@ -24,7 +24,7 @@
                     <tr>
                         <td style="border-bottom:0;border-right:0;">
                             <div class="inline text-center">
-                                <p style="margin: 6px;">
+                                <p style="margin: 4px;">
                                     BỆNH VIỆN MỸ ĐỨC<br />
                                     <b>HỘI ĐỒNG ĐẠO ĐỨC TRONG NGHIÊN CỨU Y SINH HỌC</b>
                                 </p>
@@ -32,7 +32,7 @@
                         </td>
                         <td style="vertical-align:middle;border-bottom: 0;border-left: 0;">
                             <span>Số:  </span>
-                            <span contentEditable="plaintext-only" style="min-width: 20px;display: inline-block;line-height: 12px;height: 20px;min-height: 0;padding: 0;margin: 0;margin-bottom: -4px;" data-bind="editableHtml: MaSo">_______</span>
+                            <span contentEditable="plaintext-only" style="width:80px; min-width:80px;display: inline-block;line-height: 12px;height: 20px;min-height: 0;padding: 0;margin: 0;margin-bottom: -4px;" data-bind="editableHtml: MaSo">_______</span>
                             <span>/ĐĐ-BVMĐ</span>
                         </td>
                     </tr>
@@ -413,11 +413,11 @@
             </ul>
         </div>
         <br />
-        <div style="border: 2px solid black;background-color:#fff;position:relative;padding: 8px 0 0 0;">
+        <div style="border: 2px solid black;background-color:#fff;position:relative;padding: 8px 16px;">
             <div style="position: absolute;transform: translate(10px, -16px);-webkit-transform: translate(10px, -16px);-moz-transform: translate(10px, -16px);-o-transform: translate(10px, -16px);border: 2px solid black;background: #fff;top: 0; left:0; padding: 2px;width: 200px;text-align: center;">
                 <b>PHẦN BỐN</b>
             </div>
-            <div class="text-bold" style="padding-top:12px; padding-bottom: 5px; border-bottom: 1px solid #000;">
+            <div class="text-bold" style="margin-top:10px; margin-bottom: 5px; border-bottom: 1px solid #000;">
                 Mô tả quy trình nghiên cứu
             </div>
             <p class="box">
@@ -440,11 +440,11 @@
             </p>
             <p class="box">
                 <span class="box-title title-ck">Tiêu chuẩn nhận vào: </span>
-                <span contenteditable="false" data-editor="true" style="text-indent: 0;" data-bind="editableHtml: PhanBon_C1_TieuChuanNhanVao"></span>
+                <span contenteditable="plaintext-only" data-editor="true" style="text-indent: 0;" data-bind="editableHtml: PhanBon_C1_TieuChuanNhanVao"></span>
             </p>
             <p class="box">
                 <span class="box-title title-ck">Tiêu chuẩn loại ra: </span>
-                <span contenteditable="false" data-editor="true" style="text-indent: 0;" data-bind="editableHtml: PhanBon_C1_TieuChuanLoaiRa"></span>
+                <span contenteditable="plaintext-only" data-editor="true" style="text-indent: 0;" data-bind="editableHtml: PhanBon_C1_TieuChuanLoaiRa"></span>
             </p>
             <p class="box">
             </p>
@@ -1087,12 +1087,12 @@
                     <col width="220" />
                 </colgroup>
                 <tbody style="width:100%;">
-                    <tr class="text-bold" style="border-bottom: 2px solid black">
+                    <tr class="text-bold" style="padding: 16px 16px 0 !important; border-bottom: 2px solid black">
                         <td colspan="2">
                             Ý KIẾN CỦA CHỦ TỊCH HỘI ĐỒNG ĐẠO ĐỨC
                         </td>
                         <td style="text-align:right;">
-                            Số: <span contentEditable="plaintext-only" style="min-width: 20px;display: inline-block;" data-bind="editableHtml: YKienHDDD_So">_______</span>/ĐĐ- BVMĐ
+                            Số: <span contentEditable="plaintext-only" style="width:80px; min-width:80px;display: inline-block;" data-bind="editableHtml: YKienHDDD_So">_______</span>/ĐĐ- BVMĐ
                         </td>
                     </tr>
                     <tr>
@@ -1103,35 +1103,27 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <input type="checkbox" data-bind="checkedHtml: YKienHDDD_KhongThuocPhamVi" />
-                        </td>
-                        <td colspan="2">
-                            Không thuộc phạm vi điều chỉnh hoặc được miễn xem xét về đạo đức theo quy chế hiện hành
+                            <span> Không thuộc phạm vi điều chỉnh hoặc được miễn xem xét về đạo đức theo quy chế hiện hành</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <input type="checkbox" data-bind="checkedHtml: YKienHDDD_DuocXemXetDaoDuc" />
-                        </td>
-                        <td colspan="2">
-                            Được xem xét về đạo đức theo quy trình rút gọn
+                            <span> Được xem xét về đạo đức theo quy trình rút gọn</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <input type="checkbox" data-bind="checkedHtml: YKienHDDD_DuocXemXetDaoDucRutGon" />
-                        </td>
-                        <td colspan="2">
-                            Được xem xét về đạo đức theo quy trình rút gọn với điều kiện được chỉ ra ở phần dưới đây
+                            <span> Được xem xét về đạo đức theo quy trình rút gọn với điều kiện được chỉ ra ở phần dưới đây</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <input type="checkbox" data-bind="checkedHtml: YKienHDDD_CanDuocHoiDongXemXet" />
-                        </td>
-                        <td colspan="2">
-                            Cần được Hội đồng Đạo đức xem xét theo quy trình đầy đủ trong cuộc họp HĐĐĐ
+                            <span> Cần được Hội đồng Đạo đức xem xét theo quy trình đầy đủ trong cuộc họp HĐĐĐ</span>
                         </td>
                     </tr>
                     <tr>
@@ -1151,19 +1143,19 @@
                                 <div style="display:inline-block;min-width:50px">
                                     <p class="box" style="display:inline-block;">
                                         <span class="text-bold" style="display:inline-block;">Ngày:</span>
-                                        <span contentEditable="plaintext-only" style="display:inline-block;min-width:10px;width:auto;max-width:60px" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                        <span contentEditable="plaintext-only" style="display:inline-block;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Ngay"></span>
                                     </p>
                                 </div>
                                 <div>/</div>
-                                <div style="display:inline-block;min-width:10px">
+                                <div style="display:inline-block;min-width:50px">
                                     <p class="box">
-                                        <span contentEditable="plaintext-only" style="text-indent:0;text-align:center;" data-bind="editableHtml: NgayKy_Thang"></span>
+                                        <span contentEditable="plaintext-only" style="text-indent:0;text-align:center;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Thang"></span>
                                     </p>
                                 </div>
                                 <div>/</div>
-                                <div style="display:inline-block;min-width:60px">
+                                <div style="display:inline-block;min-width:50px">
                                     <p class="box">
-                                        <span contentEditable="plaintext-only" style="text-indent:0;" data-bind="editableHtml: NgayKy_Nam"></span>
+                                        <span contentEditable="plaintext-only" style="text-indent:0;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Nam"></span>
                                     </p>
                                 </div>
                             </div>

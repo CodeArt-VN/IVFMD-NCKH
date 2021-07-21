@@ -15,7 +15,7 @@
         <div>
             <div style="text-align:right;">
                 Mã số báo cáo của đơn vị:
-                <span contentEditable="plaintext-only" data-bind="editableHtml: MaSo" style="min-width:100px;display:inline-block">
+                <span contentEditable="plaintext-only" data-bind="editableHtml: MaSo" style="width:80px; min-width:80px;display:inline-block">
                     …………………………
                 </span>
             </div>
@@ -27,9 +27,9 @@
         <br />
         <table class="nckh-table" style="width:100%;margin-top:5px;font-size:14pt;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
+                <col width="280" />
                 <col />
-                <col width="200" />
-                <col width="200" />
+                <col />
             </colgroup>
             <tbody style="width:100%;">
                 <tr style="border-top: 1px solid black;">
@@ -91,8 +91,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div style="position: relative;
-">
+                        <div style="position: relative;">
                             <input type="checkbox" data-bind="checkedHtml: DiTatBamSinh" style="position: absolute;z-index:99;height:100%;" />
                             <span style="position: relative;padding-left: 25px;display: block;">
                                 Dị tật bẩm sinh/dị dạng thai nhi
@@ -112,7 +111,7 @@
             </tbody>
         </table>
         <br />
-        <table class="nckh-table td-padding-0" style="width:100%;margin-top:5px;font-size:14pt;line-height: 1.5em;border-color:#cecece;border-left:0;border-right:0;" border="1">
+        <table class="nckh-table" style="width:100%;margin-top:5px;font-size:14pt;line-height: 1.5em;border-color:#cecece;border-left:0;border-right:0;" border="1">
             <colgroup>
                 <col />
                 <col width="125" />
@@ -248,7 +247,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="vertical-align:middle; text-align:justify;">
+                    <td colspan="3" style="padding: 6px; vertical-align:middle; text-align:justify;">
                         <i>
                             Cung cấp thông tin về các dấu hiệu, triệu chứng lâm sàng,
                             xét nghiệm cận lâm sàng liên quan đến SAE, các biện pháp xử trí SAE nếu có
@@ -280,7 +279,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="text-bold">
+                    <td colspan="3" class="text-bold" style="padding: 3px;">
                         Kết quả sau khi xử trí SAE:
                     </td>
                 </tr>
@@ -351,7 +350,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Ngày sinh
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGia_NgaySinh" style="padding: 0 6px;vertical-align:middle;">
@@ -359,7 +358,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Tuổi
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGia_Tuoi" style="padding: 0 6px;vertical-align:middle;">
@@ -367,7 +366,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Giới tính
                     </td>
                     <td style="padding: 0 6px;vertical-align:middle;">
@@ -377,7 +376,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Cân nặng (Kg)
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGia_CanNang" style="padding: 0 6px;vertical-align:middle;">
@@ -385,7 +384,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Tiền sử y khoa liên quan đến SAE
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiThamGia_TienSuYKhoa" style="padding: 0 6px;vertical-align:middle;">
@@ -821,7 +820,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Chữ ký:
                     </td>
                     <td contentEditable="plaintext-only" style="padding: 0 6px;vertical-align:middle;">
@@ -829,7 +828,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Ngày ký <i>(ngày/tháng/năm):</i>
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiBaoCao_NgayKy" style="padding: 0 6px;vertical-align:middle;">
@@ -837,7 +836,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Họ tên đầy đủ:
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiBaoCao_HoTen" style="padding: 0 6px;vertical-align:middle;">
@@ -845,7 +844,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Chức vụ, khoa/phòng:
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiBaoCao_ChucVu" style="padding: 0 6px;vertical-align:middle;">
@@ -853,7 +852,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Số điện thoại:
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiBaoCao_DienThoai" style="padding: 0 6px;vertical-align:middle;">
@@ -861,7 +860,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="padding: 3px;">
                         Địa chỉ email:
                     </td>
                     <td contentEditable="plaintext-only" data-bind="editableHtml: NguoiBaoCao_Email" style="padding: 0 6px;vertical-align:middle;">

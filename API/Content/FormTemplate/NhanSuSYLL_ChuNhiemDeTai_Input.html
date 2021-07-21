@@ -50,19 +50,19 @@
                                 <span contenteditable="false" style="text-indent: 129px;" data-bind="editableHtml: DiaChi"></span>
                             </p>
                             <div class="box-inline">
-                                <div style="display:inline-block;min-width:40%">
+                                <div style="display:inline-block;width:33.3%">
                                     <p class="box">
                                         <span class="box-title">5. Điện thoại CQ:</span>
                                         <span contenteditable="false" style="text-indent: 126px;" data-bind="editableHtml: DienThoaiCQ"></span>
                                     </p>
                                 </div>
-                                <div style="display:inline-block;min-width:35%">
+                                <div style="display:inline-block;width:33.3%">
                                     <p class="box">
                                         <span class="box-title">Điện thoại NR:</span>
                                         <span contentEditable="plaintext-only" style="text-indent: 106px;" data-bind="editableHtml: DienThoaiNhaRieng"></span>
                                     </p>
                                 </div>
-                                <div style="display:inline-block;min-width:25%">
+                                <div style="display:inline-block;width:33.3%">
                                     <p class="box">
                                         <span class="box-title">Mobile:</span>
                                         <span contenteditable="false" style="text-indent: 58px;" data-bind="editableHtml: Mobile"></span>
@@ -136,25 +136,25 @@
                         <div conf='{"name":"ListKinhNghiem","add":true,"resizeable":true,"props": ["TenDeTai","NhiemVuCaNhan","CoQuanChuTri","NamBatDauKetThuc"]}' class="ptable pconf" style="width:100%;position:relative;">
                             <table name="ListKinhNghiem" class="nckh-table editable-table table-inside-table resize-grid" style="width:100%;" border="0">
                                 <colgroup>
-                                    <col />
-                                    <col />
-                                    <col width="120" />
-                                    <col />
+                                    <col width="200" />
+                                    <col width="110" />
+                                    <col width="110" />
+                                    <col width="110" />
                                 </colgroup>
                                 <thead>
-                                    <tr class="table-header" style="font-weight:normal;">
-                                        <td>Tên đề tài/dự án đã chủ trì</td>
-                                        <td>Nhiệm vụ cá nhân trong nghiên cứu</td>
-                                        <td>Cơ quan chủ trì đề tài/dự án</td>
-                                        <td>Năm bắt đầu - kết thúc</td>
+                                    <tr class="table-header" style="font-weight:bold;">
+                                        <td style="padding: 3px;" >Tên đề tài/dự án đã chủ trì</td>
+                                        <td style="padding: 3px;" >Nhiệm vụ cá nhân trong nghiên cứu</td>
+                                        <td style="padding: 3px;" >Cơ quan chủ trì đề tài/dự án</td>
+                                        <td style="padding: 3px;" >Năm bắt đầu - kết thúc</td>
                                     </tr>
                                 </thead>
                                 <tbody style="width:100%;" data-bind="foreach: ListKinhNghiem">
                                     <tr data-bind="attr: { index: $index, removable: true }">
-                                        <td contentEditable="plaintext-only" data-bind="editableHtml: TenDeTai"></td>
-                                        <td contentEditable="plaintext-only" data-bind="editableHtml: NhiemVuCaNhan"></td>
-                                        <td contentEditable="plaintext-only" data-bind="editableHtml: CoQuanChuTri"></td>
-                                        <td contentEditable="plaintext-only" data-bind="editableHtml: NamBatDauKetThuc"></td>
+                                        <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenDeTai"></td>
+                                        <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: NhiemVuCaNhan"></td>
+                                        <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: CoQuanChuTri"></td>
+                                        <td style="padding: 3px; text-align: center;" contentEditable="plaintext-only" data-bind="editableHtml: NamBatDauKetThuc"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -163,25 +163,25 @@
                 </tr>
             </table>
             <div>
-                <div class="box" style="font-style: italic">
+                <div class="box" style="font-style: italic; margin: 0px !important;">
                     <div style="width:100%;" class="text-center">
-                        <div class="box-inline">
+                        <div class="box-inline" style="text-align: right;">
                             <div style="display:inline-block;min-width:136px">
                                 <p class="box box-inline">
                                     <span class="box-title">TP. HCM, ngày </span>
-                                    <span contentEditable="plaintext-only" style="text-indent:110px;min-width:110px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:110px;width:50px; min-width:50px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
                                 </p>
                             </div>
                             <div style="display:inline-block;min-width:72px">
                                 <p class="box box-inline">
                                     <span class="box-title">tháng</span>
-                                    <span contentEditable="plaintext-only" style="text-indent:38px;min-width:100px;" data-bind="editableHtml: NgayKy_Thang"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:38px;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Thang"></span>
                                 </p>
                             </div>
                             <div style="display:inline-block;min-width:60px">
                                 <p class="box box-inline">
                                     <span class="box-title">năm</span>
-                                    <span contentEditable="plaintext-only" style="text-indent:35px;min-width:100px;" data-bind="editableHtml: NgayKy_Nam"></span>
+                                    <span contentEditable="plaintext-only" style="text-indent:35px;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Nam"></span>
                                 </p>
                             </div>
                         </div>
@@ -189,8 +189,8 @@
                 </div>
             </div>
             <div>
-                <div class="box" style="">
-                    <div style="width:100%;" class="text-center">
+                <div class="box">
+                    <div style="width: 50%; float: right;" class="text-center">
                         <b>CHỦ NHIỆM ĐỀ TÀI</b>
                         <br />
                         <span>(Họ tên và chữ ký)</span>

@@ -67,22 +67,22 @@
             </div>
             <div>
                 <div class="box-inline">
-                    <div style="display:inline-block;min-width:35%">
+                    <div style="display:inline-block;width:25%">
                         <p class="box">
                             <span class="box-title text-bold">5. Số CMND:</span>
-                            <span contentEditable="plaintext-only" style="text-indent:96px;" data-bind="editableHtml: CMND"></span>
+                            <span contentEditable="plaintext-only" style="text-indent:20px;" data-bind="editableHtml: CMND"></span>
                         </p>
                     </div>
-                    <div style="display:inline-block;min-width:25%">
+                    <div style="display:inline-block;width:25%">
                         <p class="box">
                             <span class="box-title text-bold">Ngày cấp:</span>
-                            <span contentEditable="plaintext-only" style="text-indent:72px;" data-bind="editableHtml: CMND_NgayCap"></span>
+                            <span contentEditable="plaintext-only" style="text-indent:20px;" data-bind="editableHtml: CMND_NgayCap"></span>
                         </p>
                     </div>
-                    <div style="display:inline-block;min-width:40%">
+                    <div style="display:inline-block;width:50%">
                         <p class="box">
                             <span class="box-title text-bold">Nơi cấp:</span>
-                            <span contentEditable="plaintext-only" style="text-indent:62px;" data-bind="editableHtml: CMND_NoiCap"></span>
+                            <span contentEditable="plaintext-only" style="text-indent:20px;" data-bind="editableHtml: CMND_NoiCap"></span>
                         </p>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                     <colgroup>
                         <col width="30" class="text-center" />
                         <col width="120" />
-                        <col width="320" />
-                        <col />
+                        <col width="250" />
+                        <col width="250" />
                     </colgroup>
                     <thead>
                         <tr class="table-header" style="font-style: italic;">
@@ -139,22 +139,22 @@
                     </thead>
                     <tbody style="width:100%;">
                         <tr>
-                            <td class="text-center">1</td>
-                            <td>Địa chỉ</td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: DiaChi_CoQuan"></td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: DiaChi_CaNhan"></td>
+                            <td style="padding: 6px 6px 0px !important;" class="text-center">1</td>
+                            <td style="padding: 6px 6px 0px !important;">Địa chỉ</td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: DiaChi_CoQuan"></td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: DiaChi_CaNhan"></td>
                         </tr>
                         <tr>
-                            <td class="text-center">2</td>
-                            <td>Điện thoại/fax</td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: DienThoai_CoQuan"></td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: DienThoai_CaNhan"></td>
+                            <td style="padding: 6px 6px 0px !important;" class="text-center">2</td>
+                            <td style="padding: 6px 6px 0px !important;" >Điện thoại/fax</td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: DienThoai_CoQuan"></td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: DienThoai_CaNhan"></td>
                         </tr>
                         <tr>
-                            <td class="text-center">3</td>
-                            <td>Email</td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: Email_CoQuan"></td>
-                            <td contentEditable="plaintext-only" data-bind="editableHtml: Email_CaNhan"></td>
+                            <td style="padding: 6px 6px 0px !important;" class="text-center">3</td>
+                            <td style="padding: 6px 6px 0px !important;" >Email</td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: Email_CoQuan"></td>
+                            <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: Email_CaNhan"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -231,19 +231,19 @@
                         <tbody style="width:100%;" data-bind="foreach: ListNgoaiNgu">
                             <tr data-bind="attr: { index: $index, removable: true }">
                                 <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NgoaiNgu"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheTot"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheKha"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheTB"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiTot"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiKha"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiTB"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietTot"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietKha"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietTB"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocTot"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocKha"></td>
-                                <td class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocTB"></td>
+                                <td style="padding: 6px 6px 0px !important;" contentEditable="plaintext-only" data-bind="editableHtml: NgoaiNgu"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheTot"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheKha"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NgheTB"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiTot"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiKha"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: NoiTB"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietTot"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietKha"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: VietTB"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocTot"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocKha"></td>
+                                <td style="padding: 6px 6px 0px !important;" class="text-center" contentEditable="plaintext-only" data-bind="editableHtml: DocTB"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -269,9 +269,9 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListThoiGianCongTac">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NoiCongTac"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ChucVu"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: NoiCongTac"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: ChucVu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -285,8 +285,8 @@
                     <table name="ListQuaTrinhDaoTao" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="90" />
-                            <col width="80" />
-                            <col width="90" />
+                            <col width="100" />
+                            <col width="150" />
                             <col width="110" />
                             <col />
                         </colgroup>
@@ -301,11 +301,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListQuaTrinhDaoTao">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: Bac"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NoiDaoTao"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ChuyenNganh"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenLuanAnTotNghiep"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: Bac"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: NoiDaoTao"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: ChuyenNganh"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenLuanAnTotNghiep"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -344,16 +344,16 @@
                     <table name="ListDeTai" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" />
-                            <col width="90" />
+                            <col width="100" />
                             <col width="100" />
                             <col width="90" />
                             <col width="120" />
                             <col width="100" />
-                            <col />
+                            <col width="60" />
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
-                                <td>TT</td>
+                                <td class="text-center">TT</td>
                                 <td>Tên đề tài/dự án</td>
                                 <td>Mã số & cấp quản lý</td>
                                 <td>Thời gian thực hiện</td>
@@ -364,13 +364,13 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListDeTai">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenDeTai"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: MaSoQuanLy"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ChuNhiem"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NgayNghiemThu"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: KetQua"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenDeTai"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: MaSoQuanLy"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: ThoiGianThucHien"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: ChuNhiem"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NgayNghiemThu"></td>
+                                <td style="padding: 3px; text-align: center;" contentEditable="plaintext-only" data-bind="editableHtml: KetQua"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -384,11 +384,11 @@
                     <table name="ListHuongDan" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="150"/>
+                            <col width="150"/>
+                            <col width="80" />
+                            <col width="80" />
+                            <col width="150" />
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -402,12 +402,12 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListHuongDan">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenSV"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenLuanAn"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NamTot"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: BacDaoTao"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenSV"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenLuanAn"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NamTot"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: BacDaoTao"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -431,10 +431,10 @@
                             <col width="30" class="text-center" />
                             <col />
                             <col />
+                            <col width="80"/>
                             <col />
                             <col />
-                            <col />
-                            <col />
+                            <col width="60" />
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -449,13 +449,13 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListSachQuocTe">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenSach"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NhaXuatBan"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NamXuatBan"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TacGia"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ButDanh"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenSach"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NhaXuatBan"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NamXuatBan"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: TacGia"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ButDanh"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -469,10 +469,10 @@
                             <col width="30" class="text-center" />
                             <col />
                             <col />
+                            <col width="80"/>
                             <col />
                             <col />
-                            <col />
-                            <col />
+                            <col width="60" />
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -487,13 +487,13 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListSachTrongNuoc">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenSach"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NhaXuatBan"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NamXuatBan"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TacGia"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ButDanh"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenSach"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NhaXuatBan"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NamXuatBan"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: TacGia"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ButDanh"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -510,10 +510,10 @@
                     <table name="ListTapChiQuocTe" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
+                            <col width="315"/>
+                            <col width="120"/>
                             <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="53"/>
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -531,11 +531,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListTapChiQuocTe">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: DiemIF"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: DiemIF"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -547,10 +547,10 @@
                     <table name="ListTapChiTrongNuoc" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
+                            <col width="315"/>
+                            <col width="120"/>
                             <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="53"/>
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -568,11 +568,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListTapChiTrongNuoc">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -584,10 +584,10 @@
                     <table name="ListHoiNghiQuocTe" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
+                            <col width="315"/>
+                            <col width="120"/>
                             <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="53"/>
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -605,11 +605,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListHoiNghiQuocTe">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -621,10 +621,10 @@
                     <table name="ListHoiNghiTrongNuoc" class="nckh-table resize-grid editable-table table-bordered" style="width:100%;" border="1">
                         <colgroup>
                             <col width="30" class="text-center" />
+                            <col width="315"/>
+                            <col width="120"/>
                             <col />
-                            <col />
-                            <col />
-                            <col />
+                            <col width="53"/>
                         </colgroup>
                         <thead>
                             <tr class="table-header" style="font-style: italic;">
@@ -642,11 +642,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListHoiNghiTrongNuoc">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenBaiViet"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SanPham"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: SoHieu"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: GhiChu"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -667,7 +667,7 @@
                             <col width="30" class="text-center" />
                             <col />
                             <col />
-                            <col />
+                            <col width="70"/>
                             <col />
                         </colgroup>
                         <thead>
@@ -681,11 +681,11 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListGiaiThuong">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenGiaiThuong"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NoiDungGiaiThuong"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NoiCap"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NamCap"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenGiaiThuong"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: NoiDungGiaiThuong"></td>
+                                <td style="text-align: center; padding: 3px 0 0;" contentEditable="plaintext-only" data-bind="editableHtml: NoiCap"></td>
+                                <td style="text-align: center; padding: 3px 0 0;" contentEditable="plaintext-only" data-bind="editableHtml: NamCap"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -718,10 +718,10 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListHiepHoiKhoaHoc">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenHiepHoi"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ChucDanh"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenHiepHoi"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ChucDanh"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -749,10 +749,10 @@
                         </thead>
                         <tbody style="width:100%;" data-bind="foreach: ListTruongDaiHoc">
                             <tr data-bind="attr: { index: $index, removable: true }">
-                                <td contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: TenTruong"></td>
-                                <td contentEditable="plaintext-only" data-bind="editableHtml: NoiDungThamGia"></td>
+                                <td class="text-center" contenteditable="false" data-bind="{text: ($index() + 1)}"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: ThoiGian"></td>
+                                <td style="padding: 3px;" contentEditable="plaintext-only" data-bind="editableHtml: TenTruong"></td>
+                                <td style="padding: 3px; text-align:center;" contentEditable="plaintext-only" data-bind="editableHtml: NoiDungThamGia"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -766,25 +766,25 @@
             </div>
         </div>
         <div class="block">
-            <div class="box" style="font-style: italic">
+            <div class="box" style="font-style: italic; margin: 0px !important;">
                 <div style="width:100%;" class="text-center">
-                    <div class="box-inline">
+                    <div class="box-inline" style="text-align: right;">
                         <div style="display:inline-block;min-width:65px">
                             <p class="box box-inline">
                                 <span class="box-title">Ngày </span>
-                                <span contentEditable="plaintext-only" style="text-indent:34px;min-width:100px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
+                                <span contentEditable="plaintext-only" style="text-indent:34px;width:50px; min-width:50px;" class="text-center" data-bind="editableHtml: NgayKy_Ngay"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:72px">
                             <p class="box box-inline">
                                 <span class="box-title">tháng</span>
-                                <span contentEditable="plaintext-only" style="text-indent:38px;min-width:100px;" data-bind="editableHtml: NgayKy_Thang"></span>
+                                <span contentEditable="plaintext-only" style="text-indent:38px;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Thang"></span>
                             </p>
                         </div>
                         <div style="display:inline-block;min-width:60px">
                             <p class="box box-inline">
                                 <span class="box-title">năm</span>
-                                <span contentEditable="plaintext-only" style="text-indent:35px;min-width:100px" data-bind="editableHtml: NgayKy_Nam"></span>
+                                <span contentEditable="plaintext-only" style="text-indent:35px;width:50px; min-width:50px;" data-bind="editableHtml: NgayKy_Nam"></span>
                             </p>
                         </div>
                     </div>
@@ -792,8 +792,8 @@
             </div>
         </div>
         <div>
-            <p class="box" style="">
-                <span style="width:100%;min-height:200px;" class="text-center">
+            <p class="box">
+                <span style="width:50%;min-height:100px;float:right;" class="text-center">
                     <b>Người khai</b>
                     <br>
                     <i>(Ký và ghi rõ họ tên)</i>
