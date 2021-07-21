@@ -193,7 +193,7 @@ namespace BaseBusiness
                         {
                             try
                             {
-                                obj.CompletePercent = Convert.ToInt32(Math.Round((dtEnd - DateTime.Now).TotalDays / (dtEnd - trangthaiHDDD.CreatedDate).TotalDays, 0));
+                                obj.CompletePercent = Convert.ToInt32((DateTime.Now - trangthaiHDDD.CreatedDate).TotalDays / (dtEnd - trangthaiHDDD.CreatedDate).TotalDays * 100);
                                 if (obj.CompletePercent > 100)
                                     obj.CompletePercent = 100;
                             }

@@ -247,8 +247,12 @@ namespace BaseBusiness
             var objHRM_SYLL = db.tbl_CUS_HRM_STAFF_NhanSu_SYLL.FirstOrDefault(c => c.IDNhanSu == item.IDNhanSu);
             if (objHRM_SYLL != null)
             {
+
+                int id = dbitem.ID;
                 CopyHelper copyHelper = new CopyHelper();
                 copyHelper.Copy(objHRM_SYLL, dbitem);
+                dbitem.ID = id;
+
             }
             dbitem.IDDetai = item.IDDetai;
             dbitem.IDNhanSu = item.IDNhanSu;

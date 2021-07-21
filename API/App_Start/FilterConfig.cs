@@ -53,8 +53,8 @@ namespace API
     {
         ILog log = log4net.LogManager.GetLogger("WebApi filter");
 
-        public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
-        {
+        //public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
+        //{
             //string localPath = actionContext.Request.RequestUri.LocalPath;
             //bool isViewable = true;
             //if (!isViewable)
@@ -64,7 +64,7 @@ namespace API
             //else
             //{
             //}
-        }
+        //}
 
         //public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         //{

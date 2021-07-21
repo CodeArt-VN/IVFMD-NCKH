@@ -19,7 +19,7 @@ namespace BaseBusiness
             var staff = db.tbl_CUS_HRM_STAFF_NhanSu.FirstOrDefault(c => c.ID == StaffID);
             if (staff != null)
             {
-                if (staff.IsHRCO != true)
+                if (staff.tbl_CUS_SYS_Role.Code != "ADMIN")//(staff.IsHRCO != true)
                     query = query.Where(c => c.IDNCV == staff.ID);
             }
             else query = query.Where(c => false);

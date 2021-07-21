@@ -32,7 +32,7 @@ namespace API.Controllers
     public class AccountController : CustomApiController
     {
         private const string LocalLoginProvider = "Local";
-        private string domain = "http://ivfmd.demo.codeart.vn/"; //"http://myduc.appcenter.vn:9003/"; 
+        private string domain = "http://nckh.appcenter.vn/"; //"http://myduc.appcenter.vn:9003/"; 
 
         public AccountController()
         {
@@ -336,7 +336,7 @@ namespace API.Controllers
                 }
                 else
                 {
-                    string code = UserManager.GenerateEmailConfirmationToken(user.Id);
+                    string code = System.Web.HttpUtility.UrlEncode(UserManager.GenerateEmailConfirmationToken(user.Id));
                     activeLink = string.Format(domain + "Home/ConfirmEmail/?userId={0}&code={1}", user.Id, code);
                 }
 
@@ -394,11 +394,12 @@ namespace API.Controllers
                         <br>Email: <strong>@Model.Email</strong>
                         <br>Mật khẩu: <strong>@Model.Password</strong>
                         <br>
-                        <br>Vui lòng đăng nhập tại
-                        <br><a href='@Model.Domain'>@Model.Domain</a> 
+                        <br>Vui lòng đăng nhập
+                        <br> - Đối với mạng của BV Mỹ Đức: <a href='@Model.Domain2'>@Model.Domain2</a> 
+                        <br> - Đối với mạng ngoài BV: <a href='@Model.Domain'>@Model.Domain</a> 
                         <br>";
 
-                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://113.161.87.251:9004/" });
+                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://113.161.87.251:9004/", Domain2 = "http://172.16.1.18:9002/" });
 
                 EmailService emailService = new EmailService();
                 emailService.Send(new IdentityMessage() { Subject = "Quản lý Đề tài Nghiên cứu khoa học - thông tin tài khoản", Destination = dbUser.Email, Body = html });
@@ -805,7 +806,7 @@ namespace API.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = string.Format(domain + "Home/ResetPassword?userId={0}&token={1}", user.Id, code);
+                var callbackUrl =  string.Format(domain + "Home/ResetPassword?userId={0}&token={1}", user.Id, System.Web.HttpUtility.UrlEncode(code) );
 
                 await UserManager.SendEmailAsync(user.Id, "Thư viện điên tử - Yêu cầu đổi mật khẩu",
                     $"Chào bạn, <br><br>Hệ thống đã nhận được yêu cầu đổi mật khẩu tài khoản của bạn.<br>" +

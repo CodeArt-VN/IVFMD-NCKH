@@ -1,41 +1,50 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNet.Identity;
+using MimeKit;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
+using System.Configuration;
+using System.Net.Configuration;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
+
 
 namespace API
 {
     public class EmailService : IIdentityMessageService
     {
         readonly ConcurrentQueue<SmtpClient> _clients = new ConcurrentQueue<SmtpClient>();
-        
+        public string from = "";
         public async Task SendAsync(IdentityMessage message)
         {
-            var client = GetOrCreateSmtpClient();
+            //var client = GetOrCreateSmtpClient();
             try
             {
-                MailMessage mailMessage = new MailMessage();
+                var config = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+                from = config.From;
 
-                mailMessage.To.Add(new MailAddress(message.Destination));
-                mailMessage.Subject = message.Subject;
-                mailMessage.Body = message.Body;
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(from));
+                email.To.Add(MailboxAddress.Parse(message.Destination));
+                email.Subject = message.Subject;
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Body };
 
-                mailMessage.BodyEncoding = Encoding.UTF8;
-                mailMessage.SubjectEncoding = Encoding.UTF8;
-                mailMessage.IsBodyHtml = true;
+                //client.Send(email);
 
-                // there can only ever be one-1 concurrent call to SendMailAsync
-                await client.SendMailAsync(mailMessage);
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync(config.Network.Host, config.Network.Port, config.Network.EnableSsl ? MailKit.Security.SecureSocketOptions.SslOnConnect : MailKit.Security.SecureSocketOptions.Auto);
+                    await client.AuthenticateAsync(config.Network.UserName, config.Network.Password);
+                    await client.SendAsync(email);
+                    await client.DisconnectAsync(true);
+
+                };
+
             }
             finally
             {
-                _clients.Enqueue(client);
+                //_clients.Enqueue(client);
             }
         }
         public void Send(IdentityMessage message)
@@ -43,30 +52,26 @@ namespace API
             var client = GetOrCreateSmtpClient();
             try
             {
-                MailMessage mailMessage = new MailMessage();
-
-                mailMessage.To.Add(new MailAddress(message.Destination));
-                mailMessage.Subject = message.Subject;
-                mailMessage.Body = message.Body;
-
-                mailMessage.BodyEncoding = Encoding.UTF8;
-                mailMessage.SubjectEncoding = Encoding.UTF8;
-                mailMessage.IsBodyHtml = true;
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(from));
+                email.To.Add(MailboxAddress.Parse(message.Destination));
+                email.Subject = message.Subject;
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Body };
 
                 // there can only ever be one-1 concurrent call to SendMailAsync
-                
+
                 Thread t1 = new Thread(delegate ()
                 {
                     try
                     {
-                        client.Send(mailMessage);
+                        client.Send(email);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
-                        //throw;
+
+                        throw ex;
                     }
-                    
+
                 });
 
                 t1.Start();
@@ -82,17 +87,13 @@ namespace API
             var client = GetOrCreateSmtpClient();
             try
             {
-                MailMessage mailMessage = new MailMessage();
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(from));
+                email.To.Add(MailboxAddress.Parse(message.Destination));
+                email.Subject = message.Subject;
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Body };
 
-                mailMessage.To.Add(new MailAddress(message.Destination));
-                mailMessage.Subject = message.Subject;
-                mailMessage.Body = message.Body;
-
-                mailMessage.BodyEncoding = Encoding.UTF8;
-                mailMessage.SubjectEncoding = Encoding.UTF8;
-                mailMessage.IsBodyHtml = true;
-                
-                client.Send(mailMessage);
+                client.Send(email);
             }
             finally
             {
@@ -107,15 +108,14 @@ namespace API
                 return client;
             }
 
+            var config = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+            from = config.From;
+
             client = new SmtpClient();
+            client.Connect(config.Network.Host, config.Network.Port, config.Network.EnableSsl ? MailKit.Security.SecureSocketOptions.SslOnConnect : MailKit.Security.SecureSocketOptions.Auto);
+            client.Authenticate(config.Network.UserName, config.Network.Password);
             return client;
         }
-
-
-
-       
-
-        
 
     }
 }

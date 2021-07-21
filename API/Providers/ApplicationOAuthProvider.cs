@@ -10,6 +10,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using API.Models;
+using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Facebook;
 
 namespace API.Providers
 {
@@ -29,7 +31,11 @@ namespace API.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+            if (allowedOrigin == null) allowedOrigin = "*";
+
 
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
@@ -86,16 +92,30 @@ namespace API.Providers
         {
             if (context.ClientId == _publicClientId)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+                //Uri expectedRootUri = new Uri(context.Request.Uri, "/");
 
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
-                {
+                //if (expectedRootUri.AbsoluteUri == context.RedirectUri)
+                //{
                     context.Validated();
-                }
+                //}
             }
 
             return Task.FromResult<object>(null);
         }
+
+        public override Task MatchEndpoint(OAuthMatchEndpointContext context)
+        {
+            if (context.IsTokenEndpoint && context.Request.Method == "OPTIONS")
+            {
+                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "authorization" });
+                context.RequestCompleted();
+                return Task.FromResult(0);
+            }
+
+            return base.MatchEndpoint(context);
+        }
+
 
         public static AuthenticationProperties CreateProperties(ApplicationUser user)
         {
@@ -118,6 +138,35 @@ namespace API.Providers
             }
              
             return new AuthenticationProperties(data);
+        }
+    }
+
+    public class GoogleAuthProvider : IGoogleOAuth2AuthenticationProvider
+    {
+        public void ApplyRedirect(GoogleOAuth2ApplyRedirectContext context)
+        {
+            context.Response.Redirect(context.RedirectUri);
+        }
+
+        public Task Authenticated(GoogleOAuth2AuthenticatedContext context)
+        {
+            context.Identity.AddClaim(new Claim("ExternalAccessToken", context.AccessToken));
+            return Task.FromResult<object>(null);
+        }
+
+        public Task ReturnEndpoint(GoogleOAuth2ReturnEndpointContext context)
+        {
+            return Task.FromResult<object>(null);
+        }
+    }
+
+    public class FacebookAuthProvider : FacebookAuthenticationProvider
+    {
+        public override Task Authenticated(FacebookAuthenticatedContext context)
+        {
+            context.Identity.AddClaim(new Claim("ExternalAccessToken", context.AccessToken));
+            context.Identity.AddClaim(new Claim("Email", context.Email));
+            return Task.FromResult<object>(null);
         }
     }
 }

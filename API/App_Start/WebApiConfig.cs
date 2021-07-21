@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
-
-using System.Runtime.Serialization;
-using System.Web.Http.Cors;
 
 namespace API
 {
@@ -21,12 +13,12 @@ namespace API
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
 
-            config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
+            //config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
 
 
-            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
-            cors.SupportsCredentials = true;
-            config.EnableCors(cors);
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            //cors.SupportsCredentials = true;
+            //config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -36,8 +28,9 @@ namespace API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
             
-            
+
             //config.Formatters.Remove(config.Formatters.JsonFormatter);
             //config.Formatters.Remove(config.Formatters.XmlFormatter);
             //config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;

@@ -114,7 +114,7 @@ namespace API
             return sb.ToString();
         }
         const String rootURL = "http://api.speedsms.vn/index.php";
-        private String accessToken = "BxPXL41QTmwWu6iSwLFxBxmuXNPqUgOl";
+        private String accessToken = "v";
         
         readonly ConcurrentQueue<WebClient> _clients = new ConcurrentQueue<WebClient>();
 
