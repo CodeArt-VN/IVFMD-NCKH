@@ -18,6 +18,10 @@ a{
     transition: opacity 0.15s linear !important;
     opacity: 0.8;
 }
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
 
 .c-label-bold {
     color: red;

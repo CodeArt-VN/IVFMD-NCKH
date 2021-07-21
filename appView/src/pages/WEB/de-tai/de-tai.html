@@ -58,6 +58,7 @@
             <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable"
                 [columnMode]="'force'" [headerHeight]="55" [footerHeight]="0" [rowHeight]="50" [scrollbarV]="true"
                 [scrollbarH]="true" [rows]="items" [selected]="selected" [selectionType]="'single'"
+                [sorts]="[{prop:'ID', dir:'desc'}]"
                 (select)='onSelect($event)'>
                 <ngx-datatable-column name="" prop="" [width]="90" [maxWidth]="90" headerClass="name" cellClass="name">
                     <ng-template let-i="row" ngx-datatable-cell-template>

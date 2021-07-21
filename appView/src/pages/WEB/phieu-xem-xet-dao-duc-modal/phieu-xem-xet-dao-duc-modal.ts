@@ -74,6 +74,7 @@ export class PhieuXemXetDaoDucModalPage extends DetailPage {
         }
         let id = this.item.ID;
         var that = this;
+        debugger
         this.nckhProvider.init(this.item.FormConfig);
 
         let ObjModel = function (item) {

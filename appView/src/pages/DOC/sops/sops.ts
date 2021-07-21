@@ -284,7 +284,7 @@ export class SopsPage extends ListPage {
     editItem(item) {
         if (item.Extension == 'folder') {
             if (item.IDLinhVuc > 0) {
-                this.toastMessage('Không thể sửa folder này!')
+                this.toastMessage('Không thể sửa folder '+item.Name+' do đây là folder hệ thống!')
                 return;
             }
             let myModal = this.modalCtrl.create(FolderModalPage, { item: item, 'id': item.ID, IDPartner: this.query.IDPartner });
@@ -292,7 +292,7 @@ export class SopsPage extends ListPage {
         }
         else {
             if (item.IDDeTai > 0) {
-                this.toastMessage('Không thể sửa file này!')
+                this.toastMessage('Không thể sửa file này do đây là file của đề tài '+ item.IDDeTai +'!')
                 return;
             }
             let myModal = this.modalCtrl.create(FileModalPage, { item: item, 'id': item.ID, IDPartner: this.query.IDPartner, canApproveDoc: this.canApproveDoc });
@@ -454,7 +454,7 @@ export class SopsPage extends ListPage {
         else {
             this.query.IDParent = folder.ID;
             this.query.IDFolder = folder.ID;
-            if (folder.IDLinhVuc > 0) {
+            if (0 && folder.IDLinhVuc > 0) {
                 this.canManageFolder = false;
                 this.canManageFile = false;
                 this.canEditFile = false;

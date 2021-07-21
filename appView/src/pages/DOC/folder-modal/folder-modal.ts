@@ -65,7 +65,7 @@ export class FolderModalPage extends DetailPage {
 
     buildTree(item) {
         let idp = item == null ? null : item.ID;
-        let childrent = this.folderList.filter(d => d.IDParent == idp && d.ID != this.id && d.IDLinhVuc == null);
+        let childrent = this.folderList.filter(d => d.IDParent == idp && d.ID != this.id ); //&& d.IDLinhVuc == null
         let level = (item && item.level >= 0) ? item.level + 1 : 1;
 
         let index = this.folderTree.findIndex(d => d.ID == idp)

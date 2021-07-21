@@ -38,6 +38,7 @@ export class DeTaiPage extends ListPage {
     }
 
     preLoadData() {
+        this.query.SortBy = '[ID_desc]';
         this.FormGroups = this.userprofile.MenuItems.filter(d => d.AppID == 5);
         this.Modules = this.getModules();
         super.preLoadData();

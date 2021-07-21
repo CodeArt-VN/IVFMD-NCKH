@@ -203,9 +203,7 @@
             -webkit-user-select: text;
             user-select: text;
 
-            &:hover, &:focus {
-                // outline: 1px dashed #44a9eb;
-            }
+            
         }
 
         & > *:not(input) {
@@ -223,11 +221,6 @@
     [contenteditable="true"] {
         -webkit-user-select: text;
         user-select: text;
-
-        &:hover, &:focus {
-            // outline: 1px dashed #44a9eb;
-        }
-
         > p, > div {
             margin-bottom: .6rem !important;
             margin-top: .6rem !important;
@@ -468,7 +461,7 @@
             display: table;
             width: 100%;
             min-height: 26px;
-            margin: 0 0 8px 0;
+            margin: 0 0 25px 0 !important;
 
             &.tab-1 {
                 margin-left: 0;
@@ -482,6 +475,16 @@
 
             .box-title {
                 position: relative;
+
+                color: #007DC5;
+                margin-right: 10px;
+                margin-bottom: 8px;
+                font-size: 14px;
+                font-weight: bold;
+                display: inline-block;
+                width: calc(100% - 0px);
+                text-align: left;
+                vertical-align: top;
             }
 
             & > input[type="checkbox"] {
@@ -521,20 +524,15 @@
             user-select: text;
         }
 
-        [contenteditable="true"] {
+        [contenteditable="false"] {
+            background-color: #eaeaea !important;
+            border: 1px solid #d5d5d5 !important;
+        }
+
+        [contenteditable] {
             -webkit-user-select: text;
             user-select: text;
 
-            &:hover, &:focus {
-                // border: 1px solid #44a9eb;
-            }
-        }
-
-        [contenteditable="false"] {
-            background-color: #eaeaea;
-        }
-
-        [contenteditable="true"] {
             &[type="checkbox"] {
                 height: auto;
                 min-height: 0;
@@ -599,7 +597,7 @@
                     }
 
                     td {
-                        padding: 3px;
+                        padding: 16px 16px 0 16px;
                         word-break: break-word;
                         page-break-inside: avoid;
                         page-break-before: auto;
@@ -710,7 +708,7 @@
         }
 
         .box {
-            [contenteditable="true"] {
+            [contenteditable] {
                 &:hover, &:focus {
                     outline: none;
                 }

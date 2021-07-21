@@ -18,6 +18,7 @@ export class NCKHServiceProvider {
         this.editors = [];
         this.ckToolbarOptions = {
             startupFocus: true,
+            title: false,
             fontSize: {
                 options: [
                     9,
@@ -165,19 +166,19 @@ export class NCKHServiceProvider {
                             ckOptions = me.ckToolbarWithImageOptions;
 
                         var observable = valueAccessor();
-                        ckEditor.create($element.get(0), ckOptions).then((editor) => {
-                            if ($element.data('read-only')) {
-                                editor.isReadOnly = true;
-                            }
-                            $editor = editor;
-                            me.editors.push({
-                                id: idx,
-                                editor: $editor
-                            });
-                            $editor.model.document.on('change:data', (evt, data) => {
-                                observable($editor.getData());
-                            });
-                        });
+                        // ckEditor.create($element.get(0), ckOptions).then((editor) => {
+                        //     if ($element.data('read-only')) {
+                        //         editor.isReadOnly = true;
+                        //     }
+                        //     $editor = editor;
+                        //     me.editors.push({
+                        //         id: idx,
+                        //         editor: $editor
+                        //     });
+                        //     $editor.model.document.on('change:data', (evt, data) => {
+                        //         observable($editor.getData());
+                        //     });
+                        // });
                     }
 
                     //$element.on('focus', function (e) {
