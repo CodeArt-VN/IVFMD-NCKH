@@ -32,7 +32,8 @@ namespace API.Controllers
     public class AccountController : CustomApiController
     {
         private const string LocalLoginProvider = "Local";
-        private string domain = "http://nckh.appcenter.vn/"; //"http://myduc.appcenter.vn:9003/"; 
+        private string domain = "http://113.161.87.251:9004/"; 
+        private string domain2 = "http://172.16.1.18:9002/";
 
         public AccountController()
         {
@@ -399,7 +400,7 @@ namespace API.Controllers
                         <br> - Đối với mạng ngoài BV: <a href='@Model.Domain'>@Model.Domain</a> 
                         <br>";
 
-                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = "http://113.161.87.251:9004/", Domain2 = "http://172.16.1.18:9002/" });
+                var html = Engine.Razor.RunCompile(template, "Register_EmailTemplate", null, new { FullName = dbUser.FullName, Email = dbUser.Email, Password = password, Domain = domain, Domain2 = domain2 });
 
                 EmailService emailService = new EmailService();
                 emailService.Send(new IdentityMessage() { Subject = "Quản lý Đề tài Nghiên cứu khoa học - thông tin tài khoản", Destination = dbUser.Email, Body = html });
@@ -732,6 +733,7 @@ namespace API.Controllers
                     string code = UserManager.GenerateEmailConfirmationToken(user.Id);
 
                     var callbackUrl = string.Format(domain + "Home/ConfirmEmail/?userId={0}&code={1}", user.Id, code);
+
                     UserManager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
                 }
@@ -807,10 +809,13 @@ namespace API.Controllers
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl =  string.Format(domain + "Home/ResetPassword?userId={0}&token={1}", user.Id, System.Web.HttpUtility.UrlEncode(code) );
+                var callbackUrl2 = string.Format(domain2 + "Home/ResetPassword?userId={0}&token={1}", user.Id, System.Web.HttpUtility.UrlEncode(code));
 
-                await UserManager.SendEmailAsync(user.Id, "Thư viện điên tử - Yêu cầu đổi mật khẩu",
+                await UserManager.SendEmailAsync(user.Id, System.Configuration.ConfigurationSettings.AppSettings["appNane"] + " - Yêu cầu đổi mật khẩu",
                     $"Chào bạn, <br><br>Hệ thống đã nhận được yêu cầu đổi mật khẩu tài khoản của bạn.<br>" +
-                    $"Vui lòng <b><a href='{callbackUrl}'>bấm vào đây để thay đổi mật khẩu</a></b>.<br>" +
+                    $"Vui lòng <br>" +
+                    $" - Đối với mạng ngoài BV: <b><a href='{callbackUrl}'>bấm vào đây để thay đổi mật khẩu</a></b>.<br>" +
+                    $" - Đối với mạng của BV Mỹ Đức: <b><a href='{callbackUrl2}'>bấm vào đây để thay đổi mật khẩu</a></b>.<br>" +
                     $"Nếu bạn không yêu cầu thay đổi mật khẩu, vui lòng bỏ qua email này.<br>" +
                     $"<br>---<br>" +
                     $"Trân trọng!");
